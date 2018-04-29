@@ -1,6 +1,8 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 <script>
 window.location="#404";
+history.pushState("", "404 - "+document.title, "/");
+history.pushState();
 $(document).ready(function() {
     $('body').load('index.html#404');
 });
