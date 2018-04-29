@@ -1,1 +1,0 @@
-echo "<script src='/lib/index.js'>window.onload=function(){error(404);}</script>";
