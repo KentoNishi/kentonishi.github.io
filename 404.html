@@ -1,6 +1,6 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 <script>
-window.location="#404";
+history.pushState("", document.title, "/404");
 $(document).ready(function() {
     $('body').load('index.html');
 });
