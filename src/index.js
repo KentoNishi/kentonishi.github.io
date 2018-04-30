@@ -6,7 +6,7 @@ else if(window.location.hash.indexOf("projects")!=-1){
   var proj=["WebOS", "/projects/webos"];
   var projects="";
   for(var i=0;i<proj.length/2;i++){projects+="<a href='"+proj[i]+"'>"+proj[i+1]+"</a><br />"}
-  projects+="<a href='https://github.com/KentoNishi/kentonishi.github.io/tree/master/projects'>View All Projects</a>";
+  projects+="<a href='https://github.com/KentoNishi/kentonishi.github.io/tree/master/projects'>All Projects</a>";
   dir("projects", "Projects", projects);
 }
 function dir(name, dir, desc){
