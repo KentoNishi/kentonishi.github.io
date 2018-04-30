@@ -1,6 +1,6 @@
 console.log("Kento Nishi on GitHub. "+document.domain);
 if(window.location.hash.indexOf("404")!=-1){error(404)}
-else if(window.location.hash.indexOf("webos")!=-1){dir("projects/webos", "WebOS", "Kento Nishi")}
+else if(window.location.hash.indexOf("webos")!=-1){dir("projects/webos", "WebOS", "<a href='/run'>Run Demo</a>")}
 else if(window.location.hash.indexOf("src")!=-1){dir("src", "Source Repository", "<a href='https://github.com/KentoNishi/kentonishi.github.io'>View Source</a>")}
 else if(window.location.hash.indexOf("projects")!=-1){
   var proj=["WebOS", "/projects/webos"];
