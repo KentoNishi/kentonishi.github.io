@@ -5,7 +5,7 @@ else if(window.location.hash.indexOf("src")!=-1){dir("src", "Source Repository",
 else if(window.location.hash.indexOf("projects")!=-1){
   var proj=["WebOS", "/projects/webos"];
   var projects="";
-  for(var i=0;i<proj.length/2;i++){projects+="<a href='"+proj[i]+"'>"+proj[i+1]+"</a><br />"}
+  for(var i=0;i<proj.length/2;i++){projects+="<a href='"+proj[i+1]+"'>"+proj[i]+"</a><br />"}
   projects+="<a href='https://github.com/KentoNishi/kentonishi.github.io/tree/master/projects'>All Projects</a>";
   dir("projects", "Projects", projects);
 }
