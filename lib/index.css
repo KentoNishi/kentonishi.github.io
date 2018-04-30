@@ -26,6 +26,18 @@ body, html {
     left: 16px;
 }
 
+.bottomright {
+    position: absolute;
+    bottom: 0;
+    right: 16px;
+}
+
+.topright {
+    position: absolute;
+    top: 0;
+    right: 16px;
+}
+
 .middle {
     position: absolute;
     top: 50%;
