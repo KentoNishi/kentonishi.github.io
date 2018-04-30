@@ -1,6 +1,6 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 <script>
-window.location="https://"+document.domain+window.location.pathname+"#404";
+window.location="#404".replace("/#", "#");
 $(document).ready(function() {
     $('body').load('https://kentonishi.github.io/index.html');
 });
