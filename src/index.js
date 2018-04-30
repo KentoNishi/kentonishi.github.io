@@ -2,7 +2,13 @@ console.log("Kento Nishi on GitHub. "+document.domain);
 if(window.location.hash.indexOf("404")!=-1){error(404)}
 else if(window.location.hash.indexOf("webos")!=-1){dir("projects/webos", "WebOS", "Kento Nishi")}
 else if(window.location.hash.indexOf("src")!=-1){dir("src", "Source Repository", "<a href='https://github.com/KentoNishi/kentonishi.github.io'>View Source</a>")}
-else if(window.location.hash.indexOf("projects")!=-1){dir("projects", "Projects", "<a href='https://github.com/KentoNishi/kentonishi.github.io/tree/master/projects'>View Projects On GitHub</a>")}
+else if(window.location.hash.indexOf("projects")!=-1){
+  var proj=["WebOS", "/projects/webos"];
+  var projects="";
+  for(var i=0;i<proj.length/2;i++){projects+="<a href='"+proj[i]+"'>"+proj[i+1]+"</a><br />"}
+  projects+="<a href='https://github.com/KentoNishi/kentonishi.github.io/tree/master/projects'>View All On GitHub</a>";
+  dir("projects", "Projects", projects);
+}
 function dir(name, dir, desc){
   document.querySelectorAll(".name")[0].innerHTML=dir;
   document.querySelectorAll(".path")[0].innerHTML=desc;
