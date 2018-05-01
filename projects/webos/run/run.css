@@ -3,7 +3,7 @@
   bottom:0;
   height:5vh;
   width:100vw;
-  background-color:black; 
+  background-color:rgba(127, 127, 127, 0.5); 
 }
 .ui{
   width:100vw;
