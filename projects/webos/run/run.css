@@ -1,1 +1,7 @@
-
+.taskbar{
+  position:fixed;
+  bottom:0;
+  height:5vh;
+  width:100vw;
+  background-color:black; 
+}
