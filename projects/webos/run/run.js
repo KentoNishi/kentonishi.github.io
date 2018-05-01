@@ -1,3 +1,4 @@
+window.onload=function(){
 document.querySelectorAll("taskbar")[0].addEventListener("scroll", function(event) {
   
     var top = this.scrollY,
@@ -5,3 +6,4 @@ document.querySelectorAll("taskbar")[0].addEventListener("scroll", function(even
     console.log(top+" - "+left);
   
 }, false);
+}
