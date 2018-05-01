@@ -13,3 +13,9 @@
   width:200vw;
   height:10vh;
 }
+.button{
+  width:25vw;
+  height:5vw;
+  border:5px solid black;
+  border-radius:5px;
+}
