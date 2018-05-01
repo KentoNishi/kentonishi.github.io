@@ -73,13 +73,15 @@ function exitFullScreen()
         document.webkitExitFullscreen();
 }
 
-function toggleFullScreen(element, mode)
+function toggleFullScreen(element)
 {
+  /*
     if (isFullScreen())
         if(mode!=true){
           exitFullScreen();
         }
     else
         requestFullScreen(element || document.documentElement);
-    
+    */
+  requestFullScreen(element || document.documentElement);
 }
