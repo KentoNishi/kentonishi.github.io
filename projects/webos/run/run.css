@@ -15,8 +15,8 @@
 }
 .button{
   position:fixed;
-  top:95vw;
+  bottom:0;
   width:25vw;
-  height:5vw;
+  height:5vh;
   border:1px solid black;
 }
