@@ -1,4 +1,4 @@
 window.onload=function(){ 
-  requestFullScreen(document.querySelectorAll(".ui")[0]);
+  console.log("Going Fullscreen.");
+  toggleFullScreen();
 }
-requestFullScreen(document.querySelectorAll(".ui")[0]);
