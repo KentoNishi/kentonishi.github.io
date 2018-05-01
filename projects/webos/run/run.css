@@ -9,3 +9,18 @@
   width:100vw;
   height:100vh;
 }
+.buttons{
+  width:200vw;
+  height:10vh;
+}
+html {
+    overflow: scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+//    background: #FFF;
+}
