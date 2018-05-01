@@ -41,7 +41,7 @@ function getCookie(cname) {
     return "";
 }
 //fullscreen api
-  var videoElement = document.body;
+  var videoElement = document.getElementsByClassName("ui")[0];
     
   function toggleFullScreen() {
     if (!document.mozFullScreen && !document.webkitFullScreen) {
