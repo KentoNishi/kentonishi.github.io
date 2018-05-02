@@ -3,7 +3,7 @@
 <link href="https://kentonishi.github.io/projects/webos/run/run.css" rel="stylesheet" type="text/css"></link>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 <script src="/src/index.js"></script>
-<iframe onerror="alert('Sorry, this page could not be loaded in this demo.');" src="https://api.ready.mobi/api/v1/prism/proxy?device=1&prismid=727876&testid=708500-prnm&url=https://www.msn.com" onload="//scrape();//alert(document.querySelectorAll('iframe')[0].contentWindow.location.href);" style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
+<iframe onerror="alert('Sorry, this page could not be loaded in this demo.');" src="https://api.ready.mobi/api/v1/prism/proxy?prismid=727876&testid=708500-prnm&url=https://www.msn.com" onload="//scrape();//alert(document.querySelectorAll('iframe')[0].contentWindow.location.href);" style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
 <!--    <h1 align="center">Sorry, this website could not be loaded (in the virtual browser).</h1>-->
 </iframe>
 <script>
@@ -39,7 +39,7 @@ var loadHTML = function (html) {
     iframe.src = 'about:blank';
     iframe.contentWindow.document.open();
     iframe.contentWindow.document.write(html.replace(/<head>/i, '<head><base href="' + url + '"><scr' + 'ipt>document.addEventListener("click", function(e) { if(e.target && e.target.nodeName == "A") { e.preventDefault(); parent.loadURL(e.target.href); } });</scr' + 'ipt>'));
-    iframe.contentWindow.document.write("<scri"+"pt>document.body.innerHTML=document.body.innerHTML.replace(/window.location=/g, '')window.onload=function(){for(var i=0;i<document.querySelectorAll('a').length;i++){document.querySelectorAll('a')[i].href='https://api.ready.mobi/api/v1/prism/proxy?device=1&prismid=727876&testid=708500-prnm&url='+encodeURIComponent(document.querySelectorAll('a')[i].href.replace('http:', 'https:'));document.querySelectorAll('a')[i].removeAttribute('target');}}</scr"+"ipt>");
+    iframe.contentWindow.document.write("<scri"+"pt>document.body.innerHTML=document.body.innerHTML.replace(/window.location=/g, '')window.onload=function(){for(var i=0;i<document.querySelectorAll('a').length;i++){document.querySelectorAll('a')[i].href='https://api.ready.mobi/api/v1/prism/proxy?prismid=727876&testid=708500-prnm&url='+encodeURIComponent(document.querySelectorAll('a')[i].href.replace('http:', 'https:'));document.querySelectorAll('a')[i].removeAttribute('target');}}</scr"+"ipt>");
     iframe.contentWindow.document.close();
 }
 
