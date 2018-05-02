@@ -7,6 +7,9 @@
 <script>
 window.onload=function(){
     document.querySelectorAll('iframe')[0].src=window.location.hash.replace("#", "");
+    loaded();
+}
+function loaded(){
     if(getCookie("browser_loaded").length<1){
         setCookie("browser_loaded", "reload", 30);
         location.reload();
@@ -37,4 +40,5 @@ var loadHTML = function (html) {
 
 loadURL(iframe.src);
 console.log("http://jsfiddle.net/2gou4yen/");
+    }
 </script>
