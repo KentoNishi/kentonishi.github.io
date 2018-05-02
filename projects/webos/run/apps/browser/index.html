@@ -7,7 +7,6 @@
 <script>
 window.onload=function(){
     document.querySelectorAll('iframe')[0].src=window.location.hash.replace("#", "");
-    setCookie("browser_loaded", "", 30);
     if(getCookie("browser_loaded").length<1){
         setCookie("browser_loaded", "reload", 30);
         location.reload();
