@@ -30,8 +30,8 @@
     bottom:0.5vh;
     left:50%;
     transform:translate(-50%, 0);
-    width:7.5vh;
-    height:7.5vh;
+    width:5.5vh;
+    height:5.5vh;
     background: rgba(0, 0, 0, 0.25);
     border:2px solid rgba(0, 0, 0, 0.75);
     border-radius:5vh;
