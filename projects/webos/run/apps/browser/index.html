@@ -1,5 +1,17 @@
+<link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/KentoNishi/kentonishi.github.io/master/favicon.ico">
+<link href="/src/index.css" rel="stylesheet" type="text/css"></link>
+<link href="https://kentonishi.github.io/projects/webos/run/run.css" rel="stylesheet" type="text/css"></link>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<script src="/src/index.js"></script>
 <iframe src="https://www.google.com/" width="500" height="300"></iframe>
 <script>
+window.onload=function(){
+    if(getCookie("browser_loaded").length<1){
+        setCookie("browser_loaded", "reload", 30);
+    }else{
+        setCookie("browser_loaded", "", 30);
+    }
+}
 var iframe = document.getElementsByTagName('iframe')[0];
 var url = iframe.src;
 var getData = function (data) {
