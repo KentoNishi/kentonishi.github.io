@@ -8,6 +8,7 @@
 window.onload=function(){
     if(getCookie("browser_loaded").length<1){
         setCookie("browser_loaded", "reload", 30);
+        location.reload();
     }else{
         setCookie("browser_loaded", "", 30);
     }
