@@ -6,6 +6,7 @@
 <iframe src="https://www.google.com/" onload="//alert(document.querySelectorAll('iframe')[0].contentWindow.location.href);" style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;"></iframe>
 <script>
 window.onload=function(){
+    setCookie("browser_loaded", "", 30);
     if(getCookie("browser_loaded").length<1){
         setCookie("browser_loaded", "reload", 30);
         location.reload();
