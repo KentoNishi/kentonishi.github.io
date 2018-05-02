@@ -9,6 +9,7 @@
   width:100vw;
   height:100vh;
 }
+/*
 .buttons{
   width:200vw;
   height:10vh;
@@ -21,6 +22,7 @@
   border:0.1vh solid black;
   border-radius:1px;
 }
+*/
 .home {
     position:fixed;
     bottom:0;
