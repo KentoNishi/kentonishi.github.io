@@ -3,7 +3,7 @@
 <link href="https://kentonishi.github.io/projects/webos/run/run.css" rel="stylesheet" type="text/css"></link>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 <script src="/src/index.js"></script>
-<iframe src="https://www.bing.com" onload="scrape();//alert(document.querySelectorAll('iframe')[0].contentWindow.location.href);" style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;"></iframe>
+<iframe src="https://api.ready.mobi/api/v1/prism/proxy?prismid=727876&testid=708500-prnm&url=https://www.bing.com" onload="//scrape();//alert(document.querySelectorAll('iframe')[0].contentWindow.location.href);" style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;"></iframe>
 <script>
     /*
 window.onload=function(){
@@ -20,7 +20,6 @@ window.onload=function(){
         setCookie("browser_loaded", "", 30);
     }
 }
-function scrape(){
 var iframe = document.getElementsByTagName('iframe')[0];
 var url = iframe.src;
 var getData = function (data) {
@@ -43,6 +42,6 @@ var loadHTML = function (html) {
 }
 
 loadURL(iframe.src);
-}
+
 console.log("http://jsfiddle.net/2gou4yen/");
 </script>
