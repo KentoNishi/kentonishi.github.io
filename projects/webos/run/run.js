@@ -1,3 +1,4 @@
+window.onload=function(){
 var node = document.getElementsByClassName("home")[0];
 var longpress = false;
 var presstimer = null;
@@ -62,3 +63,4 @@ node.addEventListener("mouseout", cancel);
 node.addEventListener("touchend", cancel);
 node.addEventListener("touchleave", cancel);
 node.addEventListener("touchcancel", cancel);
+}
