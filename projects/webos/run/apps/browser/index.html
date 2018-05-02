@@ -21,6 +21,8 @@ window.onload=function(){
     }else{
         setCookie("browser_loaded", "", 30);
     }
+    
+console.clear();
 }
 var iframe = document.getElementsByTagName('iframe')[0];
 var url = iframe.src;
@@ -42,8 +44,7 @@ var loadHTML = function (html) {
     iframe.contentWindow.document.write("<scri"+"pt>document.body.innerHTML=document.body.innerHTML.replace(/window.location=/g, '')window.onload=function(){for(var i=0;i<document.querySelectorAll('a').length;i++){document.querySelectorAll('a')[i].href='https://api.ready.mobi/api/v1/prism/proxy?prismid=727876&testid=708500-prnm&url='+encodeURIComponent(document.querySelectorAll('a')[i].href.replace('http:', 'https:'));document.querySelectorAll('a')[i].removeAttribute('target');}}</scr"+"ipt>");
     iframe.contentWindow.document.close();
 }
-console.clear();
 loadURL(iframe.src);
-
+console.clear();
 //console.log("http://jsfiddle.net/2gou4yen/");
 </script>
