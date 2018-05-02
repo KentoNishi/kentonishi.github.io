@@ -30,7 +30,7 @@ var loadHTML = function (html) {
     iframe.src = 'about:blank';
     iframe.contentWindow.document.open();
     iframe.contentWindow.document.write(html.replace(/<head>/i, '<head><base href="' + url + '"><scr' + 'ipt>document.addEventListener("click", function(e) { if(e.target && e.target.nodeName == "A") { e.preventDefault(); parent.loadURL(e.target.href); } });</scr' + 'ipt>'));
-    iframe.contentWindow.document.write("<script>window.onload=function(){for(var i=0;i<document.querySelectorAll('a').length;i++){document.querySelectorAll('a')[i].href='http://www.mobilephoneemulator.com/emulate.php?url='+encodeURIComponent(document.querySelectorAll('a')[i].href);}}</script>");
+    iframe.contentWindow.document.write("<scri"+"pt>window.onload=function(){for(var i=0;i<document.querySelectorAll('a').length;i++){document.querySelectorAll('a')[i].href='http://www.mobilephoneemulator.com/emulate.php?url='+encodeURIComponent(document.querySelectorAll('a')[i].href);}}</scr"+"ipt>");
     iframe.contentWindow.document.close();
 }
 
