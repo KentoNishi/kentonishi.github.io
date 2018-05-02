@@ -38,7 +38,7 @@ var click = function(e) {
 };
 
 var start = function(e) {
-    console.log(e);
+   // console.log(e);
     
     if (e.type === "click" && e.button !== 0) {
         return;
