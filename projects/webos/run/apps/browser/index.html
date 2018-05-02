@@ -3,19 +3,23 @@
 <link href="https://kentonishi.github.io/projects/webos/run/run.css" rel="stylesheet" type="text/css"></link>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 <script src="/src/index.js"></script>
-<iframe src="" onload="//alert(document.querySelectorAll('iframe')[0].contentWindow.location.href);" style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;"></iframe>
+<iframe src="https://www.google.com" onload="//alert(document.querySelectorAll('iframe')[0].contentWindow.location.href);" style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;"></iframe>
 <script>
+    /*
 window.onload=function(){
     document.querySelectorAll('iframe')[0].src=window.location.hash.replace("#", "");
     loaded();
 }
 function loaded(){
+*/
+window.onload=function(){
     if(getCookie("browser_loaded").length<1){
         setCookie("browser_loaded", "reload", 30);
         location.reload();
     }else{
         setCookie("browser_loaded", "", 30);
     }
+}
 var iframe = document.getElementsByTagName('iframe')[0];
 var url = iframe.src;
 var getData = function (data) {
@@ -39,5 +43,5 @@ var loadHTML = function (html) {
 
 loadURL(iframe.src);
 console.log("http://jsfiddle.net/2gou4yen/");
-    }
+    
 </script>
