@@ -28,12 +28,12 @@ var click = function(e) {
     if (clickCount === 1) {
         singleClickTimer = setTimeout(function() {
             clickCount = 0;
-            alert("click");
+            action("home");
         }, 250);
     } else if (clickCount === 2) {
         clearTimeout(singleClickTimer);
         clickCount = 0;
-        alert("doubleclick");
+        action("apps");
     }
 };
 
@@ -49,7 +49,7 @@ var start = function(e) {
     this.classList.add("longpress");
     
     presstimer = setTimeout(function() {
-        alert("long click");
+        action("back");
         longpress = true;
     }, 250);
     
@@ -63,4 +63,8 @@ node.addEventListener("mouseout", cancel);
 node.addEventListener("touchend", cancel);
 node.addEventListener("touchleave", cancel);
 node.addEventListener("touchcancel", cancel);
+}
+
+function action(action){
+    console.log(action);
 }
