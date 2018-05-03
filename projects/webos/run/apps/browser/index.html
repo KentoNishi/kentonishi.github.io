@@ -26,7 +26,7 @@
 }
 
 </style>
-<iframe src="" onload='if(this.src.indexOf('api')!=-1){window.parent.postMessage(this.src, "https://kentonishi.github.io")}' style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
+<iframe src="" onload='' style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
 </iframe>
     <!--    <h1 align="center">Sorry, this website could not be loaded (in the virtual browser).</h1>-->
 <script>
@@ -40,7 +40,7 @@ function loaded(){
 window.onload=function(){
     document.querySelectorAll('iframe')[0].src="https://api.ready.mobi/api/v1/prism/proxy?prismid=727876&testid=708500-prnm&url="+window.location.hash.replace("#", "").split("&")[0];
     if(window.location.hash.replace("#", "").split("&")[1]!="scripts"){
-        document.querySelectorAll('iframe')[0].sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin";
+        document.querySelectorAll('iframe')[0].sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts";
     }else{
         document.querySelectorAll('iframe')[0].sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts";
     }
@@ -74,7 +74,7 @@ var loadHTML = function (html) {
     iframe.contentWindow.document.write(html.replace(/<head>/i, '<head><base href="' + url + '">'));
     iframe.contentWindow.document.write("<scri"+"pt>document.body.innerHTML=document.body.innerHTML.replace(/window.location=/g, '')window.onload=function(){for(var i=0;i<document.querySelectorAll('a').length;i++){document.querySelectorAll('a')[i].href='https://api.ready.mobi/api/v1/prism/proxy?prismid=727876&testid=708500-prnm&url='+encodeURIComponent(document.querySelectorAll('a')[i].href.replace('http:', 'https:'));document.querySelectorAll('a')[i].removeAttribute('target');}}</scr"+"ipt>");
     iframe.contentWindow.document.write('<scri'+'pt src="/src/index.js"></scr'+'ipt>');
-    iframe.contentWindow.document.write('<scri'+'pt>//setCookie("browser_domain", window.location.hash, 30);</sc'+'ript>');
+    iframe.contentWindow.document.write('<scri'+'pt>if(window.location.href.indexOf('api')!=-1){window.parent.postMessage(window.location.href, "https://kentonishi.github.io")}</sc'+'ript>');
     iframe.contentWindow.document.close();
 }
 loadURL(iframe.src);
