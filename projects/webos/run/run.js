@@ -4,7 +4,7 @@ window.onload=function(){
         $('.gesturearea').on('scroll', gestures)
     });
     function gestures(){
-            if($('.gesturearea')[0].scrollTop() + $('.gesturearea')[0].innerHeight() >= $('.gesturearea')[0].scrollHeight) {
+            if($($('.gesturearea')[0]).scrollTop() + $($('.gesturearea')[0]).innerHeight() >= $($('.gesturearea')[0]).scrollHeight) {
                 action("home");
                 $('.gesturearea')[0].scrollTo(0, 0);
         }
