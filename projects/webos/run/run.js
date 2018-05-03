@@ -1,4 +1,5 @@
 window.onload=function(){
+    /*
 var node = document.getElementsByClassName("home")[0];
 var longpress = false;
 var presstimer = null;
@@ -67,4 +68,5 @@ node.addEventListener("touchcancel", cancel);
 
 function action(action){
     console.log(action);
+    */
 }
