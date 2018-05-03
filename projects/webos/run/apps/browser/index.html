@@ -26,7 +26,7 @@
 }
 
 </style>
-<iframe src="" onload='alert(this.src);' style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
+<iframe src="" onload='window.parent.postMessage(this.src, "https://kentonishi.github.io")' style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
 </iframe>
     <!--    <h1 align="center">Sorry, this website could not be loaded (in the virtual browser).</h1>-->
 <script>
@@ -80,4 +80,7 @@ var loadHTML = function (html) {
 loadURL(iframe.src);
 console.clear();
 //console.log("http://jsfiddle.net/2gou4yen/");
+    window.onmessage = function(event) {
+    alert(event.data);
+    }
 </script>
