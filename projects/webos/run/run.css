@@ -67,5 +67,6 @@
   width:200vw;
   height:2vh;
   bottom:0;
-  background-color:red;
+  background-color:transparent;
+  z-index:2;
 }
