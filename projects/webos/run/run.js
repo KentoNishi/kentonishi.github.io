@@ -1,5 +1,5 @@
 window.onload=function(){
-    document.querySelectorAll(".gesturearea").scrollTo(0, 10000000000);
+    document.querySelectorAll(".gesturearea")[0].scrollTo(0, 10000000000);
     /*
 var node = document.getElementsByClassName("home")[0];
 var longpress = false;
