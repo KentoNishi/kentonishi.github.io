@@ -1,13 +1,15 @@
 window.onload=function(){
     document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);
     jQuery(function($) {
-        $('.gesturearea').on('scroll', function() {
-            if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-                action("home");
-                this.scrollTo(0, 0);
-            }
-        })
+        $('.gesturearea').on('scroll', gestures)
     });
+    function gestures(){
+            if($('.gesturearea')[0].scrollTop() + $('.gesturearea')[0].innerHeight() >= $('.gesturearea')[0].scrollHeight) {
+                action("home");
+                $('.gesturearea')[0].scrollTo(0, 0);
+        }
+    }
+    
     /*
 var node = document.getElementsByClassName("home")[0];
 var longpress = false;
