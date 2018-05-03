@@ -70,3 +70,9 @@
   background-color:transparent;
   z-index:2;
 }
+.gesturebar{
+  width:50vw;
+  margin-left:25vw;
+  height:1vh;
+  background-color:yellow;
+}
