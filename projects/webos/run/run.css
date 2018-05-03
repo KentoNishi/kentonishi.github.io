@@ -61,3 +61,9 @@
   height:92vh;
 }
 */
+.gesturearea{
+  width:100vw;
+  height:2vh;
+  bottom:0;
+  background-color:black;
+}
