@@ -64,7 +64,7 @@
 .gesturearea{
   overflow-y:scroll;
   position:fixed;
-  width:100vw;
+  width:200vw;
   height:2vh;
   bottom:0;
   background-color:red;
