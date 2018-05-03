@@ -62,9 +62,10 @@
 }
 */
 .gesturearea{
+  overflow:scroll;
   position:fixed;
   width:100vw;
   height:2vh;
   bottom:0;
-  background-color:black;
+  background-color:red;
 }
