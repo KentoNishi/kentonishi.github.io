@@ -1,12 +1,12 @@
 window.onload=function(){
     document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);
     jQuery(function($) {
-        $('.gesturearea').on('scroll', gestures)
+        $('.gesturearea').on('scroll', function(){gestures(this);});
+        $('.gesturearea').on('touchmove', function(){gestures(this);});
     });
-    function gestures(){
-            if($($('.gesturearea')[0]).scrollTop() + $($('.gesturearea')[0]).innerHeight() >= $($('.gesturearea')[0]).scrollHeight) {
-                action("home");
-                $('.gesturearea')[0].scrollTo(0, 0);
+    function gestures(object){
+        if($(object).scrollTop() + $(object).innerHeight() >= $(object)[0].scrollHeight) {
+            action("home");
         }
     }
     
