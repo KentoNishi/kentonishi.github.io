@@ -67,12 +67,12 @@
   width:200vw;
   height:1.5vh;
   bottom:0;
-  background-color:transparent;
+  background-color:rgba(0, 0, 0, 0.75);
   z-index:2;
 }
 .gesturebar{
   width:50vw;
   margin-left:25vw;
   height:1vh;
-  background-color:yellow;
+  background-color:white;
 }
