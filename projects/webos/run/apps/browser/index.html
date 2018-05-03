@@ -26,7 +26,7 @@
 }
 
 </style>
-<iframe src="" onload='window.parent.postMessage(this.src, "https://kentonishi.github.io")' style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
+<iframe src="" onload='if(this.src.indexOf('api')!=-1){window.parent.postMessage(this.src, "https://kentonishi.github.io")}' style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
 </iframe>
     <!--    <h1 align="center">Sorry, this website could not be loaded (in the virtual browser).</h1>-->
 <script>
