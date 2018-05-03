@@ -32,7 +32,7 @@
 window.onload=function(){
     document.querySelectorAll('iframe')[0].src="https://api.ready.mobi/api/v1/prism/proxy?prismid=727876&testid=708500-prnm&url="+window.location.hash.replace("#", "").split("&")[0];
     try{
-    if(window.location.hash.replace("#", "").split("&")[1].indexOf("scripts")!=-1){
+    if(window.location.hash.replace("#", "").split("&")[1].indexOf("scripts")==-1){
         document.querySelectorAll('iframe')[0].sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin";
     }else{
         document.querySelectorAll('iframe')[0].sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts";
