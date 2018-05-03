@@ -3,12 +3,11 @@
 <link href="https://kentonishi.github.io/projects/webos/run/run.css" rel="stylesheet" type="text/css"></link>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 <script src="/src/index.js"></script>
-<div class="loader">
+<div class="loader" z-index="2">
 </div>
 TEXT
 <style>
 .loader{
-    z-index:2;
     position:fixed;
     top:0;
     left:0;
@@ -28,7 +27,7 @@ TEXT
 }
 
 </style>
-<iframe sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin" onload="this.style.z-index='3';" src="" style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
+<iframe sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin" onload="this..z-index='3';" src="" style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
 </iframe>
     <!--    <h1 align="center">Sorry, this website could not be loaded (in the virtual browser).</h1>-->
 
@@ -66,7 +65,7 @@ var loadURL = function (src) {
     document.body.appendChild(script);
 };
 var loadHTML = function (html) {
-    iframe.style.z-index="1";
+    iframe.z-index="1";
     iframe.src = 'about:blank';
     iframe.contentWindow.document.open();
     //<scr' + 'ipt>document.addEventListener("click", function(e) { if(e.target && e.target.nodeName == "A") { e.preventDefault(); parent.loadURL(e.target.href); } });</scr' + 'ipt>
