@@ -62,7 +62,7 @@
 }
 */
 .gesturearea{
-  overflow:scroll;
+  overflow-y:scroll;
   position:fixed;
   width:100vw;
   height:2vh;
