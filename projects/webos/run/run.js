@@ -1,11 +1,12 @@
 window.onload=function(){
     document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);
-document.querySelectorAll(".gesturearea")[0].onscroll = function(ev) {
-    if ((document.querySelectorAll(".gesturearea")[0].innerHeight + document.querySelectorAll(".gesturearea")[0].scrollY) >= document.querySelectorAll(".gesturearea")[0].offsetHeight) {
-        // you're at the bottom of the page
-        alert("home");
-    }
-};
+    jQuery(function($) {
+        $('.gesturearea').on('scroll', function() {
+            if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+                alert('end reached');
+            }
+        })
+    });
     /*
 var node = document.getElementsByClassName("home")[0];
 var longpress = false;
