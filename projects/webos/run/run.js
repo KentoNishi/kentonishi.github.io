@@ -7,6 +7,7 @@ window.onload=function(){
     function gestures(object){
         if($(object).scrollTop() + $(object).innerHeight() >= $(object)[0].scrollHeight) {
             action("home");
+            object.scrollTo(0, 0);
         }
     }
     
