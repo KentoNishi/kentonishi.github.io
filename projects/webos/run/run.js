@@ -2,7 +2,7 @@ window.onload=function(){
     document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);
     jQuery(function($) {
         $('.gesturearea').on('scroll', function(){gestures(this);});
-        $('.gesturearea').on('mousewheel', function(){gestures(this);});
+        $('.gesturearea').on('touchmove', function(){alert();});
     });
     function gestures(object){
         if($(object).scrollTop() + $(object).innerHeight() >= $(object)[0].scrollHeight) {
