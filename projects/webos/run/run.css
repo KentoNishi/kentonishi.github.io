@@ -72,9 +72,9 @@
 }
 .gesturebar{
   margin-top:0.25vh;
-  width:50vw;
-  margin-left:25vw;
-  height:1vh;
+  width:40vw;
+  margin-left:20vw;
+  height:0.5vh;
   background-color:white;
   border:1px solid white;
   border-radius:5px;
