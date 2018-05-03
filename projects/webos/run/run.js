@@ -3,7 +3,7 @@ window.onload=function(){
     jQuery(function($) {
         $('.gesturearea').on('scroll', function() {
             if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-                alert('end reached');
+                action("home");
             }
         })
     });
@@ -73,8 +73,8 @@ node.addEventListener("touchend", cancel);
 node.addEventListener("touchleave", cancel);
 node.addEventListener("touchcancel", cancel);
 }
-
+    */
 function action(action){
     console.log(action);
-    */
+
 }
