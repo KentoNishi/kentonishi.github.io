@@ -26,7 +26,7 @@
 }
 
 </style>
-<iframe sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin" src="" style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
+<iframe src="" style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
 </iframe>
     <!--    <h1 align="center">Sorry, this website could not be loaded (in the virtual browser).</h1>-->
 
@@ -39,8 +39,13 @@ window.onload=function(){
 function loaded(){
 */
 window.onload=function(){
-    document.querySelectorAll('iframe')[0].src="https://api.ready.mobi/api/v1/prism/proxy?prismid=727876&testid=708500-prnm&url="+window.location.hash.replace("#", "");
-/*
+    document.querySelectorAll('iframe')[0].src="https://api.ready.mobi/api/v1/prism/proxy?prismid=727876&testid=708500-prnm&url="+window.location.hash.replace("#", "").split("&")[0];
+    if(window.location.hash.replace("#", "").split("&")[1]!="scripts"){
+        document.querySelectorAll('iframe')[0].sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin";
+    }else{
+        document.querySelectorAll('iframe')[0].sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts";
+    }
+    /*
     if(getCookie("browser_loaded").length<1){
         setCookie("browser_loaded", "reload", 30);
         location.reload();
