@@ -7,7 +7,7 @@ window.onload=function(){
     function gestures(object){
         if($(object).scrollTop() + $(object).innerHeight()+1 >= $(object)[0].scrollHeight) {
             action("home");
-            object.scrollTo(0, 0);
+            document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);
         }
     }
     /*
