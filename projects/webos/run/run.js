@@ -5,7 +5,7 @@ window.onload=function(){
         $('.gesturearea').on('touchmove', function(){gestures(this);});
     });
     function gestures(object){
-        if($(object).scrollTop() + $(object).innerHeight() >= $(object)[0].scrollHeight-5) {
+        if($(object).scrollTop() + $(object).innerHeight()-1 >= $(object)[0].scrollHeight) {
             action("home");
             object.scrollTo(0, 0);
         }
