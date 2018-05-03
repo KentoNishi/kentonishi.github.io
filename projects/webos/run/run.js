@@ -10,7 +10,6 @@ window.onload=function(){
             object.scrollTo(0, 0);
         }
     }
-    
     /*
 var node = document.getElementsByClassName("home")[0];
 var longpress = false;
