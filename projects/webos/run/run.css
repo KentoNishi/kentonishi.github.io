@@ -76,4 +76,6 @@
   margin-left:25vw;
   height:1vh;
   background-color:white;
+  border:1px solid white;
+  border-radius:5px;
 }
