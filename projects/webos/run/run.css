@@ -71,7 +71,7 @@
 }
 .gesturebar{
   width:50vw;
-  height:0.5vh;
+  height:1vh;
   padding:0;
   margin-left:75vw;
   margin-top:1.25vh;
@@ -79,6 +79,6 @@
   border-radius:5px;
 }
 .gesturescroller{
-  margin-top:2vh;
-  margin-bottom:2vh;
+  margin-top:3vh;
+  margin-bottom:3vh;
 }
