@@ -63,15 +63,15 @@
   overflow-y:scroll;
   position:fixed;
   width:200vw;
-  height:1.5vh;
+  height:0.5vh;
   bottom:0;
   background-color:rgba(0, 0, 0, 0.75);
   z-index:2;
 }
 .gesturebar{
   padding:0;
-  margin-top:1.5vh;
-  margin-bottom:1.5vh;
+  margin-top:1vh;
+  margin-bottom:1vh;
 //  margin-bottom:0.5vh;
   width:40vw;
   margin-left:30vw;
