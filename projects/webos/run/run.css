@@ -82,3 +82,8 @@
   margin-top:3vh;
   margin-bottom:3vh;
 }
+.transform {
+  transform:rotate(180deg);
+  -ms-transform:rotate(180deg);
+  -webkit-transform:rotate(180deg);
+}
