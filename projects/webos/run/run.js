@@ -1,5 +1,4 @@
 window.onload=function(){
-    document.querySelectorAll('.gesturearea')[0].scrollTop=(2);
     /*
 jQuery(function($) {
     $('.gesturearea').on('scroll', function() {
@@ -91,8 +90,6 @@ node.addEventListener("touchcancel", cancel);
 }
     */
 function action(action){
-    document.querySelectorAll('.gesturearea')[0].scrollTop=(2);
     console.log(action);
-    console.log(document.querySelectorAll('.gesturearea')[0].scrollTop);
 }
 }
