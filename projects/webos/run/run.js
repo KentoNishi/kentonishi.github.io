@@ -1,6 +1,7 @@
 window.onload=function(){
 $('.gesturearea').on("scroll", gesture);
 $('.gesturearea').on("touchmove", gesture);
+document.body.onmouseup=function(){recalibrate();};
 recalibrate();
 }
 function recalibrate(){
@@ -17,4 +18,3 @@ function gesture(){
 function action(action){
     document.getElementById("action").innerHTML=(action);
 }
-document.body.onmouseup=function(){recalibrate();};
