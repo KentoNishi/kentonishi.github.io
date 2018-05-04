@@ -10,6 +10,6 @@ function gesture(){
        }
 }
 function action(action){
-    console.log(action);
+    document.getElementById("action").innerHTML=(action);
     document.querySelectorAll('.gesturearea')[0].scrollTop=1;
 }
