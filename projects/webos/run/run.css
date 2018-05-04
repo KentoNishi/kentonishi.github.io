@@ -69,3 +69,12 @@
   background-color:rgba(0, 0, 0, 0.75);
   z-index:2;
 }
+.gesturebar{
+  width:50vw;
+  height:0.5vh;
+  padding:0;
+  margin-left:75vw;
+  margin-top:1.25vh;
+  background-color:white;
+  border-radius:5px;
+}
