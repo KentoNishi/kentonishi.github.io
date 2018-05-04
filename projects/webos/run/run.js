@@ -1,9 +1,9 @@
 window.onload=function(){
-document.querySelectorAll('.gesturearea')[0].scrollTo(0, 1);
+document.querySelectorAll('.gesturecontainer')[0].scrollTo(0, 1);
 jQuery(function($) {
     $('.gesturearea').on('scroll', function() {
         if($(this).scrollTop() + $(this).innerHeight() +1>= $(this)[0].scrollHeight) {
-            document.querySelectorAll('.gesturearea')[0].scrollIntoView();
+            document.querySelectorAll('.gesturecontainer')[0].scrollIntoView();
             action("home");
         }
     })
@@ -80,7 +80,7 @@ node.addEventListener("touchcancel", cancel);
 }
     */
 function action(action){
-    document.querySelectorAll('.gesturearea')[0].scrollTo(0, 1);
+    document.querySelectorAll('.gesturecontainer')[0].scrollTo(0, 1);
     alert(action);
 }
 }
