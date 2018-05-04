@@ -13,9 +13,7 @@ jQuery(function($) {
 */
 var el = $('.gesturearea');
 el.on('scroll', scrolling);
-});
 el.on('touchmove', scrolling);
-});
 
 function scrolling(){
     if(el.scrollTop()<2){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
