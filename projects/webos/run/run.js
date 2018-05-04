@@ -82,6 +82,6 @@ node.addEventListener("touchcancel", cancel);
 }
     */
 function action(action){
-    console.log(action);
+    alert(action);
 }
 }
