@@ -1,17 +1,25 @@
 window.onload=function(){
 document.querySelectorAll('.gesturearea')[0].scrollTop=(2);
+    /*
 jQuery(function($) {
     $('.gesturearea').on('scroll', function() {
-        if($(this).scrollTop + $(this).innerHeight()>= $(this)[0].scrollHeight) {
+        if($(this).scrollTop() + $(this).innerHeight()>= $(this)[0].scrollHeight) {
 //            document.querySelectorAll('.gesturecontainer')[0].scrollIntoView();
+    document.querySelectorAll('.gesturearea')[0].scrollTop=(2);
             action("home");
         }
     })
 });
+*/
 var el = $('.gesturearea');
 el.on('scroll', function(){
-    if(el.scrollTop == 0){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
-        action("apps");}
+    if(el.scrollTop()<2){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
+        document.querySelectorAll('.gesturearea')[0].scrollTop=(2);
+        action("apps");
+    }else if(el.scrollTop()>2){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
+        document.querySelectorAll('.gesturearea')[0].scrollTop=(2);
+        action("home");
+    }
 });
     /*
 var node = document.getElementsByClassName("home")[0];
@@ -82,7 +90,6 @@ node.addEventListener("touchcancel", cancel);
     */
 function action(action){
     alert(action);
-    document.querySelectorAll('.gesturearea')[0].scrollTop=(2);
     console.log(document.querySelectorAll('.gesturearea')[0].scrollTop);
 }
 }
