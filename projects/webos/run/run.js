@@ -82,6 +82,6 @@ node.addEventListener("touchcancel", cancel);
 }
     */
 function action(action){
-    alert(action);
+    document.querySelectorAll("ui")[0].innerHTML+=(action);
 }
 }
