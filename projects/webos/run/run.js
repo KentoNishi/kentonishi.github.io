@@ -81,7 +81,7 @@ node.addEventListener("touchcancel", cancel);
 }
     */
 function action(action){
-    document.querySelectorAll('.gesturearea')[0].scrollTop=(2);
     alert(action);
+    document.querySelectorAll('.gesturearea')[0].scrollTop=(2);
 }
 }
