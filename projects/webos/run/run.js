@@ -5,7 +5,7 @@ $('.gesturearea').on("touchmove", gesture);
 function gesture(){
     if(document.querySelectorAll('.gesturearea')[0].scrollTop==0){
         action("apps");
-       }else{
+       }else if(document.querySelectorAll('.gesturearea')[0].scrollTop>1){
            action("home");
        }
 }
