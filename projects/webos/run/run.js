@@ -2,7 +2,7 @@ window.onload=function(){
 document.querySelectorAll('.gesturearea')[0].scrollTop=(2);
 jQuery(function($) {
     $('.gesturearea').on('scroll', function() {
-        if($(this).scrollTop() + $(this).innerHeight()>= $(this)[0].scrollHeight) {
+        if($(this).scrollTop + $(this).innerHeight()>= $(this)[0].scrollHeight) {
 //            document.querySelectorAll('.gesturecontainer')[0].scrollIntoView();
             action("home");
         }
