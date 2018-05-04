@@ -3,7 +3,7 @@ if(window.location.hash.indexOf("404")!=-1){error(404)}
 else if(window.location.hash.indexOf("webos")!=-1){dir("projects/webos", "WebOS", "<a href='/projects/webos/run'>Run Demo</a>")}
 else if(window.location.hash.indexOf("src")!=-1){dir("src", "Source Repository", "<a href='https://github.com/KentoNishi/kentonishi.github.io'>View Source</a>")}
 else if(window.location.hash.indexOf("projects")!=-1){
-  var proj=["WebOS", "/projects/webos"];
+  var proj=;//["WebOS", "/projects/webos"];
   var projects="";
   for(var i=0;i<proj.length/2;i++){projects+="<a href='"+proj[i+1]+"'>"+proj[i]+"</a><br />"}
   projects+="<a href='https://github.com/KentoNishi/kentonishi.github.io/tree/master/projects'>All Projects</a>";
