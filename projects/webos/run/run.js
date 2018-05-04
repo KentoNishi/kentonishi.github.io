@@ -11,7 +11,7 @@ window.onload=function(){
     function gestures(object){
         if($(object).scrollTop() + $(object).innerHeight()+1 >= $(object)[0].scrollHeight) {
             action("home");
-            document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);
+            setTimeout(function(){document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);}, 100);
         }
     }
     /*
