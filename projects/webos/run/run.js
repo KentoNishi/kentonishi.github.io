@@ -6,6 +6,10 @@ jQuery(function($) {
         }
     })
 });
+var el = $('.gesturearea');
+el.on('scroll', function(){
+    if(el.scrollTop() == 0){alert("i just hit the top")}
+});
     /*
 var node = document.getElementsByClassName("home")[0];
 var longpress = false;
