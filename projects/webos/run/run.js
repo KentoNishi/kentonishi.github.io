@@ -3,7 +3,7 @@ document.querySelectorAll('.gesturecontainer')[0].scrollTo(0, 2);
 jQuery(function($) {
     $('.gesturearea').on('scroll', function() {
         if($(this).scrollTop() + $(this).innerHeight() +1>= $(this)[0].scrollHeight) {
-            document.querySelectorAll('.gesturecontainer')[0].scrollIntoView();
+//            document.querySelectorAll('.gesturecontainer')[0].scrollIntoView();
             action("home");
         }
     })
