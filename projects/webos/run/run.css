@@ -70,11 +70,11 @@
 }
 .gesturebar{
   position:fixed;
-  bottom:0.5vh;
+  bottom:0.25vh;
   width:40vw;
   left:30vw;
   height:0.5vh;
   background-color:white;
   border:1px solid white;
-  border-radius:1px;
+  border-radius:5px;
 }
