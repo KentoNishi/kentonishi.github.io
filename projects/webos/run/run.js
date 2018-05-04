@@ -1,20 +1,5 @@
 window.onload=function(){
-    setTimeout(function(){document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0.015*Math.max(document.documentElement.clientHeight, window.innerHeight || 0));}, 100);
-    $('.gesturearea').on('mouseup', function(){document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);});
-    $('.gesturearea').on('hover', function(){document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);});
-    $('.gesturearea').on('mousedown', function(){document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);});
-    
-    document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);
-    jQuery(function($) {
-        $('.gesturearea').on('scroll', function(){gestures(this);});
-        $('.gesturearea').on('touchmove', function(){gestures(this);});
-    });
-    function gestures(object){
-        if($(object).scrollTop() + $(object).innerHeight()+5 >= $(object)[0].scrollHeight) {
-            action("home");
-            setTimeout(function(){document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0.015*Math.max(document.documentElement.clientHeight, window.innerHeight || 0));}, 100);
-        }
-    }
+
     /*
 var node = document.getElementsByClassName("home")[0];
 var longpress = false;
