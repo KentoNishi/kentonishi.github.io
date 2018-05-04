@@ -3,13 +3,14 @@ document.querySelectorAll('.gesturearea')[0].scrollIntoView();
 jQuery(function($) {
     $('.gesturearea').on('scroll', function() {
         if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-            alert('end reached');
+            document.querySelectorAll('.gesturearea')[0].scrollIntoView();
+            action("home");
         }
     })
 });
 var el = $('.gesturearea');
 el.on('scroll', function(){
-    if(el.scrollTop() == 0){alert("i just hit the top")}
+    if(el.scrollTop() == 0){document.querySelectorAll('.gesturearea')[0].scrollIntoView();action("apps");}
 });
     /*
 var node = document.getElementsByClassName("home")[0];
