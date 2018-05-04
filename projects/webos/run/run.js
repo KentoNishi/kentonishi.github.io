@@ -1,8 +1,8 @@
 window.onload=function(){
 $('.gesturearea').on("scroll", gesture);
 $('.gesturearea').on("touchmove", gesture);
-document.body.onmouseup=function(){recalibrate();};
-recalibrate();
+document.body.onmouseup=function(){recalibrate();}; 
+setTimeout(function(){document.querySelectorAll(".gesturearea")[0].scrollTop=(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2}, 1);
 }
 function recalibrate(){
 (function( $ ) {
