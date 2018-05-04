@@ -10,7 +10,7 @@ function recalibrate(){
         var $output = $( "#output" ),
             scrolling = "<span id='scrolling'>Scrolling</span>",
             stopped = "<span id='stopped'>Stopped</span>";
-            $( window ).scroll(function() {
+            $('.gesturearea').scroll(function() {
                 $output.html( scrolling );
                 clearTimeout( $.data( this, "scrollCheck" ) );
                 $.data( this, "scrollCheck", setTimeout(function() {
@@ -20,6 +20,7 @@ function recalibrate(){
 
             });
     });
+})( jQuery );
     
     //setTimeout(function(){document.querySelectorAll(".gesturearea")[0].scrollTop=(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2}, 1);
 
