@@ -80,7 +80,7 @@ node.addEventListener("touchcancel", cancel);
 }
     */
 function action(action){
-    console.log(action);
+    alert(action);
     document.querySelectorAll('.gesturearea')[0].scrollTo(0, 1);
 }
 }
