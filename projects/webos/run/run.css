@@ -72,15 +72,10 @@
   padding:0;
   margin-top:1vh;
   margin-bottom:1vh;
-//  margin-bottom:0.5vh;
   width:40vw;
   margin-left:30vw;
   height:0.5vh;
   background-color:white;
   border:1px solid white;
   border-radius:5px;
-//  margin-top:0.5vh;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
 }
