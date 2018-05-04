@@ -1,32 +1,25 @@
 window.onload=function(){
 $('.gesturearea').on("scroll", gesture);
 $('.gesturearea').on("touchmove", gesture);
+var timer = null;
 document.body.onmouseup=function(){recalibrate();}; 
 setTimeout(function(){document.querySelectorAll(".gesturearea")[0].scrollTop=(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2}, 1);
 }
 function recalibrate(){
-(function( $ ) {
-    $(function() {
-        var $output = $( "#output" ),
-            scrolling = "<span id='scrolling'>Scrolling</span>",
-            stopped = "<span id='stopped'>Stopped</span>";
-            $('.gesturearea').scroll(function() {
-                $output.html( scrolling );
-                clearTimeout( $.data( this, "scrollCheck" ) );
-                $.data( this, "scrollCheck", setTimeout(function() {
-                    $output.html( stopped );
-                    setTimeout(function(){document.querySelectorAll(".gesturearea")[0].scrollTop=(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2}, 1);
-                }, 250) );
 
-            });
-    });
-})( jQuery );
-    
+    setTimeout(function(){document.querySelectorAll(".gesturearea")[0].scrollTop=(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2}, 1);
+
+}    
     //setTimeout(function(){document.querySelectorAll(".gesturearea")[0].scrollTop=(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2}, 1);
 
-
-}
 function gesture(){
+    if(timer !== null) {
+            clearTimeout(timer);        
+        }
+        timer = setTimeout(function() {
+              recalibrate();
+        }, 150);
+    }, false);
     if(document.querySelectorAll(".gesturearea")[0].scrollTop+1<(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2){
         action("apps");
     }
