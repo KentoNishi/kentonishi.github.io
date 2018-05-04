@@ -1,4 +1,8 @@
 window.onload=function(){
+    $('.gesturearea').on('mouseup', function(){document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);});
+    $('.gesturearea').on('hover', function(){document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);});
+    $('.gesturearea').on('mousedown', function(){document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);});
+    
     document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);
     jQuery(function($) {
         $('.gesturearea').on('scroll', function(){gestures(this);});
