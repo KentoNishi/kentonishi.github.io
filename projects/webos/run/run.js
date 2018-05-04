@@ -1,7 +1,4 @@
 window.onload=function(){
-function action(action){
-    console.log(action);
-}
 $('.gesturearea').on("scroll", gesture);
 $('.gesturearea').on("touchmove", gesture);
 }
@@ -11,4 +8,7 @@ function gesture(){
        }else{
            action("home");
        }
+}
+function action(action){
+    console.log(action);
 }
