@@ -81,5 +81,6 @@ node.addEventListener("touchcancel", cancel);
     */
 function action(action){
     console.log(action);
+    document.querySelectorAll('.gesturearea')[0].scrollTo(0, 1);
 }
 }
