@@ -1,5 +1,5 @@
 window.onload=function(){
-document.querySelectorAll('.gesturearea')[0].scrollTo(0, 1);
+document.querySelectorAll('.gesturearea')[0].scrollTop=(2);
 jQuery(function($) {
     $('.gesturearea').on('scroll', function() {
         if($(this).scrollTop() + $(this).innerHeight()>= $(this)[0].scrollHeight) {
@@ -81,7 +81,7 @@ node.addEventListener("touchcancel", cancel);
 }
     */
 function action(action){
-    document.querySelectorAll('.gesturearea')[0].scrollTo(0, 1);
+    document.querySelectorAll('.gesturearea')[0].scrollTop=(2);
     alert(action);
 }
 }
