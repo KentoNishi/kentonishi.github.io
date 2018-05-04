@@ -13,10 +13,10 @@ jQuery(function($) {
 */
 var el = $('.gesturearea');
 el.on('scroll', function(){
-    if(el.scrollTop()<2){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
+    if(el.scrollTop()<3){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
         document.querySelectorAll('.gesturearea')[0].scrollTop=(3);
         action("apps");
-    }else if(el.scrollTop()>2){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
+    }else if(el.scrollTop()>3){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
         document.querySelectorAll('.gesturearea')[0].scrollTop=(3);
         action("home");
     }
