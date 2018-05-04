@@ -9,7 +9,7 @@ window.onload=function(){
         $('.gesturearea').on('touchmove', function(){gestures(this);});
     });
     function gestures(object){
-        if($(object).scrollTop() + $(object).innerHeight() >= $(object)[0].scrollHeight) {
+        if($(object).scrollTop() + $(object).innerHeight()+1 >= $(object)[0].scrollHeight) {
             action("home");
             document.querySelectorAll(".gesturearea")[0].scrollTo(0, 0);
         }
