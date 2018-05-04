@@ -1,5 +1,5 @@
 window.onload=function(){
-
+document.getElementsByClassName("gesturearea")[0].scrollTo(0, 1);
     /*
 var node = document.getElementsByClassName("home")[0];
 var longpress = false;
