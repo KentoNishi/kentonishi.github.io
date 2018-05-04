@@ -69,8 +69,8 @@
   z-index:2;
 }
 .gesturebar{
-  padding-top:1px;
-  padding-bottom:1px;
+  top:0.5vh;
+  bottom:0.5vh;
   position:absolute;
   width:40vw;
   left:30vw;
