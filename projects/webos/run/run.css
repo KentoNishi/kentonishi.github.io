@@ -78,7 +78,8 @@
   background-color:white;
   border:1px solid white;
   border-radius:5px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  margin-top:0.5vh;
+//  position: absolute;
+//  top: 50%;
+//  transform: translateY(-50%);
 }
