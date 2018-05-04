@@ -20,6 +20,7 @@ function scrolling(){
         action("apps");
     }else if(el.scrollTop()>2){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
         action("home");
+    }
 }
     /*
     
