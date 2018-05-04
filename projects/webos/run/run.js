@@ -1,4 +1,5 @@
 window.onload=function(){
+    document.querySelectorAll('.gesturearea')[0].scrollTop=(2);
     /*
 jQuery(function($) {
     $('.gesturearea').on('scroll', function() {
@@ -11,14 +12,19 @@ jQuery(function($) {
 });
 */
 var el = $('.gesturearea');
-el.on('scroll', function(){
+el.on('scroll', scrolling);
+});
+el.on('touchmove', scrolling);
+});
+
+function scrolling(){
     if(el.scrollTop()<2){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
         action("apps");
     }else if(el.scrollTop()>2){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
         action("home");
-    }
-});
+}
     /*
+    
 var node = document.getElementsByClassName("home")[0];
 var longpress = false;
 var presstimer = null;
@@ -86,6 +92,7 @@ node.addEventListener("touchcancel", cancel);
 }
     */
 function action(action){
+    document.querySelectorAll('.gesturearea')[0].scrollTop=(2);
     console.log(action);
     console.log(document.querySelectorAll('.gesturearea')[0].scrollTop);
 }
