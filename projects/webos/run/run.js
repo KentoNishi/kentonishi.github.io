@@ -5,10 +5,10 @@ document.querySelectorAll(".gesturearea")[0].scrollTop=(document.querySelectorAl
 
 }
 function gesture(){
-    if(document.querySelectorAll(".gesturearea")[0].scrollTop<(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2){
+    if(document.querySelectorAll(".gesturearea")[0].scrollTop+1<(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2){
         action("apps");
     }
-    else if(document.querySelectorAll(".gesturearea")[0].scrollTop>(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2){
+    else if(document.querySelectorAll(".gesturearea")[0].scrollTop-1>(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2){
         action("home");
     }
     else{
