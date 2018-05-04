@@ -1,10 +1,11 @@
 window.onload=function(){
-document.getElementsByClassName("gesturearea")[0].scrollTo(0, 1);
-document.getElementsByClassName("gesturearea")[0].onscroll = function(ev) {
-    if ((document.getElementsByClassName("gesturearea")[0].innerHeight + document.getElementsByClassName("gesturearea")[0].pageYOffset) >= document.getElementsByClassName("gesturearea")[0].offsetHeight) {
-        alert("you're at the bottom of the page");
-    }
-};
+jQuery(function($) {
+    $('.gesturearea').on('scroll', function() {
+        if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+            alert('end reached');
+        }
+    })
+});
     /*
 var node = document.getElementsByClassName("home")[0];
 var longpress = false;
