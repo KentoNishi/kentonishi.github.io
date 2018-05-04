@@ -19,7 +19,6 @@ function gesture(){
         timer = setTimeout(function() {
               recalibrate();
         }, 150);
-    }, false);
     if(document.querySelectorAll(".gesturearea")[0].scrollTop+1<(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2){
         action("apps");
     }
