@@ -63,7 +63,7 @@
   overflow-y:scroll;
   position:fixed;
   width:200vw;
-  height:0.5vh;
+  height:1vh;
   bottom:0;
   background-color:rgba(0, 0, 0, 0.75);
   z-index:2;
