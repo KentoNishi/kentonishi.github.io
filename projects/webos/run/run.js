@@ -1,4 +1,5 @@
 window.onload=function(){
+$('.gesturearea').scrollTo(0, 1);
 jQuery(function($) {
     $('.gesturearea').on('scroll', function() {
         if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
