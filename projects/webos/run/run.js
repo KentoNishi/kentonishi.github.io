@@ -5,7 +5,25 @@ document.body.onmouseup=function(){recalibrate();};
 recalibrate();
 }
 function recalibrate(){
-setTimeout(function(){document.querySelectorAll(".gesturearea")[0].scrollTop=(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2}, 1);
+(function( $ ) {
+    $(function() {
+        var $output = $( "#output" ),
+            scrolling = "<span id='scrolling'>Scrolling</span>",
+            stopped = "<span id='stopped'>Stopped</span>";
+            $( window ).scroll(function() {
+                $output.html( scrolling );
+                clearTimeout( $.data( this, "scrollCheck" ) );
+                $.data( this, "scrollCheck", setTimeout(function() {
+                    $output.html( stopped );
+                    setTimeout(function(){document.querySelectorAll(".gesturearea")[0].scrollTop=(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2}, 1);
+                }, 250) );
+
+            });
+    });
+    
+    //setTimeout(function(){document.querySelectorAll(".gesturearea")[0].scrollTop=(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2}, 1);
+
+
 }
 function gesture(){
     if(document.querySelectorAll(".gesturearea")[0].scrollTop+1<(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2){
