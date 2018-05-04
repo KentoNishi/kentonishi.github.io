@@ -15,6 +15,6 @@ function gesture(){
     }
 }
 function action(action){
-    recalibrate();
     document.getElementById("action").innerHTML=(action);
 }
+document.body.onmouseup=function(){recalibrate();};
