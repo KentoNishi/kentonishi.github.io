@@ -64,8 +64,8 @@
   position:fixed;
   width:200vw;
   left:-50vw;
-  height:3vh;
-  bottom:3.5vh;
+  height:6vh;
+  bottom:0vh;
   background-color:rgba(0, 0, 0, 0.75);
   z-index:2;
 }
