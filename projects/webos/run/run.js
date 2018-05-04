@@ -12,5 +12,6 @@ function gesture(){
     
 }
 function action(action){
+    document.querySelectorAll(".gesturearea")[0].scrollTop=(document.querySelectorAll(".gesturearea")[0].clientHeight/2)+document.querySelectorAll(".gesturebar")[0].clientHeight/2;
     document.getElementById("action").innerHTML=(action);
 }
