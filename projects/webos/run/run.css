@@ -70,10 +70,10 @@
 }
 .gesturebar{
   position:fixed;
-  bottom:0.5vh;
+  bottom:0.375vh;
   width:40vw;
   left:30vw;
-  height:42.5vh;
+  height:0.5vh;
   background-color:white;
   border:1px solid white;
   border-radius:5px;
