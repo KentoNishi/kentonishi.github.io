@@ -10,7 +10,7 @@ jQuery(function($) {
 });
 var el = $('.gesturearea');
 el.on('scroll', function(){
-    if(el.scrollTop() == 0){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
+    if(el.scrollTop == 0){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
         action("apps");}
 });
     /*
