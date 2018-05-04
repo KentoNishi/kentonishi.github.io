@@ -1,5 +1,4 @@
 window.onload=function(){
-document.querySelectorAll('.gesturearea')[0].scrollTop=(3);
     /*
 jQuery(function($) {
     $('.gesturearea').on('scroll', function() {
@@ -13,11 +12,9 @@ jQuery(function($) {
 */
 var el = $('.gesturearea');
 el.on('scroll', function(){
-    if(el.scrollTop()<3){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
-        document.querySelectorAll('.gesturearea')[0].scrollTop=(3);
+    if(el.scrollTop()<2){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
         action("apps");
-    }else if(el.scrollTop()>3){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
-        document.querySelectorAll('.gesturearea')[0].scrollTop=(3);
+    }else if(el.scrollTop()>2){//document.querySelectorAll('.gesturearea')[0].scrollIntoView();
         action("home");
     }
 });
