@@ -64,14 +64,14 @@
   position:fixed;
   width:200vw;
   left:-50vw;
-  height:6vh;
+  height:3vh;
   bottom:0vh;
   background-color:rgba(0, 0, 0, 0.75);
   z-index:2;
 }
 .gesturebar{
   width:50vw;
-  height:2vh;
+  height:1vh;
   padding:0;
   margin-left:75vw;
   margin-top:1.25vh;
