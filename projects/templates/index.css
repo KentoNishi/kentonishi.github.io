@@ -139,8 +139,10 @@ body {
 .text-large{
     font-size:10vw;
     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-	font-size: 24px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 500;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+}
+*{
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
