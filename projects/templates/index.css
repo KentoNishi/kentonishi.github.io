@@ -34,24 +34,24 @@ body {
 }
 .icon-menu{
     position:fixed;
-    top:0;
-    left:0;
+    top:1.25vh;
+    left:1.25vh;
     z-index:1;
     border:0;
-    height:6.5vh;
-    width:6.5vh;
+    height:4vh;
+    width:4vh;
     border-radius:6.5vh;
     background: url("https://image.flaticon.com/icons/svg/149/149719.svg");
     background-size: 6.5vh 6.5vh;
 }
 .icon-new{
     position:fixed;
-    top:0;
-    right:0;
+    top:1.25vh;
+    right:1.25vh;
     z-index:1;
     border:0;
-    height:6.5vh;
-    width:6.5vh;
+    height:4vh;
+    width:4vh;
     border-radius:6.5vh;
     background: url("https://image.flaticon.com/icons/svg/32/32360.svg");
     background-size: 6.5vh 6.5vh;
