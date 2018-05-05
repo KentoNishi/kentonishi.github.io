@@ -57,7 +57,7 @@ body {
     background-size: 4vh 4vh;
 }
 .menu{
-    padding-left:100vw;
+    padding-top:100vh;
     overflow:hidden;
     overflow-y:hidden;
     position:fixed;
@@ -72,7 +72,7 @@ body {
     transition:0.25s
 }
 .menu:focus{
-    padding-left:0;
+    padding-top:0;
     overflow:auto;
     overflow-y:auto;
     top:6.5vh;
