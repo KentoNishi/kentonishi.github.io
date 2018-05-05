@@ -109,7 +109,7 @@ body {
 .taskbar{
     width:100vw;
     height:6.5vh;
-    background-color:rgba(249, 191, 59, 1);
+    background-color:#FDD835;
 }
 .card{
   transition-duration:0.25s;
