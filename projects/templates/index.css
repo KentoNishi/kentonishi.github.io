@@ -35,6 +35,7 @@ body {
     background-size: 6.5vh 6.5vh;
 }
 .menu{
+    transition-duration:0.5s;
     transition:0.5s
 }
 .menu:focus{
