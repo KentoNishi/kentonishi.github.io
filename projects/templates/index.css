@@ -45,7 +45,8 @@ body {
 .menu:focus{
     background-color:rgba(108, 122, 137, 0.5);
     width:100vw;
-    height:100vh;
+    top:10vh;
+    height:90vh;
     z-index:2;
 }
 .taskbar{
