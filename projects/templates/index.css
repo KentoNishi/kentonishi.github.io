@@ -39,6 +39,7 @@ body {
     background-size: 6.5vh 6.5vh;
 }
 .menu{
+    z-index:3;
 /*    border:1px solid rgba(255, 255, 255, 0.8);*/
     width:6.5vh;
     height:6.5vh;
