@@ -71,6 +71,8 @@ body {
     transition:0.25s
 }
 .menu:focus{
+    overflow:auto;
+    overflow-y:auto;
     top:6.5vh;
     position:absolute;
     background-color:rgba(108, 122, 137, 0.5);
@@ -93,6 +95,8 @@ body {
     transition:0.25s
 }
 .new:focus{
+    overflow:auto;
+    overflow-y:auto;
     top:6.5vh;
     position:absolute;
     background-color:rgba(108, 122, 137, 0.5);
