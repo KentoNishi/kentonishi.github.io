@@ -99,6 +99,7 @@ body {
     background-color:rgba(249, 191, 59, 1);
 }
 .card{
+  padding:5vh;
   width:80vw;
   margin-left:10vw;
   border:1px solid black;
