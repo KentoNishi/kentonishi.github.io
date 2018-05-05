@@ -99,8 +99,10 @@ body {
     background-color:rgba(249, 191, 59, 1);
 }
 .card{
-  padding:5vh;
-  width:80vw;
+  padding-top:5vh;
+  width:70vw;
+  padding-left:5vw;
+  padding-right:5vw;
   margin-left:10vw;
   border:1px solid black;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
