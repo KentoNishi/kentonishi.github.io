@@ -162,15 +162,3 @@ body {
 .user{
     margin-top:6.5vh;
 }
-input[type="checkbox"] {
-    width: 0;
-    height: 0;
-}
-input[type="checkbox"]:before {
-    content: url('http://placekitten.com/200/210');
-    display: block;
-    overflow: hidden;
-}
-input[type="checkbox"]:checked:before {
-    content: url('http://placekitten.com/210/220');
-}
