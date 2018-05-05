@@ -132,3 +132,7 @@ body {
     height:93.5vh;
     overflow-y:scroll;
 }
+.profile-pic{
+    width:25vh;
+    height:25vh;
+}
