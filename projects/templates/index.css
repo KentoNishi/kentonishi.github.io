@@ -41,6 +41,18 @@ body {
     background: url("https://image.flaticon.com/icons/svg/149/149719.svg");
     background-size: 6.5vh 6.5vh;
 }
+.icon-new{
+    position:fixed;
+    top:0;
+    right:0;
+    z-index:1;
+    border:0;
+    height:6.5vh;
+    width:6.5vh;
+    border-radius:6.5vh;
+    background: url("https://image.flaticon.com/icons/png/512/666/666110.png");
+    background-size: 6.5vh 6.5vh;
+}
 .menu{
     position:fixed;
     top:0;
@@ -81,7 +93,6 @@ body {
     height:93.5vh;
     z-index:2;
 }
-
 .taskbar{
     width:100vw;
     height:6.5vh;
