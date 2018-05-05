@@ -57,6 +57,7 @@ body {
     background-size: 4vh 4vh;
 }
 .menu{
+    overflow-y:hidden;
     position:fixed;
     top:0;
     left:0;
@@ -77,6 +78,7 @@ body {
     z-index:2;
 }
 .new{
+    overflow-y:hidden;
     position:fixed;
     top:0;
     right:0;
