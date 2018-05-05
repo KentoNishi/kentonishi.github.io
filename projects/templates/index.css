@@ -57,6 +57,7 @@ body {
     background-size: 4vh 4vh;
 }
 .menu{
+    overflow:hidden;
     overflow-y:hidden;
     position:fixed;
     top:0;
@@ -78,6 +79,7 @@ body {
     z-index:2;
 }
 .new{
+    overflow:hidden;
     overflow-y:hidden;
     position:fixed;
     top:0;
@@ -123,7 +125,7 @@ body {
   box-shadow:         3px 3px 5px 6px #ccc; 
     */
 }
-.card:hover{
+.card:hover{   
     background-color:rgba(0, 0, 0, 0.2);
 }
 .profile{/*
