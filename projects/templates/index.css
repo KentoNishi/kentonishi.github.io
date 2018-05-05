@@ -2,7 +2,7 @@ body {
     background-color: yellow;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: calc(150vh)) {
     body {
         background-color: lightblue;
     }
