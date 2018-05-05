@@ -34,10 +34,10 @@ body {
 }
 .icon-menu{
     position:fixed;
-    top:1.20vh;
-    left:1.20vh;
+    top:1.15vh;
+    left:1.15vh;
     z-index:1;
-    border:0.05vh solid rgba(25, 181, 254, 1);
+    border:0.15vh solid rgba(25, 181, 254, 1);
     height:4vh;
     width:4vh;
     border-radius:6.5vh;
@@ -46,10 +46,10 @@ body {
 }
 .icon-new{
     position:fixed;
-    top:1.20vh;
-    right:1.20vh;
+    top:1.15vh;
+    right:1.15vh;
     z-index:1;
-    border:0.05vh solid rgba(25, 181, 254, 1);
+    border:0.15vh solid rgba(25, 181, 254, 1);
     height:4vh;
     width:4vh;
     border-radius:6.5vh;
