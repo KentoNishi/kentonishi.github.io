@@ -14,6 +14,9 @@ body {
 */
 
 /*styling classes*/
+.front{
+    z-index:1;
+}
 .fixed{
     position:fixed;
 }
