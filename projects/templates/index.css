@@ -139,7 +139,7 @@ body {
     margin-top:10vh;
     margin-bottom:10vh; */ 
     z-index:-1;
-    height:93.5vh;
+    height:100%;
     overflow-y:auto;
 }
 .profile-pic{
