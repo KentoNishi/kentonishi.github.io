@@ -1,12 +1,12 @@
 /*not mobile*/
 body {
-    background-color: yellow;
+    background-color: white;
 }
 
 /*mobile*/
 @media only screen and (max-width: 100vh) {
     body {
-        background-color: lightblue;
+        background-color: pink;
     }
 }
 
@@ -34,8 +34,11 @@ body {
     background: url("https://d30y9cdsu7xlg0.cloudfront.net/png/604152-200.png");
     background-size: 6.5vh 6.5vh;
 }
+.icon-menu:focus{
+    background-color:
+}
 .taskbar{
     width:100vw;
     height:6.5vh;
-    background-color:green;
+    background-color:#E9D460;
 }
