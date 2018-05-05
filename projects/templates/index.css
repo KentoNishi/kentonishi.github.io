@@ -31,7 +31,7 @@ body {
     height:6.5vh;
     width:6.5vh;
     border-radius:6.5vh;
-    background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/604152-200.png");
+    background: url("https://d30y9cdsu7xlg0.cloudfront.net/png/604152-200.png");
     background-size: auto;
 }
 .taskbar{
