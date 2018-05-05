@@ -122,7 +122,7 @@ body {
     */
 }
 .card:hover{
-    background-color:rgba(0, 0, 0, 0.25);
+    background-color:rgba(0, 0, 0, 0.125);
 }
 .profile{
     margin-top:6.5vh;
