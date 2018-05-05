@@ -39,8 +39,8 @@ body {
     width:6.5vh;
     height:6.5vh;
     background-color:rgba(255, 255, 255, 0.5);
-    transition-duration:0.5s;
-    transition:0.5s
+    transition-duration:0.25s;
+    transition:0.25s
 }
 .menu:focus{
     background-color:rgba(108, 122, 137, 0.5);
