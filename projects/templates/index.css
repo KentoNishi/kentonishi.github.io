@@ -138,7 +138,10 @@ body {
     margin-bottom:10vh; */ 
     z-index:-1;
     height:93.5vh;
-    overflow-y:scroll;
+    overflow-y:hidden;
+}
+.profile:hover{
+    overflow-y:auto;
 }
 .profile-pic{
     width:25vh;
