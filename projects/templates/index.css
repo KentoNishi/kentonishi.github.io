@@ -34,10 +34,10 @@ body {
 }
 .icon-menu{
     position:fixed;
-    top:1.25vh;
-    left:1.25vh;
+    top:1.20vh;
+    left:1.20vh;
     z-index:1;
-    border:0;
+    border:0.05vh solid black;
     height:4vh;
     width:4vh;
     border-radius:6.5vh;
@@ -46,10 +46,10 @@ body {
 }
 .icon-new{
     position:fixed;
-    top:1.25vh;
-    right:1.25vh;
+    top:1.20vh;
+    right:1.20vh;
     z-index:1;
-    border:0;
+    border:0.05vh solid black;
     height:4vh;
     width:4vh;
     border-radius:6.5vh;
