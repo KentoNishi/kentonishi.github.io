@@ -112,6 +112,7 @@ body {
   box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 .profile{
+    z-index:-1;
 //    margin-top:10vh;
 //    margin-bottom:10vh;
     height:100vh;
