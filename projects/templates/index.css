@@ -42,7 +42,7 @@ body {
     width:4vh;
     border-radius:6.5vh;
     background: url("https://image.flaticon.com/icons/svg/149/149719.svg");
-    background-size: 6.5vh 6.5vh;
+    background-size: 4vh 4vh;
 }
 .icon-new{
     position:fixed;
@@ -54,7 +54,7 @@ body {
     width:4vh;
     border-radius:6.5vh;
     background: url("https://image.flaticon.com/icons/svg/32/32360.svg");
-    background-size: 6.5vh 6.5vh;
+    background-size: 4vh 4vh;
 }
 .menu{
     position:fixed;
