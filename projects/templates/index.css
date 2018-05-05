@@ -106,12 +106,12 @@ body {
   margin-top:5vh;
   padding-top:5vh;
   padding-bottom:5vh;
-  width:68vw;
+  width:69vw;
   padding-left:5vw;
   padding-right:5vw;
   margin-left:10vw;
-  border:1vw solid black;
-  border-radius:68vw;
+  border:0.5vw solid black;
+  border-radius:5px;
     /*
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;  
   -moz-box-shadow:    3px 3px 5px 6px #ccc;  
