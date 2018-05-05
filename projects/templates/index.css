@@ -102,6 +102,8 @@ body {
     background-color:rgba(249, 191, 59, 1);
 }
 .card{
+  transition-duration:0.25s;
+  transition:0.25s
   text-align:center;
   margin-top:5vh;
   padding-top:5vh;
@@ -112,11 +114,15 @@ body {
   margin-left:10vw;
   border:0.5vw solid black;
   border-radius:5px;
+  background-color:rgba(0, 0, 0, 0.125);
     /*
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;  
   -moz-box-shadow:    3px 3px 5px 6px #ccc;  
   box-shadow:         3px 3px 5px 6px #ccc; 
     */
+}
+.card:hover{
+    background-color:rgba(0, 0, 0, 0.25);
 }
 .profile{
     margin-top:6.5vh;
