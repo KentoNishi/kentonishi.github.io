@@ -162,3 +162,17 @@ body {
 .user{
     margin-top:6.5vh;
 }
+input[type="checkbox"] {
+    content: url('http://placekitten.com/200/210');
+    display: block;
+    width: 200px;
+    height: 200px;
+}
+input[type="checkbox"]:checked {
+    content: url('http://placekitten.com/210/220');
+}
+.native-hidden {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
