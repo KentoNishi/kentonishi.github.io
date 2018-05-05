@@ -126,11 +126,11 @@ body {
 .card:hover{
     background-color:rgba(0, 0, 0, 0.2);
 }
-.profile{
+.profile{/*
     margin-top:6.5vh;
+    margin-top:10vh;
+    margin-bottom:10vh; */ 
     z-index:-1;
-//    margin-top:10vh;
-//    margin-bottom:10vh;  
     height:93.5vh;
     overflow-y:scroll;
 }
