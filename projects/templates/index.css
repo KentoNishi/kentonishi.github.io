@@ -143,6 +143,8 @@ body {
     overflow-y:auto;
 }
 .profile-pic{
+    max-width:60vw;
+    max-height:60vw;
     width:25vh;
     height:25vh;
     padding-bottom:2.5vh;
