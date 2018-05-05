@@ -114,4 +114,6 @@ body {
 .profile{
     margin-top:10vh;
     margin-bottom:10vh;
+    height:90vh;
+    overflow:scroll;
 }
