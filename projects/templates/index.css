@@ -35,7 +35,6 @@ body {
     background-size: 6.5vh 6.5vh;
 }
 .menu{
-    position:absolute;
 /*    border:1px solid rgba(255, 255, 255, 0.8);*/
     width:6.5vh;
     height:6.5vh;
@@ -47,8 +46,7 @@ body {
     position:absolute;
     background-color:rgba(108, 122, 137, 0.5);
     width:100vw;
-    top:10vh;
-    height:90vh;
+    height:100vh;
     z-index:2;
 }
 .taskbar{
