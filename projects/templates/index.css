@@ -35,6 +35,7 @@ body {
     background-size: 6.5vh 6.5vh;
 }
 .menu{
+    position:absolute;
 /*    border:1px solid rgba(255, 255, 255, 0.8);*/
     width:6.5vh;
     height:6.5vh;
@@ -43,6 +44,7 @@ body {
     transition:0.25s
 }
 .menu:focus{
+    position:absolute;
     background-color:rgba(108, 122, 137, 0.5);
     width:100vw;
     top:10vh;
