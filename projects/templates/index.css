@@ -57,6 +57,7 @@ body {
     background-size: 4vh 4vh;
 }
 .menu{
+    padding-left:100vw;
     overflow:hidden;
     overflow-y:hidden;
     position:fixed;
@@ -71,6 +72,7 @@ body {
     transition:0.25s
 }
 .menu:focus{
+    padding-left:0;
     overflow:auto;
     overflow-y:auto;
     top:6.5vh;
@@ -138,9 +140,6 @@ body {
     margin-bottom:10vh; */ 
     z-index:-1;
     height:93.5vh;
-    overflow-y:hidden;
-}
-.profile:hover{
     overflow-y:auto;
 }
 .profile-pic{
