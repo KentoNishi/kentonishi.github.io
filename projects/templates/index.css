@@ -163,16 +163,19 @@ body {
     margin-top:6.5vh;
 }
 input[type="checkbox"] {
+    width: 0;
+    height: 0;
+    margin: 0;
+    border: 0 none;
+    padding: 0;
+}
+input[type="checkbox"]:before {
     content: url('http://placekitten.com/200/210');
     display: block;
     width: 200px;
     height: 200px;
+    overflow: hidden;
 }
-input[type="checkbox"]:checked {
+input[type="checkbox"]:checked:before {
     content: url('http://placekitten.com/210/220');
-}
-.native-hidden {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
 }
