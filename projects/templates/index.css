@@ -35,7 +35,7 @@ body {
     background-size: 6.5vh 6.5vh;
 }
 .icon-menu:focus{
-    background-color:
+    background-color:rgba(108, 122, 137, 0.5);
 }
 .taskbar{
     width:100vw;
