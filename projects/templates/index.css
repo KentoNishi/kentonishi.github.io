@@ -29,10 +29,10 @@ body {
 .icon-menu{
     border:0;
     height:6.5vh;
-    width:auto;
+    width:6.5vh;
     border-radius:6.5vh;
     background: url("https://d30y9cdsu7xlg0.cloudfront.net/png/604152-200.png") no-repeat fixed center; 
-    background-size:auto 6.5vh ;
+    background-size:6.5vh 6.5vh ;
 }
 .taskbar{
     width:100vw;
