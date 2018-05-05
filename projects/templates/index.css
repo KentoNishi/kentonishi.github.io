@@ -35,10 +35,11 @@ body {
     background-size: 6.5vh 6.5vh;
 }
 .menu{
+    background-color:rgba(255, 255, 255, 0.5);
     transition-duration:0.5s;
     transition:0.5s
 }
-.menu:focus{
+.menu:active{
     background-color:rgba(108, 122, 137, 0.5);
 }
 .taskbar{
