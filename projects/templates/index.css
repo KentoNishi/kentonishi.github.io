@@ -27,6 +27,10 @@ body {
     left:0;
 }
 .icon-menu{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1;
     border:0;
     height:6.5vh;
     width:6.5vh;
