@@ -4,11 +4,14 @@ body {
 }
 
 /*mobile*/
+/*Detection Unnecessary*/f
+/*
 @media only screen and (max-width: 100vh) {
     body {
         background-color: pink;
     }
 }
+*/
 
 /*styling classes*/
 .fixed{
