@@ -57,6 +57,7 @@ body {
     background-size: 4vh 4vh;
 }
 .menu{
+    max-height:6.5vh;
     padding-top:100vh;
     overflow:hidden;
     overflow-y:hidden;
@@ -72,6 +73,7 @@ body {
     transition:0.25s;
 }
 .menu:focus{
+    max-height:93.5vh;
     padding-top:0;
     overflow:auto;
     overflow-y:auto;
@@ -83,6 +85,7 @@ body {
     z-index:2;
 }
 .new{
+    max-height:6.5vh;
     padding-top:100vh;
     overflow:hidden;
     overflow-y:hidden;
@@ -98,6 +101,7 @@ body {
     transition:0.25s;
 }
 .new:focus{
+    max-height:93.5vh;
     padding-top:0;
     overflow:auto;
     overflow-y:auto;
