@@ -118,6 +118,7 @@ body {
     background-color:#FBC02D;
 }
 .card{
+  margin:0 auto;
   transition-duration:0.25s;
   transition:0.25s;
   text-align:center;
