@@ -146,6 +146,7 @@ body {
     margin-bottom:10vh; */ 
     z-index:-1;
     overflow-y:auto;
+    height:100%;
 }
 .profile-pic{
     max-width:60vw;
