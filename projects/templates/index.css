@@ -163,6 +163,7 @@ body {
     font-weight: 500;
 }
 *{
+    z-index:3;
     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 .user{
