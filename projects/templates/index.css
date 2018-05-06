@@ -82,7 +82,7 @@ body {
     background-color:rgba(108, 122, 137, 0.5);
     width:100vw;
     height:93.5vh;
-    z-index:10;
+    z-index:3;
 }
 .new{
     max-height:6.5vh;
@@ -110,7 +110,7 @@ body {
     background-color:rgba(108, 122, 137, 0.5);
     width:100vw;
     height:93.5vh;
-    z-index:10;
+    z-index:3;
 }
 .taskbar{
     width:100vw;
@@ -170,11 +170,11 @@ body {
     margin-top:6.5vh;
 }
 .content{
-    z-index:2;
+    z-index:0;
     position:fixed;
-    top:6.5vh;
+    top:0;
     left:0;
     width:100vw;
-    height:93.5vh;
+    height:100vh;
     background-color:rgba(100, 100, 100, 0.5);
 }
