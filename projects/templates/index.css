@@ -82,7 +82,7 @@ body {
     background-color:rgba(108, 122, 137, 0.5);
     width:100vw;
     height:93.5vh;
-    z-index:3;
+    z-index:10;
 }
 .new{
     max-height:6.5vh;
@@ -110,7 +110,7 @@ body {
     background-color:rgba(108, 122, 137, 0.5);
     width:100vw;
     height:93.5vh;
-    z-index:3;
+    z-index:10;
 }
 .taskbar{
     width:100vw;
@@ -163,7 +163,7 @@ body {
     font-weight: 500;
 }
 *{
-    z-index:3;
+    z-index:1;
     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 .user{
