@@ -168,3 +168,12 @@ body {
 .user{
     margin-top:6.5vh;
 }
+.content{
+    position:fixed;
+    top:6.5vh;
+    left:0;
+    width:100vw;
+    height:93.5vh;
+    background-color:rgba(100, 100, 100, 0.5);
+    
+}
