@@ -69,7 +69,7 @@ body {
     height:6.5vh;
     background-color:transparent;/*rgba(255, 255, 255, 0.5);*/
     transition-duration:0.25s;
-    transition:0.25s
+    transition:0.25s;
 }
 .menu:focus{
     padding-top:0;
@@ -83,6 +83,7 @@ body {
     z-index:2;
 }
 .new{
+    padding-top:100vh;
     overflow:hidden;
     overflow-y:hidden;
     position:fixed;
@@ -94,9 +95,10 @@ body {
     height:6.5vh;
     background-color:transparent;/*rgba(255, 255, 255, 0.5);*/
     transition-duration:0.25s;
-    transition:0.25s
+    transition:0.25s;
 }
 .new:focus{
+    padding-top:0;
     overflow:auto;
     overflow-y:auto;
     top:6.5vh;
