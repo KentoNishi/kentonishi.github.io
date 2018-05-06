@@ -172,9 +172,9 @@ body {
 .content{
     z-index:0;
     position:fixed;
-    top:0;
+    top:6.5vh;
     left:0;
     width:100vw;
-    height:100vh;
+    height:93.5vh;
     background-color:rgba(100, 100, 100, 0.5);
 }
