@@ -1,3 +1,28 @@
+<meta name="description" content="Password Hashing: Authentication">
 <script>
-window.location="http://jsbin.com/gefogan";
+function autho(){
+  document.querySelectorAll(".auth")[0].src="http://output.jsbin.com/bapoxup/#"+window.location.hash.split("&")[0].replace("#", "")+":=:=:"+btoa(window.location.hash.split("&")[1]);
+}
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+  var count=0;
+  var passkey="";
+  eventer(messageEvent,function(e) {
+    if(e.data[0]==count.toString()){
+      var data=e.data.replace(count.toString(), "");
+    if(passkey==data){console.log("Matched");}
+    passkey=e.data;
+//    console.log(passkey);
+    console.log(data);
+    count+=1;
+    }
+  },false);
+window.onload=function(){
+  document.querySelectorAll(".pass")[0].src="https://www.tinyurl.com/systemuser"+window.location.hash.split("&")[1]+"password";
+  autho();
+}
 </script>
+<script src="kentonishi.github.io/projects/autho/sha256.js"></script>
+<iframe class="pass" src=""></iframe>
+<iframe class="auth" src=""></iframe>
