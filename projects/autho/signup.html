@@ -1,0 +1,20 @@
+<meta name="description" content="Account Creation">
+<iframe class="pass" src=""></iframe>
+<script src="kentonishi.github.io/projects/autho/sha256.js"></script>
+<script>
+  /*
+function autho(){
+  document.querySelectorAll(".auth")[0].src="http://output.jsbin.com/bapoxup/#"+window.location.hash.split("&")[0].replace("#", "")+":=:=:"+btoa(window.location.hash.split("&")[1]);
+}
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+  eventer(messageEvent,function(e) {
+    console.log(e.data);
+  },false);
+  */
+window.onload=function(){
+//  autho();
+  document.querySelectorAll(".pass")[0].src="http://tinyurl.com/create.php?url=https%3A%2F%2Fkentonishi.github.io%2Fprojects%2Fautho%2Fpswd.html%23"+encodeURIComponent(sha256(window.location.hash.replace("#", "").split("&")[0]))+"&submit=Make+TinyURL%21&alias=systemuser"+encodeURIComponent(window.location.hash.replace("#", "").split("&")[1])+"password";
+}
+</script>
