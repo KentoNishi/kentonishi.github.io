@@ -1,0 +1,28 @@
+<meta name="description" content="Password Hashing: Creation">
+<script src="kentonishi.github.io/projects/autho/sha256.js"></script>
+<script>
+  
+if(window.location==top.location){
+  if(window.location.hash.replace("#", "")!=""){
+    console.log(sha256(decodeURIComponent(window.location.hash.replace("#", ""))));
+  }
+}
+  
+  //send from iframe
+  
+  parent.postMessage("0"+sha256(decodeURIComponent(window.location.hash.replace("#", ""))),"http://output.jsbin.com");
+  
+  
+  /*
+  
+  //recieve from iframe
+  
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+  eventer(messageEvent,function(e) {
+    console.log(e.data);
+  },false);
+  
+  */
+</script>
