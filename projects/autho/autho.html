@@ -19,7 +19,7 @@ function autho(){
     }
   },false);
 window.onload=function(){
-  document.querySelectorAll(".pass")[0].src="https://www.tinyurl.com/systemuser"+window.location.hash.split("&")[1]+"password";
+  document.querySelectorAll(".pass")[0].src="https://tinyurl.com/redirect.php?num=systemuser"+window.location.hash.split("&")[1]+"password";
   autho();
 }
 </script>
