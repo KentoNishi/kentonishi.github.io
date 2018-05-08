@@ -21,6 +21,6 @@
   }
 </script>
 <iframe class="autho" src=""></iframe>
-<input type="text" class="username"></input>
-<input type="text" class="password"></input>
+<input type="text" class="username" onkeypress="return blockSpecialChar(event)"></input>
+<input type="text" class="password" onkeypress="return blockSpecialChar(event)"></input>
 <button onclick="signin();">Sign In</button>
