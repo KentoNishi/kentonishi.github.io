@@ -22,7 +22,9 @@
   var confirmation=false;
   var messagecount=0;
   eventer(messageEvent,function(e) {
-    alert(e.data);
+    if(e.origin.indexOf("kentonishi")!=-1){
+      alert(e.data);
+    }
   });
 </script>
 
