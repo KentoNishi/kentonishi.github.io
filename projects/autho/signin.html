@@ -1,6 +1,7 @@
 <input type="text" name="username"  onkeypress="return blockSpecialChar(event)"/>
 <input type="text" name="password"  onkeypress="return blockSpecialChar(event)"/>
 <script type="text/javascript">
+    
     function blockSpecialChar(e){
         var k;
         document.all ? k = e.keyCode : k = e.which;
