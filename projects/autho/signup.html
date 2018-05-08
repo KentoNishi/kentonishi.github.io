@@ -1,7 +1,7 @@
 <link href="https://kentonishi.github.io/projects/autho/index.css" rel="stylesheet" type="text/css"></link>
 
-<input type="text" name="username"  onkeypress="return blockSpecialChar(event)"/>
-<input type="text" name="password"  onkeypress="return blockSpecialChar(event)"/>
+<input type="text" name="username"  onkeypress="return blockSpecialChar(event);this.value=this.value;"/>
+<input type="text" name="password"  onkeypress="return blockSpecialChar(event);this.value=this.value;"/>
 <script type="text/javascript">
     var parser=true;
     function blockSpecialChar(e){
