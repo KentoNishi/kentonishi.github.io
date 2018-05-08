@@ -10,7 +10,7 @@ if(window.location==top.location){
   
   //send from iframe
   
-  parent.postMessage("0"+sha256(atob(decodeURIComponent(window.location.hash.replace("#", "")))),"https://kentonishi.github.io");
+  parent.postMessage("0"+sha256(decodeURIComponent(window.location.hash.replace("#", ""))),"https://kentonishi.github.io");
   
   
   /*
