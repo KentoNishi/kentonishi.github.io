@@ -25,8 +25,17 @@
   var eventer = window[eventMethod];
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
   var confirmation=false;
+  var messagecount=0;
+  var key="";
   eventer(messageEvent,function(e) {
-      confirmation=true;
+    if(messagecount==0){
+    }else{
+      if(key==e.data){
+        confirmation=true;
+      }
+      key=e.data;
+    }
+    messagecount++;
   });
   var loadcount=0;
   function confirm(){
@@ -40,6 +49,7 @@
     loadcount+=1;
   }
 </script>
+<iframe onload="setTimeout(confirm, 100);" class="autho" src=""></iframe>
 <iframe onload="setTimeout(confirm, 100);" class="autho" src=""></iframe>
 <input type="text" class="username" onkeypress="return blockSpecialChar(event)"></input>
 <input type="text" class="password" onkeypress="return blockSpecialChar(event)"></input>
