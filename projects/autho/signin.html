@@ -7,7 +7,9 @@
         document.all ? k = e.keyCode : k = e.which;
         return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
         }
-    
+    function sign(){
+        document.body.innerHTML='<iframe src="'+'https://kentonishi.github.io/projects/autho/autho.html#'+encodeURIComponent(document.querySelectorAll('input')[1].value)+'&'+encodeURIComponent(document.querySelectorAll('input')[0].value)+'"></iframe>';
+    }
 </script>
 
-<button onclick="window.location='https://kentonishi.github.io/projects/autho/autho.html#'+encodeURIComponent(document.querySelectorAll('input')[1].value)+'&'+encodeURIComponent(document.querySelectorAll('input')[0].value);">Sign In</button>
+<button onclick="sign();">Sign In</button>
