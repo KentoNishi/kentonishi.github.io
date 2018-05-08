@@ -13,6 +13,7 @@
         document.body.innerHTML='<iframe src="'+'https://kentonishi.github.io/projects/autho/addaccount.html#'+encodeURIComponent(document.querySelectorAll('input')[1].value)+'&'+encodeURIComponent(document.querySelectorAll('input')[0].value)+'"></iframe>';
     }
     function confirm(){
+        document.body.innerHTML+='<iframe onload="setTimeout(parse, 1000);" class="confirmer" src=""></iframe>';
         document.querySelectorAll(".confirmer").src="https://tinyurl.com/redirect.php?num=systemuser"+document.querySelectorAll('input')[0].value+"password";
     }
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
@@ -32,4 +33,3 @@
     
 </script>
 <button onclick="confirm();">Sign Up</button>
-<iframe onload="setTimeout(parse, 1000);" class="confirmer" src=""></iframe>
