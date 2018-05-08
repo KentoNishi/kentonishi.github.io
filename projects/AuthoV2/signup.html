@@ -1,0 +1,32 @@
+<script src="https://kentonishi.github.io/projects/AuthoV2/sha256.js"></script>
+<link href="https://kentonishi.github.io/projects/AuthoV2/styles.css" rel="stylesheet" type="text/css"></link>
+<script>
+  var username="";
+  var password="";
+  function signin(){
+    username=document.querySelectorAll(".username")[0].value;
+    password=document.querySelectorAll(".password")[0].value;
+//    document.querySelectorAll(".autho")[0].src="https://kentonishi.github.io/projects/AuthoV2/autho.html#"+password+"&"+username;
+    document.querySelectorAll(".autho")[1].src="https://tinyurl.com/redirect.php?num=appsystemuser"+username;
+    
+  }
+  function blockSpecialChar(e){
+      var k;
+      document.all ? k = e.keyCode : k = e.which;
+      return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+  }
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+  var confirmation=false;
+  var messagecount=0;
+  var key="";
+  eventer(messageEvent,function(e) {
+    alert(e.data);
+  }
+</script>
+<iframe onload="setTimeout(confirm, 100);" class="autho" src=""></iframe>
+<iframe onload="setTimeout(confirm, 100);" class="autho" src=""></iframe>
+<input type="text" class="username" onkeypress="return blockSpecialChar(event)"></input>
+<input type="text" class="password" onkeypress="return blockSpecialChar(event)"></input>
+<button onclick="signin();">Sign In</button>
