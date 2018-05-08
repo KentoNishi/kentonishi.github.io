@@ -19,14 +19,17 @@
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
   var u=0;
   eventer(messageEvent,function(e) {
-      alert("Username has been taken.");
-      location.reload();
-      console.log(e.data);
+
       parser=false;
   });
     var username="";
     var password="";
     function parse(){
+        if(parse==true){
+      alert("Username has been taken.");
+      location.reload();
+      console.log(e.data);
+        }
     }
     function confirm(){
         username=document.querySelectorAll('input')[0].value;
