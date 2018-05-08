@@ -3,7 +3,6 @@
 <input type="text" name="password"  onkeypress="return blockSpecialChar(event)"/>
 
 <script type="text/javascript">
-    
     var parser=true;
     function blockSpecialChar(e){
         var k;
@@ -42,6 +41,5 @@
         document.querySelectorAll('input')[0].value=username;
         document.querySelectorAll('input')[1].value=password;
     }
-    
 </script>
 <button onclick="confirm();">Sign Up</button>
