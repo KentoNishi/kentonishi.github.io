@@ -2,7 +2,7 @@
 <input type="text" name="username"  onkeypress="return blockSpecialChar(event)"/>
 <input type="text" name="password"  onkeypress="return blockSpecialChar(event)"/>
 <script type="text/javascript">
-    
+    var parser=true;
     function blockSpecialChar(e){
         var k;
         document.all ? k = e.keyCode : k = e.which;
@@ -11,6 +11,23 @@
     function sign(){
         document.body.innerHTML='<iframe src="'+'https://kentonishi.github.io/projects/autho/addaccount.html#'+encodeURIComponent(document.querySelectorAll('input')[1].value)+'&'+encodeURIComponent(document.querySelectorAll('input')[0].value)+'"></iframe>';
     }
-    
+    function confirm(){
+        document.querySelectorAll(".confirmer").src="https://tinyurl.com/redirect.php?num=systemuser"+document.querySelectorAll('input')[0].value+"password";
+    }
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+  eventer(messageEvent,function(e) {
+      parser=false;
+  }
+    function parse(){
+      if(parser==true){
+          sign();
+      }else{
+          alert("Username Taken.");
+          location.reload();
+      }
+  }
 </script>
-<button onclick="sign();">Sign Up</button>
+<button onclick="confirm();">Sign Up</button>
+<iframe onload="setTimeout(parse, 1000);" class="confirmer" src=""></iframe>
