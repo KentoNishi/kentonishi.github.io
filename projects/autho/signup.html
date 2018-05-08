@@ -20,13 +20,16 @@
   eventer(messageEvent,function(e) {
       parser=false;
   });
+    var o=0;
     function parse(){
+        if(o==1){
       if(parser==true){
           sign();
       }else{
           alert("Username Taken.");
           location.reload();
       }
+        }o+=1;
   }
     
 </script>
