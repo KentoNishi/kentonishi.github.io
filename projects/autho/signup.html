@@ -1,8 +1,9 @@
 <link href="https://kentonishi.github.io/projects/autho/index.css" rel="stylesheet" type="text/css"></link>
 
-<input type="text" name="username"  onkeypress="return blockSpecialChar(event);this.value=this.value;"/>
-<input type="text" name="password"  onkeypress="return blockSpecialChar(event);this.value=this.value;"/>
+<input type="text" name="username"  onkeypress="return blockSpecialChar(event)"/>
+<input type="text" name="password"  onkeypress="return blockSpecialChar(event)"/>
 <script type="text/javascript">
+    
     var parser=true;
     function blockSpecialChar(e){
         var k;
@@ -22,17 +23,15 @@
   eventer(messageEvent,function(e) {
       parser=false;
   });
-    var o=0;
     function parse(){
-        if(o==0){
       if(parser==true){
           sign();
       }else{
           alert("Username Taken.");
           location.reload();
       }
-        }o++;
   }
+    
 </script>
 
 <button onclick="confirm();">Sign Up</button>
