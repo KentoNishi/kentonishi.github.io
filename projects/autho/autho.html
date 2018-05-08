@@ -12,7 +12,8 @@ function autho(){
   eventer(messageEvent,function(e) {
     if(e.data[0]==count.toString()){
       var data=e.data.replace(count.toString(), "");
-    if(passkey==data){console.log("Matched");alert("Correct Password");}
+    if(passkey==data){console.log("Matched");alert("Correct Password");
+      parent.postMessage("Matched","https://kentonishi.github.io");}
       if(passkey!=data&&passkey!=""){
         parent.postMessage("Not Matched","https://kentonishi.github.io");
       }
