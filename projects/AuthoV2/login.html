@@ -8,6 +8,17 @@
     password=document.querySelectorAll(".password")[0].value;
     document.querySelectorAll(".autho")[0].src="";
   }
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+  eventer(messageEvent,function(e) {
+      alert(e.data);
+  });
+  function blockSpecialChar(e){
+      var k;
+      document.all ? k = e.keyCode : k = e.which;
+      return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+  }
 </script>
 <iframe class="autho" src=""></iframe>
 <input type="text" class="username"></input>
