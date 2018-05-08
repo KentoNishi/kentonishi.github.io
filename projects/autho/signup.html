@@ -12,28 +12,16 @@
     function sign(){
         document.body.innerHTML+='<iframe src="'+'https://kentonishi.github.io/projects/autho/addaccount.html#'+encodeURIComponent(document.querySelectorAll('input')[1].value)+'&'+encodeURIComponent(document.querySelectorAll('input')[0].value)+'"></iframe>';
     }
-    function confirm(){
-        document.querySelectorAll(".confirmer").src="https://tinyurl.com/redirect.php?num=systemuser"+document.querySelectorAll('input')[0].value+"password";
-    }
+    
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
   var eventer = window[eventMethod];
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
   eventer(messageEvent,function(e) {
       parser=false;
   });
-    var o=0;
-    function parse(){
-        if(o==1){
-      if(parser==true){
-          sign();
-      }else{
-          alert("Username Taken.");
-          location.reload();
-      }
-        }o+=1;
-  }
-    
-    
+    function confirm(){
+        sign();
+    }
 </script>
 <button onclick="confirm();">Sign Up</button>
 <iframe onload="parse()" class="confirmer" src=""></iframe>
