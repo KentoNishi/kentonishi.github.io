@@ -23,13 +23,20 @@
   });
     var username="";
     var password="";
+    var count=0;
     function parse(){
+        if(count==0){
         if(parse==true){
       alert("Username has been taken.");
       location.reload();
       console.log(e.data);
         }else{
             sign();
+        }
+        }else{
+            
+      alert("Username has been taken.");
+      location.reload();
         }
     }
     function confirm(){
