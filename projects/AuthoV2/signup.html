@@ -9,6 +9,9 @@
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
   eventer(messageEvent,function(e) {
   });
+  function confirm(){
+    alert("Confirmed");
+  }
 </script>
 
 <iframe onload="setTimeout(confirm, 100);" class="autho" src=""></iframe>
