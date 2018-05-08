@@ -19,6 +19,11 @@
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
   var u=0;
   eventer(messageEvent,function(e) {
+      if(e.data=="Not Matched"){
+      alert("Username has been taken.");
+      location.reload();
+      console.log(e.data);
+      }
       parser=false;
   });
     var username="";
