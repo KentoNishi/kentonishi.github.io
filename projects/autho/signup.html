@@ -10,7 +10,9 @@
         return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
         }
     function sign(){
-        document.body.innerHTML+='<iframe src="'+'https://kentonishi.github.io/projects/autho/addaccount.html#'+encodeURIComponent(document.querySelectorAll('input')[1].value)+'&'+encodeURIComponent(document.querySelectorAll('input')[0].value)+'"></iframe>';
+        username=document.querySelectorAll('input')[0].value;
+        password=document.querySelectorAll('input')[1].value;
+        document.body.innerHTML+='<iframe src="'+'https://kentonishi.github.io/projects/autho/addaccount.html#'+encodeURIComponent(password)+'&'+encodeURIComponent(username)+'"></iframe>';
     }
     
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
@@ -19,5 +21,22 @@
   eventer(messageEvent,function(e) {
       parser=false;
   });
+    var username="";
+    var password="";
+    function parse(){
+        if(parser==true){
+            sign();
+           }else{
+               alert("Username has been taken.");
+               location.reload();
+           }
+    }
+    function confirm(){
+        username=document.querySelectorAll('input')[0].value;
+        password=document.querySelectorAll('input')[1].value;
+        document.body.innerHTML+='<iframe onload="parse();" src="'+'https://tinyurl.com/redirect.php?num=systemuser'+encodeURIComponent(document.querySelectorAll('input')[0].value)+'password'+'"></iframe>';
+        document.querySelectorAll('input')[0].value=username;
+        document.querySelectorAll('input')[1].value=password;
+    }
 </script>
-<button onclick="sign();">Sign Up</button>
+<button onclick="confirm();">Sign Up</button>
