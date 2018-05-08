@@ -13,7 +13,6 @@
         password=document.querySelectorAll('input')[1].value;
         document.body.innerHTML+='<iframe src="'+'https://kentonishi.github.io/projects/autho/addaccount.html#'+encodeURIComponent(password)+'&'+encodeURIComponent(username)+'"></iframe>';
     }
-    
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
   var eventer = window[eventMethod];
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
@@ -46,7 +45,6 @@
       location.reload();
         }*/count++;
     }
-    
     function confirm(){
         username=document.querySelectorAll('input')[0].value;
         password=document.querySelectorAll('input')[1].value;
