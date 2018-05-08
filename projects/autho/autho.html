@@ -12,7 +12,7 @@ function autho(){
     if(e.data[0]==count.toString()){
       var data=e.data.replace(count.toString(), "");
     if(passkey==data){console.log("Matched");}
-    passkey=e.data;
+    passkey=e.data.replace(count.toString(), "");
 //    console.log(passkey);
     console.log(data);
     count+=1;
