@@ -4,13 +4,13 @@
   
 if(window.location==top.location){
   if(window.location.hash.replace("#", "")!=""){
-    console.log(sha256(decodeURIComponent(window.location.hash.replace("#", ""))));
+    console.log(sha256(atob(decodeURIComponent(window.location.hash.replace("#", "")))));
   }
 }
   
   //send from iframe
   
-  parent.postMessage("0"+sha256(decodeURIComponent(window.location.hash.replace("#", ""))),"https://kentonishi.github.io");
+  parent.postMessage("0"+sha256(atob(decodeURIComponent(window.location.hash.replace("#", "")))),"https://kentonishi.github.io");
   
   
   /*
