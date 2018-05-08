@@ -1,2 +1,15 @@
 <script src="https://kentonishi.github.io/projects/AuthoV2/sha256.js"></script>
 <link href="https://kentonishi.github.io/projects/AuthoV2/styles.css" rel="stylesheet" type="text/css"></link>
+<script>
+  var username="";
+  var password="";
+  function signin(){
+    username=document.querySelectorAll(".username")[0].value;
+    password=document.querySelectorAll(".password")[0].value;
+    document.querySelectorAll(".autho")[0].src="";
+  }
+</script>
+<iframe class="autho" src=""></iframe>
+<input type="text" class="username"></input>
+<input type="text" class="password"></input>
+<button onclick="signin();">Sign In</button>
