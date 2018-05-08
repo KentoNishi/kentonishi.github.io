@@ -2,7 +2,12 @@
 <input type="text" name="username"  onkeypress="return blockSpecialChar(event)"/>
 <input type="text" name="password"  onkeypress="return blockSpecialChar(event)"/>
 <script type="text/javascript">
-    
+var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+  eventer(messageEvent,function(e) {
+      alert(e.data);
+  });
     function blockSpecialChar(e){
         var k;
         document.all ? k = e.keyCode : k = e.which;
