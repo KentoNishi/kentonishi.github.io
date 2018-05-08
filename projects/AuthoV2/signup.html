@@ -1,5 +1,6 @@
 <script src="https://kentonishi.github.io/projects/AuthoV2/sha256.js"></script>
 <link href="https://kentonishi.github.io/projects/AuthoV2/styles.css" rel="stylesheet" type="text/css"></link>
+
 <script>
   var username="";
   var password="";
@@ -20,11 +21,11 @@
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
   var confirmation=false;
   var messagecount=0;
-  var key="";
   eventer(messageEvent,function(e) {
     alert(e.data);
   }
 </script>
+
 <iframe onload="setTimeout(confirm, 100);" class="autho" src=""></iframe>
 <iframe onload="setTimeout(confirm, 100);" class="autho" src=""></iframe>
 <input type="text" class="username" onkeypress="return blockSpecialChar(event)"></input>
