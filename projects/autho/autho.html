@@ -14,6 +14,9 @@ function autho(){
     if(e.data[0]==count.toString()){
       var data=e.data.replace(count.toString(), "");
     if(passkey==data){console.log("Matched");alert("Correct Password");}
+      if(passkey!=data&&passkey!=""){
+        parent.postMessage("Not Matched","https://kentonishi.github.io");
+      }
     passkey=e.data.replace(count.toString(), "");
 //    console.log(passkey);
     console.log(data);
