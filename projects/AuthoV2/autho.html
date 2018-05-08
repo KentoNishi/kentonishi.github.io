@@ -1,4 +1,5 @@
 <script src="https://kentonishi.github.io/projects/AuthoV2/sha256.js"></script>
+
 <script>
 parent.postMessage(sha256(window.location.hash.replace("#", "").split("&")[0]+":=:=:"+window.location.hash.replace("#", "").split("&")[1]), "https://kentonishi.github.io");
 </script>
