@@ -20,7 +20,7 @@
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
   eventer(messageEvent,function(e) {
       parser=false;
-  }
+  });
     function parse(){
       if(parser==true){
           sign();
