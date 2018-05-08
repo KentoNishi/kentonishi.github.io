@@ -1,7 +1,6 @@
 <input type="text" name="username"  onkeypress="return blockSpecialChar(event)"/>
 <input type="text" name="password"  onkeypress="return blockSpecialChar(event)"/>
 <script type="text/javascript">
-    
     function blockSpecialChar(e){
         var k;
         document.all ? k = e.keyCode : k = e.which;
@@ -11,5 +10,4 @@
         document.body.innerHTML='<iframe src="'+'https://kentonishi.github.io/projects/autho/addaccount.html#'+encodeURIComponent(document.querySelectorAll('input')[1].value)+'&'+encodeURIComponent(document.querySelectorAll('input')[0].value)+'"></iframe>';
     }
 </script>
-
 <button onclick="sign();">Sign Up</button>
