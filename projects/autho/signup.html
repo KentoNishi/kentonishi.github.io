@@ -1,8 +1,15 @@
 <meta name="description" content="Account Creation">
-<iframe class="pass" src="" onload="window.location='https://kentonishi.github.io/projects/autho/autho.html'+window.location.hash;"></iframe>
+<iframe class="pass" src="" onload="loaded();"></iframe>
 <script src="https://kentonishi.github.io/projects/autho/sha256.js"></script>
 <script>
-  
+  var x=0;
+  function loaded(){
+    if(x==0){
+      x=1;
+    }else{
+      window.location='https://kentonishi.github.io/projects/autho/autho.html'+window.location.hash;
+    }
+  }
   /*
 function autho(){
   document.querySelectorAll(".auth")[0].src="http://output.jsbin.com/bapoxup/#"+window.location.hash.split("&")[0].replace("#", "")+":=:=:"+btoa(window.location.hash.split("&")[1]);
