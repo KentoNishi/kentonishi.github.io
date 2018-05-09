@@ -34,20 +34,19 @@
   var unconfirmed=true;
   var loadcount=0;
   function confirm(){
-    if(loadcount>3){
+    if(loadcount>2){
       if(confirmation==true){
         alert("Success!");
       }else{
         if(!unconfirmed){
-        alert("Error!");
+          alert("Error!");
+        }else{
+          unconfirmed=false;
+          setTimeout(confirm, 1000);
         }
       }
     }
     loadcount+=1;
-  }
-  window.onload=function(){
-    confirm();
-    unconfirmed=false;
   }
 </script>
 <iframe onload="setTimeout(confirm, 2000);" class="autho" src=""></iframe>
