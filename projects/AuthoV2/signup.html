@@ -4,6 +4,7 @@
   window.onload=function(){
     if(window.location.hash.indexOf("existing")!=-1){
       alert("This username is taken. Please choose a new username.");
+      window.location="#";
     }
   }
   function blockSpecialChar(e){
