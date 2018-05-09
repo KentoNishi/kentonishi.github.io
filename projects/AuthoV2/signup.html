@@ -2,6 +2,11 @@
 <link href="https://kentonishi.github.io/projects/AuthoV2/styles.css" rel="stylesheet" type="text/css"></link>
 
 <script>
+  window.onload=function(){
+    if(window.location.hash.indexOf("existing")!=-1){
+      alert("This username is taken. Please choose a new username.");
+    }
+  }
   function blockSpecialChar(e){
       var k;
       document.all ? k = e.keyCode : k = e.which;
