@@ -22,6 +22,7 @@
   var messagecount=0;
   var key="";
   eventer(messageEvent,function(e) {
+    console.log(e.data);
     if(messagecount==0){
     }else{
       if(key==e.data){
