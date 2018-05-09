@@ -14,7 +14,10 @@
   var messaged=true;
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
   eventer(messageEvent,function(e) {
-    messaged=false;
+    if(e.origin.indexOf("kentonishi")!=-1){
+      messaged=false;
+    }
+    
   });
   function confirm(){
     if(messaged){
