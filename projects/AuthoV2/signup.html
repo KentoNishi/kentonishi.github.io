@@ -23,10 +23,12 @@
   function confirm(){
     if(init!=0){
     if(messaged){
-      alert("Confirmation");
+//      alert("Confirmation");
       sendData();
     }else{
       alert("Denied");
+      window.location="#existing";
+      location.reload();
     }
     }else{
       init=1;
@@ -38,7 +40,8 @@
   var o=0;
   function setUp(){
     if(o!=0){
-      alert('Setup Complete');
+//      alert('Setup Complete');
+      window.location="https://kentonishi.github.io/projects/AuthoV2/login.html#newaccount";
     }o++;
   }
   function signup(){
