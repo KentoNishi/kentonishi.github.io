@@ -101,9 +101,7 @@
        * Print files.
        */
       function listFiles() {
-        alert(gapi.client.drive.getAppFolder());
-        //modified
-          /*{
+        alert(gapi.client.drive.files.list({
           'pageSize': 10,
           'fields': "nextPageToken, files(id, name)"
         }).then(function(response) {
@@ -117,7 +115,7 @@
           } else {
             appendPre('No files found.');
           }
-        });*/
+        });
       }
 
     </script>
