@@ -6,6 +6,9 @@
     if(window.location.hash.indexOf("newaccount")!=-1){
       alert("Sign into your account.");
       window.location="#";
+    }else if(window.location.hash.indexOf("incorrect")!=-1){
+      alert("Your password is incorrect. Please try again.");
+      window.location="#";
     }
   }
   var username="";
@@ -43,10 +46,11 @@
   function confirm(){
     if(loadcount>2){
       if(confirmation==true){
-        alert("Success!");
+        alert("Login Successful.");
+        //        alert("Success!");
       }else{
         if(!unconfirmed){
-          alert("Error!");
+//          alert("Error!");
           key="";
           location.reload();
         }else{
