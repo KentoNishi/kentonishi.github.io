@@ -45,7 +45,8 @@
         alert("Success!");
       }else{
         if(!unconfirmed){
-          alert("Error!");
+          alert("Your username or password is incorrect.");
+          location.reload();
         }else{
           unconfirmed=false;
           setTimeout(confirm, 1000);
