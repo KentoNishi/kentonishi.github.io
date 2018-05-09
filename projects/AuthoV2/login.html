@@ -46,6 +46,8 @@
       }else{
         if(!unconfirmed){
           alert("Error!");
+          key="";
+          location.reload();
         }else{
           unconfirmed=false;
           setTimeout(confirm, 1000);
