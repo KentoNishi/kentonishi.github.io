@@ -1,6 +1,11 @@
 <script src="https://kentonishi.github.io/projects/AuthoV2/sha256.js"></script>
 <link href="https://kentonishi.github.io/projects/AuthoV2/styles.css" rel="stylesheet" type="text/css"></link>
 <script>
+  window.onload=function(){
+    if(window.location.hash.indexOf("newaccount")!=-1){
+      alert("Sign into your account.");
+    }
+  }
   var username="";
   var password="";
   function signin(){
