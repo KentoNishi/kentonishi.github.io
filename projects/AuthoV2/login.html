@@ -32,18 +32,24 @@
     }
     messagecount++;
   });
+  var unconfirmed=true;
   var loadcount=0;
   function confirm(){
     if(loadcount>3){
       if(confirmation==true){
         alert("Success!");
       }else{
+        if(!unconfirmed){
         alert("Error!");
+        }
       }
     }
     loadcount+=1;
   }
-  confirm();
+  window.onload=function(){
+    confirm();
+    unconfirmed=false;
+  }
 </script>
 
 <iframe onload="setTimeout(confirm, 2000);" class="autho" src=""></iframe>
