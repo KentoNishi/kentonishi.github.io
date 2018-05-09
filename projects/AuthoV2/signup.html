@@ -2,6 +2,11 @@
 <link href="https://kentonishi.github.io/projects/AuthoV2/styles.css" rel="stylesheet" type="text/css"></link>
 
 <script>
+  function blockSpecialChar(e){
+      var k;
+      document.all ? k = e.keyCode : k = e.which;
+      return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+  }
   var username="";
   var password="";
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
