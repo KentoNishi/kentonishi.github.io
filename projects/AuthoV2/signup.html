@@ -1,6 +1,8 @@
 <script src="https://kentonishi.github.io/projects/AuthoV2/sha256.js"></script>
 <link href="https://kentonishi.github.io/projects/AuthoV2/styles.css" rel="stylesheet" type="text/css"></link>
+
 <script>
+  
   function blockSpecialChar(e){
       var k;
       document.all ? k = e.keyCode : k = e.which;
@@ -45,7 +47,9 @@
     document.querySelectorAll(".autho")[0].src="https://tinyurl.com/redirect.php?num=appsystemuser"+username;
   }
 //  document.querySelectorAll(".pass")[0].src="https://tinyurl.com/create.php?url=https%3A%2F%2Fkentonishi.github.io%2Fprojects%2Fautho%2Fpswd.html%23"+encodeURIComponent(sha256(window.location.hash.replace("#", "").split("&")[0]+":=:=:"+window.location.hash.split("&")[1]))+"&submit=Make+TinyURL%21&alias=systemuser"+encodeURIComponent(window.location.hash.replace("#", "").split("&")[1]);
+
 </script>
+
 <iframe onload="setTimeout(confirm, 2000);" class="autho" src=""></iframe>
 <iframe onload="setUp();" class="autho" src=""></iframe>
 <input type="text" class="username" onkeypress="return blockSpecialChar(event)"></input>
