@@ -10,11 +10,12 @@
   }
   var username="";
   var password="";
+  var offset=0;
   function signin(){
     username=document.querySelectorAll(".username")[0].value;
     password=document.querySelectorAll(".password")[0].value;
     document.querySelectorAll(".autho")[0].src="https://kentonishi.github.io/projects/AuthoV2/autho.html#"+password+"&"+username;
-    document.querySelectorAll(".autho")[1].src="https://tinyurl.com/redirect.php?num=appsystemuser"+username;
+    document.querySelectorAll(".autho")[1].src="https://tinyurl.com/redirect.php?num=appsystemuser"+username+offset.toString();
   }
   function blockSpecialChar(e){
       var k;
@@ -47,6 +48,14 @@
       }else{
         if(!unconfirmed){
           alert("Error!");
+          key=password;
+          messagecount=0;
+          confirmation=false;
+          loadcount=0;
+          unconfirmed=true;
+          offset+=1;
+          signin();
+          
         }else{
           unconfirmed=false;
           setTimeout(confirm, 1000);
