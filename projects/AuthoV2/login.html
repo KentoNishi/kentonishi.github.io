@@ -47,13 +47,7 @@
       }else{
         if(!unconfirmed){
           alert("Error!");
-          key=password;
-          messagecount=0;
-          confirmation=false;
-          loadcount=0;
-          unconfirmed=true;
-          offset+=1;
-          signin();
+          location.reload();
           
         }else{
           unconfirmed=false;
