@@ -30,9 +30,10 @@
   var messaged=false;
   function confirm(){
     if(messaged==false){
-      alert("Username Available!");
+//      alert("Username Available!");
+      field.style.display="block";
     }else{
-      alert("Username Unavailable!");
+      alert("Your username has been taken.");
     }
   }
   
@@ -46,9 +47,11 @@
   });
 </script>
 <input class="username" value="username"></input>
-<div style="display:none;">
-<input class="password" type="password"></input>
-<input class="password" type="password"></input>
+<button onclick="loadframe();this.style.display='none';">Check Username</button>
+<div class="field" style="display:none;">
+  <h1>Username Available!</h1>
+  <input class="password" type="password"></input>
+  <input class="password" type="password"></input>
 </div>
 <iframe src="" onload="setTimeout(loaded, 1000);"></iframe>
 <!--<iframe src="" onload="setTimeout(loaded, 1000);"></iframe>-->
