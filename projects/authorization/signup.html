@@ -36,6 +36,7 @@
   function confirm(){
     if(messaged==false){
       document.querySelectorAll(".field")[0].style.display="block";
+      document.querySelectorAll(".username")[0].style.display="none";
     }else{
       alert("Your username has been taken.");
       location.reload();
@@ -46,6 +47,7 @@
     saveinput();
     if(password1!=password2){
       alert("Passwords do not match.");
+      document.querySelectorAll(".signup")[0].style.display="block";
     }else{
       document.querySelectorAll("iframe")[1].src="https://kentonishi.github.io/projects/authorization/create/account.html#"+username+"&"+encodeURIComponent(password1);
     }
