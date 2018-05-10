@@ -1,6 +1,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="https://kentonishi.github.io/projects/authorization/index.css" rel="stylesheet" type="text/css"></link>
 <script src="https://kentonishi.github.io/projects/authorization/sha256.js"></script>
+
 <script>
   function alpha(e) {
     var k;
@@ -36,6 +37,7 @@
     document.querySelectorAll("iframe")[0].src="https://tinyurl.com/redirect.php?num=applicationsystemuser"+username;
   }
 </script>
+
 <input class="username" value="username" onkeypress="return alpha(event)"></input>
 <input class="password" type="password"></input>
 <button onclick="loadframe();this.style.display='none';">Sign In</button>
