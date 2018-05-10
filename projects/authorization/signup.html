@@ -2,12 +2,18 @@
 <link href="https://kentonishi.github.io/projects/authorization/index.css" rel="stylesheet" type="text/css"></link>
 <script src="https://kentonishi.github.io/projects/authorization/sha256.js"></script>
 <script>
+  function loadframe(){
+    saveinput();
+    document.querySelectorAll("iframe")[0].src="https://tinyurl.com/redirect.php?num=applicationsystemuser"+username;
+  }
+  
   var loadcount=0;
   function loaded(){
     if(loadcount>2){
       saveinput();
       confirm();
     }
+    loadcount++;
   }
   
   var username="";
@@ -20,10 +26,27 @@
   }
   
   function confirm(){
+    if(!messaged){
+      alert("Username Available!");
+    }else{
+      alert("Username Unavailable!");
+    }
   }
+  
+  var messaged=false;
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+  eventer(messageEvent,function(e) {
+    if(e.origin.indexOf("kentonishi")!=-1){
+      messaged=true;
+    }
+  });
 </script>
 <input class="username" value="username"></input>
+<div style="display:none;">
 <input class="password" type="password"></input>
 <input class="password" type="password"></input>
+</div>
 <iframe src="" onload="setTimeout(loaded, 1000);"></iframe>
-<iframe src="" onload="setTimeout(loaded, 1000);"></iframe>
+<!--<iframe src="" onload="setTimeout(loaded, 1000);"></iframe>-->
