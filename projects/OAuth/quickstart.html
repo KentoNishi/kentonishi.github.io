@@ -21,7 +21,7 @@
       var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
       // Authorization scopes required by the API; multiple scopes can be
       // included, separated by spaces.
-      var SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
+      var SCOPES = 'https://www.googleapis.com/auth/blogger';
       var authorizeButton = document.getElementById('authorize-button');
       var signoutButton = document.getElementById('signout-button');
       /**
@@ -57,7 +57,7 @@
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
-          listFiles();
+//          listFiles();
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
@@ -88,7 +88,7 @@
       }
       /**
        * Print files.
-       */
+       *//*
       function listFiles() {
         gapi.client.drive.files.list({
           'pageSize': 10,
@@ -105,7 +105,7 @@
             appendPre('No files found.');
           }
         });
-      }
+      }*/
     </script>
 
     <script async defer src="https://apis.google.com/js/api.js"
