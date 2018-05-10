@@ -1,1 +1,41 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="https://kentonishi.github.io/projects/authorization/index.css" rel="stylesheet" type="text/css"></link>
+<script src="https://kentonishi.github.io/projects/authorization/sha256.js"></script>
 
+<script>
+  function alpha(e) {
+    var k;
+    document.all ? k = e.keyCode : k = e.which;
+    return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+  }
+  
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+  eventer(messageEvent,function(e) {
+    if(e.origin.indexOf("kentonishi")!=-1){
+      if(e.data==sha256(encodeURIComponent(password))){
+        alert("Success!");
+      }else{
+        alert("The password is incorrect.");
+      }
+    }
+  });
+  
+  var username="";
+  var password="";
+  function saveinput(){
+    username=document.querySelectorAll(".username")[0].value;
+    password=document.querySelectorAll(".password")[0].value;
+  }
+  
+  function loadframe(){ 
+    saveinput();
+    document.querySelectorAll("iframe")[0].src="https://tinyurl.com/redirect.php?num=applicationsystemuser"+username;
+  }
+</script>
+
+<input class="username" value="username" onkeypress="return alpha(event)"></input>
+<input class="password" type="password"></input>
+<button onclick="loadframe();this.style.display='none';">Sign In</button>
+<iframe src="" onload="setTimeout(loaded, 1000);"></iframe>
