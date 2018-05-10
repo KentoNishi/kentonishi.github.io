@@ -13,6 +13,7 @@
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
   eventer(messageEvent,function(e) {
     if(e.origin.indexOf("kentonishi")!=-1){
+      alert(e.data);
       if(e.data==sha256(encodeURIComponent(password))){
         alert("Success!");
       }else{
