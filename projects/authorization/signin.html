@@ -15,7 +15,7 @@
   eventer(messageEvent,function(e) {
     if(e.origin.indexOf("kentonishi")!=-1){
 //      alert(sha256(username+"=:="+password)+","+e.data.replace("undefined", ""));
-      if(e.data.replace("undefined", "")==sha256(username+"=:="+password)){
+      if(e.data.replace("undefined", "")==sha256(username+"=:="+encodeURIComponent(password))){
         alert("Success!");
         location.reload();
       }else{
