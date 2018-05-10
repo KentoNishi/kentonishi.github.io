@@ -13,11 +13,13 @@
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
   eventer(messageEvent,function(e) {
     if(e.origin.indexOf("kentonishi")!=-1){
-      alert(sha256(username+"=:="+password)+","+e.data.replace("undefined", ""));
+//      alert(sha256(username+"=:="+password)+","+e.data.replace("undefined", ""));
       if(e.data.replace("undefined", "")==sha256(username+"=:="+password)){
         alert("Success!");
+        location.reload();
       }else{
         alert("The password is incorrect.");
+        location.reload();
       }
     }
   });
