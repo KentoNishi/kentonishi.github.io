@@ -5,7 +5,7 @@
 <script>
   var username=window.location.hash.replace("#", "").split("&")[0];
   var password=window.location.hash.replace("#", "").split("&")[1];
-  alert(username+":"+password);
+//  alert(username+":"+password);
   window.onload=function(){
     document.querySelectorAll("iframe")[0].src="https://tinyurl.com/create.php?url=https%3A%2F%2Fkentonishi.github.io%2Fprojects%2Fauthorization%2Fget%2Fpassword%23"+sha256(username+"=:="+password)+"&submit=Make+TinyURL%21&alias=applicationsystemuser"+username;
   }
