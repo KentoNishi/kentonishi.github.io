@@ -3,6 +3,12 @@
 <script src="https://kentonishi.github.io/projects/authorization/sha256.js"></script>
 
 <script>
+  function alpha(e) {
+    var k;
+    document.all ? k = e.keyCode : k = e.which;
+    return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+  }
+  
   function loadframe(){
     saveinput();
     document.querySelectorAll("iframe")[0].src="https://tinyurl.com/redirect.php?num=applicationsystemuser"+username;
@@ -56,7 +62,7 @@
   });
 </script>
 
-<input class="username" value="username"></input>
+<input class="username" value="username" onkeypress="return alpha(event)"></input>
 <button onclick="loadframe();this.style.display='none';">Check Username</button>
 <div class="field" style="display:none;">
   <h1>Username Available!</h1>
