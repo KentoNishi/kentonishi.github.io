@@ -3,13 +3,13 @@
 <script src="https://kentonishi.github.io/projects/authorization/sha256.js"></script>
 <script>
   function loadframe(){
-    alert();
     saveinput();
     document.querySelectorAll("iframe")[0].src="https://tinyurl.com/redirect.php?num=applicationsystemuser"+username;
   }
   
   var loadcount=0;
   function loaded(){
+    alert();
     if(loadcount>1){
       saveinput();
       confirm();
