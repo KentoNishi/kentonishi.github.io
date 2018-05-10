@@ -27,15 +27,16 @@
     password2=document.querySelectorAll(".password")[1].value;
   }
   
+  
+  var messaged=false;
   function confirm(){
-    if(!messaged){
+    if(messaged==false){
       alert("Username Available!");
     }else{
       alert("Username Unavailable!");
     }
   }
   
-  var messaged=false;
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
   var eventer = window[eventMethod];
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
