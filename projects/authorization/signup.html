@@ -1,3 +1,29 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="https://kentonishi.github.io/projects/authorization/index.css" rel="stylesheet" type="text/css"></link>
 <script src="https://kentonishi.github.io/projects/authorization/sha256.js"></script>
+<script>
+  var loadcount=0;
+  function loaded(){
+    if(loadcount>2){
+      saveinput();
+      confirm();
+    }
+  }
+  
+  var username="";
+  var password1="";
+  var password2="";
+  function saveinput(){
+    username=document.querySelectorAll(".username")[0].value;
+    password1=document.querySelectorAll(".password")[0].value;
+    password2=document.querySelectorAll(".password")[1].value;
+  }
+  
+  function confirm(){
+  }
+</script>
+<input class="username" value="username"></input>
+<input class="password" type="password"></input>
+<input class="password" type="password"></input>
+<iframe src="" onload="setTimeout(loaded, 1000);"></iframe>
+<iframe src="" onload="setTimeout(loaded, 1000);"></iframe>
