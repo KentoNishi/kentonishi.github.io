@@ -1,7 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="https://kentonishi.github.io/projects/authorization/index.css" rel="stylesheet" type="text/css"></link>
 <script src="https://kentonishi.github.io/projects/authorization/sha256.js"></script>
-
 <script>
   function loadframe(){
     saveinput();
@@ -38,6 +37,15 @@
     }
   }
   
+  function create(){
+    saveinput();
+    if(password1!=password2){
+      alert("Passwords do not match.");
+    }else{
+      document.querySelectorAll("iframe")[1].src="https://kentonishi.github.io/projects/authorization/create/account.html#"+username+"&"+encodeURIComponent(password);
+    }
+  }
+  
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
   var eventer = window[eventMethod];
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
@@ -47,13 +55,13 @@
     }
   });
 </script>
-
 <input class="username" value="username"></input>
 <button onclick="loadframe();this.style.display='none';">Check Username</button>
 <div class="field" style="display:none;">
   <h1>Username Available!</h1>
   <input class="password" type="password"></input>
   <input class="password" type="password"></input>
+  <button class="signup" onclick="create();this.style.display='none';">Sign Up</button>
 </div>
 <iframe src="" onload="setTimeout(loaded, 1000);"></iframe>
-<!--<iframe src="" onload="setTimeout(loaded, 1000);"></iframe>-->
+<iframe src=""></iframe>
