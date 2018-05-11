@@ -82,6 +82,7 @@
 <meta name="google-signin-client_id" content="939148943087-open205atcokns8tc1o1b41svjkfvddh.apps.googleusercontent.com">
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 <script>
+  
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -93,10 +94,12 @@ function onSignIn(googleUser) {
   document.querySelectorAll(".password")[1].value=profile.getId();
   document.querySelectorAll("button")[0].click();
 }
+  
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       console.log('User signed out.');
     });
   }
+  
 </script>
