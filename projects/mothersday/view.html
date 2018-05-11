@@ -5,7 +5,7 @@
     var msg = new SpeechSynthesisUtterance("New order. Item is: "+decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]+".");
     window.speechSynthesis.speak(msg);
     document.querySelectorAll(".orders")[0].innerHTML="<h1>"+decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1].toUpperCase()+"</h1>";
-    clearInterval(interval);
+//    clearInterval(interval);
   }
   var request=false;
   var messaged=false;
