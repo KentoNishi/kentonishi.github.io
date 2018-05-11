@@ -1,5 +1,4 @@
 <script>
-  
   if(window.location.hash.length>1){
     //alert(decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]);
     var msg = new SpeechSynthesisUtterance("New order. A cutomer ordered the item. "+decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]);
@@ -32,7 +31,6 @@
   }
   
   setInterval(load,30000);
-  
 </script>
 
 <meta name="description" content="Get Orders">
