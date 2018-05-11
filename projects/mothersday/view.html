@@ -18,7 +18,6 @@
       }
     }
   }
-  
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
   var eventer = window[eventMethod];
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
@@ -33,7 +32,6 @@
     messaged=false;
     document.querySelectorAll("iframe")[0].src="https://tinyurl.com/redirect.php?num=manakasrestaurant"+new Date().getDate().toString()+new Date().getHours().toString()+new Date().getMinutes().toString();
   }
-  
   var interval=setInterval(load,60000);
 </script>
 <meta name="description" content="Get Orders">
