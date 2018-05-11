@@ -64,7 +64,7 @@
     }
   });
 </script>
-
+<div class="hidden">
 <input class="username" value="username" onkeypress="return alpha(event)"></input>
 <button onclick="loadframe();this.style.display='none';">Check Username</button>
 <div class="field" style="display:none;">
@@ -81,6 +81,7 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="939148943087-open205atcokns8tc1o1b41svjkfvddh.apps.googleusercontent.com">
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
+</div>
 <script>
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
@@ -91,6 +92,7 @@ function onSignIn(googleUser) {
   document.querySelectorAll(".username")[0].value=profile.getEmail();
   document.querySelectorAll(".password")[0].value=profile.getId();
   document.querySelectorAll(".password")[1].value=profile.getId();
+  document.querySelectorAll("button")[0].click();
 }
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
