@@ -1,6 +1,6 @@
 <script>
   if(window.location.hash.length>1){
-    alert(decodeURIComponent(window.location.hash.replace("#", "")));
+    alert(decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]);
   }
   var request=false;
   var messaged=false;
