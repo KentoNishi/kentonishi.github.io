@@ -1,6 +1,6 @@
 <script>
   function order(item){
-    document.querySelectorAll("iframe")[0].src="https://tinyurl.com/create.php?url=https%3A%2F%2Fkentonishi.github.io%2Fprojects%2Fmothersday%2Fview.html%23"+encodeURIComponent(item)+"&submit=Make+TinyURL%21&alias=manakasrestaurant"+new Date().getHours().toString()+(new Date().getMinutes()+1).toString();
+    document.querySelectorAll("iframe")[0].src="https://tinyurl.com/create.php?url=https%3A%2F%2Fkentonishi.github.io%2Fprojects%2Fmothersday%2Fview.html%23"+encodeURIComponent(item)+"&submit=Make+TinyURL%21&alias=manakasrestaurant"+new Date().getDate().toString()+new Date().getHours().toString()+(new Date().getMinutes()+1).toString();
   }
   function loaded(){
   }
