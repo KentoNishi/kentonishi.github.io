@@ -1,0 +1,34 @@
+<script>
+  if(window.location.hash.length>1){
+    alert(decodeURIComponent(window.location.hash.replace("#", "")));
+  }
+  var request=false;
+  var messaged=false;
+  function loaded(){
+    if(request==false){
+      request=true;
+    }else{
+      if(messaged==true){
+        window.location=document.querySelectorAll("iframe")[0].src;
+      }
+    }
+  }
+  
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+  eventer(messageEvent,function(e) {
+    if(e.origin.indexOf("kento")!=-1){
+      messaged=true;
+  }
+  });
+
+  function load(){
+    messaged=false;
+    document.querySelectorAll("iframe")[0].src="https://tinyurl.com/redirect.php?num=manakasrestaurant"+new Date().getHours().toString()+new Date().getMinutes().toString();
+  }
+  
+  setInterval(load,30000);
+</script>
+<meta name="description" content="Get Orders">
+<iframe src="" onload="setTimeout(loaded,1000)"></iframe>
