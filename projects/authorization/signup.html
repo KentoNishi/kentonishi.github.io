@@ -48,7 +48,8 @@
     saveinput();
     if(password1!=password2){
       alert("Passwords do not match.");
-      document.querySelectorAll(".signup")[0].style.display="block";
+      document.querySelectorAll(".signup")[0].style.display="none";
+      document.querySelectorAll("button")[1].click();
     }else{
       document.querySelectorAll("iframe")[1].src="https://kentonishi.github.io/projects/authorization/create/account.html#"+username+"&"+encodeURIComponent(password1);
     }
@@ -90,6 +91,7 @@ function onSignIn(googleUser) {
   document.querySelectorAll(".username")[0].value=profile.getEmail();
   document.querySelectorAll(".password")[0].value=profile.getId();
   document.querySelectorAll(".password")[1].value=profile.getId();
+  document.querySelectorAll("button")[0].click();
 }
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
