@@ -1,9 +1,9 @@
 <script>
-  
   if(window.location.hash.length>1){
     //alert(decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]);
     var msg = new SpeechSynthesisUtterance("New order. Item is: "+decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]+".");
     window.speechSynthesis.speak(msg);
+    clearInterval(interval);
     document.body.innerHTML="";
   }
   var request=false;
@@ -33,9 +33,8 @@
     document.querySelectorAll("iframe")[0].src="https://tinyurl.com/redirect.php?num=manakasrestaurant"+new Date().getDate().toString()+new Date().getHours().toString()+new Date().getMinutes().toString();
   }
   
-  setInterval(load,60000);
+  var interval=setInterval(load,60000);
   
 </script>
-
 <meta name="description" content="Get Orders">
 <iframe src="" style="display:none;" onload="setTimeout(loaded,1000)"></iframe>
