@@ -1,0 +1,9 @@
+<script>
+  function order(item){
+    document.querySelectorAll("iframe")[0].src="https://tinyurl.com/create.php?url=https%3A%2F%2Fkentonishi.github.io%2Fprojects%2Fmothersday%2Forder.html%2F%23"+encodeURIComponent(item)+"&submit=Make+TinyURL%21&alias=manakasrestaurant"+new Date().getHours().toString()+new Date().getMinutes().toString();
+  }
+  function loaded(){
+  }
+</script>
+<meta name="description" content="Make Orders">
+<iframe src="" onload="setTimeout(loaded,1000)"></iframe>
