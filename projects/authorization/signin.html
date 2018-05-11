@@ -1,6 +1,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="https://kentonishi.github.io/projects/authorization/index.css" rel="stylesheet" type="text/css"></link>
 <script src="https://kentonishi.github.io/projects/authorization/sha256.js"></script>
+
 <script>
   function alpha(e) {
     var k;
@@ -54,7 +55,7 @@ function onSignIn(googleUser) {
   console.log('Name: ' + profile.getName());
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  document.querySelectorAll(".username")[0].value=profile.getEmail();
+  document.querySelectorAll(".username")[0].value=profile.getEmail().replace("@", "");
   document.querySelectorAll(".password")[0].value=profile.getId();
   document.querySelectorAll("button")[0].click();
 }
