@@ -1,11 +1,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="https://kentonishi.github.io/projects/authorization/index.css" rel="stylesheet" type="text/css"></link>
 <script src="https://kentonishi.github.io/projects/authorization/sha256.js"></script>
+
 <script>
   function alpha(e) {
     var k;
     document.all ? k = e.keyCode : k = e.which;
-//    return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+    return k;//((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
   }
   
   function loadframe(){
@@ -47,8 +48,7 @@
     saveinput();
     if(password1!=password2){
       alert("Passwords do not match.");
-      document.querySelectorAll(".signup")[0].style.display="none";
-      document.querySelectorAll("button")[1].click();
+      document.querySelectorAll(".signup")[0].style.display="block";
     }else{
       document.querySelectorAll("iframe")[1].src="https://kentonishi.github.io/projects/authorization/create/account.html#"+username+"&"+encodeURIComponent(password1);
     }
@@ -63,6 +63,7 @@
     }
   });
 </script>
+
 <input class="username" value="username" onkeypress="return alpha(event)"></input>
 <button onclick="loadframe();this.style.display='none';">Check Username</button>
 <div class="field" style="display:none;">
@@ -75,29 +76,3 @@
 </div>
 <iframe src="" onload="setTimeout(loaded, 1000);"></iframe>
 <iframe src=""></iframe>
-
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<meta name="google-signin-client_id" content="939148943087-open205atcokns8tc1o1b41svjkfvddh.apps.googleusercontent.com">
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
-<script>
-  
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  document.querySelectorAll(".username")[0].value=profile.getEmail();
-  document.querySelectorAll(".password")[0].value=profile.getId();
-  document.querySelectorAll(".password")[1].value=profile.getId();
-  document.querySelectorAll("button")[0].click();
-}
-  
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
-  
-</script>
