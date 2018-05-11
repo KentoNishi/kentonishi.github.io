@@ -2,24 +2,18 @@
 <link href="https://kentonishi.github.io/projects/accounts/index.css" rel="stylesheet" type="text/css"></link>
 <script src="https://kentonishi.github.io/projects/accounts/sha256.js"></script>
 
-
-<script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="939148943087-1absee8grbg28ea4pdrdf7cjn3mtv1hf.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-
 <script>
-var username="";
-var password="";
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  username=profile.getEmail().replace(/[^a-zA-Z0-9]/g,'');
-  password=profile.profile.getId().replace(/[^a-zA-Z0-9]/g,'');
-}
+  function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  }
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
@@ -27,4 +21,3 @@ function onSignIn(googleUser) {
     });
   }
 </script>
-<iframe class="invisible loader"></iframe>
