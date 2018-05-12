@@ -19,6 +19,7 @@
       }
     }
   }
+    
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
   var eventer = window[eventMethod];
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
@@ -28,6 +29,7 @@
       document.querySelectorAll(".orders")[0].innerHTML+="<h1>"+e.data+"</h1><br />";
   }
   });
+    
   function load(){
     messaged=false;
     document.querySelectorAll("iframe")[0].src="https://tinyurl.com/redirect.php?num=manakasrestaurant"+new Date().getDate().toString()+new Date().getHours().toString()+new Date().getMinutes().toString();
