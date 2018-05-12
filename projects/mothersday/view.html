@@ -30,7 +30,7 @@
 
   function load(){
     messaged=false;
-    document.querySelectorAll("iframe")[0].src="https://tinyurl.com/redirect.php?num=manakasrestaurant"+new Date().getDate().toString()+new Date().getHours().toString()+new Date().getMinutes().toString()+Math.floor(new Date().getMinutes()/6)*6.toString();
+    document.querySelectorAll("iframe")[0].src="https://tinyurl.com/redirect.php?num=manakasrestaurant"+new Date().getDate().toString()+new Date().getHours().toString()+new Date().getMinutes().toString()+(Math.floor(new Date().getMinutes()/6)*6+1).toString();
   }
   
   var interval=setInterval(load,10000);
