@@ -14,11 +14,16 @@
   var auth=firebase.auth();
   
   function upload(){
-    var file=document.querySelectorAll("#input")[0].files[0];
+//    var file=document.querySelectorAll("#input")[0].value;
+    var mystring = document.querySelectorAll("#input")[0].value;
+    var myblob = new Blob([mystring], {
+    type: 'text/plain'
+    });
+    var file=myblob;
     var storageRef=firebase.storage().ref("User-Data/"+file.name);
     storageRef.put(file);
   }
   
 </script>
-
-<input type="file" id="input" onchange="upload()">
+<input id="input" />
+<button onclick="upload()">SAVE</button>
