@@ -10,7 +10,17 @@
     messagingSenderId: "939148943087"
   };
   firebase.initializeApp(config);
-</script>
-<script>
+  var storage = firebase.storage();
   var auth=firebase.auth();
+  
+  // Get a non-default Storage bucket
+  var storage = firebase.app().storage("gs://kento-nishi---gi-1525841644617.appspot.com");
+  var file = ... // use the Blob or File API
+  storage.put(file).then(function(snapshot) {
+    console.log('Uploaded a blob or file!');
+  });
+  function upload(){
+    var selectedFile = document.getElementById('input').files[0];
+  }
 </script>
+<input type="file" id="input" onclick="upload()" onchange="handleFiles(this.files)">
