@@ -15,7 +15,7 @@
   
   function upload(){
     var file=document.querySelectorAll("#input")[0].files[0];
-    var storageRef=firebase.storage().ref("User-Data/"+file.name+".txt");
+    var storageRef=firebase.storage().ref("User-Data/"+file.name);
     storageRef.put(file);
   }
   
