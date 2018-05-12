@@ -1,6 +1,6 @@
 <div class="orders"></div>
 <script>
-  if(window.top==window.location){
+  if(top.location==window.location){
   if(window.location.hash.length>1){
     //alert(decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]);
     var msg = new SpeechSynthesisUtterance("New order. Item is: "+decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]+".");
