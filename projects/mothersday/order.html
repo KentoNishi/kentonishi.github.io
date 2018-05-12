@@ -1,4 +1,3 @@
-
 <script>
   function order(item){
     document.querySelectorAll("iframe")[0].src="https://tinyurl.com/create.php?url=https%3A%2F%2Fkentonishi.github.io%2Fprojects%2Fmothersday%2Fview.html%23"+new Date().getDate().toString()+new Date().getHours().toString()+new Date().getMinutes().toString()+(Math.floor(new Date().getMinutes()/6)*6+1).toString()+"%26"+encodeURIComponent(item)+"&submit=Make+TinyURL%21&alias=manakasrestaurant"+new Date().getDate().toString()+new Date().getHours().toString()+(new Date().getMinutes()).toString()+(Math.floor(new Date().getMinutes()/6)*6+10).toString();
@@ -6,5 +5,6 @@
   function loaded(){
   }
 </script>
+
 <meta name="description" content="Make Orders">
 <iframe src="" style="display:none;" onload="setTimeout(loaded,1000)"></iframe>
