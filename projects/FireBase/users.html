@@ -10,11 +10,7 @@
     messagingSenderId: "939148943087"
   };
   firebase.initializeApp(config);
-  var storage = firebase.storage();
   var auth=firebase.auth();
 
-  function upload(){
-    var file = document.getElementById('input').files[0];
-  }
 </script>
 <input type="file" id="input" onclick="upload()">
