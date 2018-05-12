@@ -12,13 +12,7 @@
   firebase.initializeApp(config);
   var storage = firebase.storage();
   var auth=firebase.auth();
-  
-  // Get a non-default Storage bucket
-  var storage = firebase.app().storage("gs://kento-nishi---gi-1525841644617.appspot.com");
-  var file;//;... // use the Blob or File API
-  storage.put(file).then(function(snapshot) {
-    console.log('Uploaded a blob or file!');
-  });
+
   function upload(){
     var file = document.getElementById('input').files[0];
   }
