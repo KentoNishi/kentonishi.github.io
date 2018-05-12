@@ -1,7 +1,13 @@
 
 <script>
+  var time=0;
   function order(item){
-    document.querySelectorAll("iframe")[0].src="https://tinyurl.com/create.php?url=https%3A%2F%2Fkentonishi.github.io%2Fprojects%2Fmothersday%2Fview.html%23"+new Date().getDate().toString()+new Date().getHours().toString()+new Date().getMinutes().toString()+"%26"+encodeURIComponent(item)+"&submit=Make+TinyURL%21&alias=manakasrestaurant"+new Date().getDate().toString()+new Date().getHours().toString()+(new Date().getMinutes()+1).toString();
+    if(new Date().getMinutes()!=time){
+     document.querySelectorAll("iframe")[0].src="https://tinyurl.com/create.php?url=https%3A%2F%2Fkentonishi.github.io%2Fprojects%2Fmothersday%2Fview.html%23"+new Date().getDate().toString()+new Date().getHours().toString()+new Date().getMinutes().toString()+"%26"+encodeURIComponent(item)+"&submit=Make+TinyURL%21&alias=manakasrestaurant"+new Date().getDate().toString()+new Date().getHours().toString()+(new Date().getMinutes()+1).toString();
+     time=new Date().getMinutes();
+    }else{
+      alert("Too many orders at once! Please wait a minute.");
+    }
   }
   function loaded(){
   }
