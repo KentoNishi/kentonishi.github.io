@@ -1,7 +1,6 @@
 <div class="orders"></div>
 
 <script>
-  if(top.location==window.location){
     if(window.location.hash.length>1){
       //alert(decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]);
       var msg = new SpeechSynthesisUtterance("New order. Item is: "+decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]+".");
@@ -9,7 +8,6 @@
       parent.postMessage("<h1>New Order: "+decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1].toUpperCase()+"</h1>", "https://kentonishi.github.io/");
   //    window.location="about:blank";
     }
-  }
   var request=false;
   var messaged=false;
   function loaded(){
@@ -17,7 +15,7 @@
       request=true;
     }else{
       if(messaged==true){
-        window.location=document.querySelectorAll("iframe")[0].src;
+//        window.location=document.querySelectorAll("iframe")[0].src;
       }
     }
   }
