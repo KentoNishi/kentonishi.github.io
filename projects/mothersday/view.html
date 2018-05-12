@@ -25,7 +25,7 @@
   eventer(messageEvent,function(e) {
     if(e.origin.indexOf("kento")!=-1){
       messaged=true;
-      document.querySelectorAll(".orders")[0].innerHTML+="<h1 align='center'>"+e.data+"</h1>";
+      document.querySelectorAll(".orders")[0].innerHTML="<h1 align='center'>"+e.data+"</h1>";
   }
   });
     
