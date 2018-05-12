@@ -11,7 +11,13 @@
   };
   firebase.initializeApp(config);
   var auth=firebase.auth();
-  
+  var email=prompt("Email Address");
+  var password=prompt("password");
+  try{
+    auth.signInWithEmailAndPassword(email, password);
+  }catch(*){
+    alert("Error!");
+  }
   function upload(){
 //    var file=document.querySelectorAll("#input")[0].value;
     var mystring = document.querySelectorAll("#input")[0].value;
