@@ -4,7 +4,7 @@
     //alert(decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]);
     var msg = new SpeechSynthesisUtterance("New order. Item is: "+decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]+".");
     window.speechSynthesis.speak(msg);
-    parent.postMessage("<h1>"+decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1].toUpperCase()+"</h1>", "https://kentonishi.github.io/");
+    parent.postMessage("<h1>New Order: "+decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1].toUpperCase()+"</h1>", "https://kentonishi.github.io/");
     window.location="about:blank";
   }
   var request=false;
