@@ -11,6 +11,7 @@
   };
   firebase.initializeApp(config);
   var auth=firebase.auth();
+  
   function upload(){
     var file=document.querySelectorAll("#input")[0].files[0];
     var storageRef=firebase.storage().ref("test/test.txt");
