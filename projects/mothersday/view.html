@@ -6,7 +6,7 @@
       //alert(decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]);
       var msg = new SpeechSynthesisUtterance("New order. Item is: "+decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]+".");
       window.speechSynthesis.speak(msg);
-      parent.postMessage("<h1>New Order: "+decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1].toUpperCase()+"</h1>", "https://kentonishi.github.io/");
+      parent.postMessage(decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1].toUpperCase(), "https://kentonishi.github.io/");
   //    window.location="about:blank";
     }
   var request=false;
@@ -26,7 +26,7 @@
   eventer(messageEvent,function(e) {
     if(e.origin.indexOf("kento")!=-1){
       messaged=true;
-      document.querySelectorAll(".orders")[0].innerHTML=e.data;
+      document.querySelectorAll(".orders")[0].innerHTML+="<h1>"+e.data+"</h1><br />";
   }
   });
   function load(){
@@ -34,7 +34,7 @@
     document.querySelectorAll("iframe")[0].src="https://tinyurl.com/redirect.php?num=manakasrestaurant"+new Date().getDate().toString()+new Date().getHours().toString()+new Date().getMinutes().toString();
   }
   
-  var interval=setInterval(load,10000);
+  var interval=setInterval(load,60000);
 </script>
 
 
