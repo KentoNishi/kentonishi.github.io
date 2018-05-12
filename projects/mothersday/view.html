@@ -6,7 +6,7 @@
     var msg = new SpeechSynthesisUtterance("New order. Item is: "+decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]+".");
     window.speechSynthesis.speak(msg);
     window.postMessage("<h1>"+decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1].toUpperCase()+"</h1>", "https://kentonishi.github.io/");
-//    clearInterval(interval);
+    clearInterval(interval);
   }
   var request=false;
   var messaged=false;
