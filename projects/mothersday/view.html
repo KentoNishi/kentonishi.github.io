@@ -34,7 +34,9 @@
   }
   
   var interval=setInterval(load,60000);
-  load();
+  window.onload=function(){
+    load();
+  }
 </script>
 
 <meta name="description" content="Get Orders">
