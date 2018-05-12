@@ -14,9 +14,9 @@
   var auth=firebase.auth();
   
   function upload(){
-    var file=document.querySelectorAll("#input")[0].target.files[0];
+    var file=document.querySelectorAll("#input")[0].files[0];
     var storageRef=firebase.storage().ref("test/test.txt");
     storageRef.put(file);
   }
 </script>
-<input type="file" id="input" onclick="upload()">
+<input type="file" id="input" onchange="upload()">
