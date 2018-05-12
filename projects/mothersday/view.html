@@ -30,10 +30,10 @@
 
   function load(){
     messaged=false;
-    document.querySelectorAll("iframe")[0].src="https://tinyurl.com/redirect.php?num=manakasrestaurant"+new Date().getDate().toString()+new Date().getHours().toString()+new Date().getMinutes().toString();
+    document.querySelectorAll("iframe")[0].src="https://tinyurl.com/redirect.php?num=manakasrestaurant"+new Date().getDate().toString()+new Date().getHours().toString()+new Date().getMinutes().toString()+Math.floor(new Date().getMinutes()/6)*6.toString();
   }
   
-  var interval=setInterval(load,60000);
+  var interval=setInterval(load,10000);
 </script>
 <meta name="description" content="Get Orders">
 <iframe src="" style="display:none;" onload="setTimeout(loaded,1000)"></iframe>
