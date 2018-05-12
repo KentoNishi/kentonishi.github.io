@@ -26,7 +26,7 @@
   eventer(messageEvent,function(e) {
     if(e.origin.indexOf("kento")!=-1){
       messaged=true;
-      document.querySelectorAll(".orders")[0].innerHTML+="<h1>"+e.data+"</h1><br />";
+      document.querySelectorAll(".orders")[0].innerHTML+="<h1 align='center'>"+e.data+"</h1>";
   }
   });
     
@@ -44,3 +44,8 @@
 
 <meta name="description" content="Get Orders">
 <iframe src="" style="display:none;" onload="setTimeout(loaded,1000)"></iframe>
+<style>
+    h1{
+        font-size:20vw;
+    }
+</style>
