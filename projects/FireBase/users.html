@@ -16,7 +16,10 @@
   var email="";
   var password="";
   function login(){
-    auth.signInWithEmailAndPassword(email, password).catch(function(error) {alert("Error!");});
+    auth.signInWithEmailAndPassword(email, password).catch(function(error) {
+    auth.createUserWithEmailAndPassword(email, password);
+    location.reload();
+    });
   }
   
   function upload(){
