@@ -1,4 +1,5 @@
 <script>
+	
   var time=0;
   function order(item){
     item=encodeURIComponent(item);
@@ -10,9 +11,12 @@
       alert("Too many orders at once! Please wait a minute.");
     }
   }
+	
   function loaded(){
   }
+	
 </script>
+
 <meta name="description" content="Make Orders">
 <iframe src="" style="display:none;" onload="setTimeout(loaded,1000)"></iframe>
 
