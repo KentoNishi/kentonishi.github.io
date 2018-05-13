@@ -14,3 +14,110 @@
 <meta name="description" content="Make Orders">
 <iframe src="" style="display:none;" onload="setTimeout(loaded,1000)"></iframe>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+<div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"></div>
+
+
+<style>
+*{
+font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+.item{
+  width:25%;
+  height:22.5%;
+  background-color:lightblue;
+  position:fixed;
+  top:0;
+  left:0;
+  -webkit-box-shadow:inset 0px 0px 0px 1px black;
+  -moz-box-shadow:inset 0px 0px 0px 1px black;
+  box-shadow:inset 0px 0px 0px 1px black;
+  transition: z-index 0.5s step-end, background-color 0.5s, width 0.5s, height 0.5s;
+}
+.item:focus{
+  z-index:2;
+  top:0;
+  left:0;
+  background-color:lightpink;
+  width:100%;
+  height:90%;
+}
+</style>
+<script>
+  function setCookie(cname, cvalue, exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+      var expires = "expires="+d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+  function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(';');
+      for(var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+          }
+      }
+      return "";
+  }
+    window.onload=function(){
+  	for(var i=0;i<document.querySelectorAll(".item").length;i++){
+      document.querySelectorAll(".item")[i].style.left=((i%4)*25).toString()+"%";
+      document.querySelectorAll(".item")[i].style.top=(Math.floor(i/4)*22.5).toString()+"%";
+	}
+  }
+</script>
+<div style="position:fixed;bottom:0;width:100%;height:10%;background-color:black;color:white;text-align:center;left:0;font-size:8vh;">
+Main Menu
+</div>
