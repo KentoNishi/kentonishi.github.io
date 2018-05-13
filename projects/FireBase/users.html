@@ -1,4 +1,7 @@
 <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+<meta name="google-signin-client_id" content="939148943087-1absee8grbg28ea4pdrdf7cjn3mtv1hf.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
 
 <script>
   
@@ -15,9 +18,16 @@
   var auth=firebase.auth();
   var email=prompt("Email Address");
   var password=prompt("password");
-  auth.signInWithEmailAndPassword(email, password).catch(function(error) {
-    auth.createUserWithEmailAndPassword(email, password);
-  });;
+  
+  
+  function login(){
+    var profile = googleUser.getBasicProfile();
+    username=profile.getEmail();
+    password=profile.getId();
+    auth.signInWithEmailAndPassword(email, password).catch(function(error) {
+      auth.createUserWithEmailAndPassword(email, password);
+    });
+  }
   
   function upload(){
 //    var file=document.querySelectorAll("#input")[0].value;
