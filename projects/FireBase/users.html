@@ -13,14 +13,9 @@
   };
   firebase.initializeApp(config);
   var auth=firebase.auth();
-  var email="";
-  var password="";
-  function login(){
-    auth.signInWithEmailAndPassword(email, password).catch(function(error) {
-    auth.createUserWithEmailAndPassword(email, password);
-//    location.reload();
-    });
-  }
+  var email=prompt("Email Address");
+  var password=prompt("password");
+  auth.signInWithEmailAndPassword(email, password).catch(function(error) {alert("Error!");});;
   
   function upload(){
 //    var file=document.querySelectorAll("#input")[0].value;
@@ -32,31 +27,7 @@
     var storageRef=firebase.storage().ref("User-Data/"+file.name);
     storageRef.put(file);
   }
-  
 </script>
 
 <input id="input" />
 <button onclick="upload()">SAVE</button>
-
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<meta name="google-signin-client_id" content="939148943087-open205atcokns8tc1o1b41svjkfvddh.apps.googleusercontent.com">
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
-
-<script>
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  email=profile.getEmail();
-  password=profile.getId();
-  setTimeout(login,1000);
-}
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
-</script>
