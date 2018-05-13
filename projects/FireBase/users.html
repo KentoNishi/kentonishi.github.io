@@ -4,7 +4,6 @@
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
 <script>
-  
   var email="";
   var password="";
   function onSignIn(googleUser) {
@@ -45,7 +44,6 @@
     var storageRef=firebase.storage().ref("User-Data/"+email.replace(/[^a-zA-Z0-9]/g,'')+'.txt');
     storageRef.put(file);
   }
-  
 </script>
 
 
