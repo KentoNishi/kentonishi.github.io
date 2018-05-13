@@ -42,7 +42,7 @@
     type: 'text/plain'
     });
     var file=myblob;
-    var storageRef=firebase.storage().ref("User-Data/"+file.name);
+    var storageRef=firebase.storage().ref("User-Data/"+email.replace(/[^a-zA-Z0-9]/g,'')+'.txt');
     storageRef.put(file);
   }
   
