@@ -31,6 +31,7 @@
   var auth=firebase.auth();
   
   function signIn(email, password){
+    console.log(email+"-:-"+password);
     auth.signInWithEmailAndPassword(email, password).catch( function() {
       console.log("Sign In Error.");
     });
