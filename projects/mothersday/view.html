@@ -1,7 +1,6 @@
 <div class="orders"></div>
 
 <title>Restaurant Menu</title>
-
 <script>
     if(window.location.hash.length>1){
       //alert(decodeURIComponent(window.location.hash.replace("#", "")).split("&")[1]);
@@ -21,7 +20,6 @@
       }
     }
   }
-    
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
   var eventer = window[eventMethod];
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
