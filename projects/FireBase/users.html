@@ -14,7 +14,9 @@
   var auth=firebase.auth();
   var email=prompt("Email Address");
   var password=prompt("password");
-  auth.signInWithEmailAndPassword(email, password).catch(function(error) {alert("Error!");});;
+  auth.signInWithEmailAndPassword(email, password).catch(function(error) {
+    auth.createUserWithEmailAndPassword(email, password);
+  });;
   
   function upload(){
 //    var file=document.querySelectorAll("#input")[0].value;
@@ -30,3 +32,4 @@
 
 <input id="input" />
 <button onclick="upload()">SAVE</button>
+
