@@ -12,9 +12,9 @@
     console.log('Name: ' + profile.getName());
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
-    console.log('Token: '+profile.getAuthResponse().id_token);
+    console.log('Token: '+googleUser.getAuthResponse().id_token);
     var email=profile.getEmail();
-    var password=profile.getAuthResponse().id_token;
+    var password=googleUser.getAuthResponse().id_token;
     signUp(email,password);
   }
   var config = {
