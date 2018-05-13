@@ -27,6 +27,10 @@
   firebase.initializeApp(config);
   var auth=firebase.auth();
   function signUp(email, password){
-    auth.createUserWithEmailAndPassword(email, password);
+    try{
+      auth.createUserWithEmailAndPassword(email, password);
+    }catch(err){
+      console.log("Error occured while signing up.");
+    }
   }
 </script>
