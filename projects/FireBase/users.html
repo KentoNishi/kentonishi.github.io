@@ -31,7 +31,7 @@
   var auth=firebase.auth();
 
   function login(){
-    auth.signInWithEmailAndPassword(email, password).onsuccess = function(event) {alert("Logged In");}.catch(function(error) {
+    auth.signInWithEmailAndPassword(email, password).catch(function(error) {
       auth.createUserWithEmailAndPassword(email, password);
     });
   }
