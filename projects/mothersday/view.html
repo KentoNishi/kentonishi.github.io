@@ -26,7 +26,7 @@
   var eventer = window[eventMethod];
   var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
   eventer(messageEvent,function(e) {
-    if(e.origin.indexOf("kento")!=-1){
+    if(e.origin.indexOf("kento")!=-1&&e.data.indexOf("Immediate")==-1){
       messaged=true;
       document.querySelectorAll(".orders")[0].innerHTML="<h1 align='center'>"+e.data+"</h1>";
   }
