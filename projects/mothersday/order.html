@@ -1,6 +1,5 @@
 <title>Restaurant Menu</title>
 
-
 <script>
   var time=0;
   function order(item){
@@ -22,7 +21,6 @@
   }
 </script>
 
-
 <meta name="description" content="Make Orders">
 <iframe src="" style="display:none;" onload="setTimeout(loaded,1000)" sandbox="allow-scripts allow-forms allow-pointer-lock allow-same-origin"></iframe>
 
@@ -42,6 +40,7 @@
 <div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"><img src="https://target.scene7.com/is/image/Target/14152120?wid=328&hei=328&qlt=80&fmt=pjpeg"></img><h1>Utensils</h1><div class="options" onclick="order(prompt('Type of Utensil:','Fork')+'s');">Utensils</div></div>
 <div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"><img src="https://utilitygreatbritain.co.uk/wp-content/uploads/2018/02/glass-of-water.jpg"></img><h1>Water</h1><div class="options" onclick="order(prompt('Quantity:','4')+' Water');">Water</div></div>
 <div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Plus_font_awesome.svg/2000px-Plus_font_awesome.svg.png"></img><h1>Custom Order</h1><div class="options" onclick="order(prompt('Item:','Custom Order'));">Custom Order</div></div>
+
 
 <style>
 	
