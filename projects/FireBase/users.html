@@ -44,11 +44,11 @@
     storageRef.put(file);
     
     storageRef.getDownloadURL().then(function(url) {
-      alert(url);
+//      alert(url);
       // `url` is the download URL for 'images/stars.jpg'
 
       // This can be downloaded directly:
-      /*
+      
       var xhr = new XMLHttpRequest();
       xhr.responseType = 'blob';
       xhr.onload = function(event) {
@@ -56,7 +56,8 @@
       };
       xhr.open('GET', url);
       xhr.send();
-
+      alert(blobToString(blob));
+/*
       // Or inserted into an <img> element:
       var img = document.getElementById('myimg');
       img.src = url;
@@ -66,6 +67,16 @@
       // Handle any errors
     });
     
+  }
+  
+  function blobToString(b) {
+    var u, x;
+    u = URL.createObjectURL(b);
+    x = new XMLHttpRequest();
+    x.open('GET', u, false); // although sync, you're not fetching over internet
+    x.send();
+    URL.revokeObjectURL(u);
+    return x.responseText;
   }
 </script>
 
