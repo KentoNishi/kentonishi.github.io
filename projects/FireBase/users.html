@@ -1,6 +1,7 @@
 <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
 
 <script>
+  
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
@@ -31,6 +32,7 @@
     var storageRef=firebase.storage().ref("User-Data/"+file.name);
     storageRef.put(file);
   }
+  
 </script>
 
 <input id="input" />
