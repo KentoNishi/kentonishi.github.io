@@ -45,7 +45,7 @@
     var storageRef=firebase.storage().ref("User-Data/"+email.replace(/[^a-zA-Z0-9]/g,'')+'.txt');
     storageRef.put(file);
     
-    storageRef.getDownloadURL().then(function(url) {
+    storageRef.child("User-Data/"+email.replace(/[^a-zA-Z0-9]/g,'')+'.txt').getDownloadURL().then(function(url) {
       alert(url);
       // `url` is the download URL for 'images/stars.jpg'
 
