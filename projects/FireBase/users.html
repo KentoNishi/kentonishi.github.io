@@ -12,11 +12,12 @@
     storageBucket: "kento-nishi---gi-1525841644617.appspot.com",
     messagingSenderId: "939148943087"
   };
-  firebase.initializeApp(config);
   var auth=firebase.auth();
-  var email=prompt("Email Address");
-  var password=prompt("password");
-  auth.signInWithEmailAndPassword(email, password).catch(function(error) {alert("Error!");});;
+  var email="";
+  var password="";
+  function login(){
+    auth.signInWithEmailAndPassword(email, password).catch(function(error) {alert("Error!");});
+  }
   
   function upload(){
 //    var file=document.querySelectorAll("#input")[0].value;
@@ -47,6 +48,9 @@ function onSignIn(googleUser) {
   console.log('Name: ' + profile.getName());
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  email=profile.getEmail();
+  password=profile.getId();
+  login();
 }
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
