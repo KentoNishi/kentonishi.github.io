@@ -7,7 +7,7 @@
             var sendData = "bXkgbmV3IGZpbGUgY29udGVudHM=";
             var message="Message";
             $.ajax({
-                url: 'https://www.github.com/repos/KentoNishi/kentonishi.github.io/contents/projects/database/data', 
+                url: 'https://api.github.com/repos/KentoNishi/kentonishi.github.io/contents/projects/database/data', 
                 type: 'PUT',   //type is any HTTP method
                 data: {
                     content: sendData,
