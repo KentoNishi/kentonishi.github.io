@@ -1,7 +1,4 @@
 <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
-<meta name="google-signin-client_id" content="939148943087-1absee8grbg28ea4pdrdf7cjn3mtv1hf.apps.googleusercontent.com">
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
 
 <script>
   // Initialize Firebase
@@ -14,17 +11,11 @@
     messagingSenderId: "939148943087"
   };
   firebase.initializeApp(config);
+  
   var auth=firebase.auth();
   var email="";
   var password="";
-  
-  function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    username=profile.getEmail();
-    password=profile.getId();
-    alert(email+password);
-  }
-  
+
   function login(){
     auth.signInWithEmailAndPassword(email, password).catch(function(error) {
       auth.createUserWithEmailAndPassword(email, password);
@@ -32,7 +23,6 @@
   }
   
   function upload(){
-//    var file=document.querySelectorAll("#input")[0].value;
     var mystring = document.querySelectorAll("#input")[0].value;
     var myblob = new Blob([mystring], {
     type: 'text/plain'
@@ -40,18 +30,6 @@
     var file=myblob;
     var storageRef=firebase.storage().ref("User-Data/"+file.name);
     storageRef.put(file);
-  }
-  
-  window.onload=function(){
-      gapi.signin2.render('my-signin2', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
   }
   
 </script>
