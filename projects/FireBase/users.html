@@ -17,7 +17,7 @@
   function login(){
     auth.signInWithEmailAndPassword(email, password).catch(function(error) {
     auth.createUserWithEmailAndPassword(email, password);
-    location.reload();
+//    location.reload();
     });
   }
   
