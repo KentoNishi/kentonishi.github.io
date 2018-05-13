@@ -1,0 +1,38 @@
+<script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<meta name="google-signin-client_id" content="939148943087-s9e16hsm6dhal5v0em44ndspa4bo7dcd.apps.googleusercontent.com">
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+<script>
+  function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail());
+    console.log('Token: '+googleUser.getAuthResponse().id_token);
+    var email=profile.getEmail();
+    var password=googleUser.getAuthResponse().id_token;
+    signIn(email,password);
+  }
+  
+  var config = {
+    apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
+    authDomain: "kento-nishi-gi-1525841644617.firebaseapp.com",
+    databaseURL: "https://kento-nishi-gi-1525841644617.firebaseio.com",
+    projectId: "kento-nishi---gi-1525841644617",
+    storageBucket: "kento-nishi---gi-1525841644617.appspot.com",
+    messagingSenderId: "939148943087"
+  };
+  firebase.initializeApp(config);
+  var auth=firebase.auth();
+  
+  function signIn(email, password){
+    auth.signInWithEmailAndPassword(email, password).catch( function() {
+      console.log("Sign In Error.");
+    });
+  }
+</script>
