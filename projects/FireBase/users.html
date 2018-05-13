@@ -4,6 +4,7 @@
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
 <script>
+  
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
@@ -40,6 +41,7 @@
     var storageRef=firebase.storage().ref("User-Data/"+file.name);
     storageRef.put(file);
   }
+  
 </script>
 
 <input id="input" />
