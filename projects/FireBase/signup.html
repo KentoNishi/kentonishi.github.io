@@ -30,10 +30,8 @@
   var auth=firebase.auth();
   
   function signUp(email, password){
-    try{
-      auth.createUserWithEmailAndPassword(email, password);
-    }catch(err){
-      console.log("Error occured while signing up.");
-    }
+    auth.createUserWithEmailAndPassword(email, password).catch( function() {
+      console.log("Sign Up Error.");
+    });
   }
 </script>
