@@ -1,4 +1,5 @@
 <title>Restaurant Menu</title>
+
 <script>
   var time=0;
   function order(item){
@@ -41,6 +42,7 @@
 <div onblur="this.style.top=getCookie('styletop');this.style.left=getCookie('styleleft');" onfocus="setCookie('styletop',this.style.top,30);setCookie('styleleft',this.style.left,30);this.style='';" class="item" tabindex="1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Plus_font_awesome.svg/2000px-Plus_font_awesome.svg.png"></img><h1>Custom Order</h1><div class="options" onclick="order(prompt('Item:','Custom Order'));">Custom Order</div></div>
 
 <style>
+	
 body{
   background-color:black;
 }
@@ -110,6 +112,7 @@ h1{
   margin-left:25vw;
   font-size:5vh;
 }
+	
 </style>
 
 <script>
