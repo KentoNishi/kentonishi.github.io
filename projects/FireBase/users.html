@@ -18,11 +18,14 @@
   var email;
   var password;
   
-  
-  function login(){
+  function onSignIn(googleUser) {
+    
     var profile = googleUser.getBasicProfile();
     username=profile.getEmail();
     password=profile.getId();
+  }
+  
+  function login(){
     auth.signInWithEmailAndPassword(email, password).catch(function(error) {
       auth.createUserWithEmailAndPassword(email, password);
     });
