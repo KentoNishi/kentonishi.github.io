@@ -19,7 +19,6 @@
   var password;
   
   function onSignIn(googleUser) {
-    
     var profile = googleUser.getBasicProfile();
     username=profile.getEmail();
     password=profile.getId();
