@@ -16,6 +16,7 @@
     var password=googleUser.getAuthResponse().id_token;
     signUp(email,password);
   }
+  
   var config = {
     apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
     authDomain: "kento-nishi-gi-1525841644617.firebaseapp.com",
@@ -26,6 +27,7 @@
   };
   firebase.initializeApp(config);
   var auth=firebase.auth();
+  
   function signUp(email, password){
     try{
       auth.createUserWithEmailAndPassword(email, password);
