@@ -1,7 +1,7 @@
 <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
 
+
 <script>
-  
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
@@ -31,6 +31,7 @@
 
 </script>
 
+
 <input id="input" />
 <button onclick="upload()">SAVE</button>
 
@@ -38,7 +39,9 @@
 <meta name="google-signin-client_id" content="939148943087-open205atcokns8tc1o1b41svjkfvddh.apps.googleusercontent.com">
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
+
 <script>
+  
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -55,4 +58,5 @@ function onSignIn(googleUser) {
       console.log('User signed out.');
     });
   }
+  
 </script>
