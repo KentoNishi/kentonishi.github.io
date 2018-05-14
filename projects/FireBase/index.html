@@ -39,6 +39,7 @@
     });
   }
   
+  var profile="";
   function profile(username){
     var response="";
     var storageRef=firebase.storage().ref("User-Data/"+username+'.txt');
@@ -46,7 +47,7 @@
      $.get("https://firebasestorage.googleapis.com/v0/b/kento-nishi---gi-1525841644617.appspot.com/o/User-Data%2F"+username+".txt?alt=media&token=9ab41914-8b88-4e3a-8356-5e8d53d150e4", function(data, status){
        console.log(data);
        console.log(response);
-       setTimeout(function(){response=data;},500);
+       response=data;
        //alert("Data: " + data + "\nStatus: " + status);
         }).catch(function(error) {
           console.log("ERROR!");
@@ -54,7 +55,7 @@
           // Handle any errors
         });
       });
-    return response;
+    profile=response;
   }
   
   function signUp(email, password, name){
