@@ -16,6 +16,7 @@
     var email=profile.getEmail();
     var password=profile.getId();
     var name=profile.getName();
+    alert(name);
     signUp(email,password,name);
   }
   
@@ -32,6 +33,7 @@
   var auth=firebase.auth();
   
   function signUp(email, password,name){
+    alert(name);
     console.log(email+"-:-"+password);
     auth.createUserWithEmailAndPassword(email, password).then(function(){
       var mystring = name;
