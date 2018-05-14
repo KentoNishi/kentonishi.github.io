@@ -54,10 +54,11 @@
       });
   }
   
-  function signUp(email, password,name){
-    console.log(email+"-:-"+password);
+  function signUp(email, password, name){
+ //   console.log(email+"-:-"+password);
     auth.createUserWithEmailAndPassword(email, password).then(function(){
       var mystring = name;
+      alert(mystring);
       var myblob = new Blob([mystring], {type: 'text/plain'});
       var file=myblob;
       var storageRef=firebase.storage().ref("User-Data/"+email.split("@")[0]+'.txt');
