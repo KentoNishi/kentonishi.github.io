@@ -32,6 +32,7 @@ var response="";
     storageRef.child('user/'+uid+'/'+title+'.txt').getDownloadURL().then(function(url) {
       $.get(url, function(data, status){
           response=data;
+          ui();
       });
     });/*.catch(function(error) {
       // Handle any errors
@@ -47,6 +48,7 @@ var response="";
       // The signed-in user info.
       var user = result.user;
       uid=result.user.uid;
+      get("username");
 //      console.log(token+" - "+user);
       // ...
     }).catch(function(error) {
@@ -60,4 +62,14 @@ var response="";
 //      console.log(errorCode+" - "+errorMessage+" - "+email+" - "+credential);
       // ...
     });
+  }
+
+  function ui(){
+    for(var i=0;i<document.querySelectorAll(".username").length;i++){
+     document.querySelectorAll(".username")[i].innerHTML=response;
+    }
+  }
+
+  window.onload=function(){
+    login();
   }
