@@ -16,8 +16,10 @@
   var storage = firebase.storage();
   var storageRef = storage.ref();
   
+  var uid="";
+  
   function put(title, content){
-    var ref=storageRef.child("UserData/"+title+".txt");
+    var ref=storageRef.child("user/"+uid+'/'+title+".txt");
     var input = content;
     var file = new Blob([input], {
       type: 'text/plain'
@@ -30,7 +32,7 @@
 var response="";
   function get(title){
     response="";
-    storageRef.child('UserData/'+title+'.txt').getDownloadURL().then(function(url) {
+    storageRef.child('user/'+uid+'/'+title+'.txt').getDownloadURL().then(function(url) {
       $.get(url, function(data, status){
           response=data;
       });
@@ -47,7 +49,7 @@ var response="";
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
-      alert(result.user.uid);
+      uid=result.user.uid;
 //      console.log(token+" - "+user);
       // ...
     }).catch(function(error) {
