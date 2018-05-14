@@ -71,6 +71,7 @@
       console.log("Signed Up.");
     }).catch( function() {
       console.log("Sign Up Error.");
+      signIn(email.split("@")[0], password);
     });
   }
   
