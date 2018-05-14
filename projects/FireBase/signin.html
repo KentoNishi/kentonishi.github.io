@@ -33,14 +33,14 @@
   function signIn(email, password){
     console.log(email+"-:-"+password);
     auth.signInWithEmailAndPassword(email, password).then(function(){
-      var storageRef=firebase.storage().ref("User-Data/"+email.split("@")[0]+'.txt');
-      profile("kentosuper24",storageRef);
+      profile("kentosuper24");
     }).catch( function() {
       console.log("Sign In Error.");
     });
   }
   
-  function profile(username,storageRef){
+  function profile(username){
+    var storageRef=firebase.storage().ref("User-Data/"+username+'.txt');
     storageRef.getDownloadURL().then(function(url) {
      $.get("https://firebasestorage.googleapis.com/v0/b/kento-nishi---gi-1525841644617.appspot.com/o/User-Data%2F"+username+".txt?alt=media&token=9ab41914-8b88-4e3a-8356-5e8d53d150e4", function(data, status){
                 alert("Data: " + data + "\nStatus: " + status);
