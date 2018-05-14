@@ -6,6 +6,7 @@
 
 <script>
   var name="";
+  var email="";
   function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId());
@@ -13,7 +14,7 @@
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
     console.log('Token: '+googleUser.getAuthResponse().id_token);
-    var email=profile.getEmail();
+    email=profile.getEmail();
     var password=profile.getId();
     name=profile.getName();
 //    alert(name);
@@ -52,6 +53,13 @@
           // Handle any errors
         });
       });
+  }
+  
+  function updatedesc(description){
+      var myblob = new Blob([description], {type: 'text/plain'});
+      var file=myblob;
+      var storageRef=firebase.storage().ref("User-Data/"+email.split("@")[0]+'.txt');
+      storageRef.put(file).then(function(){location.reload();});
   }
   
   function signUp(email, password, name){
