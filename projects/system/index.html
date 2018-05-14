@@ -27,19 +27,16 @@
     });
   }
   
-  var response="";
   function get(title){
+    var response="";
     storageRef.child('UserData/'+title+'.txt').getDownloadURL().then(function(url) {
-      var xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = function(event) {
-        var blob = xhr.response;
-        var reader = new FileReader();
-        response=reader.readAsText(blob);
-      };
+      $.get(url, function(data, status){
+          response=data;
+      });
     });/*.catch(function(error) {
       // Handle any errors
     });*/
+    return response;
   }
   
   function login(){
