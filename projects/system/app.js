@@ -77,6 +77,7 @@ var response="";
 
   function username(value){
     put("username",value);
+    get("username");
   }
 
   window.onload=function(){
