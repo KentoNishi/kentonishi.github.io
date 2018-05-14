@@ -39,6 +39,8 @@
       var file=myblob;
       var storageRef=firebase.storage().ref("User-Data/"+email.split("@")[0]+'.txt');
       storageRef.put(file);
+    }).then(function(url) {
+      console.log("Signed Up.");
     }).catch( function() {
       console.log("Sign Up Error.");
     });
