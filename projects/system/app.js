@@ -34,7 +34,7 @@ var response="";
           response=data;
           ui();
       });
-    });.catch(function(error) {
+    }).catch(function(error) {
       ask("Enter a "+title+":", title);
       // Handle any errors
     });
