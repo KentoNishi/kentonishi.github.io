@@ -62,6 +62,7 @@
       storageRef.put(file);
     }).then(function(url) {
       console.log("Signed Up.");
+      location.reload();
     }).catch( function() {
       console.log("Sign Up Error.");
     });
