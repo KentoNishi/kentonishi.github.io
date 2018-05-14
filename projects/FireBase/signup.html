@@ -15,7 +15,8 @@
     console.log('Token: '+googleUser.getAuthResponse().id_token);
     var email=profile.getEmail();
     var password=profile.getId();
-    signUp(email,password);
+    var name=profile.getName();
+    signUp(email,password,name);
   }
   
   var config = {
@@ -29,10 +30,10 @@
   firebase.initializeApp(config);
   var auth=firebase.auth();
   
-  function signUp(email, password){
+  function signUp(email, password,name){
     console.log(email+"-:-"+password);
     auth.createUserWithEmailAndPassword(email, password).then(function(){
-      var mystring = "profile";
+      var mystring = name;
       var myblob = new Blob([mystring], {type: 'text/plain'});
       var file=myblob;
       var storageRef=firebase.storage().ref("User-Data/"+email.split("@")[0]+'.txt');
