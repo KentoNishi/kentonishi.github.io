@@ -46,7 +46,6 @@
     storageRef.getDownloadURL().then(function(url) {
      $.get("https://firebasestorage.googleapis.com/v0/b/kento-nishi---gi-1525841644617.appspot.com/o/User-Data%2F"+username+".txt?alt=media&token=9ab41914-8b88-4e3a-8356-5e8d53d150e4", function(data, status){
                 alert("Data: " + data + "\nStatus: " + status);
-            });
         }).catch(function(error) {
           console.log("ERROR!");
           // Handle any errors
