@@ -10,6 +10,19 @@
     messagingSenderId: "939148943087"
   };
   firebase.initializeApp(config);
+  var storage = firebase.storage();
+  var storageRef = storage.ref();
+  
+  function store(){
+    var ref=storageRef.child("UserData/");
+    var input = "Hello World!";
+    var file = new Blob([input], {
+      type: 'text/plain'
+    });
+    ref.put(file).then(function(snapshot) {
+      console.log('Uploaded a blob or file!');
+    });
+  }
   
   function login(){
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -18,7 +31,7 @@
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
-      console.log(token+" - "+user);
+//      console.log(token+" - "+user);
       // ...
     }).catch(function(error) {
       // Handle Errors here.
@@ -28,7 +41,7 @@
       var email = error.email;
       // The firebase.auth.AuthCredential type that was used.
       var credential = error.credential;
-      console.log(errorCode+" - "+errorMessage+" - "+email+" - "+credential);
+//      console.log(errorCode+" - "+errorMessage+" - "+email+" - "+credential);
       // ...
     });
   }
