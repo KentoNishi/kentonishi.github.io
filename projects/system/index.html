@@ -10,6 +10,7 @@
     messagingSenderId: "939148943087"
   };
   firebase.initializeApp(config);
+  
   function login(){
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
