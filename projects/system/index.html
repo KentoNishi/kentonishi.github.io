@@ -27,8 +27,9 @@
     });
   }
   
+var response="";
   function get(title){
-    var response="";
+    response="";
     storageRef.child('UserData/'+title+'.txt').getDownloadURL().then(function(url) {
       $.get(url, function(data, status){
           response=data;
@@ -36,7 +37,6 @@
     });/*.catch(function(error) {
       // Handle any errors
     });*/
-    return response;
   }
   
   function login(){
