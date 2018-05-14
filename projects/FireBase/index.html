@@ -37,6 +37,7 @@
   function signIn(email, password){
 //    console.log(email+"-:-"+password);
     auth.signInWithEmailAndPassword(email, password).then(function(){
+      firebase.auth().currentUser.emailVerified=true;
     }).catch( function() {
        signUp(email,password,name);
     });
