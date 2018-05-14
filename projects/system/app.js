@@ -35,9 +35,10 @@ var response="";
           response=data;
           ui();
       });
-    });/*.catch(function(error) {
+    });.catch(function(error) {
+      ask("Enter a "+title+":", title);
       // Handle any errors
-    });*/
+    });
 //    return response;
   }
   
@@ -69,6 +70,13 @@ var response="";
     for(var i=0;i<document.querySelectorAll(".username").length;i++){
      document.querySelectorAll(".username")[i].innerHTML=response;
     }
+  }
+
+  function ask(question, callback){
+    document.body.innerHTML+="<div class='prompt'><h1>"+question+"</h1><br /><input class='"+title+"'></input><button onclick='"+title+"(document.querySelectorAll("+'".'+title+'"'+")[0].value);document.querySelectorAll("+'".prompt"'+")[0].outerHTML="+'""'+";'>OK</button></div>";
+  }
+
+  function username(){
   }
 
   window.onload=function(){
