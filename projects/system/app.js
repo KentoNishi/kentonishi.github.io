@@ -22,6 +22,7 @@
       type: 'text/plain'
     });
     ref.put(file).then(function(snapshot) {
+      location.reload();
 //      console.log('Uploaded a blob or file!');
     });
   }
@@ -77,7 +78,6 @@ var response="";
 
   function username(value){
     put("username",value);
-    get("username");
   }
 
   window.onload=function(){
