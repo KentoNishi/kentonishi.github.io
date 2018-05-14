@@ -6,6 +6,7 @@
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
 <script>
+  
   function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId());
@@ -67,4 +68,6 @@
       console.log("Sign Up Error.");
     });
   }
+  
 </script>
+
