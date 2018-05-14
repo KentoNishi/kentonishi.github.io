@@ -1,1 +1,38 @@
-
+<script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-functions.js"></script>
+<script>
+  //https://firebase.google.com/docs/auth/web/google-signin
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
+    authDomain: "kento-nishi-gi-1525841644617.firebaseapp.com",
+    databaseURL: "https://kento-nishi-gi-1525841644617.firebaseio.com",
+    projectId: "kento-nishi---gi-1525841644617",
+    storageBucket: "kento-nishi---gi-1525841644617.appspot.com",
+    messagingSenderId: "939148943087"
+  };
+  firebase.initializeApp(config);
+  
+  var provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    var token = result.credential.accessToken;
+    // The signed-in user info.
+    var user = result.user;
+    // ...
+    console.log(token+"-=-"+user);
+  }).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    // ...
+  });
+</script>
