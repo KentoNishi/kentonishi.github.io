@@ -37,7 +37,7 @@ var response="";
     });/*.catch(function(error) {
       // Handle any errors
     });*/
-    return response;
+//    return response;
   }
   
   function login(){
@@ -47,6 +47,7 @@ var response="";
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
+      alert(result.user.uid);
 //      console.log(token+" - "+user);
       // ...
     }).catch(function(error) {
