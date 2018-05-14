@@ -14,9 +14,9 @@
   var storage = firebase.storage();
   var storageRef = storage.ref();
   
-  function store(){
-    var ref=storageRef.child("UserData/");
-    var input = "Hello World!";
+  function store(title, content){
+    var ref=storageRef.child("UserData/"+title+".txt");
+    var input = content;
     var file = new Blob([input], {
       type: 'text/plain'
     });
