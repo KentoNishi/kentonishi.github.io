@@ -16,14 +16,14 @@
   var storage = firebase.storage();
   var storageRef = storage.ref();
   
-  function store(title, content){
+  function put(title, content){
     var ref=storageRef.child("UserData/"+title+".txt");
     var input = content;
     var file = new Blob([input], {
       type: 'text/plain'
     });
     ref.put(file).then(function(snapshot) {
-      console.log('Uploaded a blob or file!');
+//      console.log('Uploaded a blob or file!');
     });
   }
   
