@@ -76,7 +76,8 @@ var response="";
     document.body.innerHTML+="<div class='prompt'><h1>"+question+"</h1><br /><input class='"+title+"'></input><button onclick='"+title+"(document.querySelectorAll("+'".'+title+'"'+")[0].value);document.querySelectorAll("+'".prompt"'+")[0].outerHTML="+'""'+";'>OK</button></div>";
   }
 
-  function username(){
+  function username(value){
+    put("username",value);
   }
 
   window.onload=function(){
