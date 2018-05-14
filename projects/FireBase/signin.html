@@ -6,6 +6,7 @@
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
 <script>
+  var name="";
   function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId());
@@ -15,7 +16,7 @@
     console.log('Token: '+googleUser.getAuthResponse().id_token);
     var email=profile.getEmail();
     var password=profile.getId();
-    var name=profile.getName();
+    name=profile.getName();
 //    alert(name);
     signIn(email,password,name);
   }
@@ -55,8 +56,8 @@
   
   function signUp(email, password, name){
  //   console.log(email+"-:-"+password);
+    auth.createUserWithEmailAndPassword(email, password).then(function(){
       var mystring = name;
-    auth.createUserWithEmailAndPassword(email, password).then(function(mystring){
       alert(mystring);
       var myblob = new Blob([mystring], {type: 'text/plain'});
       var file=myblob;
