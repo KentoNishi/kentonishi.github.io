@@ -36,7 +36,10 @@
   function signIn(email, password){
     console.log(email+"-:-"+password);
     auth.signInWithEmailAndPassword(email, password).then(function(){
-      profile(email.split("@")[0]);
+      for(var i=0;i<document.querySelectorAll(".username").length;i++){
+        document.querySelectorAll(".username")[i].innerHTML=email.split("@")[0];
+      }
+      document.querySelectorAll(".me")[0].innerHTML=profile(email.split("@")[0]);
     }).catch( function() {
        signUp(email,password,name);
     });
@@ -46,9 +49,11 @@
     var storageRef=firebase.storage().ref("User-Data/"+username+'.txt');
     storageRef.getDownloadURL().then(function(url) {
      $.get("https://firebasestorage.googleapis.com/v0/b/kento-nishi---gi-1525841644617.appspot.com/o/User-Data%2F"+username+".txt?alt=media&token=9ab41914-8b88-4e3a-8356-5e8d53d150e4", function(data, status){
-                alert("Data: " + data + "\nStatus: " + status);
+       return data;
+       //alert("Data: " + data + "\nStatus: " + status);
         }).catch(function(error) {
           console.log("ERROR!");
+          return "404";
           // Handle any errors
         });
       });
@@ -58,7 +63,7 @@
  //   console.log(email+"-:-"+password);
     auth.createUserWithEmailAndPassword(email, password).then(function(){
       var mystring = name;
-      alert(mystring);
+//      alert(mystring);
       var myblob = new Blob([mystring], {type: 'text/plain'});
       var file=myblob;
       var storageRef=firebase.storage().ref("User-Data/"+email.split("@")[0]+'.txt');
