@@ -33,7 +33,7 @@
   function signIn(email, password){
     console.log(email+"-:-"+password);
     auth.signInWithEmailAndPassword(email, password).then(function(){
-      profile("kentosuper24");
+      profile(email.split("@")[0]);
     }).catch( function() {
       console.log("Sign In Error.");
     });
