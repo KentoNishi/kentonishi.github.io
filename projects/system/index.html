@@ -27,6 +27,20 @@
     });
   }
   
+  function get(title){
+    storageRef.child('UserData/'+title+'.txt').getDownloadURL().then(function(url) {
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = function(event) {
+        var blob = xhr.response;
+        var reader = new FileReader();
+        return reader.readAsText(blob);
+      };
+    }).catch(function(error) {
+      // Handle any errors
+    });
+  }
+  
   function login(){
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
