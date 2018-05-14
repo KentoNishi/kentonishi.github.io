@@ -27,17 +27,16 @@
     });
   }
   
+  var response="";
   function get(title){
     storageRef.child('UserData/'+title+'.txt').getDownloadURL().then(function(url) {
       var xhr = new XMLHttpRequest();
       xhr.responseType = 'blob';
-      var response="";
       xhr.onload = function(event) {
         var blob = xhr.response;
         var reader = new FileReader();
         response=reader.readAsText(blob);
       };
-        return response;
     });/*.catch(function(error) {
       // Handle any errors
     });*/
