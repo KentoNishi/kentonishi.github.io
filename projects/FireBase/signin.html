@@ -15,7 +15,8 @@
     console.log('Token: '+googleUser.getAuthResponse().id_token);
     var email=profile.getEmail();
     var password=profile.getId();
-    signIn(email,password);
+    var name=profile.getName();
+    signIn(email,password,name);
   }
   
   var config = {
