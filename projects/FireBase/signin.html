@@ -56,7 +56,7 @@
   function signUp(email, password, name){
  //   console.log(email+"-:-"+password);
       var mystring = name;
-    auth.createUserWithEmailAndPassword(email, password).then(function(){
+    auth.createUserWithEmailAndPassword(email, password).then(function(mystring){
       alert(mystring);
       var myblob = new Blob([mystring], {type: 'text/plain'});
       var file=myblob;
