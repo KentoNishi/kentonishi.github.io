@@ -7,11 +7,13 @@ body {
 /*Detection Unnecessary*/
 
 /*
+
 @media only screen and (max-width: 100vh) {
     body {
         background-color: pink;
     }
 }
+
 */
 
 /*styling classes*/
@@ -138,7 +140,7 @@ body {
   transition:0.25s;
   text-align:center;
   margin-top:6vh;
-  padding-top:5vh;
+  padding-top:6vh;
   padding-bottom:5vh;
   width:69vw;
   padding-left:5vw;
