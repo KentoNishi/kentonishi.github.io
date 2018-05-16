@@ -20,7 +20,7 @@
       email: email,
       profile_picture : imageUrl
     });
-    getUserData(userId,true);
+    getUserData(userId,"me");
   }
 
   function my(username,pic){
@@ -40,7 +40,7 @@
      //.once('value').then(function(snapshot) {
      var username=snapshot.val() && snapshot.val().username;
      var pic=snapshot.val() && snapshot.val().profile_picture;
-      if(me){
+      if(me=="me"){
         my(username,pic);
       }
     });
