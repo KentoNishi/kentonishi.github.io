@@ -56,7 +56,8 @@
       var pic=result.user.photoURL;
       var email=result.user.email;
       writeUserData(uid,name,email,pic);
-    });/*.catch(function(error) {
+    });
+    /*.catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
       var email = error.email;
