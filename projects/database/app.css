@@ -206,15 +206,11 @@ body {
 }
 
 button{
-    margin: auto;
+    width:75vw;
     height:10vh;
     font-size:8vh;
     background-color:lightblue;
     margin-top:70vh;
     border-radius:5px;
     border:0px;
-}
-
-.wrap{
-    vertical-align: baseline;
 }
