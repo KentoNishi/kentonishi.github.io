@@ -13,7 +13,8 @@
   var storageRef = storage.ref();
   
   var uid="";
-  var name=""
+  var name="";
+  var pic="";
   function put(title, content){
     var ref=storageRef.child("user/"+uid+'/'+title+".txt");
     var input = content;
@@ -32,7 +33,7 @@ var response="";
     storageRef.child('user/'+uid+'/'+title+'.txt').getDownloadURL().then(function(url) {
       $.get(url, function(data, status){
           response=data;
-          ui();
+          ui(title);
       });
     }).catch(function(error) {
 //      ask("Enter a "+title+":", title);
@@ -51,6 +52,7 @@ var response="";
       var user = result.user;
       uid=result.user.uid;
       name=result.user.displayName;
+      pic=result.user.photoURL;
 //      alert(result.user.displayName);
       get("username");
 //      console.log(token+" - "+user);
@@ -68,9 +70,16 @@ var response="";
     });
   }
 
-  function ui(){
-    for(var i=0;i<document.querySelectorAll(".username").length;i++){
-     document.querySelectorAll(".username")[i].innerHTML=response;
+  function ui(title){
+    if(title!="pic"){
+      for(var i=0;i<document.querySelectorAll(".username").length;i++){
+       document.querySelectorAll(".username")[i].innerHTML=response;
+      }
+      get("pic");
+    }else{
+      for(var i=0;i<document.querySelectorAll(".profile-pic").length;i++){
+       document.querySelectorAll(".profile-pic")[i].src=response;
+      }
     }
   }
 
@@ -85,6 +94,7 @@ var response="";
 
   function username(value){
     put("username",value);
+    put("pic",pic);
   }
 
   window.onload=function(){
