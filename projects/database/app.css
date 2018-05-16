@@ -225,8 +225,8 @@ button{
     z-index:1;
     width:75vw;
     margin-left:12.5vw;
-    height:10vh;
-    font-size:6vh;
+    height:auto;
+    font-size:5vh;
     background-color:lightblue;
     margin-top:60vh;
     border-radius:5px;
