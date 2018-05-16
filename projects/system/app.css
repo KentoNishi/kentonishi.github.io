@@ -203,3 +203,9 @@ body {
     height:100%;
     text-align:center;
 }
+
+button{
+    width:25vw;
+    height:10vh;
+    font-size:8vh;
+}
