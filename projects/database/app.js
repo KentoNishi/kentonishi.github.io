@@ -20,14 +20,14 @@
       email: email,
       profile_picture : imageUrl
     });
-    getUserData(userId,"me");
+    getUserData(userId,true);
   }
 
   function my(username,pic){
     console.log(username);
     console.log(pic);
-    for(var i=0;i<document.querySelectorAll("username").length;i++){
-      document.querySelectorAll("username")[i].innerHTML=username;
+    for(var i=0;i<document.querySelectorAll(".username").length;i++){
+      document.querySelectorAll(".username")[i].innerHTML=username;
     }
     for(var i=0;i<document.querySelectorAll("profile-pic").length;i++){
       document.querySelectorAll("profile-pic")[i].src=pic;
@@ -40,7 +40,7 @@
      //.once('value').then(function(snapshot) {
      var username=snapshot.val() && snapshot.val().username;
      var pic=snapshot.val() && snapshot.val().profile_picture;
-      if(me=="me"){
+      if(me){
         my(username,pic);
       }
     });
