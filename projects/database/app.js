@@ -49,6 +49,7 @@
       var credential = error.credential;
     });*/
   }
+
   function me(username,pic){
     console.log(username);
     console.log(pic);
