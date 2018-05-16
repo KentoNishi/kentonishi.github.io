@@ -8,11 +8,13 @@ body {
 /*Detection Unnecessary*/
 
 /*
+
 @media only screen and (max-width: 100vh) {
     body {
         background-color: pink;
     }
 }
+
 */
 
 /*styling classes*/
@@ -118,6 +120,7 @@ body {
     transition-duration:0.25s;
     transition:0.25s;
 }
+
 .new:focus{
     max-height:100vh;
     padding-top:0;
