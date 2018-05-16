@@ -30,8 +30,8 @@
     for(var i=0;i<document.querySelectorAll(".username").length;i++){
       document.querySelectorAll(".username")[i].innerHTML=username;
     }
-    for(var i=0;i<document.querySelectorAll("profile-pic").length;i++){
-      document.querySelectorAll("profile-pic")[i].src=pic;
+    for(var i=0;i<document.querySelectorAll(".profile-pic").length;i++){
+      document.querySelectorAll(".profile-pic")[i].src=pic;
     }
   }
 
