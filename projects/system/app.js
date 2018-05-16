@@ -84,6 +84,6 @@ var response="";
   }
 
   window.onload=function(){
-    prompt("Log In", "login");
+    ask("Log In", "login");
 //    login();
   }
