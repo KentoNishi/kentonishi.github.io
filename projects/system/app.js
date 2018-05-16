@@ -51,6 +51,7 @@ var response="";
       // The signed-in user info.
       var user = result.user;
       uid=result.user.uid;
+      alert(result.user.photoURL);
       get("username");
 //      console.log(token+" - "+user);
       // ...
