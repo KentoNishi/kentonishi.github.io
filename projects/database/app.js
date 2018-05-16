@@ -1,5 +1,4 @@
   // Initialize Firebase
-
   //Add Apache2 License
 
   var config = {
