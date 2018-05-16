@@ -23,7 +23,7 @@
     getUserData(userId,true);
   }
 
-  function me(username,pic){
+  function my(username,pic){
     console.log(username);
     console.log(pic);
   }
@@ -35,7 +35,7 @@
      var username=snapshot.val() && snapshot.val().username;
      var pic=snapshot.val() && snapshot.val().profile_picture;
       if(me){
-        me(username,pic);
+        my(username,pic);
       }
     });
   }
