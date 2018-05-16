@@ -1,12 +1,10 @@
 /*not mobile*/
-
 body {
     background-color: white;
 }
 /*mobile*/
 
 /*Detection Unnecessary*/
-
 /*
 @media only screen and (max-width: 100vh) {
     body {
@@ -14,7 +12,6 @@ body {
     }
 }
 */
-
 /*styling classes*/
 
 .top-logo{
