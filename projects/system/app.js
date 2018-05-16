@@ -74,9 +74,10 @@ var response="";
   }
 
   function ask(question, callback){
-    document.body.innerHTML+="<div class='prompt'><h1>"+question+"</h1><br /><input class='answer'></input><button onclick='"+callback+"(document.querySelectorAll("+'".answer"'+")[0].value);document.querySelectorAll("+'".prompt"'+")[0].outerHTML="+'""'+";'>OK</button></div>";
     if(question.indexOf("Log In")!=-1){
-      document.body.innerHTML+="<div class='prompt'><button onclick='login()'>Log In</button></div>";
+      document.body.innerHTML="<div class='prompt'><button onclick='login()'>Log In</button></div>";
+    }else{
+    document.body.innerHTML+="<div class='prompt'><h1>"+question+"</h1><br /><input class='answer'></input><button onclick='"+callback+"(document.querySelectorAll("+'".answer"'+")[0].value);document.querySelectorAll("+'".prompt"'+")[0].outerHTML="+'""'+";'>OK</button></div>";
     }
   }
 
