@@ -48,6 +48,7 @@ body {
 .left{
     left:0;
 }
+
 .icon-menu{
     position:fixed;
     top:1.15vh;
@@ -60,6 +61,7 @@ body {
     background: url("https://image.flaticon.com/icons/svg/149/149719.svg");
     background-size: 4vh 4vh;
 }
+
 .icon-new{
     position:fixed;
     top:1.15vh;
@@ -72,6 +74,7 @@ body {
     background: url("https://image.flaticon.com/icons/svg/32/32360.svg");
     background-size: 4vh 4vh;
 }
+
 .menu{
     padding-top:10vh;
     max-height:6.5vh;
@@ -89,6 +92,7 @@ body {
     transition-duration:0.25s;
     transition:0.25s;
 }
+
 .menu:focus{
     max-height:100vh;
     padding-top:0;
@@ -101,6 +105,7 @@ body {
     height:100vh;
     z-index:5;
 }
+
 .new{
     padding-top:10vh;
     max-height:6.5vh;
