@@ -208,6 +208,7 @@ button{
     height:10vh;
     font-size:8vh;
     background-color:lightblue;
-    top:45vh;
+    margin-top:70vh;
     border-radius:5px;
+    border:0px;
 }
