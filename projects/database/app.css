@@ -212,5 +212,8 @@ button{
     margin-top:70vh;
     border-radius:5px;
     border:0px;
+}
+
+.wrap{
     vertical-align: baseline;
 }
