@@ -27,8 +27,8 @@ body {
     left: 50%;
     transform: translate(-50%, 0);
     z-index:10;
-    border-radius:5px;
-    box-shadow: inset 0 0 0 5px rgba(0, 0, 0, 1);
+    border-radius:5vh;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.5);
 }
 .front{
     z-index:1;
