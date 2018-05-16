@@ -132,11 +132,12 @@ body {
     background-color:#FBC02D;
 }
 .card{
+  margin-top:10vh;
   margin:0 auto;
   transition-duration:0.25s;
   transition:0.25s;
   text-align:center;
-  padding-top:10vh;
+  padding-top:5vh;
   padding-bottom:5vh;
   width:69vw;
   padding-left:5vw;
@@ -183,9 +184,6 @@ body {
 *{
     z-index:1;
     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-}
-.user{
-    margin-top:6.5vh;
 }
 .content{
     z-index:2;
