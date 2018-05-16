@@ -1,7 +1,7 @@
  //https://firebase.google.com/docs/auth/web/google-signin?authuser=0
-  // Initialize Firebase
+ // Initialize Firebase
 
-  var config = {
+ var config = {
     apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
     authDomain: "kento-nishi-gi-1525841644617.firebaseapp.com",
     databaseURL: "https://kento-nishi-gi-1525841644617.firebaseio.com",
