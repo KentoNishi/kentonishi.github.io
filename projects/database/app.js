@@ -23,6 +23,11 @@
     getUserData(userId,true);
   }
 
+  function me(username,pic){
+    console.log(username);
+    console.log(pic);
+  }
+
   function getUserData(userID,me){
     var ref = firebase.database().ref('users/' + userID);
     ref.on('value', function(snapshot) {
@@ -52,7 +57,3 @@
     });*/
   }
 
-  function me(username,pic){
-    console.log(username);
-    console.log(pic);
-  }
