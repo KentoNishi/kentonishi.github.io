@@ -206,7 +206,10 @@ body {
 }
 
 button{
-    width:25vw;
+    width:75vw;
     height:10vh;
     font-size:8vh;
+    background-color:lightblue;
+    top:45vh;
+    border-radius:5px;
 }
