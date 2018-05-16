@@ -23,6 +23,14 @@
     });
   }
 
+  function getUserData(userID){
+    var ref = firebase.database().ref('users/' + userID);
+    ref.on('value', function(snapshot) {
+     var username=snapshot.val() && snapshot.val().username;
+     alert(username);
+    });
+  }
+
   function login(){
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
