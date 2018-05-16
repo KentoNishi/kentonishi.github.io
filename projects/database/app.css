@@ -1,8 +1,10 @@
 /*not mobile*/
+
 body {
     background-color: white;
 }
 /*mobile*/
+
 /*Detection Unnecessary*/
 
 /*
@@ -126,11 +128,13 @@ body {
     height:100vh;
     z-index:5;
 }
+
 .taskbar{
     width:100vw;
     height:6.5vh;
     background-color:#FBC02D;
 }
+
 .card{
   margin-top:10vh;
   margin:0 auto;
