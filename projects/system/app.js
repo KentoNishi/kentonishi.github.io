@@ -13,7 +13,7 @@
   var storageRef = storage.ref();
   
   var uid="";
-  
+  var name=""
   function put(title, content){
     var ref=storageRef.child("user/"+uid+'/'+title+".txt");
     var input = content;
@@ -35,7 +35,8 @@ var response="";
           ui();
       });
     }).catch(function(error) {
-      ask("Enter a "+title+":", title);
+//      ask("Enter a "+title+":", title);
+        username(name);
       // Handle any errors
     });
 //    return response;
@@ -49,7 +50,8 @@ var response="";
       // The signed-in user info.
       var user = result.user;
       uid=result.user.uid;
-      alert(result.user.displayName);
+      name=result.user.displayName;
+//      alert(result.user.displayName);
       get("username");
 //      console.log(token+" - "+user);
       // ...
