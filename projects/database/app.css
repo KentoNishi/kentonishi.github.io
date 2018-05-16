@@ -73,6 +73,7 @@ body {
     background-size: 4vh 4vh;
 }
 .menu{
+    padding-top:10vh;
     max-height:6.5vh;
     padding-top:100vh;
     overflow:hidden;
@@ -101,6 +102,7 @@ body {
     z-index:5;
 }
 .new{
+    padding-top:10vh;
     max-height:6.5vh;
     padding-top:100vh;
     overflow:hidden;
@@ -136,8 +138,6 @@ body {
 }
 
 .card{
-  display:inline-block;
-  margin-top:10vh;
   margin:0 auto;
   transition-duration:0.25s;
   transition:0.25s;
