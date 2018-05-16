@@ -136,6 +136,7 @@ body {
 }
 
 .card{
+  display:inline-block;
   margin-top:10vh;
   margin:0 auto;
   transition-duration:0.25s;
