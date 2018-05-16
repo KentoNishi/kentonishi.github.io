@@ -26,8 +26,10 @@
   function getUserData(userID){
     var ref = firebase.database().ref('users/' + userID);
     ref.on('value', function(snapshot) {
+     //.once('value').then(function(snapshot) {
      var username=snapshot.val() && snapshot.val().username;
-     alert(username);
+     var pic=snapshot.val() && snapshot.val().profile_picture;
+     me(username,pic);
     });
   }
 
@@ -46,4 +48,8 @@
       var email = error.email;
       var credential = error.credential;
     });*/
+  }
+  function me(username,pic){
+    console.log(username);
+    console.log(pic);
   }
