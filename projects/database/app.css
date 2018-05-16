@@ -6,13 +6,17 @@ body {
 /*mobile*/
 
 /*Detection Unnecessary*/
+
 /*
+
 @media only screen and (max-width: 100vh) {
     body {
         background-color: pink;
     }
 }
+
 */
+
 /*styling classes*/
 
 .top-logo{
