@@ -20,7 +20,7 @@
       email: email,
       profile_picture : imageUrl
     });
-    getUserData(userID,true);
+    getUserData(userId,true);
   }
 
   function getUserData(userID,me){
