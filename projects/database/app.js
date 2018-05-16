@@ -56,4 +56,3 @@
       var credential = error.credential;
     });*/
   }
-
