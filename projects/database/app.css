@@ -100,7 +100,7 @@ body {
     overflow-y:auto;
     top:0;
     position:absolute;
-    background-color:rgba(108, 122, 137, 0.5);
+    background-color:rgba(108, 122, 137, 0.8);
     width:100vw;
     height:100vh;
     z-index:5;
@@ -131,7 +131,7 @@ body {
     overflow-y:auto;
     top:0;
     position:absolute;
-    background-color:rgba(108, 122, 137, 0.5);
+    background-color:rgba(108, 122, 137, 0.8);
     width:100vw;
     height:100vh;
     z-index:5;
