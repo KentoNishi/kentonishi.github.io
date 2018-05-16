@@ -20,15 +20,18 @@
       email: email,
       profile_picture : imageUrl
     });
+    getUserData(userID,true);
   }
 
-  function getUserData(userID){
+  function getUserData(userID,me){
     var ref = firebase.database().ref('users/' + userID);
     ref.on('value', function(snapshot) {
      //.once('value').then(function(snapshot) {
      var username=snapshot.val() && snapshot.val().username;
      var pic=snapshot.val() && snapshot.val().profile_picture;
-     me(username,pic);
+      if(me){
+        me(username,pic);
+      }
     });
   }
 
