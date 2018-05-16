@@ -88,5 +88,3 @@ var response="";
     ask("Log In", "login");
 //    login();
   }
-
-  
