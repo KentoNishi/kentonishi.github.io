@@ -78,9 +78,11 @@ var response="";
       document.body.innerHTML+="<div class='prompt'><button onclick='login()'>Log In</button></div>";
     }
   }
+
   function username(value){
     put("username",value);
   }
+
   window.onload=function(){
     prompt("Log In", "login");
 //    login();
