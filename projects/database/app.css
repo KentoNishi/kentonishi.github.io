@@ -179,10 +179,8 @@ body {
     margin-top:6.5vh;
     margin-top:10vh;
     margin-bottom:10vh; */
-    scrolling:no;
-    overflow-y:hidden;
     padding-top:7.5vh;
-    height:100%;
+    height:auto;
     z-index:-1;
     overflow-y:auto;
 }
