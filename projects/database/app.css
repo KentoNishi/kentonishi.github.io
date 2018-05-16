@@ -25,7 +25,7 @@ body {
     top:0;
     left: 50%;
     transform: translate(-50%, 0);
-    z-index:5;
+    z-index:10;
 }
 .front{
     z-index:1;
@@ -86,15 +86,15 @@ body {
     transition:0.25s;
 }
 .menu:focus{
-    max-height:93.5vh;
+    max-height:100vh;
     padding-top:0;
     overflow:auto;
     overflow-y:auto;
-    top:6.5vh;
+    top:0;
     position:absolute;
     background-color:rgba(108, 122, 137, 0.5);
     width:100vw;
-    height:93.5vh;
+    height:100%;
     z-index:5;
 }
 .new{
@@ -114,15 +114,15 @@ body {
     transition:0.25s;
 }
 .new:focus{
-    max-height:93.5vh;
+    max-height:100vh;
     padding-top:0;
     overflow:auto;
     overflow-y:auto;
-    top:6.5vh;
+    top:0;
     position:absolute;
     background-color:rgba(108, 122, 137, 0.5);
     width:100vw;
-    height:93.5vh;
+    height:100%;
     z-index:5;
 }
 .taskbar{
