@@ -206,6 +206,7 @@ body {
 }
 
 button{
+    margin: auto;
     height:10vh;
     font-size:8vh;
     background-color:lightblue;
