@@ -1,0 +1,19 @@
+<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD1wxkBnNNCmvJ0VONthEUKhtVdq5cxNDU",
+    authDomain: "track-and-field-live-timer.firebaseapp.com",
+    databaseURL: "https://track-and-field-live-timer.firebaseio.com",
+    projectId: "track-and-field-live-timer",
+    storageBucket: "track-and-field-live-timer.appspot.com",
+    messagingSenderId: "1013172515547"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+  function writeUserData(id, time) {
+    firebase.database().ref('times/'+id).set({
+      time: time
+    });
+  }
+</script>
