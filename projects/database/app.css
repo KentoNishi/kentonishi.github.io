@@ -90,7 +90,7 @@ body {
     overflow-y:auto;
     top:6.5vh;
     position:absolute;
-    background-color:rgba(255, 255, 255, 0.8);
+    background-color:rgba(255, 255, 255, 0.85);
     width:100vw;
     height:93.5vh;
     z-index:5;
@@ -118,7 +118,7 @@ body {
     overflow-y:auto;
     top:6.5vh;
     position:absolute;
-    background-color:rgba(255, 255, 255, 0.8);
+    background-color:rgba(255, 255, 255, 0.85);
     width:100vw;
     height:93.5vh;
     z-index:5;
