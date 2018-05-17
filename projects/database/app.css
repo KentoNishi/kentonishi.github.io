@@ -54,7 +54,7 @@ body {
     top:1.15vh;
     left:1.15vh;
     z-index:1;/*
-    border:0.15vh solid rgba(0, 0, 0, 1);*/
+    border:0.15vh solid rgba(0, 0, 0, 1);*/w
     height:4vh;
     width:4vh;
     border-radius:6.5vh;
@@ -100,7 +100,7 @@ body {
     overflow-y:auto;
     top:0;
     position:absolute;
-    background-color:rgba(255, 255, 255, 0.8);
+    background-color:rgba(255, 255, 255, 0.95);
     width:100vw;
     height:100vh;
     z-index:5;
@@ -131,7 +131,7 @@ body {
     overflow-y:auto;
     top:0;
     position:absolute;
-    background-color:rgba(255, 255, 255, 0.8);
+    background-color:rgba(255, 255, 255, 0.95);
     width:100vw;
     height:100vh;
     z-index:5;
