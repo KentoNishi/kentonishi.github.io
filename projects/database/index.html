@@ -5,24 +5,18 @@
 <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/KentoNishi/kentonishi.github.io/master/favicon.ico">
 <link href="/projects/database/app.css" rel="stylesheet" type="text/css"></link>
 
-
-
-
 <!--UI-->
-
-
-
 
 <title>System</title>
 <div class="body">
   <div class="fixed top left taskbar top">
-    <div class="top-logo" onfocus="this.blur();" tabindex="1"></div>
+    <div class="top-logo" tabindex="1"></div>
     <div class="icon-menu top">
     </div>
     <div class="menu top" tabindex="1">
       <div class="profile" >
         <div style="margin-top:5vh;"></div>
-          <div class="card">
+          <div class="card user">
             <image src="http://2mprogress.com/wp-content/uploads/2017/11/person-1824144_1280.png" class="profile-pic"></image>
             <div class="text-large"><span class="username">Guest</span></div>
           </div>
@@ -34,17 +28,19 @@
     <div class="new top" tabindex="1">
       <div class="profile">
         <div style="margin-top:5vh;"></div>
-          <div class="card">
+          <div class="card user">
             <image src="http://2mprogress.com/wp-content/uploads/2017/11/person-1824144_1280.png" class="profile-pic"></image>
             <div class="text-large"><span class="username">Guest<span></div>
           </div>
           <div style="margin-top:5vh;"></div>
     </div>
   </div>
+  
   <div class="content">
     <div class="wrap">
-      <image src="https://openclipart.org/download/247324/abstract-user-flat-1.svg" class="profile-pic" style="align:center;margin:auto;position:fixed;top:25vh;left:50%;transform:translate(-50%,0);width:50vw;height:50vw;"></image>
-      <button onclick="login();document.querySelectorAll('.wrap')[0].outerHTML='';">Log In OR Sign Up</button>
+      <br />
+      <button onclick="login();document.querySelectorAll('.wrap')[0].outerHTML='';">Log In</button>
+      <button onclick="login();document.querySelectorAll('.wrap')[0].outerHTML='';" style="margin-top:5px;">Sign Up</button>
     </div>
   </div>
 </div>
