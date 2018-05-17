@@ -190,7 +190,7 @@ body {
     left:0;
     width:100vw;
     height:93.5vh;
-    background-color:rgba(255, 255, 255, 0.95);
+    background-color:rgba(0, 0, 0, 0.25);
 }
 
 .prompt{
