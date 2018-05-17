@@ -14,7 +14,7 @@
   function writeUserData(id, time) {
     var data=id+","+time;
     firebase.database().ref('times/'+id+"/time").set({
-      time: data,
+      time: data
     });
   }
 </script>
