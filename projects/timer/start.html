@@ -16,12 +16,12 @@
     var starCountRef = firebase.database().ref('times/' + alphabet[i]+"/time");
     starCountRef.on('value', function(snapshot) {
       if(snapshot.val()!=null){
-       update(snapshot.val().toString());
+       update(snapshot.val());
       }
     });
   }
-  function update(value){
-    var val=value;
+  function update(name){
+    var val=name;
     var record=val.split(",")[1];
     var letter=val.split(",")[0];
     console.log(letter+record);
