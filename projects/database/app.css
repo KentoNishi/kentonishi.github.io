@@ -9,11 +9,13 @@ body {
 /*Detection Unnecessary*/
 
 /*
+
 @media only screen and (max-width: 100vh) {
     body {
         background-color: pink;
     }
 }
+
 */
 
 /*styling classes*/
@@ -209,9 +211,7 @@ body {
 
 button{
     z-index:1;
-    width:75vw;
     margin-left:12.5vw;
-    height:10vh;
     font-size:8vh;
     background-color:lightblue;
     margin-top:60vh;
