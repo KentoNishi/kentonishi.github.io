@@ -137,6 +137,7 @@ body {
 }
 
 .taskbar{
+    z-index:15;
     width:100vw;
     height:6.5vh;
     background-color:#FBC02D;
