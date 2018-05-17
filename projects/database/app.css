@@ -206,10 +206,12 @@ body {
 
 button{
     z-index:1;
-    margin-left:12.5vw;
     font-size:8vh;
     background-color:lightblue;
     margin-top:60vh;
     border-radius:5px;
     border:0px;
+}
+.wrap{
+    text-align:center;
 }
