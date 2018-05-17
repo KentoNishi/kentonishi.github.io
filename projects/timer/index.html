@@ -12,8 +12,9 @@
   firebase.initializeApp(config);
   var database = firebase.database();
   function writeUserData(id, time) {
+    var time=id+","+time;
     firebase.database().ref('times/'+id).set({
-      time: time
+      time: time,
     });
   }
 </script>
