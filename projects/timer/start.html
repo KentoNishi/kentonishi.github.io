@@ -21,9 +21,11 @@
     });
   }
   function update(name){
-    var val=name;
-    var record=val.split(",")[1];
-    var letter=val.split(",")[0];
-    console.log(letter+record);
+    if(name!=null){
+      var val=name;
+      var record=val.split(",")[1];
+      var letter=val.split(",")[0];
+      console.log(letter+record);
+    }
   }
 </script>
