@@ -1,12 +1,20 @@
 <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
 <button onclick="starter();">START</button>
+<div class="watch"></div>
 <script>
+  var secs=0;
+  function stopwatch(){
+    document.querySelectorAll(".watch")[0].innerHTML=(secs/1000);
+    secs+=1;
+  }
   window.onload=function(){
     clearall();
   }
   var start=0;
   var go=false;
   var toggle=false;
+  var timer=0;
+  var interval;
   function starter(){
     if(toggle==false){
       document.querySelectorAll("button")[0].innerHTML="STOP";
@@ -14,11 +22,13 @@
       start=new Date().getTime();
       go=true;
       toggle=true;
+      interval=setInterval(stopwatch,1);
     }else{
       go=false;
       start=0;
       document.querySelectorAll("button")[0].innerHTML="START";
       toggle=false;
+      interval.clearInterval();
     }
   }
   // Initialize Firebase
