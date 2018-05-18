@@ -5,7 +5,8 @@
 <button disabled="true" onclick="finish();">FINISH</button>
 <script> 
   function finish(){
-    writeUserData((document.querySelectorAll("input")[0].value).toString(),new Date().getTime());
+    var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    writeUserData(alphabet[(document.querySelectorAll("input")[0].value)-1],new Date().getTime());
   }
   // Initialize Firebase
   var config = {
