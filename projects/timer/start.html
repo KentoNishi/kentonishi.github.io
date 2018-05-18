@@ -1,10 +1,10 @@
 <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
 <button onclick="starter();">START</button>
-<button onclick="clear();">CLEAR</button>
+<button onclick="clearall();">CLEAR</button>
 
 <script>
   window.onload=function(){
-    clear();
+    clearall();
   }
   var start=0;
   var go=false;
@@ -44,7 +44,7 @@
      //console.log(letter);
      //console.log(time);
     }else{
-     clear();
+     clearall();
     }
   }
   function rank(letter,time){
