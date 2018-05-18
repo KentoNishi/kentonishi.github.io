@@ -1,7 +1,9 @@
 <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
 <link href="/projects/timer/all.css" rel="stylesheet" type="text/css"></link>
 <div style="position:fixed;top:10vh;left:25vw;margin:auto;text-align:center;width:50vw;padding-top:7.5vh;">
-   <input style="position:fixed;top:10vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="changed();" oninput="changed();" value="0" type="range" min="1" max="10"></input>
+<div class="slidecontainer">
+   <input class="slider" style="position:fixed;top:10vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="changed();" oninput="changed();" value="0" type="range" min="1" max="10"></input>
+</div>
    <div>Runner ID: <span class="number">A</span></div>
    <br />
    <button onclick="finish();">FINISH</button>
