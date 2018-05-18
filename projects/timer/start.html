@@ -2,14 +2,19 @@
 <link href="/projects/timer/all.css" rel="stylesheet" type="text/css"></link>
 <div style="position:fixed;top:10vh;left:25vw;margin:auto;text-align:center;width:50vw;padding-top:7.5vh;">
   <button onclick="starter();">START</button>
-  <div><span class="watch" style="position:fixed;top:50vh;left:40vw;"></span><span style="position:fixed;top:50vh;left:50%;transform:translate(-50%,0);">:</span><span class="watch" style="position:fixed;top:50vh;left:50vw;"></span></div>
+  <div style="position:fixed;top:55vh;">
+    <span class="watch" style="padding:5px;"></span>
+    <span class="watch" style="padding:5px;"></span>
+    <span class="watch" style="padding:5px;"></span>
+  </div>
 </div>
 <script>
   var secs=0;
   function stopwatch(){
     if(secs!=0&&secs%100!=0){
-      document.querySelectorAll(".watch")[0].innerHTML=(secs/100).toString().split(".")[0].replace("undefined","00");
-      document.querySelectorAll(".watch")[1].innerHTML=(secs/100).toString().split(".")[1].replace("undefined","00");
+      document.querySelectorAll(".watch")[0].innerHTML=parseInt((secs/100).toString().split(".")[0].replace("undefined","00"))%60;
+      document.querySelectorAll(".watch")[1].innerHTML=(secs/100).toString().split(".")[0].replace("undefined","00");
+      document.querySelectorAll(".watch")[2].innerHTML=(secs/100).toString().split(".")[1].replace("undefined","00");
     }
     secs+=1;
   }
