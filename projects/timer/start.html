@@ -7,10 +7,19 @@
   }
   var start=0;
   var go=false;
+  var toggle=false;
   function starter(){
-    clearall();
-    start=new Date().getTime();
-    go=true;
+    if(toggle==false){
+      document.querySelectorAll("button")[0].innerHTML="STOP";
+      clearall();
+      start=new Date().getTime();
+      go=true;
+      toggle=true;
+    }else{
+      go=false;
+      start=0;
+      document.querySelectorAll("button")[0].innerHTML="START";
+    }
   }
   // Initialize Firebase
   var config = {
