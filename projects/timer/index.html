@@ -19,7 +19,7 @@
   }
   function finish(){
     document.querySelectorAll('.finish')[0].disabled=true;
-    document.querySelectorAll('.submit')[0].innerHTML=decodeURIComponent("<div onclick='document.querySelectorAll(%22.finish%22)%5B0%5D.disabled%3Dfalse%3Bthis.outerHTML=%22%22;' style='background-color:lightgreen;'>Register New Runner</div>");
+    document.querySelectorAll('.submit')[0].innerHTML=decodeURIComponent("<button onclick='document.querySelectorAll(%22.finish%22)%5B0%5D.disabled%3Dfalse%3Bthis.outerHTML=%22%22;' style='background-color:lightgreen;'>Register New Runner</button>");
     writeUserData(alphabet[(document.querySelectorAll("input")[0].value)-1],new Date().getTime());
   }
   // Initialize Firebase
