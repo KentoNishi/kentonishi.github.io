@@ -6,7 +6,7 @@
 <script> 
    var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   function changed(){
-    document.querySelectorAll('.number')[0].innerHTML=alphabet[parseInt(document.querySelectorAll('input')[0].value)];
+    document.querySelectorAll('.number')[0].innerHTML=alphabet[parseInt(document.querySelectorAll('input')[0].value-1)];
   }
   function finish(){
     writeUserData(alphabet[(document.querySelectorAll("input")[0].value)-1],new Date().getTime());
