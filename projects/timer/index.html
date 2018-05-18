@@ -4,12 +4,12 @@
 <br />
 <button disabled="true" onclick="finish();">FINISH</button>
 <script> 
+   var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   function changed(){
     document.querySelectorAll('button')[0].disabled=false;
     document.querySelectorAll('.number')[0].innerHTML=alphabet[this.value];
   }
   function finish(){
-    var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     writeUserData(alphabet[(document.querySelectorAll("input")[0].value)-1],new Date().getTime());
   }
   // Initialize Firebase
