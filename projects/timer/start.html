@@ -9,8 +9,8 @@
 <script>
   var secs=0;
   function stopwatch(){
-    document.querySelectorAll(".watch")[0].innerHTML=(secs/100).toString().split(".")[0];
-    document.querySelectorAll(".watch")[1].innerHTML=(secs/100).toString().split(".")[1];
+    document.querySelectorAll(".watch")[0].innerHTML=(secs/100).toString().split(".")[0].replace("undefined","00");
+    document.querySelectorAll(".watch")[1].innerHTML=(secs/100).toString().split(".")[1].replace("undefined","00");
     secs+=1;
   }
   window.onload=function(){
