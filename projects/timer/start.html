@@ -14,7 +14,10 @@
   
   firebase.initializeApp(config);
   
-  firebase.database().ref('times').remove();
+  clear();
+  function clear(){
+    firebase.database().ref('times').remove();
+  }
   
   var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   for(var i=0;i<10;i++){
