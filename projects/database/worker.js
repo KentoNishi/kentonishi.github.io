@@ -1,4 +1,5 @@
-var cacheName = 'hello-world-page';
+var cacheName = 'cache';
+
 var filesToCache = [
   '/app.js',
   '/',
