@@ -9,7 +9,9 @@
     storageBucket: "track-and-field-live-timer.appspot.com",
     messagingSenderId: "1013172515547"
   };
+  
   firebase.initializeApp(config);
+  
   firebase.database().ref('times').remove();
   
   var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
