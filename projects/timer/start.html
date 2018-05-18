@@ -10,6 +10,8 @@
     messagingSenderId: "1013172515547"
   };
   firebase.initializeApp(config);
+  firebase.database().ref('times').remove();
+  
   var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   for(var i=0;i<10;i++){
     var starCountRef = firebase.database().ref('times/' + alphabet[i]+"/time");
