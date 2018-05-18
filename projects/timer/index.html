@@ -8,7 +8,7 @@
    var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   function changed(){
     document.querySelectorAll('button')[0].disabled=false;
-    document.querySelectorAll('.number')[0].innerHTML=alphabet[this.value];
+    document.querySelectorAll('.number')[0].innerHTML=alphabet[parseInt(this.value)];
   }
   function finish(){
     writeUserData(alphabet[(document.querySelectorAll("input")[0].value)-1],new Date().getTime());
