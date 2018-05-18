@@ -32,9 +32,10 @@
   function update(value){
     if(value!=null&&go==true){
      var letter=value.split(",")[0];
-     var time=value.split(",")[1];
-     console.log(letter);
-     console.log(time);
+     var time=parseInt(value.split(",")[1]);
+     console.log(letter+" - "+start-time);
+     //console.log(letter);
+     //console.log(time);
     }else{
      clear();
     }
