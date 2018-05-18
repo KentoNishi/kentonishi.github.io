@@ -1,4 +1,5 @@
 var cacheName = 'cache';
+
 var filesToCache = [
   'https://kentonishi.github.io/projects/database/app.js',
   'https://kentonishi.github.io/projects/database/',
@@ -13,9 +14,11 @@ self.addEventListener('install', function(e) {
     })
   );
 });
+
 self.addEventListener('activate',  event => {
   event.waitUntil(self.clients.claim());
 });
+
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request, {ignoreSearch:true}).then(response => {
