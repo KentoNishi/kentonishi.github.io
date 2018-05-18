@@ -1,6 +1,9 @@
 <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
 
 <script>
+  window.onload=function(){
+    clear();
+  }
   var start=0;
   var go=false;
   function starter(){
@@ -17,7 +20,6 @@
     messagingSenderId: "1013172515547"
   };
   firebase.initializeApp(config);
-  clear();
   function clear(){
     firebase.database().ref('times').remove();
     go=false;
