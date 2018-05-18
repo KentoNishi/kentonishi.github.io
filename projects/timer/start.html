@@ -30,10 +30,12 @@
     firebase.database().ref('times').remove();
   }
   var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var starCountRef = firebase.database().ref('times/' + alphabet[i]+"/time");
-  starCountRef.on('value', function(snapshot) {
-    update(snapshot.val());
-  });
+  for(var i=0;i<10;i++){
+    var starCountRef = firebase.database().ref('times/' + alphabet[i]+"/time");
+    starCountRef.on('value', function(snapshot) {
+      update(snapshot.val());
+    });
+  }
   function update(value){
     if(value!=null&&go==true){
      var letter=value.split(",")[0];
