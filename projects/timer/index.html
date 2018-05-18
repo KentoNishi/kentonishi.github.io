@@ -5,6 +5,7 @@
 <button onclick="finish();">FINISH</button>
 
 <script> 
+  
   function finish(){
     writeUserData((document.querySelectorAll("input")[0].value).toString(),new Date().getTime());
   }
@@ -25,4 +26,5 @@
       time: data
     });
   }
+  
 </script>
