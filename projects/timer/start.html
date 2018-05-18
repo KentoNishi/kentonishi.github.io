@@ -7,8 +7,8 @@
 <script>
   var secs=0;
   function stopwatch(){
-    document.querySelectorAll(".watch")[0].innerHTML=(secs/100).toString().split(".")[0].replace("undefined","");
-    document.querySelectorAll(".watch")[1].innerHTML=(secs/100).toString().split(".")[1].replace("undefined","");
+    document.querySelectorAll(".watch")[0].innerHTML=parseInt(secs.toString().split(".")[0].replace("undefined",""))/100;
+    document.querySelectorAll(".watch")[1].innerHTML=parseInt(secs.toString().split(".")[1].replace("undefined",""))/100;
     secs+=1;
   }
   window.onload=function(){
