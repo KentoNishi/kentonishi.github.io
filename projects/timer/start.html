@@ -1,6 +1,5 @@
 <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
 <button onclick="starter();">START</button>
-<button onclick="clearall();">CLEAR</button>
 <script>
   window.onload=function(){
     clearall();
@@ -19,6 +18,7 @@
       go=false;
       start=0;
       document.querySelectorAll("button")[0].innerHTML="START";
+      toggle=false;
     }
   }
   // Initialize Firebase
