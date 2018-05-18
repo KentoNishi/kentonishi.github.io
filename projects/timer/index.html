@@ -8,7 +8,10 @@
    <br />
    <div>Runner ID: <span class="number">A</span></div>
    <br />
-   <button onclick="finish();">FINISH</button>
+   <button class="finish" onclick="finish();">FINISH</button>
+   <br />
+   <br />
+   <div class="sumbit"></div>
 </div>
 
 <script> 
@@ -17,6 +20,8 @@
     document.querySelectorAll('.number')[0].innerHTML=alphabet[parseInt(document.querySelectorAll('input')[0].value-1)];
   }
   function finish(){
+    document.querySelectorAll('.finish')[0].disabled=true;
+    document.querySelectorAll('.submit')[0].innerHTML=decodeURIComponent("<div onclick='document.querySelectorAll(%22.finish%22)%5B0%5D.disabled%3Dfalse%3Bthis.outerHTML=%22%22;' style='background-color:lightgreen;'>New Runner</div>");
     writeUserData(alphabet[(document.querySelectorAll("input")[0].value)-1],new Date().getTime());
   }
   // Initialize Firebase
