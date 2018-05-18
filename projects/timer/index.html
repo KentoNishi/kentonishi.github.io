@@ -1,9 +1,9 @@
 <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
-<input value="NAME"></input>
+<input value="NAME" type="range" value="10"></input>
 <button onclick="finish();">FINISH</button>
 <script> 
   function finish(){
-    writeUserData(document.querySelectorAll("input")[0].value,new Date().getTime());
+    writeUserData((document.querySelectorAll("input")[0].value-1).toString(),new Date().getTime());
   }
   // Initialize Firebase
   var config = {
