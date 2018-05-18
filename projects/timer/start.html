@@ -12,14 +12,11 @@
     messagingSenderId: "1013172515547"
   };
   firebase.initializeApp(config);
-  
   var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   for(var i=0;i<10;i++){
     var starCountRef = firebase.database().ref('times/' + alphabet[i]+"/time");
     starCountRef.on('value', function(snapshot) {
-      if(snapshot.val()!=null){
-       alert(snapshot.val());
-      }
+      alert(snapshot.val());
     });
   }
   
