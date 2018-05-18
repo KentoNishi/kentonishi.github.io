@@ -1,6 +1,6 @@
 *{
   
-  font-size:8vh;
+  font-size:20vh;
   background-color:lightblue;
   border:none;
   
@@ -9,6 +9,6 @@
 button{
   
   box-shadow: inset 0 0 3px black;
-  font-size:20vh;
+  font-size:50vh;
   
 }
