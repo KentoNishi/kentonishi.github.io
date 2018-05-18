@@ -29,12 +29,10 @@
     firebase.database().ref('times').remove();
   }
   var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  for(var i=0;i<10;i++){
-    var starCountRef = firebase.database().ref('times/' + alphabet[i]+"/time");
-    starCountRef.on('value', function(snapshot) {
-      update(snapshot.val());
-    });
-  }
+  var starCountRef = firebase.database().ref('times/' + alphabet[i]+"/time");
+  starCountRef.on('value', function(snapshot) {
+    update(snapshot.val());
+  });
   function update(value){
     if(value!=null&&go==true){
      var letter=value.split(",")[0];
@@ -48,7 +46,7 @@
     }
   }
   function rank(letter,time){
-    document.querySelectorAll(".rank")[0].innerHTML+=letter+" : "+time+"<br />";
+    document.querySelectorAll(".rank")[0].innerHTML+=letter+" : "+time+" seconds<br />";
   }
 </script>
 <div class="rank"></div>
