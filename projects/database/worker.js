@@ -1,9 +1,8 @@
 var cacheName = 'cache';
-
 var filesToCache = [
-  '/app.js',
-  '/',
-  '/index.html'
+  'https://kentonishi.github.io/projects/database/app.js',
+  'https://kentonishi.github.io/projects/database/',
+  'https://kentonishi.github.io/projects/database/index.html'
 ];
 self.addEventListener('install', function(e) {
   console.log('[ServiceWorker] Install');
