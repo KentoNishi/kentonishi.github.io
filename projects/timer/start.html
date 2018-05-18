@@ -1,5 +1,11 @@
 <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
 <script>
+  var start=0;
+  var go=false;
+  function start(){
+    start=new Date().getTime();
+    go=true;
+  }
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyD1wxkBnNNCmvJ0VONthEUKhtVdq5cxNDU",
@@ -15,6 +21,8 @@
   clear();
   function clear(){
     firebase.database().ref('times').remove();
+    go=false;
+    start=0;
   }
   
   var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -25,7 +33,7 @@
     });
   }
   function update(value){
-    if(value!=null){
+    if(value!=null&&go==true){
      var letter=value.split(",")[0];
      var time=value.split(",")[1];
      console.log(letter);
