@@ -2,12 +2,13 @@
 <link href="/projects/timer/all.css" rel="stylesheet" type="text/css"></link>
 <div style="position:fixed;top:10vh;left:25vw;margin:auto;text-align:center;width:50vw;padding-top:7.5vh;">
   <button onclick="starter();">START</button>
-  <div class="watch"></div>
+  <div><span class="watch"></span><span class="watch"></span></div>
 </div>
 <script>
   var secs=0;
   function stopwatch(){
-    document.querySelectorAll(".watch")[0].innerHTML=(secs/100);
+    document.querySelectorAll(".watch")[0].innerHTML=(secs/100).toString().split(".")[0]+" : ";
+    document.querySelectorAll(".watch")[1].innerHTML=(secs/100).toString().split(".")[1]+"";
     secs+=1;
   }
   window.onload=function(){
