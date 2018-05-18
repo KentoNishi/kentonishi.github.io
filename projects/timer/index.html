@@ -16,7 +16,7 @@
   var database = firebase.database();
   function writeUserData(id, time) {
     var data=id+","+time;
-    firebase.database().ref('times/'+id+"/time").set({
+    firebase.database().ref('times/'+id).set({
       time: data
     });
   }
