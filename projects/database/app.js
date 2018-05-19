@@ -1,3 +1,4 @@
+  //Orientation
   screen.orientation.lock('portrait').catch(function(error) { 
     console.log("NOT MOBILE!"); 
   });
