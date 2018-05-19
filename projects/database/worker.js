@@ -1,5 +1,4 @@
 var CACHE_NAME = 'cache';
-
 var urlsToCache = [
   'https://kentonishi.github.io/projects/database/app.js',
   'https://kentonishi.github.io/projects/database/',
