@@ -23,16 +23,3 @@ self.addEventListener('fetch', function(event) {
   })
   );
 });
-
-self.addEventListener('message', handleMessageFromWorker);
-
-function handleMessageFromWorker(msg) {
-    if(msg.data=="CLEAR CACHE"){
-      caches.keys().then(function(names) {
-          for (let name of names)
-              caches.delete(name);
-          }             
-        console.log('CLEAR CACHE');
-    }
-}
-
