@@ -13,7 +13,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "kentonishi.github.io/projects/database/index.html",
+  "start_url": "https://kentonishi.github.io/projects/database/index.html",
   "background_color": "#3367D6",
   "display": "standalone",
   "scope": "/maps/",
