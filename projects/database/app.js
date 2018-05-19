@@ -46,6 +46,7 @@
       document.querySelectorAll(".profile-pic")[i].src=pic;
     }
      document.querySelectorAll(".signout")[0].innerHTML="Sign Out";
+     document.querySelectorAll(".signout")[0].href="javascript:signOut();";
   }
 
   function signOut(){
