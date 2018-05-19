@@ -1,0 +1,21 @@
+{
+  "short_name": "System",
+  "name": "FireBase System",
+  "icons": [
+    {
+      "src": "https://tse1.mm.bing.net/th?id=OIP.BL3_i_J0l6CIAMzLQIThYQHaHa&w=192&h=192&c=7&o=5&pid=1.7",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://image.flaticon.com/icons/png/512/3/3716.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "kentonishi.github.io/projects/database/index.html",
+  "background_color": "#3367D6",
+  "display": "standalone",
+  "scope": "/maps/",
+  "theme_color": "#3367D6"
+}
