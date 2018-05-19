@@ -16,6 +16,16 @@
     var storage = firebase.storage();
     var storageRef = storage.ref();
     var database = firebase.database();
+    firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      alert(user.uid);
+      getUserData(user.uid,true);
+      document.querySelectorAll('.wrap')[0].outerHTML='';
+    } else {
+      // No user is signed in.
+    }
+  });
   }
 
   function writeUserData(userId, name, email, imageUrl) {
