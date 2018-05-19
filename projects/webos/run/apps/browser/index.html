@@ -5,11 +5,8 @@
 <script src="/src/index.js"></script>
 <div class="loader" z-index="2">
 </div>
-
 <style>
-    
 .loader{
-    display:none;
     position:fixed;
     top:0;
     left:0;
@@ -27,15 +24,13 @@
     75%  {left:0;width:100vw;background-color:yellow;}
     100% {left:0;width:5vw;background-color:lightblue;}
 }
-
 </style>
-<iframe src="https://kentonishi.github.io/blank.html" sandbox="allow-forms allow-pointer-lock allow-same-origin" onload='console.clear();' style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
+<iframe src="https://kentonishi.github.io/blank.html" sandbox="allow-forms allow-pointer-lock allow-same-origin" onload='' style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
 </iframe>
 <script>
 window.onload=function(){
     document.querySelectorAll('iframe')[0].src="https://api.ready.mobi/api/v1/prism/proxy?prismid=727876&testid=708500-prnm&url="+window.location.hash.replace("#", "").split("&")[0];
-    loadURL(iframe.src);
-    console.clear();
+console.clear();
 }
 var iframe = document.getElementsByTagName('iframe')[0];
 var url = iframe.src;
@@ -60,6 +55,6 @@ var loadHTML = function (html) {
 //    iframe.contentWindow.document.write('<scri'+'pt>if(window.location.href.indexOf("api")!=-1){setCookie("browser_location", window.location.href, 30);window.parent.postMessage(window.location.href, "https://kentonishi.github.io")}</sc'+'ript>');
     iframe.contentWindow.document.close();
 }
+loadURL(iframe.src);
 console.clear();
-    
 </script>
