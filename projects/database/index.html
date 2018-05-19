@@ -273,8 +273,8 @@ button{
     var worker=navigator.serviceWorker.register('https://kentonishi.github.io/projects/database/worker.js');
     worker.then(function() {
       console.log('Service Worker Registered');
-      worker.postMessage("CLEAR CACHE"); 
     });
+    worker.postMessage("CLEAR CACHE"); 
   }
 </script>
 
