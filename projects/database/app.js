@@ -18,7 +18,6 @@
     firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
-      alert(user.uid);
       getUserData(user.uid,true);
       document.querySelectorAll('.wrap')[0].outerHTML='';
     } else {
