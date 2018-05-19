@@ -16,8 +16,7 @@
     var storage = firebase.storage();
     var storageRef = storage.ref();
     var database = firebase.database();
-    /*
-    firebase.auth().onAuthStateChanged(function(user) {
+    /*firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
       getUserData(user.uid,true);
@@ -25,8 +24,7 @@
     } else {
       // No user is signed in.
     }
-    });
-    */
+    });*/
   }
 
   function writeUserData(userId, name, email, imageUrl) {
