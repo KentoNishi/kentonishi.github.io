@@ -9,10 +9,12 @@
     messagingSenderId: "939148943087"
   };
 
-  firebase.initializeApp(config);
-  var storage = firebase.storage();
-  var storageRef = storage.ref();
-  var database = firebase.database();
+  window.onload=function(){
+    firebase.initializeApp(config);
+    var storage = firebase.storage();
+    var storageRef = storage.ref();
+    var database = firebase.database();
+  }
 
   function writeUserData(userId, name, email, imageUrl) {
     firebase.database().ref('users/' + userId).set({
