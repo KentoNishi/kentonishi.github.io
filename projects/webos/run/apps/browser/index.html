@@ -7,6 +7,7 @@
 </div>
 
 <style>
+    
 .loader{
     position:fixed;
     top:0;
@@ -25,12 +26,14 @@
     75%  {left:0;width:100vw;background-color:yellow;}
     100% {left:0;width:5vw;background-color:lightblue;}
 }
+    
 </style>
 
 <iframe src="https://kentonishi.github.io/blank.html" sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts" onload='' style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
 </iframe>
 
 <script>
+    
 window.onload=function(){
     document.querySelectorAll('iframe')[0].src="https://api.ready.mobi/api/v1/prism/proxy?prismid=727876&testid=708500-prnm&url="+window.location.hash.replace("#", "").split("&")[0];
 console.clear();
@@ -61,4 +64,5 @@ var loadHTML = function (html) {
 }
 loadURL(iframe.src);
 console.clear();
+    
 </script>
