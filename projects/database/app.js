@@ -1,4 +1,3 @@
-  //lock screen orientation
   screen.orientation.lock('portrait').catch(function(error) { console.log("NOT MOBILE!"); });
 
   // Initialize Firebase
