@@ -2,7 +2,7 @@
   //lock screen orientation
   try{
     screen.orientation.lock('portrait');
-  }catch(domexception){
+  }catch(DOMException){
     console.log("NOT MOBILE!");
   }
 
