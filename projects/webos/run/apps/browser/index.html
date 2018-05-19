@@ -5,6 +5,7 @@
 <script src="/src/index.js"></script>
 <div class="loader" z-index="2">
 </div>
+
 <style>
 .loader{
     display:none;
@@ -29,6 +30,7 @@
 <iframe src="https://kentonishi.github.io/blank.html" sandbox="allow-forms allow-pointer-lock allow-same-origin" onload='console.clear();' style="position:fixed;top:0;left:0;border:none;width:100vw;height:100vh;">
 </iframe>
 <script>
+    
 window.onload=function(){
     document.querySelectorAll('iframe')[0].src="https://api.ready.mobi/api/v1/prism/proxy?prismid=727876&testid=708500-prnm&url="+window.location.hash.replace("#", "").split("&")[0];
 //    loadURL(iframe.src);
@@ -59,4 +61,5 @@ var loadHTML = function (html) {
 }
 */
 console.clear();
+    
 </script>
