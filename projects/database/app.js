@@ -2,11 +2,8 @@
 
   //lock screen orientation
 
-  try{
-    screen.orientation.lock('portrait');
-  }catch(DOMException){
-    console.log("NOT MOBILE!");
-  }
+  screen.orientation.lock('portrait').catch(function(error) { console.log("NOT MOBILE!"); });
+  
 
   var config = {
     apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
