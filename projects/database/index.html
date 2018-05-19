@@ -268,12 +268,13 @@ button{
 </main>
 <!--WORKER-->
   
-<script>
+<script defer>
   if('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('https://kentonishi.github.io/projects/database/worker.js')
-      .then(function() {
-            console.log('Service Worker Registered');
-      });
+    var worker=navigator.serviceWorker.register('https://kentonishi.github.io/projects/database/worker.js');
+    worker.then(function() {
+      console.log('Service Worker Registered');
+      worker.postMessage("CLEAR CACHE"); 
+    });
   }
 </script>
 
