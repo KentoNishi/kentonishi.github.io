@@ -45,6 +45,15 @@
     for(var i=0;i<document.querySelectorAll(".profile-pic").length;i++){
       document.querySelectorAll(".profile-pic")[i].src=pic;
     }
+     document.querySelectorAll(".signout")[0].innerHTML="Sign Out";
+  }
+
+  function signOut(){
+    firebase.auth().signOut().then(function() {
+      location.reload();
+    }).catch(function(error) {
+      console.log("SIGN OUT ERROR!");
+    });
   }
 
   function getUserData(userID,me){
