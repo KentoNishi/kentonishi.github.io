@@ -25,6 +25,9 @@
       // No user is signed in.
     }
     });*/
+    if(navigator.onLine==false){
+      alert("You are currently offline.");
+    }
   }
 
   function writeUserData(userId, name, email, imageUrl) {
