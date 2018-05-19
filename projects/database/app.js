@@ -24,7 +24,6 @@
       // No user is signed in.
     }
     });
-    document.querySelectorAll('.load')[0].outerHTML='';
   }
 
   function writeUserData(userId, name, email, imageUrl) {
@@ -45,8 +44,6 @@
     for(var i=0;i<document.querySelectorAll(".profile-pic").length;i++){
       document.querySelectorAll(".profile-pic")[i].src=pic;
     }
-     document.querySelectorAll(".signout")[0].innerHTML="Sign Out";
-     document.querySelectorAll(".signout")[0].href="javascript:signOut();";
   }
 
   function signOut(){
