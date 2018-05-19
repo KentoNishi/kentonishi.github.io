@@ -1,4 +1,4 @@
-var CACHE_NAME = 'my-site-cache-v1';
+var CACHE_NAME = 'cache';
 
 var urlsToCache = [
   'https://kentonishi.github.io/projects/database/app.js',
@@ -24,3 +24,16 @@ self.addEventListener('fetch', function(event) {
   })
   );
 });
+
+self.addEventListener('message', handleMessageFromWorker);
+
+function handleMessageFromWorker(msg) {
+    if(msg.data=="CLEAR CACHE"){
+      caches.keys().then(function(names) {
+          for (let name of names)
+              caches.delete(name);
+          }             
+        console.log('CLEAR CACHE');
+    }
+}
+
