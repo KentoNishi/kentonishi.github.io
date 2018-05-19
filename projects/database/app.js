@@ -1,5 +1,7 @@
   // Initialize Firebase
+
   //lock screen orientation
+
   try{
     screen.orientation.lock('portrait');
   }catch(DOMException){
