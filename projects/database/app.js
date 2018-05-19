@@ -23,7 +23,8 @@
     } else {
       // No user is signed in.
     }
-  });
+    });
+    document.querySelectorAll('.load')[0].outerHTML='';
   }
 
   function writeUserData(userId, name, email, imageUrl) {
