@@ -52,6 +52,7 @@
 
   function signOut(){
     firebase.auth().signOut().then(function() {
+      document.querySelectorAll("body")[0].style.display="none";
       location.reload();
     }).catch(function(error) {
       console.log("SIGN OUT ERROR!");
