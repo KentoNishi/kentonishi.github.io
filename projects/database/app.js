@@ -1,10 +1,7 @@
-  // Initialize Firebase
-
   //lock screen orientation
-
   screen.orientation.lock('portrait').catch(function(error) { console.log("NOT MOBILE!"); });
-  
 
+  // Initialize Firebase
   var config = {
     apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
     authDomain: "kento-nishi-gi-1525841644617.firebaseapp.com",
@@ -66,5 +63,4 @@
     }).catch(function(error) {
       console.log("SIGN IN ERROR!");
     });
-    
   }
