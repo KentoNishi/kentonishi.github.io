@@ -52,7 +52,7 @@
   function signOut(){
     firebase.auth().signOut().then(function() {
       document.querySelectorAll("body")[0].style.display="none";
-      location.reload();
+      location.reload(true);
     }).catch(function(error) {
       console.log("SIGN OUT ERROR!");
     });
