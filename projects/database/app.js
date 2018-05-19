@@ -1,5 +1,4 @@
   //Orientation
-  //DETECT MOBILE
   screen.orientation.lock('portrait').catch(function(error) { console.log("NOT MOBILE!"); });
 
   // Initialize Firebase
