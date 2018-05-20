@@ -62,6 +62,7 @@
 
   }
   */
+
   window.onload=function(){
     firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -73,7 +74,6 @@
     });
 //    messager();
     screen.orientation.lock('portrait').then(function(){document.body.onclick=function(){requestFullScreen(document.body);};}).catch(function(error) { console.log("NOT MOBILE!"); });
-
   }
   
   function writeUserData(userId, name, email, imageUrl) {
