@@ -48,7 +48,6 @@
     }).catch(function(err) {
       console.log('Unable to get permission to notify.', err);
     });
-
   }
 
   // Callback fired if Instance ID token is updated.
