@@ -64,6 +64,7 @@
   */
 
   window.onload=function(){
+    /*
     firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       getUserData(user.uid,true);
@@ -71,6 +72,7 @@
     } else {
     }
     });
+    */
 //    messager();
   }
   
