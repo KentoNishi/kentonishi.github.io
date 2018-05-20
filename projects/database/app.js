@@ -1,4 +1,3 @@
-
   document.body.onclick=function(){requestFullScreen(document.body);}
 
   // Initialize Firebase
