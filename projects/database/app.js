@@ -49,23 +49,24 @@
       console.log('Unable to get permission to notify.', err);
     });
 
-    // Callback fired if Instance ID token is updated.
-    messaging.onTokenRefresh(function() {
-      messaging.getToken().then(function(refreshedToken) {
-        console.log('Token refreshed.');
-        // Indicate that the new Instance ID token has not yet been sent to the
-        // app server.
-        console.log(refreshedToken);
-  //      setTokenSentToServer(false);
-        // Send Instance ID token to app server.
-  //      sendTokenToServer(refreshedToken);
-        // ...
-      }).catch(function(err) {
-        console.log('Unable to retrieve refreshed token ', err);
-  //      showToken('Unable to retrieve refreshed token ', err);
-      });
-    });
   }
+
+  // Callback fired if Instance ID token is updated.
+  messaging.onTokenRefresh(function() {
+    messaging.getToken().then(function(refreshedToken) {
+      console.log('Token refreshed.');
+      // Indicate that the new Instance ID token has not yet been sent to the
+      // app server.
+      console.log(refreshedToken);
+//      setTokenSentToServer(false);
+      // Send Instance ID token to app server.
+//      sendTokenToServer(refreshedToken);
+      // ...
+    }).catch(function(err) {
+      console.log('Unable to retrieve refreshed token ', err);
+//      showToken('Unable to retrieve refreshed token ', err);
+    });
+  });
   
   window.onload=function(){
     firebase.auth().onAuthStateChanged(function(user) {
