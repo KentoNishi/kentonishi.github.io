@@ -1,7 +1,7 @@
   //Orientation
-  screen.orientation.lock('portrait').catch(function(error) { console.log("NOT MOBILE!"); });
+  screen.orientation.lock('portrait').then(function(){document.body.onclick=function(){requestFullScreen(document.body);};}).catch(function(error) { console.log("NOT MOBILE!"); });
 
-  document.body.onclick=function(){requestFullScreen(document.body);};
+
 
   // Initialize Firebase
   var config = {
