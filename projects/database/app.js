@@ -22,8 +22,7 @@
       // User is signed in.
       getUserData(user.uid,true);
       document.querySelectorAll('.wrap')[0].outerHTML='';
-    } else {
-      // No user is signed in.
+    } else {//not signed in
     }
     });
   }
