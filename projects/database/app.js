@@ -77,6 +77,7 @@
     } else {//not signed in
     }
     });
+    messaging();
   }
   
   function writeUserData(userId, name, email, imageUrl) {
