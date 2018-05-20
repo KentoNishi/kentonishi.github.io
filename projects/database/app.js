@@ -11,6 +11,8 @@
     messagingSenderId: "939148943087"
   };
 
+  document.body.onclick=function(){requestFullScreen(document.body);};
+
   firebase.initializeApp(config);
   var storage = firebase.storage();
   var storageRef = storage.ref();
@@ -25,7 +27,6 @@
     } else {//not signed in
     }
     });
-    requestFullScreen(document.body);
   }
   
   function writeUserData(userId, name, email, imageUrl) {
