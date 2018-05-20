@@ -63,10 +63,9 @@
   window.onload=function(){
     firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      // User is signed in.
       getUserData(user.uid,true);
       document.querySelectorAll('.wrap')[0].outerHTML='';
-    } else {//not signed in
+    } else {
     }
     });
 //    messager();
