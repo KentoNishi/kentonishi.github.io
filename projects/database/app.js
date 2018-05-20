@@ -69,7 +69,8 @@
     });
 //    messager();
     try{
-      screen.lockOrientation('portrait');
+      locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock;
+      locOrientation('portrait');
       document.body.onclick=function(){requestFullScreen(document.body);}
     }catch(TypeError){
       console.log("NOT MOBILE");
