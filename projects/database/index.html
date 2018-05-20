@@ -276,20 +276,16 @@ button{
     showNotification();
   }
     
-    function showNotification() {
-      Notification.requestPermission(function(result) {
-        if (result === 'granted') {
-          navigator.serviceWorker.ready.then(function(registration) {
-            registration.showNotification('Vibration Sample', {
-              body: 'Buzz! Buzz!',
-              icon: 'https://codeproject.global.ssl.fastly.net/App_Themes/CodeProject/Img/logo250x135.gif',
-              vibrate: [200, 100, 200, 100, 200, 100, 200],
-              tag: 'vibration-sample'
-            });
-          });
-        }
-      });
+function showNotification() {
+  Notification.requestPermission(function(result) {
+    if (result === 'granted') {
+        window.showNotification('Vibration Sample', {
+          body: 'Buzz! Buzz!',
+          icon: '../images/touch/chrome-touch-icon-192x192.png'
+        });
     }
+  });
+}
 </script>
 
 </body>
