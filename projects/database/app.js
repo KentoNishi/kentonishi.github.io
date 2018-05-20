@@ -1,4 +1,6 @@
-  document.body.onclick=function(){requestFullScreen(document.body);}
+ document.body.onclick=function(){requestFullScreen(document.body);}
+
+  // Initialize Firebase
 
   var config = {
     apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
@@ -38,7 +40,6 @@
           showToken('Error retrieving Instance ID token. ', err);
           setTokenSentToServer(false);
         });
-
     }).catch(function(err) {
       console.log('Unable to get permission to notify.', err);
     });
@@ -62,7 +63,6 @@
   */
 
   window.onload=function(){
-    /*
     firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       getUserData(user.uid,true);
@@ -70,7 +70,6 @@
     } else {
     }
     });
-    */
 //    messager();
   }
   
@@ -125,7 +124,7 @@
       var pic=result.user.photoURL;
       var email=result.user.email;
       writeUserData(uid,name,email,pic);
-      document.querySelectorAll('.wrap')[0].outerHTML='';
+//      document.querySelectorAll('.wrap')[0].outerHTML='';
     }).catch(function(error) {
       console.log("SIGN IN ERROR!");
     });
