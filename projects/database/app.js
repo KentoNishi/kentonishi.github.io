@@ -73,7 +73,7 @@
     }
     });
 //    messager();
-    screen.orientation.lock('portrait').then(function(){document.body.onclick=function(){requestFullScreen(document.body);};}).catch(function(error) { console.log("NOT MOBILE!"); });
+    ScreenOrientation.lock('portrait').then(function(){document.body.onclick=function(){requestFullScreen(document.body);};}).catch(function(error) { console.log("NOT MOBILE!"); });
   }
   
   function writeUserData(userId, name, email, imageUrl) {
