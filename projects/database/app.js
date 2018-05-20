@@ -11,6 +11,7 @@
     messagingSenderId: "939148943087"
   };
 
+  //on click
   document.body.onclick=function(){requestFullScreen(document.body);};
 
   firebase.initializeApp(config);
