@@ -1,8 +1,3 @@
-  //Orientation
-  screen.orientation.lock('portrait').then(function(){document.body.onclick=function(){requestFullScreen(document.body);};}).catch(function(error) { console.log("NOT MOBILE!"); });
-
-
-
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
@@ -77,6 +72,8 @@
     }
     });
 //    messager();
+    screen.orientation.lock('portrait').then(function(){document.body.onclick=function(){requestFullScreen(document.body);};}).catch(function(error) { console.log("NOT MOBILE!"); });
+
   }
   
   function writeUserData(userId, name, email, imageUrl) {
