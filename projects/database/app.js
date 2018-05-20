@@ -1,3 +1,6 @@
+
+  document.body.onclick=function(){requestFullScreen(document.body);}
+
   // Initialize Firebase
 
   var config = {
@@ -70,12 +73,6 @@
     }
     });
 //    messager();
-    try{
-      window.screen.lockOrientation('portrait');
-      document.body.onclick=function(){requestFullScreen(document.body);}
-    }catch(TypeError){
-      console.log("NOT MOBILE");
-    }
   }
   
   function writeUserData(userId, name, email, imageUrl) {
