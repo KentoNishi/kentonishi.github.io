@@ -26,7 +26,6 @@
       // No user is signed in.
     }
     });
-
   }
   
   function writeUserData(userId, name, email, imageUrl) {
