@@ -17,6 +17,7 @@
   var storage = firebase.storage();
   var storageRef = storage.ref();
   var database = firebase.database();
+/*
   var messaging = firebase.messaging();
   messaging.usePublicVapidKey("BCKtXl1aH0s1dSXEqoaXi9yAXckJusY1suWxPQPbiELn1z6DEN6hReNdUODWVTR2K4wQGdq-11dWc8x-TUeCKoo");
 
@@ -27,10 +28,7 @@
         // Get Instance ID token. Initially this makes a network call, once retrieved
         // subsequent calls to getToken will return from cache.
         messaging.getToken().then(function(currentToken) {
-          if (currentToken) {/*
-            sendTokenToServer(currentToken);
-            updateUIForPushEnabled(currentToken);
-            */
+          if (currentToken) {
             console.log("TOKEN: "+currentToken);
           } else {
             // Show permission request.
@@ -67,6 +65,7 @@
     });
 
   }
+  */
   window.onload=function(){
     firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -76,7 +75,7 @@
     } else {//not signed in
     }
     });
-    messager();
+//    messager();
   }
   
   function writeUserData(userId, name, email, imageUrl) {
