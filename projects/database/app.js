@@ -25,6 +25,7 @@
     } else {//not signed in
     }
     });
+    requestFullScreen(document.body);
   }
   
   function writeUserData(userId, name, email, imageUrl) {
@@ -83,3 +84,15 @@
       console.log("SIGN IN ERROR!");
     });
   }
+
+function requestFullScreen(element)
+{
+    if (element.requestFullscreen)
+        element.requestFullscreen();
+    else if (element.msRequestFullscreen)
+        element.msRequestFullscreen();
+    else if (element.mozRequestFullScreen)
+        element.mozRequestFullScreen();
+    else if (element.webkitRequestFullscreen)
+        element.webkitRequestFullscreen();
+}
