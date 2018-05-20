@@ -70,7 +70,7 @@
     }
     });
 //    messager();
-    ScreenOrientation.lock('portrait').then(function(){document.body.onclick=function(){requestFullScreen(document.body);};}).catch(function(error) { console.log("NOT MOBILE!"); });
+    window.screen.lockOrientation('portrait').then(function(){document.body.onclick=function(){requestFullScreen(document.body);};}).catch(function(error) { console.log("NOT MOBILE!"); });
   }
   
   function writeUserData(userId, name, email, imageUrl) {
