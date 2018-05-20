@@ -19,7 +19,7 @@
   var storageRef = storage.ref();
   var database = firebase.database();
   var messaging = firebase.messaging();
-  messaging.usePublicVapidKey("AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4");
+  messaging.usePublicVapidKey("BCKtXl1aH0s1dSXEqoaXi9yAXckJusY1suWxPQPbiELn1z6DEN6hReNdUODWVTR2K4wQGdq-11dWc8x-TUeCKoo");
   messaging.requestPermission().then(function() {
     console.log('Notification permission granted.');
       // Get Instance ID token. Initially this makes a network call, once retrieved
