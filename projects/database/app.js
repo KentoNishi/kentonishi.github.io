@@ -69,7 +69,12 @@
     }
     });
 //    messager();
-    window.screen.lockOrientation('portrait').then(function(){document.body.onclick=function(){requestFullScreen(document.body);};}).catch(function(error) { console.log("NOT MOBILE!"); });
+    try{
+      screen.lockOrientation('portrait');
+      document.body.onclick=function(){requestFullScreen(document.body);}
+    }catch(TypeError){
+      console.log("NOT MOBILE");
+    }
   }
   
   function writeUserData(userId, name, email, imageUrl) {
