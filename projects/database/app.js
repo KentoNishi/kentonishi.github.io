@@ -17,6 +17,7 @@
   var storage = firebase.storage();
   var storageRef = storage.ref();
   var database = firebase.database();
+
 /*
   var messaging = firebase.messaging();
   messaging.usePublicVapidKey("BCKtXl1aH0s1dSXEqoaXi9yAXckJusY1suWxPQPbiELn1z6DEN6hReNdUODWVTR2K4wQGdq-11dWc8x-TUeCKoo");
