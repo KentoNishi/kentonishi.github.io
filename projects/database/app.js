@@ -16,7 +16,6 @@
 /*
   var messaging = firebase.messaging();
   messaging.usePublicVapidKey("BCKtXl1aH0s1dSXEqoaXi9yAXckJusY1suWxPQPbiELn1z6DEN6hReNdUODWVTR2K4wQGdq-11dWc8x-TUeCKoo");
-
   //init messaging
   function messager(){
     messaging.requestPermission().then(function() {
@@ -42,7 +41,6 @@
     }).catch(function(err) {
       console.log('Unable to get permission to notify.', err);
     });
-
     // Callback fired if Instance ID token is updated.
     messaging.onTokenRefresh(function() {
       messaging.getToken().then(function(refreshedToken) {
@@ -59,7 +57,6 @@
   //      showToken('Unable to retrieve refreshed token ', err);
       });
     });
-
   }
   */
 
