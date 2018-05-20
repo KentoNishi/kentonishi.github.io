@@ -11,11 +11,12 @@
     messagingSenderId: "939148943087"
   };
 
+  firebase.initializeApp(config);
+  var storage = firebase.storage();
+  var storageRef = storage.ref();
+  var database = firebase.database();
+
   window.onload=function(){
-    firebase.initializeApp(config);
-    var storage = firebase.storage();
-    var storageRef = storage.ref();
-    var database = firebase.database();
     firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
