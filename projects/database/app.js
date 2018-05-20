@@ -18,10 +18,10 @@
   var storageRef = storage.ref();
   var database = firebase.database();
   var messaging = firebase.messaging();
+  messaging.usePublicVapidKey("BCKtXl1aH0s1dSXEqoaXi9yAXckJusY1suWxPQPbiELn1z6DEN6hReNdUODWVTR2K4wQGdq-11dWc8x-TUeCKoo");
 
   //init messaging
-  function messaging(){
-    messaging.usePublicVapidKey("BCKtXl1aH0s1dSXEqoaXi9yAXckJusY1suWxPQPbiELn1z6DEN6hReNdUODWVTR2K4wQGdq-11dWc8x-TUeCKoo");
+  function messager(){
     messaging.requestPermission().then(function() {
       console.log('Notification permission granted.');
         // Get Instance ID token. Initially this makes a network call, once retrieved
@@ -48,25 +48,25 @@
     }).catch(function(err) {
       console.log('Unable to get permission to notify.', err);
     });
-  }
 
-  // Callback fired if Instance ID token is updated.
-  messaging.onTokenRefresh(function() {
-    messaging.getToken().then(function(refreshedToken) {
-      console.log('Token refreshed.');
-      // Indicate that the new Instance ID token has not yet been sent to the
-      // app server.
-      console.log(refreshedToken);
-//      setTokenSentToServer(false);
-      // Send Instance ID token to app server.
-//      sendTokenToServer(refreshedToken);
-      // ...
-    }).catch(function(err) {
-      console.log('Unable to retrieve refreshed token ', err);
-//      showToken('Unable to retrieve refreshed token ', err);
+    // Callback fired if Instance ID token is updated.
+    messaging.onTokenRefresh(function() {
+      messaging.getToken().then(function(refreshedToken) {
+        console.log('Token refreshed.');
+        // Indicate that the new Instance ID token has not yet been sent to the
+        // app server.
+        console.log(refreshedToken);
+  //      setTokenSentToServer(false);
+        // Send Instance ID token to app server.
+  //      sendTokenToServer(refreshedToken);
+        // ...
+      }).catch(function(err) {
+        console.log('Unable to retrieve refreshed token ', err);
+  //      showToken('Unable to retrieve refreshed token ', err);
+      });
     });
-  });
-  
+
+  }
   window.onload=function(){
     firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -76,7 +76,7 @@
     } else {//not signed in
     }
     });
-    messaging();
+    messager();
   }
   
   function writeUserData(userId, name, email, imageUrl) {
