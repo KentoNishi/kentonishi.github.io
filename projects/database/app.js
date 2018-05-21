@@ -61,7 +61,6 @@
   window.onload=function(){
     firebase.auth().onAuthStateChanged(function(result) {
     if (result) {
-      token=result.credential.accessToken;
       uid=result.user.uid;
       name=result.user.displayName;
       pic=result.user.photoURL;
