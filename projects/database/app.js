@@ -61,7 +61,7 @@
   window.onload=function(){
     firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      getUserData(user.uid,true);
+      login();
       document.querySelectorAll('.wrap')[0].outerHTML='';
     } else {
     }
