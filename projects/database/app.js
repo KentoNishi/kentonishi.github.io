@@ -72,8 +72,7 @@
    
   }
   
-  var description;
-  function writeUserData(userId, name, email, imageUrl, des) {
+  function writeUserData(userId, name, email, imageUrl, description) {
    description=des;
    if(desc.length<1){
     firebase.database().ref('users/' + userId).set({
@@ -86,7 +85,7 @@
       username: name,
       email: email,
       profile_picture : imageUrl,
-      desc:description;
+      desc:description
     });
    }
     getUserData(userId,true);
