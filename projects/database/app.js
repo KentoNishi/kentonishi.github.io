@@ -1,4 +1,4 @@
- document.body.onclick=function(){requestFullScreen(document.body);}
+  document.body.onclick=function(){requestFullScreen(document.body);}
 
   var config = {
     apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
