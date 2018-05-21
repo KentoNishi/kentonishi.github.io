@@ -14,8 +14,7 @@
   var storageRef = storage.ref();
   var database = firebase.database();
 
-/*
- var messaging = firebase.messaging();
+/*var messaging = firebase.messaging();
   messaging.usePublicVapidKey("BCKtXl1aH0s1dSXEqoaXi9yAXckJusY1suWxPQPbiELn1z6DEN6hReNdUODWVTR2K4wQGdq-11dWc8x-TUeCKoo");
   //init messaging
   function messager(){
@@ -57,8 +56,7 @@
   //      showToken('Unable to retrieve refreshed token ', err);
       });
     });
-  }
-  */
+  }*/
 
   window.onload=function(){
     firebase.auth().onAuthStateChanged(function(user) {
