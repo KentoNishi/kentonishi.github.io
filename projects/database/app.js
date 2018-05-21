@@ -1,4 +1,4 @@
-  document.body.onclick=function(){requestFullScreen(document.body);}
+ document.body.onclick=function(){requestFullScreen(document.body);}
 
   var config = {
     apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
@@ -13,8 +13,8 @@
   var storage = firebase.storage();
   var storageRef = storage.ref();
   var database = firebase.database();
-
-/*var messaging = firebase.messaging();
+/*
+  var messaging = firebase.messaging();
   messaging.usePublicVapidKey("BCKtXl1aH0s1dSXEqoaXi9yAXckJusY1suWxPQPbiELn1z6DEN6hReNdUODWVTR2K4wQGdq-11dWc8x-TUeCKoo");
   //init messaging
   function messager(){
@@ -56,16 +56,12 @@
   //      showToken('Unable to retrieve refreshed token ', err);
       });
     });
-  }*/
-
+  }
+  */
   window.onload=function(){
-    firebase.auth().onAuthStateChanged(function(result) {
-    if (result) {
-      uid=result.user.uid;
-      name=result.user.displayName;
-      pic=result.user.photoURL;
-      email=result.user.email;
-      writeUserData(uid,name,email,pic,"");
+    firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      getUserData(user.uid,true);
       document.querySelectorAll('.wrap')[0].outerHTML='';
     } else {
     }
@@ -74,22 +70,12 @@
    
   }
   
-  function writeUserData(userId, name, email, imageUrl, description) {
-   description=des;
-   if(desc.length<1){
+  function writeUserData(userId, name, email, imageUrl) {
     firebase.database().ref('users/' + userId).set({
       username: name,
       email: email,
       profile_picture : imageUrl
     });
-   }else{
-    firebase.database().ref('users/' + userId).set({
-      username: name,
-      email: email,
-      profile_picture : imageUrl, 
-      desc:description
-    });
-   }
     getUserData(userId,true);
   }
 
@@ -120,28 +106,21 @@
      //.once('value').then(function(snapshot) {
      var username=snapshot.val() && snapshot.val().username;
      var pic=snapshot.val() && snapshot.val().profile_picture;
-     var desc=snapshot.val() && snapshot.val().desc;
-     console.log("DESC: "+desc);
       if(me){
         my(username,pic);
       }
     });
   }
 
-  var token;
-  var uid;
-  var name;
-  var pic;
-  var email;
   function login(){
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
-      token=result.credential.accessToken;
-      uid=result.user.uid;
-      name=result.user.displayName;
-      pic=result.user.photoURL;
-      email=result.user.email;
-      writeUserData(uid,name,email,pic,"");
+      var token = result.credential.accessToken;
+      var uid=result.user.uid;
+      var name=result.user.displayName;
+      var pic=result.user.photoURL;
+      var email=result.user.email;
+      writeUserData(uid,name,email,pic);
 //      document.querySelectorAll('.wrap')[0].outerHTML='';
     }).catch(function(error) {
       console.log("SIGN IN ERROR!");
