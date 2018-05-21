@@ -72,23 +72,36 @@
    
   }
   
-  function writeUserData(userId, name, email, imageUrl) {
-    firebase.database().ref('users/' + userId).set({
-      username: name,
-      email: email,
-      profile_picture : imageUrl
-    });
+  function writeUserData(userId, name, email, imageUrl,description) {
+    if(description!=null){
+      firebase.database().ref('users/' + userId).set({
+        username: name,
+        email: email,
+        profile_picture : imageUrl
+      });
+    }else{
+      firebase.database().ref('users/' + userId).set({
+        username: name,
+        email: email,
+        profile_picture : imageUrl,
+        desc: description
+      });
+    }
     getUserData(userId,true);
   }
 
-  function my(username,pic){
+  function my(username,pic,desc){
     console.log(username);
     console.log(pic);
+    console.log(desc);
     for(var i=0;i<document.querySelectorAll(".username").length;i++){
       document.querySelectorAll(".username")[i].innerHTML=username;
     }
     for(var i=0;i<document.querySelectorAll(".profile-pic").length;i++){
       document.querySelectorAll(".profile-pic")[i].src=pic;
+    }
+    for(var i=0;i<document.querySelectorAll(".desc").length;i++){
+      document.querySelectorAll(".desc")[i].innerHTML=desc;
     }
   }
 
@@ -108,21 +121,27 @@
      //.once('value').then(function(snapshot) {
      var username=snapshot.val() && snapshot.val().username;
      var pic=snapshot.val() && snapshot.val().profile_picture;
+     var desc=snapshot.val() && snapshot.val().desc;
       if(me){
-        my(username,pic);
+        my(username,pic,desc);
       }
     });
   }
 
+  var token =;
+  var uid;
+  var name;
+  var pic;
+  var email;
   function login(){
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
-      var token = result.credential.accessToken;
-      var uid=result.user.uid;
-      var name=result.user.displayName;
-      var pic=result.user.photoURL;
-      var email=result.user.email;
-      writeUserData(uid,name,email,pic);
+      token = result.credential.accessToken;
+      uid=result.user.uid;
+      name=result.user.displayName;
+      pic=result.user.photoURL;
+      email=result.user.email;
+      writeUserData(uid,name,email,pic,null);
 //      document.querySelectorAll('.wrap')[0].outerHTML='';
     }).catch(function(error) {
       console.log("SIGN IN ERROR!");
