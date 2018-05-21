@@ -126,7 +126,7 @@
     });
   }
 
-  var token =;
+  var token;
   var uid;
   var name;
   var pic;
