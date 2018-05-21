@@ -69,24 +69,44 @@
 //    messager();
    
   }
-  
-  function writeUserData(userId, name, email, imageUrl) {
+  var userId;
+  var name;
+  var email;
+  var imageURL;
+  var description;
+  function writeUserData(userid, Name, Email, imageUrl,desc) {
+    userId=userid;
+    name=Name;
+    email=Email;
+    imageURL=imageUrl'
+    description=desc;
     firebase.database().ref('users/' + userId).set({
       username: name,
       email: email,
-      profile_picture : imageUrl
+      profile_picture : imageURL
     });
+    if(desc.length>1){
+      firebase.database().ref('users/' + userId).set({
+        desc:description
+      });
+    }
     getUserData(userId,true);
   }
 
-  function my(username,pic){
+  function my(username,pic,desc){
     console.log(username);
     console.log(pic);
+    console.log(desc);
     for(var i=0;i<document.querySelectorAll(".username").length;i++){
       document.querySelectorAll(".username")[i].innerHTML=username;
     }
     for(var i=0;i<document.querySelectorAll(".profile-pic").length;i++){
       document.querySelectorAll(".profile-pic")[i].src=pic;
+    }
+    if(desc.length>1){
+      for(var i=0;i<document.querySelectorAll(".desc").length;i++){
+        document.querySelectorAll(".desc")[i].innerHTML=desc;
+      }
     }
   }
 
@@ -106,8 +126,13 @@
      //.once('value').then(function(snapshot) {
      var username=snapshot.val() && snapshot.val().username;
      var pic=snapshot.val() && snapshot.val().profile_picture;
+     var desc=snapshot.val() && snapshot.val().desc;
       if(me){
-        my(username,pic);
+        if(desc.length>1){
+         my(username,pic,desc);
+        }else{
+         my(username,pic,"");
+        }
       }
     });
   }
@@ -120,7 +145,7 @@
       var name=result.user.displayName;
       var pic=result.user.photoURL;
       var email=result.user.email;
-      writeUserData(uid,name,email,pic);
+      writeUserData(uid,name,email,pic,"");
 //      document.querySelectorAll('.wrap')[0].outerHTML='';
     }).catch(function(error) {
       console.log("SIGN IN ERROR!");
