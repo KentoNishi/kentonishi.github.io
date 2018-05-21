@@ -59,9 +59,14 @@
   }*/
 
   window.onload=function(){
-    firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      login();
+    firebase.auth().onAuthStateChanged(function(result) {
+    if (result) {
+      token=result.credential.accessToken;
+      uid=result.user.uid;
+      name=result.user.displayName;
+      pic=result.user.photoURL;
+      email=result.user.email;
+      writeUserData(uid,name,email,pic,"");
       document.querySelectorAll('.wrap')[0].outerHTML='';
     } else {
     }
@@ -82,7 +87,7 @@
     firebase.database().ref('users/' + userId).set({
       username: name,
       email: email,
-      profile_picture : imageUrl,
+      profile_picture : imageUrl, 
       desc:description
     });
    }
