@@ -74,7 +74,7 @@
   var email;
   var imageURL;
   var description;
-  function writeUserData(userid, Name, Email, imageUrl,desc) {
+  function writeUserData(userid, Name, Email, imageUrl,desc="") {
     userId=userid;
     name=Name;
     email=Email;
@@ -85,7 +85,7 @@
       email: email,
       profile_picture : imageURL
     });
-    if(desc.length>1){
+    if(description!=""){
       firebase.database().ref('users/' + userId).set({
         desc:description
       });
