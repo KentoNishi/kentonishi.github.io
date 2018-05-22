@@ -17,6 +17,8 @@
   var NAME;
   var DESC;
   var UID;
+  var PIC;
+  var EMAIL;
 
 /*
   var messaging = firebase.messaging();
@@ -122,10 +124,13 @@
      var username=snapshot.val() && snapshot.val().username;
      var pic=snapshot.val() && snapshot.val().profile_picture;
      var desc=snapshot.val() && snapshot.val().desc;
+     var email=snapshot.val() && snapshot.val().email;
       if(me){
         NAME=username;
         DESC=desc;
         UID=userID;
+        EMAIL=email;
+        PIC=pic;
         my(username,pic);
       }
     });
