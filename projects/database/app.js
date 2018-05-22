@@ -97,7 +97,7 @@
     getUserData(userId,true);
   }
 
-  function my(username,pic,desc){
+  function my(username,pic,desc=""){
     console.log(username);
     console.log(pic);
     console.log(desc);
@@ -107,7 +107,7 @@
     for(var i=0;i<document.querySelectorAll(".profile-pic").length;i++){
       document.querySelectorAll(".profile-pic")[i].src=pic;
     }
-    if(desc.length>1){
+    if(description!=""){
       for(var i=0;i<document.querySelectorAll(".desc").length;i++){
         document.querySelectorAll(".desc")[i].innerHTML=desc;
       }
