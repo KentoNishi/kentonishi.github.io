@@ -1,6 +1,11 @@
 <!--KENTO NISHI-->
 <link href="https://unpkg.com/material-components-web@0.35.2/dist/material-components-web.min.css" rel="stylesheet" type="text/css"></link>
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<script>
+  mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
+  const username = new MDCTextField(document.querySelector('.username'));
+  const password = new MDCTextField(document.querySelector('.password'));
+</script>
 
 <button class="foo-button mdc-button">Button</button>
 
@@ -16,9 +21,3 @@
   <label class="mdc-floating-label" for="password-input">Password</label>
   <div class="mdc-line-ripple"></div>
 </div>
-
-<script>
-  mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
-  const username = new MDCTextField(document.querySelector('.username'));
-  const password = new MDCTextField(document.querySelector('.password'));
-</script>
