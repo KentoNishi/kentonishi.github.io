@@ -1,5 +1,4 @@
   document.body.onclick=function(){requestFullScreen(document.body);}
-  
   var config = {
     apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
     authDomain: "kento-nishi-gi-1525841644617.firebaseapp.com",
@@ -8,7 +7,6 @@
     storageBucket: "kento-nishi---gi-1525841644617.appspot.com",
     messagingSenderId: "939148943087"
   };
-
   firebase.initializeApp(config);
   var storage = firebase.storage();
   var storageRef = storage.ref();
