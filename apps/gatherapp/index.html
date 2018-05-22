@@ -3,6 +3,9 @@
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 
 <button class="foo-button mdc-button">Button</button>
+
+<br />
+
 <div class="mdc-text-field mdc-text-field--box username">
   <input type="text" class="mdc-text-field__input" id="username-input" name="username">
   <label class="mdc-floating-label" for="username-input">Username</label>
@@ -16,4 +19,6 @@
 
 <script>
   mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
+  const username = new MDCTextField(document.querySelector('.username'));
+  const password = new MDCTextField(document.querySelector('.password'));
 </script>
