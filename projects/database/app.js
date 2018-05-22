@@ -105,10 +105,10 @@
      var username=snapshot.val() && snapshot.val().username;
      var pic=snapshot.val() && snapshot.val().profile_picture;
      var desc=snapshot.val() && snapshot.val().desc;
-      NAME=username;
-      DESC=desc;
-      UID=userID;
       if(me){
+        NAME=username;
+        DESC=desc;
+        UID=userID;
         my(username,pic);
       }
     });
