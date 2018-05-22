@@ -78,7 +78,7 @@
     userId=userid;
     name=Name;
     email=Email;
-    imageURL=imageUrl'
+    imageURL=imageUrl;
     description=desc;
     firebase.database().ref('users/' + userId).set({
       username: name,
