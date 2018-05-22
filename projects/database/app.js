@@ -17,7 +17,6 @@
   var NAME;
   var DESC;
   var UID;
-
 /*
   var messaging = firebase.messaging();
   messaging.usePublicVapidKey("BCKtXl1aH0s1dSXEqoaXi9yAXckJusY1suWxPQPbiELn1z6DEN6hReNdUODWVTR2K4wQGdq-11dWc8x-TUeCKoo");
@@ -72,7 +71,6 @@
     }
     });
 //    messager();
-   
   }
   
   function writeUserData(userId, name, email, imageUrl,desc="") {
