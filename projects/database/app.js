@@ -75,12 +75,21 @@
    
   }
   
-  function writeUserData(userId, name, email, imageUrl) {
-    firebase.database().ref('users/' + userId).set({
-      username: name,
-      email: email,
-      profile_picture : imageUrl
-    });
+  function writeUserData(userId, name, email, imageUrl,desc="") {
+    if(desc!=""){
+      firebase.database().ref('users/' + userId).set({
+        username: name,
+        email: email,
+        profile_picture : imageUrl
+      });
+    }else{
+      firebase.database().ref('users/' + userId).set({
+        username: name,
+        email: email,
+        profile_picture : imageUrl,
+        desc:desc
+      });
+    }
     getUserData(userId,true);
   }
 
