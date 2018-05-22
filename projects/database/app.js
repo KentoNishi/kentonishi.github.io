@@ -83,7 +83,8 @@
       firebase.database().ref('users/' + userId).set({
         username: name,
         email: email,
-        profile_picture : imageUrl
+        profile_picture : imageUrl,
+        desc:DESC
       });
     }else{
       firebase.database().ref('users/' + userId).set({
