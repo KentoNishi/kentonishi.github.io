@@ -13,6 +13,10 @@
   var storage = firebase.storage();
   var storageRef = storage.ref();
   var database = firebase.database();
+
+  var NAME;
+  var DESC;
+  var UID;
 /*
   var messaging = firebase.messaging();
   messaging.usePublicVapidKey("BCKtXl1aH0s1dSXEqoaXi9yAXckJusY1suWxPQPbiELn1z6DEN6hReNdUODWVTR2K4wQGdq-11dWc8x-TUeCKoo");
@@ -116,9 +120,6 @@
     });
   }
 
-  var NAME;
-  var DESC;
-  var UID;
   function login(){
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
