@@ -87,7 +87,7 @@
       email: email,
       profile_picture : imageURL
     });
-    if(description!=""){
+    if(desc!=""){
       firebase.database().ref('users/' + userId).set({
         desc:description
       });
@@ -105,7 +105,7 @@
     for(var i=0;i<document.querySelectorAll(".profile-pic").length;i++){
       document.querySelectorAll(".profile-pic")[i].src=pic;
     }
-    if(description!=""){
+    if(desc!=""){
       for(var i=0;i<document.querySelectorAll(".desc").length;i++){
         document.querySelectorAll(".desc")[i].innerHTML=desc;
       }
@@ -130,7 +130,7 @@
      var pic=snapshot.val() && snapshot.val().profile_picture;
      var desc=snapshot.val() && snapshot.val().desc;
       if(me){
-        if(desc.length>1){
+        if(desc!=""){
          my(username,pic,desc);
         }else{
          my(username,pic,"");
