@@ -112,6 +112,9 @@
     });
   }
 
+  var NAME;
+  var DESC;
+  var UID;
   function login(){
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -120,6 +123,10 @@
       var name=result.user.displayName;
       var pic=result.user.photoURL;
       var email=result.user.email;
+      var description=result.user.desc;
+      NAME=name;
+      DESC=description;
+      UID=uid;
       writeUserData(uid,name,email,pic);
 //      document.querySelectorAll('.wrap')[0].outerHTML='';
     }).catch(function(error) {
