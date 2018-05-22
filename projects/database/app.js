@@ -104,6 +104,10 @@
      //.once('value').then(function(snapshot) {
      var username=snapshot.val() && snapshot.val().username;
      var pic=snapshot.val() && snapshot.val().profile_picture;
+     var desc=snapshot.val() && snapshot.val().desc;
+      NAME=username;
+      DESC=desc;
+      UID=userID;
       if(me){
         my(username,pic);
       }
@@ -122,9 +126,6 @@
       var pic=result.user.photoURL;
       var email=result.user.email;
       var description=result.user.desc;
-      NAME=name;
-      DESC=description;
-      UID=uid;
       writeUserData(uid,name,email,pic);
 //      document.querySelectorAll('.wrap')[0].outerHTML='';
     }).catch(function(error) {
