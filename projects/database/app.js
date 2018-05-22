@@ -1,4 +1,4 @@
-  document.body.onclick=function(){requestFullScreen(document.body);}
+ document.body.onclick=function(){requestFullScreen(document.body);}
 
   var config = {
     apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
@@ -69,44 +69,24 @@
 //    messager();
    
   }
-  var userId;
-  var name;
-  var email;
-  var imageURL;
-  var description;
-  function writeUserData(userid, Name, Email, imageUrl,desc="") {
-    userId=userid;
-    name=Name;
-    email=Email;
-    imageURL=imageUrl;
-    description=desc;
+  
+  function writeUserData(userId, name, email, imageUrl) {
     firebase.database().ref('users/' + userId).set({
       username: name,
       email: email,
-      profile_picture : imageURL
+      profile_picture : imageUrl
     });
-    if(desc!=""){
-      firebase.database().ref('users/' + userId).set({
-        desc:description
-      });
-    }
     getUserData(userId,true);
   }
 
-  function my(username,pic,desc=""){
+  function my(username,pic){
     console.log(username);
     console.log(pic);
-    console.log(desc);
     for(var i=0;i<document.querySelectorAll(".username").length;i++){
       document.querySelectorAll(".username")[i].innerHTML=username;
     }
     for(var i=0;i<document.querySelectorAll(".profile-pic").length;i++){
       document.querySelectorAll(".profile-pic")[i].src=pic;
-    }
-    if(desc!=""){
-      for(var i=0;i<document.querySelectorAll(".desc").length;i++){
-        document.querySelectorAll(".desc")[i].innerHTML=desc;
-      }
     }
   }
 
@@ -126,13 +106,8 @@
      //.once('value').then(function(snapshot) {
      var username=snapshot.val() && snapshot.val().username;
      var pic=snapshot.val() && snapshot.val().profile_picture;
-     var desc=snapshot.val() && snapshot.val().desc;
       if(me){
-        if(desc!=""){
-         my(username,pic,desc);
-        }else{
-         my(username,pic,"");
-        }
+        my(username,pic);
       }
     });
   }
@@ -145,7 +120,7 @@
       var name=result.user.displayName;
       var pic=result.user.photoURL;
       var email=result.user.email;
-      writeUserData(uid,name,email,pic,"");
+      writeUserData(uid,name,email,pic);
 //      document.querySelectorAll('.wrap')[0].outerHTML='';
     }).catch(function(error) {
       console.log("SIGN IN ERROR!");
