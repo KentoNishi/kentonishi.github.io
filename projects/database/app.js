@@ -73,8 +73,8 @@
 //    messager();
   }
   
-  function writeUserData(userId, name, email, imageUrl,desc="") {
-    if(desc!=""){
+  function writeUserData(userId, name, email, imageUrl,desc) {
+    if(desc===undefined){
       firebase.database().ref('users/' + userId).set({
         username: name,
         email: email,
