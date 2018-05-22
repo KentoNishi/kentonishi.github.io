@@ -76,8 +76,8 @@
   }
   
   function writeUserData(userId, name, email, imageUrl,desc) {
-    if (typeof desc === 'undefined') { desc = null; }
-    if(desc==null){
+    if (typeof desc === 'undefined') { desc = ""; }
+    if(desc==""){
       firebase.database().ref('users/' + userId).set({
         username: name,
         email: email,
