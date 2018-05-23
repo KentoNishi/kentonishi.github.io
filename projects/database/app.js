@@ -47,6 +47,11 @@ var settings = {timestampsInSnapshots: true};
 firestore.settings(settings);
 function write(path,pass){
   if(log==true){
+    firebase.firestore().collection("users/"+uid+"/info").doc("info").delete().then(function() {
+      console.log("Document successfully deleted!");
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
     firebase.firestore().collection("users/"+uid+"/info").add({
       path:pass
     })
