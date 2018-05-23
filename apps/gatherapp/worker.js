@@ -1,4 +1,5 @@
 var CACHE_NAME = 'cache';
+//RESOURCES
 var urlsToCache = [
   'https://kentonishi.github.io/apps/gatherapp/',
   'https://kentonishi.github.io/apps/gatherapp/app.js',
