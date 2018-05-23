@@ -44,7 +44,7 @@ function requestFullScreen(element){
 }
 
 function write(path,pass){
-  firebase.firestore().collection(path+"/"+uid).add({
+  firebase.firestore().collection("users/"+uid+"path").add({
     name:pass
   })
   .then(function(docRef) {
