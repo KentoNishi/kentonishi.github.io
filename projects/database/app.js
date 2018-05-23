@@ -1,5 +1,5 @@
-  //  document.body.onclick=function(){requestFullScreen(document.body);}
-  
+  //  document.body.onclick=function(){requestFullScreen(document.body);
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyDofqiHzYbRz8J07H5Vp4_YGaX84kJ-7OQ",
@@ -57,6 +57,6 @@ function write(path,pass){
         console.error("Error adding document.");
     });
   }else{
-    console.log("NOT LOGGED IN.");
+    console.log("Not logged in.");
   }
 }
