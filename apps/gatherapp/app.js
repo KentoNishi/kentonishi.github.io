@@ -16,6 +16,7 @@
   var email;
   function login(){
     firebase.auth().signInWithPopup(provider).then(function(result) {
+      console.log("Signed In");
       token=result.credential.accessToken;
       uid=result.user.uid;
       name=result.user.displayName;
