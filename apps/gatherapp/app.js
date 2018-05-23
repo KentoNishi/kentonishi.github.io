@@ -9,7 +9,7 @@
   };
   firebase.initializeApp(config);
 
-  //Login
+  //User Login
   var token;
   var uid;
   var name;
