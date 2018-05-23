@@ -53,6 +53,6 @@
   }
   function screen(val){
     specs[1]=val;
-    document.querySelectorAll(".phone")[0].style.backgroundColor=parseInt(specs[1])/500 * 16777215;
+    document.querySelectorAll(".phone")[0].style.backgroundColor="#"+(parseInt(specs[1])/500 * 16777215).toString(16);
   }
 </script>
