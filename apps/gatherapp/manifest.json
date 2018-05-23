@@ -13,7 +13,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "https://kentonishi.github.io/apps/gatherapp/index.html",
+  "start_url": "https://kentonishi.github.io/app/gatherapp/",
   "background_color": "#ffffff",
   "display": "standalone",
   "scope": "/maps/",
