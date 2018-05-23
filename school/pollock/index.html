@@ -9,8 +9,12 @@
    <input class="slider" style="position:fixed;top:0vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="bezel(this.value);" oninput="bezel(this.value);" value="2" type="range" min="200" max="500"></input>
 </div>
 <div class="slidecontainer">
-   Display Quality
-   <input class="slider" style="position:fixed;top:2.5vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="screen(this.value);" oninput="screen(this.value);" value="2" type="range" min="200" max="500"></input>
+   Display Quality:
+   <input class="slider" style="position:fixed;top:5vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="screen(this.value);" oninput="screen(this.value);" value="2" type="range" min="200" max="500"></input>
+</div>
+<div class="slidecontainer">
+   Internals:
+   <input class="slider" style="position:fixed;top:2.5vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="chips(this.value);" oninput="chips(this.value);" value="2" type="range" min="200" max="500"></input>
 </div>
 
 <style>
@@ -57,5 +61,8 @@
     specs[1]=val;
     var color=(Math.floor(parseInt(specs[1])/500 * 255)).toString();
     document.querySelectorAll(".phone")[0].style.backgroundColor="rgba("+color+","+color+","+color+",1)";
+  }
+  function chips(val){
+    specs[2]=val;
   }
 </script>
