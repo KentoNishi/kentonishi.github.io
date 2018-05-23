@@ -5,11 +5,11 @@
 </div>
 </div>
 <div class="slidecontainer">
-   <input class="slider" style="position:fixed;top:10vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="bezel(this.value);" oninput="bezel(this.value);" value="1" type="range" min="1" max="5"></input>
+   <input class="slider" style="position:fixed;top:10vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="bezel(this.value);" oninput="bezel(this.value);" value="2" type="range" min="2" max="5"></input>
 </div>
 
 <style>
-  .slidecontainer {
+.slidecontainer {
     width: 100%;
 }
 
@@ -23,6 +23,27 @@
     -webkit-transition: .2s;
     transition: opacity .2s;
 }
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 7.5vh;
+    height: 7.5vh;
+    background: red;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 7.5vh;
+    height: 7.5vh;
+    background: red;
+    cursor: pointer;
+}
+
 </style>
 
 <script>
