@@ -17,7 +17,6 @@
   var name;
   var pic;
   var email;
-
   function login(){
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
