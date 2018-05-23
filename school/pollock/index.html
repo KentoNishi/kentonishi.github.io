@@ -52,6 +52,7 @@
     document.querySelectorAll(".phone")[0].style.borderTop=(specs[0]/100).toString()+"vh solid black";
     document.querySelectorAll(".phone")[0].style.borderBottom=(specs[0]/100).toString()+"vh solid black";
   }
+   
   function screen(val){
     specs[1]=val;
     document.querySelectorAll(".phone")[0].style.backgroundColor="#"+(parseInt(specs[1])/500 * 16777215).toString(16);
