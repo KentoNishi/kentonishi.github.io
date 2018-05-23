@@ -149,7 +149,7 @@
       writeUserData(uid,name,email,pic);
 //      document.querySelectorAll('.wrap')[0].outerHTML='';
     }).catch(function(error) {
-      console.log("SIGN IN ERROR!");
+      console.log(error);
     });
   }
 
