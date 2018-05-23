@@ -8,3 +8,19 @@
     messagingSenderId: "190580601957"
   };
   firebase.initializeApp(config);
+  var token;
+  var uid;
+  var name;
+  var pic;
+  var email;
+  function login(){
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+      token=result.credential.accessToken;
+      uid=result.user.uid;
+      name=result.user.displayName;
+      pic=result.user.photoURL;
+      email=result.user.email;
+    }).catch(function(error) {
+      console.log(error.message);
+    });
+  }
