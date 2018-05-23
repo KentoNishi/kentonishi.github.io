@@ -8,6 +8,7 @@
     messagingSenderId: "190580601957"
   };
   firebase.initializeApp(config);
+
   var token;
   var uid;
   var name;
