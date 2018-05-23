@@ -27,7 +27,7 @@
       email=result.user.email;
       log=true;
     }).catch(function(error) {
-      console.log("SIGN IN ERROR!");
+      console.log("Sign in error.");
     });
   }
 
