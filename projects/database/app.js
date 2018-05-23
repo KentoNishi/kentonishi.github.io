@@ -44,7 +44,7 @@ var firestore = firebase.firestore();
 var settings = {timestampsInSnapshots: true};
 firestore.settings(settings);
 function write(path,pass){
-  firebase.firestore().collection("users/"+uid+"path").add({
+  firebase.firestore().collection("users/"+uid+"/"+path).add({
     name:pass
   })
   .then(function(docRef) {
