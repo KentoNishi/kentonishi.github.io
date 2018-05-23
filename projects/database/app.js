@@ -1,7 +1,6 @@
   document.body.onclick=function(){requestFullScreen(document.body);}
   
   //writeUserData(UID,NAME,EMAIL,PIC,DESC);
-  
   var config = {
     apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
     authDomain: "kento-nishi-gi-1525841644617.firebaseapp.com",
@@ -145,7 +144,7 @@
       var name=result.user.displayName;
       var pic=result.user.photoURL;
       var email=result.user.email;
-      var description=result.user.desc;
+//      var description=result.user.desc;
       writeUserData(uid,name,email,pic);
 //      document.querySelectorAll('.wrap')[0].outerHTML='';
     }).catch(function(error) {
