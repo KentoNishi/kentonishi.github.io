@@ -11,7 +11,7 @@
   };
   firebase.initializeApp(config);
 
-  var login=false;
+  var log=false;
   var token;
   var uid;
   var name;
@@ -25,7 +25,7 @@
       name=result.user.displayName;
       pic=result.user.photoURL;
       email=result.user.email;
-      login=true;
+      log=true;
     }).catch(function(error) {
       console.log("SIGN IN ERROR!");
     });
@@ -46,7 +46,7 @@ var firestore = firebase.firestore();
 var settings = {timestampsInSnapshots: true};
 firestore.settings(settings);
 function write(path,pass){
-  if(login==true){
+  if(log==true){
     firebase.firestore().collection("users/"+uid+"/"+path).add({
       name:pass
     })
