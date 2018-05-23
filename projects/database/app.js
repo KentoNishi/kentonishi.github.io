@@ -44,3 +44,15 @@ function requestFullScreen(element){
     else if (element.webkitRequestFullscreen)
         element.webkitRequestFullscreen();
 }
+
+function write(path,data){
+  firebase.firestore().collection(path).add({
+    name:data
+  })
+  .then(function(docRef) {
+      console.log("Document written with ID: ", docRef.id);
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
+  });
+}
