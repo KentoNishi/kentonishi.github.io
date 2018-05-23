@@ -43,14 +43,16 @@ function requestFullScreen(element){
         element.webkitRequestFullscreen();
 }
 
-function write(path,data){
+settings = {timestampsInSnapshots: true};
+firestore.settings(settings);
+function write(path,pass){
   firebase.firestore().collection(path).add({
-    name:data
+    name:pass
   })
   .then(function(docRef) {
-      console.log("Document written with ID: ", docRef.id);
+      console.log("Document written.");
   })
   .catch(function(error) {
-      console.error("Error adding document: ", error);
+      console.error("Error adding document.");
   });
 }
