@@ -52,6 +52,6 @@
   }
   function screen(val){
     specs[1]=val;
-    document.querySelectorAll(".phone")[0].style.backgroundColor=(specs[1]/100 + parseInt("eff4ff",16)).toString(16)+"vh solid black";
+    document.querySelectorAll(".phone")[0].style.backgroundColor=(parseInt(specs[1]) + parseInt("eff4ff",16)).toString(16)+"vh solid black";
   }
 </script>
