@@ -1,33 +1,155 @@
-  //  document.body.onclick=function(){requestFullScreen(document.body);
-
-  // Initialize Firebase
+  document.body.onclick=function(){requestFullScreen(document.body);}
+  
+  //writeUserData(UID,NAME,EMAIL,PIC,DESC);
+  
   var config = {
-    apiKey: "AIzaSyDofqiHzYbRz8J07H5Vp4_YGaX84kJ-7OQ",
-    authDomain: "gatherapp-513ab.firebaseapp.com",
-    databaseURL: "https://gatherapp-513ab.firebaseio.com",
-    projectId: "gatherapp-513ab",
-    storageBucket: "gatherapp-513ab.appspot.com",
-    messagingSenderId: "190580601957"
+    apiKey: "AIzaSyB5XNbaaKee9GqQ74FjHPHam055_FqrVf4",
+    authDomain: "kento-nishi-gi-1525841644617.firebaseapp.com",
+    databaseURL: "https://kento-nishi-gi-1525841644617.firebaseio.com",
+    projectId: "kento-nishi---gi-1525841644617",
+    storageBucket: "kento-nishi---gi-1525841644617.appspot.com",
+    messagingSenderId: "939148943087"
   };
-  firebase.initializeApp(config);
 
-  var log=false;
-  var token;
-  var uid;
-  var name;
-  var pic;
-  var email;
+  firebase.initializeApp(config);
+  var storage = firebase.storage();
+  var storageRef = storage.ref();
+  var database = firebase.database();
+
+  var NAME;
+  var DESC;
+  var UID;
+  var PIC;
+  var EMAIL;
+/*
+  var messaging = firebase.messaging();
+  messaging.usePublicVapidKey("BCKtXl1aH0s1dSXEqoaXi9yAXckJusY1suWxPQPbiELn1z6DEN6hReNdUODWVTR2K4wQGdq-11dWc8x-TUeCKoo");
+  //init messaging
+  function messager(){
+    messaging.requestPermission().then(function() {
+      console.log('Notification permission granted.');
+        // Get Instance ID token. Initially this makes a network call, once retrieved
+        // subsequent calls to getToken will return from cache.
+        messaging.getToken().then(function(currentToken) {
+          if (currentToken) {
+            console.log("TOKEN: "+currentToken);
+          } else {
+            // Show permission request.
+            console.log('No Instance ID token available. Request permission to generate one.');
+            // Show permission UI.
+  //          updateUIForPushPermissionRequired();
+  //          setTokenSentToServer(false);
+          }
+        }).catch(function(err) {
+          console.log('An error occurred while retrieving token. ', err);
+          showToken('Error retrieving Instance ID token. ', err);
+          setTokenSentToServer(false);
+        });
+    }).catch(function(err) {
+      console.log('Unable to get permission to notify.', err);
+    });
+    // Callback fired if Instance ID token is updated.
+    messaging.onTokenRefresh(function() {
+      messaging.getToken().then(function(refreshedToken) {
+        console.log('Token refreshed.');
+        // Indicate that the new Instance ID token has not yet been sent to the
+        // app server.
+        console.log(refreshedToken);
+  //      setTokenSentToServer(false);
+        // Send Instance ID token to app server.
+  //      sendTokenToServer(refreshedToken);
+        // ...
+      }).catch(function(err) {
+        console.log('Unable to retrieve refreshed token ', err);
+  //      showToken('Unable to retrieve refreshed token ', err);
+      });
+    });
+  }
+  */
+  window.onload=function(){
+    firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      getUserData(user.uid,true);
+      document.querySelectorAll('.wrap')[0].outerHTML='';
+    } else {
+    }
+    });
+//    messager();
+  }
+  
+  function writeUserData(userId, name, email, imageUrl,desc) {
+  desc = desc || DESC || "";
+    if(desc==""||desc.length<1){
+      firebase.database().ref('users/' + userId).set({
+        username: name,
+        email: email,
+        profile_picture : imageUrl,
+        desc:DESC
+      });
+    }else{
+      firebase.database().ref('users/' + userId).set({
+        username: name,
+        email: email,
+        profile_picture : imageUrl,
+        desc:desc
+      });
+    }
+    getUserData(userId,true);
+  }
+
+  function my(username,pic){
+    console.log(username);
+    console.log(pic);
+    for(var i=0;i<document.querySelectorAll(".username").length;i++){
+      document.querySelectorAll(".username")[i].innerHTML=username;
+    }
+    for(var i=0;i<document.querySelectorAll(".profile-pic").length;i++){
+      document.querySelectorAll(".profile-pic")[i].src=pic;
+    }
+  }
+
+  function signOut(){
+    firebase.auth().signOut().then(function() {
+      document.querySelectorAll("body")[0].style.display="none";
+      location.reload(true);
+    }).catch(function(error) {
+      console.log("SIGN OUT ERROR!");
+    });
+  }
+
+  function getUserData(userID,me){
+    var ref = firebase.database().ref('users/' + userID);
+    ref.once('value').then(function(snapshot) {
+      //.on('value', function(snapshot) {
+     //.once('value').then(function(snapshot) {
+     var username=snapshot.val() && snapshot.val().username;
+     var pic=snapshot.val() && snapshot.val().profile_picture;
+     var desc=snapshot.val() && snapshot.val().desc;
+     var email=snapshot.val() && snapshot.val().email;
+      if(me){
+        NAME=username;
+        DESC=desc;
+        UID=userID;
+        EMAIL=email;
+        PIC=pic;
+        my(username,pic);
+      }
+    });
+  }
+
   function login(){
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
-      token=result.credential.accessToken;
-      uid=result.user.uid;
-      name=result.user.displayName;
-      pic=result.user.photoURL;
-      email=result.user.email;
-      log=true;
+      var token = result.credential.accessToken;
+      var uid=result.user.uid;
+      var name=result.user.displayName;
+      var pic=result.user.photoURL;
+      var email=result.user.email;
+      var description=result.user.desc;
+      writeUserData(uid,name,email,pic);
+//      document.querySelectorAll('.wrap')[0].outerHTML='';
     }).catch(function(error) {
-      console.log("Sign in error.");
+      console.log("SIGN IN ERROR!");
     });
   }
 
@@ -40,28 +162,4 @@ function requestFullScreen(element){
         element.mozRequestFullScreen();
     else if (element.webkitRequestFullscreen)
         element.webkitRequestFullscreen();
-}
-
-var firestore = firebase.firestore();
-var settings = {timestampsInSnapshots: true};
-firestore.settings(settings);
-function write(path,pass){
-  if(log==true){
-    firebase.firestore().collection("users/"+uid+"/info").doc(path).delete().then(function() {
-      console.log("Document successfully deleted!");
-    }).catch(function(error) {
-        console.error("Error removing document: ", error);
-    });
-    firebase.firestore().collection("users/"+uid+"/info").add({
-      path:pass
-    })
-    .then(function(docRef) {
-        console.log("Document written.");
-    })
-    .catch(function(error) {
-        console.error("Error adding document.");
-    });
-  }else{
-    console.log("Not logged in.");
-  }
 }
