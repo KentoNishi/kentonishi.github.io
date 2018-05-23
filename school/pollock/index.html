@@ -1,42 +1,42 @@
 <title>Build-A-Clone</title>
 <div style="top:0;left:0;width:100%;height:100%;position:fixed;background-color:lightblue;">
-<div class="phone" style="border-top:1.75vh solid black;border-bottom:1.75vh solid black;border-right:0.5vh solid black;border-left:0.5vh solid black;margin-top:calc(50vh - 20vw);margin-left:40vw;width:20vw;height:40vw;background-color:#eff4ff;border-radius:2.5vh;">
-</div>
+   <div class="phone" style="border-top:1.75vh solid black;border-bottom:1.75vh solid black;border-right:0.5vh solid black;border-left:0.5vh solid black;margin-top:calc(50vh - 20vw);margin-left:40vw;width:20vw;height:40vw;background-color:#eff4ff;border-radius:2.5vh;">
+   </div>
 </div>
 <div class="slidecontainer">
    <input class="slider" style="position:fixed;top:0vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="bezel(this.value);" oninput="bezel(this.value);" value="2" type="range" min="2" max="5"></input>
 </div>
-<style>
-.slidecontainer {
-    width: 100%;
-}
-.slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 2vh;
-    background: #000000;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-}
-.slider:hover {
-    opacity: 1;
-}
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 2vh;
-    height: 2vh;
-    background: red;
-    cursor: pointer;
-}
-.slider::-moz-range-thumb {
-    width: 2vh;
-    height: 2vh;
-    background: red;
-    cursor: pointer;
-}
+   <style>
+   .slidecontainer {
+       width: 100%;
+   }
+   .slider {
+       -webkit-appearance: none;
+       width: 100%;
+       height: 2vh;
+       background: #000000;
+       outline: none;
+       opacity: 0.7;
+       -webkit-transition: .2s;
+       transition: opacity .2s;
+   }
+   .slider:hover {
+       opacity: 1;
+   }
+   .slider::-webkit-slider-thumb {
+       -webkit-appearance: none;
+       appearance: none;
+       width: 2vh;
+       height: 2vh;
+       background: red;
+       cursor: pointer;
+   }
+   .slider::-moz-range-thumb {
+       width: 2vh;
+       height: 2vh;
+       background: red;
+       cursor: pointer;
+   }
 </style>
 <script>
   var specs=[];
