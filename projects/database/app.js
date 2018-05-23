@@ -47,8 +47,8 @@ var settings = {timestampsInSnapshots: true};
 firestore.settings(settings);
 function write(path,pass){
   if(log==true){
-    firebase.firestore().collection("users/"+uid+"/"+path).add({
-      name:pass
+    firebase.firestore().collection("users/"+uid+"/info").add({
+      path:pass
     })
     .then(function(docRef) {
         console.log("Document written.");
