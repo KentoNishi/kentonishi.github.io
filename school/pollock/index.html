@@ -1,7 +1,7 @@
 <title>Build-A-Clone</title>
 
 <div style="top:0;left:0;width:100%;height:100%;position:fixed;background-color:lightblue;">
-   <div class="phone" style="border-top:1.75vh solid black;border-bottom:1.75vh solid black;border-right:0.5vh solid black;border-left:0.5vh solid black;margin-top:calc(50vh - 20vw);margin-left:40vw;width:20vw;height:40vw;background-color:#eff4ff;border-radius:2.5vh;">
+   <div class="phone" style="border-top:1.75vh solid black;border-bottom:1.75vh solid black;border-right:0.5vh solid black;border-left:0.5vh solid black;margin-top:calc(50vh - 20vw);margin-left:40vw;width:20vw;height:40vw;background-color:#ffffff;border-radius:2.5vh;">
    </div>
 </div>
 <div class="slidecontainer">
@@ -53,6 +53,6 @@
   }
   function screen(val){
     specs[1]=val;
-    document.querySelectorAll(".phone")[0].style.backgroundColor=(parseInt(specs[1])*100 + parseInt("eff4ff",16)).toString(16)+"vh solid black";
+    document.querySelectorAll(".phone")[0].style.backgroundColor=parseInt(specs[1])/500 * 16777215;
   }
 </script>
