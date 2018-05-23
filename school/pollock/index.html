@@ -7,7 +7,7 @@
    <input class="slider" style="position:fixed;top:0vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="bezel(this.value);" oninput="bezel(this.value);" value="2" type="range" min="200" max="500"></input>
 </div>
 <div class="slidecontainer">
-   <input class="slider" style="position:fixed;top:2.5vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="bezel(this.value);" oninput="bezel(this.value);" value="2" type="range" min="200" max="500"></input>
+   <input class="slider" style="position:fixed;top:2.5vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="screen(this.value);" oninput="bezel(this.value);" value="2" type="range" min="200" max="500"></input>
 </div>
 <style>
    .slidecontainer {
@@ -47,5 +47,9 @@
     specs[0]=val;
     document.querySelectorAll(".phone")[0].style.borderTop=(specs[0]/100).toString()+"vh solid black";
     document.querySelectorAll(".phone")[0].style.borderBottom=(specs[0]/100).toString()+"vh solid black";
+  }
+  function screen(val){
+    specs[1]=val;
+    document.querySelectorAll(".phone")[0].style.backgroundColor=(specs[1]/100 + parseInt("eff4ff",16)).toString(16)+"vh solid black";
   }
 </script>
