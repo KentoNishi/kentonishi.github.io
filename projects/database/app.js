@@ -11,6 +11,7 @@
   };
   firebase.initializeApp(config);
 
+  var login=false;
   var token;
   var uid;
   var name;
@@ -24,6 +25,7 @@
       name=result.user.displayName;
       pic=result.user.photoURL;
       email=result.user.email;
+      login=true;
     }).catch(function(error) {
       console.log("SIGN IN ERROR!");
     });
@@ -44,13 +46,17 @@ var firestore = firebase.firestore();
 var settings = {timestampsInSnapshots: true};
 firestore.settings(settings);
 function write(path,pass){
-  firebase.firestore().collection("users/"+uid+"/"+path).add({
-    name:pass
-  })
-  .then(function(docRef) {
-      console.log("Document written.");
-  })
-  .catch(function(error) {
-      console.error("Error adding document.");
-  });
+  if(login==true){
+    firebase.firestore().collection("users/"+uid+"/"+path).add({
+      name:pass
+    })
+    .then(function(docRef) {
+        console.log("Document written.");
+    })
+    .catch(function(error) {
+        console.error("Error adding document.");
+    });
+  }else{
+    console.log("NOT LOGGED IN.");
+  }
 }
