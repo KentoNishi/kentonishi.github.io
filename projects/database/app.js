@@ -11,8 +11,6 @@
   };
   firebase.initializeApp(config);
 
-  var storage = firebase.firestore();
-
   var token;
   var uid;
   var name;
@@ -43,8 +41,9 @@ function requestFullScreen(element){
         element.webkitRequestFullscreen();
 }
 
-settings = {timestampsInSnapshots: true};
+var settings = {timestampsInSnapshots: true};
 firestore.settings(settings);
+var storage = firebase.firestore();
 function write(path,pass){
   firebase.firestore().collection(path).add({
     name:pass
