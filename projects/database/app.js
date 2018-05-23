@@ -1,7 +1,5 @@
   document.body.onclick=function(){requestFullScreen(document.body);}
   
-  //writeUserData(UID,NAME,EMAIL,PIC,DESC);
-  
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyDofqiHzYbRz8J07H5Vp4_YGaX84kJ-7OQ",
