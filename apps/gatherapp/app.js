@@ -28,3 +28,7 @@
       console.log(error.message);
     });
   }
+
+  if('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('https://kentonishi.github.io/projects/database/worker.js').then(function() {console.log('Service Worker Registered');});
+  }
