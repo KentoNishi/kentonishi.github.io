@@ -40,9 +40,9 @@ function requestFullScreen(element){
         element.webkitRequestFullscreen();
 }
 
+var firestore = firebase.firestore();
 var settings = {timestampsInSnapshots: true};
 firestore.settings(settings);
-var storage = firebase.firestore();
 function write(path,pass){
   firebase.firestore().collection(path).add({
     name:pass
