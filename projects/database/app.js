@@ -10,9 +10,6 @@
     messagingSenderId: "190580601957"
   };
   firebase.initializeApp(config);
-  var firestore = firebase.firestore();
-  var settings = {timestampsInSnapshots: true};
-  firestore.settings(settings);
 
   var token;
   var uid;
@@ -43,6 +40,9 @@ function requestFullScreen(element){
         element.webkitRequestFullscreen();
 }
 
+var firestore = firebase.firestore();
+var settings = {timestampsInSnapshots: true};
+firestore.settings(settings);
 function write(path,pass){
   firebase.firestore().collection("users/"+uid+"path").add({
     name:pass
