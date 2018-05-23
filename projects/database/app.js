@@ -1,4 +1,4 @@
-  document.body.onclick=function(){requestFullScreen(document.body);}
+//  document.body.onclick=function(){requestFullScreen(document.body);}
   
   // Initialize Firebase
   var config = {
