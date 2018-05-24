@@ -80,6 +80,6 @@
   var price=0;
   function save(){
    price=0;
-   price=parseInt(((parseInt(specs[0])/500)*200).toString().replace("NaN","0"))+parseInt(((parseInt(specs[1])/500)*200).toString().replace("NaN","0"))+parseInt(((parseInt(specs[2])/500)*200).toString().replace("NaN","0"));
+   price=parseInt(((500-(parseInt(specs[0])/500)*200)).toString().replace("NaN","0"))+parseInt(((parseInt(specs[1])/500)*200).toString().replace("NaN","0"))+parseInt(((parseInt(specs[2])/500)*200).toString().replace("NaN","0"));
   }
 </script>
