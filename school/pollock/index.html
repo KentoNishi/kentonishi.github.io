@@ -92,7 +92,7 @@
   var price=0;
   function save(){
    price=0;
-   price=parseInt((((((parseInt(specs[0])-200)/500))*200)).toString())+parseInt(((parseInt((parseInt(specs[1])-200))/500)*200).toString())+parseInt(((parseInt((parseInt(specs[2])-200))/500)*200).toString());
+   price=parseInt((((((parseInt(specs[0])-200)/500))*100)).toString())+parseInt(((parseInt((parseInt(specs[1])-200))/500)*200).toString())+parseInt(((parseInt((parseInt(specs[2])-200))/500)*200).toString());
    price=price*2;
    price=price+120;
    document.querySelectorAll(".price")[0].innerHTML="$"+price.toString();
