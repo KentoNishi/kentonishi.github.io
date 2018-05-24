@@ -15,13 +15,13 @@
 <span>
    <div class="slidecontainer">
       <span style="position:fixed;top:2.5vh;left:10vw;margin:auto;text-align:center;">Display:</span>
-      <input class="slider" style="position:fixed;top:2.5vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="screen(this.value);" oninput="screen(this.value);" value="2" type="range" min="200" max="500"></input>
+      <input class="slider" style="position:fixed;top:10vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="screen(this.value);" oninput="screen(this.value);" value="2" type="range" min="200" max="500"></input>
    </div>
 </span>
 <span>
    <div class="slidecontainer">
       <span style="position:fixed;top:5vh;left:10vw;margin:auto;text-align:center;">Processor:</span>
-      <input class="slider" style="position:fixed;top:5vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="chips(this.value);" oninput="chips(this.value);" value="2" type="range" min="200" max="500"></input>
+      <input class="slider" style="position:fixed;top:20vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="chips(this.value);" oninput="chips(this.value);" value="2" type="range" min="200" max="500"></input>
    </div>
 </span>
 
@@ -45,7 +45,7 @@
    .slider {
        -webkit-appearance: none;
        width: 100%;
-       height: 2vh;
+       height: 8vh;
        background: #000000;
        outline: none;
        opacity: 0.7;
@@ -58,14 +58,14 @@
    .slider::-webkit-slider-thumb {
        -webkit-appearance: none;
        appearance: none;
-       width: 2vh;
-       height: 2vh;
+       width: 8vh;
+       height: 8vh;
        background: red;
        cursor: pointer;
    }
    .slider::-moz-range-thumb {
-       width: 2vh;
-       height: 2vh;
+       width: 8vh;
+       height: 8vh;
        background: red;
        cursor: pointer;
    }
