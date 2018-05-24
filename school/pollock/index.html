@@ -8,7 +8,7 @@
 <span>
    <div class="slidecontainer">
       <span style="position:fixed;top:0vh;left:10vw;margin:auto;text-align:center;">Bezel:</span>
-      <input class="slider" style="position:fixed;top:0vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="bezel(this.value);" oninput="bezel(this.value);" value="500" type="range" min="200" max="500"></input>
+      <input class="slider" style="position:fixed;top:0vh;left:25vw;margin:auto;text-align:center;width:50vw;" onchange="bezel(this.value);" oninput="bezel(this.value);" value="2" type="range" min="200" max="500"></input>
    </div>
 </span>
 <span>
@@ -73,8 +73,8 @@
   var specs=[];
   function bezel(val){
     specs[0]=val;
-    document.querySelectorAll(".phone")[0].style.borderTop=(specs[0]/100).toString()+"vh solid black";
-    document.querySelectorAll(".phone")[0].style.borderBottom=(specs[0]/100).toString()+"vh solid black";
+    document.querySelectorAll(".phone")[0].style.borderTop=(500-(specs[0]/100)).toString()+"vh solid black";
+    document.querySelectorAll(".phone")[0].style.borderBottom=(500-(specs[0]/100)).toString()+"vh solid black";
     save();
   }
   function screen(val){
