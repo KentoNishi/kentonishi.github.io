@@ -73,8 +73,8 @@
   var specs=[];
   function bezel(val){
     specs[0]=val;
-    document.querySelectorAll(".phone")[0].style.borderTop=((500-specs[0])/100).toString()+"vh solid black";
-    document.querySelectorAll(".phone")[0].style.borderBottom=((500-specs[0])/100).toString()+"vh solid black";
+    document.querySelectorAll(".phone")[0].style.borderTop=(((500-specs[0])/100)+1.75).toString()+"vh solid black";
+    document.querySelectorAll(".phone")[0].style.borderBottom=(((500-specs[0])/100)+1.75).toString()+"vh solid black";
     save();
   }
   function screen(val){
