@@ -26,7 +26,7 @@
 <style>
    .phone{
       text-align:center;
-      font-size:10vw;
+      font-size:7.5vw;
    }
    body{
       background-color:lightblue;
@@ -85,7 +85,7 @@
   function save(){
    price=0;
    price=parseInt(((500-(parseInt(specs[0])/500)*600)).toString())+parseInt(((parseInt(specs[1])/500)*300).toString())+parseInt(((parseInt(specs[2])/500)*400).toString());
-   document.querySelectorAll(".phone")[0].innerHTML=price;
+   document.querySelectorAll(".phone")[0].innerHTML="$"+price.toString();
   }
   window.onload=function(){
    screen(200);
