@@ -15,6 +15,10 @@
 
 <div class="MainContainer">
   <div class="ParallaxContainer">
+    <video autoplay muted loop id="myVideo">
+      <source src="https://r4---sn-c0q7ln7r.googlevideo.com/videoplayback?lmt=1517733390952320&ip=185.161.75.6&ms=au%2Conr&mv=m&sparams=dur%2Cei%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cratebypass%2Crequiressl%2Csource%2Cexpire&mt=1527226459&signature=41B739D408FBC5243E13C6E0D2B7C33A74DA679A.A360B2AFFAC22FEE023AAE0F34302EF304173DA7&id=o-AEOw4RKIW81dFKnQh63DDkykNaEIeXsPTED0j_aMI2dI&mn=sn-c0q7ln7r%2Csn-4g5edn7e&dur=325.683&ipbits=0&mm=31%2C26&expire=1527248191&c=WEB&initcwndbps=2180000&requiressl=yes&key=yt6&mime=video%2Fmp4&source=youtube&pl=23&fvip=1&itag=22&ei=36AHW4XaAZWqWrqeqpgJ&ratebypass=yes&video_id=1xgbmrsgrq4&title=Unboxing+The+Samsung+Galaxy+S9+Clone" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
     <h1>
       The Counterfeit War
     </h1>
@@ -55,6 +59,14 @@
 </div>
 
 <style>
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    z-index:-1;
+}
   div{
     transition:0.15s;
   }
@@ -119,10 +131,10 @@ p {
   justify-content: center;
   align-items: center;
   transform: translateZ(-1px) scale(2);
-  background: url('https://cnet1.cbsistatic.com/img/VCK3hWbUvCmy-0Vjhspk6sxDCU0=/2018/02/21/ff4a05ac-b5b8-485e-aa06-2a278ca885e6/54-samsung-galaxy-s9-and-s9-plus.jpg');
+/*  background: url('https://cnet1.cbsistatic.com/img/VCK3hWbUvCmy-0Vjhspk6sxDCU0=/2018/02/21/ff4a05ac-b5b8-485e-aa06-2a278ca885e6/54-samsung-galaxy-s9-and-s9-plus.jpg');
   background-color: rgb(250,228, 216);
   background-size:auto 100vh;
-  background-position: center; 
+  background-position: center; */
 }
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800');
