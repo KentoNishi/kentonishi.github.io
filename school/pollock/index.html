@@ -1,5 +1,5 @@
 <title>The Counterfeit War</title>
-
+<!--
 <a href="#made">
 <img class="pop" style="width:10vh;height:10vh;left:0;top:0;position:fixed;" src="https://disneylaborstandards-scip.com/files/2015/09/icon-ils-scip-factory.png"></img>
 </a>
@@ -12,6 +12,15 @@
 <a href="#future">
 <img class="pop" style="width:10vh;height:10vh;right:0;bottom:0;position:fixed;" src="https://maxcdn.icons8.com/Share/icon/Time_And_Date/future_filled1600.png"></img>
 </a>
+-->
+<div class="topnav">
+  <a class="active" href="#">Home</a>
+  <a href="#made">How?</a>
+  <a href="#why">Why?</a>
+  <a href="#future">Next?</a>
+  <a href="#poll">Poll</a>
+  <a href="#interactive">Production</a>
+</div>
 
 <video autoplay muted loop id="myVideo">
   <source src="https://drive.google.com/uc?export=download&id=15FYrWQ0HNqN_6thUvtSeIOeOnzXf8cYm" type="video/mp4">
@@ -66,6 +75,34 @@
 </div>
 
 <style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
 #myVideo {
     position: fixed;
     right: 0;
