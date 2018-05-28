@@ -70,6 +70,7 @@ function enter(e){
 }
 
 var temp="";
+
 function readData(user){
   temp=user;
   var ref = firebase.database().ref('users/' + user);
