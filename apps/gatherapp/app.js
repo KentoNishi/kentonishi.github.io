@@ -2,7 +2,6 @@ if('serviceWorker' in navigator) {
   navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {console.log('Service Worker Registered');});
 }
 
-//Initialize FireBase
 var config = {
   apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
   authDomain: "gatherapp-1906b.firebaseapp.com",
