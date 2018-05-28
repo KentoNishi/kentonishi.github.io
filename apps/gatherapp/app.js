@@ -53,10 +53,7 @@ function user(name,email,pic,desc){
 function readData(user){
   var ref = firebase.database().ref('users/' + user);
   ref.on('value', function(snapshot) {
-    if(user==uid){
-      
-    }else{
+    
       user(snapshot.val().username,snapshot.val().email,snapshot.val().profile_picture,snapshot.val().desc);
-    }
   });
 }
