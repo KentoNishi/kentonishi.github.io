@@ -14,7 +14,9 @@ firebase.initializeApp(config);
 
 function action(act){
   if(act=="menu"){
-    readData(user);
+    if(uid!=""){
+     readData(uid);
+    }
   }else if(act=="add"){
     document.querySelectorAll(".body")[0].innerHTML="ADD SCREEN";
   }
@@ -36,7 +38,7 @@ function writeUser(userId, email, name, imageUrl) {
     username: name,
     email: email,
     profile_picture : imageUrl
-  });
+  }).then(function(){readData(uid);});
 }
 
 function writeData(userId,data) {
