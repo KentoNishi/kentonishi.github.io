@@ -46,13 +46,13 @@ function writeData(userId,data) {
   });
 }
 
-function user(name,email,pic,desc){
+function loadUser(name,email,pic,desc){
   document.querySelectorAll(".body")[0].innerHTML=name+" "+email+" "+pic+" "+desc;
 }
 
 function readData(user){
   var ref = firebase.database().ref('users/' + user);
   ref.on('value', function(snapshot) {
-      user(snapshot.val().username,snapshot.val().email,snapshot.val().profile_picture,snapshot.val().desc);
+      loadUser(snapshot.val().username,snapshot.val().email,snapshot.val().profile_picture,snapshot.val().desc);
   });
 }
