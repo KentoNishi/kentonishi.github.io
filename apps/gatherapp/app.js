@@ -12,8 +12,14 @@ var config = {
   storageBucket: "kento-nishi---gi-1525841644617.appspot.com",
   messagingSenderId: "939148943087"
 };
-
 firebase.initializeApp(config);
+
 function action(act){
-  console.log(act);
+  var content=document.querySelectorAll(".body")[0];
+  console.log("Action: "+act);
+  if(act=="home"){
+    content.innerHTML="HOME SCREEN";
+  }else if(act=="add"){
+    content.innerHTML="ADD SCREEN";
+  }
 }
