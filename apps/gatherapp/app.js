@@ -13,6 +13,8 @@ var config = {
   messagingSenderId: "1038044491990"
 };
 firebase.initializeApp(config);
+
+//Log in detection
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     uid=user.uid;
