@@ -86,9 +86,6 @@ function readData(user){
   });
 }
 
-
-
-
 function checkme(user){
   if(user==uid){
    return ' contenteditable onkeypress="if(enter(event)){writeData(uid,this.innerHTML)}"';
