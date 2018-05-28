@@ -23,6 +23,7 @@ function action(act){
     }
   }
 }
+
 var uid="";
 
 function login(){
