@@ -29,7 +29,7 @@ function login(){
 //    console.log(result.user.uid+" : "+result.user.displayName+" : "+result.user.photoURL);
     write(result.user.uid,result.user.email,result.user.displayName,result.user.photoURL);
   }).catch(function(error) {
-    console.log("Sign in error.");
+    console.log("Sign in error. "+error.message+" ("+error.code+")");
   });
 }
 
