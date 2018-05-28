@@ -23,6 +23,12 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
+  if(navigator.onLine){
+    caches.keys().then(function(names) {
+        for (let name of names)
+            caches.delete(name);
+    });
+  }
   console.log(event.request.url);
   event.respondWith(
   caches.match(event.request).then(function(response) {
@@ -30,21 +36,3 @@ self.addEventListener('fetch', function(event) {
   })
   );
 });
-
-if(navigator.onLine){
-  self.addEventListener('activate', function(event) {
-    event.waitUntil(
-      caches.keys().then(function(cacheNames) {
-        return Promise.all(
-          cacheNames.filter(function(cacheName) {
-            // Return true if you want to remove this cache,
-            // but remember that caches are shared across
-            // the whole origin
-          }).map(function(cacheName) {
-            return caches.delete(cacheName);
-          })
-        );
-      })
-    );
-  });
-}
