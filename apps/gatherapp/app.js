@@ -72,10 +72,8 @@ function readData(user){
 }
 
 function checkme(user){
-  console.log(user);
-  console.log(uid);
   if(user==uid){
-   return 'contenteditable onkeypress="if(enter(event)){writeData(uid,this.innerHTML)}"';
+   return ' contenteditable onkeypress="if(enter(event)){writeData(uid,this.innerHTML)}"';
   }else{
     return "";
   }
