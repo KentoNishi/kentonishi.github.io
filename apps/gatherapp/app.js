@@ -57,7 +57,7 @@ function writeData(userId,data) {
 }
 
 function loadUser(name,email,pic,desc,user){
-  document.querySelectorAll(".body")[0].innerHTML='<div class="card" oncontextmenu="signOut();return false;"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span'+checkme(user)+'>'+desc+'</span></div>';
+  document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span'+checkme(user)+'>'+desc+'</span><br /><a href="javascript:signOut();">Sign Out</a></div>';
 }
 
 function enter(e){
@@ -93,4 +93,26 @@ function signOut(){
   }).catch(function(error) {
     console.log("SIGN OUT ERROR!");
   });
+}
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
