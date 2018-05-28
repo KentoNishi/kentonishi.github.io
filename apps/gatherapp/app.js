@@ -48,9 +48,14 @@ function writeData(userId,data) {
 function readData(user){
   var ref = firebase.database().ref('users/' + user);
   ref.on('value', function(snapshot) {
-    console.log(snapshot.val().desc);
-    console.log(snapshot.val().username);
-    console.log(snapshot.val().email);
-    console.log(snapshot.val().profile_picture);
+    if(user==uid){
+      
+    }else{
+      user(snapshot.val().username,snapshot.val().email,snapshot.val().profile_picture,snapshot.val().desc);
+    }
   });
+}
+
+function user(name,email,pic,desc){
+  document.querySelectorAll(".body")[0].innerHTML=name+" "+email+" "+pic+" "+desc;
 }
