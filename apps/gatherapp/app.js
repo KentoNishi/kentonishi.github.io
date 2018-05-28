@@ -50,7 +50,7 @@ function writeData(userId,data) {
 }
 
 function loadUser(name,email,pic,desc){
-  document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span contenteditable oninput="if(enter(event)){writeData(uid,this.innerHTML)}">'+desc+'</span></div>';
+  document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span contenteditable onkeypress="if(enter(event)){writeData(uid,this.innerHTML)}">'+desc+'</span></div>';
 }
 
 function enter(e){
