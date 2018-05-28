@@ -13,11 +13,11 @@ self.addEventListener('install', function(event) {
   // Perform install steps
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(function(cache) {
+      .then(function(cache) {/*
         caches.keys().then(function(names) {
         for (let name of names)
             caches.delete(name);
-        });
+        });*/
         console.log('Opened cache');
         return cache.addAll(urlsToCache);
       })
