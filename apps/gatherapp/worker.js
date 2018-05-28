@@ -7,6 +7,7 @@ var urlsToCache = [
   'https://kentonishi.github.io/apps/gatherapp/worker.js',
   'https://kentonishi.github.io/apps/gatherapp/manifest.json'
 ];
+
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -20,6 +21,7 @@ self.addEventListener('install', function(event) {
       })
   );
 });
+
 self.addEventListener('fetch', function(event) {
   console.log(event.request.url);
   event.respondWith(
