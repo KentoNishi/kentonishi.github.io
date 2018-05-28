@@ -14,7 +14,6 @@ var config = {
 };
 firebase.initializeApp(config);
 
-//Log in detection
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     uid=user.uid;
