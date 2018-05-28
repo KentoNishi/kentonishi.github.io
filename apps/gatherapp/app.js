@@ -15,7 +15,6 @@ var config = {
 firebase.initializeApp(config);
 
 function action(act){
-  console.log("Action: "+act);
   if(act=="menu"){
     document.querySelectorAll(".body")[0].innerHTML="HOME SCREEN";
   }else if(act=="add"){
