@@ -13,6 +13,12 @@ var config = {
   messagingSenderId: "1038044491990"
 };
 firebase.initializeApp(config);
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    uid=user.uid;
+    writeUser(user.uid,user.email,user.displayName,user.photoURL);
+  }
+});
 
 function action(act){
   if(uid!=""){
@@ -29,8 +35,7 @@ var uid="";
 function login(){
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then(function(result) {
-    uid=result.user.uid;
-    writeUser(result.user.uid,result.user.email,result.user.displayName,result.user.photoURL);
+    //CATCH LOGIN
   }).catch(function(error) {
     console.log("Sign in error. "+error.message+" ("+error.code+")");
   });
