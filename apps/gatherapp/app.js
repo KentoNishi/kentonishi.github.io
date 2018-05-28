@@ -50,8 +50,8 @@ function writeData(userId,data) {
   });
 }
 
-function loadUser(name,email,pic,desc){
-  document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span contenteditable onkeypress="if(enter(event)){writeData(uid,this.innerHTML)}">'+desc+'</span></div>';
+function loadUser(name,email,pic,desc,user){
+  document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span'+checkme(user)+'>'+desc+'</span></div>';
 }
 
 function enter(e){
@@ -65,6 +65,14 @@ function enter(e){
 function readData(user){
   var ref = firebase.database().ref('users/' + user);
   ref.on('value', function(snapshot) {
-      loadUser(snapshot.val().username,snapshot.val().email,snapshot.val().profile_picture,snapshot.val().desc);
+      loadUser(snapshot.val().username,snapshot.val().email,snapshot.val().profile_picture,snapshot.val().desc,user);
   });
+}
+
+function checkme(user){
+  if(user==uid){
+   return 'contenteditable onkeypress="if(enter(event)){writeData(uid,this.innerHTML)}"';
+  }else{
+    return "";
+  }
 }
