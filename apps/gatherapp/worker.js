@@ -23,12 +23,6 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  if(navigator.onLine){
-    caches.keys().then(function(names) {
-        for (let name of names)
-            caches.delete(name);
-    });
-  }
   console.log(event.request.url);
   event.respondWith(
   caches.match(event.request).then(function(response) {
