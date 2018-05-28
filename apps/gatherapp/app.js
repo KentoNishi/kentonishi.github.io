@@ -46,6 +46,10 @@ function writeData(userId,data) {
   });
 }
 
+function user(name,email,pic,desc){
+  document.querySelectorAll(".body")[0].innerHTML=name+" "+email+" "+pic+" "+desc;
+}
+
 function readData(user){
   var ref = firebase.database().ref('users/' + user);
   ref.on('value', function(snapshot) {
@@ -57,6 +61,3 @@ function readData(user){
   });
 }
 
-function user(name,email,pic,desc){
-  document.querySelectorAll(".body")[0].innerHTML=name+" "+email+" "+pic+" "+desc;
-}
