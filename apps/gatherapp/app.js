@@ -20,6 +20,8 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     uid=user.uid;
     writeUser(user.uid,user.email,user.displayName,user.photoURL);
+    document.querySelectorAll(".body")[0].innerHTML="";
+    loadFeed();
   }
 });
 
@@ -121,4 +123,8 @@ function getCookie(cname) {
         }
     }
     return "";
+}
+
+function loadFeed(){
+
 }
