@@ -1,5 +1,4 @@
 //Register Service Worker
-//Clear all caches
 if('serviceWorker' in navigator) {
   if(navigator.onLine){
     caches.keys().then(function(names) {
@@ -29,7 +28,6 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
-//App actions
 function action(act){
   if(uid!=""){
     if(act=="menu"){
