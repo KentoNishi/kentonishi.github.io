@@ -26,8 +26,17 @@ function action(act){
 function login(){
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then(function(result) {
-    console.log(result.user.uid+" : "+result.user.displayName+" : "+result.user.photoURL);
+//    console.log(result.user.uid+" : "+result.user.displayName+" : "+result.user.photoURL);
+    write(result.user.uid,result.user.email,result.user.displayName,result.user.photoURL);
   }).catch(function(error) {
     console.log("Sign in error.");
+  });
+}
+
+function write(userId, name, email, imageUrl) {
+  firebase.database().ref('users/' + userId).set({
+    username: name,
+    email: email,
+    profile_picture : imageUrl
   });
 }
