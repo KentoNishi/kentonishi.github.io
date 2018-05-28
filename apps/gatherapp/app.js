@@ -87,3 +87,12 @@ function checkme(user){
     return "";
   }
 }
+
+window.onload=function(){
+  if(navigator.onLine){
+    caches.keys().then(function(names) {
+      for (let name of names)
+          caches.delete(name);
+    });
+  }
+}
