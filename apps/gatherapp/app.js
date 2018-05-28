@@ -86,6 +86,7 @@ function checkme(user){
     return "";
   }
 }
+
 function signOut(){
   firebase.auth().signOut().then(function() {
     location.reload(true);
