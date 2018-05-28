@@ -1,5 +1,4 @@
 var CACHE_NAME = 'cache';
-
 var urlsToCache = [
   'https://kentonishi.github.io/apps/gatherapp/',
   'https://kentonishi.github.io/apps/gatherapp/app.js',
@@ -7,7 +6,6 @@ var urlsToCache = [
   'https://kentonishi.github.io/apps/gatherapp/worker.js',
   'https://kentonishi.github.io/apps/gatherapp/manifest.json'
 ];
-
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -21,7 +19,6 @@ self.addEventListener('install', function(event) {
       })
   );
 });
-
 self.addEventListener('fetch', function(event) {
   console.log(event.request.url);
   event.respondWith(
@@ -30,7 +27,6 @@ self.addEventListener('fetch', function(event) {
   })
   );
 });
-
 if(navigator.onLine){
   self.addEventListener('activate', function(event) {
     event.waitUntil(
