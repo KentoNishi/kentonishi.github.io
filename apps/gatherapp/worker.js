@@ -1,4 +1,5 @@
 var CACHE_NAME = 'cache';
+
 //RESOURCES
 var urlsToCache = [
   'https://kentonishi.github.io/apps/gatherapp/',
@@ -22,6 +23,7 @@ self.addEventListener('install', function(event) {
       })
   );
 });
+
 self.addEventListener('fetch', function(event) {
   console.log(event.request.url);
   event.respondWith(
