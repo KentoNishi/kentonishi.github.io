@@ -33,7 +33,7 @@ function login(){
 }
 
 function write(userId, name, email, imageUrl) {
-  firebase.database().ref('users/' + userId).set({
+  firebase.database().ref('users/' + userId).update({
     username: name,
     email: email,
     profile_picture : imageUrl
