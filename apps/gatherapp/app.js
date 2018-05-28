@@ -22,3 +22,12 @@ function action(act){
     document.querySelectorAll(".body")[0].innerHTML="ADD SCREEN";
   }
 }
+
+function login(){
+  var provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+    console.log(result.uid+" : "+result.displayName+" : "+result.photoURL);
+  }).catch(function(error) {
+    console.log("Sign in error.");
+  });
+}
