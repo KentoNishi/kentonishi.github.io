@@ -26,7 +26,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 function action(act){
   if(uid!=""){
     if(act=="menu"){
-       readData();
+       readData(uid);
     }else if(act=="add"){
       document.querySelectorAll(".body")[0].innerHTML="ADD SCREEN";
     }
@@ -49,7 +49,7 @@ function writeUser(userId, email, name, imageUrl) {
     username: name,
     email: email,
     profile_picture : imageUrl
-  }).then(function(){me=true;readData();});
+  }).then(function(){me=true;readData(uid);});
 }
 
 function writeData(userId,data) {
@@ -71,11 +71,10 @@ function enter(e){
 }
 
 
-function readData(){
+function readData(user){
   var ref = firebase.database().ref('users/' + user);
   ref.on('value', function(snapshot) {
       loadUser(snapshot.val().username,snapshot.val().email,snapshot.val().profile_picture,snapshot.val().desc);
-      temp="";
   });
 }
 
