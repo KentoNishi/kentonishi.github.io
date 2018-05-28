@@ -5,9 +5,9 @@ if('serviceWorker' in navigator) {
       for (let name of names)
           caches.delete(name);
     });
+    navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {console.log('Service Worker Registered');});
   }
-  navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {console.log('Service Worker Registered');});
-}
+ }
 
 //Initialize FireBase
 var config = {
