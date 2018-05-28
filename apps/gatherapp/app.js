@@ -15,11 +15,10 @@ var config = {
 firebase.initializeApp(config);
 
 function action(act){
-  var content=document.querySelectorAll(".body")[0];
   console.log("Action: "+act);
   if(act=="menu"){
-    content.innerHTML="HOME SCREEN";
+    document.querySelectorAll(".body")[0].innerHTML="HOME SCREEN";
   }else if(act=="add"){
-    content.innerHTML="ADD SCREEN";
+    document.querySelectorAll(".body")[0].innerHTML="ADD SCREEN";
   }
 }
