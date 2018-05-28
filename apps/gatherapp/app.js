@@ -22,19 +22,27 @@ function action(act){
   }
 }
 
+var uid="";
 function login(){
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then(function(result) {
-    write(result.user.uid,result.user.email,result.user.displayName,result.user.photoURL);
+    uid=result.user.uid;
+    writeUser(result.user.uid,result.user.email,result.user.displayName,result.user.photoURL);
   }).catch(function(error) {
     console.log("Sign in error. "+error.message+" ("+error.code+")");
   });
 }
 
-function write(userId, name, email, imageUrl) {
+function writeUser(userId, name, email, imageUrl) {
   firebase.database().ref('users/' + userId).update({
     username: name,
     email: email,
     profile_picture : imageUrl
+  });
+}
+
+function writeData(userId,data) {
+  firebase.database().ref('users/' + userId).update({
+    desc: data
   });
 }
