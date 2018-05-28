@@ -29,6 +29,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
+//App actions
 function action(act){
   if(uid!=""){
     if(act=="menu"){
