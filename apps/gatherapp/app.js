@@ -1,5 +1,11 @@
 //Register Service Worker
 if('serviceWorker' in navigator) {
+  if(navigator.onLine){
+    caches.keys().then(function(names) {
+      for (let name of names)
+          caches.delete(name);
+    });
+  }
   navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {console.log('Service Worker Registered');});
 }
 
@@ -85,14 +91,5 @@ function checkme(user){
    return ' contenteditable onkeypress="if(enter(event)){writeData(uid,this.innerHTML)}"';
   }else{
     return "";
-  }
-}
-
-window.onload=function(){
-  if(navigator.onLine){
-    caches.keys().then(function(names) {
-      for (let name of names)
-          caches.delete(name);
-    });
   }
 }
