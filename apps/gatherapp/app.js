@@ -87,3 +87,11 @@ function checkme(user){
     return "";
   }
 }
+
+function signOut(){
+  firebase.auth().signOut().then(function() {
+    location.reload(true);
+  }).catch(function(error) {
+    console.log("SIGN OUT ERROR!");
+  });
+}
