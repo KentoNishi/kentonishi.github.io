@@ -57,7 +57,7 @@ function writeData(userId,data) {
 }
 
 function loadUser(name,email,pic,desc,user){
-  document.querySelectorAll(".body")[0].innerHTML='<div class="card" oncontextmenu="signOut()"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span'+checkme(user)+'>'+desc+'</span></div>';
+  document.querySelectorAll(".body")[0].innerHTML='<div class="card" oncontextmenu="signOut();return false;"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span'+checkme(user)+'>'+desc+'</span></div>';
 }
 
 function enter(e){
