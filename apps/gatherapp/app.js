@@ -23,7 +23,6 @@ function action(act){
     }
   }
 }
-
 var uid="";
 function login(){
   var provider = new firebase.auth.GoogleAuthProvider();
