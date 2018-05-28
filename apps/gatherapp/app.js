@@ -126,5 +126,4 @@ function getCookie(cname) {
 }
 
 function loadFeed(){
-
 }
