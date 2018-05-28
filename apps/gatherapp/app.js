@@ -15,12 +15,12 @@ var config = {
 firebase.initializeApp(config);
 
 function action(act){
-  if(act=="menu"){
-    if(uid!=""){
-     readData(uid);
+  if(uid!=""){
+    if(act=="menu"){
+       readData(uid);
+    }else if(act=="add"){
+      document.querySelectorAll(".body")[0].innerHTML="ADD SCREEN";
     }
-  }else if(act=="add"){
-    document.querySelectorAll(".body")[0].innerHTML="ADD SCREEN";
   }
 }
 
