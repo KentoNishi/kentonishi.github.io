@@ -46,7 +46,7 @@ function writeData(userId,data) {
 }
 
 function loadUser(name,email,pic,desc){
-  document.querySelectorAll(".body")[0].innerHTML=name+" "+email+" "+pic+" "+desc;
+  document.querySelectorAll(".body")[0].innerHTML='<div class="card">'+name+'<br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br />'+desc+'</div>';
 }
 
 function readData(user){
