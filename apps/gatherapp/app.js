@@ -38,7 +38,6 @@ var uid="";
 function login(){
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then(function(result) {
-    //CATCH LOGIN
   }).catch(function(error) {
     console.log("Sign in error. "+error.message+" ("+error.code+")");
   });
