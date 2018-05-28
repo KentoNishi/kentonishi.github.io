@@ -26,7 +26,6 @@ function action(act){
 function login(){
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then(function(result) {
-//    console.log(result.user.uid+" : "+result.user.displayName+" : "+result.user.photoURL);
     write(result.user.uid,result.user.email,result.user.displayName,result.user.photoURL);
   }).catch(function(error) {
     console.log("Sign in error. "+error.message+" ("+error.code+")");
