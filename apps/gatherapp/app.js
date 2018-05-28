@@ -14,6 +14,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var me=false;
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     uid=user.uid;
@@ -24,7 +25,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 function action(act){
   if(uid!=""){
     if(act=="menu"){
-       readData(uid);
+       readData();
     }else if(act=="add"){
       document.querySelectorAll(".body")[0].innerHTML="ADD SCREEN";
     }
@@ -47,7 +48,7 @@ function writeUser(userId, email, name, imageUrl) {
     username: name,
     email: email,
     profile_picture : imageUrl
-  }).then(function(){readData(uid);});
+  }).then(function(){me=true;readData();});
 }
 
 function writeData(userId,data) {
@@ -56,8 +57,8 @@ function writeData(userId,data) {
   });
 }
 
-function loadUser(name,email,pic,desc,user){
-  document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span'+checkme(user)+'>'+desc+'</span><br /><a href="javascript:signOut();">Sign Out</a></div>';
+function loadUser(name,email,pic,desc){
+  document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span'+checkme()+'>'+desc+'</span><br /><a href="javascript:signOut();">Sign Out</a></div>';
 }
 
 function enter(e){
@@ -68,19 +69,17 @@ function enter(e){
   }
 }
 
-var temp="";
 
-function readData(user){
-  temp=user;
+function readData(){
   var ref = firebase.database().ref('users/' + user);
   ref.on('value', function(snapshot) {
-      loadUser(snapshot.val().username,snapshot.val().email,snapshot.val().profile_picture,snapshot.val().desc,temp);
+      loadUser(snapshot.val().username,snapshot.val().email,snapshot.val().profile_picture,snapshot.val().desc);
       temp="";
   });
 }
 
 function checkme(user){
-  if(user==uid){
+  if(me){
    return ' contenteditable onkeypress="if(enter(event)){writeData(uid,this.innerHTML)}"';
   }else{
     return "";
