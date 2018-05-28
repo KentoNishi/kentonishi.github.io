@@ -14,6 +14,8 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var uid="";
+
 function action(act){
   if(uid!=""){
     if(act=="menu"){
@@ -24,7 +26,6 @@ function action(act){
   }
 }
 
-var uid="";
 function login(){
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then(function(result) {
