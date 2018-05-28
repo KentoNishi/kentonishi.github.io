@@ -1,4 +1,5 @@
 //Register Service Worker
+//Clear all caches
 if('serviceWorker' in navigator) {
   if(navigator.onLine){
     caches.keys().then(function(names) {
