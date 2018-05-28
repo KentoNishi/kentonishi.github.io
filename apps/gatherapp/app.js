@@ -44,3 +44,13 @@ function writeData(userId,data) {
     desc: data
   });
 }
+
+function readData(user){
+  var ref = firebase.database().ref('users/' + user);
+  ref.on('value', function(snapshot) {
+    console.log(snapshot.val().desc);
+    console.log(snapshot.val().username);
+    console.log(snapshot.val().email);
+    console.log(snapshot.val().profile_picture);
+  });
+}
