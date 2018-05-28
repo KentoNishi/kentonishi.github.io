@@ -31,7 +31,7 @@ function login(){
   });
 }
 
-function writeUser(userId, name, email, imageUrl) {
+function writeUser(userId, email, name, imageUrl) {
   firebase.database().ref('users/' + userId).update({
     username: name,
     email: email,
