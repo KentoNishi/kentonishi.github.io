@@ -88,7 +88,7 @@ function checkme(user){
     }
   }else if(user==2){
     if(me){
-    return '<a href="javascript:signOut();">Sign Out</a>';
+    return '<br /><a href="javascript:signOut();">Sign Out</a>';
     }else{
       return "";
     }
