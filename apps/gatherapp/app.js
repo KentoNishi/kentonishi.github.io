@@ -60,6 +60,7 @@ function writeData(userId,data) {
 }
 
 function loadUser(name,email,pic,desc){
+  if(desc=="undefined"){desc="[Description Here]";}
   document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span'+checkme(1)+'>'+desc+'</span><br />'+checkme(2)+'</div>');
 }
 
