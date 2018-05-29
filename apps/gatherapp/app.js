@@ -15,6 +15,7 @@ var config = {
 firebase.initializeApp(config);
 
 var me=false;
+
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     uid=user.uid;
