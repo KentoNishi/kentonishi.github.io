@@ -71,7 +71,6 @@ function enter(e){
   }
 }
 
-
 function readData(user){
   var ref = firebase.database().ref('users/' + user);
   ref.on('value', function(snapshot) {
