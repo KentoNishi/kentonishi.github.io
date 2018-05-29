@@ -66,7 +66,7 @@ function loadUser(name,email,pic,desc){
 
 function getDesc(desc){
   console.log("desc: "+desc);
-  if(desc.replace(/ /g,"").toString().length<1){
+  if(desc.replace(/ /g,"").replace(/&nbsp;/g,"").toString().length<1){
     return '[Description Here]';
   }else{
     return desc;
