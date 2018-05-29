@@ -81,7 +81,7 @@ function readData(user){
 function checkme(user){
   if(user==1){
     if(me){
-     return ' contenteditable onkeypress="if(enter(event)){writeData(uid,this.innerHTML)}"';
+     return ' contenteditable onkeydown="if(enter(event)){writeData(uid,this.innerHTML)}"';
     }else{
       return "";
     }
