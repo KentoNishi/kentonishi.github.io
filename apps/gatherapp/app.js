@@ -65,7 +65,7 @@ function loadUser(name,email,pic,desc){
 }
 
 function getDesc(){
-  if(desc.length<1){
+  if(desc.replace(/ /g,"").length<1){
     return '[Description Here]';
   }else{
     return desc;}
