@@ -64,7 +64,7 @@ function loadUser(name,email,pic,desc){
   document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span'+checkme(1)+'>'+getDesc(desc)+'</span><br />'+checkme(2)+'</div>');
 }
 
-function getDesc(){
+function getDesc(desc){
   if(desc.replace(/ /g,"").length<1){
     return '[Description Here]';
   }else{
