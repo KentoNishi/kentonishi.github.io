@@ -249,6 +249,7 @@ function encode(texte) {
   return texte;
 }
 
+//City
 var place="";
 $.get("https://api.ipdata.co", function (response) {
     place=(JSON.stringify(response, null, 4).split(":")[2].split(",")[0]);
