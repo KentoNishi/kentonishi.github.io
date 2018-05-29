@@ -148,7 +148,7 @@ function encode(texte) {
   texte = texte.replace(/š/g,'&scaron;'); // 154 9A
   texte = texte.replace(/›/g,'&rsaquo;'); // 155 9B
   texte = texte.replace(/œ/g,'&oelig;'); // 156 9C
-  texte = texte.replace(//g,'&#357;'); // 157 9D
+  //texte = texte.replace(//g,'&#357;'); // 157 9D
   texte = texte.replace(/ž/g,'&#382;'); // 158 9E
   texte = texte.replace(/Ÿ/g,'&Yuml;'); // 159 9F
   // texte = texte.replace(/ /g,'&nbsp;'); // 160 A0
