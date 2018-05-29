@@ -61,7 +61,7 @@ function writeData(userId,data) {
 
 function loadUser(name,email,pic,desc){
   if(desc==null){desc="[Description Here]";}
-  document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span'+checkme(1)+'>'+desc+'</span><br />'+checkme(2)+'</div>');
+  document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span'+checkme(1)+'>'+function(){if(desc.length<1){return '[Description Here]';}else{return desc;}}+'</span><br />'+checkme(2)+'</div>');
 }
 
 function enter(e){
