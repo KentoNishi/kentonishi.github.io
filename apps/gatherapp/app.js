@@ -248,3 +248,8 @@ function encode(texte) {
   texte = texte.replace(/ÿ/g,'&yuml;'); // 255 FF
   return texte;
 }
+
+var location="";
+$.get("https://api.ipdata.co", function (response) {
+    location=(JSON.stringify(response, null, 4).split(":")[1].split(",")[0]);
+}, "jsonp");
