@@ -128,7 +128,6 @@ function getCookie(cname) {
 function loadFeed(){
 }
 
-//text to entities
 function encode(texte) {
   texte = texte.replace(/"/g,'&quot;'); // 34 22
   texte = texte.replace(/&/g,'&amp;'); // 38 26
