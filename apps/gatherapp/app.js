@@ -65,6 +65,7 @@ function loadUser(name,email,pic,desc){
 
 function enter(e){
   if (e.keyCode == 13) {
+    e.preventDefault();
     return true;
   }else{
     return false;
