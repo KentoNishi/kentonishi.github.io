@@ -246,5 +246,6 @@ function encode(texte) {
   texte = texte.replace(/ý/g,'&yacute;'); // 253 FD
   texte = texte.replace(/þ/g,'&thorn;'); // 254 FE
   texte = texte.replace(/ÿ/g,'&yuml;'); // 255 FF
+  //all encodings
   return texte;
 }
