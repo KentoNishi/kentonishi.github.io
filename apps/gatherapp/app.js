@@ -65,10 +65,12 @@ function loadUser(name,email,pic,desc){
 }
 
 function getDesc(desc){
-  if(desc.replace(/ /g,"").length<1){
+  console.log("desc: "+desc);
+  if(desc.replace(/ /g,"").toString().length<1){
     return '[Description Here]';
   }else{
-    return desc;}
+    return desc;
+  }
 }
 
 function enter(e){
