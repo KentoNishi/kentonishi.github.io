@@ -53,6 +53,16 @@ function writeUser(userId, email, name, imageUrl) {
   }).then(function(){me=true;});
 }
 
+function newGroup(groupId, userId, email, name, imageUrl, city, age) {
+  firebase.database().ref('groups/' + groupId+"/"+userId).update({
+    username:name,
+    profile_picture:imageUrl,
+    location:city,
+    age:age,
+    email:email
+  }).then(function(){console.log("New group made!");});
+}
+
 function writeData(userId,data) {
   firebase.database().ref('users/' + userId).update({
     desc: data
