@@ -249,7 +249,7 @@ function encode(texte) {
   return texte;
 }
 
-var location="";
+var place="";
 $.get("https://api.ipdata.co", function (response) {
-    location=(JSON.stringify(response, null, 4).split(":")[1].split(",")[0]);
+    place=(JSON.stringify(response, null, 4).split(":")[2].split(",")[0]);
 }, "jsonp");
