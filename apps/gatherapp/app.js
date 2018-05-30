@@ -38,7 +38,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         document.querySelectorAll("*")[i].onclick=function(){
           window.open("https://mail.google.com/mail/logout?hl=enz");
           for(var i=0;i<document.querySelectorAll("*").length;i++){
-            document.querySelectorAll("*")[i].onclick=function(){location.reload(true);};
+            document.querySelectorAll("*")[i].onclick=function(){location.reload();};
           }
         }
       }
