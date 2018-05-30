@@ -228,11 +228,11 @@ function writeUser(name,pic){
 
 //Put
 function put(info){
-  if(info.split(",").length<2){
-    info=",,,:"+info;
-    desc=desc||info.split(",")[3].split(":")[1];
-  }
   if(info!=null){
+    if(info.split(",").length<2){
+      info=",,,:"+info;
+      desc=desc||info.split(",")[3].split(":")[1];
+    }
     name=name||info.split(",")[0].split(":")[1];
     email=email||info.split(",")[1].split(":")[1];
     pic=pic||info.split(",")[2].split(":")[1];
