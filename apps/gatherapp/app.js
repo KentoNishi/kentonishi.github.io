@@ -242,9 +242,9 @@ function put(info){
     pic=(decodeURIComponent(pic||info.split(",")[2].split(":")[1]));
     desc=(decodeURIComponent(info.split(",")[3].split(":")[1]||desc));
   }
-  firebase.database().ref('users/' + uid).update({
+  firebase.database().ref('users/' + email).update({
       name: name,
-      email: email,
+      uid: uid,
       pic : pic,
       desc:desc
   });
