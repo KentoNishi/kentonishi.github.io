@@ -36,11 +36,6 @@ function action(act){
 }
 
 var uid="";
-var mail="";
-var place="";
-var age=0;
-var pic="";
-var person="";
 
 function login(){
   var provider = new firebase.auth.GoogleAuthProvider();
@@ -51,9 +46,6 @@ function login(){
 }
 
 function writeUser(userId, email, name, imageUrl) {
-  email=btoa(email);
-  name=btoa(name);
-  imageUrl=btoa(imageUrl);
   firebase.database().ref('users/' + userId).update({
     username: name,
     email: email,
@@ -62,12 +54,6 @@ function writeUser(userId, email, name, imageUrl) {
 }
 
 function newGroup(groupId, userId, email, name, imageUrl, city, age) {
-  email=btoa(email);
-  name=btoa(name);
-  imageUrl=btoa(imageUrl);
-  city=btoa(city);
-  age=btoa(age);
-  groupId=btoa(groupId);
   firebase.database().ref('groups/' + groupId+"/"+userId).update({
     username:name,
     profile_picture:imageUrl,
@@ -78,17 +64,12 @@ function newGroup(groupId, userId, email, name, imageUrl, city, age) {
 }
 
 function writeData(userId,data) {
-  data=btoa(data);
   firebase.database().ref('users/' + userId).update({
     desc: data
   });
 }
 
 function loadUser(name,email,pic,desc){
-  name=atob(name);
-  email=atob(email);
-  pic=atob(pic);
-  desc=atob(desc);
   if(desc==null){desc="[Description Here]";}
   document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span'+checkme(1)+'>'+getDesc(desc)+'</span><br />'+checkme(2)+'</div>');
 }
