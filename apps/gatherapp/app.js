@@ -14,12 +14,13 @@ var config = {
 };
 firebase.initializeApp(config);
 
-//Storage Variables
+//User Variables
 var uid;
 var pic;
 var name;
 var desc;
 
+//Sign In
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     uid=user.uid;
@@ -32,6 +33,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
+//Log In
 function login(){
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -40,6 +42,7 @@ function login(){
   });
 }
 
+//Sign Out
 function signOut(){
   firebase.auth().signOut().then(function() {
     location.reload(true);
@@ -48,6 +51,7 @@ function signOut(){
   });
 }
 
+//Set Cookie
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -55,6 +59,7 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+//Get Cookie
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -70,9 +75,11 @@ function getCookie(cname) {
     return "";
 }
 
+//Load Feed
 function loadFeed(){
 }
 
+//Encode
 function encode(texte) {
   texte = texte.replace(/"/g,'&quot;'); // 34 22
   texte = texte.replace(/&/g,'&amp;'); // 38 26
@@ -195,6 +202,7 @@ function encode(texte) {
   return texte;
 }
 
+//Write
 function writeUser(name,pic){
   var info="";
   firebase.storage().ref().child('users/'+uid+".txt").getDownloadURL().then(function(url) {
@@ -218,6 +226,7 @@ function writeUser(name,pic){
   });
 }
 
+//Put
 function put(info){
     if(info!=null){
       name=name||info.split(",")[0].split(":")[1];
@@ -234,6 +243,7 @@ function put(info){
     });
 }
 
+//Actions
 function action(act){
   console.log(act);
 }
