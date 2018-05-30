@@ -229,7 +229,7 @@ function writeUser(name,pic){
     put(null);});
 }
 
-//Put
+//Put Data
 function put(info){
   console.clear();
   console.log(info);
