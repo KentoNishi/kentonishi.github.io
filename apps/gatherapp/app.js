@@ -186,7 +186,7 @@ function writeUser(userId,name,pic){
       var blob = xhr.response;
       var reader = new FileReader();
       reader.onload = function() {
-         console.log(reader.result);
+       console.log(reader.result);
       }
       reader.readAsText(blob);
     };
@@ -196,15 +196,13 @@ function writeUser(userId,name,pic){
   }).catch(function(error) {
     // Handle any errors
   }).then(function(){
-    /*
-    var ref=firebase.storage().ref().child("users/"+userId+".txt");
+    /*var ref=firebase.storage().ref().child("users/"+userId+".txt");
     var string = "username:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+"pic:"+encodeURIComponent(imageUrl);
     var file = new Blob([string], {
         type: 'text/plain'
     });
     ref.put(file).then(function(snapshot) {
       console.log('Uploaded blob');
-    });
-    */
+    });*/
   });
 }
