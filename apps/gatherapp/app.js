@@ -256,7 +256,7 @@ function put(info){
 function action(act){
   console.log(act);
   if(act=="menu"){
-    var card="<div class='card'><h2>"+name+"</h2><img class='pic' src='"+pic+"'></img><br /><a href='mailto:"+email+"'>"+email+"</a><br /><textfield onkeyup='auto_grow(this)'>"+desc+"</textfield></div>";
+    var card="<div class='card'><span style='font-size:1.5vh'>"+name+"</span><br /><img class='pic' src='"+pic+"'></img><br /><a href='mailto:"+email+"'>"+email+"</a><br /><textfield onkeyup='auto_grow(this)'>"+desc+"</textfield></div>";
     document.querySelectorAll(".body")[0].innerHTML=card;
   }
 }
