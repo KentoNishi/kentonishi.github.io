@@ -209,6 +209,7 @@ function writeUser(name,pic){
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'blob';
     xhr.onload = function(event) {
+      if(xhr.status == 404){put(null);}else{
       var blob = xhr.response;
       var reader = new FileReader();
       reader.onload = function() {
@@ -216,6 +217,7 @@ function writeUser(name,pic){
        put(info);
       }
       reader.readAsText(blob);
+      }
     };
     console.log(url);
     xhr.open('GET', url);
