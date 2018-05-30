@@ -51,7 +51,6 @@ function login(){
 }
 
 function writeUser(userId, email, name, imageUrl) {
-  userId=btoa(userId);
   email=btoa(email);
   name=btoa(name);
   imageUrl=btoa(imageUrl);
@@ -63,7 +62,6 @@ function writeUser(userId, email, name, imageUrl) {
 }
 
 function newGroup(groupId, userId, email, name, imageUrl, city, age) {
-  userId=btoa(userId);
   email=btoa(email);
   name=btoa(name);
   imageUrl=btoa(imageUrl);
@@ -80,7 +78,6 @@ function newGroup(groupId, userId, email, name, imageUrl, city, age) {
 }
 
 function writeData(userId,data) {
-  userId=btoa(userId);
   data=btoa(data);
   firebase.database().ref('users/' + userId).update({
     desc: data
