@@ -250,7 +250,7 @@ function writeUser(name,pic){
 //Put Data
 function put(info){
   console.clear();
-  if(info!=null){
+  if(info!=null&&uid!=null&&uid.length>1){
     if(info.split(",").length==1){
       info=",,,:"+info;
     }
@@ -276,7 +276,7 @@ function put(info){
 //Actions
 function action(act){
   console.log(act);
-  if(uid!=null||uid.length>1){
+  if(uid!=null&&uid.length>1){
     if(act=="menu"){
       var card="<div class='card'><span style='font-size:5vh'>"+name+"</span><br /><img class='pic' src='"+pic+"'></img><br /><a href='mailto:"+email+"'>@"+email.split("@")[0]+"</a><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;' onkeypress='enter(event)' maxlength='144' >"+desc+"</textarea></div>";
       document.querySelectorAll(".body")[0].innerHTML=card;
