@@ -18,7 +18,7 @@ firebase.initializeApp(config);
 var uid="";
 var pic="";
 var name="";
-var desc="";
+var desc="[Description Here]";
 
 //Sign In and Save Data
 firebase.auth().onAuthStateChanged(function(user) {
@@ -234,7 +234,7 @@ function put(info){
     name=name||info.split(",")[0].split(":")[1];
     email=email||info.split(",")[1].split(":")[1];
     pic=pic||info.split(",")[2].split(":")[1];
-    desc=desc||info.split(",")[3].split(":")[1];
+    desc=info.split(",")[3].split(":")[1]||desc;
   }
   var ref=firebase.storage().ref().child("users/"+uid+".txt");
   var string = "name:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+",pic:"+encodeURIComponent(pic)+",desc:"+encodeURIComponent(desc);
