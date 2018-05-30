@@ -185,8 +185,10 @@ function writeUser(userId,name,pic){
     xhr.onload = function(event) {
       var blob = xhr.response;
       var reader = new FileReader();
-      var result=reader.readAsText(blob);
-      console.log(result);
+      reader.onload = function() {
+         console.log(reader.result);
+      }
+      reader.readAsText(blob);
     };
     xhr.open('GET', url);
     xhr.send();
