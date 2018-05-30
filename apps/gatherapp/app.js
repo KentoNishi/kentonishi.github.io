@@ -14,10 +14,17 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var uid;
+var pic;
+var name;
+var desc;
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     uid=user.uid;
-    writeUser(user.uid,user.email,user.displayName,user.photoURL);
+    name=user.displayName;
+    email=user.email;
+    pic=user.photoURL;
+    writeUser(user.email,user.displayName,user.photoURL);
     document.querySelectorAll(".body")[0].innerHTML="";
     loadFeed();
   }
@@ -178,31 +185,41 @@ function encode(texte) {
   return texte;
 }
 
-function writeUser(userId,name,pic){
-  firebase.storage().ref().child('Hi/TEST.txt').getDownloadURL().then(function(url) {
+function writeUser(name,pic){
+  var info="";
+  firebase.storage().ref().child('users/'+uid+".txt").getDownloadURL().then(function(url) {
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'blob';
     xhr.onload = function(event) {
       var blob = xhr.response;
       var reader = new FileReader();
       reader.onload = function() {
-       console.log(reader.result);
+       info=reader.result;
       }
       reader.readAsText(blob);
     };
+    console.log(url);
     xhr.open('GET', url);
     xhr.send();
-    console.log(url);
   }).catch(function(error) {
-    // Handle any errors
+    put(null);
   }).then(function(){
-    /*var ref=firebase.storage().ref().child("users/"+userId+".txt");
-    var string = "username:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+"pic:"+encodeURIComponent(imageUrl);
+    put(info);
+  });
+}
+
+function put(info){
+    if(info!=null){
+      name=name||info.split(",")[0].split(":")[1];
+      email=email||info.split(",")[1].split(":")[1];
+      pic=pic||info.split(",")[2].split(":")[1];
+    }
+    var ref=firebase.storage().ref().child("users/"+uid+".txt");
+    var string = "name:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+"pic:"+encodeURIComponent(pic);
     var file = new Blob([string], {
         type: 'text/plain'
     });
     ref.put(file).then(function(snapshot) {
-      console.log('Uploaded blob');
-    });*/
-  });
+      console.log('Uploaded data');
+    });
 }
