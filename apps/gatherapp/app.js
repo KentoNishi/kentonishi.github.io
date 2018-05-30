@@ -221,7 +221,7 @@ function writeUser(name,pic){
     xhr.open('GET', url);
     xhr.send();
   }).then(function(){
-  });
+  }).catch(function(){put(null);});
 }
 
 //Put
