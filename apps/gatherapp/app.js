@@ -226,7 +226,7 @@ function put(info){
       pic=pic||info.split(",")[2].split(":")[1];
     }
     var ref=firebase.storage().ref().child("users/"+uid+".txt");
-    var string = "name:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+"pic:"+encodeURIComponent(pic);
+    var string = "name:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+",pic:"+encodeURIComponent(pic);
     var file = new Blob([string], {
         type: 'text/plain'
     });
