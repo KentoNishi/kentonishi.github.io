@@ -242,6 +242,13 @@ function put(info){
     pic=(decodeURIComponent(pic||info.split(",")[2].split(":")[1]));
     desc=(decodeURIComponent(info.split(",")[3].split(":")[1]||desc));
   }
+  firebase.database().ref('users/' + uid).update({
+      name: name,
+      email: email,
+      pic : imageUrl,
+      desc:desc
+    });
+  }
   var ref=firebase.storage().ref().child("users/"+uid+".txt");
   var string = "name:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+",pic:"+encodeURIComponent(pic)+",desc:"+encodeURIComponent(desc);
   var file = new Blob([string], {
@@ -263,8 +270,8 @@ function action(act){
 }
 
 function auto_grow(element) {
-    element.style.height="5px";
-    element.style.height = (element.scrollHeight)+"px";
+  element.style.height="5px";
+  element.style.height = (element.scrollHeight)+"px";
 }
 
 function enter(event){
