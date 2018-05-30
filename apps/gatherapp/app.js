@@ -228,6 +228,7 @@ function writeUser(name,pic){
 
 //Put
 function put(info){
+  console.log(info);
   if(info!=null){
     if(info.split(",").length<2){
       info=",,,:"+info;
