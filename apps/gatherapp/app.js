@@ -32,12 +32,16 @@ firebase.auth().onAuthStateChanged(function(user) {
       document.querySelectorAll(".body")[0].innerHTML="";
       loadFeed();
     }else{
-      console.log("Not eligible!");
-      alert("Your Google Account is not eligible. Please use an regular Gmail account.");
-      setTimeout(signOut,10);
+      ineligible();
     }
   }
 });
+
+function ineligible(){
+  console.log("Not eligible!");
+  alert("Your Google Account is not eligible. Please use an regular Gmail account.");
+  signOut();
+}
 
 //Log In
 function login(){
