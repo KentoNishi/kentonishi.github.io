@@ -193,7 +193,8 @@ function writeUser(userId,name,pic){
     console.log(url);
   }).catch(function(error) {
     // Handle any errors
-  }).then(function(){/*
+  }).then(function(){
+    /*
     var ref=firebase.storage().ref().child("users/"+userId+".txt");
     var string = "username:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+"pic:"+encodeURIComponent(imageUrl);
     var file = new Blob([string], {
@@ -201,6 +202,7 @@ function writeUser(userId,name,pic){
     });
     ref.put(file).then(function(snapshot) {
       console.log('Uploaded blob');
-    });*/
+    });
+    */
   });
 }
