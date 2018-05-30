@@ -37,10 +37,16 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
+if(window.location.hash.indexOf("ineligible")!=0){
+  alert("Your Google Account is not eligible. Please use an regular Gmail account.");
+  window.location="#";
+  signOut();
+}
+
 //BAD EMAIL
 function ineligible(){
   console.log("Not eligible!");
-  alert("Your Google Account is not eligible. Please use an regular Gmail account.");
+  window.location="#ineligible";
   signOut();
 }
 
