@@ -23,13 +23,17 @@ var desc="[Description Here]";
 //Sign In and Save Data
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    uid=user.uid;
-    name=user.displayName;
-    email=user.email;
-    pic=user.photoURL;
-    writeUser(user.email,user.displayName,user.photoURL);
-    document.querySelectorAll(".body")[0].innerHTML="";
-    loadFeed();
+    if(user.email.split("&")[1].indexOf("gmail.")!=-1){
+      uid=user.uid;
+      name=user.displayName;
+      email=user.email;
+      pic=user.photoURL;
+      writeUser(user.email,user.displayName,user.photoURL);
+      document.querySelectorAll(".body")[0].innerHTML="";
+      loadFeed();
+    }else{
+      console.log("Not eligible!");
+    }
   }
 });
 
