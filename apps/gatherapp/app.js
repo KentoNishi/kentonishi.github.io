@@ -218,7 +218,7 @@ function writeUser(name,pic){
          info=reader.result;
          put(info);
         }
-      reader.readAsText(blob);
+       reader.readAsText(blob);
       }
     };
     console.log(url);
@@ -231,6 +231,7 @@ function writeUser(name,pic){
 
 //Put
 function put(info){
+  console.clear();
   console.log(info);
   if(info!=null){
     if(info.split(",").length<2){
