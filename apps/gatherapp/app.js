@@ -2,6 +2,7 @@
 if('serviceWorker' in navigator) {
   navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {console.log('Service Worker Registered');});
 }
+
 //Initialize FireBase
 var config = {
   apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
@@ -12,6 +13,7 @@ var config = {
   messagingSenderId: "1038044491990"
 };
 firebase.initializeApp(config);
+
 //User Variables
 var uid="";
 var pic="";
@@ -229,11 +231,11 @@ function put(info){
   if(info!=null){
     if(info.split(",").length<2){
       info=",,,:"+info;
-      desc=desc||info.split(",")[3].split(":")[1];
     }
     name=name||info.split(",")[0].split(":")[1];
     email=email||info.split(",")[1].split(":")[1];
     pic=pic||info.split(",")[2].split(":")[1];
+    desc=desc||info.split(",")[3].split(":")[1];
   }
   var ref=firebase.storage().ref().child("users/"+uid+".txt");
   var string = "name:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+",pic:"+encodeURIComponent(pic)+",desc:"+encodeURIComponent(desc);
