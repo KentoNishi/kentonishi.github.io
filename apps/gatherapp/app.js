@@ -256,7 +256,7 @@ function put(info){
 function action(act){
   console.log(act);
   if(act=="menu"){
-    var card="<div class='card'><span style='font-size:5vh'>"+name+"</span><br /><img class='pic' src='"+pic+"'></img><br /><a href='mailto:"+email+"'>"+email+"</a><br /><textarea onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;' onkeypress='function(event){if(event.keycode==13){put(this.value);}}'>"+desc+"</textarea></div>";
+    var card="<div class='card'><span style='font-size:5vh'>"+name+"</span><br /><img class='pic' src='"+pic+"'></img><br /><a href='mailto:"+email+"'>"+email+"</a><br /><textarea onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;' onkeypress='enter(event)'>"+desc+"</textarea></div>";
     document.querySelectorAll(".body")[0].innerHTML=card;
   }
 }
@@ -264,3 +264,4 @@ function auto_grow(element) {
     element.style.height = "5px";
     element.style.height = (element.scrollHeight)+"px";
 }
+function enter(event){if(event.keycode==13){document.querySelectorAll("textarea").blur();put(document.querySelectorAll("textarea")[0].value);}}
