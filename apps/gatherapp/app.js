@@ -229,7 +229,7 @@ function writeUser(name,pic){
 //Put
 function put(info){
   if(info.split(",").length<2){
-    info=",,,"+info;
+    info=",,,:"+info;
     desc=desc||info.split(",")[3].split(":")[1];
   }
   if(info!=null){
