@@ -18,6 +18,7 @@ firebase.initializeApp(config);
 var uid="";
 var pic="";
 var name="";
+var email="";
 var desc="[Description Here]";
 
 //Sign In and Save Data
