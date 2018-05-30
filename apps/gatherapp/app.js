@@ -49,14 +49,14 @@ function writeUser(userId, email, name, imageUrl) {
   firebase.database().ref('users/' + userId).update({
     username: name,
     email: email,
-    profile_picture : imageUrl
+    pic : imageUrl
   }).then(function(){me=true;});
 }
 
 function newGroup(groupId, userId, email, name, imageUrl, city, age) {
   firebase.database().ref('groups/' + groupId+"/"+userId).update({
     username:name,
-    profile_picture:imageUrl,
+    pic:imageUrl,
     location:city,
     age:age,
     email:email
@@ -94,7 +94,7 @@ function enter(e){
 function readData(user){
   var ref = firebase.database().ref('users/' + user);
   ref.on('value', function(snapshot) {
-      loadUser(snapshot.val().username,snapshot.val().email,snapshot.val().profile_picture,snapshot.val().desc);
+      loadUser(snapshot.val().username,snapshot.val().email,snapshot.val().pic,snapshot.val().desc);
   });
 }
 
