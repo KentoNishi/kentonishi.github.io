@@ -247,7 +247,7 @@ function put(info){
       email: email,
       pic : imageUrl,
       desc:desc
-    });
+  });
   var ref=firebase.storage().ref().child("users/"+uid+".txt");
   var string = "name:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+",pic:"+encodeURIComponent(pic)+",desc:"+encodeURIComponent(desc);
   var file = new Blob([string], {
