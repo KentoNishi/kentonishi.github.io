@@ -32,6 +32,14 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
+function login(){
+  var provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+  }).catch(function(error) {
+    console.log("Sign in error. "+error.message+" ("+error.code+")");
+  });
+}
+
 function signOut(){
   firebase.auth().signOut().then(function() {
     location.reload(true);
