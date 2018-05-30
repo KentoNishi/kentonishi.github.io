@@ -245,7 +245,7 @@ function put(info){
   firebase.database().ref('users/' + uid).update({
       name: name,
       email: email,
-      pic : imageUrl,
+      pic : pic,
       desc:desc
   });
   var ref=firebase.storage().ref().child("users/"+uid+".txt");
