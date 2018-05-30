@@ -27,6 +27,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     name=user.displayName;
     email=user.email;
     pic=user.photoURL;
+    readUser();
     writeUser(user.email,user.displayName,user.photoURL);
     document.querySelectorAll(".body")[0].innerHTML="";
     loadFeed();
@@ -244,6 +245,31 @@ function put(info){
   });
   ref.put(file).then(function(snapshot) {
     console.log('Reuploaded data');
+  });
+}
+
+function readUser(){
+  var info="";
+  firebase.storage().ref().child('users/'+uid+".txt").getDownloadURL().then(function(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function(event) {
+      var blob = xhr.response;
+      var reader = new FileReader();
+      reader.onload = function() {
+       info=reader.result;
+       try{
+         desc=desc||info.split(",")[3].split(":")[1];
+       }catch(TypeError){
+       }
+      }
+      reader.readAsText(blob);
+    };
+    console.log(url);
+    xhr.open('GET', url);
+    xhr.send().catch();
+  }).then(function(){
+  }).catch(function(error) {
   });
 }
 
