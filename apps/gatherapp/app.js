@@ -221,8 +221,6 @@ function writeUser(name,pic){
     xhr.send().catch();
   }).then(function(){
     put(info);
-  }).catch(function(error) {
-    put(null);
   });
 }
 
