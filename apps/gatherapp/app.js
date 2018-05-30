@@ -205,16 +205,17 @@ function writeUser(name,pic){
       var reader = new FileReader();
       reader.onload = function() {
        info=reader.result;
+       console.log(info);
       }
       reader.readAsText(blob);
     };
     console.log(url);
     xhr.open('GET', url);
     xhr.send().catch();
-  }).catch(function(error) {
-    put(null);
   }).then(function(){
     put(info);
+  }).catch(function(error) {
+    put(null);
   });
 }
 
