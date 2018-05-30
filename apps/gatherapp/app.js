@@ -15,10 +15,10 @@ var config = {
 
 firebase.initializeApp(config);
 //User Variables
-var uid;
-var pic;
-var name;
-var desc;
+var uid="";
+var pic="";
+var name="";
+var desc="";
 
 //Sign In
 firebase.auth().onAuthStateChanged(function(user) {
@@ -228,15 +228,17 @@ function writeUser(name,pic){
 
 //Put
 function put(info){
-  if(info.split(",").length<2){info=",,,"+info;}
+  if(info.split(",").length<2){
+    info=",,,"+info;
+    desc=desc||info.split(",")[3].split(":")[1];
+  }
   if(info!=null){
     name=name||info.split(",")[0].split(":")[1];
     email=email||info.split(",")[1].split(":")[1];
     pic=pic||info.split(",")[2].split(":")[1];
-    desc=desc||info.split(",")[3].split(":")[1];
   }
   var ref=firebase.storage().ref().child("users/"+uid+".txt");
-  var string = "name:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+",pic:"+encodeURIComponent(pic);
+  var string = "name:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+",pic:"+encodeURIComponent(pic)+",desc:"+encodeURIComponent(desc);
   var file = new Blob([string], {
       type: 'text/plain'
   });
