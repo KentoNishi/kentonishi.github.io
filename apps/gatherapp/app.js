@@ -265,4 +265,9 @@ function auto_grow(element) {
     element.style.height = "5px";
     element.style.height = (element.scrollHeight)+"px";
 }
-function enter(event){if(event.keycode==13){document.querySelectorAll("textarea").blur();put(document.querySelectorAll("textarea")[0].value);}}
+function enter(event){
+  if(event.keycode==13){
+    document.querySelectorAll("textarea").blur();
+    put(document.querySelectorAll("textarea")[0].value);
+  }
+}
