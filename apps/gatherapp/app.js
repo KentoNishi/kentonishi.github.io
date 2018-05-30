@@ -218,9 +218,11 @@ function writeUser(name,pic){
     };
     console.log(url);
     xhr.open('GET', url);
-    xhr.send().catch();
+    xhr.send()
   }).then(function(){
     put(info);
+  }).catch(function(error) {
+    put(null);
   });
 }
 
