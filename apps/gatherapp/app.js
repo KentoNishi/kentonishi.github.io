@@ -234,7 +234,7 @@ function put(info){
   console.clear();
   console.log(info);
   if(info!=null){
-    if(info.split(",").length<2){
+    if(info.split(",").length==0){
       info=",,,:"+info;
     }
     name=(decodeURIComponent(name||info.split(",")[0].split(":")[1]));
