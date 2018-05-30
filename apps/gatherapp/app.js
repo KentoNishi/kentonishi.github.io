@@ -19,6 +19,7 @@ var uid="";
 var pic="";
 var name="";
 var desc="[Description Here]";
+
 //Sign In and Save Data
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
