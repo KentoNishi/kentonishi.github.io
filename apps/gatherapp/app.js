@@ -205,7 +205,6 @@ function writeUser(name,pic){
       var reader = new FileReader();
       reader.onload = function() {
        info=reader.result;
-       console.log(info);
       }
       reader.readAsText(blob);
     };
@@ -231,6 +230,10 @@ function put(info){
         type: 'text/plain'
     });
     ref.put(file).then(function(snapshot) {
-      console.log('Uploaded data');
+      console.log('Reuploaded data');
     });
+}
+
+function action(act){
+  console.log(act);
 }
