@@ -277,7 +277,7 @@ function store(){
   ref.on('value', function(snapshot) {
     var name=snapshot.val().username;
     var email=snapshot.val().email;
-    var pic=snapshot.val().pic;
+    var imageURL=snapshot.val().pic;
     var desc=snapshot.val().desc;
     var reference=firebase.storage().ref().child("users/"+uid+".txt");
     var string = "username:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+"pic:"+encodeURIComponent(imageUrl)+"desc:"+encodeURIComponent(desc);
