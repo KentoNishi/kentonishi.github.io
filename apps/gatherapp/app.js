@@ -213,14 +213,14 @@ function writeUser(name,pic){
       var reader = new FileReader();
       reader.onload = function() {
        info=reader.result;
+       put(info);
       }
       reader.readAsText(blob);
     };
     console.log(url);
     xhr.open('GET', url);
-    xhr.send()
+    xhr.send();
   }).then(function(){
-    put(info);
   });
 }
 
