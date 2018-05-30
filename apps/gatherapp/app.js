@@ -263,8 +263,10 @@ function action(act){
 }
 
 function auto_grow(element) {
+    element.style.height="5px";
     element.style.height = (element.scrollHeight)+"px";
 }
+
 function enter(event){
   if(event.keyCode==13){
     document.querySelectorAll("textarea")[0].blur();
