@@ -37,6 +37,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
+//BAD EMAIL
 function ineligible(){
   console.log("Not eligible!");
   alert("Your Google Account is not eligible. Please use an regular Gmail account.");
