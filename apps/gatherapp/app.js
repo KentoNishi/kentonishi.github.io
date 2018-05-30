@@ -242,11 +242,8 @@ function put(info){
     pic=(decodeURIComponent(pic||info.split(",")[2].split(":")[1]));
     desc=(decodeURIComponent(desc||info.split(",")[3].split(":")[1]));
   }
-  firebase.database().ref('users/' + uid).update({
-      name: name,
-      email: email,
-      pic : pic,
-      desc:desc
+  firebase.database().ref('users/' + email.split("@")[0]).update({
+      uid:uid
   });
   var ref=firebase.storage().ref().child("users/"+uid+".txt");
   var string = "name:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+",pic:"+encodeURIComponent(pic)+",desc:"+encodeURIComponent(desc);
@@ -262,7 +259,7 @@ function put(info){
 function action(act){
   console.log(act);
   if(act=="menu"){
-    var card="<div class='card'><span style='font-size:5vh'>"+name+"</span><br /><img class='pic' src='"+pic+"'></img><br /><a href='mailto:"+email+"'>"+email+"</a><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;' onkeypress='enter(event)' maxlength='144' >"+desc+"</textarea></div>";
+    var card="<div class='card'><span style='font-size:5vh'>"+name+"</span><br /><img class='pic' src='"+pic+"'></img><br /><a href='mailto:"+email+"'>@"+email.split("@")[0]+"</a><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;' onkeypress='enter(event)' maxlength='144' >"+desc+"</textarea></div>";
     document.querySelectorAll(".body")[0].innerHTML=card;
     auto_grow(document.querySelectorAll("textarea")[0]);
   }
