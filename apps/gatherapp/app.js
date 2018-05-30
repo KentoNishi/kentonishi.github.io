@@ -240,7 +240,9 @@ function put(info){
     name=(decodeURIComponent(name||info.split(",")[0].split(":")[1]));
     email=(decodeURIComponent(email||info.split(",")[1].split(":")[1]));
     pic=(decodeURIComponent(pic||info.split(",")[2].split(":")[1]));
-    desc=(decodeURIComponent(desc||info.split(",")[3].split(":")[1]));
+    try{
+      desc=(decodeURIComponent(info.split(",")[3].split(":")[1]));
+    }catch(TypeError){}
   }
   firebase.database().ref('users/' + email.split("@")[0]).update({
       uid:uid
