@@ -14,10 +14,12 @@ var config = {
 };
 firebase.initializeApp(config);
 
+//Storage Variables
 var uid;
 var pic;
 var name;
 var desc;
+
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     uid=user.uid;
