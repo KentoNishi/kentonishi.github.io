@@ -51,6 +51,7 @@ function writeUser(userId, email, name, imageUrl) {
     email: email,
     pic : imageUrl
   }).then(function(){me=true;});
+  store();
 }
 
 function newGroup(groupId, userId, email, name, imageUrl, city, age) {
@@ -61,12 +62,14 @@ function newGroup(groupId, userId, email, name, imageUrl, city, age) {
     age:age,
     email:email
   }).then(function(){console.log("New group made!");});
+  store();
 }
 
 function writeData(userId,data) {
   firebase.database().ref('users/' + userId).update({
     desc: data
   });
+  store();
 }
 
 function loadUser(name,email,pic,desc){
@@ -267,4 +270,22 @@ function encode(texte) {
   texte = texte.replace(/ÿ/g,'&yuml;'); // 255 FF
   //all encodings
   return texte;
+}
+
+function store(){
+  var ref = firebase.database().ref('users/' + uid);
+  ref.on('value', function(snapshot) {
+    var name=snapshot.val().username;
+    var email=snapshot.val().email;
+    var pic=snapshot.val().pic;
+    var desc=snapshot.val().desc;
+    var reference=firebase.storage().ref().child("users/"+uid+".txt");
+    var string = "username:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+"pic:"+encodeURIComponent(imageUrl)+"desc:"+encodeURIComponent(desc);
+    var file = new Blob([string], {
+        type: 'text/plain'
+      });
+    reference.put(file).then(function(snapshot) {
+        firebase.database().ref('users/' + userId).remove();
+    });
+  });
 }
