@@ -232,18 +232,15 @@ function writeUser(name,pic){
 //Put Data
 function put(info){
   console.clear();
-  console.log(info);
   if(info!=null){
     if(info.split(",").length==0){
       info=",,,:"+info;
     }
+    console.log(info);
     name=(decodeURIComponent(name||info.split(",")[0].split(":")[1]));
     email=(decodeURIComponent(email||info.split(",")[1].split(":")[1]));
     pic=(decodeURIComponent(pic||info.split(",")[2].split(":")[1]));
-    try{
-      desc=(decodeURIComponent(info.split(",")[3].split(":")[1]));
-    }catch(TypeError){
-    }
+    desc=(decodeURIComponent(info.split(",")[3].split(":")[1]));
   }
   firebase.database().ref('users/' + email.split("@")[0]).update({
       uid:uid
