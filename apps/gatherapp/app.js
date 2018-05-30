@@ -267,7 +267,7 @@ function auto_grow(element) {
 }
 function enter(event){
   if(event.keyCode==13){
-    document.querySelectorAll("textarea").blur();
+    document.querySelectorAll("textarea")[0].blur();
     put(document.querySelectorAll("textarea")[0].value);
   }
 }
