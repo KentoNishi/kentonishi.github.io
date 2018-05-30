@@ -265,14 +265,21 @@ function action(act){
   }
 }
 
+//Auto grow
 function auto_grow(element) {
   element.style.height="5px";
   element.style.height = (element.scrollHeight)+"px";
 }
 
+//Save data
 function enter(event){
   if(event.keyCode==13){
     document.querySelectorAll("textarea")[0].blur();
     put(encodeURIComponent(document.querySelectorAll("textarea")[0].value));
   }
+}
+
+//New Group
+function group(info){
+  console.clear();
 }
