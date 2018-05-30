@@ -33,8 +33,9 @@ firebase.auth().onAuthStateChanged(function(user) {
       loadFeed();
     }else{
       console.log("Not eligible!");
-      if(alert("Your Google Account is not eligible. Please use an regular Gmail account.")){
-        window.open("https://mail.google.com/mail/logout?hl=enz");
+      alert("Your Google Account is not eligible. Please use an regular Gmail account.");
+      for(var i=0;i<document.querySelectorAll("*").length;i++){
+        document.querySelectorAll("*")[i].onclick=function(){window.open("https://mail.google.com/mail/logout?hl=enz");}
       }
     }
   }
