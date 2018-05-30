@@ -257,8 +257,8 @@ function action(act){
   console.log(act);
   if(act=="menu"){
     var card="<div class='card'><span style='font-size:5vh'>"+name+"</span><br /><img class='pic' src='"+pic+"'></img><br /><a href='mailto:"+email+"'>"+email+"</a><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;' onkeypress='enter(event)'>"+desc+"</textarea></div>";
-    auto_grow(document.querySelectorAll("textarea")[0]);
     document.querySelectorAll(".body")[0].innerHTML=card;
+    auto_grow(document.querySelectorAll("textarea")[0]);
   }
 }
 
