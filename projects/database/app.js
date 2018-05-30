@@ -92,7 +92,6 @@
         profile_picture : imageUrl,
         desc:desc
       });
-    }
     getUserData(userId,true);
   }
 
