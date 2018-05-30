@@ -255,4 +255,12 @@ function put(info){
 //Actions
 function action(act){
   console.log(act);
+  if(act=="menu"){
+    var card="<div class='card'><h2>"+name+"</h2><br /><img src=''>"+pic+"</img><br /><a href='mailto:"+email+"'>"+email+"</a><br /><textfield onkeyup='auto_grow(this)'>"+desc+"</textfield></div>";
+    document.querySelectorAll(".body")[0].innerHTML=card;
+  }
+}
+function auto_grow(element) {
+    element.style.height = "5px";
+    element.style.height = (element.scrollHeight)+"px";
 }
