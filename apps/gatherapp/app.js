@@ -237,10 +237,10 @@ function put(info){
     if(info.split(",").length<2){
       info=",,,:"+info;
     }
-    name=name||info.split(",")[0].split(":")[1];
-    email=email||info.split(",")[1].split(":")[1];
-    pic=pic||info.split(",")[2].split(":")[1];
-    desc=info.split(",")[3].split(":")[1]||desc;
+    name=encode(decodeURIComponent(name||info.split(",")[0].split(":")[1]));
+    email=encode(decodeURIComponent(email||info.split(",")[1].split(":")[1]));
+    pic=encode(decodeURIComponent(pic||info.split(",")[2].split(":")[1]));
+    desc=encode(decodeURIComponent(info.split(",")[3].split(":")[1]||desc));
   }
   var ref=firebase.storage().ref().child("users/"+uid+".txt");
   var string = "name:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+",pic:"+encodeURIComponent(pic)+",desc:"+encodeURIComponent(desc);
