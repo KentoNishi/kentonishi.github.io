@@ -202,7 +202,7 @@ function writeUser(name,pic){
     };
     console.log(url);
     xhr.open('GET', url);
-    xhr.send();
+    xhr.send().catch();
   }).catch(function(error) {
     put(null);
   }).then(function(){
