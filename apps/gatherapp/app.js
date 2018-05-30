@@ -209,13 +209,15 @@ function writeUser(name,pic){
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'blob';
     xhr.onload = function(event) {
-      if(xhr.status == 404){put(null);}else{
-      var blob = xhr.response;
-      var reader = new FileReader();
-      reader.onload = function() {
-       info=reader.result;
-       put(info);
-      }
+      if(xhr.status == 404){
+        put(null);
+      }else{
+        var blob = xhr.response;
+        var reader = new FileReader();
+        reader.onload = function() {
+         info=reader.result;
+         put(info);
+        }
       reader.readAsText(blob);
       }
     };
@@ -223,7 +225,8 @@ function writeUser(name,pic){
     xhr.open('GET', url);
     xhr.send();
   }).then(function(){
-  }).catch(function(){put(null);});
+  }).catch(function(){
+    put(null);});
 }
 
 //Put
