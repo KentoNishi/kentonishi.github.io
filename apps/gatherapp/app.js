@@ -25,98 +25,6 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
-function action(act){
-  if(uid!=""){
-    if(act=="menu"){
-       readData(uid);
-    }else if(act=="add"){
-      document.querySelectorAll(".body")[0].innerHTML="ADD SCREEN";
-    }
-  }
-}
-
-var uid="";
-
-function login(){
-  var provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-  }).catch(function(error) {
-    console.log("Sign in error. "+error.message+" ("+error.code+")");
-  });
-}
-
-function writeUser(userId, email, name, imageUrl) {
-  firebase.database().ref('users/' + userId).update({
-    username: name,
-    email: email,
-    pic : imageUrl
-  }).then(function(){me=true;});
-  store();
-}
-
-function newGroup(groupId, userId, email, name, imageUrl, city, age) {
-  firebase.database().ref('groups/' + groupId+"/"+userId).update({
-    username:name,
-    pic:imageUrl,
-    location:city,
-    age:age,
-    email:email
-  }).then(function(){console.log("New group made!");});
-  store();
-}
-
-function writeData(userId,data) {
-  firebase.database().ref('users/' + userId).update({
-    desc: data
-  });
-  store();
-}
-
-function loadUser(name,email,pic,desc){
-  if(desc==null){desc="[Description Here]";}
-  document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+name+'</span><br /><img class="pic" alt="Profile Picture" src="'+pic+'"></img><br /><br /><span'+checkme(1)+'>'+getDesc(desc)+'</span><br />'+checkme(2)+'</div>');
-}
-
-function getDesc(desc){
-  if(desc.replace(/ /g,"").replace(/&nbsp;/g,"").toString().length<1){
-    return '[Description Here]';
-  }else{
-    return desc;
-  }
-}
-
-function enter(e){
-  if (e.keyCode == 13) {
-    e.preventDefault();
-    return true;
-  }else{
-    return false;
-  }
-}
-
-function readData(user){
-  var ref = firebase.database().ref('users/' + user);
-  ref.on('value', function(snapshot) {
-      loadUser(snapshot.val().username,snapshot.val().email,snapshot.val().pic,snapshot.val().desc);
-  });
-}
-
-function checkme(user){
-  if(user==1){
-    if(me){
-     return ' contenteditable onkeydown="if(enter(event)){writeData(uid,this.innerHTML)}"';
-    }else{
-      return "";
-    }
-  }else if(user==2){
-    if(me){
-    return '<br /><a href="javascript:signOut();">Sign Out</a>';
-    }else{
-      return "";
-    }
-  }
-}
-
 function signOut(){
   firebase.auth().signOut().then(function() {
     location.reload(true);
@@ -272,20 +180,29 @@ function encode(texte) {
   return texte;
 }
 
-function store(){
-  var ref = firebase.database().ref('users/' + uid);
-  ref.on('value', function(snapshot) {
-    var name=snapshot.val().username;
-    var email=snapshot.val().email;
-    var imageURL=snapshot.val().pic;
-    var desc=snapshot.val().desc;
-    var reference=firebase.storage().ref().child("users/"+uid+".txt");
-    var string = "username:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+"pic:"+encodeURIComponent(imageUrl)+"desc:"+encodeURIComponent(desc);
+function writeUser(userId,name,pic){
+  firebase.storage().ref().child('Hi/TEST.txt').getDownloadURL().then(function(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function(event) {
+      var blob = xhr.response;
+      var reader = new FileReader();
+      var result=reader.readAsText(blob);
+      console.log(result);
+    };
+    xhr.open('GET', url);
+    xhr.send();
+    console.log(url);
+  }).catch(function(error) {
+    // Handle any errors
+  }).then(function(){
+    var ref=firebase.storage().ref().child("users/"+userId+".txt");
+    var string = "username:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+"pic:"+encodeURIComponent(imageUrl);
     var file = new Blob([string], {
         type: 'text/plain'
-      });
-    reference.put(file).then(function(snapshot) {
-        firebase.database().ref('users/' + userId).remove();
+    });
+    ref.put(file).then(function(snapshot) {
+      console.log('Uploaded blob');
     });
   });
 }
