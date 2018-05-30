@@ -12,8 +12,8 @@ var config = {
   storageBucket: "gatherapp-1906b.appspot.com",
   messagingSenderId: "1038044491990"
 };
-
 firebase.initializeApp(config);
+
 //User Variables
 var uid="";
 var pic="";
