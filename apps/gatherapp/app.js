@@ -255,7 +255,7 @@ function encode(texte) {
 //Write
 function writeUser(name,pic){
   var info="";
-  firebase.storage().ref().child('users/'+uid+"/"+uid+".txt").getDownloadURL().then(function(url) {
+  firebase.storage().ref().child('users/'+uid+"/"+uid+"/"+uid+".txt").getDownloadURL().then(function(url) {
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'blob';
     xhr.onload = function(event) {
@@ -295,7 +295,7 @@ function put(info){
   firebase.database().ref('users/' + email.split("@")[0]).update({
       uid:uid
   });
-  var ref=firebase.storage().ref().child('users/'+uid+"/"+uid+".txt");
+  var ref=firebase.storage().ref().child('users/'+uid+"/"+uid+"/"+uid+".txt");
   var string = "name:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+",pic:"+encodeURIComponent(pic)+",desc:"+encodeURIComponent(desc);
   var file = new Blob([string], {
       type: 'text/plain'
