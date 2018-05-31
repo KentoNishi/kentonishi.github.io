@@ -328,7 +328,7 @@ function newGroup(title){
     add(null,title);});
 }
 
-//Add group
+//ADD GROUP
 function add(now,title){
   console.log(now+" "+title);
 }
