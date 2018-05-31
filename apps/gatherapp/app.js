@@ -109,8 +109,12 @@ function loadFeed(){
         reader.onload = function() {
          info=reader.result;
          document.querySelectorAll(".body")[0].innerHTML="";
-         for(var i=0;i<info.split(",").length;i++){
-          document.querySelectorAll(".body")[0].innerHTML+="<div class='card'><span style='font-size:5vh'>"+info.split(",")[i].split("&")[0]+"</span><br /><span style='font-size:3.5vh;'>"+info.split(",")[i].split("&")[1]+"</span></div><br />";
+         if(info.length>1){
+           for(var i=0;i<info.split(",").length;i++){
+            document.querySelectorAll(".body")[0].innerHTML+="<div class='card'><span style='font-size:5vh'>"+info.split(",")[i].split("&")[0]+"</span><br /><span style='font-size:3.5vh;'>"+info.split(",")[i].split("&")[1]+"</span></div><br />";
+           }
+         }else{
+          document.querySelectorAll(".body")[0].innerHTML="<div class='card'><span style='font-size:5vh'>Welcome!</span><br /><span style='font-size:3.5vh;'>This is your activity feed. New events will come up here.</span></div>";
          }
         }
        reader.readAsText(blob);
