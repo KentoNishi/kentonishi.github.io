@@ -389,7 +389,7 @@ function update(now,title){
   });
 }
 
-var circles;
+var circles="";
 function loadGroups(){
   var groups="";
   firebase.storage().ref().child('users/'+uid+"/groups.txt").getDownloadURL().then(function(url) {
