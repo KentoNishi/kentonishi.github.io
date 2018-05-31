@@ -73,7 +73,7 @@ function loadUser(id){
   var signOut="";
   if(id==uid){editable="contenteditable";signOut="<br /><a href='javascript:writeUser(document.querySelectorAll("+'"span"'+")[0].innerHTML);'>Save</a><br /><br /><a href='javascript:signOut();'>Sign Out</a>";}
   firebase.database().ref('users/' + id).on('value', function(snapshot) {
-    if(snapshot.val().desc.length<1||snapshot.val().desc==null){
+    if(snapshot.val().desc==null||snapshot.val().desc.length<1){
       snapshot.val().desc="[Description Here]";
     }
     document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+snapshot.val().desc+'</span><br />'+signOut+'</div>');
