@@ -1,5 +1,6 @@
 var CACHE_NAME = 'cache';
 
+//CHECK INTERNET
 var urlsToCache = [
   'https://kentonishi.github.io/apps/gatherapp/mobile.html'
 ];
