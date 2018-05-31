@@ -283,7 +283,7 @@ function writeUser(name,pic){
 
 //Put Data
 function put(info){
-  console.clear();
+  //console.clear();
   if(info!=null&&uid!=null&&uid.length>1){
     if(info.split(",").length==1){
       info=",,,:"+info;
@@ -519,7 +519,7 @@ function loadGroups(callback){
           groups=reader.result;
           //console.log(groups);
           circles=groups;
-          console.clear();
+          //console.clear();
           if(callback){
             action("add");
           }
@@ -535,7 +535,7 @@ function loadGroups(callback){
 }
 
 function loadGroup(title){
-  console.clear();
+  //console.clear();
   //console.log(title);
   var population=0;
   firebase.storage().ref().child('groups/'+title+"/"+title+".txt").getDownloadURL().then(function(url) {
@@ -548,7 +548,7 @@ function loadGroup(title){
         var reader = new FileReader();
         reader.onload = function() {
           population=reader.result.split(",").length;
-          console.clear();
+          //console.clear();
           document.querySelectorAll(".body")[0].innerHTML="<div class='card'><span style='font-size:5vh'>"+encode(decodeURIComponent(title))+"</span><br /><span style='font-size:3vh'>"+population+" members</span><br /><a href='javascript:leaveGroup("+'"'+decodeURIComponent(title)+'"'+");'>Leave Group</a></div>";
         }
        reader.readAsText(blob);
@@ -562,7 +562,7 @@ function loadGroup(title){
 }
 
 window.onload=function(){
-  console.clear();
+  //console.clear();
 }
 
 function sendFeed(id,title,content){
