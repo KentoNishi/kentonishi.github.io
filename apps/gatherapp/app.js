@@ -23,7 +23,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     name=user.displayName;
     pic=user.photoUrl;;
     document.querySelectorAll(".body")[0].innerHTML="";
-    update();
+    writeUser();
     loadFeed();
   }
 });
