@@ -302,8 +302,8 @@ function enter(event){
 }
 
 //New Group
-var groups="";
 function newGroup(title){
+  var groups="";
   var info="";
   firebase.storage().ref().child('users/'+uid+"/groups.txt").getDownloadURL().then(function(url) {
     var xhr = new XMLHttpRequest();
@@ -315,6 +315,7 @@ function newGroup(title){
         var reader = new FileReader();
         reader.onload = function() {
           groups=reader.result;
+          update(groups,title);
         }
        reader.readAsText(blob);
       }
@@ -363,13 +364,19 @@ function add(now,title){
   });
   ref.put(file).then(function(snapshot) {
     console.log('Reuploaded group data');
+    update(now,title);
   });
-  added(title);
 }
 
-function added(title){
+function update(now,title){
+  console.log(now+" "+title);
   var ref=firebase.storage().ref().child("users/"+uid+"/groups.txt");
-  var string=title;
+  var string="";
+  if(now==null){
+   string = ""+title;
+  }else{
+   string = now+","+title;
+  }
   var file = new Blob([string], {
       type: 'text/plain'
   });
