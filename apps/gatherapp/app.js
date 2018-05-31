@@ -334,8 +334,10 @@ function enter(event,task){
   task=task||false;
   if(event.keyCode==13){
     if(task){
-      document.querySelectorAll("textarea")[0].blur();
-      newGroup(encodeURIComponent(document.querySelectorAll("textarea")[0].value));
+      if(document.querySelectorAll("textarea")[0].value.replace(/ /g,"").length>1){
+        document.querySelectorAll("textarea")[0].blur();
+        newGroup(encodeURIComponent(document.querySelectorAll("textarea")[0].value));
+      }
     }else{
       document.querySelectorAll("textarea")[0].blur();
       put(encodeURIComponent(document.querySelectorAll("textarea")[0].value));
