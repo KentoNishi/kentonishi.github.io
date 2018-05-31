@@ -97,7 +97,7 @@ function getCookie(cname) {
 //Load Feed
 function loadFeed(){
   var info="";
-  firebase.storage().ref().child('users/'+uid+"/"+uid+".txt").getDownloadURL().then(function(url) {
+  firebase.storage().ref().child('users/'+uid+"/"+"feed"+".txt").getDownloadURL().then(function(url) {
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'blob';
     xhr.onload = function(event) {
