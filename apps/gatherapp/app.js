@@ -316,7 +316,7 @@ function action(act){
       document.querySelectorAll(".body")[0].innerHTML=card;
       auto_grow(document.querySelectorAll("textarea")[0]);
     }else if(act=="add"){
-      var card="<div class='card'><span style='font-size:5vh'>"+"Join/Create a Group:"+"</span><br /><a href='mailto:"+email+"'>@"+email.split("@")[0]+"</a><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;' onkeypress='enter(event,true)' maxlength='24' placeholder='Group Name'>"+"</textarea><br /><a href='javascript:signOut();'>Sign Out</a></div>";
+      var card="<div class='card'><span style='font-size:5vh'>"+"Join/Create a Group:"+"</span><br /><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;border:2.5px solid black;border-radius:5px;' onkeypress='enter(event,true)' maxlength='24' placeholder='Group Name'>"+"</textarea><br /></div>";
       document.querySelectorAll(".body")[0].innerHTML=card;
       auto_grow(document.querySelectorAll("textarea")[0]);
     }
