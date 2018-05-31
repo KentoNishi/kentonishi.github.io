@@ -304,7 +304,8 @@ function enter(event){
 
 //New Group
 function newGroup(title){
-    if(circles.indexOf(title)==-1){
+  title=title.toUpperCase();  
+  if(circles.indexOf(title)==-1){
     var groups="";
     var info="";
     firebase.storage().ref().child('users/'+uid+"/groups.txt").getDownloadURL().then(function(url) {
