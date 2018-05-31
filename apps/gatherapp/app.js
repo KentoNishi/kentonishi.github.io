@@ -19,7 +19,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     uid=user.uid;
     email=user.email;
     name=user.displayName;
-    pic=user.photoUrl;;
+    pic=user.photoURL;
     document.querySelectorAll(".body")[0].innerHTML="";
     writeUser(null,true);
   }
