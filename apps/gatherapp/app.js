@@ -316,7 +316,7 @@ function action(act){
       document.querySelectorAll(".body")[0].innerHTML=card;
       auto_grow(document.querySelectorAll("textarea")[0]);
     }else if(act=="add"){
-      var card="<div class='card'><span style='font-size:5vh'>"+"Join/Create a Group:"+"</span><br /><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;border:2.5px solid black;border-radius:5px;' onkeypress='enter(event,true)' maxlength='24' placeholder='Group Name'>"+"</textarea><br /></div>";
+      var card="<div class='card'><span style='font-size:5vh'>"+"Join/Create a Group:"+"</span><br /><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;border:2.5px solid black;border-radius:5px;height:' onkeypress='enter(event,true)' maxlength='24' placeholder='Group Name'>"+"</textarea><br /></div>";
       document.querySelectorAll(".body")[0].innerHTML=card;
       auto_grow(document.querySelectorAll("textarea")[0]);
     }
@@ -326,7 +326,7 @@ function action(act){
 //Auto grow
 function auto_grow(element) {
   element.style.height="5px";
-  element.style.height = (element.scrollHeight)+"px";
+  element.style.height = ((element.scrollHeight)+5)+"px";
 }
 
 //Save data
