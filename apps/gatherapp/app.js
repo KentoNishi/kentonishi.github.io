@@ -428,6 +428,45 @@ function update(now,title){
   });
 }
 
+function leaveGroup(title){
+  title=title.toUpperCase();
+  var ref=firebase.storage().ref().child("users/"+uid+"/groups.txt");
+  var string=groups.replace(title,"").replace(",,",",");
+  var file = new Blob([string], {
+      type: 'text/plain'
+  });
+  ref.put(file).then(function(snapshot) {
+    console.log('Left group.');
+  });
+  firebase.storage().ref().child('groups/'+title+"/"+title+".txt").getDownloadURL().then(function(url) {
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = function(event) {
+        if(xhr.status == 404){
+        }else{
+          var blob = xhr.response;
+          var reader = new FileReader();
+          reader.onload = function() {
+           info=reader.result;
+          var ref=firebase.storage().ref().child('groups/'+title+"/"+title+".txt");
+          var string=groups.replace(uid,"").replace(",,",",");
+          var file = new Blob([string], {
+              type: 'text/plain'
+          });
+          ref.put(file).then(function(snapshot) {
+            console.log('Left group.');
+          });
+          }
+         reader.readAsText(blob);
+        }
+      };
+      console.log(url);
+      xhr.open('GET', url);
+      xhr.send();
+    }).then(function(){
+    }).catch(function(){});
+}
+
 //Load all groups
 var circles="";
 function loadGroups(){
