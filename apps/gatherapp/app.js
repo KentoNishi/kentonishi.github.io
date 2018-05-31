@@ -316,11 +316,11 @@ function action(act){
       document.querySelectorAll(".body")[0].innerHTML=card;
       auto_grow(document.querySelectorAll("textarea")[0]);
     }else if(act=="add"){
-      var card="<div class='card'><span style='font-size:5vh'>"+"Join/Create a Group:"+"</span><br /><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;border:2.5px solid black;border-radius:5px;height:' onkeypress='enter(event,true);return alpha(event);this.value=this.value.replace(/ /g,"+'""'+");' maxlength='24' placeholder='Group Name'>"+"</textarea><br /></div>";
+      var card="<div class='card'><span style='font-size:5vh'>"+"Join/Create a Group:"+"</span><br /><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-transform:uppercase;text-align:center;font-size:4vh;border:2.5px solid black;border-radius:5px;height:' onkeypress='enter(event,true);return alpha(event);this.value=this.value.replace(/ /g,"+'""'+");' maxlength='24' placeholder='GROUP NAME'>"+"</textarea><br /></div>";
       var groups=circles.split(",");
       if(circles.length>1){
         for(var i=circles.split(",").length-1;i>-1;i--){
-          card+="<br /><div style='text-transform:uppercase;' class='card' onclick='loadGroup("+'"'+decodeURIComponent(groups[i])+'"'+")'><span style='font-size:5vh'>"+decodeURIComponent(groups[i])+"</span><br /><a href='javascript:leaveGroup("+'"'+decodeURIComponent(groups[i])+'"'+")'>Leave Group</a></div>";
+          card+="<br /><div style='' class='card' onclick='loadGroup("+'"'+decodeURIComponent(groups[i])+'"'+")'><span style='font-size:5vh'>"+decodeURIComponent(groups[i])+"</span><br /><a href='javascript:leaveGroup("+'"'+decodeURIComponent(groups[i])+'"'+")'>Leave Group</a></div>";
         }
       }
       document.querySelectorAll(".body")[0].innerHTML=card;
