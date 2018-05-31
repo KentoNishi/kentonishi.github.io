@@ -14,6 +14,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
+
 //User Variables
 var uid="";
 var pic="";
