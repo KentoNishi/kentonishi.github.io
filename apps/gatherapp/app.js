@@ -317,6 +317,10 @@ function action(act){
       auto_grow(document.querySelectorAll("textarea")[0]);
     }else if(act=="add"){
       var card="<div class='card'><span style='font-size:5vh'>"+"Join/Create a Group:"+"</span><br /><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;border:2.5px solid black;border-radius:5px;height:' onkeypress='enter(event,true);return alpha(event);' maxlength='24' placeholder='Group Name'>"+"</textarea><br /></div>";
+      var groups=circles.split(",");
+      for(var i=circles.split(",").length-1;i>-1;i--){
+        card+="<br /><div class='card'><span style='font-size:5vh'>"+groups[i]+"</span></div>";
+      }
       document.querySelectorAll(".body")[0].innerHTML=card;
       auto_grow(document.querySelectorAll("textarea")[0]);
     }
@@ -337,6 +341,7 @@ function enter(event,task){
       if(document.querySelectorAll("textarea")[0].value.replace(/ /g,"").length>1){
         document.querySelectorAll("textarea")[0].blur();
         newGroup(encodeURIComponent(document.querySelectorAll("textarea")[0].value));
+        document.querySelectorAll("textarea")[0].value="";
         loadGroup(document.querySelectorAll("textarea")[0].value);
       }
     }else{
