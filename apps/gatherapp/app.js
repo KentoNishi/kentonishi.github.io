@@ -96,6 +96,33 @@ function getCookie(cname) {
 
 //Load Feed
 function loadFeed(){
+  var info="";
+  firebase.storage().ref().child('users/'+uid+"/"+uid+".txt").getDownloadURL().then(function(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function(event) {
+      if(xhr.status == 404){
+        document.querySelectorAll(".body")[0].innerHTML="<div class='card'><span style='font-size:5vh'>Welcome!</span><br /><span style='font-size:3.5vh;'>This is your activity feed. New events will come up here.</span></div>";
+      }else{
+        var blob = xhr.response;
+        var reader = new FileReader();
+        reader.onload = function() {
+         info=reader.result;
+         document.querySelectorAll(".body")[0].innerHTML="";
+         for(var i=0;i<info.split(",").length;i++){
+          document.querySelectorAll(".body")[0].innerHTML+="<div class='card'><span style='font-size:5vh'>"+info.split(",")[i].split("&")[0]+"</span><br /><span style='font-size:3.5vh;'>"+info.split(",")[i].split("&")[1]+"</span></div><br />";
+         }
+        }
+       reader.readAsText(blob);
+      }
+    };
+    console.log(url);
+    xhr.open('GET', url);
+    xhr.send();
+  }).then(function(){
+  }).catch(function(){
+  document.querySelectorAll(".body")[0].innerHTML="<div class='card'><span style='font-size:5vh'>Welcome!</span><br /><span style='font-size:3.5vh;'>This is your activity feed. New events will come up here.</span></div>";
+  });
 }
 
 //Encode
