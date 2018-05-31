@@ -546,7 +546,7 @@ function loadGroup(title){
         var reader = new FileReader();
         reader.onload = function() {
           if(reader.result.length>1){
-            population=reader.result.split(",").length+1;
+            population=reader.result.split(",").length;
           }else{
             population=0;
           }
