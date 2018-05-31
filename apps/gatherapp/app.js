@@ -13,6 +13,7 @@ var config = {
   messagingSenderId: "1038044491990"
 };
 firebase.initializeApp(config);
+
 //User Variables
 var uid="";
 var pic="";
