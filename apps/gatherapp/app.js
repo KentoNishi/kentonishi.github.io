@@ -1,6 +1,6 @@
 //Register Service Worker
 if('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {console.log('Service Worker Registered');});
+  navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {//console.log('Service Worker Registered');});
 }
 
 //Initialize FireBase
@@ -47,7 +47,7 @@ if(window.location.hash.indexOf("ineligible")!=-1){
 
 //BAD EMAIL
 function ineligible(){
-  console.log("Not eligible!");
+  //console.log("Not eligible!");
   window.location="#ineligible";
   signOut();
 }
@@ -57,7 +57,7 @@ function login(){
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then(function(result) {
   }).catch(function(error) {
-    console.log("Sign in error. "+error.message+" ("+error.code+")");
+    //console.log("Sign in error. "+error.message+" ("+error.code+")");
   });
 }
 
@@ -66,7 +66,7 @@ function signOut(){
   firebase.auth().signOut().then(function() {
     location.reload(true);
   }).catch(function(error) {
-    console.log("SIGN OUT ERROR!");
+    //console.log("SIGN OUT ERROR!");
   });
 }
 
@@ -120,7 +120,7 @@ function loadFeed(){
        reader.readAsText(blob);
       }
     };
-    console.log(url);
+    //console.log(url);
     xhr.open('GET', url);
     xhr.send();
   }).then(function(){
@@ -271,7 +271,7 @@ function writeUser(name,pic){
        reader.readAsText(blob);
       }
     };
-    console.log(url);
+    //console.log(url);
     xhr.open('GET', url);
     xhr.send();
   }).then(function(){
@@ -286,7 +286,7 @@ function put(info){
     if(info.split(",").length==1){
       info=",,,:"+info;
     }
-    console.log(info);
+    //console.log(info);
     name=(decodeURIComponent(name||info.split(",")[0].split(":")[1]));
     email=(decodeURIComponent(email||info.split(",")[1].split(":")[1]));
     pic=(decodeURIComponent(pic||info.split(",")[2].split(":")[1]));
@@ -301,7 +301,7 @@ function put(info){
       type: 'text/plain'
   });
   ref.put(file).then(function(snapshot) {
-    console.log('Reuploaded data');
+    //console.log('Reuploaded data');
     loadGroups();
     loaded=true;
   });
@@ -309,7 +309,7 @@ function put(info){
 
 //Actions
 function action(act){
-  console.log(act);
+  //console.log(act);
   if(uid!=null&&uid.length>1&&loaded){
     if(act=="menu"){
       var card="<div class='card'><span style='font-size:5vh'>"+name+"</span><br /><img class='pic' src='"+pic+"'></img><br /><a href='mailto:"+email+"'>@"+email.split("@")[0]+"</a><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;' onkeypress='enter(event);' maxlength='144' >"+desc+"</textarea><br /><a href='javascript:signOut();'>Sign Out</a></div>";
@@ -377,7 +377,7 @@ function newGroup(title){
          reader.readAsText(blob);
         }
       };
-      console.log(url);
+      //console.log(url);
       xhr.open('GET', url);
       xhr.send();
     }).then(function(){
@@ -398,7 +398,7 @@ function newGroup(title){
          reader.readAsText(blob);
         }
       };
-      console.log(url);
+      //console.log(url);
       xhr.open('GET', url);
       xhr.send();
     }).then(function(){
@@ -411,7 +411,7 @@ function newGroup(title){
 
 //ADD GROUP
 function add(now,title){
-  console.log(now+" "+title);
+  //console.log(now+" "+title);
   var ref=firebase.storage().ref().child('groups/'+title+"/"+title+".txt");
   var string="";
   if(now==null||now==""||now.length==0){
@@ -423,14 +423,14 @@ function add(now,title){
       type: 'text/plain'
   });
   ref.put(file).then(function(snapshot) {
-    console.log('Reuploaded group data');
+    //console.log('Reuploaded group data');
     update(circles,title);
   });
 }
 
 //Update user
 function update(now,title){
-  console.log(now+" "+title);
+  //console.log(now+" "+title);
   var ref=firebase.storage().ref().child("users/"+uid+"/groups.txt");
   var string="";
   if(now==null||now==""){
@@ -442,7 +442,7 @@ function update(now,title){
       type: 'text/plain'
   });
   ref.put(file).then(function(snapshot) {
-    console.log('Reuploaded group data to user');
+    //console.log('Reuploaded group data to user');
     loadGroups();
     loadGroup(title);
   });
@@ -462,7 +462,7 @@ function leaveGroup(title,callback){
       type: 'text/plain'
   });
   ref.put(file).then(function(snapshot) {
-    console.log('Left group.');
+    //console.log('Left group.');
   });
   firebase.storage().ref().child('groups/'+title+"/"+title+".txt").getDownloadURL().then(function(url) {
       var xhr = new XMLHttpRequest();
@@ -486,14 +486,14 @@ function leaveGroup(title,callback){
               type: 'text/plain'
           });
           ref.put(file).then(function(snapshot) {
-            console.log('Left group.');
+            //console.log('Left group.');
             loadGroups(true);
           });
           }
          reader.readAsText(blob);
         }
       };
-      console.log(url);
+      //console.log(url);
       xhr.open('GET', url);
       xhr.send();
     }).then(function(){
@@ -515,7 +515,7 @@ function loadGroups(callback){
         var reader = new FileReader();
         reader.onload = function() {
           groups=reader.result;
-          console.log(groups);
+          //console.log(groups);
           circles=groups;
           console.clear();
           if(callback){
@@ -525,7 +525,7 @@ function loadGroups(callback){
        reader.readAsText(blob);
       }
     };
-    console.log(url);
+    //console.log(url);
     xhr.open('GET', url);
     xhr.send();
   }).then(function(){
@@ -534,7 +534,7 @@ function loadGroups(callback){
 
 function loadGroup(title){
   console.clear();
-  console.log(title);
+  //console.log(title);
   var population=0;
   firebase.storage().ref().child('groups/'+title+"/"+title+".txt").getDownloadURL().then(function(url) {
     var xhr = new XMLHttpRequest();
@@ -552,7 +552,7 @@ function loadGroup(title){
        reader.readAsText(blob);
       }
     };
-    console.log(url);
+    //console.log(url);
     xhr.open('GET', url);
     xhr.send();
   }).then(function(){
@@ -581,7 +581,7 @@ function sendFeed(id,title,content){
        reader.readAsText(blob);
       }
     };
-    console.log(url);
+    //console.log(url);
     xhr.open('GET', url);
     xhr.send();
   }).then(function(){
@@ -602,7 +602,7 @@ function addToFeed(now,id,title,content){
       type: 'text/plain'
   });
   ref.put(file).then(function(snapshot) {
-    console.log('Reuploaded group data to user');
+    //console.log('Reuploaded group data to user');
   });
 }
 
@@ -613,7 +613,7 @@ function clearFeed(){
       type: 'text/plain'
   });
   ref.put(file).then(function(snapshot) {
-    console.log('Cleared Feed');
+    //console.log('Cleared Feed');
     loadFeed();
   });
 }
