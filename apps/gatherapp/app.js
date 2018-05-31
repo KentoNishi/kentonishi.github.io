@@ -585,6 +585,7 @@ function clearFeed(){
   });
 }
 
+//Character Blocking
 function alpha(e) {
     var k;
     document.all ? k = e.keyCode : k = e.which;
