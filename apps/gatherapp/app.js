@@ -111,7 +111,7 @@ function loadFeed(){
          document.querySelectorAll(".body")[0].innerHTML="";
          if(info.length>1){
            for(var i=0;i<info.split(",").length;i++){
-            document.querySelectorAll(".body")[0].innerHTML+="<div class='card'><span style='font-size:5vh'>"+decodeURIComponent(info.split(",")[i].split("&")[0])+"</span><br /><span style='font-size:3.5vh;'>"+decodeURIComponent(info.split(",")[i].split("&")[1])+"</span></div><br />";
+            document.querySelectorAll(".body")[0].innerHTML+="<div class='card'><span style='font-size:5vh'>"+decodeURIComponent(info.split(",")[i].split(":")[0])+"</span><br /><span style='font-size:3.5vh;'>"+decodeURIComponent(info.split(",")[i].split(":")[1])+"</span></div><br />";
            }
          }else{
           document.querySelectorAll(".body")[0].innerHTML="<div class='card'><span style='font-size:5vh'>Welcome!</span><br /><span style='font-size:3.5vh;'>This is your activity feed. New events will come up here.</span></div>";
