@@ -1,11 +1,7 @@
 var CACHE_NAME = 'cache';
 
 var urlsToCache = [
-  'https://kentonishi.github.io/apps/gatherapp/',
-  'https://kentonishi.github.io/apps/gatherapp/app.js',
-  'https://kentonishi.github.io/apps/gatherapp/index.html',
-  'https://kentonishi.github.io/apps/gatherapp/worker.js',
-  'https://kentonishi.github.io/apps/gatherapp/manifest.json'
+  'https://kentonishi.github.io/apps/gatherapp/mobile.html'
 ];
 
 self.addEventListener('install', function(event) {
