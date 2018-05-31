@@ -343,6 +343,6 @@ function add(now,title){
       type: 'text/plain'
   });
   ref.put(file).then(function(snapshot) {
-    console.log('Reuploaded groupdata');
+    console.log('Reuploaded group data');
   });
 }
