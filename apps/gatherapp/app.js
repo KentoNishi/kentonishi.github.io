@@ -349,6 +349,8 @@ function newGroup(title){
     }).then(function(){
     }).catch(function(){
       add(null,title);});
+  }else{
+    loadGroup(title);
   }
 }
 
@@ -387,6 +389,7 @@ function update(now,title){
   ref.put(file).then(function(snapshot) {
     console.log('Reuploaded group data to user');
     loadGroups();
+    loadGroup(title);
   });
 }
 
@@ -416,4 +419,13 @@ function loadGroups(){
     xhr.send();
   }).then(function(){
   }).catch(function(){});
+}
+
+function loadGroup(title){
+  console.clear();
+  console.log(title);
+}
+
+window.onload=function(){
+  console.clear();
 }
