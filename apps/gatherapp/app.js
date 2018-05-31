@@ -302,6 +302,32 @@ function enter(event){
 }
 
 //New Group
-function group(info){
-  console.clear();
+function newGroup(title){
+  var info="";
+  firebase.storage().ref().child('groups/'+title+".txt").getDownloadURL().then(function(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function(event) {
+      if(xhr.status == 404){
+        add(null,title);
+      }else{
+        var blob = xhr.response;
+        var reader = new FileReader();
+        reader.onload = function() {
+         info=reader.result;
+         add(info,title);
+        }
+       reader.readAsText(blob);
+      }
+    };
+    console.log(url);
+    xhr.open('GET', url);
+    xhr.send();
+  }).then(function(){
+  }).catch(function(){
+    put(null,title);});
+}
+
+function add(now,title){
+  console.log(now+" "+title);
 }
