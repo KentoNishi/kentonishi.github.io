@@ -413,4 +413,5 @@ function loadGroups(){
     xhr.send();
   }).then(function(){
   }).catch(function(){});
+  console.clear();
 }
