@@ -406,6 +406,7 @@ function loadGroups(){
           groups=reader.result;
           console.log(groups);
           circles=groups;
+          console.clear();
         }
        reader.readAsText(blob);
       }
@@ -415,5 +416,4 @@ function loadGroups(){
     xhr.send();
   }).then(function(){
   }).catch(function(){});
-  console.clear();
 }
