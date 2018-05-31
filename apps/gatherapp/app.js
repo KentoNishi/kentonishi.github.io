@@ -516,7 +516,7 @@ function loadGroups(callback){
           console.log(groups);
           circles=groups;
           console.clear();
-          if(callback==true){
+          if(callback){
             action("add");
           }
         }
