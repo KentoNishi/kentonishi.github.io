@@ -71,7 +71,7 @@ function writeUser(content,callback) {
 function loadUser(id){
   var editable="";
   var signOut="";
-  if(id==uid){editable='contenteditable onkeypress="'+decodeURIComponent("function(event)%7Bif(event.keyCode%3D%3D13)%7BwriteUser(document.querySelectorAll('span%5Bcontenteditable%5D')%5B0%5D.innerHTML)%3Breturn%20false%3B%7D")+'"';signOut="<a href='javascript:writeUser(document.querySelectorAll("+'"span[contenteditable]"'+")[0].innerHTML);'>Save Profile</a><br /><br /><a href='javascript:signOut();'>Sign Out</a>";}
+  if(id==uid){editable='contenteditable onkeypress="'+decodeURIComponent("function(event)%7Bif(event.keyCode%3D%3D13)%7BwriteUser(document.querySelectorAll('span%5Bcontenteditable%5D')%5B0%5D.innerHTML)%3Breturn%20false%3B%7D")+'"';signOut="<br /><a href='javascript:writeUser(document.querySelectorAll("+'"span[contenteditable]"'+")[0].innerHTML);'>Save Profile</a><br /><a href='javascript:signOut();'>Sign Out</a>";}
   firebase.database().ref('users/' + id).on('value', function(snapshot) {
     if(snapshot.val().desc==null||snapshot.val().desc.length<1){
       desc="[Description Here]";
