@@ -469,6 +469,7 @@ function sendFeed(id,title,content){
     xhr.responseType = 'blob';
     xhr.onload = function(event) {
       if(xhr.status == 404){
+      addToFeed(now,id,title,content);
       }else{
         var blob = xhr.response;
         var reader = new FileReader();
@@ -483,7 +484,9 @@ function sendFeed(id,title,content){
     xhr.open('GET', url);
     xhr.send();
   }).then(function(){
-  }).catch(function(){});
+  }).catch(function(){
+    addToFeed(now,id,title,content);
+  });
 }
 
 function addToFeed(now,id,title,content){
