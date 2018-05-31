@@ -320,7 +320,7 @@ function action(act){
       var groups=circles.split(",");
       if(circles.length>1){
         for(var i=circles.split(",").length-1;i>-1;i--){
-          card+="<br /><div style='' class='card' onclick='loadGroup("+'"'+decodeURIComponent(groups[i])+'"'+")'><span style='font-size:5vh'>"+decodeURIComponent(groups[i])+"</span><br /><a href='javascript:leaveGroup("+'"'+decodeURIComponent(groups[i])+'"'+");document.querySelectorAll("+'".body"'+").innerHTML="+'""'+"'>Leave Group</a></div>";
+          card+="<br /><div style='' class='card' onclick='loadGroup("+'"'+decodeURIComponent(groups[i])+'"'+")'><span style='font-size:5vh'>"+decodeURIComponent(groups[i])+"</span><br /><a href='javascript:leaveGroup("+'"'+decodeURIComponent(groups[i])+'"'+");document.querySelectorAll("+'".body"'+").innerHTML="+'""'+";'>Leave Group</a></div>";
         }
       }
       document.querySelectorAll(".body")[0].innerHTML=card;
