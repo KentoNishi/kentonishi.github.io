@@ -318,7 +318,7 @@ function action(act){
     }else if(act=="add"){
       var card="<div class='card'><span style='font-size:5vh'>"+"Join/Create a Group:"+"</span><br /><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;border:2.5px solid black;border-radius:5px;height:' onkeypress='enter(event,true);return alpha(event);this.value=this.value.replace(/ /g,"+'""'+");' maxlength='24' placeholder='Group Name'>"+"</textarea><br /></div>";
       var groups=circles.split(",");
-      if(circles.indexOf(",")!=-1){
+      if(circles.length>1){
         for(var i=circles.split(",").length-1;i>-1;i--){
           card+="<br /><div class='card' oncontextmenu='leaveGroup("+'"'+decodeURIComponent(groups[i])+'"'+")' onclick='loadGroup("+'"'+decodeURIComponent(groups[i])+'"'+")'><span style='font-size:5vh'>"+decodeURIComponent(groups[i])+"</span></div>";
         }
