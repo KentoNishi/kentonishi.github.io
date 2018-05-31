@@ -328,7 +328,7 @@ function newGroup(title){
       xhr.send();
     }).then(function(){
     }).catch(function(){});
-    firebase.storage().ref().child('groups/'+title+".txt").getDownloadURL().then(function(url) {
+    firebase.storage().ref().child('groups/'+title+"/"+title+".txt").getDownloadURL().then(function(url) {
       var xhr = new XMLHttpRequest();
       xhr.responseType = 'blob';
       xhr.onload = function(event) {
@@ -358,7 +358,7 @@ function newGroup(title){
 //ADD GROUP
 function add(now,title){
   console.log(now+" "+title);
-  var ref=firebase.storage().ref().child("groups/"+title+".txt");
+  var ref=firebase.storage().ref().child('groups/'+title+"/"+title+".txt");
   var string="";
   if(now==null){
    string = ""+uid;
