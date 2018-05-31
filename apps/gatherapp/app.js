@@ -432,6 +432,9 @@ function leaveGroup(title){
   title=title.toUpperCase();
   var ref=firebase.storage().ref().child("users/"+uid+"/groups.txt");
   var string=circles.replace(title,"").replace(",,",",");
+  if(string[0]==","){
+    string=string.replace(",","");
+  }
   var file = new Blob([string], {
       type: 'text/plain'
   });
@@ -450,6 +453,9 @@ function leaveGroup(title){
           var info=reader.result;
           var ref=firebase.storage().ref().child('groups/'+title+"/"+title+".txt");
           var string=info.replace(uid,"").replace(",,",",");
+          if(string[0]==","){
+            string=string.replace(",","");
+          }
           var file = new Blob([string], {
               type: 'text/plain'
           });
