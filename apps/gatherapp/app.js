@@ -1,8 +1,6 @@
 //Register Service Worker
 if('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
-    //console.log('Service Worker Registered');
-  });
+  navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {console.log('Service Worker Registered');});
 }
 
 //Initialize FireBase
@@ -16,63 +14,102 @@ var config = {
 };
 firebase.initializeApp(config);
 
-//User Variables
-var uid="";
-var pic="";
-var name="";
-var email="";
-var desc="[Description Here]";
-var loaded=false;
+var me=false;
 
-//Sign In and Save Data
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    if(user.email.toString().split("@")[1].indexOf("gmail.")!=-1){
-      uid=user.uid;
-      name=user.displayName;
-      email=user.email;
-      pic=user.photoURL;
-      writeUser(user.email,user.displayName,user.photoURL);
-      document.querySelectorAll(".body")[0].innerHTML="";
-      loadFeed();
-    }else{
-      ineligible();
-    }
+    uid=user.uid;
+    email=user.email;
+    name=user.displayName;
+    pic=user.photoUrl;;
+    document.querySelectorAll(".body")[0].innerHTML="";
+    update();
+    loadFeed();
   }
 });
 
-//BAD ACCOUNT
-if(window.location.hash.indexOf("ineligible")!=-1){
-  alert("Your Google Account is not eligible. Please use an regular Gmail account.");
-  window.location="#";
-}
 
-//BAD EMAIL
-function ineligible(){
-  //console.log("Not eligible!");
-  window.location="#ineligible";
-  signOut();
-}
-
-//Log In
 function login(){
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then(function(result) {
   }).catch(function(error) {
-    //console.log("Sign in error. "+error.message+" ("+error.code+")");
+    console.log("Sign in error. "+error.message+" ("+error.code+")");
   });
 }
 
-//Sign Out
+var uid="";
+var desc="";
+var email="";
+var name="";
+var pic="";
+
+function writeUser(content) {
+  content=content||false;
+  if(content==false){
+    firebase.database().ref('users/' + uid).update({
+      name: name,
+      email: email,
+      profile_picture : pic
+    }).then(function(){});
+  }else{
+    firebase.database().ref('users/' + uid).update({
+      desc: content
+    });
+  }
+}
+
+function loadUser(id){
+  var editable="";
+  var signOut="";
+  if(id==uid){editable="contenteditable";signOut="<br /><a href='javascript:writeUser(document.querySelectorAll("+'"span"'+")[0].innerHTML);'>Save</a><br /><br /><a href='javascript:signOut();'>Sign Out</a>";}
+  firebase.database().ref('users/' + id).on('value', function(snapshot) {
+    if(snapshot.val().desc.length<1||snapshot.val.desc==null){
+      snapshot.val().desc="[Description Here]";
+    }
+    document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+snapshot.val().desc+'</span><br />'+signOut+'</div>');
+  });
+}
+
+function enter(e){
+  if (e.keyCode == 13) {
+    e.preventDefault();
+    return true;
+  }else{
+    return false;
+  }
+}
+
+function readData(user){
+  var ref = firebase.database().ref('users/' + user);
+  ref.on('value', function(snapshot) {
+      loadUser(snapshot.val().username,snapshot.val().email,snapshot.val().profile_picture,snapshot.val().desc);
+  });
+}
+
+function checkme(user){
+  if(user==1){
+    if(me){
+     return ' contenteditable onkeydown="if(enter(event)){writeData(uid,this.innerHTML)}"';
+    }else{
+      return "";
+    }
+  }else if(user==2){
+    if(me){
+    return '<br /><a href="javascript:signOut();">Sign Out</a>';
+    }else{
+      return "";
+    }
+  }
+}
+
 function signOut(){
   firebase.auth().signOut().then(function() {
     location.reload(true);
   }).catch(function(error) {
-    //console.log("SIGN OUT ERROR!");
+    console.log("SIGN OUT ERROR!");
   });
 }
 
-//Set Cookie
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -80,7 +117,6 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
-//Get Cookie
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -96,42 +132,9 @@ function getCookie(cname) {
     return "";
 }
 
-//Load Feed
 function loadFeed(){
-  var info="";
-  firebase.storage().ref().child('users/'+uid+"/"+"feed"+".txt").getDownloadURL().then(function(url) {
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = function(event) {
-      if(xhr.status == 404){
-        document.querySelectorAll(".body")[0].innerHTML="<div class='card'><span style='font-size:5vh'>Welcome!</span><br /><span style='font-size:3.5vh;'>This is your activity feed. New events will come up here.</span></div>";
-      }else{
-        var blob = xhr.response;
-        var reader = new FileReader();
-        reader.onload = function() {
-         info=reader.result;
-         document.querySelectorAll(".body")[0].innerHTML="";
-         if(info.length>1){
-           for(var i=info.split(",").length-1;i>-1;i--){
-            document.querySelectorAll(".body")[0].innerHTML+="<div class='card'><span style='font-size:5vh'>"+encode(decodeURIComponent(info.split(",")[i].split(":")[0]))+"</span><br /><span style='font-size:3.5vh;'>"+encode(decodeURIComponent(info.split(",")[i].split(":")[1]))+"</span></div><br />";
-           }
-         }else{
-          document.querySelectorAll(".body")[0].innerHTML="<div class='card'><span style='font-size:5vh'>Welcome!</span><br /><span style='font-size:3.5vh;'>This is your activity feed. New events will come up here.</span></div>";
-         }
-        }
-       reader.readAsText(blob);
-      }
-    };
-    //console.log(url);
-    xhr.open('GET', url);
-    xhr.send();
-  }).then(function(){
-  }).catch(function(){
-  document.querySelectorAll(".body")[0].innerHTML="<div class='card'><span style='font-size:5vh'>Welcome!</span><br /><span style='font-size:3.5vh;'>This is your activity feed. New events will come up here.</span></div>";
-  });
 }
 
-//Encode
 function encode(texte) {
   texte = texte.replace(/"/g,'&quot;'); // 34 22
   texte = texte.replace(/&/g,'&amp;'); // 38 26
@@ -252,377 +255,4 @@ function encode(texte) {
   texte = texte.replace(/ÿ/g,'&yuml;'); // 255 FF
   //all encodings
   return texte;
-}
-
-//Write
-function writeUser(name,pic){
-  var info="";
-  firebase.storage().ref().child('users/'+uid+"/"+uid+"/"+uid+".txt").getDownloadURL().then(function(url) {
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = function(event) {
-      if(xhr.status == 404){
-        put(null);
-      }else{
-        var blob = xhr.response;
-        var reader = new FileReader();
-        reader.onload = function() {
-         info=reader.result;
-         put(info);
-        }
-       reader.readAsText(blob);
-      }
-    };
-    //console.log(url);
-    xhr.open('GET', url);
-    xhr.send();
-  }).then(function(){
-  }).catch(function(){
-    put(null);});
-}
-
-//Put Data
-function put(info){
-  //console.clear();
-  if(info!=null&&uid!=null&&uid.length>1){
-    if(info.split(",").length==1){
-      info=",,,:"+info;
-    }
-    //console.log(info);
-    name=(decodeURIComponent(name||info.split(",")[0].split(":")[1]));
-    email=(decodeURIComponent(email||info.split(",")[1].split(":")[1]));
-    pic=(decodeURIComponent(pic||info.split(",")[2].split(":")[1]));
-    desc=(decodeURIComponent(info.split(",")[3].split(":")[1]));
-  }
-  firebase.database().ref('users/' + email.split("@")[0]).update({
-      uid:uid
-  });
-  var ref=firebase.storage().ref().child('users/'+uid+"/"+uid+"/"+uid+".txt");
-  var string = "name:"+encodeURIComponent(name)+",email:"+encodeURIComponent(email)+",pic:"+encodeURIComponent(pic)+",desc:"+encodeURIComponent(desc);
-  var file = new Blob([string], {
-      type: 'text/plain'
-  });
-  ref.put(file).then(function(snapshot) {
-    //console.log('Reuploaded data');
-    loadGroups();
-    loaded=true;
-  });
-}
-
-//Actions
-function action(act){
-  //console.log(act);
-  if(uid!=null&&uid.length>1&&loaded){
-    if(act=="menu"){
-      var card="<div class='card'><span style='font-size:5vh'>"+name+"</span><br /><img class='pic' src='"+pic+"'></img><br /><a href='mailto:"+email+"'>@"+email.split("@")[0]+"</a><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;' onkeypress='enter(event);' maxlength='144' >"+desc+"</textarea><br /><a href='javascript:signOut();'>Sign Out</a></div>";
-      document.querySelectorAll(".body")[0].innerHTML=card;
-      auto_grow(document.querySelectorAll("textarea")[0]);
-    }else if(act=="add"){
-      var card="<div class='card'><span style='font-size:5vh'>"+"Join/Create a Group:"+"</span><br /><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-transform:uppercase;text-align:center;font-size:4vh;border:2.5px solid black;border-radius:5px;height:' onkeypress='enter(event,true);return alpha(event);this.value=this.value.replace(/ /g,"+'""'+");' maxlength='24' placeholder='GROUP NAME'>"+"</textarea><br /></div>";
-      var groups=circles.split(",");
-      if(circles.length>1){
-        for(var i=circles.split(",").length-1;i>-1;i--){
-          card+="<br /><div style='' class='card' onclick='loadGroup("+'"'+decodeURIComponent(groups[i])+'"'+")'><span style='font-size:5vh'>"+decodeURIComponent(groups[i])+"</span><br /><a href='javascript:leaveGroup("+'"'+decodeURIComponent(groups[i])+'"'+");'>Leave Group</a></div>";
-        }
-      }
-      document.querySelectorAll(".body")[0].innerHTML=card;
-      auto_grow(document.querySelectorAll("textarea")[0]);
-    }
-  }
-}
-
-//Auto grow
-function auto_grow(element) {
-  element.style.height="5px";
-  element.style.height = ((element.scrollHeight)+5)+"px";
-}
-
-//Save data
-function enter(event,task){
-  task=task||false;
-  if(event.keyCode==13){
-    if(task){
-      if(document.querySelectorAll("textarea")[0].value.replace(/ /g,"").length>1){
-        document.querySelectorAll("textarea")[0].blur();
-        newGroup(encodeURIComponent(document.querySelectorAll("textarea")[0].value));
-        document.querySelectorAll("textarea")[0].value="";
-        loadGroup(document.querySelectorAll("textarea")[0].value);
-      }
-    }else{
-      document.querySelectorAll("textarea")[0].blur();
-      put(encodeURIComponent(document.querySelectorAll("textarea")[0].value));
-    }
-  }
-}
-
-//New Group
-function newGroup(title){
-  title=title.toUpperCase();  
-  firebase.database().ref('groups/' + title).update({
-      active:true
-  });
-  if(circles.indexOf(title)==-1){
-    var groups="";
-    var info="";
-    firebase.storage().ref().child('users/'+uid+"/groups.txt").getDownloadURL().then(function(url) {
-      var xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = function(event) {
-        if(xhr.status == 404){
-        }else{
-          var blob = xhr.response;
-          var reader = new FileReader();
-          reader.onload = function() {
-            groups=reader.result;
-            update(groups,title);
-          }
-         reader.readAsText(blob);
-        }
-      };
-      //console.log(url);
-      xhr.open('GET', url);
-      xhr.send();
-    }).then(function(){
-    }).catch(function(){});
-    firebase.storage().ref().child('groups/'+title+"/"+title+".txt").getDownloadURL().then(function(url) {
-      var xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = function(event) {
-        if(xhr.status == 404){
-          add(null,title);
-        }else{
-          var blob = xhr.response;
-          var reader = new FileReader();
-          reader.onload = function() {
-           info=reader.result;
-           add(info,title);
-          }
-         reader.readAsText(blob);
-        }
-      };
-      //console.log(url);
-      xhr.open('GET', url);
-      xhr.send();
-    }).then(function(){
-    }).catch(function(){
-      add(null,title);});
-  }else{
-    loadGroup(title);
-  }
-}
-
-//ADD GROUP
-function add(now,title){
-  //console.log(now+" "+title);
-  var ref=firebase.storage().ref().child('groups/'+title+"/"+title+".txt");
-  var string="";
-  if(now==null||now==""||now.length==0){
-   string = ""+uid;
-  }else{
-   string = now+","+uid;
-  }
-  var file = new Blob([string], {
-      type: 'text/plain'
-  });
-  ref.put(file).then(function(snapshot) {
-    //console.log('Reuploaded group data');
-    update(circles,title);
-  });
-}
-
-//Update user
-function update(now,title){
-  //console.log(now+" "+title);
-  var ref=firebase.storage().ref().child("users/"+uid+"/groups.txt");
-  var string="";
-  if(now==null||now==""){
-   string = ""+title;
-  }else{
-   string = now+","+title;
-  }
-  var file = new Blob([string], {
-      type: 'text/plain'
-  });
-  ref.put(file).then(function(snapshot) {
-    //console.log('Reuploaded group data to user');
-    loadGroups();
-    loadGroup(title);
-  });
-}
-
-function leaveGroup(title,callback){
-  title=title.toUpperCase();
-  var ref=firebase.storage().ref().child("users/"+uid+"/groups.txt");
-  var string=circles.replace(title,"").replace(",,",",");
-  if(string[0]==","){
-    string=string.replace(",","");
-  }
-  if(string[string.length-1]==","){
-    string=string.slice(0,-1);
-  }
-  var file = new Blob([string], {
-      type: 'text/plain'
-  });
-  ref.put(file).then(function(snapshot) {
-    //console.log('Left group.');
-  });
-  firebase.storage().ref().child('groups/'+title+"/"+title+".txt").getDownloadURL().then(function(url) {
-      var xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = function(event) {
-        if(xhr.status == 404){
-        }else{
-          var blob = xhr.response;
-          var reader = new FileReader();
-          reader.onload = function() {
-          var info=reader.result;
-          var ref=firebase.storage().ref().child('groups/'+title+"/"+title+".txt");
-          var string=info.replace(uid,"").replace(",,",",");
-          if(string[0]==","){
-            string=string.replace(",","");
-          }
-          if(string[string.length-1]==","){
-            string=string.slice(0,-1);
-          }
-          var file = new Blob([string], {
-              type: 'text/plain'
-          });
-          ref.put(file).then(function(snapshot) {
-            //console.log('Left group.');
-            loadGroups(true);
-          });
-          }
-         reader.readAsText(blob);
-        }
-      };
-      //console.log(url);
-      xhr.open('GET', url);
-      xhr.send();
-    }).then(function(){
-    }).catch(function(){});
-}
-
-//Load all groups
-var circles="";
-function loadGroups(callback){
-  callback=callback||false;
-  var groups="";
-  firebase.storage().ref().child('users/'+uid+"/groups.txt").getDownloadURL().then(function(url) {
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = function(event) {
-      if(xhr.status == 404){
-      }else{
-        var blob = xhr.response;
-        var reader = new FileReader();
-        reader.onload = function() {
-          groups=reader.result;
-          //console.log(groups);
-          circles=groups;
-          //console.clear();
-          if(callback){
-            action("add");
-          }
-        }
-       reader.readAsText(blob);
-      }
-    };
-    //console.log(url);
-    xhr.open('GET', url);
-    xhr.send();
-  }).then(function(){
-  }).catch(function(){});
-}
-
-function loadGroup(title){
-  //console.clear();
-  //console.log(title);
-  var population=0;
-  firebase.storage().ref().child('groups/'+title+"/"+title+".txt").getDownloadURL().then(function(url) {
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = function(event) {
-      if(xhr.status == 404){
-      }else{
-        var blob = xhr.response;
-        var reader = new FileReader();
-        reader.onload = function() {
-          population=reader.result.split(",").length;
-          //console.clear();
-          document.querySelectorAll(".body")[0].innerHTML="<div class='card'><span style='font-size:5vh'>"+encode(decodeURIComponent(title))+"</span><br /><span style='font-size:3vh'>"+population+" members</span><br /><a href='javascript:leaveGroup("+'"'+decodeURIComponent(title)+'"'+");'>Leave Group</a></div>";
-        }
-       reader.readAsText(blob);
-      }
-    };
-    //console.log(url);
-    xhr.open('GET', url);
-    xhr.send();
-  }).then(function(){
-    }).catch(function(){});
-}
-
-window.onload=function(){
-  //console.clear();
-}
-
-function sendFeed(id,title,content){
-  var now="";
-  firebase.storage().ref().child('users/'+id+"/feed.txt").getDownloadURL().then(function(url) {
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = function(event) {
-      if(xhr.status == 404){
-      addToFeed(now,id,title,content);
-      }else{
-        var blob = xhr.response;
-        var reader = new FileReader();
-        reader.onload = function() {
-          now=reader.result;
-          addToFeed(now,id,title,content);
-        }
-       reader.readAsText(blob);
-      }
-    };
-    //console.log(url);
-    xhr.open('GET', url);
-    xhr.send();
-  }).then(function(){
-  }).catch(function(){
-    addToFeed(now,id,title,content);
-  });
-}
-
-function addToFeed(now,id,title,content){
-  var ref=firebase.storage().ref().child('users/'+id+"/feed.txt");
-  var string="";
-  if(now==null||now.split(",").length<1||now==""){
-    string=encodeURIComponent(title)+":"+encodeURIComponent(content);
-  }else{
-    string=now+","+encodeURIComponent(title)+":"+encodeURIComponent(content);
-  }
-  var file = new Blob([string], {
-      type: 'text/plain'
-  });
-  ref.put(file).then(function(snapshot) {
-    //console.log('Reuploaded group data to user');
-  });
-}
-
-function clearFeed(){
-  var ref=firebase.storage().ref().child('users/'+uid+"/feed.txt");
-  var string="";
-  var file = new Blob([string], {
-      type: 'text/plain'
-  });
-  ref.put(file).then(function(snapshot) {
-    //console.log('Cleared Feed');
-    loadFeed();
-  });
-}
-
-//Character Blocking
-function alpha(e) {
-    var k;
-    document.all ? k = e.keyCode : k = e.which;
-    return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || (k >= 48 && k <= 57));
 }
