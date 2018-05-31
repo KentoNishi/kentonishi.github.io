@@ -319,7 +319,7 @@ function action(act){
       var card="<div class='card'><span style='font-size:5vh'>"+"Join/Create a Group:"+"</span><br /><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;border:2.5px solid black;border-radius:5px;height:' onkeypress='enter(event,true);return alpha(event);' maxlength='24' placeholder='Group Name'>"+"</textarea><br /></div>";
       var groups=circles.split(",");
       for(var i=circles.split(",").length-1;i>-1;i--){
-        card+="<br /><div class='card'><span style='font-size:5vh'>"+decodeURIComponent(groups[i])+"</span></div>";
+        card+="<br /><div class='card' onclick='loadGroup("+'"'+title+'"'+")'><span style='font-size:5vh'>"+decodeURIComponent(groups[i])+"</span></div>";
       }
       document.querySelectorAll(".body")[0].innerHTML=card;
       auto_grow(document.querySelectorAll("textarea")[0]);
@@ -529,6 +529,28 @@ function loadGroups(){
 function loadGroup(title){
   console.clear();
   console.log(title);
+  var population=0;
+  firebase.storage().ref().child('groups/'+title+"/"+title+".txt").getDownloadURL().then(function(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function(event) {
+      if(xhr.status == 404){
+      }else{
+        var blob = xhr.response;
+        var reader = new FileReader();
+        reader.onload = function() {
+          population=reader.result.split(",").length;
+          console.clear();
+        }
+       reader.readAsText(blob);
+      }
+    };
+    console.log(url);
+    xhr.open('GET', url);
+    xhr.send();
+  }).then(function(){
+    document.querySelectorAll(".body")[0].innerHTML="<div class='card'><span style='font-size:5vh'>"+encode(title)+"</span><br /><span style='font-size:3vh'>"+population+" members</span></div>";
+  }).catch(function(){});
 }
 
 window.onload=function(){
