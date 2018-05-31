@@ -503,6 +503,5 @@ function addToFeed(now,id,title,content){
   });
   ref.put(file).then(function(snapshot) {
     console.log('Reuploaded group data to user');
-    loadFeed();
   });
 }
