@@ -70,36 +70,11 @@ function loadUser(id){
   });
 }
 
-function enter(e){
-  if (e.keyCode == 13) {
-    e.preventDefault();
-    return true;
-  }else{
-    return false;
-  }
-}
-
 function readData(user){
   var ref = firebase.database().ref('users/' + user);
   ref.on('value', function(snapshot) {
       loadUser(snapshot.val().username,snapshot.val().email,snapshot.val().profile_picture,snapshot.val().desc);
   });
-}
-
-function checkme(user){
-  if(user==1){
-    if(me){
-     return ' contenteditable onkeydown="if(enter(event)){writeData(uid,this.innerHTML)}"';
-    }else{
-      return "";
-    }
-  }else if(user==2){
-    if(me){
-    return '<br /><a href="javascript:signOut();">Sign Out</a>';
-    }else{
-      return "";
-    }
-  }
 }
 
 function signOut(){
