@@ -319,7 +319,7 @@ function action(act){
       var card="<div class='card'><span style='font-size:5vh'>"+"Join/Create a Group:"+"</span><br /><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;border:2.5px solid black;border-radius:5px;height:' onkeypress='enter(event,true);return alpha(event);' maxlength='24' placeholder='Group Name'>"+"</textarea><br /></div>";
       var groups=circles.split(",");
       for(var i=circles.split(",").length-1;i>-1;i--){
-        card+="<br /><div class='card' onclick='loadGroup("+'"'+decodeURIComponent(groups[i])+'"'+")'><span style='font-size:5vh'>"+decodeURIComponent(groups[i])+"</span></div>";
+        card+="<br /><div class='card' oncontextmenu='leaveGroup("+'"'+decodeURIComponent(groups[i])+'"'+")' onclick='loadGroup("+'"'+decodeURIComponent(groups[i])+'"'+")'><span style='font-size:5vh'>"+decodeURIComponent(groups[i])+"</span></div>";
       }
       document.querySelectorAll(".body")[0].innerHTML=card;
       auto_grow(document.querySelectorAll("textarea")[0]);
@@ -446,7 +446,7 @@ function update(now,title){
   });
 }
 
-function leaveGroup(title){
+function leaveGroup(title,callback){
   title=title.toUpperCase();
   var ref=firebase.storage().ref().child("users/"+uid+"/groups.txt");
   var string=circles.replace(title,"").replace(",,",",");
@@ -485,7 +485,7 @@ function leaveGroup(title){
           });
           ref.put(file).then(function(snapshot) {
             console.log('Left group.');
-            loadGroups();
+            loadGroups(true);
           });
           }
          reader.readAsText(blob);
@@ -500,7 +500,8 @@ function leaveGroup(title){
 
 //Load all groups
 var circles="";
-function loadGroups(){
+function loadGroups(callback){
+  callback=callback||false;
   var groups="";
   firebase.storage().ref().child('users/'+uid+"/groups.txt").getDownloadURL().then(function(url) {
     var xhr = new XMLHttpRequest();
@@ -515,6 +516,9 @@ function loadGroups(){
           console.log(groups);
           circles=groups;
           console.clear();
+          if(callback==true){
+            action("add");
+          }
         }
        reader.readAsText(blob);
       }
