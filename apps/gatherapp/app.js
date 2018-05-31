@@ -555,7 +555,7 @@ function loadGroup(title){
     xhr.open('GET', url);
     xhr.send();
   }).then(function(){
-    document.querySelectorAll(".body")[0].innerHTML="<div class='card'><span style='font-size:5vh'>"+encode(title)+"</span><br /><span style='font-size:3vh'>"+population+" members</span></div>";
+    document.querySelectorAll(".body")[0].innerHTML="<div class='card'><span style='font-size:5vh'>"+encode(decodeURIComponent(title))+"</span><br /><span style='font-size:3vh'>"+population+" members</span></div>";
   }).catch(function(){});
 }
 
