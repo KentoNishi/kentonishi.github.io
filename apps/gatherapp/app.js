@@ -435,6 +435,9 @@ function leaveGroup(title){
   if(string[0]==","){
     string=string.replace(",","");
   }
+  if(string[-1]==","){
+    string=string.slice(0,-1);
+  }
   var file = new Blob([string], {
       type: 'text/plain'
   });
@@ -455,6 +458,9 @@ function leaveGroup(title){
           var string=info.replace(uid,"").replace(",,",",");
           if(string[0]==","){
             string=string.replace(",","");
+          }
+          if(string[-1]==","){
+            string=string.slice(0,-1);
           }
           var file = new Blob([string], {
               type: 'text/plain'
