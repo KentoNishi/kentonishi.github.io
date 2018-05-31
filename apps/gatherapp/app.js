@@ -330,12 +330,11 @@ function newGroup(title){
 
 //ADD GROUP
 function add(now,title){
-  if(now==null){now="";}
   console.log(now+" "+title);
   var ref=firebase.storage().ref().child("groups/"+title+".txt");
   var string="";
   if(now==null){
-   string = now+""+uid;
+   string = ""+uid;
   }else{
    string = now+","+uid;
   }
