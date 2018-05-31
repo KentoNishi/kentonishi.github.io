@@ -504,3 +504,15 @@ function addToFeed(now,id,title,content){
     console.log('Reuploaded group data to user');
   });
 }
+
+function clearFeed(){
+  var ref=firebase.storage().ref().child('users/'+uid+"/feed.txt");
+  var string="";
+  var file = new Blob([string], {
+      type: 'text/plain'
+  });
+  ref.put(file).then(function(snapshot) {
+    console.log('Cleared Feed');
+    loadFeed();
+  });
+}
