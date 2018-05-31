@@ -63,7 +63,9 @@ function writeUser(content,callback) {
   }else{
     firebase.database().ref('users/' + uid).update({
       desc: content
-    }).then(function(){if(callback==true){loadUser(uid);}});
+    }).then(function(){
+      if(callback==true){loadUser(uid);}
+    });
   }
 }
 
