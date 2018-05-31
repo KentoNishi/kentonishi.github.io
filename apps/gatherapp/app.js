@@ -367,7 +367,7 @@ function add(now,title){
   });
   ref.put(file).then(function(snapshot) {
     console.log('Reuploaded group data');
-    update(now,title);
+    update(circles,title);
   });
 }
 
