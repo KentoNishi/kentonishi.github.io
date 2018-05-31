@@ -376,7 +376,7 @@ function update(now,title){
   console.log(now+" "+title);
   var ref=firebase.storage().ref().child("users/"+uid+"/groups.txt");
   var string="";
-  if(now==null){
+  if(now==null||now==""){
    string = ""+title;
   }else{
    string = now+","+title;
