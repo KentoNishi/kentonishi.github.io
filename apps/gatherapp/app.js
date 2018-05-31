@@ -572,8 +572,6 @@ function addToFeed(now,id,title,content){
   });
 }
 
-
-
 function clearFeed(){
   var ref=firebase.storage().ref().child('users/'+uid+"/feed.txt");
   var string="";
