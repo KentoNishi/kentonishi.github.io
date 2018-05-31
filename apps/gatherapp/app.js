@@ -47,6 +47,7 @@ var desc="";
 var email="";
 var name="";
 var pic="";
+var groups=[];
 
 function writeUser(content,callback) {
   callback=callback||false;
@@ -85,8 +86,17 @@ function loadUser(id){
     }else{
       desc=snapshot.val().desc;
     }
+    if(snapshot.val().groups==null||snapshot.val().groups.length<1){
+      groups=[];
+    }else{
+      groups=snapshot.val().groups.split(",");
+    }
     document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+desc+'</span>'+signOut+'</div>');
   });
+}
+
+function loadGroups(){
+  document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+desc+'</span>'+signOut+'</div>');
 }
 
 function signOut(){
