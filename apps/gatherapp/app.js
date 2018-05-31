@@ -414,7 +414,7 @@ function add(now,title){
   console.log(now+" "+title);
   var ref=firebase.storage().ref().child('groups/'+title+"/"+title+".txt");
   var string="";
-  if(now==null){
+  if(now==null||now==""||now.length==0){
    string = ""+uid;
   }else{
    string = now+","+uid;
