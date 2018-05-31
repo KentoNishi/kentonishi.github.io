@@ -111,7 +111,7 @@ function loadFeed(){
          document.querySelectorAll(".body")[0].innerHTML="";
          if(info.length>1){
            for(var i=0;i<info.split(",").length;i++){
-            document.querySelectorAll(".body")[0].innerHTML+="<div class='card'><span style='font-size:5vh'>"+info.split(",")[i].split("&")[0]+"</span><br /><span style='font-size:3.5vh;'>"+info.split(",")[i].split("&")[1]+"</span></div><br />";
+            document.querySelectorAll(".body")[0].innerHTML+="<div class='card'><span style='font-size:5vh'>"+decodeURIComponent(info.split(",")[i].split("&")[0])+"</span><br /><span style='font-size:3.5vh;'>"+decodeURIComponent(info.split(",")[i].split("&")[1])+"</span></div><br />";
            }
          }else{
           document.querySelectorAll(".body")[0].innerHTML="<div class='card'><span style='font-size:5vh'>Welcome!</span><br /><span style='font-size:3.5vh;'>This is your activity feed. New events will come up here.</span></div>";
@@ -460,4 +460,45 @@ function loadGroup(title){
 
 window.onload=function(){
   console.clear();
+}
+
+function sendFeed(id,title,content){
+  var now="";
+  firebase.storage().ref().child('users/'+id+"/feed.txt").getDownloadURL().then(function(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function(event) {
+      if(xhr.status == 404){
+      }else{
+        var blob = xhr.response;
+        var reader = new FileReader();
+        reader.onload = function() {
+          now=reader.result;
+          addToFeed(now,id,title,content);
+        }
+       reader.readAsText(blob);
+      }
+    };
+    console.log(url);
+    xhr.open('GET', url);
+    xhr.send();
+  }).then(function(){
+  }).catch(function(){});
+}
+
+function addToFeed(now,id,title,content){
+  var ref=firebase.storage().ref().child('users/'+id+"/feed.txt");
+  var string="";
+  if(now==null||now.split(",").length<1){
+    string=encodeURIComponent(title)+":"+encodeURIComponent(content);
+  }else{
+    string=now+","+encodeURIComponent(title)+":"+encodeURIComponent(content);
+  }
+  var file = new Blob([string], {
+      type: 'text/plain'
+  });
+  ref.put(file).then(function(snapshot) {
+    console.log('Reuploaded group data to user');
+    loadFeed();
+  });
 }
