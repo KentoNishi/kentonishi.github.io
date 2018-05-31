@@ -545,7 +545,7 @@ function loadGroup(title){
         var blob = xhr.response;
         var reader = new FileReader();
         reader.onload = function() {
-          if(reader.result.indexOf(",")!=-1){
+          if(reader.result.length>1){
             population=reader.result.split(",").length+1;
           }else{
             population=0;
