@@ -44,8 +44,8 @@ var name="";
 var pic="";
 
 function writeUser(content) {
-  content=content||false;
-  if(content==false){
+  content=content||"";
+  if(content==""){
     firebase.database().ref('users/' + uid).update({
       name: name,
       email: email,
