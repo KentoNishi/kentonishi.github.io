@@ -336,6 +336,9 @@ function enter(event){
 //New Group
 function newGroup(title){
   title=title.toUpperCase();  
+  firebase.database().ref('groups/' + title).update({
+      active:true
+  });
   if(circles.indexOf(title)==-1){
     var groups="";
     var info="";
