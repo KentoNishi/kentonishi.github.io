@@ -24,7 +24,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     pic=user.photoUrl;;
     document.querySelectorAll(".body")[0].innerHTML="";
     writeUser();
-    loadFeed();
   }
 });
 
@@ -37,19 +36,28 @@ function login(){
   });
 }
 
+function action(act){
+  if(act=="menu"){
+    loadFeed();
+    console.log("menu");
+  }else if(act=="add"){
+    console.log("add");
+  }
+}
+
 var uid="";
 var desc="";
 var email="";
 var name="";
 var pic="";
 
-function writeUser(content) {
+function writeUser(content,callback) {
   content=content||"";
   if(content==""){
     firebase.database().ref('users/' + uid).update({
       name: name,
       email: email,
-      profile_picture : pic
+      pic : pic
     }).then(function(){});
   }else{
     firebase.database().ref('users/' + uid).update({
@@ -67,13 +75,6 @@ function loadUser(id){
       snapshot.val().desc="[Description Here]";
     }
     document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+snapshot.val().desc+'</span><br />'+signOut+'</div>');
-  });
-}
-
-function readData(user){
-  var ref = firebase.database().ref('users/' + user);
-  ref.on('value', function(snapshot) {
-      loadUser(snapshot.val().username,snapshot.val().email,snapshot.val().profile_picture,snapshot.val().desc);
   });
 }
 
