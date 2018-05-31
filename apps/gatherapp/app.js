@@ -461,6 +461,7 @@ function leaveGroup(title){
           });
           ref.put(file).then(function(snapshot) {
             console.log('Left group.');
+            loadGroups();
           });
           }
          reader.readAsText(blob);
