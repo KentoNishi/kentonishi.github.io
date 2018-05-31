@@ -325,7 +325,7 @@ function newGroup(title){
     xhr.send();
   }).then(function(){
   }).catch(function(){
-    put(null,title);});
+    add(null,title);});
 }
 
 //Add group
