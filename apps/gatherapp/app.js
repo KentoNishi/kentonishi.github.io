@@ -312,11 +312,11 @@ function action(act){
   console.log(act);
   if(uid!=null&&uid.length>1&&loaded){
     if(act=="menu"){
-      var card="<div class='card'><span style='font-size:5vh'>"+name+"</span><br /><img class='pic' src='"+pic+"'></img><br /><a href='mailto:"+email+"'>@"+email.split("@")[0]+"</a><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;' onkeypress='enter(event)' maxlength='144' >"+desc+"</textarea><br /><a href='javascript:signOut();'>Sign Out</a></div>";
+      var card="<div class='card'><span style='font-size:5vh'>"+name+"</span><br /><img class='pic' src='"+pic+"'></img><br /><a href='mailto:"+email+"'>@"+email.split("@")[0]+"</a><br /><textarea spellcheck='false' onkeypress='return alpha(event)' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;' onkeypress='enter(event)' maxlength='144' >"+desc+"</textarea><br /><a href='javascript:signOut();'>Sign Out</a></div>";
       document.querySelectorAll(".body")[0].innerHTML=card;
       auto_grow(document.querySelectorAll("textarea")[0]);
     }else if(act=="add"){
-      var card="<div class='card'><span style='font-size:5vh'>"+"Join/Create a Group:"+"</span><br /><br /><textarea spellcheck='false' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;border:2.5px solid black;border-radius:5px;height:' onkeypress='enter(event,true)' maxlength='24' placeholder='Group Name'>"+"</textarea><br /></div>";
+      var card="<div class='card'><span style='font-size:5vh'>"+"Join/Create a Group:"+"</span><br /><br /><textarea spellcheck='false' onkeypress='return alpha(event)' onkeyup='auto_grow(this)' style='text-align:center;font-size:4vh;border:2.5px solid black;border-radius:5px;height:' onkeypress='enter(event,true)' maxlength='24' placeholder='Group Name'>"+"</textarea><br /></div>";
       document.querySelectorAll(".body")[0].innerHTML=card;
       auto_grow(document.querySelectorAll("textarea")[0]);
     }
@@ -582,4 +582,10 @@ function clearFeed(){
     console.log('Cleared Feed');
     loadFeed();
   });
+}
+
+function alpha(e) {
+    var k;
+    document.all ? k = e.keyCode : k = e.which;
+    return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
 }
