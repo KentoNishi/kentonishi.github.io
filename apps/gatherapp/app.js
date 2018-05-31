@@ -545,12 +545,9 @@ function loadGroup(title){
         var blob = xhr.response;
         var reader = new FileReader();
         reader.onload = function() {
-          if(reader.result.length>1){
-            population=reader.result.split(",").length;
-          }else{
-            population=0;
-          }
+          population=reader.result.split(",").length;
           console.clear();
+          document.querySelectorAll(".body")[0].innerHTML="<div class='card'><span style='font-size:5vh'>"+encode(decodeURIComponent(title))+"</span><br /><span style='font-size:3vh'>"+population+" members</span></div>";
         }
        reader.readAsText(blob);
       }
@@ -559,8 +556,7 @@ function loadGroup(title){
     xhr.open('GET', url);
     xhr.send();
   }).then(function(){
-    document.querySelectorAll(".body")[0].innerHTML="<div class='card'><span style='font-size:5vh'>"+encode(decodeURIComponent(title))+"</span><br /><span style='font-size:3vh'>"+population+" members</span></div>";
-  }).catch(function(){});
+    }).catch(function(){});
 }
 
 window.onload=function(){
