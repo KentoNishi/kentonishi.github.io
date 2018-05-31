@@ -21,7 +21,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     name=user.displayName;
     pic=user.photoUrl;;
     document.querySelectorAll(".body")[0].innerHTML="";
-    writeUser();
+    writeUser(null,true);
   }
 });
 
@@ -50,17 +50,20 @@ var name="";
 var pic="";
 
 function writeUser(content,callback) {
+  callback=callback||false;
   content=content||"";
   if(content==""){
     firebase.database().ref('users/' + uid).update({
       name: name,
       email: email,
       pic : pic
-    }).then(function(){});
+    }).then(function(){
+      if(callback==true){loadUser(uid);}
+    });
   }else{
     firebase.database().ref('users/' + uid).update({
       desc: content
-    });
+    }).then(function(){if(callback==true){loadUser(uid);}});
   }
 }
 
