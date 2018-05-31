@@ -492,7 +492,7 @@ function sendFeed(id,title,content){
 function addToFeed(now,id,title,content){
   var ref=firebase.storage().ref().child('users/'+id+"/feed.txt");
   var string="";
-  if(now==null||now.split(",").length<1){
+  if(now==null||now.split(",").length<1||now==""){
     string=encodeURIComponent(title)+":"+encodeURIComponent(content);
   }else{
     string=now+","+encodeURIComponent(title)+":"+encodeURIComponent(content);
