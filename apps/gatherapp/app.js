@@ -271,6 +271,7 @@ function put(info){
   });
   ref.put(file).then(function(snapshot) {
     console.log('Reuploaded data');
+    loadGroups();
     loaded=true;
   });
 }
@@ -303,50 +304,52 @@ function enter(event){
 
 //New Group
 function newGroup(title){
-  var groups="";
-  var info="";
-  firebase.storage().ref().child('users/'+uid+"/groups.txt").getDownloadURL().then(function(url) {
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = function(event) {
-      if(xhr.status == 404){
-      }else{
-        var blob = xhr.response;
-        var reader = new FileReader();
-        reader.onload = function() {
-          groups=reader.result;
-          update(groups,title);
+    if(circles.indexOf(title)!=-1){
+    var groups="";
+    var info="";
+    firebase.storage().ref().child('users/'+uid+"/groups.txt").getDownloadURL().then(function(url) {
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = function(event) {
+        if(xhr.status == 404){
+        }else{
+          var blob = xhr.response;
+          var reader = new FileReader();
+          reader.onload = function() {
+            groups=reader.result;
+            update(groups,title);
+          }
+         reader.readAsText(blob);
         }
-       reader.readAsText(blob);
-      }
-    };
-    console.log(url);
-    xhr.open('GET', url);
-    xhr.send();
-  }).then(function(){
-  }).catch(function(){});
-  firebase.storage().ref().child('groups/'+title+".txt").getDownloadURL().then(function(url) {
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = function(event) {
-      if(xhr.status == 404){
-        add(null,title);
-      }else{
-        var blob = xhr.response;
-        var reader = new FileReader();
-        reader.onload = function() {
-         info=reader.result;
-         add(info,title);
+      };
+      console.log(url);
+      xhr.open('GET', url);
+      xhr.send();
+    }).then(function(){
+    }).catch(function(){});
+    firebase.storage().ref().child('groups/'+title+".txt").getDownloadURL().then(function(url) {
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = function(event) {
+        if(xhr.status == 404){
+          add(null,title);
+        }else{
+          var blob = xhr.response;
+          var reader = new FileReader();
+          reader.onload = function() {
+           info=reader.result;
+           add(info,title);
+          }
+         reader.readAsText(blob);
         }
-       reader.readAsText(blob);
-      }
-    };
-    console.log(url);
-    xhr.open('GET', url);
-    xhr.send();
-  }).then(function(){
-  }).catch(function(){
-    add(null,title);});
+      };
+      console.log(url);
+      xhr.open('GET', url);
+      xhr.send();
+    }).then(function(){
+    }).catch(function(){
+      add(null,title);});
+  }
 }
 
 //ADD GROUP
@@ -382,5 +385,32 @@ function update(now,title){
   });
   ref.put(file).then(function(snapshot) {
     console.log('Reuploaded group data to user');
+    loadGroups();
   });
+}
+
+var circles;
+function loadGroups(){
+  var groups="";
+  firebase.storage().ref().child('users/'+uid+"/groups.txt").getDownloadURL().then(function(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function(event) {
+      if(xhr.status == 404){
+      }else{
+        var blob = xhr.response;
+        var reader = new FileReader();
+        reader.onload = function() {
+          groups=reader.result;
+          console.log(groups);
+          circles=groups;
+        }
+       reader.readAsText(blob);
+      }
+    };
+    console.log(url);
+    xhr.open('GET', url);
+    xhr.send();
+  }).then(function(){
+  }).catch(function(){});
 }
