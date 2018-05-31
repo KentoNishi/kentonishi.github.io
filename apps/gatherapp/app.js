@@ -337,6 +337,7 @@ function enter(event,task){
       if(document.querySelectorAll("textarea")[0].value.replace(/ /g,"").length>1){
         document.querySelectorAll("textarea")[0].blur();
         newGroup(encodeURIComponent(document.querySelectorAll("textarea")[0].value));
+        loadGroup(document.querySelectorAll("textarea")[0].value);
       }
     }else{
       document.querySelectorAll("textarea")[0].blur();
