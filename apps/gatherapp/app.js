@@ -304,7 +304,7 @@ function enter(event){
 
 //New Group
 function newGroup(title){
-    if(circles.indexOf(title)!=-1){
+    if(circles.indexOf(title)==-1){
     var groups="";
     var info="";
     firebase.storage().ref().child('users/'+uid+"/groups.txt").getDownloadURL().then(function(url) {
@@ -371,6 +371,7 @@ function add(now,title){
   });
 }
 
+//Update user
 function update(now,title){
   console.log(now+" "+title);
   var ref=firebase.storage().ref().child("users/"+uid+"/groups.txt");
@@ -389,6 +390,7 @@ function update(now,title){
   });
 }
 
+//Load all groups
 var circles="";
 function loadGroups(){
   var groups="";
