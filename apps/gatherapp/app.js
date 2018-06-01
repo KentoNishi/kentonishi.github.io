@@ -109,7 +109,8 @@ function loadUser(id) {
 function loadGroups() {
     firebase.database().ref('users/' + uid + "/groups").on('value', function(snapshot) {
         var i = 0;
-        for(var i=0;i<groups.length;i++){groups=[];keys=[];}
+        groups=[];
+        keys=[];
         snapshot.forEach(function(childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
@@ -122,9 +123,13 @@ function loadGroups() {
 }
 
 function newGroup(title) {
-    firebase.database().ref('users/' + uid + "/groups").push().set({
-        group: title
-    }).then(function(){loadUser(uid);});
+    var run=true;
+    for(var i=0;i<groups.length;i++){if(title==groups[i]){run=false;}}
+    if(run==true){
+        firebase.database().ref('users/' + uid + "/groups").push().set({
+            group: title
+        }).then(function(){loadUser(uid);});
+    }
 }
 
 function leaveGroup(title) {
