@@ -175,6 +175,17 @@ function sendFeed(id,title,content){
     });
 }
 
+function clearFeed(){
+    firebase.database().ref('users/' + uid + "/feed").set({
+    }).then(function() {
+        firebase.database().ref('users/' + uid + "/feed").push().set({
+                title:"Activity Feed",
+                contents:"Your recent notifications appear here."
+            }).then(function() {
+        });
+    });
+}
+
 function encode(texte) {
     texte = texte.replace(/"/g, '&quot;'); // 34 22
     texte = texte.replace(/&/g, '&amp;'); // 38 26
