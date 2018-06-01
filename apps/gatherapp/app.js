@@ -154,7 +154,7 @@ function getCookie(cname) {
 }
 
 function loadFeed() {
-    firebase.database().ref('users/' + uid + "/feed").once('value', function(snapshot) {
+    firebase.database().ref('users/' + uid + "/feed").on('value', function(snapshot) {
         var i = 0;
         snapshot.forEach(function(childSnapshot) {
             var childKey = childSnapshot.key;
