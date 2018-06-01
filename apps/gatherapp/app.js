@@ -93,7 +93,7 @@ function loadUser(id){
     snapshot.forEach(function(childSnapshot) {
       var childKey = childSnapshot.key;
       var childData = childSnapshot.val();
-      groups[i]=childSnapshot.val().title;
+      groups[i]=childSnapshot.val().group;
       i++;
       // ...
     });
