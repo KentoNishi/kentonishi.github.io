@@ -10,7 +10,8 @@ var urlsToCache = [
   'https://kentonishi.github.io/apps/gatherapp/512x512.png',
   'https://kentonishi.github.io/apps/gatherapp/add.svg',
   'https://kentonishi.github.io/apps/gatherapp/menu.svg',
-  'https://kentonishi.github.io/apps/gatherapp/google.png'
+  'https://kentonishi.github.io/apps/gatherapp/google.png',
+  'https://kentonishi.github.io/apps/gatherapp/logo.png'
 ];
 
 self.addEventListener('install', function(event) {
