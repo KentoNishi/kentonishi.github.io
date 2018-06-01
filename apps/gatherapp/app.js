@@ -172,7 +172,8 @@ function getCookie(cname) {
     return "";
 }
 
-function loadFeed() {
+function loadFeed(callback) {
+    callback=callback||false;
     firebase.database().ref('users/' + uid + "/feed").on('value', function(snapshot) {
         var i = 0;
         snapshot.forEach(function(childSnapshot) {
@@ -182,7 +183,10 @@ function loadFeed() {
             contents[i] = childSnapshot.val().content;
             i++;
         });
- //       document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:8vh;">' + snapshot.val().name + '</span><br /><img class="pic" alt="Profile Picture" src="' + snapshot.val().pic + '"></img><br /><br /><span ' + editable + '>' + desc + '</span>' + signOut + '</div>');
+   }).then(function(){
+        if(callback){
+//            document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:8vh;">'++'</span></div>');
+        }
     });
 }
 
