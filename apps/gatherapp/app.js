@@ -5,8 +5,6 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-
-
 //Initialize FireBase
 var config = {
     apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
