@@ -115,7 +115,7 @@ function loadGroups() {
 function newGroup(title) {
     firebase.database().ref('users/' + uid + "/groups").push().set({
         group: title
-    }).then(function() {});
+    }).then(function(){loadUser(uid);});
 }
 
 function signOut() {
