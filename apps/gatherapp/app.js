@@ -86,17 +86,29 @@ function loadUser(id){
     }else{
       desc=snapshot.val().desc;
     }
-    if(snapshot.val().groups==null||snapshot.val().groups.length<1){
-      groups=[];
-    }else{
-      groups=snapshot.val().groups.split(",");
-    }
     document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+desc+'</span>'+signOut+'</div>');
+  });
+  firebase.database().ref('users/' + id +"/groups").once('value', function(snapshot) {
+    var i=0;
+    snapshot.forEach(function(childSnapshot) {
+      var childKey = childSnapshot.key;
+      var childData = childSnapshot.val();
+      groups[i]=childSnapshot.val().title;
+      i++;
+      // ...
+    });
   });
 }
 
 function loadGroups(){
-  document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+desc+'</span>'+signOut+'</div>');
+//  document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+desc+'</span>'+signOut+'</div>');
+}
+
+function newGroup(title){
+  firebase.database().ref('users/' + uid).push().set({
+    group:title
+  }).then(function(){
+  });
 }
 
 function signOut(){
