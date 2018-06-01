@@ -51,6 +51,7 @@ var pic = "";
 var groups = [];
 var titles=[];
 var contents=[];
+var keys=[];
 
 function writeUser(content, callback) {
     callback = callback || false;
@@ -102,18 +103,21 @@ function loadUser(id) {
         }
         document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:8vh;">' + snapshot.val().name + '</span><br /><img class="pic" alt="Profile Picture" src="' + snapshot.val().pic + '"></img><br /><br /><span ' + editable + '>' + desc + '</span>' + signOut + '</div>');
     });
+    loadGroups();
+}
+
+function loadGroups() {
     firebase.database().ref('users/' + id + "/groups").on('value', function(snapshot) {
         var i = 0;
+        for(var i=0;i<groups.length;i++){groups=[];keys=[];}
         snapshot.forEach(function(childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
             groups[i] = childSnapshot.val().group;
+            keys[i]=childSnapshot.key;
             i++;
         });
     });
-}
-
-function loadGroups() {
     //  document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+desc+'</span>'+signOut+'</div>');
 }
 
@@ -121,6 +125,16 @@ function newGroup(title) {
     firebase.database().ref('users/' + uid + "/groups").push().set({
         group: title
     }).then(function(){loadUser(uid);});
+}
+
+function leaveGroup(title) {
+    var key="";
+    for(var i=0;i<groups.length;i++){
+        if(groups[i]==title){
+            key=keys[i];
+            firebase.database().ref('users/' + uid + "/groups/"+key).remove();
+        }
+    }
 }
 
 function signOut() {
