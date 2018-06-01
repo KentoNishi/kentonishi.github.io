@@ -76,17 +76,21 @@ function writeUser(content, callback) {
 
 function check(event) {
     if (event.keyCode == 13) {
+        saveDesc();
         event.preventDefault();
-        writeUser(document.querySelectorAll('span[contenteditable]')[0].innerHTML);
     }
+}
+
+function saveDesc(){
+    writeUser(document.querySelectorAll('span[contenteditable]')[0].innerHTML);
 }
 
 function loadUser(id) {
     var editable = "";
     var signOut = "";
     if (id == uid) {
-        editable = 'contenteditable onkeypress="' + "check(event)" + '"';
-        signOut = "<br /><br /><a href='javascript:writeUser(document.querySelectorAll(" + '"span[contenteditable]"' + ")[0].innerHTML);'>Save Profile</a><br /><a href='javascript:signOut();'>Sign Out</a>";
+        editable = 'contenteditable onkeypress="' + "check(event)" + '" onfocus="saveDesc();" onblur="saveDesc();"';
+        signOut = "<br /><a href='javascript:signOut();'>Sign Out</a>";
     }
     firebase.database().ref('users/' + id).on('value', function(snapshot) {
         if (snapshot.val().desc == null || snapshot.val().desc.length < 1) {
