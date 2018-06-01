@@ -49,6 +49,8 @@ var email = "";
 var name = "";
 var pic = "";
 var groups = [];
+var titles=[];
+var contents=[];
 
 function writeUser(content, callback) {
     callback = callback || false;
@@ -107,7 +109,6 @@ function loadUser(id) {
             var childData = childSnapshot.val();
             groups[i] = childSnapshot.val().group;
             i++;
-            // ...
         });
     });
 }
@@ -152,7 +153,27 @@ function getCookie(cname) {
     return "";
 }
 
-function loadFeed() {}
+function loadFeed() {
+    firebase.database().ref('users/' + uid + "/feed").once('value', function(snapshot) {
+        var i = 0;
+        snapshot.forEach(function(childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+            titles[i] = childSnapshot.val().title;
+            contents[i] = childSnapshot.val().content;
+            i++;
+        });
+ //       document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:8vh;">' + snapshot.val().name + '</span><br /><img class="pic" alt="Profile Picture" src="' + snapshot.val().pic + '"></img><br /><br /><span ' + editable + '>' + desc + '</span>' + signOut + '</div>');
+    });
+}
+
+function sendFeed(id,title,content){
+    firebase.database().ref('users/' + id + "/feed").push().set({
+        title:title,
+        content:content
+    }).then(function() {
+    });
+}
 
 function encode(texte) {
     texte = texte.replace(/"/g, '&quot;'); // 34 22
