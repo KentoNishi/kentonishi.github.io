@@ -86,7 +86,7 @@ function loadUser(id) {
     var signOut = "";
     if (id == uid) {
         editable = 'contenteditable onkeypress="' + "check(event)" + '"';
-        signOut = "<br /><a href='javascript:writeUser(document.querySelectorAll(" + '"span[contenteditable]"' + ")[0].innerHTML);'>Save Profile</a><br /><a href='javascript:signOut();'>Sign Out</a>";
+        signOut = "<br /><br /><a href='javascript:writeUser(document.querySelectorAll(" + '"span[contenteditable]"' + ")[0].innerHTML);'>Save Profile</a><br /><a href='javascript:signOut();'>Sign Out</a>";
     }
     firebase.database().ref('users/' + id).on('value', function(snapshot) {
         if (snapshot.val().desc == null || snapshot.val().desc.length < 1) {
@@ -94,7 +94,7 @@ function loadUser(id) {
         } else {
             desc = snapshot.val().desc;
         }
-        document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:8vh;">' + snapshot.val().name + '</span><br /><img class="pic" alt="Profile Picture" src="' + snapshot.val().pic + '"></img><br /><br /><span ' + editable + '>' + desc + '</span>' + signOut + '</div>');
+        document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:8vh;">' + snapshot.val().name + '</span><br /><img class="pic" alt="Profile Picture" src="' + snapshot.val().pic + '"></img><br /><span ' + editable + '>' + desc + '</span>' + signOut + '</div>');
     });
     firebase.database().ref('users/' + id + "/groups").once('value', function(snapshot) {
         var i = 0;
