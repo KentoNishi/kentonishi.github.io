@@ -76,8 +76,8 @@ function writeUser(content, callback) {
 
 function check(event) {
     if (event.keyCode == 13) {
-        writeUser(document.querySelectorAll('span[contenteditable]')[0].innerHTML);
         return false;
+        writeUser(document.querySelectorAll('span[contenteditable]')[0].innerHTML);
     }
 }
 
