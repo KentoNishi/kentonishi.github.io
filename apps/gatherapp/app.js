@@ -107,7 +107,7 @@ function loadUser(id) {
 }
 
 function loadGroups() {
-    firebase.database().ref('users/' + id + "/groups").on('value', function(snapshot) {
+    firebase.database().ref('users/' + uid + "/groups").on('value', function(snapshot) {
         var i = 0;
         for(var i=0;i<groups.length;i++){groups=[];keys=[];}
         snapshot.forEach(function(childSnapshot) {
