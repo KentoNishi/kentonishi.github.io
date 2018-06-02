@@ -36,10 +36,12 @@ function login() {
 
 function action(act) {
     if (act == "menu") {
-        loadFeed();
         console.log("menu");
     } else if (act == "add") {
         console.log("add");
+    } else if (act == "home") {
+        loadFeed();
+        console.log("home");
     }
 }
 
@@ -172,22 +174,19 @@ function getCookie(cname) {
     return "";
 }
 
-function loadFeed(callback) {
-    callback=callback||false;
+function loadFeed() {
     firebase.database().ref('users/' + uid + "/feed").on('value', function(snapshot) {
         var i = 0;
+        document.querySelectorAll(".body")[0].innerHTML = "";
         snapshot.forEach(function(childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
             titles[i] = childSnapshot.val().title;
             contents[i] = childSnapshot.val().content;
+            document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:8vh;">'+titles[i]+'<br />'+contents[i]+'</span></div><br />');
             i++;
         });
-   }).then(function(){
-        if(callback){
-//            document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:8vh;">'++'</span></div>');
-        }
-    });
+   });
 }
 
 function sendFeed(id,title,content){
