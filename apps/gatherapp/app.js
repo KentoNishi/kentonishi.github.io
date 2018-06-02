@@ -5,8 +5,6 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-
-
 //Initialize FireBase
 var config = {
     apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
@@ -112,7 +110,7 @@ function loadUser(id) {
 }
 
 function loadGroups() {
-    firebase.database().ref('users/' + "/groups"+ uid ).on('value', function(snapshot) {
+    firebase.database().ref('users/' + "groups/"+ uid ).on('value', function(snapshot) {
         var i = 0;
         groups=[];
         keys=[];
@@ -133,9 +131,9 @@ function newGroup(title) {
     var run=true;
     for(var i=0;i<groups.length;i++){if(title==groups[i]){run=false;}}
     if(run==true){
-        firebase.database().ref('users/'+ "/groups" + uid ).push().set({
+        firebase.database().ref('users/'+ "groups/" + uid ).push().set({
             group: title
-        }).then(function(){loadUser(uid);});
+        }).then(function(){});
     }
 }
 
@@ -144,7 +142,7 @@ function leaveGroup(title) {
     for(var i=0;i<groups.length;i++){
         if(groups[i]==title){
             key=keys[i];
-            firebase.database().ref('users/' + "/groups/"+key+ uid ).remove();
+            firebase.database().ref('users/' + "groups/"+key+ "/"+uid ).remove();
         }
     }
 }
