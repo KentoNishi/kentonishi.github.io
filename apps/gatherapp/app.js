@@ -183,7 +183,7 @@ function loadFeed() {
             var childData = childSnapshot.val();
             titles[i] = childSnapshot.val().title;
             contents[i] = childSnapshot.val().content;
-            document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:8vh;">'+titles[i]+'<br />'+contents[i]+'</span></div><br />');
+            document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;">'+encode(titles[i])+'<br />'+encode(contents[i])+'</span></div><br />');
             i++;
         });
    });
