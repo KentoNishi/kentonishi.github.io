@@ -97,7 +97,7 @@ function loadUser(id) {
         editable = 'contenteditable onkeypress="' + "check(event)" + '" onfocus="saveDesc();" onblur="saveDesc();"';
         signOut = "<br /><a href='javascript:signOut();'>Sign Out</a>";
     }
-    firebase.database().ref('users/' + id).once('value', function(snapshot) {
+    firebase.database().ref('users/' + id).on('value', function(snapshot) {
         if (snapshot.val().desc == null || snapshot.val().desc.length < 1) {
             desc = "[Description Here]";
         } else {
@@ -109,7 +109,7 @@ function loadUser(id) {
 }
 
 function loadGroups() {
-    firebase.database().ref('users/' + uid + "/groups").once('value', function(snapshot) {
+    firebase.database().ref('users/' + uid + "/groups").on('value', function(snapshot) {
         var i = 0;
         groups=[];
         keys=[];
@@ -175,7 +175,7 @@ function getCookie(cname) {
 }
 
 function loadFeed() {
-    firebase.database().ref('users/' + uid + "/feed").once('value', function(snapshot) {
+    firebase.database().ref('users/' + uid + "/feed").on('value', function(snapshot) {
         var i = 0;
         document.querySelectorAll(".body")[0].innerHTML = "";
         snapshot.forEach(function(childSnapshot) {
