@@ -71,6 +71,7 @@ function writeUser(content, callback) {
             }
         });
     } else {
+        desc=decode(desc);
         firebase.database().ref('users/' + uid).update({
             desc: content
         }).then(function() {
@@ -332,3 +333,24 @@ function encode(texte) {
     //all encodings
     return texte;
 }
+
+var decode = (function() {
+    // this prevents any overhead from creating the object each time
+    var element = document.createElement('div');
+
+    // regular expression matching HTML entities
+    var entity = /&(?:#x[a-f0-9]+|#[0-9]+|[a-z0-9]+);?/ig;
+
+    return function decodeHTMLEntities(str) {
+        // find and replace all the html entities
+        str = str.replace(entity, function(m) {
+            element.innerHTML = m;
+            return element.textContent;
+        });
+
+        // reset the value
+        element.textContent = '';
+
+        return str;
+    }
+})();
