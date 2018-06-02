@@ -178,7 +178,7 @@ function getCookie(cname) {
 }
 
 function loadFeed() {
-    firebase.database().ref('users/' + uid + "/feed").on('value', function(snapshot) {
+    firebase.database().ref('users/' + "/feed"+uid).on('value', function(snapshot) {
         var i = 0;
         document.querySelectorAll(".body")[0].innerHTML = "";
         snapshot.forEach(function(childSnapshot) {
@@ -193,7 +193,7 @@ function loadFeed() {
 }
 
 function sendFeed(id,title,content){
-    firebase.database().ref('users/' + id + "/feed").push().set({
+    firebase.database().ref('users/' +  "/feed"+id ).push().set({
         title:title,
         content:content
     }).then(function() {
@@ -201,9 +201,9 @@ function sendFeed(id,title,content){
 }
 
 function clearFeed(){
-    firebase.database().ref('users/' + uid + "/feed").set({
+    firebase.database().ref('users/'+ "/feed" + uid ).set({
     }).then(function() {
-        firebase.database().ref('users/' + uid + "/feed").push().set({
+        firebase.database().ref('users/'  + "/feed"+ uid).push().set({
                 title:"Activity Feed",
                 content:"Your recent notifications appear here."
             }).then(function() {
