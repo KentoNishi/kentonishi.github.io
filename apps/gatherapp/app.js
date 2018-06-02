@@ -202,7 +202,7 @@ function clearFeed(){
     }).then(function() {
         firebase.database().ref('users/' + uid + "/feed").push().set({
                 title:"Activity Feed",
-                contents:"Your recent notifications appear here."
+                content:"Your recent notifications appear here."
             }).then(function() {
         });
     });
