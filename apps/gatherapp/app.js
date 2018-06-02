@@ -142,7 +142,7 @@ function leaveGroup(title) {
     for(var i=0;i<groups.length;i++){
         if(groups[i]==title){
             key=keys[i];
-            firebase.database().ref('users/' + "groups/"+key+ "/"+uid ).remove();
+            firebase.database().ref('users/' + "groups/"+uid+"/"+key).remove();
         }
     }
 }
