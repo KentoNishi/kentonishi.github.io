@@ -36,6 +36,7 @@ function login() {
 
 function action(act) {
     if (act == "menu") {
+        loadUser(uid);
         console.log("menu");
     } else if (act == "add") {
         console.log("add");
@@ -113,11 +114,13 @@ function loadGroups() {
         var i = 0;
         groups=[];
         keys=[];
+        document.querySelectorAll(".body")[0].innerHTML="";
         snapshot.forEach(function(childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
             groups[i] = childSnapshot.val().group;
             keys[i]=childSnapshot.key;
+            document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;">'+encode(groups[i])+'<br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />');
             i++;
         });
     });
