@@ -5,7 +5,6 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-
 //Initialize FireBase
 var config = {
     apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
@@ -106,7 +105,7 @@ function loadUser(id) {
         } else {
             desc = snapshot.val().desc;
         }
-        document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:8vh;">' + encode(snapshot.val().name) + '</span><br /><img class="pic" alt="Profile Picture" src="' + snapshot.val().pic + '"></img><br /><br /><span ' + editable + '>' + desc + '</span><br />' +signOut + '</div>');
+        document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:8vh;">' + encode(snapshot.val().name) + '</span><br /><img class="pic" alt="Profile Picture" src="' + snapshot.val().pic + '"></img><br /><br /><span ' + editable + '>' + encode(desc) + '</span><br />' +signOut + '</div>');
     });
 }
 
