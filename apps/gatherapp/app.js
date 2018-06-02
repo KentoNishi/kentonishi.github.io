@@ -40,6 +40,7 @@ function action(act) {
         console.log("menu");
     } else if (act == "add") {
         console.log("add");
+        loadGroups();
     } else if (act == "home") {
         loadFeed();
         console.log("home");
@@ -106,7 +107,6 @@ function loadUser(id) {
         }
         document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:8vh;">' + snapshot.val().name + '</span><br /><img class="pic" alt="Profile Picture" src="' + snapshot.val().pic + '"></img><br /><br /><span ' + editable + '>' + desc + '</span>' + signOut + '</div>');
     });
-    loadGroups();
 }
 
 function loadGroups() {
