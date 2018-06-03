@@ -125,11 +125,15 @@ function loadGroups() {
             groups[i] = childSnapshot.val().group;
             keys[i]=childSnapshot.key;
             document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
-            if(i==snapshot.length-1){document.querySelectorAll(".body")[0].innerHTML="<br />NEW GROUP CARD HERE"+document.querySelectorAll(".body")[0].innerHTML;}
+            if(i==snapshot.length-1){document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><strong><a href="javascript:void(0);">Join New Group</a></strong><br /><input type="text" placeholder="Group Name" maxlength="24"></input><br /><button onclick="join()">Join</button></span></div><br />'+document.querySelectorAll(".body")[0].innerHTML;}
             i++;
         });
     });
     //  document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+desc+'</span>'+signOut+'</div>');
+}
+
+function join(){
+    newGroup(document.querySelectorAll("input")[0].value);
 }
 
 function newGroup(title) {
