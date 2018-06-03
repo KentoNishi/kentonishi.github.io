@@ -1,9 +1,6 @@
 //Constant updates!
 var CACHE_NAME = new Date().getFullYear().toString()+new Date().getMonth().toString()+new Date().getDate().toString();
 
-
-
-
 var urlsToCache = [
   '/apps/gatherapp/',
   '/apps/gatherapp/app.js',
