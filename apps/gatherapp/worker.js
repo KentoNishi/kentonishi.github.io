@@ -39,6 +39,7 @@ self.addEventListener('fetch', function(event) {
   );
 });
 
+//Remove old caches
 caches.keys().then(function(cacheNames) {
   return Promise.all(
     cacheNames.map(function(cacheName) {
