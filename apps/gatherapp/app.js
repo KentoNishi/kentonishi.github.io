@@ -179,7 +179,7 @@ function getCookie(cname) {
 }
 
 function loadFeed() {
-    firebase.database().ref('users/' + "/feed"+uid).on('value', function(snapshot) {
+    firebase.database().ref('users/' + "feed/"+uid).on('value', function(snapshot) {
         var i = 0;
         document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;">Activity Feed<br />Your recent notifications appear here.</span></div><br />');
         snapshot.forEach(function(childSnapshot) {
@@ -195,7 +195,7 @@ function loadFeed() {
 }
 
 function sendFeed(id,title,content){
-    firebase.database().ref('users/' +  "/feed"+id ).push().set({
+    firebase.database().ref('users/' +  "feed/"+id ).push().set({
         title:title,
         content:content
     }).then(function() {
@@ -203,7 +203,7 @@ function sendFeed(id,title,content){
 }
 
 function clearFeed(){
-    firebase.database().ref('users/'+ "/feed" + uid ).remove();
+    firebase.database().ref('users/'+ "feed/" + uid ).remove();
 }
 
 function encode(texte) {
