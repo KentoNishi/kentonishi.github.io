@@ -1,4 +1,4 @@
-var CACHE_NAME = new Date().getFullYear().toString()+new Date().getMonth().toString()+new Date().getDay().toString()+new Date().getHours().toString()+;
+var CACHE_NAME = new Date().getFullYear().toString()+new Date().getMonth().toString()+new Date().getDay().toString()+new Date().getHours().toString();
 
 var urlsToCache = [
   'https://kentonishi.github.io/apps/gatherapp/',
