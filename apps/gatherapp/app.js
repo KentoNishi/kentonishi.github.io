@@ -121,7 +121,7 @@ function loadGroups() {
             var childData = childSnapshot.val();
             groups[i] = childSnapshot.val().group;
             keys[i]=childSnapshot.key;
-            document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;">'+encode(groups[i])+'<br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />');
+            document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />');
             i++;
         });
     });
@@ -181,16 +181,16 @@ function getCookie(cname) {
 function loadFeed() {
     firebase.database().ref('users/' + "feed/"+uid).on('value', function(snapshot) {
         var i = 0;
-        document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;">Activity Feed<br />Your recent notifications appear here.</span></div><br />');
+        document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>Activity Feed</strong><br />Your recent notifications appear here.</span></div><br />');
         snapshot.forEach(function(childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
             titles[i] = childSnapshot.val().title;
             contents[i] = childSnapshot.val().content;
-            document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;">'+encode(titles[i])+'<br />'+encode(contents[i])+'</span></div><br />');
+            document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(titles[i])+'</strong><br />'+encode(contents[i])+'</span></div><br />');
             i++;
         });
-        document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;"><a href="javascript:clearFeed();">Clear Feed</a></span></div><br />');
+        document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;"><a href="javascript:clearFeed();"><strong>Clear Feed</strong></a></span></div><br />');
         });
 }
 
