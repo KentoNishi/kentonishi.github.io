@@ -45,7 +45,7 @@ function action(act) {
         console.log("add");
         loadGroups();
     } else if (act == "home") {
-        loadFeed("home");
+        loadFeed(true);
         console.log("home");
     }
 }
@@ -71,7 +71,7 @@ function writeUser(content, callback) {
             pic: pic
         }).then(function() {
             if (callback == true) {
-                loadFeed("home");
+                loadFeed();
             }
         });
     } else {
@@ -191,8 +191,9 @@ function getCookie(cname) {
 }
 
 function loadFeed(home) {
+    home=home||false;
     firebase.database().ref('users/' + "feed/"+uid).on('value', function(snapshot) {
-            if(home=="true"){
+            if(home==true){
             var i = 0;
             document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>Activity Feed</strong><br />Your recent notifications appear here.</span></div><br />');
             snapshot.forEach(function(childSnapshot) {
