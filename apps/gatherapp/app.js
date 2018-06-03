@@ -1,3 +1,5 @@
+console.log('%c GatherApp ', 'background: #222; color: #bada55');
+
 //Register Service Worker
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
