@@ -124,7 +124,8 @@ function loadGroups() {
             var childData = childSnapshot.val();
             groups[i] = childSnapshot.val().group;
             keys[i]=childSnapshot.key;
-            document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />');
+            document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
+            if(i==snapshot.length-1){document.querySelectorAll(".body")[0].innerHTML="<br />NEW GROUP CARD HERE"+document.querySelectorAll(".body")[0].innerHTML;}
             i++;
         });
     });
@@ -194,7 +195,7 @@ function loadFeed() {
             document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(titles[i])+'</strong><br />'+encode(contents[i])+'</span></div><br />');
             i++;
         });
-        document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;"><a href="javascript:clearFeed();">Clear Feed</a></span></div><br />');
+        document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><a href="javascript:clearFeed();">Clear Feed</a></span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
         });
 }
 
