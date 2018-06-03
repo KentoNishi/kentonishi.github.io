@@ -59,7 +59,8 @@ var keys=[];
 
 function writeUser(content, callback) {
     callback = callback || false;
-    content = decode(content) || "";
+    content = content || "";
+    if(content!=""){content=decode(content);}
     if (content == "") {
         firebase.database().ref('users/' + uid).update({
             name: name,
