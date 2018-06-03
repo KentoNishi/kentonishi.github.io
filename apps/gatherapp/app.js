@@ -149,7 +149,7 @@ function newGroup(title) {
         }).then(function(){
             firebase.database().ref('groups/'+title).push().set({
                 user: uid
-            }
+            });
         });
     }
 }
