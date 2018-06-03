@@ -1,7 +1,4 @@
-var version=1;
-
-
-var CACHE_NAME = new Date().getFullYear().toString()+new Date().getMonth().toString()+new Date().getDay().toString()+version;
+var CACHE_NAME = "20180602-1";
 
 var urlsToCache = [
   'https://kentonishi.github.io/apps/gatherapp/',
