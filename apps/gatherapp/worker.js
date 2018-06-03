@@ -18,8 +18,8 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function(cache) {
-          console.log('Opened cache');
-          return cache.addAll(urlsToCache);
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
       })
   );
 });
@@ -30,23 +30,5 @@ self.addEventListener('fetch', function(event) {
   caches.match(event.request).then(function(response) {
     return response || fetch(event.request);
   })
-  );
-});
-
-//Delete Caches... ?
-self.addEventListener('activate', function(event) {
-  event.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames.filter(function(cacheName) {
-          return true;
-          // Return true if you want to remove this cache,
-          // but remember that caches are shared across
-          // the whole origin
-        }).map(function(cacheName) {
-          return caches.delete(cacheName);
-        })
-      );
-    })
   );
 });
