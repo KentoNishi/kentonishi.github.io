@@ -19,15 +19,7 @@ self.addEventListener('install', function(event) {
     caches.open(CACHE_NAME)
       .then(function(cache) {
           console.log('Opened cache');
-          if(navigator.onLine){
-            cache.delete(urlsToCache).then(function(response) {
-              console.log('Deleted all caches');
-              return cache.addAll(urlsToCache);
-            });
-          }else{
-            console.log("No connection");
-            return cache.addAll(urlsToCache);
-          }
+          return cache.addAll(urlsToCache);
       })
   );
 });
@@ -38,5 +30,22 @@ self.addEventListener('fetch', function(event) {
   caches.match(event.request).then(function(response) {
     return response || fetch(event.request);
   })
+  );
+});
+
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.filter(function(cacheName) {
+          return true;
+          // Return true if you want to remove this cache,
+          // but remember that caches are shared across
+          // the whole origin
+        }).map(function(cacheName) {
+          return caches.delete(cacheName);
+        })
+      );
+    })
   );
 });
