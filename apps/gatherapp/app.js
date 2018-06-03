@@ -155,6 +155,7 @@ function leaveGroup(title) {
     for(var i=0;i<groups.length;i++){
         if(groups[i]==title){
             key=keys[i];
+            sendFeed(uid,"Left "+groups[i],"Left on "++(new Date().getMonth()+1).toString()+"/"+new Date().getDate().toString()+"/"+new Date().getFullYear().toString());
             firebase.database().ref('users/' + "groups/"+uid+"/"+key).remove();
         }
     }
