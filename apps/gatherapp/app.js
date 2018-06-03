@@ -183,6 +183,7 @@ function loadFeed() {
         var i = 0;
         document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>Activity Feed</strong><br />Your recent notifications appear here.</span></div><br />');
         snapshot.forEach(function(childSnapshot) {
+            if(i==0){document.querySelectorAll(".body")[0].innerHTML="";}
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
             titles[i] = childSnapshot.val().title;
