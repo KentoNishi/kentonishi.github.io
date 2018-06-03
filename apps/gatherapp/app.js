@@ -45,7 +45,7 @@ function action(act) {
         console.log("add");
         loadGroups();
     } else if (act == "home") {
-        loadFeed();
+        loadFeed("home");
         console.log("home");
     }
 }
@@ -71,7 +71,7 @@ function writeUser(content, callback) {
             pic: pic
         }).then(function() {
             if (callback == true) {
-                loadFeed();
+                loadFeed("home");
             }
         });
     } else {
@@ -190,21 +190,23 @@ function getCookie(cname) {
     return "";
 }
 
-function loadFeed() {
+function loadFeed(home) {
     firebase.database().ref('users/' + "feed/"+uid).on('value', function(snapshot) {
-        var i = 0;
-        document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>Activity Feed</strong><br />Your recent notifications appear here.</span></div><br />');
-        snapshot.forEach(function(childSnapshot) {
-            if(i==0){document.querySelectorAll(".body")[0].innerHTML="";}
-            var childKey = childSnapshot.key;
-            var childData = childSnapshot.val();
-            titles[i] = childSnapshot.val().title;
-            contents[i] = childSnapshot.val().content;
-            document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(titles[i])+'</strong><br />'+encode(contents[i])+'</span></div><br />');
-            i++;
-        });
-        document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><a href="javascript:clearFeed();">Clear Feed</a></span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
-        });
+            if(home=="home"){
+            var i = 0;
+            document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>Activity Feed</strong><br />Your recent notifications appear here.</span></div><br />');
+            snapshot.forEach(function(childSnapshot) {
+                if(i==0){document.querySelectorAll(".body")[0].innerHTML="";}
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+                titles[i] = childSnapshot.val().title;
+                contents[i] = childSnapshot.val().content;
+                document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(titles[i])+'</strong><br />'+encode(contents[i])+'</span></div><br />');
+                i++;
+            });
+            document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><a href="javascript:clearFeed();">Clear Feed</a></span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
+            }
+     });
 }
 
 function sendFeed(id,title,content){
