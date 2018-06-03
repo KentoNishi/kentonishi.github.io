@@ -2,17 +2,17 @@
 var CACHE_NAME = new Date().getFullYear().toString()+new Date().getMonth().toString()+new Date().getDate().toString();
 
 var urlsToCache = [
-  'https://kentonishi.github.io/apps/gatherapp/',
-  'https://kentonishi.github.io/apps/gatherapp/app.js',
-  'https://kentonishi.github.io/apps/gatherapp/index.html',
-  'https://kentonishi.github.io/apps/gatherapp/worker.js',
-  'https://kentonishi.github.io/apps/gatherapp/manifest.json',
-  'https://kentonishi.github.io/apps/gatherapp/192x192.png',
-  'https://kentonishi.github.io/apps/gatherapp/512x512.png',
-  'https://kentonishi.github.io/apps/gatherapp/add.svg',
-  'https://kentonishi.github.io/apps/gatherapp/menu.svg',
-  'https://kentonishi.github.io/apps/gatherapp/google.png',
-  'https://kentonishi.github.io/apps/gatherapp/logo.png'
+  '/apps/gatherapp/',
+  '/apps/gatherapp/app.js',
+  '/apps/gatherapp/index.html',
+  '/apps/gatherapp/worker.js',
+  '/apps/gatherapp/manifest.json',
+  '/apps/gatherapp/192x192.png',
+  '/apps/gatherapp/512x512.png',
+  '/apps/gatherapp/add.svg',
+  '/apps/gatherapp/menu.svg',
+  '/apps/gatherapp/google.png',
+  '/apps/gatherapp/logo.png'
 ];
 
 self.addEventListener('install', function(event) {
