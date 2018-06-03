@@ -68,7 +68,7 @@ function writeUser(content, callback) {
             pic: pic
         }).then(function() {
             if (callback == true) {
-                loadUser(uid);
+                loadFeed();
             }
         });
     } else {
