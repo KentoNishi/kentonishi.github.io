@@ -1,7 +1,5 @@
 var CACHE_NAME = "20180602-1";
 
-
-
 var urlsToCache = [
   'https://kentonishi.github.io/apps/gatherapp/',
   'https://kentonishi.github.io/apps/gatherapp/app.js',
