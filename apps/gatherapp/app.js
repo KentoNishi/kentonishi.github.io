@@ -135,6 +135,7 @@ function loadGroups() {
 function join(){
     if(document.querySelectorAll("input")[0].value!=null&&document.querySelectorAll("input")[0].value!=""&&document.querySelectorAll("input")[0].value.replace(/ /g,"")!=""){
       newGroup(document.querySelectorAll("input")[0].value);
+      sendFeed(uid,'Joined "'+document.querySelectorAll("input")[0].value+'"',"Joined on "+(new Date().getMonth()+1).toString()+"/"+new Date().getDate().toString()+"/"+new Date().getFullYear().toString());
     }
     document.querySelectorAll("input")[0].value="";
 }
