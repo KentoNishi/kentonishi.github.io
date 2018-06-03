@@ -192,7 +192,7 @@ function getCookie(cname) {
 
 function loadFeed(home) {
     firebase.database().ref('users/' + "feed/"+uid).on('value', function(snapshot) {
-            if(home=="home"){
+            if(home=="true"){
             var i = 0;
             document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>Activity Feed</strong><br />Your recent notifications appear here.</span></div><br />');
             snapshot.forEach(function(childSnapshot) {
