@@ -181,7 +181,7 @@ function getCookie(cname) {
 function loadFeed() {
     firebase.database().ref('users/' + "/feed"+uid).on('value', function(snapshot) {
         var i = 0;
-        document.querySelectorAll(".body")[0].innerHTML = "";
+        document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;">Activity Feed<br />Your recent notifications appear here.</span></div><br />');
         snapshot.forEach(function(childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
@@ -189,12 +189,7 @@ function loadFeed() {
             contents[i] = childSnapshot.val().content;
             document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;">'+encode(titles[i])+'<br />'+encode(contents[i])+'</span></div><br />');
             i++;
-        })
         });
-   }).then(function(){
-            if(i==0){
-                clearFeed();
-            }
    });
 }
 
