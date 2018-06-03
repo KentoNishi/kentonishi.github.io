@@ -203,15 +203,6 @@ function sendFeed(id,title,content){
 
 function clearFeed(){
     firebase.database().ref('users/'+ "/feed" + uid ).remove();
-    /*
-    set({
-    }).then(function() {
-        firebase.database().ref('users/'  + "/feed"+ uid).push().set({
-                title:"Activity Feed",
-                content:"Your recent notifications appear here."
-            }).then(function() {
-        });
-    });*/
 }
 
 function encode(texte) {
