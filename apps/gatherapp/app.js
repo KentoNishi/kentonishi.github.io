@@ -135,8 +135,8 @@ function loadGroups() {
 function join(){
     if(document.querySelectorAll("input")[0].value!=null&&document.querySelectorAll("input")[0].value!=""&&document.querySelectorAll("input")[0].value.replace(/ /g,"")!=""){
       newGroup(document.querySelectorAll("input")[0].value);
-      document.querySelectorAll("input")[0].value="";
     }
+    document.querySelectorAll("input")[0].value="";
 }
 
 function newGroup(title) {
