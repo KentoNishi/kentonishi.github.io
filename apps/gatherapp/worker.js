@@ -14,9 +14,6 @@ var urlsToCache = [
   'https://kentonishi.github.io/apps/gatherapp/logo.png'
 ];
 
-
-
-
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME)
