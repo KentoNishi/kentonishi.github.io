@@ -119,14 +119,14 @@ function loadGroups() {
         groups=[];
         keys=[];
         document.querySelectorAll(".body")[0].innerHTML="";
-        snapshot.forEach(function(childSnapshot) {
+        snapshot.forEach(function(childSnapshot,array) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
             groups[i] = childSnapshot.val().group;
             keys[i]=childSnapshot.key;
             document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
-            console.log(snapshot);
-            if(i+1==snapshot.length){document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><strong><a href="javascript:void(0);">Join New Group</a></strong><br /><input type="text" placeholder="Group Name" maxlength="24"></input><br /><button onclick="join()">Join</button></span></div><br />'+document.querySelectorAll(".body")[0].innerHTML;}
+            console.log(array.length);
+            if(i+1==array.length){document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><strong><a href="javascript:void(0);">Join New Group</a></strong><br /><input type="text" placeholder="Group Name" maxlength="24"></input><br /><button onclick="join()">Join</button></span></div><br />'+document.querySelectorAll(".body")[0].innerHTML;}
             i++;
         });
     });
