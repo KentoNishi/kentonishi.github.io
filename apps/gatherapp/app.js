@@ -127,7 +127,7 @@ function loadGroups() {
             document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
             i++;
         });
-        document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><strong><a href="javascript:void(0);">Join New Group</a></strong><br /><input type="text" placeholder="Group Name" maxlength="24"></input><br /><button onclick="join()">Join</button></span></div><br />'+document.querySelectorAll(".body")[0].innerHTML;
+        document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><a href="javascript:void(0);">Join New Group</a><br /><br /><input type="text" placeholder="Group Name" maxlength="24" style="height: 5vh; width: 80vw; font-size: 4vh; text-align: center;"></input><br /><br /><button onclick="join()" style="height: 5vh; width: 40vw; font-size: 3vh; text-align: center; padding: 0; vertical-align: baseline; background-color: rgba(255,255,255,1); border: none; border-radius: 5px;">Join Group</button></span></div><br />'+document.querySelectorAll(".body")[0].innerHTML;
     });
     //  document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+desc+'</span>'+signOut+'</div>');
 }
