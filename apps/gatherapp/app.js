@@ -1,4 +1,8 @@
 //console.log('%c GatherApp ', 'background: #222; color: #bada55');
+
+
+
+
 console.log("GatherApp by Kento Nishi. Created in 2018.");
 
 //Register Service Worker
