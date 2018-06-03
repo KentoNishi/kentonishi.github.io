@@ -1,4 +1,6 @@
 var version=1;
+
+
 var CACHE_NAME = new Date().getFullYear().toString()+new Date().getMonth().toString()+new Date().getDay().toString()+version;
 
 var urlsToCache = [
