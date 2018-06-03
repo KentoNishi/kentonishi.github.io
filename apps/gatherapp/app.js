@@ -221,6 +221,7 @@ function sendFeed(id,title,content){
 
 function clearFeed(){
     firebase.database().ref('users/'+ "feed/" + uid ).remove();
+    loadFeed(true);
 }
 
 function encode(texte) {
