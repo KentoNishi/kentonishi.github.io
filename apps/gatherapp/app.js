@@ -182,6 +182,7 @@ function loadFeed() {
     firebase.database().ref('users/' + "/feed"+uid).on('value', function(snapshot) {
         var i = 0;
         document.querySelectorAll(".body")[0].innerHTML = "";
+        if(snapshot.length==0){clearFeed();}
         snapshot.forEach(function(childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
