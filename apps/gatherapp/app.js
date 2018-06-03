@@ -190,7 +190,7 @@ function loadFeed() {
             document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(titles[i])+'</strong><br />'+encode(contents[i])+'</span></div><br />');
             i++;
         });
-        document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;"><a href="javascript:clearFeed();"><strong>Clear Feed</strong></a></span></div><br />');
+        document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;"><a href="javascript:clearFeed();">Clear Feed</a></span></div><br />');
         });
 }
 
