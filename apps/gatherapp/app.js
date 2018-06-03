@@ -12,19 +12,6 @@ console.log("GatherApp by Kento Nishi. Created in 2018.");
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Register Service Worker
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
