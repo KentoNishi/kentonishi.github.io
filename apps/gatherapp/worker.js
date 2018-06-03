@@ -19,10 +19,15 @@ self.addEventListener('install', function(event) {
     caches.open(CACHE_NAME)
       .then(function(cache) {
           console.log('Opened cache');
-          cache.delete(urlsToCache).then(function(response) {
-            console.log('Deleted all caches');
+          if(navigator.onLine){
+            cache.delete(urlsToCache).then(function(response) {
+              console.log('Deleted all caches');
+              return cache.addAll(urlsToCache);
+            });
+          }else{
+            console.log("No connection");
             return cache.addAll(urlsToCache);
-          });
+          }
       })
   );
 });
