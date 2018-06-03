@@ -191,7 +191,8 @@ function loadFeed() {
             document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;">'+encode(titles[i])+'<br />'+encode(contents[i])+'</span></div><br />');
             i++;
         });
-   });
+        document.querySelectorAll(".body")[0].innerHTML += ('<div class="card"><span style="font-size:4vh;"><a href="javascript:clearFeed();">Clear Feed</a></span></div><br />');
+        });
 }
 
 function sendFeed(id,title,content){
