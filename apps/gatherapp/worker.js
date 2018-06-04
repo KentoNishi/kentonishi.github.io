@@ -48,20 +48,3 @@ caches.keys().then(function(cacheNames) {
     })
   );
 });
-
-self.addEventListener("message", push);
-
-function push(event) {
-    notify(event.data.split(",")[0],event.data.split(",")[1]);
-}
-
-function notify(title,content){
-    content=decodeURIComponent(content);
-    var notification = new Notification(decodeURIComponent(title), {
-      icon: '/apps/gatherapp/512x512.png',
-      body: content
-    });
-    notification.onclick = function () {
-      window.open("/apps/gatherapp/");      
-    };
-}
