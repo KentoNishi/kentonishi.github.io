@@ -217,6 +217,7 @@ function loadFeed(home) {
                     document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(titles[i])+'</strong><br />'+encode(contents[i])+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
                     i++;
                 });
+               worker.postMessage(encodeURIComponent(titles[i-1])+","+encodeURIComponent(contents[i-1]));
                document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><a href="javascript:clearFeed();">Clear Feed</a></span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
          home=false;
         }
