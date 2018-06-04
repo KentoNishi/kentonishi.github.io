@@ -66,6 +66,7 @@ var groups = [];
 var titles=[];
 var contents=[];
 var keys=[];
+var feedkey=[];
 
 function writeUser(content, callback) {
     callback = callback || false;
@@ -204,6 +205,9 @@ function getCookie(cname) {
 
 function loadFeed(home) {
     home=home||false;
+    titles=[];
+    feedkey=[];
+    contents=[];
     firebase.database().ref('users/' + "feed/"+uid).on('value', function(snapshot) {
             var i = 0;
             if(home==true){
@@ -213,6 +217,7 @@ function loadFeed(home) {
                     if(i==0&&home==true){document.querySelectorAll(".body")[0].innerHTML="";}
                     var childKey = childSnapshot.key;
                     var childData = childSnapshot.val();
+                    feedkey[i]=childSnapshot.key;
                     titles[i] = childSnapshot.val().title;
                     contents[i] = childSnapshot.val().content;
                     if(home==true){
@@ -220,10 +225,19 @@ function loadFeed(home) {
                     }
                     i++;
                 });
-               worker.postMessage(encodeURIComponent(titles[i-1])+","+encodeURIComponent(contents[i-1]));
                if(home==true){
                    document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><a href="javascript:clearFeed();">Clear Feed</a></span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
                    home=false;
+               }else{
+                  firebase.database().ref('users/' + "feed/"+uid+"/"+feedkey[i-1]).on('value', function(snapshot) {
+                      if(snapshot.val().shown!="true"){
+                         worker.postMessage(encodeURIComponent(titles[i-1])+","+encodeURIComponent(contents[i-1]));
+                         firebase.database().ref('users/' + "feed/"+uid+"/"+feedkey[i-1]).set({
+                             shown:"true"
+                         }).then(function() {
+                         });
+                      }
+                  });
                }
      });
 }
