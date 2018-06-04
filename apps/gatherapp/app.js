@@ -3,14 +3,8 @@ console.log("GatherApp by Kento Nishi. Created in 2018.");
 
 //Register Service Worker
 if ('serviceWorker' in navigator) {
-    var worker=new Worker('https://kentonishi.github.io/apps/gatherapp/worker.js');
-}
-
-function notification(){
-    Notification.requestPermission(function (permission) {
-      if (permission === "granted") {
-        console.log("Notification Granted");
-      }
+    navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
+        console.log('Service Worker Registered');
     });
 }
 
@@ -33,7 +27,6 @@ firebase.auth().onAuthStateChanged(function(user) {
         pic = user.photoURL;
         document.querySelectorAll(".body")[0].innerHTML = "";
         writeUser(null, true);
-        notification();
     }
 });
 
@@ -66,7 +59,6 @@ var groups = [];
 var titles=[];
 var contents=[];
 var keys=[];
-var feedkey=[];
 
 function writeUser(content, callback) {
     callback = callback || false;
@@ -135,7 +127,7 @@ function loadGroups() {
             document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
             i++;
         });
-        document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><a style="font-size:6vh;"><strong>Join New Group</strong></a><br /><input type="text" placeholder="Group Name" maxlength="24" style="height: 5vh; width: 50vw; font-size: 4vh; text-align: center;margin-top:1vh;"></input><br /><button onclick="join()" style="margin-top:0.5vh;transition:0.5s;height: 5vh; width: 40vw; font-size: 3vh; text-align: center; padding: 0; vertical-align: baseline; background-color: rgba(255,255,255,1); border: none; border-radius: 5px;">Join Group</button></span></div><br />'+document.querySelectorAll(".body")[0].innerHTML;
+        document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><a href="javascript:void(0);">Join New Group</a><br /><input type="text" placeholder="Group Name" maxlength="24" style="height: 5vh; width: 50vw; font-size: 4vh; text-align: center;"></input><br /><button onclick="join()" style="transition:0.5s;height: 5vh; width: 40vw; font-size: 3vh; text-align: center; padding: 0; vertical-align: baseline; background-color: rgba(255,255,255,1); border: none; border-radius: 5px;">Join Group</button></span></div><br />'+document.querySelectorAll(".body")[0].innerHTML;
     });
     //  document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+desc+'</span>'+signOut+'</div>');
 }
@@ -205,40 +197,22 @@ function getCookie(cname) {
 
 function loadFeed(home) {
     home=home||false;
-    titles=[];
-    feedkey=[];
-    contents=[];
     firebase.database().ref('users/' + "feed/"+uid).on('value', function(snapshot) {
+        if(home==true){
             var i = 0;
-            if(home==true){
                 document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>Activity Feed</strong><br />Your recent notifications appear here.</span></div><br />');
-            }
                 snapshot.forEach(function(childSnapshot) {
-                    if(i==0&&home==true){document.querySelectorAll(".body")[0].innerHTML="";}
+                    if(i==0){document.querySelectorAll(".body")[0].innerHTML="";}
                     var childKey = childSnapshot.key;
                     var childData = childSnapshot.val();
-                    feedkey[i]=childSnapshot.key;
                     titles[i] = childSnapshot.val().title;
                     contents[i] = childSnapshot.val().content;
-                    if(home==true){
-                        document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(titles[i])+'</strong><br />'+encode(contents[i])+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
-                    }
+                    document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(titles[i])+'</strong><br />'+encode(contents[i])+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
                     i++;
                 });
-               if(home==true){
-                   document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><a href="javascript:clearFeed();">Clear Feed</a></span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
-                   home=false;
-               }else{
-                  firebase.database().ref('users/' + "feed/"+uid+"/"+feedkey[i-1]).on('value', function(snapshot) {
-                      if(snapshot.val().shown!="true"){
-                         worker.postMessage(encodeURIComponent(titles[i-1])+","+encodeURIComponent(contents[i-1]));
-                         firebase.database().ref('users/' + "feed/"+uid+"/"+feedkey[i-1]).set({
-                             shown:"true"
-                         }).then(function() {
-                         });
-                      }
-                  });
-               }
+               document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><a href="javascript:clearFeed();">Clear Feed</a></span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
+         home=false;
+        }
      });
 }
 
