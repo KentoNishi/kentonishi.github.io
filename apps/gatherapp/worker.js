@@ -3,6 +3,8 @@ var CACHE_NAME = new Date().getFullYear().toString()+new Date().getMonth().toStr
 
 
 
+
+
 var urlsToCache = [
   '/apps/gatherapp/',
   '/apps/gatherapp/app.js',
