@@ -10,7 +10,6 @@ if ('serviceWorker' in navigator) {
 
 function notification(){
 Notification.requestPermission(function (permission) {
-  // If the user accepts, let's create a notification
   if (permission === "granted") {
     console.log("Notification Granted");
   }
