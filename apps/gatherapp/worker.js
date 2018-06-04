@@ -49,12 +49,6 @@ caches.keys().then(function(cacheNames) {
   );
 });
 
-self.addEventListener("message", push);
-
-function push(event) {
-    notify(event.data.split(",")[0],event.data.split(",")[1]);
-}
-
 function notify(title,content){
     content=decodeURIComponent(content);
     var notification = new Notification(decodeURIComponent(title), {
@@ -65,3 +59,39 @@ function notify(title,content){
       window.open("/apps/gatherapp/");      
     };
 }
+
+var config = {
+    apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
+    authDomain: "gatherapp-1906b.firebaseapp.com",
+    databaseURL: "https://gatherapp-1906b.firebaseio.com",
+    projectId: "gatherapp-1906b",
+    storageBucket: "gatherapp-1906b.appspot.com",
+    messagingSenderId: "1038044491990"
+};
+firebase.initializeApp(config);
+
+var uid="";
+var email="";
+var name="";
+var pic="";
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        uid = user.uid;
+        email = user.email;
+        name = user.displayName;
+        pic = user.photoURL;
+        firebase.database().ref('users/' + "feed/"+uid).on('value', function(snapshot) {
+          var i = 0;
+          var title="";
+          var content="";
+          snapshot.forEach(function(childSnapshot) {
+              var childKey = childSnapshot.key;
+              var childData = childSnapshot.val();
+              title = childSnapshot.val().title;
+              content = childSnapshot.val().content;
+              i++;
+          });
+        notify(title,content);
+       });
+    }
+});
