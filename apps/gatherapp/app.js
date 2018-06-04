@@ -6,11 +6,6 @@ if ('serviceWorker' in navigator) {
     var worker=new Worker('https://kentonishi.github.io/apps/gatherapp/worker.js');
 }
 
-
-
-
-
-
 function notification(){
     Notification.requestPermission(function (permission) {
       if (permission === "granted") {
