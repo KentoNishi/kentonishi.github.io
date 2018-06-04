@@ -206,7 +206,9 @@ function loadFeed(home) {
     home=home||false;
     firebase.database().ref('users/' + "feed/"+uid).on('value', function(snapshot) {
             var i = 0;
+            if(home==true){
                 document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>Activity Feed</strong><br />Your recent notifications appear here.</span></div><br />');
+            }
                 snapshot.forEach(function(childSnapshot) {
                     if(i==0&&home==true){document.querySelectorAll(".body")[0].innerHTML="";}
                     var childKey = childSnapshot.key;
