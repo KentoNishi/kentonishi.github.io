@@ -3,17 +3,17 @@ console.log("GatherApp by Kento Nishi. Created in 2018.");
 
 //Register Service Worker
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
+    var worker = navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
         console.log('Service Worker Registered');
     });
 }
 
 function notification(){
-Notification.requestPermission(function (permission) {
-  if (permission === "granted") {
-    console.log("Notification Granted");
-  }
-});
+    Notification.requestPermission(function (permission) {
+      if (permission === "granted") {
+        console.log("Notification Granted");
+      }
+    });
 }
 
 //Initialize FireBase
@@ -35,6 +35,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         pic = user.photoURL;
         document.querySelectorAll(".body")[0].innerHTML = "";
         writeUser(null, true);
+        notification();
     }
 });
 
