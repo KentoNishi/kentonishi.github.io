@@ -59,7 +59,7 @@ var groups = [];
 var titles=[];
 var contents=[];
 var keys=[];
-var usersInGroup=[];
+var uig=[];
 
 function writeUser(content, callback) {
     callback = callback || false;
@@ -134,6 +134,16 @@ function loadGroups() {
 }
 
 function loadGroup(title) {
+    firebase.database().ref("groups/"+title).on('value', function(snapshot) {
+        uig=[];
+        var i=0;
+        snapshot.forEach(function(childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+            uig[i]=childSnapshot.val().user;
+            i++;
+        });
+    });
 }
 
 function join(){
