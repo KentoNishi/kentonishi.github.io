@@ -184,6 +184,8 @@ function leaveGroup(title) {
                         firebase.database().ref("groups/"+title+"/users/"+childSnapshot.key).remove();
                     }
                 });
+            document.querySelectorAll(".body")[0].innerHTML="";
+            loadGroups();
             });
         }
     }
