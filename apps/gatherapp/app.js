@@ -176,6 +176,15 @@ function leaveGroup(title) {
             key=keys[i];
             sendFeed(uid,"Left "+groups[i],"Left on "+(new Date().getMonth()+1).toString()+"/"+new Date().getDate().toString()+"/"+new Date().getFullYear().toString());
             firebase.database().ref('users/' + "groups/"+uid+"/"+key).remove();
+            firebase.database().ref("groups/"+title+"/users").on('value', function(snapshot) {
+                snapshot.forEach(function(childSnapshot) {
+                    var childKey = childSnapshot.key;
+                    var childData = childSnapshot.val();
+                    if(childSnapshot.val().user==uid){
+                        firebase.database().ref("groups/"+title+"/users/"+childSnapshot.key).remove();
+                    }
+                });
+            });
         }
     }
 }
