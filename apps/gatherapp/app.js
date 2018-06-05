@@ -137,7 +137,7 @@ function loadGroups() {
 }
 
 function loadGroup(title) {
-    firebase.database().ref("groups/"+title).on('value', function(snapshot) {
+    firebase.database().ref("groups/"+title+"/users").on('value', function(snapshot) {
         uig=[];
         var i=0;
         snapshot.forEach(function(childSnapshot) {
