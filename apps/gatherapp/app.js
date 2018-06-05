@@ -133,6 +133,9 @@ function loadGroups() {
     //  document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+desc+'</span>'+signOut+'</div>');
 }
 
+function loadGroup(title) {
+}
+
 function join(){
     if(document.querySelectorAll("input")[0].value!=null&&document.querySelectorAll("input")[0].value!=""&&document.querySelectorAll("input")[0].value.replace(/ /g,"")!=""){
       sendFeed(uid,'Joined '+document.querySelectorAll("input")[0].value+'',"Joined on "+(new Date().getMonth()+1).toString()+"/"+new Date().getDate().toString()+"/"+new Date().getFullYear().toString());
