@@ -59,7 +59,6 @@ var groups = [];
 var titles=[];
 var contents=[];
 var keys=[];
-var uig=[];
 
 function writeUser(content, callback) {
     callback = callback || false;
@@ -135,7 +134,7 @@ function loadGroups() {
 
 function loadGroup(title) {
     firebase.database().ref("groups/"+title+"/users").on('value', function(snapshot) {
-        uig=[];
+        var uig=[];
         var i=0;
         snapshot.forEach(function(childSnapshot) {
             var childKey = childSnapshot.key;
