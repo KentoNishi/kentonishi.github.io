@@ -169,6 +169,8 @@ function newGroup(title) {
                 });
             });
         });
+    }else{
+        loadGroup(title);
     }
 }
 
