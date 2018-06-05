@@ -1,5 +1,5 @@
-//console.log('%c GatherApp ', 'background: #222; color: #bada55');
-console.log("GatherApp by Kento Nishi. Created in 2018.");
+console.log('%c GatherApp ', 'background: #222; color: #bada55');
+//console.log("GatherApp by Kento Nishi. Created in 2018.");
 
 //Register Service Worker
 if ('serviceWorker' in navigator) {
@@ -136,12 +136,14 @@ function loadGroup(title) {
     firebase.database().ref("groups/"+title+"/users").on('value', function(snapshot) {
         var uig=[];
         var i=0;
+        document.querySelectorAll(".body")[0].innerHTML="";
         snapshot.forEach(function(childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
             uig[i]=childSnapshot.val().user;
             i++;
         });
+        document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><a style="font-size:6vh;"><strong>'+encode(title)+'</strong></a><br /><span style="font-size:3vh;">'+uig.length+' members</span><br /><span style="font-size:4vh;">[CONTENTS HERE]</span></div><br />';
     });
 }
 
