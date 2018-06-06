@@ -1,4 +1,4 @@
-//console.log('%c GatherApp ', 'background: #222; color: #bada55');
+console.log('%c GatherApp ', 'background: #222; color: #bada55');
 //console.log("GatherApp by Kento Nishi. Created in 2018.");
 
 //Register Service Worker
@@ -97,70 +97,64 @@ function saveDesc(){
 }
 
 function loadUser(id) {
-    if(id!=""){
-        var editable = "";
-        var signOut = "";
-        if (id == uid) {
-            editable = 'contenteditable onkeypress="' + "check(event)" + '" onfocus="saveDesc();" onblur="saveDesc();"';
-            signOut = "<br /><a href='javascript:signOut();'>Sign Out</a>";
+    var editable = "";
+    var signOut = "";
+    if (id == uid) {
+        editable = 'contenteditable onkeypress="' + "check(event)" + '" onfocus="saveDesc();" onblur="saveDesc();"';
+        signOut = "<br /><a href='javascript:signOut();'>Sign Out</a>";
+    }
+    firebase.database().ref('users/' + id).on('value', function(snapshot) {
+        if (snapshot.val().desc == null || snapshot.val().desc.length < 1) {
+            desc = "[Description Here]";
+        } else {
+            desc = snapshot.val().desc;
         }
-        firebase.database().ref('users/' + id).on('value', function(snapshot) {
-            if (snapshot.val().desc == null || snapshot.val().desc.length < 1) {
-                desc = "[Description Here]";
-            } else {
-                desc = snapshot.val().desc;
-            }
-            document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:8vh;">' + encode(snapshot.val().name) + '</span><br /><img class="pic" alt="Profile Picture" src="' + snapshot.val().pic + '"></img><br /><br /><span style="font-size:3vh;" ' + editable + '>' + encode(desc) + '</span><br /><span style="font-size:3vh;">' +signOut + '</span></div>');
-        });
-    }
+        document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:8vh;">' + encode(snapshot.val().name) + '</span><br /><img class="pic" alt="Profile Picture" src="' + snapshot.val().pic + '"></img><br /><br /><span style="font-size:3vh;" ' + editable + '>' + encode(desc) + '</span><br /><span style="font-size:3vh;">' +signOut + '</span></div>');
+    });
+}
 
-    function loadGroups() {
-        firebase.database().ref('users/' + "groups/"+ uid ).on('value', function(snapshot) {
-            var i = 0;
-            groups=[];
-            keys=[];
-            document.querySelectorAll(".body")[0].innerHTML="";
-            snapshot.forEach(function(childSnapshot) {
-                var childKey = childSnapshot.key;
-                var childData = childSnapshot.val();
-                groups[i] = childSnapshot.val().group;
-                keys[i]=childSnapshot.key;
-                document.querySelectorAll(".body")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(groups[i])+"'"+')"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
-                i++;
-            });
-            document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><a style="font-size:6vh;"><strong>Join New Group</strong></a><br /><input type="text" placeholder="Group Name" maxlength="24" style="height: 5vh; width: 50vw; font-size: 4vh; text-align: center;margin-top:1vh;"></input><br /><button onclick="join()" style="margin-top:0.5vh;transition:0.5s;height: 5vh; width: 40vw; font-size: 3vh; text-align: center; padding: 0; vertical-align: baseline; background-color: rgba(255,255,255,1); border: none; border-radius: 5px;">Join Group</button></span></div><br />'+document.querySelectorAll(".body")[0].innerHTML;
+function loadGroups() {
+    firebase.database().ref('users/' + "groups/"+ uid ).on('value', function(snapshot) {
+        var i = 0;
+        groups=[];
+        keys=[];
+        document.querySelectorAll(".body")[0].innerHTML="";
+        snapshot.forEach(function(childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+            groups[i] = childSnapshot.val().group;
+            keys[i]=childSnapshot.key;
+            document.querySelectorAll(".body")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(groups[i])+"'"+')"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
+            i++;
         });
-        //  document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+desc+'</span>'+signOut+'</div>');
-    id="";
-    }
+        document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><a style="font-size:6vh;"><strong>Join New Group</strong></a><br /><input type="text" placeholder="Group Name" maxlength="24" style="height: 5vh; width: 50vw; font-size: 4vh; text-align: center;margin-top:1vh;"></input><br /><button onclick="join()" style="margin-top:0.5vh;transition:0.5s;height: 5vh; width: 40vw; font-size: 3vh; text-align: center; padding: 0; vertical-align: baseline; background-color: rgba(255,255,255,1); border: none; border-radius: 5px;">Join Group</button></span></div><br />'+document.querySelectorAll(".body")[0].innerHTML;
+    });
+    //  document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+desc+'</span>'+signOut+'</div>');
 }
 
 function loadGroup(title) {
-    if(title!=""){
-        firebase.database().ref("groups/"+title+"/users").on('value', function(snapshot) {
-            var uig=[];
-            var events=[];
-            var i=0;
-            document.querySelectorAll(".body")[0].innerHTML="";
+    firebase.database().ref("groups/"+title+"/users").on('value', function(snapshot) {
+        var uig=[];
+        var events=[];
+        var i=0;
+        document.querySelectorAll(".body")[0].innerHTML="";
+        snapshot.forEach(function(childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+            uig[i]=childSnapshot.val().user;
+            i++;
+        });
+        firebase.database().ref("groups/"+title+"/events").on('value', function(snapshot) {
+            i=0;
             snapshot.forEach(function(childSnapshot) {
                 var childKey = childSnapshot.key;
                 var childData = childSnapshot.val();
-                uig[i]=childSnapshot.val().user;
+                events[i]=childSnapshot.val().name;
                 i++;
             });
-            firebase.database().ref("groups/"+title+"/events").on('value', function(snapshot) {
-                i=0;
-                snapshot.forEach(function(childSnapshot) {
-                    var childKey = childSnapshot.key;
-                    var childData = childSnapshot.val();
-                    events[i]=childSnapshot.val().name;
-                    i++;
-                });
-                document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><a style="font-size:6vh;"><strong>'+encode(title)+'</strong></a><br /><span style="font-size:3vh;">'+uig.length+' members</span><br /><span style="font-size:4vh;">[CONTENTS HERE]</span></div><br />';
-            });
+            document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><a style="font-size:6vh;"><strong>'+encode(title)+'</strong></a><br /><span style="font-size:3vh;">'+uig.length+' members</span><br /><span style="font-size:4vh;">[CONTENTS HERE]</span></div><br />';
         });
-    title="";        
-    }
+    });
 }
 
 function join(){
