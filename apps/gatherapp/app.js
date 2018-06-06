@@ -135,6 +135,7 @@ function loadGroups() {
 function loadGroup(title) {
     firebase.database().ref("groups/"+title+"/users").on('value', function(snapshot) {
         var uig=[];
+        var events=[];
         var i=0;
         document.querySelectorAll(".body")[0].innerHTML="";
         snapshot.forEach(function(childSnapshot) {
@@ -143,7 +144,16 @@ function loadGroup(title) {
             uig[i]=childSnapshot.val().user;
             i++;
         });
-        document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><a style="font-size:6vh;"><strong>'+encode(title)+'</strong></a><br /><span style="font-size:3vh;">'+uig.length+' members</span><br /><span style="font-size:4vh;">[CONTENTS HERE]</span></div><br />';
+        firebase.database().ref("groups/"+title+"/events").on('value', function(snapshot) {
+            i=0;
+            snapshot.forEach(function(childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+                events[i]=childSnapshot.val().name;
+                i++;
+            });
+            document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><a style="font-size:6vh;"><strong>'+encode(title)+'</strong></a><br /><span style="font-size:3vh;">'+uig.length+' members</span><br /><span style="font-size:4vh;">[CONTENTS HERE]</span></div><br />';
+        });
     });
 }
 
