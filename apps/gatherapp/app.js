@@ -7,7 +7,7 @@
         Object.defineProperty(window, "console", {
             get: function() {
                 if ($_console$$._commandLineAPI)
-                    throw "Sorry, for security reasons, the script console is deactivated on netflix.com";
+                    throw "Sorry, for security reasons, the script console is deactivated.";
                 return $_console$$
             },
             set: function($val$$) {
