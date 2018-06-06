@@ -1,35 +1,6 @@
 //console.log('%c GatherApp ', 'background: #222; color: #bada55');
 //console.log("GatherApp by Kento Nishi. Created in 2018.");
 
-Object.defineProperty(window, "console", {
-    value: console,
-    writable: false,
-    configurable: false
-});
-
-var i = 0;
-function showWarningAndThrow() {
-    if (!i) {
-        setTimeout(function () {
-            console.log("%cCONSOLE IS DISABLED!", "font: 2em sans-serif; color: yellow; background-color: red;");
-        }, 1);
-        i = 1;
-    }
-    throw "CONSOLE IS DISABLED!";
-}
-
-var l, n = {
-        set: function (o) {
-            l = o;
-        },
-        get: function () {
-            showWarningAndThrow();
-            return l;
-        }
-    };
-Object.defineProperty(console, "_commandLineAPI", n);
-Object.defineProperty(console, "__commandLineAPI", n);
-
 //Register Service Worker
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
