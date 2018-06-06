@@ -392,6 +392,9 @@ function encode(texte) {
     return texte;
 }
 
+
+
+
 var decode = (function() {
     // this prevents any overhead from creating the object each time
     var element = document.createElement('div');
