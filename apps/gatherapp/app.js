@@ -1,14 +1,21 @@
 //console.log('%c GatherApp ', 'background: #222; color: #bada55');
 //console.log("GatherApp by Kento Nishi. Created in 2018.");
-
-var DEBUG = false;
-if(!DEBUG){
-    if(!window.console) window.console = {};
-    var methods = ["log", "debug", "warn", "info"];
-    for(var i=0;i<methods.length;i++){
-        console[methods[i]] = function(){};
-    }
-}
+(function(){
+ 
+  var _z = console;
+  Object.defineProperty( window, "console", {
+		get : function(){
+		    if( _z._commandLineAPI ){
+			throw "Sorry, Can't execute scripts!";
+		          }
+		    return _z; 
+		},
+		set : function(val){
+		    _z = val;
+		}
+  });
+ 
+})();
 
 //Register Service Worker
 if ('serviceWorker' in navigator) {
