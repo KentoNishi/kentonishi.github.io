@@ -1,23 +1,21 @@
 //console.log('%c GatherApp ', 'background: #222; color: #bada55');
 //console.log("GatherApp by Kento Nishi. Created in 2018.");
-
-(function(){
- 
-  var _z = console;
-  Object.defineProperty( window, "console", {
-		get : function(){
-		    if( _z._commandLineAPI ){
-			throw "Sorry, Can't execute scripts!";
-		          }
-		    return _z; 
-		},
-		set : function(val){
-		    _z = val;
-		}
-  });
- 
+(function() {
+    try {
+        var $_console$$ = console;
+        Object.defineProperty(window, "console", {
+            get: function() {
+                if ($_console$$._commandLineAPI)
+                    throw "Sorry, for security reasons, the script console is deactivated on netflix.com";
+                return $_console$$
+            },
+            set: function($val$$) {
+                $_console$$ = $val$$
+            }
+        })
+    } catch ($ignore$$) {
+    }
 })();
-
 //Register Service Worker
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
