@@ -118,21 +118,23 @@ function loadGroups() {
         var i = 0;
         groups=[];
         keys=[];
+        var uig=[];
+        var u=0;
         document.querySelectorAll(".body")[0].innerHTML="";
         snapshot.forEach(function(childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
             groups[i] = childSnapshot.val().group;
             keys[i]=childSnapshot.key;
-            var uig=[];
             firebase.database().ref("groups/"+childSnapshot.val().group+"/users").on('value', function(snap) {
+                u=0;
                 snap.forEach(function(child) {
                     var childKey = child.key;
                     var childData = child.val();
-                    uig[i]=child.val().user;
-                    i++;
+                    uig[u]=child.val().user;
+                    u++;
                 });
-                document.querySelectorAll(".body")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(groups[i])+"'"+')"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br />'+uid.length.toString()+' members<br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
+                document.querySelectorAll(".body")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(groups[i])+"'"+')"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br />'+uig.length.toString()+' members<br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
             });
             i++;
         });
