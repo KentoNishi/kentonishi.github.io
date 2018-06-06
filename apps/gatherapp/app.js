@@ -124,7 +124,16 @@ function loadGroups() {
             var childData = childSnapshot.val();
             groups[i] = childSnapshot.val().group;
             keys[i]=childSnapshot.key;
-            document.querySelectorAll(".body")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(groups[i])+"'"+')"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
+            var uig=[];
+            firebase.database().ref("groups/"+childSnapshot.val().group+"/users").on('value', function(snap) {
+                snap.forEach(function(child) {
+                    var childKey = child.key;
+                    var childData = child.val();
+                    uig[i]=child.val().user;
+                    i++;
+                });
+                document.querySelectorAll(".body")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(groups[i])+"'"+')"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br />'+uid.length.toString()+' members<br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
+            }
             i++;
         });
         document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><a style="font-size:6vh;"><strong>Join New Group</strong></a><br /><input type="text" placeholder="Group Name" maxlength="24" style="height: 5vh; width: 50vw; font-size: 4vh; text-align: center;margin-top:1vh;"></input><br /><button onclick="join()" style="margin-top:0.5vh;transition:0.5s;height: 5vh; width: 40vw; font-size: 3vh; text-align: center; padding: 0; vertical-align: baseline; background-color: rgba(255,255,255,1); border: none; border-radius: 5px;">Join Group</button></span></div><br />'+document.querySelectorAll(".body")[0].innerHTML;
