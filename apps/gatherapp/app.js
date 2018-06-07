@@ -253,8 +253,8 @@ function write(title,content,link,nav){
     if(content==uid){
        body+='<img src="'+pic+'" class="pic"></img>';
        body+='<br />';
-       body+="<span class='desc'></span>";
        body+='<br />';
+       body+="<span class='desc'></span>";
     }else{
        body+=encode(content);
     }
