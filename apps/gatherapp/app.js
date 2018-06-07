@@ -1,65 +1,3 @@
-var uid = "";
-var desc = "";
-var email = "";
-var name = "";
-var pic = "";
-
-firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        uid = user.uid;
-        email = user.email;
-        set("update","users/"+uid+"/info","email",email);
-        name = user.displayName;
-        set("update","users/"+uid+"/info","name",name);
-        pic = user.photoURL;
-        set("update","users/"+uid+"/info","pic",pic);
-    }
-});
-
-function set(method,path,title,content){
-    firebase.database().ref(path)[method]({
-        [title]:content
-    });
-}
-
-function get(method,path,title,callback){
-    firebase.database().ref(path)[method](function(snapshot) {
-        window[callback](snapshot.val().title);
-    });
-}
-
-function write(title,content,link,nav){
-    var body=document.body.querySelectorAll(".body")[0];
-    body.innerHTML="";
-    body.innerHTML+='<div class="card">';
-    body.innerHTML+='<span style="font-size:8vh;">';
-    body.innerHTML+=title;
-    body.innerHTML+='</span>';
-    body.innerHTML+='<br />';
-    body.innerHTML+='<br />';
-    if(content==uid){
-       body.innerHTML+="[USER CONTENT]";
-    }else{
-       body.innerHTML+='<span style="font-size:5vh;">';
-       body.innerHTML+=content;
-       body.innerHTML+='</span>';
-    }
-    body.innerHTML+='<br />';
-    body.innerHTML+='<br />';
-    if(link!=null&&nav!=null){
-        body.innerHTML+='<a href="'+link+'">'+nav+'</a>';
-        body.innerHTML+='<br />';
-    }
-    body.innerHTML+='</div>';
-}
-
-
-
-
-
-
-
-
 
 /*APIS AND BASIC FUNCTIONS*/
 
@@ -240,3 +178,67 @@ var decode = (function() {
         return str;
     }
 })();
+
+
+
+
+
+
+
+
+
+/*THE REAL CODE*/
+var uid = "";
+var desc = "";
+var email = "";
+var name = "";
+var pic = "";
+
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        uid = user.uid;
+        email = user.email;
+        set("update","users/"+uid+"/info","email",email);
+        name = user.displayName;
+        set("update","users/"+uid+"/info","name",name);
+        pic = user.photoURL;
+        set("update","users/"+uid+"/info","pic",pic);
+    }
+});
+
+function set(method,path,title,content){
+    firebase.database().ref(path)[method]({
+        [title]:content
+    });
+}
+
+function get(method,path,title,callback){
+    firebase.database().ref(path)[method](function(snapshot) {
+        window[callback](snapshot.val().title);
+    });
+}
+
+function write(title,content,link,nav){
+    var body=document.body.querySelectorAll(".body")[0];
+    body.innerHTML="";
+    body.innerHTML+='<div class="card">';
+    body.innerHTML+='<span style="font-size:8vh;">';
+    body.innerHTML+=title;
+    body.innerHTML+='</span>';
+    body.innerHTML+='<br />';
+    body.innerHTML+='<br />';
+    if(content==uid){
+       body.innerHTML+="[USER CONTENT]";
+    }else{
+       body.innerHTML+='<span style="font-size:5vh;">';
+       body.innerHTML+=content;
+       body.innerHTML+='</span>';
+    }
+    body.innerHTML+='<br />';
+    body.innerHTML+='<br />';
+    if(link!=null&&nav!=null){
+        body.innerHTML+='<a href="'+link+'">'+nav+'</a>';
+        body.innerHTML+='<br />';
+    }
+    body.innerHTML+='</div>';
+}
