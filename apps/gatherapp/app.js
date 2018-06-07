@@ -214,8 +214,13 @@ firebase.auth().onAuthStateChanged(function(me) {
         set("update","users/"+uid+"/info","name",name);
         pic = me.photoURL;
         set("update","users/"+uid+"/info","pic",pic);
+        clear("body");
     }
 });
+
+function clear(element){
+    document.querySelectorAll("."+element)[0].innerHTML="";
+}
 
 function user(id){
     if(id==uid){
