@@ -1,14 +1,11 @@
-console.log('%c GatherApp ', 'background: #222; color: #bada55');
-//console.log("GatherApp by Kento Nishi. Created in 2018.");
+console.log("Stripped down.");
 
-//Register Service Worker
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
-        console.log('Service Worker Registered');
+//        Service Worker Registered
     });
 }
 
-//Initialize FireBase
 var config = {
     apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
     authDomain: "gatherapp-1906b.firebaseapp.com",
@@ -19,252 +16,53 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var uid = "";
+var desc = "";
+var email = "";
+var name = "";
+var pic = "";
+
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         uid = user.uid;
         email = user.email;
+        set("update","users/"+uid+"/info","email",email);
         name = user.displayName;
+        set("update","users/"+uid+"/info","name",name);
         pic = user.photoURL;
-        document.querySelectorAll(".body")[0].innerHTML = "";
-        writeUser(null, true);
+        set("update","users/"+uid+"/info","pic",pic);
     }
 });
 
+function set(method,path,title,content){
+    firebase.database().ref(path)[method]({
+        [title]:content
+    });
+}
+
+function get(method,path,title,callback){
+    firebase.database().ref(path)[method](function(snapshot) {
+        window[callback](snapshot.val().title);
+    });
+}
+
 function login() {
     var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result) {}).catch(function(error) {
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+    //AuthStateChanged
+    }).catch(function(error) {
         console.log("Sign in error. " + error.message + " (" + error.code + ")");
     });
 }
 
 function action(act) {
     if (act == "menu") {
-        loadUser(uid);
         console.log("menu");
     } else if (act == "add") {
         console.log("add");
-        loadGroups();
     } else if (act == "home") {
-        loadFeed(true);
         console.log("home");
     }
-}
-
-var uid = "";
-var desc = "";
-var email = "";
-var name = "";
-var pic = "";
-var groups = [];
-var titles=[];
-var contents=[];
-var keys=[];
-
-function writeUser(content, callback) {
-    callback = callback || false;
-    content = content || "";
-    if(content!=""){content=decode(content);}
-    if (content == "") {
-        firebase.database().ref('users/' + uid).update({
-            name: name,
-            email: email,
-            pic: pic
-        }).then(function() {
-            if (callback == true) {
-                loadFeed(true);
-            }
-        });
-    } else {
-        firebase.database().ref('users/' + uid).update({
-            desc: content
-        }).then(function() {
-            if (callback == true) {
-                loadUser(uid);
-            }
-        });
-    }
-}
-
-function check(event) {
-    if (event.keyCode == 13) {
-        saveDesc();
-        event.preventDefault();
-    }
-}
-
-function saveDesc(){
-    writeUser(document.querySelectorAll('span[contenteditable]')[0].innerHTML);
-}
-
-function loadUser(id) {
-    var editable = "";
-    var signOut = "";
-    if (id == uid) {
-        editable = 'contenteditable onkeypress="' + "check(event)" + '" onfocus="saveDesc();" onblur="saveDesc();"';
-        signOut = "<br /><a href='javascript:signOut();'>Sign Out</a>";
-    }
-    firebase.database().ref('users/' + id).on('value', function(snapshot) {
-        if (snapshot.val().desc == null || snapshot.val().desc.length < 1) {
-            desc = "[Description Here]";
-        } else {
-            desc = snapshot.val().desc;
-        }
-        document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:8vh;">' + encode(snapshot.val().name) + '</span><br /><img class="pic" alt="Profile Picture" src="' + snapshot.val().pic + '"></img><br /><br /><span style="font-size:3vh;" ' + editable + '>' + encode(desc) + '</span><br /><span style="font-size:3vh;">' +signOut + '</span></div>');
-    });
-}
-
-function loadGroups() {
-    firebase.database().ref('users/' + "groups/"+ uid ).on('value', function(snapshot) {
-        var i = 0;
-        groups=[];
-        keys=[];
-        document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><a style="font-size:6vh;"><strong>Join New Group</strong></a><br /><input type="text" placeholder="Group Name" maxlength="24" style="height: 5vh; width: 50vw; font-size: 4vh; text-align: center;margin-top:1vh;"></input><br /><button onclick="join()" style="margin-top:0.5vh;transition:0.5s;height: 5vh; width: 40vw; font-size: 3vh; text-align: center; padding: 0; vertical-align: baseline; background-color: rgba(255,255,255,1); border: none; border-radius: 5px;">Join Group</button></span></div><br /><div class="contents"></div>';
-        document.querySelectorAll(".contents")[0].innerHTML="";
-        snapshot.forEach(function(childSnapshot) {
-            var childKey = childSnapshot.key;
-            var childData = childSnapshot.val();
-            groups[i] = childSnapshot.val().group;
-            keys[i]=childSnapshot.key;
-            document.querySelectorAll(".contents")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(groups[i])+"'"+')"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".contents")[0].innerHTML;
-            i++;
-        });
-    });
-    //  document.querySelectorAll(".body")[0].innerHTML=('<div class="card"><span style="font-size:8vh;">'+snapshot.val().name+'</span><br /><img class="pic" alt="Profile Picture" src="'+snapshot.val().pic+'"></img><br /><br /><span '+editable+'>'+desc+'</span>'+signOut+'</div>');
-}
-
-function loadGroup(title) {
-    firebase.database().ref("groups/"+title+"/users").on('value', function(snapshot) {
-        var uig=[];
-        var events=[];
-        var i=0;
-        document.querySelectorAll(".body")[0].innerHTML="";
-        snapshot.forEach(function(childSnapshot) {
-            var childKey = childSnapshot.key;
-            var childData = childSnapshot.val();
-            uig[i]=childSnapshot.val().user;
-            i++;
-        });
-        firebase.database().ref("groups/"+title+"/events").on('value', function(snapshot) {
-            i=0;
-            snapshot.forEach(function(childSnapshot) {
-                var childKey = childSnapshot.key;
-                var childData = childSnapshot.val();
-                events[i]=childSnapshot.val().name;
-                i++;
-            });
-            document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><a style="font-size:6vh;"><strong>'+encode(title)+'</strong></a><br /><span style="font-size:3vh;">'+uig.length+' members</span><br /><span style="font-size:4vh;">[CONTENTS HERE]</span></div><br />';
-        });
-    });
-}
-
-function join(){
-    if(document.querySelectorAll("input")[0].value!=null&&document.querySelectorAll("input")[0].value!=""&&document.querySelectorAll("input")[0].value.replace(/ /g,"")!=""){
-      sendFeed(uid,'Joined '+document.querySelectorAll("input")[0].value+'',"Joined on "+(new Date().getMonth()+1).toString()+"/"+new Date().getDate().toString()+"/"+new Date().getFullYear().toString());
-      newGroup(document.querySelectorAll("input")[0].value);
-    }
-    document.querySelectorAll("input")[0].value="";
-}
-
-function newGroup(title) {
-    var run=true;
-    for(var i=0;i<groups.length;i++){if(title==groups[i]){run=false;}}
-    if(run==true){
-        firebase.database().ref('users/'+ "groups/" + uid ).push().set({
-            group: title
-        }).then(function(){
-            firebase.database().ref('groups/'+title+"/users").push().set({
-                user: uid
-            });
-        });
-    }else{
-        loadGroup(title);
-    }
-}
-
-function leaveGroup(title) {
-    var key="";
-    for(var i=0;i<groups.length;i++){
-        if(groups[i]==title){
-            key=keys[i];
-            sendFeed(uid,"Left "+groups[i],"Left on "+(new Date().getMonth()+1).toString()+"/"+new Date().getDate().toString()+"/"+new Date().getFullYear().toString());
-            firebase.database().ref('users/' + "groups/"+uid+"/"+key).remove();
-            firebase.database().ref("groups/"+title+"/users").on('value', function(snapshot) {
-                snapshot.forEach(function(childSnapshot) {
-                    var childKey = childSnapshot.key;
-                    var childData = childSnapshot.val();
-                    if(childSnapshot.val().user==uid){
-                        firebase.database().ref("groups/"+title+"/users/"+childSnapshot.key).remove();
-                    }
-                });
-            document.querySelectorAll(".body")[0].innerHTML="";
-            loadGroups();
-            });
-        }
-    }
-}
-
-function signOut() {
-    firebase.auth().signOut().then(function() {
-        location.reload(true);
-    }).catch(function(error) {
-        console.log("SIGN OUT ERROR!");
-    });
-}
-
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-function loadFeed(home) {
-    home=home||false;
-    firebase.database().ref('users/' + "feed/"+uid).on('value', function(snapshot) {
-        if(home==true){
-            var i = 0;
-                document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>Activity Feed</strong><br />Your recent notifications appear here.</span></div><br />');
-                snapshot.forEach(function(childSnapshot) {
-                    if(i==0){document.querySelectorAll(".body")[0].innerHTML="";}
-                    var childKey = childSnapshot.key;
-                    var childData = childSnapshot.val();
-                    titles[i] = childSnapshot.val().title;
-                    contents[i] = childSnapshot.val().content;
-                    document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><strong>'+encode(titles[i])+'</strong><br />'+encode(contents[i])+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
-                    i++;
-                });
-               document.querySelectorAll(".body")[0].innerHTML = ('<div class="card"><span style="font-size:4vh;"><a href="javascript:clearFeed();">Clear Feed</a></span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
-         home=false;
-        }
-     });
-}
-
-function sendFeed(id,title,content){
-    firebase.database().ref('users/' +  "feed/"+id ).push().set({
-        title:title,
-        content:content
-    }).then(function() {
-    });
-}
-
-function clearFeed(){
-    firebase.database().ref('users/'+ "feed/" + uid ).remove();
-    loadFeed(true);
 }
 
 function encode(texte) {
