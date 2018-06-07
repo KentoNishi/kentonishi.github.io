@@ -134,7 +134,7 @@ function loadGroups() {
                     uig[u]=child.val().user;
                     u++;
                 });
-                document.querySelectorAll(".body")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(groups[i])+"'"+')"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br />'+uig.length.toString()+' members<br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
+                document.querySelectorAll(".body")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(groups[i])+"'"+')"><span style="font-size:4vh;"><strong>'+encode(childSnapshot.val().group)+'</strong><br />'+uig.length.toString()+' members<br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".body")[0].innerHTML;
             });
             i++;
         });
