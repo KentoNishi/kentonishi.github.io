@@ -1,21 +1,3 @@
-console.log("Stripped down.");
-
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
-//        Service Worker Registered
-    });
-}
-
-var config = {
-    apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
-    authDomain: "gatherapp-1906b.firebaseapp.com",
-    databaseURL: "https://gatherapp-1906b.firebaseio.com",
-    projectId: "gatherapp-1906b",
-    storageBucket: "gatherapp-1906b.appspot.com",
-    messagingSenderId: "1038044491990"
-};
-firebase.initializeApp(config);
-
 var uid = "";
 var desc = "";
 var email = "";
@@ -45,6 +27,57 @@ function get(method,path,title,callback){
         window[callback](snapshot.val().title);
     });
 }
+
+function write(title,content,link,nav){
+    var body=document.body.querySelectorAll(".body")[0];
+    body.innerHTML="";
+    body.innerHTML+='<div class="card">';
+    body.innerHTML+='<span style="font-size:8vh;">';
+    body.innerHTML+=title;
+    body.innerHTML+='</span>';
+    body.innerHTML+='<br />';
+    body.innerHTML+='<br />';
+    if(content==uid){
+       body.innerHTML+="[USER CONTENT]";
+    }else{
+       body.innerHTML+='<span style="font-size:5vh;">';
+       body.innerHTML+=content;
+       body.innerHTML+='</span>';
+    }
+    body.innerHTML+='<br />';
+    body.innerHTML+='<br />';
+    if(link!=null&&nav!=null){
+        body.innerHTML+='<a href="'+link+'">'+nav+'</a>';
+        body.innerHTML+='<br />';
+    }
+    body.innerHTML+='</div>';
+}
+
+
+
+
+
+
+
+
+
+/*APIS AND BASIC FUNCTIONS*/
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
+//        Service Worker Registered
+    });
+}
+
+var config = {
+    apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
+    authDomain: "gatherapp-1906b.firebaseapp.com",
+    databaseURL: "https://gatherapp-1906b.firebaseio.com",
+    projectId: "gatherapp-1906b",
+    storageBucket: "gatherapp-1906b.appspot.com",
+    messagingSenderId: "1038044491990"
+};
+firebase.initializeApp(config);
 
 function login() {
     var provider = new firebase.auth.GoogleAuthProvider();
