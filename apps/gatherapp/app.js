@@ -236,7 +236,7 @@ function get(method,path,title,callback){
     console.log(title);
     console.log(callback);
     firebase.database().ref(path)[method]("value", function(snapshot) {
-        window[callback](title,snapshot.val()[title]);
+    //    window[callback](title,snapshot.val()[title]);
     });
 }
 
