@@ -235,7 +235,7 @@ function write(title,content,link,nav){
     body+='</span>';
     body+='<br />';
     body+='<br />';
-    body+='<span style="font-size:5vh;">';
+    body+='<span style="font-size:4vh;">';
     if(content==uid){
        body+='<img src="'+pic+'" class="pic"></img>';
     }else{
