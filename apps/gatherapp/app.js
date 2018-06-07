@@ -242,7 +242,7 @@ function groups(id){
             snapshot.forEach(function(childSnapshot) {
                 var childKey = childSnapshot.key;
                 var childData = childSnapshot.val();
-                var groups[i]=childSnapshot.val().group;
+                groups[i]=childSnapshot.val().group;
                 firebase.database().ref('groups/'+groups[i]).on('value', function(snap) {
                     write(snap.val().title,snap.val().desc||"[Description Here]","javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.key+"');","Leave Group");
                 });
