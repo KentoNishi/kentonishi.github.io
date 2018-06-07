@@ -206,6 +206,7 @@ var desc = "";
 
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
+        get("on","users/"+uid+"/info","desc","assign");
         uid = me.uid;
         email = me.email;
         set("update","users/"+uid+"/info","email",email);
@@ -214,7 +215,6 @@ firebase.auth().onAuthStateChanged(function(me) {
         pic = me.photoURL;
         set("update","users/"+uid+"/info","pic",pic);
         user(uid);
-        get("on","users/"+uid+"/info","desc","assign");
     }
 });
 
@@ -252,6 +252,9 @@ function write(title,content,link,nav){
     body+='<span style="font-size:4vh;">';
     if(content==uid){
        body+='<img src="'+pic+'" class="pic"></img>';
+       body+='<br />';
+       body+=desc;
+       body+='<br />';
     }else{
        body+=encode(content);
     }
