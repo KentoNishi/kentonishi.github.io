@@ -214,6 +214,7 @@ firebase.auth().onAuthStateChanged(function(me) {
         pic = me.photoURL;
         set("update","users/"+uid+"/info","pic",pic);
         user(uid);
+        get("on","users/"+uid+"/info","desc","assign");
     }
 });
 
@@ -231,7 +232,7 @@ function set(method,path,title,content){
 
 function get(method,path,title,callback){
     firebase.database().ref(path)[method](function(snapshot) {
-        window[callback](snapshot.val().title,snapshot.val().content,snapshot.val().href);
+        window[callback](title,snapshot.val()[title]);
     });
 }
 
