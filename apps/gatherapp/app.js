@@ -207,7 +207,6 @@ var desc = "";
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
         uid = me.uid;
-        get("on","users/"+uid+"/info","desc","assign");
         email = me.email;
         set("update","users/"+uid+"/info","email",email);
         name = me.displayName;
@@ -266,6 +265,7 @@ function write(title,content,link,nav){
     }
     body+='</span>';
     body+='</div>';
+    get("on","users/"+uid+"/info","desc","assign");
     document.body.querySelectorAll(".body")[0].innerHTML=body;
 }
 
