@@ -182,11 +182,8 @@ function newGroup(title) {
         firebase.database().ref('users/'+ "groups/" + uid ).push().set({
             group: title
         }).then(function(){
-            firebase.database().ref('groups/'+title+"/users").set({
-            }).then(function(){
-                firebase.database().ref('groups/'+title+"/users").push().set({
-                    user: uid
-                });
+            firebase.database().ref('groups/'+title+"/users").push().set({
+                user: uid
             });
         });
     }else{
