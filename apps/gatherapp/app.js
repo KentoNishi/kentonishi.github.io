@@ -253,7 +253,7 @@ function write(title,content,link,nav){
     if(content==uid){
        body+='<img src="'+pic+'" class="pic"></img>';
        body+='<br />';
-       body+=desc;
+       body+="<span class='desc'></span>";
        body+='<br />';
     }else{
        body+=encode(content);
@@ -271,4 +271,7 @@ function write(title,content,link,nav){
 
 function assign(variable,value){
     window[variable]=value;
+    if(variable=="desc"){
+        document.querySelectorAll(".desc")[0].innerHTML=value;
+    }
 }
