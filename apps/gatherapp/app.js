@@ -135,7 +135,9 @@ function loadGroups() {
                     uig[u]=child.val().user;
                     u++;
                 });
-            document.querySelectorAll(".contents")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(childSnapshot.val().group)+"'"+')"><span style="font-size:4vh;"><strong>'+encode(childSnapshot.val().group)+'</strong><br />'+uig.length.toString()+' members<br /><a href="javascript:leaveGroup('+"'"+encode(childSnapshot.val().group)+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".contents")[0].innerHTML;
+                if(groups[i]!=childSnapshot.val().group){
+                    document.querySelectorAll(".contents")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(childSnapshot.val().group)+"'"+')"><span style="font-size:4vh;"><strong>'+encode(childSnapshot.val().group)+'</strong><br />'+uig.length.toString()+' members<br /><a href="javascript:leaveGroup('+"'"+encode(childSnapshot.val().group)+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".contents")[0].innerHTML;
+                }
             });
             i++;
         });
