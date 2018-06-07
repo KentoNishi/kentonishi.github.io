@@ -135,6 +135,7 @@ function loadGroups() {
                     uig[u]=child.val().user;
                     u++;
                 });
+                /*
                 var ok=true;
                 for(var o=0;o<groups.length;o++){
                     if(groups[o]==childSnapshot.val().group){
@@ -142,9 +143,11 @@ function loadGroups() {
                     }
                 }
                 if(ok){
-                document.querySelectorAll(".contents")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(childSnapshot.val().group)+"'"+')"><span style="font-size:4vh;"><strong>'+encode(childSnapshot.val().group)+'</strong><br />'+uig.length.toString()+' members<br /><a href="javascript:leaveGroup('+"'"+encode(childSnapshot.val().group)+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".contents")[0].innerHTML;
+                    document.querySelectorAll(".contents")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(childSnapshot.val().group)+"'"+')"><span style="font-size:4vh;"><strong>'+encode(childSnapshot.val().group)+'</strong><br />'+uig.length.toString()+' members<br /><a href="javascript:leaveGroup('+"'"+encode(childSnapshot.val().group)+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".contents")[0].innerHTML;
                 }
+                */
             });
+            document.querySelectorAll(".contents")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(childSnapshot.val().group)+"'"+')"><span style="font-size:4vh;"><strong>'+encode(childSnapshot.val().group)+'</strong><br />'+uig.length.toString()+' members<br /><a href="javascript:leaveGroup('+"'"+encode(childSnapshot.val().group)+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".contents")[0].innerHTML;
             i++;
         });
     });
