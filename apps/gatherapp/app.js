@@ -218,26 +218,27 @@ function get(method,path,title,callback){
 }
 
 function write(title,content,link,nav){
-    var body=document.body.querySelectorAll(".body")[0];
-    body.innerHTML="";
-    body.innerHTML+='<div class="card">';
-    body.innerHTML+='<span style="font-size:8vh;">';
-    body.innerHTML+=title;
-    body.innerHTML+='</span>';
-    body.innerHTML+='<br />';
-    body.innerHTML+='<br />';
+    var body="";
+    body="";
+    body+='<div class="card">';
+    body+='<span style="font-size:8vh;">';
+    body+=title;
+    body+='</span>';
+    body+='<br />';
+    body+='<br />';
     if(content==uid){
        body.innerHTML+="[USER CONTENT]";
     }else{
-       body.innerHTML+='<span style="font-size:5vh;">';
-       body.innerHTML+=content;
-       body.innerHTML+='</span>';
+       body+='<span style="font-size:5vh;">';
+       body+=content;
+       body+='</span>';
     }
-    body.innerHTML+='<br />';
-    body.innerHTML+='<br />';
+    body+='<br />';
+    body+='<br />';
     if(link!=null&&nav!=null){
-        body.innerHTML+='<a href="'+link+'">'+nav+'</a>';
-        body.innerHTML+='<br />';
+        body+='<a href="'+link+'">'+nav+'</a>';
+        body+='<br />';
     }
-    body.innerHTML+='</div>';
+    body+='</div>';
+    document.body.querySelectorAll(".body")[0].innerHTML=body;
 }
