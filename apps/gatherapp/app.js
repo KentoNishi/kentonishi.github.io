@@ -213,7 +213,7 @@ firebase.auth().onAuthStateChanged(function(me) {
         set("update","users/"+uid+"/info","name",name);
         pic = me.photoURL;
         set("update","users/"+uid+"/info","pic",pic);
-        user(uid);
+        action("menu");
     }
 });
 
@@ -265,7 +265,6 @@ function write(title,content,link,nav){
     }
     body+='</span>';
     body+='</div>';
-    get("on","users/"+uid+"/info","desc","assign");
     document.body.querySelectorAll(".body")[0].innerHTML=body;
 }
 
