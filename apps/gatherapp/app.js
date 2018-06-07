@@ -199,10 +199,10 @@ var decode = (function() {
 
 /*THE REAL CODE*/
 var uid = "";
-var desc = "";
-var email = "";
 var name = "";
+var email = "";
 var pic = "";
+var desc = "";
 
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
