@@ -210,9 +210,14 @@ firebase.auth().onAuthStateChanged(function(user) {
         set("update","users/"+uid+"/info","name",name);
         pic = user.photoURL;
         set("update","users/"+uid+"/info","pic",pic);
-        write(name,uid,"javascript:signOut();","Sign Out");
     }
 });
+
+function user(id){
+    if(id==uid){
+        write(name,uid,"javascript:signOut();","Sign Out");
+    }
+}
 
 function set(method,path,title,content){
     firebase.database().ref(path)[method]({
