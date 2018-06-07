@@ -236,7 +236,7 @@ function write(title,content,link,nav){
     body+='<br />';
     body+='<br />';
     if(content==uid){
-       body+="<img src='"+pic+"' class='pic'></img>";
+       body+='<img src="'+pic+'" class="pic"></img>';
     }else{
        body+='<span style="font-size:5vh;">';
        body+=encode(content);
