@@ -235,10 +235,10 @@ function write(title,content,link,nav){
     body+='</span>';
     body+='<br />';
     body+='<br />';
+    body+='<span style="font-size:5vh;">';
     if(content==uid){
        body+='<img src="'+pic+'" class="pic"></img>';
     }else{
-       body+='<span style="font-size:5vh;">';
        body+=encode(content);
     }
     body+='<br />';
