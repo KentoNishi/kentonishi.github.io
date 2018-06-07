@@ -127,27 +127,7 @@ function loadGroups() {
             var childData = childSnapshot.val();
             groups[i] = childSnapshot.val().group;
             keys[i]=childSnapshot.key;
-            firebase.database().ref("groups/"+childSnapshot.val().group+"/users").on('value', function(snap) {
-                u=0;
-                snap.forEach(function(child) {
-                    var childKey = child.key;
-                    var childData = child.val();
-                    uig[u]=child.val().user;
-                    u++;
-                });
-                /*
-                var ok=true;
-                for(var o=0;o<groups.length;o++){
-                    if(groups[o]==childSnapshot.val().group){
-                        ok=false;
-                    }
-                }
-                if(ok){
-                    document.querySelectorAll(".contents")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(childSnapshot.val().group)+"'"+')"><span style="font-size:4vh;"><strong>'+encode(childSnapshot.val().group)+'</strong><br />'+uig.length.toString()+' members<br /><a href="javascript:leaveGroup('+"'"+encode(childSnapshot.val().group)+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".contents")[0].innerHTML;
-                }
-                */
-            });
-            document.querySelectorAll(".contents")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(childSnapshot.val().group)+"'"+')"><span style="font-size:4vh;"><strong>'+encode(childSnapshot.val().group)+'</strong><br />'+uig.length.toString()+' members<br /><a href="javascript:leaveGroup('+"'"+encode(childSnapshot.val().group)+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".contents")[0].innerHTML;
+            document.querySelectorAll(".contents")[0].innerHTML = ('<div class="card" onclick="loadGroup('+"'"+encodeURIComponent(groups[i])+"'"+')"><span style="font-size:4vh;"><strong>'+encode(groups[i])+'</strong><br />'+uig.length.toString()+' members<br /><a href="javascript:leaveGroup('+"'"+encode(groups[i])+"'"+');">Leave Group</a>'+'</span></div><br />')+document.querySelectorAll(".contents")[0].innerHTML;
             i++;
         });
     });
