@@ -248,7 +248,6 @@ function get(method,path,title,callback){
 
 function write(title,content,link,nav){
     var body="";
-    body+='<br />';
     if(link!=null&&nav==null){
         body+='<div class="card" onclick="javascript:'+link+';">';
     }else{
@@ -276,7 +275,7 @@ function write(title,content,link,nav){
     }
     body+='</span>';
     body+='</div>';
-    document.body.querySelectorAll(".body")[0].innerHTML+=body;
+    document.body.querySelectorAll(".body")[0].innerHTML=body;
 }
 
 function assign(variable,value){
