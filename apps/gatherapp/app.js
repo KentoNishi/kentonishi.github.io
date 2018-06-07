@@ -202,6 +202,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         set("update","users/"+uid+"/info","name",name);
         pic = user.photoURL;
         set("update","users/"+uid+"/info","pic",pic);
+        write();
     }
 });
 
@@ -222,7 +223,7 @@ function write(title,content,link,nav){
     body="";
     body+='<div class="card">';
     body+='<span style="font-size:8vh;">';
-    body+=title;
+    body+=encode(title);
     body+='</span>';
     body+='<br />';
     body+='<br />';
@@ -230,13 +231,13 @@ function write(title,content,link,nav){
        body.innerHTML+="[USER CONTENT]";
     }else{
        body+='<span style="font-size:5vh;">';
-       body+=content;
+       body+=encode(content);
        body+='</span>';
     }
     body+='<br />';
     body+='<br />';
     if(link!=null&&nav!=null){
-        body+='<a href="'+link+'">'+nav+'</a>';
+        body+='<a href="'+link+'">'+encode(nav)+'</a>';
         body+='<br />';
     }
     body+='</div>';
