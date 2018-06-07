@@ -270,7 +270,4 @@ function write(title,content,link,nav){
 
 function assign(variable,value){
     window[variable]=value;
-    if(variable=="desc"){
-        document.querySelectorAll(".desc")[0].innerHTML=value;
-    }
 }
