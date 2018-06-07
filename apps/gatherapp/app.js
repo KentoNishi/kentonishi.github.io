@@ -1,4 +1,3 @@
-
 /*APIS AND BASIC FUNCTIONS*/
 
 if ('serviceWorker' in navigator) {
