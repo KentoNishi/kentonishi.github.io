@@ -120,8 +120,10 @@ function loadGroups() {
         keys=[];
         var uig=[];
         var u=0;
+        try{
+            document.querySelectorAll(".contents")[0].innerHTML="";
+        }catch(TypeError){}
         document.querySelectorAll(".body")[0].innerHTML="";
-        document.querySelectorAll(".contents")[0].innerHTML="";
         document.querySelectorAll(".body")[0].innerHTML='<div class="card"><span style="font-size:4vh;"><a style="font-size:6vh;"><strong>Join New Group</strong></a><br /><input type="text" placeholder="Group Name" maxlength="24" style="height: 5vh; width: 50vw; font-size: 4vh; text-align: center;margin-top:1vh;"></input><br /><button onclick="join()" style="margin-top:0.5vh;transition:0.5s;height: 5vh; width: 40vw; font-size: 3vh; text-align: center; padding: 0; vertical-align: baseline; background-color: rgba(255,255,255,1); border: none; border-radius: 5px;">Join Group</button></span></div><br /><div class="contents"></div>';
         snapshot.forEach(function(childSnapshot) {
             var childKey = childSnapshot.key;
