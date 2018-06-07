@@ -253,7 +253,7 @@ function write(title,content,link,nav){
        body+='<img src="'+pic+'" class="pic"></img>';
        body+='<br />';
        body+='<br />';
-       body+="<span class='desc'></span>";
+       body+="<span class='desc'>"+desc||""+"</span>";
     }else{
        body+=encode(content);
     }
