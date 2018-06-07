@@ -225,13 +225,36 @@ function clear(element){
 
 function user(id){
     if(id==uid){
+        clear("body");
         write(name,uid,"javascript:signOut();","Sign Out");
     }
 }
 
+function remove(path){
+}
+
 function groups(id){
     if(id==uid){
+        clear("body");
+        var i = 0;
+        var groups=[];
+        firebase.database().ref('users/'+uid+"/groups").on('value', function(snapshot) {
+            snapshot.forEach(function(childSnapshot) {
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
+                var groups[i]=childSnapshot.val().group;
+                firebase.database().ref('groups/'+groups[i]).on('value', function(snap) {
+                    write(snap.val().title,snap.val().desc||"[Description Here]","javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.key+"');","Leave Group");
+                });
+                i++;
+            });
+        });
     }
+}
+
+function new(name){
+    set("push","users/"+uid+"/groups","group",name);
+    set("push","groups/","title",name);
 }
 
 function set(method,path,title,content){
@@ -275,7 +298,7 @@ function write(title,content,link,nav){
     }
     body+='</span>';
     body+='</div>';
-    document.body.querySelectorAll(".body")[0].innerHTML=body;
+    document.body.querySelectorAll(".body")[0].innerHTML+=body;
 }
 
 function assign(variable,value){
