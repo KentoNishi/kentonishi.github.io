@@ -231,6 +231,10 @@ function set(method,path,title,content){
 }
 
 function get(method,path,title,callback){
+    console.log(method);
+    console.log(path);
+    console.log(title);
+    console.log(callback);
     firebase.database().ref(path)[method]("value", function(snapshot) {
         window[callback](title,snapshot.val()[title]);
     });
