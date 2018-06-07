@@ -204,14 +204,14 @@ var email = "";
 var name = "";
 var pic = "";
 
-firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        uid = user.uid;
-        email = user.email;
+firebase.auth().onAuthStateChanged(function(me) {
+    if (me) {
+        uid = me.uid;
+        email = me.email;
         set("update","users/"+uid+"/info","email",email);
-        name = user.displayName;
+        name = me.displayName;
         set("update","users/"+uid+"/info","name",name);
-        pic = user.photoURL;
+        pic = me.photoURL;
         set("update","users/"+uid+"/info","pic",pic);
         user(uid);
     }
