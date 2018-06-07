@@ -264,3 +264,7 @@ function write(title,content,link,nav){
     body+='</div>';
     document.body.querySelectorAll(".body")[0].innerHTML=body;
 }
+
+function assign(variable,value){
+    window[variable]=value;
+}
