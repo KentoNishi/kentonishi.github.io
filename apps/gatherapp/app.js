@@ -24,6 +24,14 @@ function login() {
     });
 }
 
+function signOut() {
+    firebase.auth().signOut().then(function() {
+        location.reload(true);
+    }).catch(function(error) {
+        console.log("SIGN OUT ERROR!");
+    });
+}
+
 function action(act) {
     if (act == "menu") {
         console.log("menu");
@@ -202,7 +210,8 @@ firebase.auth().onAuthStateChanged(function(user) {
         set("update","users/"+uid+"/info","name",name);
         pic = user.photoURL;
         set("update","users/"+uid+"/info","pic",pic);
-        write();
+        var img="<img src='"+pic+"' class='pic'></img>";
+        write(name,img,"javascript:signOut();","Sign Out");
     }
 });
 
