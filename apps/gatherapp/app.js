@@ -222,14 +222,18 @@ function set(method,path,title,content){
 
 function get(method,path,title,callback){
     firebase.database().ref(path)[method](function(snapshot) {
-        window[callback](snapshot.val().title);
+        window[callback](snapshot.val().title,snapshot.val().content,snapshot.val().href);
     });
 }
 
 function write(title,content,link,nav){
     var body="";
     body="";
-    body+='<div class="card">';
+    if(link!=null&&nav==null){
+        body+='<div class="card" onclick="javascript:'+link+';">';
+    }else{
+        body+='<div class="card">';
+    }
     body+='<span style="font-size:8vh;">';
     body+=encode(title);
     body+='</span>';
