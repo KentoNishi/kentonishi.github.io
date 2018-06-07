@@ -252,7 +252,7 @@ function groups(id){
     }
 }
 
-function new(name){
+function create(name){
     set("push","users/"+uid+"/groups","group",name);
     set("push","groups/","title",name);
 }
