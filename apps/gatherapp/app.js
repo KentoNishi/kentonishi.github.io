@@ -4,9 +4,6 @@ var email = "";
 var name = "";
 var pic = "";
 
-
-
-
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         uid = user.uid;
