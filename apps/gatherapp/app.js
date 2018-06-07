@@ -210,8 +210,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         set("update","users/"+uid+"/info","name",name);
         pic = user.photoURL;
         set("update","users/"+uid+"/info","pic",pic);
-        var img="<img src='"+pic+"' class='pic'></img>";
-        write(name,img,"javascript:signOut();","Sign Out");
+        write(name,uid,"javascript:signOut();","Sign Out");
     }
 });
 
@@ -237,11 +236,10 @@ function write(title,content,link,nav){
     body+='<br />';
     body+='<br />';
     if(content==uid){
-       body.innerHTML+="[USER CONTENT]";
+       body+="<img src='"+pic+"' class='pic'></img>";
     }else{
        body+='<span style="font-size:5vh;">';
        body+=encode(content);
-       body+='</span>';
     }
     body+='<br />';
     body+='<br />';
@@ -249,6 +247,7 @@ function write(title,content,link,nav){
         body+='<a href="'+link+'">'+encode(nav)+'</a>';
         body+='<br />';
     }
+    body+='</span>';
     body+='</div>';
     document.body.querySelectorAll(".body")[0].innerHTML=body;
 }
