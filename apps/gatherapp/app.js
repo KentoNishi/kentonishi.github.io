@@ -206,8 +206,8 @@ var desc = "";
 
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
-        get("on","users/"+uid+"/info","desc","assign");
         uid = me.uid;
+        get("on","users/"+uid+"/info","desc","assign");
         email = me.email;
         set("update","users/"+uid+"/info","email",email);
         name = me.displayName;
@@ -231,12 +231,8 @@ function set(method,path,title,content){
 }
 
 function get(method,path,title,callback){
-    console.log(method);
-    console.log(path);
-    console.log(title);
-    console.log(callback);
     firebase.database().ref(path)[method]("value", function(snapshot) {
-    //    window[callback](title,snapshot.val()[title]);
+        window[callback](title,snapshot.val()[title]);
     });
 }
 
