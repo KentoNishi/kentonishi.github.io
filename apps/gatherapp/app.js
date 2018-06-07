@@ -35,6 +35,7 @@ function signOut() {
 function action(act) {
     if (act == "menu") {
         console.log("menu");
+        user(uid);
     } else if (act == "add") {
         console.log("add");
     } else if (act == "home") {
@@ -210,6 +211,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         set("update","users/"+uid+"/info","name",name);
         pic = user.photoURL;
         set("update","users/"+uid+"/info","pic",pic);
+        user(uid);
     }
 });
 
