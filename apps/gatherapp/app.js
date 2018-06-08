@@ -254,7 +254,7 @@ function groups(id){
 
 function create(name){
     set("push","users/"+uid+"/groups","group",name);
-    set("push","groups/","title",name);
+    set("push","groups/","group",name);
 }
 
 function set(method,path,title,content){
