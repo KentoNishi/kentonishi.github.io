@@ -254,8 +254,7 @@ function groups(id){
     }
 }
 
-//!!!
-/*
+
 function reverseSnapshotOrder (snapshot) {
   let reversed = [];
 
@@ -265,13 +264,6 @@ function reverseSnapshotOrder (snapshot) {
 
   return reversed;
 }
-
-firebase.database().ref("groups/").orderByChild("stats/popularity").on('value', snapshot => {
-    reverseSnapshotOrder(snapshot).forEach(child => {
-        console.log(child.key, child.val().stats.popularity);
-    });
-});
-*/
 
 function create(name){
     var key=firebase.database().ref("users/"+uid+"/groups").push().key;
