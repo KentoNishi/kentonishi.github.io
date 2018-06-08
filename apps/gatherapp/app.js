@@ -266,8 +266,11 @@ function popularity(callback){
     });
 }
 
-function group(id){
-    alert("Group "+id);
+function group(key){
+    set("set","users/"+uid+"/groups/"+key,"group",key);
+    set("push","groups/"+key+"/users",uid,true);
+    set("update","groups/"+key+"/stats","popularity",0);
+    counter(key,"join");
 }
 
 function groups(id){
@@ -304,7 +307,7 @@ function create(name){
     var key=firebase.database().ref("users/"+uid+"/groups").push().key;
     set("set","users/"+uid+"/groups/"+key,"group",key);
     set("set","groups/"+key+"/info","group",name);
-    set("update","groups/"+key+"/users",uid,true);
+    set("push","groups/"+key+"/users",uid,true);
     set("update","groups/"+key+"/stats","popularity",0);
     counter(key,"join");
     groups(uid);
