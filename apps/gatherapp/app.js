@@ -217,7 +217,7 @@ function action(act) {
         console.log("add");
         clear("body");
         write("Most Popular","View Most Popular","popularity(uid);");
-        write("My Groups","View All","javascript:groups(uid);");
+        write("My Groups","View All","groups(uid);");
     } else if (act == "home") {
         console.log("home");
     }
