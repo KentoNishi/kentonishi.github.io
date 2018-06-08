@@ -242,7 +242,7 @@ function remove(path,callback,param){
 function popularity(callback){
     clear("body");
     firebase.database().ref("groups/").orderByChild("stats/popularity").limitToLast(25).on('value', snapshot => {
-        reverseSnapshotOrder(snapshot).forEach(child => {
+        snapshot.forEach(child => {
 //            console.log(child.key, child.val().stats.popularity);
             write(child.val().info.group,child.val().stats.popularity.toString()+" members","group('"+child.key+"');");
         });
