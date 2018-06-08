@@ -41,7 +41,8 @@ function action(act) {
         user(uid);
     } else if (act == "add") {
         console.log("add");
-        groups(uid);
+        write("My Groups","View All","javascript:groups(uid);");
+        write("Most Popular","View Most Popular","javascript:popularity(uid);");
     } else if (act == "home") {
         console.log("home");
     }
@@ -236,6 +237,20 @@ function remove(path,callback,param){
     window[callback](param);
 }
 
+function popularity(callback){
+    clear("body");
+    firebase.database().ref("groups/").orderByChild("stats/popularity").limitToLast(25).on('value', snapshot => {
+        reverseSnapshotOrder(snapshot).forEach(child => {
+//            console.log(child.key, child.val().stats.popularity);
+            write(child.val().info.group,"Join Group","group('"+child.key+"');");
+        });
+    });
+}
+
+function group(id){
+    alert("Group "+id);
+}
+
 function groups(id){
     if(id==uid){
         clear("body");
@@ -331,7 +346,6 @@ function write(title,content,link,nav){
     body+='<br />';
     if(link!=null&&nav!=null){
         body+='<a href="'+link+'">'+encode(nav)+'</a>';
-        body+='<br />';
     }
     body+='</span>';
     body+='</div>';
