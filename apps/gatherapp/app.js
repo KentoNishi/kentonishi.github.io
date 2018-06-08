@@ -244,7 +244,7 @@ function groups(id){
                 var childData = childSnapshot.val();
                 groups[i]=childSnapshot.val().group;
                 firebase.database().ref('groups/'+groups[i]).on('value', function(snap) {
-                    write(snap.val().title,snap.val().desc||"[Description Here]","javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.key+"');","Leave Group");
+                    write(snap.val().group,snap.val().desc||"[Description Here]","javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.key+"');","Leave Group");
                 });
                 i++;
             });
