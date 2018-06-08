@@ -231,6 +231,7 @@ function user(id){
 }
 
 function remove(path){
+    firebase.database().ref(path).remove();
 }
 
 function groups(id){
@@ -287,7 +288,7 @@ function write(title,content,link,nav){
        body+='<img src="'+pic+'" class="pic"></img>';
        body+='<br />';
        body+='<br />';
-       body+="<span class='desc'>"+desc||""+"</span>";
+       body+="<span class='desc'>"+encode(desc||"[Description Here]")+"</span>";
     }else{
        body+=encode(content);
     }
