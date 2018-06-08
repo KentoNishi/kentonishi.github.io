@@ -240,7 +240,7 @@ function groups(id){
         clear("body");
         var i = 0;
         var myGroups=[];
-        firebase.database().ref('users/'+uid+"/groups").once('value', function(snapshot) {
+        firebase.database().ref('users/'+uid+"/groups/").once('value', function(snapshot) {
             snapshot.forEach(function(childSnapshot) {
                 var childKey = childSnapshot.key;
                 var childData = childSnapshot.val();
@@ -260,7 +260,6 @@ function create(name){
     set("set","groups/"+key+"/info","group",name);
     set("set","groups/"+key+"/users",uid,true);
     set("set","groups/"+key+"/stats","popularity",0);
-    toggle(key);
     groups(uid);
 }
 
