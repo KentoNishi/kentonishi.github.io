@@ -238,12 +238,12 @@ function groups(id){
         clear("body");
         var i = 0;
         var myGroups=[];
-        firebase.database().ref('users/'+uid+"/groups").on('value', function(snapshot) {
+        firebase.database().ref('users/'+uid+"/groups").once('value', function(snapshot) {
             snapshot.forEach(function(childSnapshot) {
                 var childKey = childSnapshot.key;
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
-                firebase.database().ref('groups/'+myGroups[i]).on('value', function(snap) {
+                firebase.database().ref('groups/'+myGroups[i]).once('value', function(snap) {
                     write(snap.val().group,snap.val().desc||"[Description Here]","javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.key+"');","Leave Group");
                 });
                 i++;
