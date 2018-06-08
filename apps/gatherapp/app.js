@@ -273,7 +273,7 @@ function counter(key,act) {
       } else {
         post.stats.popularity++;
         if (!post.users) {
-          post.users = {};
+          post.users[uid].remove();
         }
         post.users[uid] = true;
       }
