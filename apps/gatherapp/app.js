@@ -250,9 +250,11 @@ function popularity(callback){
 }
 
 function group(key){
+    firebase.database().ref("groups/"+key+"/users").once("value", function(snapshot) {
+        if(!snapshot.val()[uid]){counter(key,"join");}
+    });
     set("set","users/"+uid+"/groups/"+key,"group",key);
     set("update","groups/"+key+"/users",uid,true);
-    counter(key,"join");
 }
 
 function groups(id){
