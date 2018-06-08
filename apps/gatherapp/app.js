@@ -35,19 +35,6 @@ function signOut() {
     });
 }
 
-function action(act) {
-    if (act == "menu") {
-        console.log("menu");
-        user(uid);
-    } else if (act == "add") {
-        console.log("add");
-        write("My Groups","View All","javascript:groups(uid);");
-        write("Most Popular","View Most Popular","javascript:popularity(uid);");
-    } else if (act == "home") {
-        console.log("home");
-    }
-}
-
 function encode(texte) {
     texte = texte.replace(/"/g, '&quot;'); // 34 22
     texte = texte.replace(/&/g, '&amp;'); // 38 26
@@ -221,6 +208,21 @@ firebase.auth().onAuthStateChanged(function(me) {
     }
 });
 
+
+function action(act) {
+    if (act == "menu") {
+        console.log("menu");
+        user(uid);
+    } else if (act == "add") {
+        console.log("add");
+        clear("body");
+        write("My Groups","View All","javascript:groups(uid);");
+        write("Most Popular","View Most Popular","javascript:popularity(uid);");
+    } else if (act == "home") {
+        console.log("home");
+    }
+}
+
 function clear(element){
     document.querySelectorAll("."+element)[0].innerHTML="";
 }
@@ -343,8 +345,8 @@ function write(title,content,link,nav){
        body+=encode(content);
     }
     body+='<br />';
-    body+='<br />';
     if(link!=null&&nav!=null){
+        body+='<br />';
         body+='<a href="'+link+'">'+encode(nav)+'</a>';
     }
     body+='</span>';
