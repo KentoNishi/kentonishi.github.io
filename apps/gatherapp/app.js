@@ -237,13 +237,13 @@ function groups(id){
     if(id==uid){
         clear("body");
         var i = 0;
-        var groups=[];
+        var myGroups=[];
         firebase.database().ref('users/'+uid+"/groups").on('value', function(snapshot) {
             snapshot.forEach(function(childSnapshot) {
                 var childKey = childSnapshot.key;
                 var childData = childSnapshot.val();
-                groups[i]=childSnapshot.val().group;
-                firebase.database().ref('groups/'+groups[i]).on('value', function(snap) {
+                myGroups[i]=childSnapshot.val().group;
+                firebase.database().ref('groups/'+myGroups[i]).on('value', function(snap) {
                     write(snap.val().group,snap.val().desc||"[Description Here]","javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.key+"');","Leave Group");
                 });
                 i++;
