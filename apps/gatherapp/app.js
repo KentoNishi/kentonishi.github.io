@@ -216,8 +216,8 @@ function action(act) {
     } else if (act == "add") {
         console.log("add");
         clear("body");
+        write("Most Popular","View Most Popular","popularity(uid);");
         write("My Groups","View All","javascript:groups(uid);");
-        write("Most Popular","View Most Popular","javascript:popularity(uid);");
     } else if (act == "home") {
         console.log("home");
     }
