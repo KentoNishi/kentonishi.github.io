@@ -251,7 +251,7 @@ function popularity(callback){
 
 function group(key){
     firebase.database().ref("groups/"+key+"/users").once("value", function(snapshot) {
-        if(snapshot.val()[uid]!=true){
+        if(snapshot.val()[uid]==null){
             counter(key,"join");
         }
     });
