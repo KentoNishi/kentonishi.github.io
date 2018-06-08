@@ -259,7 +259,27 @@ function create(name){
     set("push","users/"+uid+"/groups/","group",key);
     set("set","groups/"+key+"/info","group",name);
     set("set","groups/"+key+"/users",uid,true);
+    set("set","groups/"+key,"popularity",0);
+    toggle(key);
     groups(uid);
+}
+
+function toggle(key) {
+  firebase.database().ref("groups/"+key).transaction(function(post) {
+    if (post) {
+      if (post.users && post.users[uid]) {
+        post.popularity--;
+        post.users[uid] = null;
+      } else {
+        post.popularity++;
+        if (!post.users) {
+          post.users = {};
+        }
+        post.users[uid] = true;
+      }
+    }
+    return post;
+  });
 }
 
 function set(method,path,title,content){
