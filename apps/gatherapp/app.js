@@ -259,7 +259,7 @@ function create(name){
     set("push","users/"+uid+"/groups/","group",key);
     set("set","groups/"+key+"/info","group",name);
     set("set","groups/"+key+"/users",uid,true);
-    set("set","groups/"+key,"popularity",0);
+    set("set","groups/"+key+"stats","popularity",0);
     toggle(key);
     groups(uid);
 }
@@ -268,10 +268,10 @@ function toggle(key) {
   firebase.database().ref("groups/"+key).transaction(function(post) {
     if (post) {
       if (post.users && post.users[uid]) {
-        post.popularity--;
+        post.stats.popularity--;
         post.users[uid] = null;
       } else {
-        post.popularity++;
+        post.stats.popularity++;
         if (!post.users) {
           post.users = {};
         }
