@@ -244,7 +244,7 @@ function popularity(callback){
     firebase.database().ref("groups/").orderByChild("stats/popularity").limitToLast(25).on('value', snapshot => {
         reverseSnapshotOrder(snapshot).forEach(child => {
 //            console.log(child.key, child.val().stats.popularity);
-            write(child.val().info.group,"Join Group","group('"+child.key+"');");
+            write(child.val().info.group,child.val().stats.popularity.toString()+" members","group('"+child.key+"');");
         });
     });
 }
