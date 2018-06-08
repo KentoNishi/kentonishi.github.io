@@ -303,5 +303,5 @@ function write(title,content,link,nav){
 }
 
 function assign(variable,value){
-    window[variable]=value;
+    window[variable]=value||"["+variable.replace("desc","Description")+" Here]";
 }
