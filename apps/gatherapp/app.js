@@ -299,7 +299,7 @@ function write(title,content,link,nav){
     }
     body+='</span>';
     body+='</div>';
-    document.body.querySelectorAll(".body")[0].innerHTML+=body;
+    document.body.querySelectorAll(".body")[0].innerHTML=body+document.body.querySelectorAll(".body")[0].innerHTML;
 }
 
 function assign(variable,value){
