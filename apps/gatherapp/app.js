@@ -230,8 +230,9 @@ function user(id){
     }
 }
 
-function remove(path){
+function remove(path,callback,param){
     firebase.database().ref(path).remove();
+    window[callback](param);
 }
 
 function groups(id){
@@ -245,7 +246,7 @@ function groups(id){
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
                 firebase.database().ref('groups/'+myGroups[i]).once('value', function(snap) {
-                    write(snap.val().group,snap.val().desc||"[Description Here]","javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"');","Leave Group");
+                    write(snap.val().group,snap.val().desc||"[Description Here]","javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);","Leave Group");
                 });
                 i++;
             });
