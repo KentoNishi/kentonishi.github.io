@@ -254,8 +254,8 @@ function groups(id){
 
 function create(name){
     var key=firebase.database().ref("users/"+uid+"/groups").push().key;
-    set("set","users/"+uid+"/groups/"+key,"group",name);
-    set("push","groups/","group",key);
+    set("set","users/"+uid+"/groups/"+key,"group",key);
+    set("push","groups/","group",name);
 }
 
 function set(method,path,title,content){
