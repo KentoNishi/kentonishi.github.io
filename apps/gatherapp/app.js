@@ -256,6 +256,7 @@ function group(key){
         }
     });
     set("set","users/"+uid+"/groups/"+key,"group",key);
+    set("update","groups/"+key+"/users",uid,true);
 }
 
 function groups(id){
@@ -269,7 +270,7 @@ function groups(id){
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
                 firebase.database().ref('groups/'+myGroups[i]+"/info").once('value', function(snap) {
-                    write(snap.val().group,snap.val().desc||"[Description Here]","javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);counter('"+childSnapshot.val().group+"','leave');","Leave Group");
+                    write(snap.val().group||"[Group Name]",snap.val().desc||"[Description Here]","javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);counter('"+childSnapshot.val().group+"','leave');","Leave Group");
                 });
                 i++;
             });
@@ -292,6 +293,7 @@ function create(name){
     var key=firebase.database().ref("users/"+uid+"/groups").push().key;
     set("set","users/"+uid+"/groups/"+key,"group",key);
     set("set","groups/"+key+"/info","group",name);
+    set("set","groups/"+key+"/users",uid,true);
     set("update","groups/"+key+"/stats","popularity",0);
     counter(key,"join");
     groups(uid);
@@ -303,13 +305,11 @@ function counter(key,act) {
       if (act=="leave") {
         post.stats.popularity--;
         post.users[uid] = null;
+        if(post.stats.popularity==0){remove("groups/"+key,"void",0);}
       } else {
         post.stats.popularity++;
         if (!post.users) {
-            try{
-              post.users[uid].remove();
-            }catch(TypeError){
-            }
+          post.users[uid].remove();
         }
         post.users[uid] = true;
       }
