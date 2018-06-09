@@ -267,7 +267,21 @@ function popularity(callback){
 }
 
 function group(id){
-    alert("Group "+id);
+  firebase.database().ref('groups/'+id).transaction(function(post) {
+    if (post) {
+      if (post.users && post.users[uid]) {
+        post.stats.popularity--;
+        post.users[uid] = null;
+      } else {
+        post.stats.popularity++;
+        if (!post.users) {
+          post.users = {};
+        }
+        post.users[uid] = true;
+      }
+    }
+    return post;
+  });
 }
 
 function groups(id){
