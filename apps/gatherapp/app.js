@@ -399,5 +399,4 @@ function assign(variable,value){
 }
 
 function stall(param){
-    void(0);
 }
