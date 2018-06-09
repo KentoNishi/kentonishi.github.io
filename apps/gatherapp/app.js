@@ -305,6 +305,7 @@ function create(name){
 function counter(key,act) {
   firebase.database().ref("groups/"+key).transaction(function(post) {
     if (post) {
+      console.log(post.stats.popularity);
       if (act=="leave") {
         post.stats.popularity--;
         post.users[uid] = null;
