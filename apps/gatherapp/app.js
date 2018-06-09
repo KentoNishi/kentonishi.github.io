@@ -266,10 +266,11 @@ function popularity(callback){
     });
 }
 
-function group(id){
+function group(id,leave){
+  leave=leave||"join";
   firebase.database().ref('groups/'+id).transaction(function(post) {
     if (post) {
-      if (post.users && post.users[uid]) {
+      if (leave=="leave") {
         post.stats.popularity--;
         post.users[uid] = null;
       } else {
