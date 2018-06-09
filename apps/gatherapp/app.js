@@ -252,9 +252,9 @@ function action(act) {
     } else if (act == "add") {
         console.log("add");
         clear("body");
-        write("New Group","Create a new group","pend();");
-        write("Most Popular","View popular groups","popularity(uid);");
-        write("My Groups","View your groups","groups(uid);");
+        write("New Group","","pend();");
+        write("Most Popular","","popularity(uid);");
+        write("My Groups","","groups(uid);");
     } else if (act == "home") {
         console.log("home");
     }
