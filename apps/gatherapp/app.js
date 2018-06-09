@@ -323,6 +323,8 @@ function create(name,info){
     set("set","users/"+uid+"/groups/"+key,"group",key);
     set("set","groups/"+key+"/info","group",name);
     set("update","groups/"+key+"/info","desc",info);
+    set("update","groups/"+key+"/users",uid,true);
+    set("update","groups/"+key+"/stats","popularity",1);
     group(key);
     groups(uid);
 }
