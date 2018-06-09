@@ -303,7 +303,6 @@ function counter(key,act) {
       if (act=="leave") {
         post.stats.popularity--;
         post.users[uid] = null;
-        if(post.stats.popularity==0){remove("groups/"+key,"void",0);}
       } else {
         post.stats.popularity++;
         if (!post.users) {
