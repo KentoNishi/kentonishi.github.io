@@ -272,7 +272,7 @@ function group(id,leave){
     if (post) {
       if (leave=="leave") {
         post.stats.popularity--;
-        if(post.stats.popularity==0){remove("groups/"+id,"void",0)}
+        if(post.stats.popularity==0){remove("groups/"+id,"stall",0)}
         post.users[uid] = null;
       } else {
         if(!post.users[uid]){
@@ -377,5 +377,5 @@ function assign(variable,value){
     window[variable]=value||"["+variable.replace("desc","Description")+" Here]";
 }
 
-function void(param){
+function stall(param){
 }
