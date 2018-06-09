@@ -254,6 +254,7 @@ function group(key){
         if(snapshot.val()[uid]!=true){
             set("set","users/"+uid+"/groups/"+key,"group",key);
             set("update","groups/"+key+"/users",uid,true);
+            console.log(key);
             counter(key,"join");
         }else{
         }
@@ -296,6 +297,7 @@ function create(name){
     set("set","groups/"+key+"/info","group",name);
     set("set","groups/"+key+"/users",uid,true);
     set("update","groups/"+key+"/stats","popularity",0);
+    console.log(key);
     counter(key,"join");
     groups(uid);
 }
