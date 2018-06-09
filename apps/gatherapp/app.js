@@ -349,7 +349,7 @@ function write(title,content,link,nav){
         body+='<div class="card">';
     }
     body+='<span style="font-size:8vh;">';
-    body+=encode(title).replace("&quot;",'"');
+    body+=encode(title).replace("&amp;quot;",'"');
     body+='</span>';
     body+='<br />';
     body+='<br />';
@@ -360,12 +360,12 @@ function write(title,content,link,nav){
        body+='<br />';
        body+="<span class='desc'>"+encode(desc||"[Description Here]")+"</span>";
     }else{
-       body+=encode(content).replace("&quot;",'"');
+       body+=encode(content).replace("&amp;quot;",'"');
     }
     body+='<br />';
     if(link!=null&&nav!=null){
         body+='<br />';
-        body+='<a href="'+link+'">'+encode(nav).replace("&quot;",'"')+'</a>';
+        body+='<a href="'+link+'">'+encode(nav).replace("&amp;quot;",'"')+'</a>';
     }
     body+='</span>';
     body+='</div>';
