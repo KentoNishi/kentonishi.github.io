@@ -225,6 +225,25 @@ firebase.auth().onAuthStateChanged(function(me) {
     }
 });
 
+function cycle(){
+    var title="";
+    var description="";
+    title=prompt("Group Name:"+"[Group Name Here]");
+    while(title.replace(" ","")==""&title!=null){
+        title=prompt("Group Name:"+"[Group Name Here]");
+    }
+    if(title!=null){
+        description=prompt("Group Description:"+"[Description Here]");
+        while(description.replace(" ","")==""&description!=null){
+            description=prompt("Group Name:"+"[Group Name Here]");
+        }
+        if(description!=null){
+            create(title,description);
+        }else{
+        }
+    }else{
+    }
+}
 
 function action(act) {
     if (act == "menu") {
@@ -233,8 +252,9 @@ function action(act) {
     } else if (act == "add") {
         console.log("add");
         clear("body");
-        write("Most Popular","View Most Popular","popularity(uid);");
-        write("My Groups","View All","groups(uid);");
+        write("New Group","Create a new group","cycle();");
+        write("Most Popular","View popular groups","popularity(uid);");
+        write("My Groups","View your groups","groups(uid);");
     } else if (act == "home") {
         console.log("home");
     }
