@@ -381,8 +381,10 @@ function write(title,content,link,nav){
        body+='<br />';
        body+="<span class='desc'>"+encode(desc||"[Description Here]")+"</span>";
     }else{
-       body+=encode(content).replace("&amp;quot;",'"');
-       body+='<br />';
+       if(content!-""){
+           body+=encode(content).replace("&amp;quot;",'"');
+           body+='<br />';
+       }
     }
     if(link!=null&&nav!=null){
         body+='<br />';
