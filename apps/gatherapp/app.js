@@ -275,7 +275,7 @@ function group(id,leave){
         post.users[uid] = null;
       } else {
         if(!post.users[uid]){
-            set("set","users/"+uid+"/groups/"+id,"group",id);
+            set("set","users/"+uid+"/groups/"+id,"groups",uid);
             post.stats.popularity++;
         }
         if (!post.users) {
@@ -284,7 +284,6 @@ function group(id,leave){
         post.users[uid] = true;
       }
     }
-    groups(uid);
     return post;
   });
 }
