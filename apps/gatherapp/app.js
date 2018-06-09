@@ -252,12 +252,10 @@ function popularity(callback){
 function group(key){
     firebase.database().ref("groups/"+key+"/users/").once("value", function(snapshot) {
         if(snapshot.val()[uid]!=true){
-            console.log("TRUE!");
             set("set","users/"+uid+"/groups/"+key,"group",key);
             set("update","groups/"+key+"/users",uid,true);
             counter(key,"join");
         }else{
-            console.log("FALSE!");
         }
     });
 }
@@ -305,14 +303,13 @@ function create(name){
 function counter(key,act) {
   firebase.database().ref("groups/"+key).transaction(function(post) {
     if (post) {
-      console.log(post.stats.popularity);
       if (act=="leave") {
-        post.stats.popularity--;
+        post.val().stats.popularity--;
         post.users[uid] = null;
-        if(post.stats.popularity==0){remove("groups/"+key,"void",0);}
+        if(post.val().stats.popularity==0){remove("groups/"+key,"void",0);}
         console.log("NOT OK");
       } else {
-        post.stats.popularity++;
+        post.val().stats.popularity++;
         console.log("OK");
         if (!post.users) {
           post.users[uid].remove();
