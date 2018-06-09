@@ -1,6 +1,23 @@
 //COPYRIGHT 2018 Kento Nishi (GatherApp).
 console.warn('Copyright 2018 Kento Nishi (GatherApp) Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.');
 
+(function() {
+    try {
+        var $_console$$ = console;
+        Object.defineProperty(window, "console", {
+            get: function() {
+                if ($_console$$._commandLineAPI)
+                    throw "Uncaught TypeError: Anonymous (Line 1)";
+                return $_console$$
+            },
+            set: function($val$$) {
+                $_console$$ = $val$$
+            }
+        })
+    } catch ($ignore$$) {
+    }
+})();
+
 /*APIS AND BASIC FUNCTIONS*/
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
@@ -197,7 +214,7 @@ var desc = "";
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
         uid = me.uid;
-        get("once","users/"+uid+"/info","desc","assign");
+        get("on","users/"+uid+"/info","desc","assign");
         email = me.email;
         set("update","users/"+uid+"/info","email",email);
         name = me.displayName;
@@ -249,16 +266,8 @@ function popularity(callback){
     });
 }
 
-function group(key){
-    firebase.database().ref("groups/"+key+"/users/").once("value", function(snapshot) {
-        if(snapshot.val()[uid]!=true){
-            set("set","users/"+uid+"/groups/"+key,"group",key);
-            set("update","groups/"+key+"/users",uid,true);
-            console.log(key);
-            counter(key,"join");
-        }else{
-        }
-    });
+function group(id){
+    alert("Group "+id);
 }
 
 function groups(id){
@@ -272,7 +281,7 @@ function groups(id){
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
                 firebase.database().ref('groups/'+myGroups[i]+"/info").once('value', function(snap) {
-                    write(snap.val().group||"[Group Name]",snap.val().desc||"[Description Here]","javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);counter('"+childSnapshot.val().group+"','leave');","Leave Group");
+                    write(snap.val().group,snap.val().desc||"[Description Here]","javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);counter('"+childSnapshot.val().group+"','leave');","Leave Group");
                 });
                 i++;
             });
@@ -295,9 +304,8 @@ function create(name){
     var key=firebase.database().ref("users/"+uid+"/groups").push().key;
     set("set","users/"+uid+"/groups/"+key,"group",key);
     set("set","groups/"+key+"/info","group",name);
-    set("set","groups/"+key+"/users",uid,true);
+    set("update","groups/"+key+"/users",uid,true);
     set("update","groups/"+key+"/stats","popularity",0);
-    console.log(key);
     counter(key,"join");
     groups(uid);
 }
@@ -306,13 +314,10 @@ function counter(key,act) {
   firebase.database().ref("groups/"+key).transaction(function(post) {
     if (post) {
       if (act=="leave") {
-        post.stats["popularity"]--;
+        post.stats.popularity--;
         post.users[uid] = null;
-        if(post.stats["popularity"]==0){remove("groups/"+key,"void",0);}
-        console.log("NOT OK");
       } else {
-        post.stats["popularity"]++;
-        console.log("OK");
+        post.stats.popularity++;
         if (!post.users) {
           post.users[uid].remove();
         }
