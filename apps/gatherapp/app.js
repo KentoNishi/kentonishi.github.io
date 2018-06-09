@@ -309,8 +309,10 @@ function counter(key,act) {
         post.stats.popularity--;
         post.users[uid] = null;
         if(post.stats.popularity==0){remove("groups/"+key,"void",0);}
+        console.log("NOT OK");
       } else {
         post.stats.popularity++;
+        console.log("OK");
         if (!post.users) {
           post.users[uid].remove();
         }
