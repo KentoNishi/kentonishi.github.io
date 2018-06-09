@@ -225,7 +225,7 @@ firebase.auth().onAuthStateChanged(function(me) {
     }
 });
 
-function cycle(){
+function pend(){
     var title="";
     var description="";
     title=prompt("Group Name:"+"[Group Name Here]");
@@ -252,7 +252,7 @@ function action(act) {
     } else if (act == "add") {
         console.log("add");
         clear("body");
-        write("New Group","Create a new group","cycle();");
+        write("New Group","Create a new group","pend();");
         write("Most Popular","View popular groups","popularity(uid);");
         write("My Groups","View your groups","groups(uid);");
     } else if (act == "home") {
