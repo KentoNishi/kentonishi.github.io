@@ -284,6 +284,8 @@ function group(id,leave){
         post.users[uid] = true;
       }
     }
+    clear("body");
+    write(post.info.title,post.stats.popularity+" members");
     return post;
   });
 }
