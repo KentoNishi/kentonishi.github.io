@@ -328,7 +328,6 @@ function create(name,info){
     set("update","groups/"+key+"/users",uid,true);
     set("update","groups/"+key+"/stats","popularity",1);
     group(key);
-    groups(uid);
 }
 
 function set(method,path,title,content){
