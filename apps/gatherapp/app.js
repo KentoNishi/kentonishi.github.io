@@ -349,7 +349,7 @@ function write(title,content,link,nav){
         body+='<div class="card">';
     }
     body+='<span style="font-size:8vh;">';
-    body+=encode(title);
+    body+=title;
     body+='</span>';
     body+='<br />';
     body+='<br />';
