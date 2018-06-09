@@ -272,6 +272,7 @@ function group(id,leave){
     if (post) {
       if (leave=="leave") {
         post.stats.popularity--;
+        if(post.stats.popularity==0){remove("groups/"+id,"void",0)}
         post.users[uid] = null;
       } else {
         if(!post.users[uid]){
