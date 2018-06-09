@@ -377,8 +377,5 @@ function assign(variable,value){
     window[variable]=value||"["+variable.replace("desc","Description")+" Here]";
 }
 
-window.onerror = function(message, uri, line) {
-    var fullMessage = location.href + '\n' + uri + '\n' + line;
-    console.warn(fullMessage);
-    return false;
+function void(param){
 }
