@@ -373,15 +373,16 @@ function write(title,content,link,nav){
     body+=encode(title).replace("&amp;quot;",'"');
     body+='</span>';
     body+='<br />';
-    body+='<br />';
     body+='<span style="font-size:4vh;">';
     if(content==uid){
+       body+='<br />';
        body+='<img src="'+pic+'" class="pic"></img>';
        body+='<br />';
        body+='<br />';
        body+="<span class='desc'>"+encode(desc||"[Description Here]")+"</span>";
     }else{
        if(content!=""){
+           body+='<br />';
            body+=encode(content).replace("&amp;quot;",'"');
            body+='<br />';
        }
