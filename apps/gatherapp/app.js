@@ -298,7 +298,7 @@ function groups(id){
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
                 firebase.database().ref('groups/'+myGroups[i]+"/info").once('value', function(snap) {
-                    write(snap.val().group,snap.val().desc||"[Description Here]","javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);counter('"+childSnapshot.val().group+"','leave');","Leave Group");
+                    write(snap.val().group,snap.val().desc||"[Description Here]","javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','leave');","Leave Group");
                 });
                 i++;
             });
@@ -323,26 +323,7 @@ function create(name){
     set("set","groups/"+key+"/info","group",name);
     set("update","groups/"+key+"/users",uid,true);
     set("update","groups/"+key+"/stats","popularity",0);
-    counter(key,"join");
     groups(uid);
-}
-
-function counter(key,act) {
-  firebase.database().ref("groups/"+key).transaction(function(post) {
-    if (post) {
-      if (act=="leave") {
-        post.stats.popularity--;
-        post.users[uid] = null;
-      } else {
-        post.stats.popularity++;
-        if (!post.users) {
-          post.users[uid].remove();
-        }
-        post.users[uid] = true;
-      }
-    }
-    return post;
-  });
 }
 
 function set(method,path,title,content){
