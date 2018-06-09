@@ -285,7 +285,9 @@ function group(id,leave){
       }
     }
     clear("body");
-    write(post.info.group,post.stats.popularity+" members");
+    firebase.database().ref('groups/'+id).once('value', function(snapshot) {
+       write(snapshot.val().info.group,snapshot.val().stats.popularity+" members");
+    });
     return post;
   });
 }
