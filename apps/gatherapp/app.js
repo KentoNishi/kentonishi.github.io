@@ -214,7 +214,7 @@ var desc = "";
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
         uid = me.uid;
-        get("on","users/"+uid+"/info","desc","assign");
+        get("once","users/"+uid+"/info","desc","assign");
         email = me.email;
         set("update","users/"+uid+"/info","email",email);
         name = me.displayName;
