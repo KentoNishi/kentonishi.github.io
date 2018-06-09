@@ -274,7 +274,9 @@ function group(id,leave){
         post.stats.popularity--;
         post.users[uid] = null;
       } else {
-        post.stats.popularity++;
+        if(!post.users[uid]){
+            post.stats.popularity++;
+        }
         if (!post.users) {
           post.users = {};
         }
