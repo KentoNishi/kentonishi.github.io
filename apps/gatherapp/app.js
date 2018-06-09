@@ -381,7 +381,7 @@ function write(title,content,link,nav){
        body+='<br />';
        body+="<span class='desc'>"+encode(desc||"[Description Here]")+"</span>";
     }else{
-       if(content!-""){
+       if(content!=""){
            body+=encode(content).replace("&amp;quot;",'"');
            body+='<br />';
        }
