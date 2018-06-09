@@ -275,6 +275,7 @@ function group(id,leave){
         post.users[uid] = null;
       } else {
         if(!post.users[uid]){
+            set("set","users/"+uid+"/groups/"+id,"group",id);
             post.stats.popularity++;
         }
         if (!post.users) {
