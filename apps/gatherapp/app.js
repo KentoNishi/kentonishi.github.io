@@ -318,10 +318,11 @@ function reverseSnapshotOrder (snapshot) {
   return reversed;
 }
 
-function create(name){
+function create(name,info){
     var key=firebase.database().ref("users/"+uid+"/groups").push().key;
     set("set","users/"+uid+"/groups/"+key,"group",key);
     set("set","groups/"+key+"/info","group",name);
+    set("set","groups/"+key+"/info","desc",info);
     set("update","groups/"+key+"/users",uid,true);
     set("update","groups/"+key+"/stats","popularity",1);
     group(key);
