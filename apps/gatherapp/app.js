@@ -229,12 +229,12 @@ function pend(){
     var title="";
     var description="";
     title=prompt("Group Name:"+"[Group Name Here]");
-    while(title.replace(" ","")==""&title!=null){
+    while(title!=null&&title.replace(" ","")==""){
         title=prompt("Group Name:","[Group Name Here]");
     }
     if(title!=null){
         description=prompt("Group Description:","[Description Here]");
-        while(description.replace(" ","")==""&description!=null){
+        while(description!=null&&description.replace(" ","")==""){
             description=prompt("Group Description:","[Description Here]");
         }
         if(description!=null){
