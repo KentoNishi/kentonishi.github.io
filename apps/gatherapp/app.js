@@ -304,12 +304,12 @@ function counter(key,act) {
   firebase.database().ref("groups/"+key).transaction(function(post) {
     if (post) {
       if (act=="leave") {
-        post.val().stats.popularity--;
+        post.stats["popularity"]--;
         post.users[uid] = null;
-        if(post.val().stats.popularity==0){remove("groups/"+key,"void",0);}
+        if(post.stats["popularity"]==0){remove("groups/"+key,"void",0);}
         console.log("NOT OK");
       } else {
-        post.val().stats.popularity++;
+        post.stats["popularity"]++;
         console.log("OK");
         if (!post.users) {
           post.users[uid].remove();
