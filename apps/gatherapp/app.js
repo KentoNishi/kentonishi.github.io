@@ -285,7 +285,7 @@ function group(id,leave){
       }
     }
     clear("body");
-    write(post.info.title,post.stats.popularity+" members");
+    write(post.info.group,post.stats.popularity+" members");
     return post;
   });
 }
