@@ -230,12 +230,12 @@ function pend(){
     var description="";
     title=prompt("Group Name:"+"[Group Name Here]");
     while(title.replace(" ","")==""&title!=null){
-        title=prompt("Group Name:"+"[Group Name Here]");
+        title=prompt("Group Name:","[Group Name Here]");
     }
     if(title!=null){
-        description=prompt("Group Description:"+"[Description Here]");
+        description=prompt("Group Description:","[Description Here]");
         while(description.replace(" ","")==""&description!=null){
-            description=prompt("Group Name:"+"[Group Name Here]");
+            description=prompt("Group Description:","[Description Here]");
         }
         if(description!=null){
             create(title,description);
