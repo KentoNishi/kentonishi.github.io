@@ -253,6 +253,7 @@ function group(key){
     firebase.database().ref("groups/"+key+"/users/").once("value", function(snapshot) {
         if(snapshot.val()[uid]!=true){
             counter(key,"join");
+        }else{
         }
     });
     set("set","users/"+uid+"/groups/"+key,"group",key);
