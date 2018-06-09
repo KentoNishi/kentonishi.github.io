@@ -284,10 +284,7 @@ function group(id,leave){
         post.users[uid] = true;
       }
     }
-    clear("body");
-    firebase.database().ref('groups/'+id).once('value', function(snapshot) {
-       write(snapshot.val().info.group,snapshot.val().stats.popularity+" members");
-    });
+    groups(uid);
     return post;
   });
 }
