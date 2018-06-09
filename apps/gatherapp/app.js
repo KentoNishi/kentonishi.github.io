@@ -300,7 +300,7 @@ function groups(id){
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
                 firebase.database().ref('groups/'+myGroups[i]+"/info").once('value', function(snap) {
-                    write(snap.val().group,(snap.val().desc||"[Description Here]").replace("&quot;",'"'),"javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);group('"+childSnapshot.val().group+"','leave');","Leave Group");
+                    write(snap.val().group,(snap.val().desc||"[Description Here]"),"javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);group('"+childSnapshot.val().group+"','leave');","Leave Group");
                 });
                 i++;
             });
@@ -349,7 +349,7 @@ function write(title,content,link,nav){
         body+='<div class="card">';
     }
     body+='<span style="font-size:8vh;">';
-    body+=encode(title);
+    body+=encode(title).replace("&quot;",'"');
     body+='</span>';
     body+='<br />';
     body+='<br />';
@@ -360,12 +360,12 @@ function write(title,content,link,nav){
        body+='<br />';
        body+="<span class='desc'>"+encode(desc||"[Description Here]")+"</span>";
     }else{
-       body+=encode(content);
+       body+=encode(content).replace("&quot;",'"');
     }
     body+='<br />';
     if(link!=null&&nav!=null){
         body+='<br />';
-        body+='<a href="'+link+'">'+encode(nav)+'</a>';
+        body+='<a href="'+link+'">'+encode(nav).replace("&quot;",'"')+'</a>';
     }
     body+='</span>';
     body+='</div>';
