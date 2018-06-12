@@ -271,6 +271,29 @@ function user(id){
     }
 }
 
+function feed(){
+    var i=0;
+    clear("body");
+    write("Notifications","Your Notifications Appear Here.");
+    firebase.database().ref("users/"+uid+"/feed").once("value",function(snapshot){
+        snapshot.forEach(function(childSnapshot){
+            if(i==0){
+                clear("body");
+                write("Clear Feed","","remove('"+uid+"/feed')","Clear my notifications");
+            }
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+            write(childSnapshot.val().title,childSnapshot.val().content);
+        });
+    });
+}
+
+function send(id,title,content){
+    var key=firebase.database().ref("users/"+id+"/feed").push().key;
+    set("update","users/"+id+"/feed/"+key,"title",title);
+    set("update","users/"+id+"/feed/"+key,"content",content);
+}
+
 function remove(path,callback,param){
     firebase.database().ref(path).remove();
     window[callback](param);
