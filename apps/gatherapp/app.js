@@ -222,6 +222,7 @@ firebase.auth().onAuthStateChanged(function(me) {
         pic = me.photoURL;
         set("update","users/"+uid+"/info","pic",pic);
         clear("body");
+        feed();
     }
 });
 
@@ -280,7 +281,7 @@ function feed(){
         snapshot.forEach(function(childSnapshot){
             if(i==0){
                 clear("body");
-                write("Clear Feed","","javascript:remove('"+uid+"/feed')","Clear my notifications");
+                write("Clear Feed","","javascript:remove('users/"+uid+"/feed')","Clear my notifications");
             }
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
