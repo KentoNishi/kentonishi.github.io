@@ -416,7 +416,7 @@ function write(title,content,link,nav){
        body+='<br />';
        body+='<img src="'+pic+'" class="pic"></img>';
        body+='<br />';
-       body+='<br />';
+       body+="<span>@"+encode(email.split("@")[0])+"</span>";
        body+="<span class='desc'>"+encode(desc||"[Description Here]")+"</span>";
        body+='<br />';
     }else{
