@@ -312,7 +312,9 @@ function popularity(callback){
 //            console.log(child.key, child.val().stats.popularity);
             if(child.val().stats.popularity>0){
                 if(i==0){clear("body");}
-                write(child.val().info.group,child.val().stats.popularity.toString()+" members","group('"+child.key+"');");
+                if(child.val().stats.popularity!=0){
+                    write(child.val().info.group,child.val().stats.popularity.toString()+" members","group('"+child.key+"');");
+                }
                 i++;
             }
         });
@@ -325,7 +327,6 @@ function group(id,leave){
     if (post) {
       if (leave=="leave") {
         post.stats.popularity--;
-        if(post.stats.popularity==0){remove("groups/"+id,"stall",0)}
         post.users[uid] = null;
       } else {
         if(!post.users[uid]){
