@@ -278,7 +278,7 @@ function remove(path,callback,param){
 
 function popularity(callback){
     clear("body");
-    write("No results","There are no groups. Wait... what!? Please report this error immediately.","mailto:kentosuper24@gmail.com","Send an error report");
+    write("Popular Groups","The top 25 groups appear here.");
     var i=0;
     firebase.database().ref("groups/").orderByChild("stats/popularity").limitToLast(25).once('value', snapshot => {
         snapshot.forEach(child => {
@@ -321,7 +321,7 @@ function groups(id){
         var i = 0;
         var myGroups=[];
         clear("body");
-        write("No results","You have not joined any groups.","javascript:action('add');","Create or join a group");
+        write("Your Groups","Your groups appear here.","javascript:action('add');","Create or join a group");
         firebase.database().ref('users/'+uid+"/groups/").once('value', function(snapshot){
             if(i==0){
                 clear("body");
