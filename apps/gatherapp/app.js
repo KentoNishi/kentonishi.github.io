@@ -435,7 +435,8 @@ function write(title,content,link,nav){
 
 function key13(event){
     if(event.keyCode==13){
-        return false;
+        return null;
+        document.querySelectorAll(".span[contenteditable]")[0].blur();
     }else{
         return event.keyCode;
     }
