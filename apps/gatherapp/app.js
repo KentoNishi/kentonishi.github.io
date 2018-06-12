@@ -262,7 +262,7 @@ function action(act) {
 
 function clear(element){
     document.querySelectorAll("."+element)[0].innerHTML="";
-}
+} 
 
 function user(id){
     if(id==uid){
@@ -323,10 +323,10 @@ function groups(id){
         clear("body");
         write("Your Groups","Your groups appear here.","javascript:action('add');","Create or join a group");
         firebase.database().ref('users/'+uid+"/groups/").once('value', function(snapshot){
-            if(i==0){
-                clear("body");
-            }
             snapshot.forEach(function(childSnapshot) {
+                if(i==0){
+                    clear("body");
+                }
                 var childKey = childSnapshot.key;
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
