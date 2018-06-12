@@ -283,8 +283,11 @@ function popularity(callback){
     firebase.database().ref("groups/").orderByChild("stats/popularity").limitToLast(25).once('value', snapshot => {
         snapshot.forEach(child => {
 //            console.log(child.key, child.val().stats.popularity);
-            if(i==0){clear("body");}
-            write(child.val().info.group,child.val().stats.popularity.toString()+" members","group('"+child.key+"');");
+            if(child.val().stats.popularity>0){
+                if(i==0){clear("body");}
+                write(child.val().info.group,child.val().stats.popularity.toString()+" members","group('"+child.key+"');");
+                i++;
+            }
         });
     });
 }
