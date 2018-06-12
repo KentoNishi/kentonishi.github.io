@@ -256,6 +256,7 @@ function action(act) {
         write("Most Popular","","popularity(uid);");
         write("My Groups","","groups(uid);");
     } else if (act == "home") {
+        feed();
         console.log("home");
     }
 }
