@@ -405,7 +405,7 @@ function write(title,content,link,nav){
         body+='<div class="card">';
     }
     body+='<span style="font-size:8vh;">';
-    body+=encode(title).replace("&amp;quot;",'"');
+    body+=encode(title).replace(/&amp;quot;/g,'"');
     body+='</span>';
     body+='<br />';
     body+='<span style="font-size:4vh;">';
@@ -415,18 +415,18 @@ function write(title,content,link,nav){
        body+='<br />';
        body+="<span>@"+encode(email.split("@")[0])+"</span>";
        body+='<br />';
-       body+="<span class='desc' contenteditable onkeyup='"+decodeURIComponent("set(%22update%22%2C%22users%2F%22%2Buid%2B%22%2Finfo%22%2C%22desc%22%2Cthis.innerHTML)%3B")+"'>"+encode(desc||"[Description Here]").replace("&lt;br&gt;","<br />")+"</span>";
+       body+="<span class='desc' contenteditable onkeyup='"+decodeURIComponent("set(%22update%22%2C%22users%2F%22%2Buid%2B%22%2Finfo%22%2C%22desc%22%2Cthis.innerHTML)%3B")+"'>"+encode(desc||"[Description Here]").replace(/&amp;quot;/g,'"').replace(/&lt;br&gt;/g,'<br />')+"</span>";
        body+='<br />';
     }else{
        if(content!=""){
            body+='<br />';
-           body+=encode(content).replace("&amp;quot;",'"');
+           body+=encode(content).replace(/&amp;quot;/g,'"');
            body+='<br />';
        }
     }
     if(link!=null&&nav!=null){
         body+='<br />';
-        body+='<a href="'+link+'">'+encode(nav).replace("&amp;quot;",'"')+'</a>';
+        body+='<a href="'+link+'">'+encode(nav).replace(/&amp;quot;/g,'"')+'</a>';
     }
     body+='</span>';
     body+='</div>';
