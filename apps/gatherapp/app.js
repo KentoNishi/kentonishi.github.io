@@ -278,9 +278,12 @@ function remove(path,callback,param){
 
 function popularity(callback){
     clear("body");
+    write("No results","There are no groups. Wait... what!? Please report this error immediately.","mailto:kentosuper24@gmail.com","Send an error report");
+    var i=0;
     firebase.database().ref("groups/").orderByChild("stats/popularity").limitToLast(25).once('value', snapshot => {
         snapshot.forEach(child => {
 //            console.log(child.key, child.val().stats.popularity);
+            if(i==0){clear("body");}
             write(child.val().info.group,child.val().stats.popularity.toString()+" members","group('"+child.key+"');");
         });
     });
