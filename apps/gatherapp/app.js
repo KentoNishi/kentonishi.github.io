@@ -317,8 +317,10 @@ function groups(id){
         clear("body");
         write("No results","You have not joined any groups.","javascript:action('add');","Create or join a group");
         firebase.database().ref('users/'+uid+"/groups/").once('value', function(snapshot){
-            clear("body");
             snapshot.forEach(function(childSnapshot) {
+                if(i==0){
+                    clear("body");
+                }
                 var childKey = childSnapshot.key;
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
