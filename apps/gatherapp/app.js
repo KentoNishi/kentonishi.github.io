@@ -421,7 +421,6 @@ function write(title,content,link,nav){
        if(content!=""){
            body+='<br />';
            body+=encode(content).replace(/&amp;quot;/g,'"');
-           body+='<br />';
        }
     }
     if(link!=null&&nav!=null){
