@@ -414,7 +414,8 @@ function write(title,content,link,nav){
        body+='<img src="'+pic+'" class="pic"></img>';
        body+='<br />';
        body+="<span>@"+encode(email.split("@")[0])+"</span>";
-       body+="<span class='desc'>"+encode(desc||"[Description Here]")+"</span>";
+       body+='<br />';
+       body+="<span class='desc' contenteditable onkeyup='"+decodeURIComponent("set(%22update%22%2C%22users%2F%22%2Buid%2B%22%2Finfo%22%2C%22desc%22%2Cthis.innerHTML)%3B")+"'>"+encode(desc||"[Description Here]").replace("&lt;br&gt;","<br />")+"</span>";
        body+='<br />';
     }else{
        if(content!=""){
