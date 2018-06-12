@@ -320,8 +320,12 @@ function groups(id){
                 var childKey = childSnapshot.key;
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
+                var o=0;
+                write("No results","You have not joined any groups.","javascript:pend;");
                 firebase.database().ref('groups/'+myGroups[i]+"/info").once('value', function(snap) {
+                    if(o==0){clear("body");}
                     write(snap.val().group,(snap.val().desc||"[Description Here]"),"javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);group('"+childSnapshot.val().group+"','leave');","Leave Group");
+                    o++;
                 });
                 i++;
             });
@@ -365,7 +369,7 @@ function get(method,path,title,callback){
 function write(title,content,link,nav){
     var body="";
     if(link!=null&&nav==null){
-        body+='<div class="card" onclick="javascript:'+link+';">';
+        body+='<div class="card" onclick="javascript:'+link+'">';
     }else{
         body+='<div class="card">';
     }
