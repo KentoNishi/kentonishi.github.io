@@ -349,7 +349,7 @@ function groups(id){
         var i = 0;
         var myGroups=[];
         clear("body");
-        write("Your Groups","Your groups appear here.","javascript:action('add');","Create or join a group");
+        write("Your Groups","Your groups appear here.");
         firebase.database().ref('users/'+uid+"/groups/").once('value', function(snapshot){
             snapshot.forEach(function(childSnapshot) {
                 if(i==0){
@@ -418,6 +418,7 @@ function write(title,content,link,nav){
        body+='<br />';
        body+='<br />';
        body+="<span class='desc'>"+encode(desc||"[Description Here]")+"</span>";
+       body+='<br />';
     }else{
        if(content!=""){
            body+='<br />';
