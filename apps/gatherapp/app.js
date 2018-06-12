@@ -315,17 +315,15 @@ function groups(id){
         clear("body");
         var i = 0;
         var myGroups=[];
-        firebase.database().ref('users/'+uid+"/groups/").once('value', function(snapshot) {
+        write("No results","You have not joined any groups.","javascript:action('add');","Create or join a group");
+        firebase.database().ref('users/'+uid+"/groups/").once('value', function(snapshot) 
+            clear("body");
             snapshot.forEach(function(childSnapshot) {
                 var childKey = childSnapshot.key;
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
-                var o=0;
-                write("No results","You have not joined any groups.","javascript:pend;");
                 firebase.database().ref('groups/'+myGroups[i]+"/info").once('value', function(snap) {
-                    if(o==0){clear("body");}
                     write(snap.val().group,(snap.val().desc||"[Description Here]"),"javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);group('"+childSnapshot.val().group+"','leave');","Leave Group");
-                    o++;
                 });
                 i++;
             });
