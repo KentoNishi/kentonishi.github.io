@@ -312,11 +312,11 @@ function group(id,leave){
 
 function groups(id){
     if(id==uid){
-        clear("body");
         var i = 0;
         var myGroups=[];
+        clear("body");
         write("No results","You have not joined any groups.","javascript:action('add');","Create or join a group");
-        firebase.database().ref('users/'+uid+"/groups/").once('value', function(snapshot) 
+        firebase.database().ref('users/'+uid+"/groups/").once('value', function(snapshot){
             clear("body");
             snapshot.forEach(function(childSnapshot) {
                 var childKey = childSnapshot.key;
