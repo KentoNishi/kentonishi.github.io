@@ -436,6 +436,9 @@ function write(title,content,link,nav){
 function key13(event){
     if(event.keyCode==13){
         document.querySelectorAll("span[contenteditable]")[0].blur();
+        if(document.querySelectorAll("span[contenteditable]")[0].innerHTML==""){
+            document.querySelectorAll("span[contenteditable]")[0].innerHTML="[Description Here]";
+        }
         return null;
     }else{
         return event.keyCode;
