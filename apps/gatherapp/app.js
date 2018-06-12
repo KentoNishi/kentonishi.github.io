@@ -297,7 +297,9 @@ function send(id,title,content){
 
 function remove(path,callback,param){
     firebase.database().ref(path).remove();
-    window[callback](param);
+    if(callback!=null){
+        window[callback](param);
+    }
 }
 
 function popularity(callback){
