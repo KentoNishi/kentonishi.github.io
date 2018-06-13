@@ -467,4 +467,3 @@ function stall(param){
 function load(id){
     console.log(id);
 }
-
