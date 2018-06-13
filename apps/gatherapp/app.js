@@ -413,9 +413,9 @@ function write(title,content,link,nav,href){
     }else{
         body+='<div class="card">';
     }
-    body+='<span style="font-size:8vh;">';
+    body+='<span style="font-size:5vh;"><strong>';
     body+=encode(title).replace(/&amp;quot;/g,'"');
-    body+='</span>';
+    body+='</strong></span>';
     body+='<br />';
     body+='<span style="font-size:4vh;">';
     if(content==uid){
