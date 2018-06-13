@@ -22,6 +22,9 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+
+
+
 var config = {
     apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
     authDomain: "gatherapp-1906b.firebaseapp.com",
