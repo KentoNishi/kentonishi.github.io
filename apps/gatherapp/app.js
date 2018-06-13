@@ -402,7 +402,7 @@ function reverseSnapshotOrder (snapshot) {
 function create(name,info){
     var key=firebase.database().ref("users/"+uid+"/groups").push().key;
     set("set","users/"+uid+"/groups/"+key,"group",key);
-    set("set","groups/"+key+"/info","group",name);
+    set("update","groups/"+key+"/info","group",name);
     set("set","groups/"+key+"/info","search",name.toLowerCase());
     set("update","groups/"+key+"/info","desc",info);
     set("update","groups/"+key+"/users",uid,true);
