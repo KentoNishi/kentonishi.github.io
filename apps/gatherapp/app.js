@@ -343,6 +343,7 @@ function group(id,leave){
         post.users[uid] = true;
       }
     }
+    load(id);
     return post;
   });
 }
@@ -362,7 +363,7 @@ function groups(id){
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
                 firebase.database().ref('groups/'+myGroups[i]+"/info").once('value', function(snap) {
-                    write(snap.val().group,(snap.val().desc||"[Description Here]"),"javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);group('"+childSnapshot.val().group+"','leave');","Leave Group");
+                    write(snap.val().group,(snap.val().desc||"[Description Here]"),"javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);group('"+childSnapshot.val().group+"','leave');","Leave Group","load('"+childSnapshot.val().group+"');");
                 });
                 i++;
             });
@@ -462,3 +463,8 @@ function assign(variable,value){
 
 function stall(param){
 }
+
+function load(id){
+    console.log(id);
+}
+
