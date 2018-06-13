@@ -254,7 +254,7 @@ function search(){
 function find(title){
     var i=0;
     clear("body");
-    write("Search Results","Your results appear here.");
+    write("Search Results","There were no relevent results.");
     firebase.database().ref("groups/").orderByChild("info/search").startAt(title.toLowerCase()).endAt(title.toLowerCase()+"\uf8ff").once('value', snapshot => {
         snapshot.forEach(child => {
             if(i==0){clear("body");}
