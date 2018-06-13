@@ -308,7 +308,7 @@ function remove(path,callback,param){
 
 function popularity(callback){
     clear("body");
-    write("Popular Groups","The top 25 groups appear here.");
+    write("Popular Groups","The most popular groups appear here.");
     var i=0;
     firebase.database().ref("groups/").orderByChild("stats/popularity").limitToLast(25).once('value', snapshot => {
         snapshot.forEach(child => {
