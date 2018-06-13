@@ -403,10 +403,12 @@ function get(method,path,title,callback){
     });
 }
 
-function write(title,content,link,nav){
+function write(title,content,link,nav,href){
     var body="";
     if(link!=null&&nav==null){
         body+='<div class="card" onclick="javascript:'+link+'">';
+    }else if(href!=null){
+        body+='<div class="card" onclick="javascript:'+href+'">';
     }else{
         body+='<div class="card">';
     }
