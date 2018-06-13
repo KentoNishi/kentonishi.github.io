@@ -343,6 +343,7 @@ function group(id,leave){
         }
         post.users[uid] = true;
         group(id);
+        console.log("CHECK");
       }
     }
     return post;
