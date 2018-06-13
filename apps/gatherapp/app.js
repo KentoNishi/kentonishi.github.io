@@ -344,7 +344,6 @@ function group(id,leave){
       }
     }
     load(id);
-    return post;
   });
 }
 
