@@ -210,16 +210,20 @@ var desc = "";
 
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
-        uid = me.uid;
-        get("once","users/"+uid+"/info","desc","assign");
-        email = me.email;
-        set("update","users/"+uid+"/info","email",email);
-        name = me.displayName;
-        set("update","users/"+uid+"/info","name",name);
-        pic = me.photoURL;
-        set("update","users/"+uid+"/info","pic",pic);
-        clear("body");
-        feed();
+        if(me.email.split("@")[1]==""){
+            uid = me.uid;
+            get("once","users/"+uid+"/info","desc","assign");
+            email = me.email;
+            set("update","users/"+uid+"/info","email",email);
+            name = me.displayName;
+            set("update","users/"+uid+"/info","name",name);
+            pic = me.photoURL;
+            set("update","users/"+uid+"/info","pic",pic);
+            clear("body");
+            feed();
+        }else{
+            write("Invalid Account","Your email address cannot be from a custom domain. Please use a normal Google account.");
+        }
     }
 });
 
