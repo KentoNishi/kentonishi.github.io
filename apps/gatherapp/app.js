@@ -210,7 +210,7 @@ var desc = "";
 
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
-        if(me.email.split("@")[1]==""){
+        if(me.email.split("@")[1].split(".")[0]=="gmail"){
             uid = me.uid;
             get("once","users/"+uid+"/info","desc","assign");
             email = me.email;
