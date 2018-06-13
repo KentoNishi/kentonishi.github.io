@@ -230,14 +230,14 @@ firebase.auth().onAuthStateChanged(function(me) {
 function pend(){
     var title="";
     var description="";
-    title=prompt("Group Name:","[Group Name Here]");
+    title=prompt("Group Name:","Group Name Here");
     while(title!=null&&title.replace(" ","")==""){
-        title=prompt("Please enter a valid name.\nGroup Name:","[Group Name Here]");
+        title=prompt("Please enter a valid name.\nGroup Name:","Group Name Here");
     }
     if(title!=null){
-        description=prompt("Group Description:","[Description Here]");
+        description=prompt("Group Description:","Description Here");
         while(description!=null&&description.replace(" ","")==""){
-            description=prompt("Please enter a valid description.\nGroup Description:","[Description Here]");
+            description=prompt("Please enter a valid description.\nGroup Description:","Description Here");
         }
         if(description!=null){
             create(title,description);
@@ -380,7 +380,7 @@ function groups(id){
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
                 firebase.database().ref('groups/'+myGroups[i]+"/info").once('value', function(snap) {
-                    write(snap.val().group,(snap.val().desc||"[Description Here]"),"javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);group('"+childSnapshot.val().group+"','leave');","Leave Group","load('"+childSnapshot.val().group+"');");
+                    write(snap.val().group,(snap.val().desc||"Description Here"),"javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);group('"+childSnapshot.val().group+"','leave');","Leave Group","load('"+childSnapshot.val().group+"');");
                 });
                 i++;
             });
@@ -442,7 +442,7 @@ function write(title,content,link,nav,href){
        body+="<span>@"+encode(email.split("@")[0])+"</span>";
        body+='<br />';
        firebase.database().ref('users/'+uid+"/info").once('value', function(snapshot){
-           document.querySelectorAll(".desc")[0].innerHTML=encode(snapshot.val().desc||"[Description Here]").replace(/&amp;quot;/g,'"');
+           document.querySelectorAll(".desc")[0].innerHTML=encode(snapshot.val().desc||"Description Here").replace(/&amp;quot;/g,'"');
        });
        body+="<span class='desc' contenteditable onkeyup='"+decodeURIComponent("set(%22update%22%2C%22users%2F%22%2Buid%2B%22%2Finfo%22%2C%22desc%22%2Cdecode(this.innerHTML))%3B")+"' onkeypress='key13(event)'></span>";
        body+='<br />';
@@ -465,7 +465,7 @@ function key13(event){
     if(event.keyCode==13){
         document.querySelectorAll("span[contenteditable]")[0].blur();
         if(document.querySelectorAll("span[contenteditable]")[0].innerHTML==""){
-            document.querySelectorAll("span[contenteditable]")[0].innerHTML="[Description Here]";
+            document.querySelectorAll("span[contenteditable]")[0].innerHTML="Description Here";
         }
         return null;
     }else{
