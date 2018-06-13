@@ -415,7 +415,7 @@ function write(title,content,link,nav){
        body+='<br />';
        body+="<span>@"+encode(email.split("@")[0])+"</span>";
        body+='<br />';
-       body+="<span class='desc' contenteditable onkeyup='"+decodeURIComponent("set(%22update%22%2C%22users%2F%22%2Buid%2B%22%2Finfo%22%2C%22desc%22%2Cdecode(this.innerHTML))%3B")+"' onkeypress='key13(event)'>"+encode(desc||"[Description Here]").replace(/&amp;quot;/g,'"').replace(/&lt;br&gt;/g,'<br />')+"</span>";
+       body+="<span class='desc' contenteditable onkeyup='"+decodeURIComponent("set(%22update%22%2C%22users%2F%22%2Buid%2B%22%2Finfo%22%2C%22desc%22%2Cdecode(this.innerHTML))%3B")+"' onkeypress='key13(event)'>"+encode(desc||"[Description Here]").replace(/&amp;quot;/g,'"')+"</span>";
        body+='<br />';
     }else{
        if(content!=""){
