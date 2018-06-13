@@ -336,11 +336,13 @@ function group(id,leave){
             set("set","users/"+uid+"/groups/"+id,"group",id);
             set("push","groups/"+id+"/users",uid,true);
             post.stats.popularity++;
+            load(id);
         }
         if (!post.users) {
-          post.users = {};
+            post.users = {};
         }
         post.users[uid] = true;
+        group(id);
       }
     }
     return post;
