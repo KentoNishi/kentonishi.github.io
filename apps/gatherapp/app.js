@@ -247,8 +247,21 @@ function pend(){
     }
 }
 
-function find(){
+function search(){
+    find(prompt("Group Name:"));
+}
+
+function find(title){
+    var i=0;
     clear("body");
+    write("Search Results","Your results appear here.");
+    firebase.database().ref("groups/").orderByChild("info/search").startAt(title.toLowerCase()).once('value', snapshot => {
+        snapshot.forEach(child => {
+            if(i==0){clear("body");}
+            write(child.val().info.group,child.val().stats.popularity.toString()+" members","group('"+child.key+"');");
+            i++;
+        });
+    });
 }
 
 function action(act) {
@@ -260,7 +273,7 @@ function action(act) {
             console.log("add");
             clear("body");
             write("New Group","","pend();");
-            write("Find Groups","","find();");
+            write("Find Groups","","search();");
             write("Most Popular","","popularity(uid);");
             write("My Groups","","groups(uid);");
         } else if (act == "home") {
@@ -390,6 +403,7 @@ function create(name,info){
     var key=firebase.database().ref("users/"+uid+"/groups").push().key;
     set("set","users/"+uid+"/groups/"+key,"group",key);
     set("set","groups/"+key+"/info","group",name);
+    set("set","groups/"+key+"/info","search",name.toLowerCase());
     set("update","groups/"+key+"/info","desc",info);
     set("update","groups/"+key+"/users",uid,true);
     set("update","groups/"+key+"/stats","popularity",1);
