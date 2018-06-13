@@ -248,18 +248,20 @@ function pend(){
 }
 
 function action(act) {
-    if (act == "menu") {
-        console.log("menu");
-        user(uid);
-    } else if (act == "add") {
-        console.log("add");
-        clear("body");
-        write("New Group","","pend();");
-        write("Most Popular","","popularity(uid);");
-        write("My Groups","","groups(uid);");
-    } else if (act == "home") {
-        feed();
-        console.log("home");
+    if(uid!=""){
+        if (act == "menu") {
+            console.log("menu");
+            user(uid);
+        } else if (act == "add") {
+            console.log("add");
+            clear("body");
+            write("New Group","","pend();");
+            write("Most Popular","","popularity(uid);");
+            write("My Groups","","groups(uid);");
+        } else if (act == "home") {
+            feed();
+            console.log("home");
+        }
     }
 }
 
