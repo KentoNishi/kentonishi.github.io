@@ -439,7 +439,6 @@ function write(title,content,link,nav,href){
     }
     body+='</span>';
     body+='</div>';
-    body+='<br />';
     document.body.querySelectorAll(".body")[0].innerHTML=body+document.body.querySelectorAll(".body")[0].innerHTML;
 }
 
