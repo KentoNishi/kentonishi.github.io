@@ -329,7 +329,7 @@ function popularity(callback){
     write("Popular Groups","The most popular groups appear here.");
     var i=0;
     firebase.database().ref("groups/").orderByChild("stats/popularity").limitToFirst(25).once('value', snapshot => {
-        snapshot.forEach(child => {
+        reverseSnapshotOrder(snapshot).forEach(child => {
 //            console.log(child.key, child.val().stats.popularity);
             if(child.val().stats.popularity>0){
                 if(i==0){clear("body");}
