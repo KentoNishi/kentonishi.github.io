@@ -247,6 +247,10 @@ function pend(){
     }
 }
 
+function find(){
+    clear("body");
+}
+
 function action(act) {
     if(uid!=""){
         if (act == "menu") {
@@ -256,6 +260,7 @@ function action(act) {
             console.log("add");
             clear("body");
             write("New Group","","pend();");
+            write("Find Groups","","find();");
             write("Most Popular","","popularity(uid);");
             write("My Groups","","groups(uid);");
         } else if (act == "home") {
