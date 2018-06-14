@@ -350,6 +350,7 @@ function group(id,leave){
         post.stats.popularity--;
         post.users[uid] = null;
       } else {
+        alert(!post.users[uid]);
         if(!post.users[uid]){
             set("set","users/"+uid+"/groups/"+id,"group",id);
             set("push","groups/"+id+"/users",uid,true);
