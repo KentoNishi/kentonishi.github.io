@@ -345,12 +345,12 @@ function popularity(callback){
 function group(id,leave){
   leave=leave||"join";
   firebase.database().ref('groups/'+id).transaction(function(post) {
-    if (post) {
+      console.log(post);
+//    if (post) {
       if (leave=="leave") {
         post.stats.popularity--;
         post.users[uid] = null;
       } else {
-        alert(!post.users[uid]);
         if(!post.users[uid]){
             set("set","users/"+uid+"/groups/"+id,"group",id);
             set("push","groups/"+id+"/users",uid,true);
@@ -362,7 +362,7 @@ function group(id,leave){
         post.users[uid] = true;
       }
     load(id);
-    }
+//    }
   });
 }
 
