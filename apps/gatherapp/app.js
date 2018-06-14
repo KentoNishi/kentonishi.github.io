@@ -361,8 +361,8 @@ function group(id,leave){
         }
         post.users[uid] = true;
       }
-    }
     load(id);
+    }
   });
 }
 
