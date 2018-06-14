@@ -345,7 +345,7 @@ function popularity(callback){
 }
 
 function group(id,leave){
-  var bool=((leave||"join")!="leave");
+  var bool=(leave!="leave");
   firebase.database().ref("groups/"+id+"/users").once('value', function(snapshot){
       if(!snapshot.val()[uid]){
           if(bool){
