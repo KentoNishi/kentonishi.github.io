@@ -346,6 +346,9 @@ function group(id,leave){
   var bool=((leave||"join")!="leave");
   firebase.database().ref("groups/"+id+"/users").once('value', function(snapshot){
       if(!snapshot.val()[uid]){
+          if(bool){
+            set("set","users/"+uid+"/groups/"+id,"group",id);
+          }
           firebase.database().ref("groups/"+id+"/users").update({
                 [uid]:bool
           }).then(function(){
