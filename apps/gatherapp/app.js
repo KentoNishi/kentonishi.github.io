@@ -348,13 +348,15 @@ function group(id,leave){
       if (post) {
         if (leave=="leave"&&post.users[uid]) {
           post.stats.popularity--;
-          post.stars[uid] = null;
+          post.users[uid] = null;
         } else {
-          post.stats.popularity++;
-          if (!post.users) {
-            post.users = {};
+          if(!post.users[uid]){
+              post.stats.popularity++;
+              if (!post.users) {
+                post.users = {};
+              }
+              post.users[uid] = true;
           }
-          post.users[uid] = true;
         }
         load(id);
       }
@@ -478,17 +480,5 @@ function stall(param){
 }
 
 function load(id){
-    var i=0;
     console.log(id);
-    firebase.database().ref('groups/'+id+'/users').once("value",function(snap){
-        snap.forEach(function(child){
-            i++;
-        });
-        console.log(i);
-        firebase.database().ref('groups/'+id+'/stats').once("value",function(kid){
-            if(kid.val().popularity!=i){
-                set("update","groups/"+id+"/stats","popularity",i);
-            }
-        });
-    });
 }
