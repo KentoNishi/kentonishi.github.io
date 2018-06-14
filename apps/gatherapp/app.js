@@ -396,7 +396,7 @@ function create(name,info){
     set("update","groups/"+key+"/info","search",name.toLowerCase());
     set("update","groups/"+key+"/info","desc",info);
     set("update","groups/"+key+"/users",uid,true);
-    set("update","groups/"+key+"/stats","popularity",0);
+    set("update","groups/"+key+"/stats","popularity",1);
     group(key);
 }
 
