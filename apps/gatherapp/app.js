@@ -343,25 +343,16 @@ function popularity(callback){
 }
 
 function group(id,leave){
-  leave=leave||"join";
-  firebase.database().ref('groups/'+id).transaction(function(post) {
-      if (post) {
-        if (leave=="leave"&&post.users[uid]) {
-          post.stats.popularity--;
-          post.users[uid] = null;
-        } else {
-          if(!post.users[uid]){
-              post.stats.popularity++;
-              if (!post.users) {
-                post.users = {};
-              }
-              post.users[uid] = true;
-          }
-        }
-        load(id);
+  var bool=((leave||"join")!="leave");
+  firebase.database().ref("groups/"+id+"/users").once('value', function(snapshot){
+      if(!snapshot.val()[uid]){
+          firebase.database().ref("groups/"+id+"/users").update({
+                [uid]:bool
+          }).then(function(){
+                load(id);
+          });
       }
-      return post;
-    });
+  });
 }
 
 function groups(id){
@@ -481,4 +472,13 @@ function stall(param){
 
 function load(id){
     console.log(id);
+    var i=0;
+    firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
+        snap.forEach(function(child){
+            if(child.val()==true){
+                i++;
+                set("update","groups/"+id+"/stats","popularity",i);
+            }
+        });
+    });
 }
