@@ -483,8 +483,8 @@ function load(id){
         snap.forEach(function(child){
             if(child.val()==true){
               i++;
-              set("update","groups/"+id+"/stats","popularity",i);
             }
+            set("update","groups/"+id+"/stats","popularity",i);
             if(child.key==uid&&child.val()==false){
               stay=false;
             }
