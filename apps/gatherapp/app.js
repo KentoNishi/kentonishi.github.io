@@ -252,16 +252,18 @@ function search(){
 }
 
 function find(title){
-    var i=0;
-    clear("body");
-    write("Search Results","There were no relevent results.");
-    firebase.database().ref("groups/").orderByChild("info/search").startAt(title.toLowerCase()).endAt(title.toLowerCase()+"\uf8ff").limitToFirst(25).once('value', snapshot => {
-        reverseSnapshotOrder(snapshot).forEach(child => {
-            if(i==0){clear("body");}
-            write(child.val().info.group,child.val().stats.popularity.toString()+" members","group('"+child.key+"');");
-            i++;
+    if(title!=null){
+        var i=0;
+        clear("body");
+        write("Search Results","There were no relevent results.");
+        firebase.database().ref("groups/").orderByChild("info/search").startAt(title.toLowerCase()).endAt(title.toLowerCase()+"\uf8ff").limitToFirst(25).once('value', snapshot => {
+            reverseSnapshotOrder(snapshot).forEach(child => {
+                if(i==0){clear("body");}
+                write(child.val().info.group,child.val().stats.popularity.toString()+" members","group('"+child.key+"');");
+                i++;
+            });
         });
-    });
+    }
 }
 
 function action(act) {
