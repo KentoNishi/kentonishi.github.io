@@ -486,11 +486,11 @@ function load(id){
             if(child.val()==true){
               i++;
             }
-            set("update","groups/"+id+"/stats","popularity",i);
             if(child.key==uid&&child.val()==false){
               stay=false;
             }
         });
+        set("update","groups/"+id+"/stats","popularity",i);
         firebase.database().ref("groups/"+id).once("value",function(shot){
             if(stay){
                 clear("body");
