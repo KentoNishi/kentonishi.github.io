@@ -355,7 +355,9 @@ function group(id,leave){
       firebase.database().ref("groups/"+id+"/users").update({
             [uid]:bool
       }).then(function(){
+          if(bool){
             load(id);
+          }
       });
   });
 }
