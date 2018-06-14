@@ -347,18 +347,16 @@ function popularity(callback){
 function group(id,leave){
   var bool=(leave!="leave");
   firebase.database().ref("groups/"+id+"/users").once('value', function(snapshot){
-      if(!snapshot.val()[uid]){
-          if(bool){
-            set("set","users/"+uid+"/groups/"+id,"group",id);
-          }
-          console.log(leave);
-          console.log(bool);
-          firebase.database().ref("groups/"+id+"/users").update({
-                [uid]:bool
-          }).then(function(){
-                load(id);
-          });
+      if(bool){
+        set("set","users/"+uid+"/groups/"+id,"group",id);
       }
+      console.log(leave);
+      console.log(bool);
+      firebase.database().ref("groups/"+id+"/users").update({
+            [uid]:bool
+      }).then(function(){
+            load(id);
+      });
   });
 }
 
