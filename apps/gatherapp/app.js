@@ -377,7 +377,7 @@ function groups(id){
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
                 firebase.database().ref('groups/'+myGroups[i]+"/info").once('value', function(snap) {
-                    write(snap.val().group,(snap.val().desc||"Description Here"),"javascript:remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);group('"+childSnapshot.val().group+"','leave');","Leave Group","load('"+childSnapshot.val().group+"');");
+                    write(snap.val().group,(snap.val().desc||"Description Here"),"javascript:group('"+childSnapshot.val().group+"','leave');remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);","Leave Group","load('"+childSnapshot.val().group+"');");
                 });
                 i++;
             });
