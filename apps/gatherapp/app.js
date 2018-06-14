@@ -350,8 +350,8 @@ function group(id,leave){
       if(bool){
         set("set","users/"+uid+"/groups/"+id,"group",id);
       }
-      console.log(leave);
-      console.log(bool);
+//      console.log(leave);
+//      console.log(bool);
       firebase.database().ref("groups/"+id+"/users").update({
             [uid]:bool
       }).then(function(){
