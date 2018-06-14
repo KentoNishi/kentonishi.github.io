@@ -345,25 +345,21 @@ function popularity(callback){
 function group(id,leave){
   leave=leave||"join";
   firebase.database().ref('groups/'+id).transaction(function(post) {
-      console.log(post);
-//    if (post) {
-      if (leave=="leave") {
-        post.stats.popularity--;
-        post.users[uid] = null;
-      } else {
-        if(!post.users[uid]){
-            set("set","users/"+uid+"/groups/"+id,"group",id);
-            set("push","groups/"+id+"/users",uid,true);
-            post.stats.popularity++;
-        }
-        if (!post.users) {
+      if (post) {
+        if (leave=="leave"&&post.users[uid]) {
+          post.stats.popularity--;
+          post.stars[uid] = null;
+        } else {
+          post.stats.popularity++;
+          if (!post.users) {
             post.users = {};
+          }
+          post.users[uid] = true;
         }
-        post.users[uid] = true;
+        load(id);
       }
-    load(id);
-//    }
-  });
+      return post;
+    });
 }
 
 function groups(id){
