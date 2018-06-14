@@ -478,16 +478,24 @@ function stall(param){
 function load(id){
     console.log(id);
     var i=0;
+    var stay=true;
     firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
         snap.forEach(function(child){
             if(child.val()==true){
                 i++;
                 set("update","groups/"+id+"/stats","popularity",i);
+                if(child.key==uid&&child.val()==false){
+                  stay=false;
+                }
             }
         });
         firebase.database().ref("groups/"+id).once("value",function(shot){
-            clear("body");
-            write(shot.val().info.group,i.toString()+" members");
+            if(stay){
+                clear("body");
+                write(shot.val().info.group,i.toString()+" members");
+            }else{
+                groups(uid);
+            }
         });
     });
 }
