@@ -485,5 +485,9 @@ function load(id){
                 set("update","groups/"+id+"/stats","popularity",i);
             }
         });
+        firebase.database().ref("groups/"+id).once("value",function(shot){
+            clear("body");
+            write(shot.val().info.group,i.toString()+" members");
+        });
     });
 }
