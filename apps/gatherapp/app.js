@@ -482,13 +482,11 @@ function load(id){
     firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
         snap.forEach(function(child){
             if(child.val()==true){
-                if(child.key==uid&&child.val()==false){
-                  stay=false;
-                }
-                if(child.val()){
-                  i++;
-                  set("update","groups/"+id+"/stats","popularity",i);
-                }
+              i++;
+              set("update","groups/"+id+"/stats","popularity",i);
+            }
+            if(child.key==uid&&child.val()==false){
+              stay=false;
             }
         });
         firebase.database().ref("groups/"+id).once("value",function(shot){
