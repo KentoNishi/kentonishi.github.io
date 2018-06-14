@@ -328,7 +328,7 @@ function popularity(callback){
     clear("body");
     write("Popular Groups","The most popular groups appear here.");
     var i=0;
-    firebase.database().ref("groups/").orderByChild("stats/popularity").limitToFirst(25).once('value', snapshot => {
+    firebase.database().ref("groups/").orderByChild("stats/popularity").limitToLast(25).once('value', snapshot => {
         reverseSnapshotOrder(snapshot).forEach(child => {
 //            console.log(child.key, child.val().stats.popularity);
             if(child.val().stats.popularity>0){
