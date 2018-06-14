@@ -403,7 +403,7 @@ function create(name,info){
     set("update","groups/"+key+"/info","search",name.toLowerCase());
     set("update","groups/"+key+"/info","desc",info);
     set("update","groups/"+key+"/users",uid,true);
-    set("update","groups/"+key+"/stats","popularity",1);
+    set("update","groups/"+key+"/stats","popularity",0);
     group(key);
 }
 
@@ -478,8 +478,17 @@ function stall(param){
 }
 
 function load(id){
+    var i=0;
     console.log(id);
-    firebase.database().ref("groups/"+id).once('value', function(snapshot){
-        
+    firebase.database().ref('groups/'+id+'/users').once("value",function(snap){
+        snap.forEach(function(child){
+            i++;
+        });
+        console.log(i);
+        firebase.database().ref('groups/'+id+'/stats').once("value",function(kid){
+            if(kid.val().popularity!=i){
+                set("update","groups/"+id+"/stats","popularity",i);
+            }
+        });
     });
 }
