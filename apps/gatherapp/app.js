@@ -446,12 +446,13 @@ function write(title,content,link,nav,href,extra){
            body+='<br />';
            body+=encode(content).replace(/&amp;quot;/g,'"');
            body+='<br />';
-           if(extra!=null){
-              body+=encode(extra).replace(/&amp;quot;/g,'"');
-              body+='<br />';
-           }
        }
     }
+    if(extra!=null){
+       body+=encode(extra).replace(/&amp;quot;/g,'"');
+       body+='<br />';
+    }
+    console.log(extra);
     if(link!=null&&nav!=null){
         body+='<a href="'+link+'">'+encode(nav).replace(/&amp;quot;/g,'"')+'</a>';
     }
