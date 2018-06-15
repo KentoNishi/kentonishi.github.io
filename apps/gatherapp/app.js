@@ -259,7 +259,7 @@ function find(title){
         firebase.database().ref("groups/").orderByChild("info/search").startAt(title.toLowerCase()).endAt(title.toLowerCase()+"\uf8ff").limitToFirst(25).once('value', snapshot => {
             reverseSnapshotOrder(snapshot).forEach(child => {
                 if(i==0){clear("body");}
-                write(child.val().info.group,child.val().stats.popularity.toString()+" members","group('"+child.key+"');");
+                write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,child.val().stats.popularity.toString()+" members");
                 i++;
             });
         });
@@ -336,7 +336,7 @@ function popularity(callback){
             if(child.val().stats.popularity>0){
                 if(i==0){clear("body");}
                 if(child.val().stats.popularity!=0){
-                    write(child.val().info.group,child.val().stats.popularity.toString()+" members","group('"+child.key+"');");
+                    write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,child.val().stats.popularity.toString()+" members");
                 }
                 i++;
             }
@@ -417,7 +417,7 @@ function get(method,path,title,callback){
     });
 }
 
-function write(title,content,link,nav,href){
+function write(title,content,link,nav,href,extra){
     var body="";
     if(link!=null&&nav==null){
         body+='<div class="card" onclick="javascript:'+link+'">';
@@ -445,6 +445,10 @@ function write(title,content,link,nav,href){
        if(content!=""){
            body+='<br />';
            body+=encode(content).replace(/&amp;quot;/g,'"');
+           body+='<br />';
+           if(extra!=null){
+              body+=encode(extra).replace(/&amp;quot;/g,'"');
+           }
            body+='<br />';
        }
     }
