@@ -449,8 +449,8 @@ function write(title,content,link,nav,href,extra){
     }
     if(extra!=null){
         body+=encode(extra).replace(/&amp;quot;/g,'"');
-        body+='<br />';
     }
+    body+='<br />';
     if(link!=null&&nav!=null){
         body+='<a href="'+link+'">'+encode(nav).replace(/&amp;quot;/g,'"')+'</a>';
     }
