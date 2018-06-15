@@ -385,7 +385,6 @@ function groups(id){
     }
 }
 
-
 function reverseSnapshotOrder (snapshot) {
   let reversed = [];
 
