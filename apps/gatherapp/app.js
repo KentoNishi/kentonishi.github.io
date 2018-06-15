@@ -260,7 +260,7 @@ function find(title){
         firebase.database().ref("groups/").orderByChild("info/search").startAt(title.toLowerCase()).endAt(title.toLowerCase()+"\uf8ff").limitToFirst(25).once('value', snapshot => {
             reverseSnapshotOrder(snapshot).forEach(child => {
                 if(i==0){clear("body");}
-                write(child.val().info.group,child.val().stats.popularity.toString()+" members","group('"+child.key+"');",child.val().info.desc);
+                write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,child.val().stats.popularity.toString()+" members");
                 i++;
             });
         });
@@ -337,7 +337,7 @@ function popularity(callback){
             if(child.val().stats.popularity>0){
                 if(i==0){clear("body");}
                 if(child.val().stats.popularity!=0){
-                    write(child.val().info.group,child.val().stats.popularity.toString()+" members","group('"+child.key+"');",child.val().info.desc);
+                    write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,child.val().stats.popularity.toString()+" members");
                 }
                 i++;
             }
