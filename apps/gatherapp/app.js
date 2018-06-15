@@ -448,8 +448,8 @@ function write(title,content,link,nav,href,extra){
            body+='<br />';
            if(extra!=null){
               body+=encode(extra).replace(/&amp;quot;/g,'"');
+              body+='<br />';
            }
-           body+='<br />';
        }
     }
     if(link!=null&&nav!=null){
