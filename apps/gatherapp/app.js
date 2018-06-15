@@ -377,9 +377,9 @@ function groups(id){
                 firebase.database().ref('groups/'+myGroups[i]+"/info").once('value', function(snap) {
                     firebase.database().ref('groups/'+myGroups[i]+"/stats").once('value', function(shot) {
                        write(snap.val().group,(snap.val().desc||"Description Here"),"javascript:group('"+childSnapshot.val().group+"','leave');remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);","Leave Group","load('"+childSnapshot.val().group+"');",shot.val().popularity+" members");
-                    i++;
                     });
                 });
+                i++;
             });
         });
     }
