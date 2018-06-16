@@ -496,7 +496,7 @@ function load(id){
         firebase.database().ref("groups/"+id).once("value",function(shot){
             if(stay){
                 clear("body");
-                write(shot.val().info.group,i.toString()+" members");
+                write(shot.val().info.group,shot.val().info.desc,"javascript:group('"+id+"','leave');","Leave Group",null,i.toString()+" members");
             }else{
                 groups(uid);
             }
