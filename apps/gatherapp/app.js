@@ -452,7 +452,6 @@ function write(title,content,link,nav,href,extra){
         body+='<br />';
     }
     if(link!=null&&nav!=null){
-        body+='<br />';
         body+='<a href="'+link+'">'+encode(nav).replace(/&amp;quot;/g,'"')+'</a>';
     }
     body+='</span>';
