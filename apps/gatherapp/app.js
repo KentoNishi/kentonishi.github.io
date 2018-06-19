@@ -360,6 +360,11 @@ function group(id,leave){
   });
 }
 
+function leave(id)[
+    group('"+id+"','leave');
+    remove('users/'+uid+"/groups/"+id,'groups', uid);
+}
+
 function groups(id){
     if(id==uid){
         var i = 0;
@@ -375,7 +380,7 @@ function groups(id){
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
                 firebase.database().ref('groups/'+myGroups[i]).once('value', function(snap) {
-                    write(snap.val().info.group,(snap.val().info.desc||"Description Here"),"javascript:group('"+childSnapshot.val().group+"','leave');remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);","Leave Group","load('"+childSnapshot.val().group+"');",snap.val().stats.popularity+" members");
+                    write(snap.val().info.group,(snap.val().info.desc||"Description Here"),"leave('"+childSnapshot.val().group+"');","Leave Group","load('"+childSnapshot.val().group+"');",snap.val().stats.popularity+" members");
                 });
                 i++;
             });
