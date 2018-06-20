@@ -210,7 +210,7 @@ var desc = "";
 
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
-        if(me.email.split("@")[1].split(".")[0]=="gmail"){
+        if(me.email.split("@")[1]=="gmail.com"){
             uid = me.uid;
             get("once","users/"+uid+"/info","desc","assign");
             email = me.email;
@@ -219,8 +219,15 @@ firebase.auth().onAuthStateChanged(function(me) {
             set("update","users/"+uid+"/info","name",name);
             pic = me.photoURL;
             set("update","users/"+uid+"/info","pic",pic);
-            clear("body");
-            feed();
+            if(window.location.hash.replace("#","")=="advertise"){
+                /*
+                clear("body");
+                write("Advertising","Your business can advertise on gather-up selections.","javascript:signUp();","Learn More");
+                */
+            }else{
+                clear("body");
+                feed();
+            }
         }else{
             write("Invalid Account","Your email address cannot be from a custom domain. Please use a normal Google account.");
         }
@@ -245,6 +252,10 @@ function pend(){
         }
     }else{
     }
+}
+
+function signUp(){
+
 }
 
 function search(){
@@ -360,6 +371,11 @@ function group(id,leave){
   });
 }
 
+function leave(id){
+    group('"+id+"','leave');
+    remove('users/'+uid+"/groups/"+id,'groups', uid);
+}
+
 function groups(id){
     if(id==uid){
         var i = 0;
@@ -375,7 +391,7 @@ function groups(id){
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
                 firebase.database().ref('groups/'+myGroups[i]).once('value', function(snap) {
-                    write(snap.val().info.group,(snap.val().info.desc||"Description Here"),"javascript:group('"+childSnapshot.val().group+"','leave');remove('"+'users/'+uid+"/groups/"+childSnapshot.val().group+"','groups', uid);","Leave Group","load('"+childSnapshot.val().group+"');",snap.val().stats.popularity+" members");
+                    write(snap.val().info.group,(snap.val().info.desc||"Description Here"),"leave('"+childSnapshot.val().group+"');","Leave Group","load('"+childSnapshot.val().group+"');",snap.val().stats.popularity+" members");
                 });
                 i++;
             });
@@ -496,6 +512,7 @@ function load(id){
         firebase.database().ref("groups/"+id).once("value",function(shot){
             if(stay){
                 clear("body");
+                write("Extra Info","Content will come here.");
                 write(shot.val().info.group,shot.val().info.desc,"javascript:group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');","Leave Group",null,i.toString()+" members");
             }else{
                 groups(uid);
