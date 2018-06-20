@@ -210,7 +210,7 @@ var desc = "";
 
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
-        if(me.email.split("@")[1].split(".")[0]=="gmail"){
+        if(me.email.split("@")[1]=="gmail.com"){
             uid = me.uid;
             get("once","users/"+uid+"/info","desc","assign");
             email = me.email;
@@ -219,8 +219,13 @@ firebase.auth().onAuthStateChanged(function(me) {
             set("update","users/"+uid+"/info","name",name);
             pic = me.photoURL;
             set("update","users/"+uid+"/info","pic",pic);
-            clear("body");
-            feed();
+            if(window.location.hash.split("#","")=="advertise"){
+                clear("body");
+                write("Become an advertiser!","Your business can advertise on group gather-up selections.","javascript:signUp();","Learn More");
+            }else{
+                clear("body");
+                feed();
+            }
         }else{
             write("Invalid Account","Your email address cannot be from a custom domain. Please use a normal Google account.");
         }
