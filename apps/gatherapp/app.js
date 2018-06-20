@@ -210,7 +210,7 @@ var desc = "";
 
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
-        if(me.email.split("@")[1]=="gmail.com"){
+        if(me.email.split("@")[1].split(".")[0]=="gmail"){
             uid = me.uid;
             get("once","users/"+uid+"/info","desc","assign");
             email = me.email;
@@ -245,10 +245,6 @@ function pend(){
         }
     }else{
     }
-}
-
-function signUp(){
-
 }
 
 function search(){
@@ -364,7 +360,7 @@ function group(id,leave){
   });
 }
 
-function leave(id){
+function leave(id)[
     group('"+id+"','leave');
     remove('users/'+uid+"/groups/"+id,'groups', uid);
 }
@@ -505,7 +501,6 @@ function load(id){
         firebase.database().ref("groups/"+id).once("value",function(shot){
             if(stay){
                 clear("body");
-                write("Extra Info","Content will come here.");
                 write(shot.val().info.group,shot.val().info.desc,"javascript:group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');","Leave Group",null,i.toString()+" members");
             }else{
                 groups(uid);
