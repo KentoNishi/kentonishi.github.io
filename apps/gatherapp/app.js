@@ -221,7 +221,7 @@ firebase.auth().onAuthStateChanged(function(me) {
             set("update","users/"+uid+"/info","pic",pic);
             if(window.location.hash.replace("#","")=="advertise"){
                 clear("body");
-                write("Become an advertiser!","Your business can advertise on group gather-up selections.","javascript:signUp();","Learn More");
+                write("Be an advertiser!","Your business can advertise on group gather-up selections.","javascript:signUp();","Learn More");
             }else{
                 clear("body");
                 feed();
