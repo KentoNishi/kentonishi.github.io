@@ -365,7 +365,7 @@ function group(id,leave){
   });
 }
 
-function leave(id)[
+function leave(id){
     group('"+id+"','leave');
     remove('users/'+uid+"/groups/"+id,'groups', uid);
 }
