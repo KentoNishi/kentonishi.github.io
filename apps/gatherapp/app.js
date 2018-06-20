@@ -220,8 +220,10 @@ firebase.auth().onAuthStateChanged(function(me) {
             pic = me.photoURL;
             set("update","users/"+uid+"/info","pic",pic);
             if(window.location.hash.replace("#","")=="advertise"){
+                /*
                 clear("body");
                 write("Advertising","Your business can advertise on gather-up selections.","javascript:signUp();","Learn More");
+                */
             }else{
                 clear("body");
                 feed();
