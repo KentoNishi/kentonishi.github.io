@@ -512,6 +512,7 @@ function load(id){
         firebase.database().ref("groups/"+id).once("value",function(shot){
             if(stay){
                 clear("body");
+                write("Extra Info","Content will come here.");
                 write(shot.val().info.group,shot.val().info.desc,"javascript:group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');","Leave Group",null,i.toString()+" members");
             }else{
                 groups(uid);
