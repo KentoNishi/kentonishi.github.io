@@ -219,15 +219,8 @@ firebase.auth().onAuthStateChanged(function(me) {
             set("update","users/"+uid+"/info","name",name);
             pic = me.photoURL;
             set("update","users/"+uid+"/info","pic",pic);
-            if(window.location.hash.replace("#","")=="advertise"){
-                /*
-                clear("body");
-                write("Advertising","Your business can advertise on gather-up selections.","javascript:signUp();","Learn More");
-                */
-            }else{
-                clear("body");
-                feed();
-            }
+            clear("body");
+            feed();
         }else{
             write("Invalid Account","Your email address cannot be from a custom domain. Please use a normal Google account.");
         }
