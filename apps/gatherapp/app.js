@@ -536,5 +536,4 @@ function request(id){
     body+='</input>';
     body+='</div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
-    document.querySelectorAll("input")[0].focus();
 }
