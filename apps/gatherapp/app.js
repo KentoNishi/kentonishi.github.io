@@ -513,7 +513,7 @@ function load(id){
             if(stay){
                 clear("body");
                 try{
-                    firebase.database().ref("groups/"+id+"/gatherups").once(function(events){
+                    firebase.database().ref("groups/"+id+"/gatherups").once("value",function(events){
                         events.forEach(function(kid){
                             write(kid.val().location,kid.val().time);
                        });
