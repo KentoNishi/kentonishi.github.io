@@ -513,9 +513,12 @@ function load(id){
             if(stay){
                 clear("body");
                 write("Gather-ups","");
-                shot.gatherups.forEach(function(kid){
-                    write(kid.val().location,kid.val().time);
-                });
+                try{
+                    firebase.database().ref("groups/"+id+"/gatherups").forEach(function(kid){
+                        write(kid.val().location,kid.val().time);
+                    });
+                }catch(TypeError){
+                }
                 write("New Gather-up","Schedule a gather-up.","javascript:request('"+id+"');");
                 write(shot.val().info.group,shot.val().info.desc,"javascript:group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');","Leave Group",null,i.toString()+" members");
             }else{
