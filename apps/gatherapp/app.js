@@ -529,7 +529,7 @@ function request(id){
     var body="";
     body+='<div class="card">';
     body+='<input type="date">';
-    body+='<div class="card">';
+    body+='</input>';
     body+='</div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
     document.querySelectorAll("input")[0].valueAsDate=new Date();
