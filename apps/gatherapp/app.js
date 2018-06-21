@@ -518,7 +518,7 @@ function load(id){
                     });
                 }catch(TypeError){
                 }
-                write("New Gather-up","Schedule a gather-up.","javascript:request('"+id+"');");
+                write("New Gather-up","Schedule a gather-up.","request('"+id+"');");
                 write(shot.val().info.group,shot.val().info.desc,"javascript:group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');","Leave Group",null,i.toString()+" members");
             }else{
                 groups(uid);
