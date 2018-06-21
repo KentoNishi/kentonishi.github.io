@@ -547,7 +547,8 @@ function newGather(id){
         firebase.database().ref("groups/"+id+"/gatherups").push().set({
             location:loc,
             time:date
+        }).then(function(){
+           load(id);
         });
-        load(id);
     }
 }
