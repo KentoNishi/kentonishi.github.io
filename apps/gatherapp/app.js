@@ -523,7 +523,7 @@ function load(id){
                 }catch(TypeError){
                 }
                 }else{
-                groups(uid);
+                    groups(uid);
             }
         });
     });
@@ -532,8 +532,10 @@ function load(id){
 function request(id){
     var body="";
     body+='<div class="card">';
+    body+='<div style="font-size:5.5vh;">Schedule a Gather-Up</div>';
     body+='<input type="date">';
-    body+='</input>';
+    body+='</input><br />';
+    body+='<button style="">Schedule</button>';
     body+='</div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
 }
