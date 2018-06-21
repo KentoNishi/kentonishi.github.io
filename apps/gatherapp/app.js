@@ -513,8 +513,10 @@ function load(id){
             if(stay){
                 clear("body");
                 try{
-                    firebase.database().ref("groups/"+id+"/gatherups").forEach(function(kid){
-                        write(kid.val().location,kid.val().time);
+                    firebase.database().ref("groups/"+id+"/gatherups").once(function(events){
+                        events.forEach(function(kid){
+                            write(kid.val().location,kid.val().time);
+                       });
                     });
                 }catch(TypeError){
                 }
