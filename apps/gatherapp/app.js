@@ -514,15 +514,15 @@ function load(id){
                 clear("body");
                 try{
                     firebase.database().ref("groups/"+id+"/gatherups").once("value",function(events){
-                        events.forEach(function(kid){
+                       events.forEach(function(kid){
                             write(kid.val().location,kid.val().time);
                        });
-                    });
+                       write("New Gather-up","Schedule a gather-up.","request('"+id+"');");
+                       write(shot.val().info.group,shot.val().info.desc,"javascript:group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');","Leave Group",null,i.toString()+" members");
+                   });
                 }catch(TypeError){
                 }
-                write("New Gather-up","Schedule a gather-up.","request('"+id+"');");
-                write(shot.val().info.group,shot.val().info.desc,"javascript:group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');","Leave Group",null,i.toString()+" members");
-            }else{
+                }else{
                 groups(uid);
             }
         });
