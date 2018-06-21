@@ -532,10 +532,22 @@ function load(id){
 function request(id){
     var body="";
     body+='<div class="card">';
-    body+='<div style="font-size:5.5vh;">New Gather-Up</div>';
-    body+='<input type="date">';
-    body+='</input><br />';
-    body+='<button>Schedule</button>';
+    body+='<div style="font-size:5.5vh;"><strong>New Gather-Up</strong></div>';
+    body+='<input type="text" placeholder="Location"></input>';
+    body+='<input type="date"></input><br />';
+    body+='<button onclick="newGather('"+id+"');">Schedule</button>';
     body+='</div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
+}
+
+function newGather(id){
+    var loc=document.querySelectorAll("input")[0].value;
+    var date=document.querySelectorAll("input")[0].valueAsDate;
+    if(loc!=null&&date!=null){
+        firebase.database().ref("groups/"+id+"/gatherups").push().set({
+            location:loc,
+            time:date
+        });
+        load(id);
+    }
 }
