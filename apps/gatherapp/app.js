@@ -513,7 +513,7 @@ function load(id){
             if(stay){
                 clear("body");
                 write("Gather-ups","");
-                shot.val().gatherups.forEach(function(kid){
+                shot.gatherups.forEach(function(kid){
                     write(kid.val().location,kid.val().time);
                 });
                 write("New Gather-up","Schedule a gather-up.","javascript:request('"+id+"');");
