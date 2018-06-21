@@ -512,7 +512,6 @@ function load(id){
         firebase.database().ref("groups/"+id).once("value",function(shot){
             if(stay){
                 clear("body");
-                write("Gather-ups","");
                 try{
                     firebase.database().ref("groups/"+id+"/gatherups").forEach(function(kid){
                         write(kid.val().location,kid.val().time);
