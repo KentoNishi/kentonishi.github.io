@@ -528,8 +528,6 @@ function load(id){
     });
 }
 
-
-
 function request(id){
     var body="";
     body+='<div class="card">';
