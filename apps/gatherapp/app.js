@@ -512,11 +512,25 @@ function load(id){
         firebase.database().ref("groups/"+id).once("value",function(shot){
             if(stay){
                 clear("body");
-                write("Extra Info","Content will come here.");
+                write("Gather-ups","");
+                shot.val().gatherups.forEach(function(kid){
+                    write(kid.val().location,kid.val().time);
+                });
+                write("New Gather-up","Schedule a gather-up.","javascript:request('"+id+"');");
                 write(shot.val().info.group,shot.val().info.desc,"javascript:group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');","Leave Group",null,i.toString()+" members");
             }else{
                 groups(uid);
             }
         });
     });
+}
+
+function request(id){
+    var body="";
+    body+='<div class="card">';
+    body+='<input type="date">';
+    body+='<div class="card">';
+    body+='</div>';
+    document.querySelectorAll(".body")[0].innerHTML=body;
+    document.querySelectorAll("input")[0].valueAsDate=new Date();
 }
