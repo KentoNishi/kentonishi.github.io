@@ -534,7 +534,8 @@ function request(id){
     body+='<div class="card">';
     body+='<div style="font-size:5.5vh;"><strong>New Gather-Up</strong></div>';
     body+='<input type="text" placeholder="Location"></input>';
-    body+='<input type="datetime"></input><br />';
+    body+='<input type="date"></input><br />';
+    body+='<input type="time" value="12:00" ></input><br />'
     body+='<button onclick="newGather('+"'"+id+"'"+');">Schedule</button>';
     body+='</div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
@@ -542,7 +543,7 @@ function request(id){
 
 function newGather(id){
     var loc=document.querySelectorAll("input")[0].value;
-    var date=document.querySelectorAll("input")[1].valueAsDate;
+    var date=document.querySelectorAll("input")[1].valueAsDate.split("T")[0]+document.querySelectorAll("input")[2].valueAsTime;
     if(loc!=null&&date!=null){
         firebase.database().ref("groups/"+id+"/gatherups").push().update({
             location:loc,
