@@ -391,7 +391,7 @@ function groups(id){
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
                 firebase.database().ref('groups/'+myGroups[i]).once('value', function(snap) {
-                    write(snap.val().info.group,(snap.val().info.desc||"Description Here"),"leave('"+childSnapshot.val().group+"');","Leave Group","load('"+childSnapshot.val().group+"');",snap.val().stats.popularity+" members");
+                    write(snap.val().info.group,(snap.val().info.desc||"Description Here"),"javascript:leave('"+childSnapshot.val().group+"');","Leave Group","load('"+childSnapshot.val().group+"');",snap.val().stats.popularity+" members");
                 });
                 i++;
             });
