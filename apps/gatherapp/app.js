@@ -543,7 +543,7 @@ function request(id){
 
 function newGather(id){
     var loc=document.querySelectorAll("input")[0].value;
-    var date=document.querySelectorAll("input")[1].valueAsDate.split("T")[0]+document.querySelectorAll("input")[2].valueAsTime;
+    var date=document.querySelectorAll("input")[1].valueAsDate.split("T")[0]+document.querySelectorAll("input")[2].value;
     if(loc!=null&&date!=null){
         firebase.database().ref("groups/"+id+"/gatherups").push().update({
             location:loc,
