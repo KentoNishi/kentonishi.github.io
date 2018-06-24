@@ -192,15 +192,6 @@ var decode = (function() {
     }
 })();
 
-
-
-
-
-
-
-
-
-
 //THE REAL CODE
 var uid = "";
 var name = "";
