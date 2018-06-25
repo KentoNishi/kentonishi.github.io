@@ -525,7 +525,7 @@ function request(id){
     body+='<div class="card">';
     body+='<div style="font-size:5.5vh;"><strong>New Gather-Up</strong></div>';
     body+='<input type="text" placeholder="Location"></input>';
-    body+='<input type="date"></input><br />';
+    body+='<input type="datetime-local"></input><br />';
     body+='<button onclick="newGather('+"'"+id+"'"+');">Schedule</button>';
     body+='</div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
