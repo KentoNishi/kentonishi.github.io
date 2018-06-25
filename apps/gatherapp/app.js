@@ -544,13 +544,6 @@ function newGather(id){
     }
 }
 
-
-
-
-
-
-
-
 function zero(str){
     if(str.length==1){
         return "0"+str;
