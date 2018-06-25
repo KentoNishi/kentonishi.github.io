@@ -524,9 +524,9 @@ function request(id){
     var body="";
     body+='<div class="card">';
     body+='<div style="font-size:5.5vh;"><strong>New Gather-Up</strong></div>';
-    body+='<input type="text" placeholder="Location"></input>';
-    body+='<input type="datetime-local" style="font-size:3vh;"></input><br />';
-    body+='<button onclick="newGather('+"'"+id+"'"+');">Schedule</button>';
+    body+='<input onchange="activate()" type="text" placeholder="Location"></input>';
+    body+='<input onchange="activate()" type="datetime-local" style="font-size:3vh;"></input><br />';
+    body+='<button disabled="true" onclick="newGather('+"'"+id+"'"+');">Schedule</button>';
     body+='</div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
 }
@@ -551,3 +551,10 @@ function zero(str){
         return str;
     }
 }
+
+function activate(){
+    if(document.querySelectorAll("input")[0].value!=null&&document.querySelectorAll("input")[1].value!=null){
+        document.querySelectorAll("button")[0].disabled=false;
+    }
+}
+
