@@ -283,11 +283,12 @@ function search(){
 function find(title){
     if(title!=null){
         var i=0;
+        var cleared=false;
         clear("body");
         write("Search Results","There were no relevent results.");
         firebase.database().ref("groups/").orderByChild("info/search").startAt(title.toLowerCase()).endAt(title.toLowerCase()+"\uf8ff").limitToFirst(25).once('value', snapshot => {
             snapshot.forEach(child => {
-                if(i==0){clear("body");}
+                if(child.val().stats.popularity!=0&&!cleared){clear("body");cleared=true;}
                 if(child.val().stats.popularity!=0){
                   write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,null,child.val().stats.popularity.toString()+" members");
                 }
