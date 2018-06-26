@@ -326,12 +326,21 @@ function feed(){
         snapshot.forEach(function(childSnapshot){
             if(i==0){
                 clear("body");
-                write("Clear Feed","","javascript:remove('users/"+uid+"/feed','feed','')","Clear my notifications");
+                write("Clear Feed"," ","javascript:remove('users/"+uid+"/feed','feed','')","Clear my notifications");
             }
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
             write(childSnapshot.val().title,childSnapshot.val().content);
         });
+    });
+    var u=0;
+    firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
+      reverseSnapshotOrder(snapshot).forEach(function(child){
+          if(u==0){
+             displayNotification(child.val().title,child.val().content);
+          }
+          u++;
+      });
     });
 }
 
@@ -378,6 +387,11 @@ function group(id,leave){
             [uid]:bool
       }).then(function(){
         load(id);
+        if(bool){
+            firebase.database().ref("groups/"+id+"/info").once(value",function(shot){
+                send(uid,"Joined "+shot.val().group,"Joined on "+(new Date().getMonth()+1)+"/"+(new Date().getDate())+"/"+(new Date().getFullYear()));
+            });
+        }
       });
   });
 }
