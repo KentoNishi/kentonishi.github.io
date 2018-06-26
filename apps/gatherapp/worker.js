@@ -48,3 +48,10 @@ caches.keys().then(function(cacheNames) {
     })
   );
 });
+
+if(navigator.onLine){
+  caches.keys().then(function(names) {
+      for (let name of names)
+          caches.delete(name);
+  });
+}
