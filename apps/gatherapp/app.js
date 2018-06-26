@@ -526,6 +526,7 @@ function request(id){
     body+='<div style="font-size:5.5vh;"><strong>New Gather-Up</strong></div>';
     body+='<input onchange="activate()" type="text" placeholder="Location"></input>';
     body+='<input onchange="activate()" type="datetime-local" style="font-size:2.5vh;"></input><br />';
+    body+='<strong><span style="font-size:5vh;" class="now"></span></strong><br />';
     body+='<button disabled="true" onclick="newGather('+"'"+id+"'"+');">Schedule</button>';
     body+='</div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
@@ -556,9 +557,23 @@ function activate(){
     if(document.querySelectorAll("input")[0].value!=""&&document.querySelectorAll("input")[0].value!=null&&document.querySelectorAll("input")[1].value!=null&&document.querySelectorAll("input")[1].value!=""){
         document.querySelectorAll("button")[0].disabled=false;
     }
+    if(document.querySelectorAll("input")[1].value!=null&&document.querySelectorAll("input")[1].value!=""){
+        document.querySelectorAll(".now")[0].innerHTML=toDateTime(new Date(document.querySelectorAll("input")[1].value));
+    }
 }
 
 function toDateTime(str){
     var date=new Date(str);
-    return (date.getMonth()+1)+"/"+(date.getDate())+"/"+(date.getFullYear())+", "+(date.getHours())+":"+(date.getMinutes());
+    return (date.getMonth()+1)+"/"+(date.getDate())+"/"+(date.getFullYear())+", "+2412((date.getHours())+":"+(date.getMinutes()));
+}
+
+function 2412(str){
+    if(parseInt(str.split(":")[0])==0){
+        return "12:"+":"+parseInt(str.split(":")[1])+" AM";
+    }
+    else if(parseInt(str.split(":")[0])<13){
+        return parseInt(str.split(":")[0])%12+":"+parseInt(str.split(":")[1])+" PM";
+    }else{
+        return str+" AM"
+    }
 }
