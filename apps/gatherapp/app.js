@@ -574,6 +574,6 @@ function time2412(str){
     else if(parseInt(str.split(":")[0])>13){
         return zero((parseInt(str.split(":")[0])%12).toString())+":"+zero((parseInt(str.split(":")[1])).toString())+" PM";
     }else{
-        return str+" AM"
+        return zero((parseInt(str.split(":")[0])).toString())+":"+zero((parseInt(str.split(":")[1])).toString())+" AM"
     }
 }
