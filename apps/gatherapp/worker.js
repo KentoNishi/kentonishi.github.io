@@ -1,4 +1,4 @@
-var CACHE_NAME = new Date().getFullYear().toString()+new Date().getMonth().toString()+new Date().getDate().toString()+new Date().getHours().toString()+new Date().getMinutes().toString();
+var CACHE_NAME = "CACHE";
 
 var urlsToCache = [
   '/apps/gatherapp/app.js'
@@ -35,17 +35,6 @@ self.addEventListener('fetch', function(event) {
         return fetch(event.request);
       }
     )
-  );
-});
-
-//Remove old caches
-caches.keys().then(function(cacheNames) {
-  return Promise.all(
-    cacheNames.map(function(cacheName) {
-      if(cacheName != CACHE_NAME) {
-        return caches.delete(cacheName);
-      }
-    })
   );
 });
 
