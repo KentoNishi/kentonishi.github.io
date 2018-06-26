@@ -2,11 +2,6 @@ Notification.requestPermission(function(status) {
     console.log('Notification permission status:', status);
 });
 
-
-
-
-
-
 (function() {
     try {
         var $_console$$ = console;
