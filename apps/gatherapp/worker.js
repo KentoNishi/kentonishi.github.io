@@ -1,7 +1,7 @@
 var CACHE_NAME = "CACHE";
 
 var urlsToCache = [
-  '/apps/gatherapp/app.js'
+  '/apps/gatherapp/app.js',
   '/apps/gatherapp/',
   '/apps/gatherapp/index.html',
   '/apps/gatherapp/manifest.json',
