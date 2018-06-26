@@ -306,15 +306,20 @@ function action(act) {
             console.log("add");
             clear("body");
             write("New Group","","pend();");
-            write("Near You","","byCity();");
-            write("Find Groups","","search();");
-            write("Most Popular","","popularity(uid);");
+            write("Find Groups","","finder();");
             write("My Groups","","groups(uid);");
         } else if (act == "home") {
             feed();
             console.log("home");
         }
     }
+}
+
+function finder(){
+    clear("body");
+    write("Search Groups","","search();");
+    write("Near Me","Current location: "+city+".","byCity();");
+    write("Most Popular","","popularity(uid);");
 }
 
 function clear(element){
@@ -469,7 +474,7 @@ function set(method,path,title,content){
 function byCity(){
     var i=0;
     clear("body");
-    write("Search Results","There are no groups in "+city.split(",")[0]+".");
+    write("Search Results","There are no results in "+city.split(",")[0]+".");
     firebase.database().ref("groups/").orderByChild("info/city").startAt(city).endAt(city+"\uf8ff").once('value', snapshot => {
         snapshot.forEach(child => {
             if(i==0){clear("body");}
