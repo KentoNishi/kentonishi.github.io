@@ -318,7 +318,7 @@ function action(act) {
 function finder(){
     clear("body");
     write("Search Groups","","search();");
-    write("Near Me","Current location: "+city+".","byCity();");
+    write("Near Me","Current location:","byCity();",null,null,city);
     write("Most Popular","","popularity(uid);");
 }
 
