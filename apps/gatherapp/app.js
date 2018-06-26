@@ -571,7 +571,7 @@ function time2412(str){
     if(parseInt(str.split(":")[0])==0){
         return "12:"+":"+parseInt(str.split(":")[1])+" AM";
     }
-    else if(parseInt(str.split(":")[0])<13){
+    else if(parseInt(str.split(":")[0])>13){
         return parseInt(str.split(":")[0])%12+":"+parseInt(str.split(":")[1])+" PM";
     }else{
         return str+" AM"
