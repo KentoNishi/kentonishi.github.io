@@ -280,7 +280,7 @@ function find(title){
         var i=0;
         clear("body");
         write("Search Results","There were no relevent results.");
-        firebase.database().ref("groups/").orderByChild("info/search").startAt(title.toLowerCase()).endAt(title.toLowerCase()+"\uf8ff").limitToFirst(25).once('value', snapshot => {
+        firebase.database().ref("groups/"+city+"/").orderByChild("info/search").startAt(title.toLowerCase()).endAt(title.toLowerCase()+"\uf8ff").limitToFirst(25).once('value', snapshot => {
             snapshot.forEach(child => {
                 if(i==0){clear("body");}
                 write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,null,child.val().stats.popularity.toString()+" members");
@@ -443,11 +443,11 @@ function reverseSnapshotOrder (snapshot) {
 function create(name,info){
     var key=firebase.database().ref("users/"+uid+"/groups").push().key;
     set("set","users/"+uid+"/groups/"+key,"group",key);
-    set("update","groups/"+key+"/info","group",name);
-    set("update","groups/"+key+"/info","search",name.toLowerCase());
-    set("update","groups/"+key+"/info","desc",info);
-    set("update","groups/"+key+"/users",uid,true);
-    set("update","groups/"+key+"/stats","popularity",1);
+    set("update","groups/"+city+"/"+key+"/info","group",name);
+    set("update","groups/"+city+"/"+key+"/info","search",name.toLowerCase());
+    set("update","groups/"+city+"/"+key+"/info","desc",info);
+    set("update","groups/"+city+"/"+key+"/users",uid,true);
+    set("update","groups/"+city+"/"+key+"/stats","popularity",1);
     group(key);
 }
 
@@ -485,7 +485,9 @@ function write(title,content,link,nav,href,extra){
        firebase.database().ref('users/'+uid+"/info").once('value', function(snapshot){
            document.querySelectorAll(".desc")[0].innerHTML=encode(snapshot.val().desc||"Description Here").replace(/&amp;quot;/g,'"');
        });
-       body+="<span class='desc' contenteditable onkeyup='"+decodeURIComponent("set(%22update%22%2C%22users%2F%22%2Buid%2B%22%2Finfo%22%2C%22desc%22%2Cdecode(this.innerHTML))%3B")+"' onkeypress='key13(event)'></span>";
+       body+="<span class='desc' contenteditable onkeyup='"+decodeURIComponent("set(%22update%22%2C%22users%2F%22%2Buid%2B%22%2Finfo%22%2C%22desc%22%2Cdecode(this.innerHTML))%3B")+"' onkeypress='key13(event,true)'></span>";
+       body+='<br />';
+       body+="<span class='city' contenteditable onkeyup='"+decodeURIComponent("set(%22update%22%2C%22users%2F%22%2Buid%2B%22%2Finfo%22%2C%22city%22%2Cdecode(this.innerHTML))%3B")+"' onkeypress='key13(event,false)'></span>";
        body+='<br />';
     }else{
        if(content!=""){
@@ -506,12 +508,19 @@ function write(title,content,link,nav,href,extra){
     document.body.querySelectorAll(".body")[0].innerHTML=body+document.body.querySelectorAll(".body")[0].innerHTML;
 }
 
-function key13(event){
+function key13(event,pass){
     if(event.keyCode==13){
+      if(pass){
         document.querySelectorAll("span[contenteditable]")[0].blur();
         if(document.querySelectorAll("span[contenteditable]")[0].innerHTML==""){
             document.querySelectorAll("span[contenteditable]")[0].innerHTML="Description Here";
         }
+      }else{
+        document.querySelectorAll("span[contenteditable]")[1].blur();
+        if(document.querySelectorAll("span[contenteditable]")[1].innerHTML==""){
+            document.querySelectorAll("span[contenteditable]")[1].innerHTML="City Here";
+        }
+      }
         return null;
     }else{
         return event.keyCode;
