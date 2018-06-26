@@ -1,9 +1,9 @@
 var CACHE_NAME = new Date().getFullYear().toString()+new Date().getMonth().toString()+new Date().getDate().toString()+new Date().getHours().toString()+new Date().getMinutes().toString();
 
-var urlsToCache = [
+var urlsToCache = [/*
   '/apps/gatherapp/',
   '/apps/gatherapp/app.js',
-  '/apps/gatherapp/index.html',
+  '/apps/gatherapp/index.html',*/
   '/apps/gatherapp/manifest.json',
   '/apps/gatherapp/192x192.png',
   '/apps/gatherapp/512x512.png',
