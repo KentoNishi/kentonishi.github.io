@@ -334,9 +334,9 @@ function feed(){
             i++;
         });
     });
-    var u=0;
-    var z=0;
     firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
+      var u=0;
+      var z=0;
       reverseSnapshotOrder(snapshot).forEach(function(child){
           if(u==0&&child.val().displayed!=true){
             if(z==2){
@@ -344,6 +344,7 @@ function feed(){
                firebase.database().ref("users/"+uid+"/feed/"+child.key).update({
                    displayed:true
                });
+               z=0;
             }
               z++;
           }
