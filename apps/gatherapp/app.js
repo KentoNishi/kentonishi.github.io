@@ -326,11 +326,12 @@ function feed(){
         snapshot.forEach(function(childSnapshot){
             if(i==0){
                 clear("body");
-                write("Clear Feed"," ","javascript:remove('users/"+uid+"/feed','feed','')","Clear my notifications");
+                write("Clear Feed","","javascript:remove('users/"+uid+"/feed','feed','')","Clear my notifications");
             }
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
             write(childSnapshot.val().title,childSnapshot.val().content);
+            i++;
         });
     });
     var u=0;
@@ -341,6 +342,7 @@ function feed(){
           }
           u++;
       });
+      u=0;
     });
 }
 
