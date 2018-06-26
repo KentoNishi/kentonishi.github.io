@@ -337,8 +337,11 @@ function feed(){
     var u=0;
     firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
       reverseSnapshotOrder(snapshot).forEach(function(child){
-          if(u==0){
+          if(u==0&&child.val().displayed!=true){
              displayNotification(child.val().title,child.val().content);
+             firebase.database().ref("users/"+uid+"/feed/"+child.key).update({
+                 displayed:true
+             });
           }
           u++;
       });
@@ -487,8 +490,8 @@ function write(title,content,link,nav,href,extra){
        if(content!=""){
            body+='<br />';
            body+=encode(content).replace(/&amp;quot;/g,'"');
-           body+='<br />';
        }
+           body+='<br />';
     }
     if(extra!=null){
         body+=encode(extra).replace(/&amp;quot;/g,'"');
