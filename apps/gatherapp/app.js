@@ -484,11 +484,10 @@ function write(title,content,link,nav,href,extra){
        body+='<br />';
        firebase.database().ref('users/'+uid+"/info").once('value', function(snapshot){
            document.querySelectorAll(".desc")[0].innerHTML=encode(snapshot.val().desc||"Description Here").replace(/&amp;quot;/g,'"');
-           document.querySelectorAll(".city")[0].innerHTML=encode(snapshot.val().city||"City Here").replace(/&amp;quot;/g,'"');
        });
-       body+="<span class='desc' contenteditable onkeyup='"+decodeURIComponent("set(%22update%22%2C%22users%2F%22%2Buid%2B%22%2Finfo%22%2C%22desc%22%2Cdecode(this.innerHTML))%3B")+"' onkeydown='key13(event,true)'></span>";
+       body+="<span class='desc' contenteditable onkeyup='"+decodeURIComponent("set(%22update%22%2C%22users%2F%22%2Buid%2B%22%2Finfo%22%2C%22desc%22%2Cdecode(this.innerHTML))%3B")+"' onkeypress='key13(event,true)'></span>";
        body+='<br />';
-       body+="<span class='city' contenteditable onkeyup='"+decodeURIComponent("set(%22update%22%2C%22users%2F%22%2Buid%2B%22%2Finfo%22%2C%22city%22%2Cdecode(this.innerHTML))%3B")+"' onkeydown='key13(event,false)'></span>";
+       body+="<span class='city' contenteditable onkeyup='"+decodeURIComponent("set(%22update%22%2C%22users%2F%22%2Buid%2B%22%2Finfo%22%2C%22city%22%2Cdecode(this.innerHTML))%3B")+"' onkeypress='key13(event,false)'></span>";
        body+='<br />';
     }else{
        if(content!=""){
@@ -522,7 +521,7 @@ function key13(event,pass){
             document.querySelectorAll("span[contenteditable]")[1].innerHTML="City Here";
         }
       }
-        return false;
+        return null;
     }else{
         return event.keyCode;
     }
