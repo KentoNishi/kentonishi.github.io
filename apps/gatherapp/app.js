@@ -306,7 +306,7 @@ function action(act) {
             console.log("add");
             clear("body");
             write("New Group","","pend();");
-            write("Groups in "+city.split(",")[0],"","byCity();");
+            write("Near You","","byCity();");
             write("Find Groups","","search();");
             write("Most Popular","","popularity(uid);");
             write("My Groups","","groups(uid);");
@@ -468,6 +468,8 @@ function set(method,path,title,content){
 
 function byCity(){
     var i=0;
+    clear("body");
+    write("Search Results","There are no groups in "+city.split(",")[0]+".");
     firebase.database().ref("groups/").orderByChild("info/city").startAt(city).endAt(city+"\uf8ff").once('value', snapshot => {
         snapshot.forEach(child => {
             if(i==0){clear("body");}
