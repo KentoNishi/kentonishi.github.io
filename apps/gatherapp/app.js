@@ -569,10 +569,10 @@ function toDateTime(str){
 
 function time2412(str){
     if(parseInt(str.split(":")[0])==0){
-        return "12:"+":"+zero(parseInt(str.split(":")[1]))+" AM";
+        return "12:"+":"+zero((parseInt(str.split(":")[1])).toString())+" AM";
     }
     else if(parseInt(str.split(":")[0])>13){
-        return zero(parseInt(str.split(":")[0])%12)+":"+zero(parseInt(str.split(":")[1]))+" PM";
+        return zero((parseInt(str.split(":")[0])%12).toString())+":"+zero((parseInt(str.split(":")[1])).toString())+" PM";
     }else{
         return str+" AM"
     }
