@@ -480,8 +480,10 @@ function byCity(){
     write("Search Results","There were no relevant results near "+city.split(",")[0]+".");
     firebase.database().ref("groups/").orderByChild("info/city").startAt(city).endAt(city+"\uf8ff").once('value', snapshot => {
         snapshot.forEach(child => {
-            if(i==0){clear("body");}
-            write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,null,child.val().stats.popularity.toString()+" members");
+            if(i==0&&child.val().stats.popularity!=0){clear("body");}
+            if(child.val().stats.popularity!=0){
+               write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,null,child.val().stats.popularity.toString()+" members");
+            }
             i++;
         });
     });
