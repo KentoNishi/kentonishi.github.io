@@ -564,7 +564,7 @@ function activate(){
 
 function toDateTime(str){
     var date=new Date(str);
-    return (date.getMonth()+1)+"/"+(date.getDate())+"/"+(date.getFullYear())+", "+time412((date.getHours())+":"+(date.getMinutes()));
+    return (date.getMonth()+1)+"/"+(date.getDate())+"/"+(date.getFullYear())+", "+time2412((date.getHours())+":"+(date.getMinutes()));
 }
 
 function time2412(str){
