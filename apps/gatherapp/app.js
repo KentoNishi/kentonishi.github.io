@@ -15,9 +15,6 @@ function displayNotification(title,body) {
   }
 }
 
-
-
-
 (function() {
     try {
         var $_console$$ = console;
