@@ -338,15 +338,17 @@ function feed(){
     firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
       var u=0;
       reverseSnapshotOrder(snapshot).forEach(function(child){
-          if(u==0&&child.val().displayed!=true&&currentNotification!=child.key){
+          if(u==0&&child.val().displayed!=true&&currentNotification==child.key){
              displayNotification(child.val().title,child.val().content);
-             currentNotification=child.key;
              firebase.database().ref("users/"+uid+"/feed/"+child.key).update({
                  displayed:true
              });
+             currentNotification="";
          }
+         currentNotification=child.key;
         u++;
       });
+      currentNotification="";
       u=0;
     });
 }
