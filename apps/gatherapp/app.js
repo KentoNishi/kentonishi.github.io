@@ -342,8 +342,7 @@ function feed(){
              firebase.database().ref("users/"+uid+"/feed/"+child.key).update({
                  displayed:true
              });
-          }
-        }
+         }
         u++;
       });
       u=0;
