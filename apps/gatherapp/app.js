@@ -288,7 +288,9 @@ function find(title){
         firebase.database().ref("groups/").orderByChild("info/search").startAt(title.toLowerCase()).endAt(title.toLowerCase()+"\uf8ff").limitToFirst(25).once('value', snapshot => {
             snapshot.forEach(child => {
                 if(i==0){clear("body");}
-                write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,null,child.val().stats.popularity.toString()+" members");
+                if(child.val().stats.popularity!=0){
+                  write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,null,child.val().stats.popularity.toString()+" members");
+                }
                 i++;
             });
         });
