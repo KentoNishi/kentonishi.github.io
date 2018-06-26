@@ -335,13 +335,17 @@ function feed(){
         });
     });
     var u=0;
+    var z=0;
     firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
       reverseSnapshotOrder(snapshot).forEach(function(child){
           if(u==0&&child.val().displayed!=true){
-             displayNotification(child.val().title,child.val().content);
-             firebase.database().ref("users/"+uid+"/feed/"+child.key).update({
-                 displayed:true
-             });
+            if(z==2){
+               displayNotification(child.val().title,child.val().content);
+               firebase.database().ref("users/"+uid+"/feed/"+child.key).update({
+                   displayed:true
+               });
+            }
+              z++;
           }
           u++;
       });
