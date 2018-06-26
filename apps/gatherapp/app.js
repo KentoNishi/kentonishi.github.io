@@ -216,7 +216,7 @@ var email = "";
 var pic = "";
 var desc = "";
 var currentNotification="";
-var load=true;
+var loaded=true;
 
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
@@ -339,13 +339,13 @@ function feed(){
     firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
       var u=0;
       reverseSnapshotOrder(snapshot).forEach(function(child){
-          if(u==0&&currentNotification!=child.key&&child.val().content!=null&&load==false){
+          if(u==0&&currentNotification!=child.key&&child.val().content!=null&&loaded==false){
              displayNotification(child.val().title,child.val().content);
              currentNotification=child.key;
           }
         u++;
       });
-      load=false;
+      loaded=false;
       u=0;
     });
 }
