@@ -356,6 +356,9 @@ function feed(){
              displayNotification(child.val().title,child.val().content);
              currentNotification=child.key;
           }
+          if(u>9){
+             remove("users/"+uid+"/feed/"+child.key);
+          }
         u++;
       });
       loaded=false;
