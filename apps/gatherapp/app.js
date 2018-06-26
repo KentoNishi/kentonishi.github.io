@@ -506,7 +506,7 @@ function load(id){
                 try{
                     firebase.database().ref("groups/"+id+"/gatherups").once("value",function(events){
                        events.forEach(function(kid){
-                            write(kid.val().location,kid.val().time);
+                            write(kid.val().location,toDateTime(kid.val().time));
                        });
                        write("New Gather-up","Schedule a gather-up.","request('"+id+"');");
                        write(shot.val().info.group,shot.val().info.desc,"javascript:group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');","Leave Group",null,i.toString()+" members");
@@ -558,3 +558,7 @@ function activate(){
     }
 }
 
+function toDateTime(str){
+    var date=new Date(str);
+    return (date.getMonth()+1)+"/"+(date.getDate())+"/"+(date.getFullYear())+", "+(date.getHours()+1)+":"+(date.getMinutes()+1);
+}
