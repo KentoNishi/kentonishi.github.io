@@ -1,7 +1,3 @@
-Notification.requestPermission(function(status) {
-    console.log('Notification permission status:', status);
-});
-
 function displayNotification(title,body) {
   if (Notification.permission == 'granted') {
     navigator.serviceWorker.getRegistration().then(function(reg) {
@@ -231,6 +227,9 @@ firebase.auth().onAuthStateChanged(function(me) {
             set("update","users/"+uid+"/info","name",name);
             pic = me.photoURL;
             set("update","users/"+uid+"/info","pic",pic);
+            Notification.requestPermission(function(status) {
+                console.log('Notification permission status:', status);
+            });
             if(window.location.hash.replace("#","")=="advertise"){
                 /*
                 clear("body");
