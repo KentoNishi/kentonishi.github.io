@@ -564,10 +564,10 @@ function activate(){
 
 function toDateTime(str){
     var date=new Date(str);
-    return (date.getMonth()+1)+"/"+(date.getDate())+"/"+(date.getFullYear())+", "+2412((date.getHours())+":"+(date.getMinutes()));
+    return (date.getMonth()+1)+"/"+(date.getDate())+"/"+(date.getFullYear())+", "+time412((date.getHours())+":"+(date.getMinutes()));
 }
 
-function 2412(str){
+function time2412(str){
     if(parseInt(str.split(":")[0])==0){
         return "12:"+":"+parseInt(str.split(":")[1])+" AM";
     }
