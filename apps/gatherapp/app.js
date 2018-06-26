@@ -215,6 +215,7 @@ var name = "";
 var email = "";
 var pic = "";
 var desc = "";
+var currentNotification="";
 
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
@@ -337,8 +338,9 @@ function feed(){
     firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
       var u=0;
       reverseSnapshotOrder(snapshot).forEach(function(child){
-          if(u==0&&child.val().displayed!=true){
+          if(u==0&&child.val().displayed!=true&&currentNotification!=child.key){
              displayNotification(child.val().title,child.val().content);
+             currentNotification=child.key;
              firebase.database().ref("users/"+uid+"/feed/"+child.key).update({
                  displayed:true
              });
