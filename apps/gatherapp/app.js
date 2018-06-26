@@ -526,7 +526,7 @@ function request(id){
     body+='<div style="font-size:5.5vh;"><strong>New Gather-Up</strong></div>';
     body+='<input onchange="activate()" type="text" placeholder="Location"></input>';
     body+='<input onchange="activate()" type="datetime-local" style="font-size:2.5vh;"></input><br />';
-    body+='<strong><span style="font-size:5vh;" class="now"></span></strong><br />';
+    body+='<strong><span style="font-size:4vh;" class="now"></span></strong><br />';
     body+='<button disabled="true" onclick="newGather('+"'"+id+"'"+');">Schedule</button>';
     body+='</div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
