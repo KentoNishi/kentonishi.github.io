@@ -474,7 +474,7 @@ function set(method,path,title,content){
 function byCity(){
     var i=0;
     clear("body");
-    write("Search Results","There were no relevant results in "+city.split(",")[0]+".");
+    write("Search Results","There were no relevant results near "+city.split(",")[0]+".");
     firebase.database().ref("groups/").orderByChild("info/city").startAt(city).endAt(city+"\uf8ff").once('value', snapshot => {
         snapshot.forEach(child => {
             if(i==0){clear("body");}
