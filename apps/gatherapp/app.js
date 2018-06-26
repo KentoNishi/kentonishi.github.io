@@ -2,12 +2,12 @@ Notification.requestPermission(function(status) {
     console.log('Notification permission status:', status);
 });
 
-function displayNotification(title,body,icon) {
+function displayNotification(title,body) {
   if (Notification.permission == 'granted') {
     navigator.serviceWorker.getRegistration().then(function(reg) {
       var options = {
         body: body,
-        icon: icon,
+        icon: "/apps/gatherapp/512x512.png",
         vibrate: [100, 50, 100],
         data: {
           dateOfArrival: Date.now(),
