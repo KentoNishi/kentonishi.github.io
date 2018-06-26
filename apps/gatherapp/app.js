@@ -553,7 +553,7 @@ function zero(str){
 }
 
 function activate(){
-    if(document.querySelectorAll("input")[0].value!=null&&document.querySelectorAll("input")[1].value!=null){
+    if(document.querySelectorAll("input")[0].value!=""&&document.querySelectorAll("input")[0].value!=null&&document.querySelectorAll("input")[1].value!=null&&document.querySelectorAll("input")[1].value!=""){
         document.querySelectorAll("button")[0].disabled=false;
     }
 }
