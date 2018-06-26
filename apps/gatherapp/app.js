@@ -217,6 +217,7 @@ var pic = "";
 var desc = "";
 var currentNotification="";
 var loaded=true;
+var city="";
 
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
@@ -232,6 +233,10 @@ firebase.auth().onAuthStateChanged(function(me) {
             Notification.requestPermission(function(status) {
                 console.log('Notification permission status:', status);
             });
+            $.get("https://ipinfo.io", function(response) {
+                city=response.city+", "+response.country;
+                set("update","users/"+uid+"/info","city",response.city+", "+response.country);
+            }, "jsonp");
             if(window.location.hash.replace("#","")=="advertise"){
                 /*
                 clear("body");
@@ -299,6 +304,7 @@ function action(act) {
             console.log("add");
             clear("body");
             write("New Group","","pend();");
+            write("Groups in "+city.split(",")[0],"","byCity();");
             write("Find Groups","","search();");
             write("Most Popular","","popularity(uid);");
             write("My Groups","","groups(uid);");
@@ -446,6 +452,7 @@ function create(name,info){
     set("update","groups/"+key+"/info","group",name);
     set("update","groups/"+key+"/info","search",name.toLowerCase());
     set("update","groups/"+key+"/info","desc",info);
+    set("update","groups/"+key+"/info","city",city);
     set("update","groups/"+key+"/users",uid,true);
     set("update","groups/"+key+"/stats","popularity",1);
     group(key);
@@ -454,6 +461,17 @@ function create(name,info){
 function set(method,path,title,content){
     firebase.database().ref(path)[method]({
         [title]:content
+    });
+}
+
+function byCity(){
+    var i=0;
+    firebase.database().ref("groups/").orderByChild("info/city").startAt(city).endAt(city+"\uf8ff").once('value', snapshot => {
+        snapshot.forEach(child => {
+            if(i==0){clear("body");}
+            write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,null,child.val().stats.popularity.toString()+" members");
+            i++;
+        });
     });
 }
 
