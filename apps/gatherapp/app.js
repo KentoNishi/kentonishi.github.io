@@ -388,7 +388,7 @@ function group(id,leave){
       }).then(function(){
         load(id);
         if(bool){
-            firebase.database().ref("groups/"+id+"/info").once(value",function(shot){
+            firebase.database().ref("groups/"+id+"/info").once("value",function(shot){
                 send(uid,"Joined "+shot.val().group,"Joined on "+(new Date().getMonth()+1)+"/"+(new Date().getDate())+"/"+(new Date().getFullYear()));
             });
         }
