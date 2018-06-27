@@ -1,6 +1,6 @@
 var CACHE_NAME = "CACHE";
 
-self.importScripts('https://www.gstatic.com/firebasejs/5.0.2/firebase-app.js','https://www.gstatic.com/firebasejs/5.0.2/firebase-database.js');
+self.importScripts('https://www.gstatic.com/firebasejs/5.0.2/firebase-app.js','https://www.gstatic.com/firebasejs/5.0.2/firebase-auth.js','https://www.gstatic.com/firebasejs/5.0.2/firebase-database.js');
 
 var config = {
     apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
@@ -11,6 +11,15 @@ var config = {
     messagingSenderId: "1038044491990"
 };
 firebase.initializeApp(config);
+
+var uid="";
+firebase.auth().onAuthStateChanged(function(me) {
+    if (me) {
+        uid=me.uid;
+        firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
+        });
+    }
+});
 
 var urlsToCache = [
   '/apps/gatherapp/app.js',
@@ -24,9 +33,6 @@ var urlsToCache = [
   '/apps/gatherapp/google.png',
   '/apps/gatherapp/logo.png'
 ];
-
-firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
-});
 
 self.addEventListener('install', function(event) {
   // Perform install steps
