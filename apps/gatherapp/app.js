@@ -224,38 +224,39 @@ var city="";
 
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
+      firebase.database().ref("users/"+me.uid+"/info").once("value",function(shot)
+        if(shot.val().email==null){
+            send(me.uid,"Welcome!","Welcome to GatherApp!");
+        }
         if(me.email.split("@")[1]=="gmail.com"){
             uid = me.uid;
-            firebase.database().ref("users/"+uid+"/info").once("value",function(snap){
-                if(snap.val().email==null){
-                    send(uid,"Welcome!","Welcome to GatherApp!");
-                }
-                email = me.email;
-                set("update","users/"+uid+"/info","email",email);
-                name = me.displayName;
-                set("update","users/"+uid+"/info","name",name);
-                pic = me.photoURL;
-                set("update","users/"+uid+"/info","pic",pic);
-                Notification.requestPermission(function(status) {
-     //               console.log('Notification permission status:', status);
-                });
-                $.get("https://ipinfo.io", function(response) {
-                    city=response.city+", "+response.country;
-                    set("update","users/"+uid+"/info","city",response.city+", "+response.country);
-                }, "jsonp");
-                if(window.location.hash.replace("#","")=="advertise"){
-                    /*
-                    clear("body");
-                    write("Advertising","Your business can advertise on gather-up selections.","javascript:signUp();","Learn More");
-                    */
-                }else{
-                    clear("body");
-                    feed();
-                }
-            }else{
-                write("Invalid Account","Your email address cannot be from a custom domain. Please use a normal Google account.");
-            }
+            get("once","users/"+uid+"/info","desc","assign");
+            email = me.email;
+            set("update","users/"+uid+"/info","email",email);
+            name = me.displayName;
+            set("update","users/"+uid+"/info","name",name);
+            pic = me.photoURL;
+            set("update","users/"+uid+"/info","pic",pic);
+            Notification.requestPermission(function(status) {
+ //               console.log('Notification permission status:', status);
             });
+            $.get("https://ipinfo.io", function(response) {
+                city=response.city+", "+response.country;
+                set("update","users/"+uid+"/info","city",response.city+", "+response.country);
+            }, "jsonp");
+            if(window.location.hash.replace("#","")=="advertise"){
+                /*
+                clear("body");
+                write("Advertising","Your business can advertise on gather-up selections.","javascript:signUp();","Learn More");
+                */
+            }else{
+                clear("body");
+                feed();
+            }
+        }else{
+            write("Invalid Account","Your email address cannot be from a custom domain. Please use a normal Google account.");
+        }
+      });
     }
 });
 
