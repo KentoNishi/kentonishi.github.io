@@ -47,7 +47,7 @@ function displayNotification(title,body) {
           primaryKey: 1
         }
       };
-      self.showNotification(title, options);
+      self.registration.showNotification(title, options);
     }
 }
 
