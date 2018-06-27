@@ -479,7 +479,7 @@ function byCity(){
     var i=0;
     var cleared=false;
     clear("body");
-    write("Search Results","There were no relevant results near "+city.split(",")[0]+".");
+    write("Search Results","There were no relevant results near "+encode(city).split(",")[0]+".");
     firebase.database().ref("groups/").orderByChild("info/city").startAt(city).endAt(city+"\uf8ff").once('value', snapshot => {
         snapshot.forEach(child => {
             if(child.val().stats.popularity!=0&&!cleared){clear("body");cleared=true;}
@@ -515,11 +515,11 @@ function write(title,content,link,nav,href,extra){
        body+='<img src="'+pic+'" class="pic"></img>';
        body+='<br />';
        body+="<span>@"+encode(email.split("@")[0])+"</span>";
-       body+='<br />';
+       body+='<br />';/*
        firebase.database().ref('users/'+uid+"/info").once('value', function(snapshot){
            document.querySelectorAll(".desc")[0].innerHTML=encode(snapshot.val().desc||"Description Here").replace(/&amp;quot;/g,'"');
-       });
-       body+="<span class='desc' contenteditable onkeyup='"+decodeURIComponent("set(%22update%22%2C%22users%2F%22%2Buid%2B%22%2Finfo%22%2C%22desc%22%2Cdecode(this.innerHTML))%3B")+"' onkeypress='key13(event)'></span>";
+       });*/
+       body+="<span>"+encode(city)+"</span>";//contenteditable onkeyup='"+decodeURIComponent("set(%22update%22%2C%22users%2F%22%2Buid%2B%22%2Finfo%22%2C%22desc%22%2Cdecode(this.innerHTML))%3B")+"' onkeypress='key13(event)'></span>";
        body+='<br />';
     }else{
        if(content!=""){
