@@ -1,3 +1,7 @@
+console.log('%c WAIT!', 'font-size:50px;background: red; color: blue');
+console.log("%c IF SOMEONE TOLD YOU TO PASTE SOMETHING HERE, DON'T DO IT. DOING SO MAY GIVE THEM ACCESS TO YOUR GATHERAPP ACCOUNT.", 'font-size:50px;background: red; color: blue');
+console.log("%c DON'T TINKER WITH THE APP UNLESS YOU KNOW EXACTLY WHAT YOU ARE DOING!", 'font-size:50px;background: red; color: blue');
+
 function displayNotification(title,body) {
   if (Notification.permission == 'granted') {
     navigator.serviceWorker.getRegistration().then(function(reg) {
@@ -62,7 +66,7 @@ function signOut() {
     firebase.auth().signOut().then(function() {
         location.reload(true);
     }).catch(function(error) {
-        console.log("SIGN OUT ERROR!");
+        console.log("Error signing out.");
     });
 }
 
@@ -232,7 +236,7 @@ firebase.auth().onAuthStateChanged(function(me) {
             pic = me.photoURL;
             set("update","users/"+uid+"/info","pic",pic);
             Notification.requestPermission(function(status) {
-                console.log('Notification permission status:', status);
+ //               console.log('Notification permission status:', status);
             });
             $.get("https://ipinfo.io", function(response) {
                 city=response.city+", "+response.country;
@@ -302,17 +306,17 @@ function find(title){
 function action(act) {
     if(uid!=""){
         if (act == "menu") {
-            console.log("menu");
+//            console.log("menu");
             user(uid);
         } else if (act == "add") {
-            console.log("add");
+//            console.log("add");
             clear("body");
             write("New Group","","pend();");
             write("Find Groups","","finder();");
             write("My Groups","","groups(uid);");
         } else if (act == "home") {
             feed();
-            console.log("home");
+//console.log("home");
         }
     }
 }
@@ -548,7 +552,7 @@ function stall(param){
 }
 
 function load(id){
-    console.log(id);
+//    console.log(id);
     var i=0;
     var stay=true;
     firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
@@ -556,7 +560,7 @@ function load(id){
             if(child.val()==true){
               i++;
             }
-            console.log(i);
+ //           console.log(i);
             set("update","groups/"+id+"/stats","popularity",i);
             if(child.key==uid&&child.val()==false){
               stay=false;
