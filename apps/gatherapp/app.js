@@ -338,7 +338,7 @@ function user(id){
 function feed(){
     var i=0;
     clear("body");
-    write("Notifications","Your Notifications Appear Here.");
+    write("Notifications","Your notifications appear here.");
     firebase.database().ref("users/"+uid+"/feed").once("value",function(snapshot){
         snapshot.forEach(function(childSnapshot){
             if(i==0){
