@@ -22,7 +22,7 @@ firebase.auth().onAuthStateChanged(function(me) {
       var u=0;
       reverseSnapshotOrder(snapshot).forEach(function(child){
           if(u==0&&currentNotification!=child.key&&child.val().content!=null&&loaded==false){
-             displayNotification(child.val().title,child.val().content,child.val().time||null);
+             displayNotification(child.val().title,child.val().content,child.val().time);
              currentNotification=child.key;
           }
           if(u>9){
