@@ -225,7 +225,9 @@ var city="";
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
       firebase.database().ref("users/"+me.uid+"/info").once("value",function(shot){
-        if(shot.val().email==null){
+        try{
+          stall(shot.val().email);
+        }catch(TypeError){
             send(me.uid,"Welcome!","Welcome to GatherApp!");
         }
         if(me.email.split("@")[1]=="gmail.com"){
