@@ -67,6 +67,7 @@ function signOut() {
 }
 
 function encode(texte) {
+    texte=texte.toString();
     texte = texte.replace(/"/g, '&quot;'); // 34 22
     texte = texte.replace(/&/g, '&amp;'); // 38 26
     texte = texte.replace(/\'/g, '&#39;'); // 39 27
