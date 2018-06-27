@@ -22,7 +22,7 @@ firebase.auth().onAuthStateChanged(function(me) {
       var u=0;
       reverseSnapshotOrder(snapshot).forEach(function(child){
           if(u==0&&currentNotification!=child.key&&child.val().content!=null&&loaded==false){
-             displayNotification(child.val().title,child.val().content);
+             displayNotification(child.val().title,child.val().content,child.val().time||null);
              currentNotification=child.key;
           }
           if(u>9){
@@ -43,14 +43,14 @@ function remove(path,callback,param){
     }
 }
 
-function displayNotification(title,body) {
+function displayNotification(title,body,time) {
   if (Notification.permission == 'granted') {
       var options = {
         body: body,
         icon: "/apps/gatherapp/512x512.png",
         vibrate: [100, 50, 100],
         data: {
-          dateOfArrival: Date.now(),
+          dateOfArrival: time||Date.now(),
           primaryKey: 1
         }
       };
