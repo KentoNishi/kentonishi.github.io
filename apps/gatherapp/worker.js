@@ -2,6 +2,16 @@ var CACHE_NAME = "CACHE";
 
 self.importScripts('https://www.gstatic.com/firebasejs/5.0.2/firebase-app.js','https://www.gstatic.com/firebasejs/5.0.2/firebase-database.js');
 
+var config = {
+    apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
+    authDomain: "gatherapp-1906b.firebaseapp.com",
+    databaseURL: "https://gatherapp-1906b.firebaseio.com",
+    projectId: "gatherapp-1906b",
+    storageBucket: "gatherapp-1906b.appspot.com",
+    messagingSenderId: "1038044491990"
+};
+firebase.initializeApp(config);
+
 var urlsToCache = [
   '/apps/gatherapp/app.js',
   '/apps/gatherapp/',
