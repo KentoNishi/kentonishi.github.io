@@ -49,7 +49,7 @@ function reverseSnapshotOrder (snapshot) {
 var urlsToCache = [
   '/apps/gatherapp/app.js',
   '/apps/gatherapp/',
-  '/apps /gatherapp/index.html',
+  '/apps/gatherapp/index.html',
   '/apps/gatherapp/manifest.json',
   '/apps/gatherapp/192x192.png',
   '/apps/gatherapp/512x512.png',
