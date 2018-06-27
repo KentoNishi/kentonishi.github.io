@@ -224,7 +224,7 @@ var city="";
 
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
-      firebase.database().ref("users/"+me.uid+"/info").once("value",function(shot)
+      firebase.database().ref("users/"+me.uid+"/info").once("value",function(shot){
         if(shot.val().email==null){
             send(me.uid,"Welcome!","Welcome to GatherApp!");
         }
