@@ -36,6 +36,21 @@ firebase.auth().onAuthStateChanged(function(me) {
     }
 });
 
+function displayNotification(title,body) {
+  if (Notification.permission == 'granted') {
+      var options = {
+        body: body,
+        icon: "/apps/gatherapp/512x512.png",
+        vibrate: [100, 50, 100],
+        data: {
+          dateOfArrival: Date.now(),
+          primaryKey: 1
+        }
+      };
+      self.showNotification(title, options);
+    });
+}
+
 function reverseSnapshotOrder (snapshot) {
   let reversed = [];
 
