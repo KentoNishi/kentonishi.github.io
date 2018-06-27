@@ -13,7 +13,7 @@ var config = {
 firebase.initializeApp(config);
 
 var uid="";
-var loaded=false;
+var loaded=true;
 var currentNotification="";
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
@@ -35,6 +35,13 @@ firebase.auth().onAuthStateChanged(function(me) {
         });
     }
 });
+
+function remove(path,callback,param){
+    firebase.database().ref(path).remove();
+    if(callback!=null){
+        window[callback](param);
+    }
+}
 
 function displayNotification(title,body) {
   if (Notification.permission == 'granted') {
