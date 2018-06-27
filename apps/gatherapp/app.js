@@ -348,7 +348,9 @@ function feed(){
             write(childSnapshot.val().title,childSnapshot.val().content);
             i++;
         });
-        write("Clear Feed","","javascript:remove('users/"+uid+"/feed','feed','')","Clear my notifications");
+        if(i!=0){
+          write("Clear Feed","","javascript:remove('users/"+uid+"/feed','feed','')","Clear my notifications");
+        }
     });
     firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
       var u=0;
