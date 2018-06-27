@@ -12,10 +12,41 @@ var config = {
 firebase.initializeApp(config);
 
 var uid="";
+var loaded=true;
+var currentNotification="";
+
+function displayNotification(title,body) {
+    navigator.serviceWorker.getRegistration().then(function(reg) {
+      var options = {
+        body: body,
+        icon: "/apps/gatherapp/512x512.png",
+        vibrate: [100, 50, 100],
+        data: {
+          dateOfArrival: Date.now(),
+          primaryKey: 1
+        }
+      };
+      self.showNotification(title, options);
+    });
+}
+
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
         uid=me.uid;
         firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
+          var u=0;
+          reverseSnapshotOrder(snapshot).forEach(function(child){
+              if(u==0&&currentNotification!=child.key&&child.val().content!=null&&loaded==false){
+                 displayNotification(child.val().title,child.val().content);
+                 currentNotification=child.key;
+              }
+              if(u>9){
+                 remove("users/"+uid+"/feed/"+child.key);
+              }
+            u++;
+          });
+          loaded=false;
+          u=0;
         });
     }
 });
