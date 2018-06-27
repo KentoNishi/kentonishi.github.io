@@ -1,9 +1,11 @@
 var CACHE_NAME = "CACHE";
 
+self.importScripts('https://www.gstatic.com/firebasejs/5.0.2/firebase-app.js','https://www.gstatic.com/firebasejs/5.0.2/firebase-database.js');
+
 var urlsToCache = [
   '/apps/gatherapp/app.js',
   '/apps/gatherapp/',
-  '/apps/gatherapp/index.html',
+  '/apps /gatherapp/index.html',
   '/apps/gatherapp/manifest.json',
   '/apps/gatherapp/192x192.png',
   '/apps/gatherapp/512x512.png',
@@ -12,6 +14,9 @@ var urlsToCache = [
   '/apps/gatherapp/google.png',
   '/apps/gatherapp/logo.png'
 ];
+
+firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
+});
 
 self.addEventListener('install', function(event) {
   // Perform install steps
