@@ -355,10 +355,13 @@ function feed(){
     });
 }
 
-function send(id,title,content){
+function send(id,title,content,time){
     var key=firebase.database().ref("users/"+id+"/feed").push().key;
     set("update","users/"+id+"/feed/"+key,"title",title);
     set("update","users/"+id+"/feed/"+key,"content",content);
+    if(time!=null){
+      set("update","users/"+id+"/feed/"+key,"time",time);
+    }
 }
 
 function remove(path,callback,param){
