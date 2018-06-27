@@ -1,33 +1,5 @@
 var CACHE_NAME = "CACHE";
 
-self.importScripts('https://www.gstatic.com/firebasejs/5.0.2/firebase-database.js');
-
-var uid;
-self.onmessage=function(e){
-    uid=e.data;
-    var currentNotification="";
-    firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
-      var u=0;
-      reverseSnapshotOrder(snapshot).forEach(function(child){
-          if(u==0&&currentNotification!=child.key&&child.val().content!=null&&loaded==false){
-              var options = {
-                body: child.val().content,
-                icon: "/apps/gatherapp/512x512.png",
-                vibrate: [100, 50, 100],
-                data: {
-                  dateOfArrival: Date.now(),
-                  primaryKey: 1
-                }
-              };
-              self.showNotification(child.val().title, options);
-             currentNotification=child.key;
-          }
-        u++;
-      });
-      u=0;
-    });
-}
-
 var urlsToCache = [
   '/apps/gatherapp/app.js',
   '/apps/gatherapp/',
