@@ -355,12 +355,9 @@ function feed(){
     });
 }
 
-function send(id,title,content,time){
+function send(id,title,content){
     var key=firebase.database().ref("users/"+id+"/feed").push().key;
     set("update","users/"+id+"/feed/"+key,"title",title);
-    if(time!=null){
-      set("update","users/"+id+"/feed/"+key,"time",time);
-    }
     set("update","users/"+id+"/feed/"+key,"content",content);
 }
 
