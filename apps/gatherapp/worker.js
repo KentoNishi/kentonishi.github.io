@@ -1,5 +1,4 @@
 var CACHE_NAME = "CACHE";
-
 self.importScripts('https://www.gstatic.com/firebasejs/5.0.2/firebase-app.js','https://www.gstatic.com/firebasejs/5.0.2/firebase-auth.js','https://www.gstatic.com/firebasejs/5.0.2/firebase-database.js');
 
 var config = {
