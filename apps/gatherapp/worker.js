@@ -48,7 +48,7 @@ function displayNotification(title,body) {
         }
       };
       self.showNotification(title, options);
-    });
+    }
 }
 
 function reverseSnapshotOrder (snapshot) {
