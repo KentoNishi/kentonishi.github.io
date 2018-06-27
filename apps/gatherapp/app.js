@@ -1,6 +1,5 @@
-console.log('%c WAIT!', 'font-size:50px;background: red; color: blue');
-console.log("%c IF SOMEONE TOLD YOU TO PASTE SOMETHING HERE, DON'T DO IT. DOING SO MAY GIVE THEM ACCESS TO YOUR GATHERAPP ACCOUNT.", 'font-size:50px;background: red; color: blue');
-console.log("%c DON'T TINKER WITH THE APP UNLESS YOU KNOW EXACTLY WHAT YOU ARE DOING!", 'font-size:50px;background: red; color: blue');
+console.log('%c WAIT! ', 'font-size:8vh;background: red; color: blue');
+console.log("%cIF SOMEONE TOLD YOU TO PASTE SOMETHING HERE, DON'T DO IT. DOING SO MAY GIVE THEM ACCESS TO YOUR GATHERAPP ACCOUNT.", 'font-size:4vh;background: magenta; color: black;');
 
 function displayNotification(title,body) {
   if (Notification.permission == 'granted') {
