@@ -216,6 +216,7 @@ var email = "";
 var pic = "";
 var desc = "";
 var currentNotification="";
+var loaded=true;
 var city="";
 
 firebase.auth().onAuthStateChanged(function(me) {
@@ -350,6 +351,21 @@ function feed(){
         if(i!=0){
           write("Clear Feed","","javascript:remove('users/"+uid+"/feed','feed','')","Clear my notifications");
         }
+    });
+    firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
+      var u=0;
+      reverseSnapshotOrder(snapshot).forEach(function(child){
+          if(u==0&&currentNotification!=child.key&&child.val().content!=null&&loaded==false){
+             displayNotification(child.val().title,child.val().content);
+             currentNotification=child.key;
+          }
+          if(u>9){
+             remove("users/"+uid+"/feed/"+child.key);
+          }
+        u++;
+      });
+      loaded=false;
+      u=0;
     });
 }
 
