@@ -1,70 +1,9 @@
 var CACHE_NAME = "CACHE";
-self.importScripts('https://www.gstatic.com/firebasejs/5.0.2/firebase-app.js','https://www.gstatic.com/firebasejs/5.0.2/firebase-auth.js','https://www.gstatic.com/firebasejs/5.0.2/firebase-database.js');
-
-function reverseSnapshotOrder (snapshot) {
-  let reversed = [];
-
-  snapshot.forEach(child => {
-    reversed.unshift(child);
-  });
-
-  return reversed;
-}
-
-var config = {
-    apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
-    authDomain: "gatherapp-1906b.firebaseapp.com",
-    databaseURL: "https://gatherapp-1906b.firebaseio.com",
-    projectId: "gatherapp-1906b",
-    storageBucket: "gatherapp-1906b.appspot.com",
-    messagingSenderId: "1038044491990"
-};
-firebase.initializeApp(config);
-
-var uid="";
-var loaded=true;
-var currentNotification="";
-
-function displayNotification(title,body) {
-    navigator.serviceWorker.getRegistration().then(function(reg) {
-      var options = {
-        body: body,
-        icon: "/apps/gatherapp/512x512.png",
-        vibrate: [100, 50, 100],
-        data: {
-          dateOfArrival: Date.now(),
-          primaryKey: 1
-        }
-      };
-      self.showNotification(title, options);
-    });
-}
-
-firebase.auth().onAuthStateChanged(function(me) {
-    if (me) {
-        uid=me.uid;
-        firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
-          var u=0;
-          reverseSnapshotOrder(snapshot).forEach(function(child){
-              if(u==0&&currentNotification!=child.key&&child.val().content!=null&&loaded==false){
-                 displayNotification(child.val().title,child.val().content);
-                 currentNotification=child.key;
-              }
-              if(u>9){
-                 remove("users/"+uid+"/feed/"+child.key);
-              }
-            u++;
-          });
-          loaded=false;
-          u=0;
-        });
-    }
-});
 
 var urlsToCache = [
   '/apps/gatherapp/app.js',
   '/apps/gatherapp/',
-  '/apps /gatherapp/index.html',
+  '/apps/gatherapp/index.html',
   '/apps/gatherapp/manifest.json',
   '/apps/gatherapp/192x192.png',
   '/apps/gatherapp/512x512.png',
