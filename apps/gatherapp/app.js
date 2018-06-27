@@ -218,7 +218,6 @@ var uid = "";
 var name = "";
 var email = "";
 var pic = "";
-var desc = "";
 var currentNotification="";
 var loaded=true;
 var city="";
@@ -227,7 +226,11 @@ firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
         if(me.email.split("@")[1]=="gmail.com"){
             uid = me.uid;
-            get("once","users/"+uid+"/info","desc","assign");
+            firebase.database().ref("users/"+uid+"/info").once("value",function(snap){
+                if(snap.val().email==null){
+                    send(uid,"Welcome!","Welcome to GatherApp!");
+                }
+            });
             email = me.email;
             set("update","users/"+uid+"/info","email",email);
             name = me.displayName;
