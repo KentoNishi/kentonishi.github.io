@@ -11,7 +11,7 @@ self.onmessage=function(e){
       reverseSnapshotOrder(snapshot).forEach(function(child){
           if(u==0&&currentNotification!=child.key&&child.val().content!=null&&loaded==false){
               var options = {
-                body: body,
+                body: child.val().content,
                 icon: "/apps/gatherapp/512x512.png",
                 vibrate: [100, 50, 100],
                 data: {
@@ -19,6 +19,7 @@ self.onmessage=function(e){
                   primaryKey: 1
                 }
               };
+              self.showNotification(child.val().title, options);
              currentNotification=child.key;
           }
         u++;
