@@ -1,6 +1,16 @@
 var CACHE_NAME = "CACHE";
 self.importScripts('https://www.gstatic.com/firebasejs/5.0.2/firebase-app.js','https://www.gstatic.com/firebasejs/5.0.2/firebase-auth.js','https://www.gstatic.com/firebasejs/5.0.2/firebase-database.js');
 
+function reverseSnapshotOrder (snapshot) {
+  let reversed = [];
+
+  snapshot.forEach(child => {
+    reversed.unshift(child);
+  });
+
+  return reversed;
+}
+
 var config = {
     apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
     authDomain: "gatherapp-1906b.firebaseapp.com",
