@@ -16,5 +16,6 @@
   "start_url": "https://kentonishi.github.io/apps/gatherapp/index.html",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
-  "display": "standalone"
+  "display": "standalone",
+  "gcm_sender_id": "103953800507"
 }
