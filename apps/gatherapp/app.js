@@ -202,6 +202,13 @@ var name = "";
 var email = "";
 var pic = "";
 var city="";
+var lat=0;
+var long=0;
+
+function pos(coord){
+    lat=coord.coord.latitude;
+    lat=coord.coord.longitude;
+}
 
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
@@ -224,6 +231,10 @@ firebase.auth().onAuthStateChanged(function(me) {
                 city=response.city+", "+response.country;
                 set("update","users/"+uid+"/info","city",response.city+", "+response.country);
             }, "jsonp");
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(pos);
+            } else {
+            }
             if(window.location.hash.replace("#","")=="advertise"){
                 /*
                 clear("body");
@@ -579,12 +590,24 @@ function request(id){
     var body="";
     body+='<div class="card">';
     body+='<div style="font-size:5.5vh;"><strong>New Gather-Up</strong></div>';
-    body+='<input onchange="activate()" onkeypress="activate()" type="text" placeholder="Location"></input>';
+//    body+='<input onchange="activate()" onkeypress="activate()" type="text" placeholder="Location"></input>';
+    body+='<div id="map" style="width: 90vw; height: 90vw;"></div>';
     body+='<input onchange="activate()" onkeypress="activate()" type="datetime-local" style="font-size:2.5vh;margin-bottom:1vh;"></input><br />';
     body+='<span style="font-size:4vh;padding-top:1vh;" class="now">Pick a date and time.</span><br />';
     body+='<button disabled="true" onclick="newGather('+"'"+id+"'"+');">Schedule</button>';
     body+='</div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
+    $('#map').locationpicker({
+        location: {
+            latitude: lat,
+            longitude: lat
+        },
+        radius: 10,
+        enableAutocomplete: true,
+        onchanged: function (currentLocation, radius, isMarkerDropped) {
+            alert("Location changed. New location (" + currentLocation.latitude + ", " + currentLocation.longitude + ")");
+        }
+    });
 }
 
 function newGather(id){
