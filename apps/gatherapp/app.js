@@ -612,7 +612,7 @@ function newGather(id){
             time:date
         }).then(function(){
            firebase.database().ref("groups/"+id+"/info").once("value",function(shot){
-               send(uid,shot.val().group,"Gather-up at "+loc+" on "+toDateTime(new Date(date)));
+               send(uid,shot.val().group,"Gather-up at "+loc+" on "+toDateTime(new Date(date)).split(",")[0]+", at "+toDateTime(new Date(date)).split(",")[1]+".");
            });
            load(id);
         });
