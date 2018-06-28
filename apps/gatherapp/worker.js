@@ -25,9 +25,6 @@ firebase.auth().onAuthStateChanged(function(me) {
              displayNotification(child.val().title,child.val().content);
              currentNotification=child.key;
           }
-          if(u>24){
-             remove("users/"+uid+"/feed/"+child.key);
-          }
         u++;
       });
       loaded=false;
