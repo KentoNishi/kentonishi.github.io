@@ -600,7 +600,7 @@ function request(id){
     $('#map').locationpicker({
         location: {
             latitude: lat,
-            longitude: lat
+            longitude: long
         },
         radius: 10,
         enableAutocomplete: true,
