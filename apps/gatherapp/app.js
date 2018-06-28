@@ -611,6 +611,9 @@ function newGather(id){
             location:loc,
             time:date
         }).then(function(){
+           firebase.database().ref("groups/"+id+"/info").once("value",function(shot){
+               send(uid,shot.val().group,"Gather-up at "+loc+" on "+toDateTime(new Date(date)));
+           });
            load(id);
         });
     }
