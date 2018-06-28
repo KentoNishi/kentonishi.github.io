@@ -606,18 +606,13 @@ function request(id){
         radius: 10,
         enableAutocomplete: true,
         onchanged: function (currentLocation, radius, isMarkerDropped) {
-            var addressComponents = $(this).locationpicker('map').location.addressComponents;
-            updateControls(addressComponents);
-        },
-        oninitialized: function(component) {
-            var addressComponents = $(component).locationpicker('map').location.addressComponents;
-            updateControls(addressComponents);
+            updateControls(currentLocation.latitude,currentLocation.longitude);
         }
     });
 }
 
-function updateControls(addressComponents) {
-    document.querySelectorAll("input")[0].value=$('#us9-street1').val(addressComponents.addressLine1)+" "+$('#us9-city').val(addressComponents.city)+", "+$('#us9-state').val(addressComponents.stateOrProvince)+" - "+$('#us9-country').val(addressComponents.country);
+function updateControls(lat,long) {
+    document.querySelectorAll("input")[0].value=lat+", "+long;
 }
 
 function newGather(id){
