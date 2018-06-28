@@ -603,7 +603,7 @@ function request(id){
     body+='<div style="font-size:5.5vh;"><strong>New Gather-Up</strong></div>';
     body+='<input onchange="activate()" onkeypress="activate()" type="text" placeholder="Location"></input>';
     body+='<input onchange="activate()" onkeypress="activate()" type="datetime-local" style="font-size:2.5vh;"></input><br />';
-    body+='<span style="font-size:4vh;" class="now"></span><br />';
+    body+='<span style="font-size:4vh;padding-top:1vh;" class="now"></span><br />';
     body+='<button disabled="true" onclick="newGather('+"'"+id+"'"+');">Schedule</button>';
     body+='</div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
@@ -640,6 +640,8 @@ function zero(str){
 function activate(){
     if(document.querySelectorAll("input")[0].value!=""&&document.querySelectorAll("input")[0].value!=null&&document.querySelectorAll("input")[1].value!=null&&document.querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll("input")[1].value)>Date.now()){
         document.querySelectorAll("button")[0].disabled=false;
+    }else{
+        document.querySelectorAll("button")[0].disabled=true;
     }
     if(document.querySelectorAll("input")[1].value!=null&&document.querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll("input")[1].value)>Date.now()){
         document.querySelectorAll(".now")[0].innerHTML=toDateTime(new Date(document.querySelectorAll("input")[1].value));
