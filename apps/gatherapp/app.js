@@ -1,23 +1,6 @@
 console.log('%c WAIT! ', 'font-size:8vh;background: red; color: blue');
 console.log("%cIF SOMEONE TOLD YOU TO PASTE SOMETHING HERE, DON'T DO IT. DOING SO MAY GIVE THEM ACCESS TO YOUR GATHERAPP ACCOUNT.", 'font-size:4vh;background: magenta; color: black;');
 
-function displayNotification(title,body) {
-  if (Notification.permission == 'granted') {
-    navigator.serviceWorker.getRegistration().then(function(reg) {
-      var options = {
-        body: body,
-        icon: "/apps/gatherapp/512x512.png",
-        vibrate: [100, 50, 100],
-        data: {
-          dateOfArrival: Date.now(),
-          primaryKey: 1
-        }
-      };
-      reg.showNotification(title, options);
-    });
-  }
-}
-
 (function() {
     try {
         var $_console$$ = console;
@@ -239,9 +222,6 @@ firebase.auth().onAuthStateChanged(function(me) {
             set("update","users/"+uid+"/info","name",name);
             pic = me.photoURL;
             set("update","users/"+uid+"/info","pic",pic);
-            Notification.requestPermission(function(status) {
- //               console.log('Notification permission status:', status);
-            });
             $.get("https://ipinfo.io", function(response) {
                 city=response.city+", "+response.country;
                 set("update","users/"+uid+"/info","city",response.city+", "+response.country);
