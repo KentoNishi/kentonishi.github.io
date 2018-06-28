@@ -581,7 +581,9 @@ function load(id){
                 try{
                     firebase.database().ref("groups/"+id+"/gatherups").once("value",function(events){
                        events.forEach(function(kid){
+                         if(new Date(kid.val().time)>Date.now()){
                             write(kid.val().location,toDateTime(kid.val().time));
+                         }
                        });
                        write("New Gather-up","Schedule a gather-up.","request('"+id+"');");
                        write(shot.val().info.group,shot.val().info.desc,"javascript:group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');","Leave Group",null,i.toString()+" members");
@@ -636,10 +638,10 @@ function zero(str){
 }
 
 function activate(){
-    if(document.querySelectorAll("input")[0].value!=""&&document.querySelectorAll("input")[0].value!=null&&document.querySelectorAll("input")[1].value!=null&&document.querySelectorAll("input")[1].value!=""){
+    if(document.querySelectorAll("input")[0].value!=""&&document.querySelectorAll("input")[0].value!=null&&document.querySelectorAll("input")[1].value!=null&&document.querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll("input")[1].value)>Date.now()){
         document.querySelectorAll("button")[0].disabled=false;
     }
-    if(document.querySelectorAll("input")[1].value!=null&&document.querySelectorAll("input")[1].value!=""){
+    if(document.querySelectorAll("input")[1].value!=null&&document.querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll("input")[1].value)>Date.now()){
         document.querySelectorAll(".now")[0].innerHTML=toDateTime(new Date(document.querySelectorAll("input")[1].value));
     }
 }
