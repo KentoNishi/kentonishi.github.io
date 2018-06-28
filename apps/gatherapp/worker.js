@@ -13,6 +13,9 @@ var config = {
 firebase.initializeApp(config);
 
 var uid="";
+
+//REPLACE WITH GCM OR FCM
+/*
 var loaded=true;
 var currentNotification="";
 firebase.auth().onAuthStateChanged(function(me) {
@@ -32,6 +35,7 @@ firebase.auth().onAuthStateChanged(function(me) {
         });
     }
 });
+*/
 
 function remove(path,callback,param){
     firebase.database().ref(path).remove();
