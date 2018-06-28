@@ -201,8 +201,6 @@ var uid = "";
 var name = "";
 var email = "";
 var pic = "";
-var currentNotification="";
-var loaded=true;
 var city="";
 
 firebase.auth().onAuthStateChanged(function(me) {
