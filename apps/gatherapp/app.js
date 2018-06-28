@@ -397,6 +397,15 @@ function popularity(callback){
 
 function group(id,leave){
   var bool=(leave!="leave");
+  if(bool){
+    firebase.database().ref("groups/"+id+"/info").once("value",function(shot){
+      firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
+        if(!snap.val()[uid]){
+          send(uid,"Joined "+shot.val().group,"Joined on "+(new Date().getMonth()+1)+"/"+(new Date().getDate())+"/"+(new Date().getFullYear()));
+        }
+      });
+    });
+  }
   firebase.database().ref("groups/"+id+"/users").once('value', function(snapshot){
       if(bool){
         set("set","users/"+uid+"/groups/"+id,"group",id);
@@ -407,11 +416,6 @@ function group(id,leave){
             [uid]:bool
       }).then(function(){
         load(id);
-        if(bool){
-            firebase.database().ref("groups/"+id+"/info").once("value",function(shot){
-                send(uid,"Joined "+shot.val().group,"Joined on "+(new Date().getMonth()+1)+"/"+(new Date().getDate())+"/"+(new Date().getFullYear()));
-            });
-        }
       });
   });
 }
