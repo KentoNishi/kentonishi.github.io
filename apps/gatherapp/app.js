@@ -612,7 +612,11 @@ function newGather(id){
             time:date
         }).then(function(){
            firebase.database().ref("groups/"+id+"/info").once("value",function(shot){
-               send(uid,shot.val().group,"Gather-up at "+loc+" on "+toDateTime(new Date(date)).split(",")[0]+", at"+toDateTime(new Date(date)).split(",")[1]+".");
+             firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
+               snap.forEach(function(input){
+                 send(input.key,shot.val().group,"Gather-up at "+loc+" on "+toDateTime(new Date(date)).split(",")[0]+", at"+toDateTime(new Date(date)).split(",")[1]+".");
+               });
+             });
            });
            load(id);
         });
