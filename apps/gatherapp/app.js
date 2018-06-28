@@ -606,7 +606,8 @@ function request(id){
         enableAutocomplete: true,
         onchanged: function (currentLocation, radius, isMarkerDropped) {
             alert("Location changed. New location (" + currentLocation.latitude + ", " + currentLocation.longitude + ")");
-        }
+        },
+        draggable:false
     });
 }
 
