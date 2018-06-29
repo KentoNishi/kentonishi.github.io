@@ -470,7 +470,7 @@ function byCity(){
             if(child.val().stats.popularity!=0){
                firebase.database().ref("groups/"+child.key).once("value",function(kid){
                    write(kid.val().info.group,kid.val().info.desc,"group('"+kid.key+"');",null,null,kid.val().stats.popularity.toString()+" members");
-               }
+               });
            }
         });/*
         var list = [];
