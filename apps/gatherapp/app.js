@@ -2,7 +2,7 @@ setInterval(function(){
     console.clear();
     console.log('%c WAIT! ', 'font-size:8vh;background: rgba('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+'1); color: red');
     console.log("%cIF SOMEONE TOLD YOU TO PASTE SOMETHING HERE, DON'T DO IT. DOING SO MAY GIVE THEM ACCESS TO YOUR GATHERAPP ACCOUNT.", 'font-size:4vh;background: magenta; color: black;');
-},100);
+},500);
     
 //APIS AND BASIC FUNCTIONS
 if ('serviceWorker' in navigator) {
