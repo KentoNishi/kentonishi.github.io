@@ -652,7 +652,7 @@ function activate(){
     }
     if(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value)>Date.now()&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=""){
         document.querySelectorAll(".now")[0].innerHTML=toDateTime(new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value));
-            document.querySelectorAll(".now")[0].innerHTML+="<br />"+document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value;
+            document.querySelectorAll(".now")[0].innerHTML+=",<br />"+document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value;
     }else{
         document.querySelectorAll(".now")[0].innerHTML="Pick a date and time.";
     }
