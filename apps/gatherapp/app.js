@@ -486,7 +486,7 @@ function byCity(){
         }
         for(var p=0;p<names.length;p++){
             if(!cleared){clear("body");cleared=true;}
-            console.log(names[p],ages[p]
+            console.log(names[p],ages[p]);
             firebase.database().ref("groups/"+names[p]).once("value",function(child){
                 write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,null,child.val().stats.popularity.toString()+" members");
             });
