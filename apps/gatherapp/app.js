@@ -654,7 +654,7 @@ function activate(){
         document.querySelectorAll(".now")[0].innerHTML=toDateTime(new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value));
             document.querySelectorAll(".now")[0].innerHTML+=",<br />"+document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value;
     }else{
-        document.querySelectorAll(".now")[0].innerHTML="Pick a date and time.";
+        document.querySelectorAll(".now")[0].innerHTML="Pick a place and time.";
     }
 }
 
