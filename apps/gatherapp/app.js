@@ -610,6 +610,7 @@ function request(id){
         },
         oninitialized: function(component) {
             $('div[style*="width: calc(100% - 60px)"]').remove();
+            updateControls(lat,long);
         }
     });
 }
