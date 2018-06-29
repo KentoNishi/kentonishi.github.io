@@ -442,6 +442,7 @@ function create(name,info){
     set("update","groups/"+key+"/info","city",city);
     set("update","groups/"+key+"/users",uid,true);
     set("update","groups/"+key+"/stats","popularity",1);
+    set("update","cities/"+city+"/"+key+"/stats","popularity",1);
     group(key);
 }
 
@@ -458,19 +459,20 @@ function byCity(){
     var ages=[];
     clear("body");
     write("Search Results","There were no relevant results near "+encode(city).split(",")[0]+".");
-    firebase.database().ref("groups/").orderByChild("info/city").startAt(city).endAt(city+"\uf8ff").once('value', snapshot => {
-        snapshot.forEach(child => {
+    firebase.database().ref("cities/"+city).orderByChild("stats/popularity").limitToLast(25).once('value', snapshot => {
+        snapshot.forEach(child => {/*
             if(child.val().stats.popularity!=0){
                 names[i]=child.key;
                 ages[i]=child.val().stats.popularity;
                 i++;
-            }
-            /*
+            }*/
             if(child.val().stats.popularity!=0&&!cleared){clear("body");cleared=true;}
             if(child.val().stats.popularity!=0){
-               write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,null,child.val().stats.popularity.toString()+" members");
-            }*/
-        });
+               firebase.database().ref("groups/"+child.key).once("value",function(kid){
+                   write(kid.val().info.group,kid.val().info.desc,"group('"+kid.key+"');",null,null,kid.val().stats.popularity.toString()+" members");
+               }
+           }
+        });/*
         var list = [];
         for (var j = 0; j < names.length; j++) 
             list.push({'name': names[j], 'age': ages[j]});
@@ -492,7 +494,7 @@ function byCity(){
             firebase.database().ref("groups/"+names[p]).once("value",function(child){
                 write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,null,child.val().stats.popularity.toString()+" members");
             });
-        }
+        }*/
     });
 }
 
@@ -575,6 +577,7 @@ function load(id){
             }
  //           console.log(i);
             set("update","groups/"+id+"/stats","popularity",i);
+            set("update","cities/"+city+"/"+key+"/stats","popularity",i);
             if(child.key==uid&&child.val()==false){
               stay=false;
             }
