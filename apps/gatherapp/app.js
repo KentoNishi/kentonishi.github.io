@@ -199,12 +199,12 @@ function pos(coord){
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
       firebase.database().ref("users/"+me.uid+"/info").once("value",function(shot){
-        try{
-          stall(shot.val().email);
-        }catch(TypeError){
-            send(me.uid,"Welcome!","Welcome to GatherApp!");
-        }
         if(me.email.split("@")[1]=="gmail.com"){
+            try{
+              stall(shot.val().email);
+            }catch(TypeError){
+                send(me.uid,"Welcome!","Welcome to GatherApp!");
+            }
             uid = me.uid;
             get("once","users/"+uid+"/info","desc","assign");
             email = me.email;
