@@ -577,7 +577,7 @@ function load(id){
             }
  //           console.log(i);
             set("update","groups/"+id+"/stats","popularity",i);
-            set("update","cities/"+city+"/"+key+"/stats","popularity",i);
+            set("update","cities/"+city+"/"+id+"/stats","popularity",i);
             if(child.key==uid&&child.val()==false){
               stay=false;
             }
