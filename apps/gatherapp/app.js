@@ -1,6 +1,9 @@
+setInterval(function(){
+console.clear();
 console.log('%c WAIT! ', 'font-size:8vh;background: red; color: blue');
 console.log("%cIF SOMEONE TOLD YOU TO PASTE SOMETHING HERE, DON'T DO IT. DOING SO MAY GIVE THEM ACCESS TO YOUR GATHERAPP ACCOUNT.", 'font-size:4vh;background: magenta; color: black;');
-
+},1000);
+    
 //APIS AND BASIC FUNCTIONS
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
@@ -486,7 +489,6 @@ function byCity(){
         }
         for(var p=0;p<names.length;p++){
             if(!cleared){clear("body");cleared=true;}
-            console.log(names[p],ages[p]);
             firebase.database().ref("groups/"+names[p]).once("value",function(child){
                 write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,null,child.val().stats.popularity.toString()+" members");
             });
