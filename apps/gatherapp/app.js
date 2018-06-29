@@ -598,21 +598,25 @@ function request(id){
     body+='<button disabled="true" onclick="newGather('+"'"+id+"'"+');">Schedule</button>';
     body+='</span></div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
-    $('#map').locationpicker({
-        location: {
-            latitude: lat,
-            longitude: long
-        },
-        radius: 10,
-        enableAutocomplete: true,
-        onchanged: function (currentLocation, radius, isMarkerDropped) {
-            updateControls(currentLocation.latitude,currentLocation.longitude);
-        },
-        oninitialized: function(component) {
-            $('div[style*="width: calc(100% - 60px)"]').remove();
-            updateControls(lat,long);
-        }
-    });
+    if(lat!=null&&long!=null){
+        $('#map').locationpicker({
+            location: {
+                latitude: lat,
+                longitude: long
+            },
+            radius: 10,
+            enableAutocomplete: true,
+            onchanged: function (currentLocation, radius, isMarkerDropped) {
+                updateControls(currentLocation.latitude,currentLocation.longitude);
+            },
+            oninitialized: function(component) {
+                $('div[style*="width: calc(100% - 60px)"]').remove();
+                updateControls(lat,long);
+            }
+        });
+    }else{
+        alert("GatherApp needs your location. Please enable it in your browser settings.");
+    }
 }
 
 function updateControls(lat,long) {
