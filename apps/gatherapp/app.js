@@ -616,6 +616,7 @@ function request(id){
         });
     }else{
         alert("GatherApp needs your location. Please enable it in your browser settings.");
+        load(id);
     }
 }
 
