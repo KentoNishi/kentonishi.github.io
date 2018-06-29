@@ -599,7 +599,7 @@ function request(id){
     body+='</div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
     body='<div id="map" style="width: 75vw; height: 75vw;margin-bottom:1vh;position:fixed;top:'+document.getElementById("placeholder").offsetTop+'px;left:'+document.getElementById("placeholder").offsetleft+'px;"></div>';
-    document.querySelectorAll(".body")[0].innerHTML=body;
+    document.querySelectorAll(".card")[0].innerHTML+=body;
     $('#map').locationpicker({
         location: {
             latitude: lat,
