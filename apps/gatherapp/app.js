@@ -458,7 +458,7 @@ function byCity(){
     firebase.database().ref("groups/").orderByChild("info/city").startAt(city).endAt(city+"\uf8ff").once('value', snapshot => {
         snapshot.forEach(child => {
             if(child.val().stats.popularity!=0){
-                names[i]=snapshot.key;
+                names[i]=child.key;
                 ages[i]=child.val().stats.popularity;
                 i++;
             }
