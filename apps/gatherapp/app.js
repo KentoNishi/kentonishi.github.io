@@ -4,6 +4,8 @@ setInterval(function(){
     console.log("%cIF SOMEONE TOLD YOU TO PASTE SOMETHING HERE, DON'T DO IT. DOING SO MAY GIVE THEM ACCESS TO YOUR GATHERAPP ACCOUNT.", 'font-size:4vh;background: magenta; color: black;');
 },1000);
     
+
+
 //APIS AND BASIC FUNCTIONS
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
