@@ -604,7 +604,7 @@ function request(id){
                 latitude: lat,
                 longitude: long
             },
-            radius: 10,
+            radius: 0,
             enableAutocomplete: true,
             onchanged: function (currentLocation, radius, isMarkerDropped) {
                 updateControls(currentLocation.latitude,currentLocation.longitude);
