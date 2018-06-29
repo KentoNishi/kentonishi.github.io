@@ -607,6 +607,9 @@ function request(id){
         enableAutocomplete: true,
         onchanged: function (currentLocation, radius, isMarkerDropped) {
             updateControls(currentLocation.latitude,currentLocation.longitude);
+        },
+        oninitialized: function(component) {
+            $('div[style*="width: calc(100% - 60px)"]').remove();
         }
     });
 }
