@@ -613,6 +613,7 @@ function request(id){
 
 function updateControls(lat,long) {
     document.querySelectorAll("input")[0].value=lat+", "+long;
+    activate();
 }
 
 function newGather(id){
