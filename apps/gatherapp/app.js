@@ -202,8 +202,8 @@ var name = "";
 var email = "";
 var pic = "";
 var city="";
-var lat=0;
-var long=0;
+var lat;
+var long;
 
 function pos(coord){
     lat=coord.coords.latitude;
@@ -616,7 +616,9 @@ function request(id){
 }
 
 function updateControls(lat,long) {
-    document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value=lat+", "+long;
+    if(lat!=null&&long!=null){
+        document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value=lat+", "+long;
+    }
     activate();
 }
 
