@@ -591,12 +591,13 @@ function request(id){
     body+='<div class="card">';
     body+='<div style="font-size:5.5vh;"><strong>New Gather-Up</strong></div>';
 //    body+='<input onchange="activate()" onkeypress="activate()" type="text" placeholder="Location"></input>';
-    body+='<div id="map" style="width: 75vw; height: 75vw;margin-bottom:1vh;"></div>';
+    body+='<div id="placeholder" style="width: 75vw; height: 75vw;margin-bottom:1vh;"></div>';
     body+='<input onchange="activate()" onkeypress="activate()" type="text" style="font-size:2.5vh;margin-bottom:1vh;display:none;"></input>';
     body+='<input onchange="activate()" onkeypress="activate()" type="datetime-local" style="font-size:2.5vh;margin-bottom:1vh;"></input><br />';
     body+='<span style="font-size:4vh;padding-top:1vh;" class="now">Pick a date and time.</span><br />';
     body+='<button disabled="true" onclick="newGather('+"'"+id+"'"+');">Schedule</button>';
     body+='</div>';
+    body+='<div id="map" style="width: 75vw; height: 75vw;margin-bottom:1vh;position:fixed;top:'+document.getElementById("map").offsetTop+'px;left:'+document.getElementById("map").offsetleft+'px;"></div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
     $('#map').locationpicker({
         location: {
