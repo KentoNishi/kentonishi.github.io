@@ -477,13 +477,13 @@ function byCity(){
             if(child.val().stats.popularity!=0){
                 names[i]=snapshot.key;
                 ages[i]=child.val().stats.popularity;
+                i++;
             }
             /*
             if(child.val().stats.popularity!=0&&!cleared){clear("body");cleared=true;}
             if(child.val().stats.popularity!=0){
                write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,null,child.val().stats.popularity.toString()+" members");
             }*/
-            i++;
         });
         var list = [];
         for (var j = 0; j < names.length; j++) 
@@ -502,8 +502,9 @@ function byCity(){
             ages[k] = list[k].age;
         }
         for(var p=0;p<names.length;p++){
-            if(cleared){clear("body");cleared=true;}
-            firebase.database().ref("groups/"+names[p]).once("value",child=>{
+            if(!cleared){clear("body");cleared=true;}
+            console.log(names[p],ages[p]
+            firebase.database().ref("groups/"+names[p]).once("value",function(child){
                 write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,null,child.val().stats.popularity.toString()+" members");
             });
         }
