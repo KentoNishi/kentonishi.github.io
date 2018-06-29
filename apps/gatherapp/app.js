@@ -592,8 +592,8 @@ function request(id){
     body+='<div style="font-size:5.5vh;"><strong>New Gather-Up</strong></div>';
 //    body+='<input onchange="activate()" onkeypress="activate()" type="text" placeholder="Location"></input>';
     body+='<div id="maps" style="width: 75vw; height: 75vw;margin-bottom:1vh;"></div>';
-    body+='<input onchange="activate()" onkeypress="activate()" type="text" style="font-size:2.5vh;margin-bottom:1vh;display:none;"></input>';
-    body+='<input onchange="activate()" onkeypress="activate()" type="datetime-local" style="font-size:2.5vh;margin-bottom:1vh;"></input><br />';
+    body+='<span class="inputs"><input onchange="activate()" onkeypress="activate()" type="text" style="font-size:2.5vh;margin-bottom:1vh;display:none;"></input>';
+    body+='<input onchange="activate()" onkeypress="activate()" type="datetime-local" style="font-size:2.5vh;margin-bottom:1vh;"></input></span><br />';
     body+='<span style="font-size:4vh;padding-top:1vh;" class="now">Pick a date and time.</span><br />';
     body+='<button disabled="true" onclick="newGather('+"'"+id+"'"+');">Schedule</button>';
     body+='</div>';
@@ -612,13 +612,13 @@ function request(id){
 }
 
 function updateControls(lat,long) {
-    document.querySelectorAll("input")[0].value=lat+", "+long;
+    document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value=lat+", "+long;
     activate();
 }
 
 function newGather(id){
-    var loc=document.querySelectorAll("input")[0].value;
-    var date=new Date(document.querySelectorAll("input")[1].value);
+    var loc=document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value;
+    var date=new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value);
     if(loc!=null&&date!=null){
         firebase.database().ref("groups/"+id+"/gatherups").push().update({
             location:loc,
@@ -645,13 +645,13 @@ function zero(str){
 }
 
 function activate(){
-    if(document.querySelectorAll("input")[0].value!=""&&document.querySelectorAll("input")[0].value!=null&&document.querySelectorAll("input")[1].value!=null&&document.querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll("input")[1].value)>Date.now()){
-        document.querySelectorAll("button")[0].disabled=false;
+    if(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=""&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value)>Date.now()){
+        document.querySelectorAll(".inputs")[0].querySelectorAll("button")[0].disabled=false;
     }else{
-        document.querySelectorAll("button")[0].disabled=true;
+        document.querySelectorAll(".inputs")[0].querySelectorAll("button")[0].disabled=true;
     }
-    if(document.querySelectorAll("input")[1].value!=null&&document.querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll("input")[1].value)>Date.now()){
-        document.querySelectorAll(".now")[0].innerHTML=toDateTime(new Date(document.querySelectorAll("input")[1].value));
+    if(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value)>Date.now()){
+        document.querySelectorAll(".now")[0].innerHTML=toDateTime(new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value));
     }else{
         document.querySelectorAll(".now")[0].innerHTML="Pick a date and time.";
     }
