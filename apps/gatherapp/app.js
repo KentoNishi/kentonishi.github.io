@@ -1,7 +1,7 @@
 setInterval(function(){
-console.clear();
-console.log('%c WAIT! ', 'font-size:8vh;background: red; color: blue');
-console.log("%cIF SOMEONE TOLD YOU TO PASTE SOMETHING HERE, DON'T DO IT. DOING SO MAY GIVE THEM ACCESS TO YOUR GATHERAPP ACCOUNT.", 'font-size:4vh;background: magenta; color: black;');
+    console.clear();
+    console.log('%c WAIT! ', 'font-size:8vh;background: red; color: blue');
+    console.log("%cIF SOMEONE TOLD YOU TO PASTE SOMETHING HERE, DON'T DO IT. DOING SO MAY GIVE THEM ACCESS TO YOUR GATHERAPP ACCOUNT.", 'font-size:4vh;background: magenta; color: black;');
 },1000);
     
 //APIS AND BASIC FUNCTIONS
