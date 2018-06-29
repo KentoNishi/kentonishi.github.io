@@ -468,16 +468,45 @@ function set(method,path,title,content){
 function byCity(){
     var i=0;
     var cleared=false;
+    var names=[];
+    var ages=[];
     clear("body");
     write("Search Results","There were no relevant results near "+encode(city).split(",")[0]+".");
     firebase.database().ref("groups/").orderByChild("info/city").startAt(city).endAt(city+"\uf8ff").once('value', snapshot => {
         snapshot.forEach(child => {
+            if(child.val().stats.popularity!=0){
+                names[i]=snapshot.key;
+                ages[i]=child.val().stats.popularity;
+            }
+            /*
             if(child.val().stats.popularity!=0&&!cleared){clear("body");cleared=true;}
             if(child.val().stats.popularity!=0){
                write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,null,child.val().stats.popularity.toString()+" members");
-            }
+            }*/
             i++;
         });
+        var list = [];
+        for (var j = 0; j < names.length; j++) 
+            list.push({'name': names[j], 'age': ages[j]});
+
+        //2) sort:
+        list.sort(function(a, b) {
+            return ((a.age < b.age) ? -1 : ((a.age == b.age) ? 0 : 1));
+            //Sort could be modified to, for example, sort on the age 
+            // if the name is the same.
+        });
+
+        //3) separate them back out:
+        for (var k = 0; k < list.length; k++) {
+            names[k] = list[k].name;
+            ages[k] = list[k].age;
+        }
+        for(var p=0;p<names.length;p++){
+            if(cleared){clear("body");cleared=true;}
+            firebase.database().ref("groups/"+names[p]).once("value",child=>{
+                write(child.val().info.group,child.val().info.desc,"group('"+child.key+"');",null,null,child.val().stats.popularity.toString()+" members");
+            });
+        }
     });
 }
 
