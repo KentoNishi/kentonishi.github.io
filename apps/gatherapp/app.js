@@ -261,14 +261,14 @@ firebase.auth().onAuthStateChanged(function(me) {
 function pend(){
     var title="";
     var description="";
-    title=prompt("Group Name:","Group Name Here");
+    title=prompt("Group Name:","");
     while(title!=null&&title.replace(" ","")==""){
-        title=prompt("Please enter a valid name.\nGroup Name:","Group Name Here");
+        title=prompt("Please enter a valid group name.\nGroup Name:","");
     }
     if(title!=null){
-        description=prompt("Group Description:","Description Here");
+        description=prompt("Group Description:","");
         while(description!=null&&description.replace(" ","")==""){
-            description=prompt("Please enter a valid description.\nGroup Description:","Description Here");
+            description=prompt("Please enter a valid group description.\nGroup Description:","");
         }
         if(description!=null){
             create(title,description);
