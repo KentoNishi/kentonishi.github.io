@@ -211,6 +211,7 @@ var pic = "";
 var city="";
 var lat;
 var long;
+var cancel=false;
 
 function pos(coord){
     lat=coord.coords.latitude;
@@ -436,7 +437,7 @@ function groups(id){
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
                 firebase.database().ref('groups/'+myGroups[i]).once('value', function(snap) {
-                    write(snap.val().info.group,(snap.val().info.desc||"Description Here"),"javascript:if(confirmLeave('"+encodeURIComponent(snap.val().info.group)+"')){group('"+snap.key+"','leave');remove('users/"+uid+"/groups/"+snap.key+"','action', 'add');}else{groups(uid);}","Leave Group","load('"+childSnapshot.val().group+"');",snap.val().stats.popularity+" members");
+                    write(snap.val().info.group,(snap.val().info.desc||"Description Here"),"javascript:if(confirmLeave('"+encodeURIComponent(snap.val().info.group)+"')){group('"+snap.key+"','leave');remove('users/"+uid+"/groups/"+snap.key+"','action', 'add');}else{cancel=true;}","Leave Group","load('"+childSnapshot.val().group+"');",snap.val().stats.popularity+" members");
                 });
                 i++;
             });
@@ -596,41 +597,46 @@ function confirmLeave(title){
 }
 
 function load(id){
-//    console.log(id);
-    var i=0;
-    var stay=true;
-    firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
-        snap.forEach(function(child){
-            if(child.val()==true){
-              i++;
-            }
- //           console.log(i);
-            set("update","groups/"+id+"/stats","popularity",i);
-            set("update","cities/"+city+"/"+id+"/stats","popularity",i);
-            if(child.key==uid&&child.val()==false){
-              stay=false;
-            }
-        });
-        firebase.database().ref("groups/"+id).once("value",function(shot){
-            if(stay){
-                clear("body");
-                try{
-                    firebase.database().ref("groups/"+id+"/gatherups").once("value",function(events){
-                       events.forEach(function(kid){
-                         if(new Date(kid.val().time)>Date.now()){
-                            write(kid.val().location,toDateTime(kid.val().time));
-                         }
-                       });
-                       write("New Gather-up","Schedule a gather-up.","request('"+id+"');");
-                       write(shot.val().info.group,shot.val().info.desc,"javascript:if(confirmLeave('"+encodeURIComponent(shot.val().info.group)+"')){group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');}","Leave Group",null,i.toString()+" members");
-                   });
-                }catch(TypeError){
-                }
-                }else{
-                    groups(uid);
-            }
-        });
-    });
+    if(!cancel){
+	//    console.log(id);
+	    var i=0;
+	    var stay=true;
+	    firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
+		snap.forEach(function(child){
+		    if(child.val()==true){
+		      i++;
+		    }
+	 //           console.log(i);
+		    set("update","groups/"+id+"/stats","popularity",i);
+		    set("update","cities/"+city+"/"+id+"/stats","popularity",i);
+		    if(child.key==uid&&child.val()==false){
+		      stay=false;
+		    }
+		});
+		firebase.database().ref("groups/"+id).once("value",function(shot){
+		    if(stay){
+			clear("body");
+			try{
+			    firebase.database().ref("groups/"+id+"/gatherups").once("value",function(events){
+			       events.forEach(function(kid){
+				 if(new Date(kid.val().time)>Date.now()){
+				    write(kid.val().location,toDateTime(kid.val().time));
+				 }
+			       });
+			       write("New Gather-up","Schedule a gather-up.","request('"+id+"');");
+			       write(shot.val().info.group,shot.val().info.desc,"javascript:if(confirmLeave('"+encodeURIComponent(shot.val().info.group)+"')){group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');}","Leave Group",null,i.toString()+" members");
+			   });
+			}catch(TypeError){
+			}
+			}else{
+			    groups(uid);
+		    }
+		});
+	    });
+    }else{
+	cancel=false;
+	groups(uid);
+    }
 }
 
 function request(id){
