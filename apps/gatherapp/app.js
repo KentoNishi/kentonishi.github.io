@@ -688,6 +688,7 @@ function updateControls(lati,longi) {
 	lati=parseInt(lati);
 	longi=parseInt(longi);
 	console.log(zeros(lati)+", "+zeros(longi));
+	console.log(lati+", "+longi);
         document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value=zeros(lati)+", "+zeros(longi);
     }
     activate();
