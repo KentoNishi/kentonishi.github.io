@@ -216,8 +216,8 @@ var lat;
 var long;
 
 function pos(coord){
-    lat=coord.coords.latitude;
-    long=coord.coords.longitude;
+    lat=Math.round(coord.coords.latitude*1000)/1000;
+    long=Math.round(coord.coords.longitude*1000)/1000;
 }
 
 firebase.auth().onAuthStateChanged(function(me) {
