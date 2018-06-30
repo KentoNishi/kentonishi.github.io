@@ -622,7 +622,7 @@ function load(id){
                          }
                        });
                        write("New Gather-up","Schedule a gather-up.","request('"+id+"');");
-                       write(shot.val().info.group,shot.val().info.desc,"javascript:if(confirmLeave()'"+encodeURIComponent(snap.val().info.group)+"'){group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');}","Leave Group",null,i.toString()+" members");
+                       write(shot.val().info.group,shot.val().info.desc,"javascript:if(confirmLeave()'"+encodeURIComponent(shot.val().info.group)+"'){group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');}","Leave Group",null,i.toString()+" members");
                    });
                 }catch(TypeError){
                 }
