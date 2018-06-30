@@ -436,7 +436,7 @@ function groups(id){
                 var childData = childSnapshot.val();
                 myGroups[i]=childSnapshot.val().group;
                 firebase.database().ref('groups/'+myGroups[i]).once('value', function(snap) {
-                    write(snap.val().info.group,(snap.val().info.desc||"Description Here"),"javascript:group('"+snap.key+"','leave');remove('users/"+uid+"/groups/"+snap.key+"','action', 'add');","Leave Group","load('"+childSnapshot.val().group+"');",snap.val().stats.popularity+" members");
+                    write(snap.val().info.group,(snap.val().info.desc||"Description Here"),"javascript:if(confirmLeave('"+encodeURIComponent(snap.val().info.group)+"')){group('"+snap.key+"','leave');remove('users/"+uid+"/groups/"+snap.key+"','action', 'add');}","Leave Group","load('"+childSnapshot.val().group+"');",snap.val().stats.popularity+" members");
                 });
                 i++;
             });
@@ -587,6 +587,14 @@ function assign(variable,value){
 function stall(param){
 }
 
+function confirmLeave(title){
+	if(confirm("Are you sure you want to leave "+decodeURIComponent(title)+"?")){
+		return true;
+	}else{
+		return false;
+	}
+}
+
 function load(id){
 //    console.log(id);
     var i=0;
@@ -614,7 +622,7 @@ function load(id){
                          }
                        });
                        write("New Gather-up","Schedule a gather-up.","request('"+id+"');");
-                       write(shot.val().info.group,shot.val().info.desc,"javascript:group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');","Leave Group",null,i.toString()+" members");
+                       write(shot.val().info.group,shot.val().info.desc,"javascript:if(confirmLeave()'"+encodeURIComponent(snap.val().info.group)+"'){group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');}","Leave Group",null,i.toString()+" members");
                    });
                 }catch(TypeError){
                 }
