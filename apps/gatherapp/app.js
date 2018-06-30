@@ -652,7 +652,7 @@ function request(id){
         var myLatLng = {lat: lat, lng: long};
 
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
+          zoom: 15,
           center: myLatLng
         });/*
 	for(var i=0;i<10;i++){
