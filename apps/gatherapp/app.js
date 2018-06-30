@@ -672,7 +672,7 @@ function request(id){
 //	marker.addListener('click', function(){console.log(this.title);});
 	google.maps.event.addListener(marker, 'dragend', function(evt){
 	    map.panTo(marker.getPosition());
-	    updateControls(evt.latLng.lat().toFixed(3),evt.latLng.lng().toFixed(3));
+	    updateControls(evt.latLng.lat(),evt.latLng.lng());
 	});
 	updateControls(lat,long);
 //	}
@@ -750,12 +750,12 @@ function time2412(str){
 }
 
 function zeros(int){
-	var rtn=int.toString();
+	var rtn=int.toString();/*
 	if(rtn.indexOf(".")==-1){
 		rtn+=".";
 	}
 	while(rtn.split(".")[1].length<3){
 		rtn+="0";
-	}
+	}*/
 	return rtn;
 }
