@@ -216,8 +216,8 @@ var lat;
 var long;
 
 function pos(coord){
-    lat=Math.round(coord.coords.latitude*1000)/1000;
-    long=Math.round(coord.coords.longitude*1000)/1000;
+    lat=zeros((Math.round(coord.coords.latitude*1000)/1000).toString());
+    long=zeros((Math.round(coord.coords.longitude*1000)/1000).toString());
 }
 
 firebase.auth().onAuthStateChanged(function(me) {
@@ -742,4 +742,15 @@ function time2412(str){
     }else{
         return zero((parseInt(str.split(":")[0])).toString())+":"+zero((parseInt(str.split(":")[1])).toString())+" AM"
     }
+}
+
+function zeros(str){
+	var rsp=str;
+	if(rsp.indexOf(".")==-1){
+		rsp+=".";
+	}
+	while(rsp.split(".")[1].length<3){
+		rsp+="0";
+	}
+	return rsp;
 }
