@@ -672,6 +672,7 @@ function request(id){
 //	marker.addListener('click', function(){console.log(this.title);});
 	google.maps.event.addListener(marker, 'dragend', function(evt){
 	    map.panTo(marker.getPosition());
+	    console.log(evt.latLng.lat().toFixed(3),evt.latLng.lng().toFixed(3));
 	    updateControls(evt.latLng.lat().toFixed(3),evt.latLng.lng().toFixed(3));
 	});
 	updateControls(lat,long);
@@ -686,6 +687,7 @@ function updateControls(lati,longi) {
     if(lati!=null&&longi!=null){
 	lati=parseInt(lati);
 	longi=parseInt(longi);
+	console.log(zeros(lati)+", "+zeros(longi));
         document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value=zeros(lati)+", "+zeros(longi);
     }
     activate();
