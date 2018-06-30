@@ -638,21 +638,29 @@ function request(id){
     body+='</span></div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
     if(lat!=null&&long!=null){
-        $('#map').locationpicker({
-            location: {
-                latitude: lat,
-                longitude: long
-            },
-            radius: 0,
-            enableAutocomplete: true,
-            onchanged: function (currentLocation, radius, isMarkerDropped) {
-                updateControls(currentLocation.latitude,currentLocation.longitude);
-            },
-            oninitialized: function(component) {
-                $('div[style*="width: calc(100% - 60px)"]').remove();
-                updateControls(lat,long);
-            }
-        });
+//	var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var myLatLng = {lat: lat, lng: long};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatLng
+        });/*
+	for(var i=0;i<10;i++){
+		myLatLng.lat+=1;
+		myLatLng.lng+=1;*/
+		var marker = new google.maps.Marker({
+		  position: myLatLng,
+		  map: map,
+		  draggable:true,
+		  label: "",//alphabet[i]/*HAHA, that's a pretty good joke. Get it, Alphabet?*/,
+		  title: "Current Location"//,
+		      //icon:"https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+		});
+//	marker.addListener('click', function(){console.log(this.title);});
+	google.maps.event.addListener(marker, 'dragend', function(evt){
+	    updateControls(evt.latLng.lat().toFixed(3),evt.latLng.lng().toFixed(3));
+	});
+//	}
     }else{
         alert("GatherApp needs your location. Please enable it in your browser settings.");
         load(id);
