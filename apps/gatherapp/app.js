@@ -3,6 +3,27 @@
     console.log('%c WAIT! ', 'font-size:8vh;background: rgba('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+'1); color: red');
     console.log("%cIF SOMEONE TOLD YOU TO PASTE SOMETHING HERE, DON'T DO IT. DOING SO MAY GIVE THEM ACCESS TO YOUR GATHERAPP ACCOUNT.", 'font-size:4vh;background: magenta; color: black;');
 },500);*/
+/*
+var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var myLatLng = {lat: -25.363, lng: 131.044};
+
+var map = new google.maps.Map(document.getElementById('map'), {
+  zoom: 4,
+  center: myLatLng
+});
+for(var i=0;i<10;i++){
+myLatLng.lat+=1;
+myLatLng.lng+=1;
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          label: "",//alphabet[i]//HAHA, that's a pretty good joke. Get it, Alphabet?,
+          title: i.toString()//,
+	      //icon:"https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+        });
+marker.addListener('click', function(){console.log(this.title);});
+}
+*/
 
 //APIS AND BASIC FUNCTIONS
 if ('serviceWorker' in navigator) {
