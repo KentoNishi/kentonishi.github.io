@@ -9,7 +9,6 @@ setInterval(function(){
 /*
 var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var myLatLng = {lat: -25.363, lng: 131.044};
-
 var map = new google.maps.Map(document.getElementById('map'), {
   zoom: 4,
   center: myLatLng
@@ -500,14 +499,12 @@ function byCity(){
         var list = [];
         for (var j = 0; j < names.length; j++) 
             list.push({'name': names[j], 'age': ages[j]});
-
         //2) sort:
         list.sort(function(a, b) {
             return ((a.age < b.age) ? -1 : ((a.age == b.age) ? 0 : 1));
             //Sort could be modified to, for example, sort on the age 
             // if the name is the same.
         });
-
         //3) separate them back out:
         for (var k = 0; k < list.length; k++) {
             names[k] = list[k].name;
@@ -644,7 +641,6 @@ function request(id){
 //    body+='<input onchange="activate()" onkeypress="activate()" type="text" placeholder="Location"></input>';
     body+='<div id="map" style="width: 75vw; height: 75vw;margin-bottom:1vh;"></div>';
     body+='<span class="inputs"><input onchange="activate()" onkeypress="activate()" type="text" style="font-size:2.5vh;margin-bottom:1vh;display:none;"></input>';
-    body+='<input onchange="activate()" onkeypress="activate()" style="font-size:2.5vh;margin-bottom:1vh;" placeholder="Location Name"></input><br />';
     body+='<input onchange="activate()" onkeypress="activate()" type="datetime-local" style="font-size:2.5vh;margin-bottom:1vh;"></input><br />';
     body+='<span style="font-size:4vh;padding-top:1vh;" class="now">Pick a place and time.</span><br />';
     body+='<button disabled="true" onclick="newGather('+"'"+id+"'"+');">Schedule</button>';
@@ -669,7 +665,7 @@ function request(id){
 		  title: "Current Location"//,
 		      //icon:"https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
 		});
-//	var interval=setInterval(function(){if($('div[style*="width: calc(100% - 60px)"]').remove().length!=0){clearInterval(interval);}},100);
+	var interval=setInterval(function(){if($('div[style*="width: calc(100% - 60px)"]').remove().length!=0){clearInterval(interval);}},100);
 //	marker.addListener('click', function(){console.log(this.title);});
 	google.maps.event.addListener(marker, 'dragend', function(evt){
 	    map.panTo(marker.getPosition());
@@ -694,7 +690,7 @@ function updateControls(lati,longi) {
 
 function newGather(id){
     var loc=document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value;
-    var date=new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[2].value);
+    var date=new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value);
     if(loc!=null&&date!=null){
         firebase.database().ref("groups/"+id+"/gatherups").push().update({
             location:loc,
@@ -721,13 +717,13 @@ function zero(str){
 }
 
 function activate(){
-    if(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=""&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[2].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[2].value!=""&&new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[2].value)>Date.now()){
+    if(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=""&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value)>Date.now()){
         document.querySelectorAll(".inputs")[0].querySelectorAll("button")[0].disabled=false;
     }else{
         document.querySelectorAll(".inputs")[0].querySelectorAll("button")[0].disabled=true;
     }
-    if(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[2].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[2].value!=""&&new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[2].value)>Date.now()&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=""){
-        document.querySelectorAll(".now")[0].innerHTML=toDateTime(new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[2].value));
+    if(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value)>Date.now()&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=""){
+        document.querySelectorAll(".now")[0].innerHTML=toDateTime(new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value));
             document.querySelectorAll(".now")[0].innerHTML+=",<br />"+document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value;
     }else{
         document.querySelectorAll(".now")[0].innerHTML="Pick a place and time.";
