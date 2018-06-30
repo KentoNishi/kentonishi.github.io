@@ -636,6 +636,7 @@ function load(id){
     });
 }
 
+var map;
 function request(id){
     var body="";
     body+='<div class="card">';
@@ -652,7 +653,7 @@ function request(id){
 //	var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         var myLatLng = {lat: lat, lng: long};
 
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
           zoom: 15,
           center: myLatLng
         });/*
@@ -679,9 +680,12 @@ function request(id){
     }
 }
 
-function updateControls(lat,long) {
+function updateControls(lati,longi) {
     if(lat!=null&&long!=null){
-        document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value=zeros(lat)+", "+zeros(long);
+	var myLatLng={};
+        document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value=zeros(lati)+", "+zeros(longi);
+	myLatLng={lat:lati,lng:longi};
+	map.setCenter(myLatLng);
     }
     activate();
 }
