@@ -683,7 +683,7 @@ function request(id){
 }
 
 function updateControls(lati,longi) {
-    if(lat!=null&&long!=null){
+    if(lati!=null&&longi!=null){
 	lati=parseInt(lati);
 	longi=parseInt(longi);
         document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value=zeros(lati)+", "+zeros(longi);
