@@ -631,7 +631,6 @@ function load(id){
 	    }
 	});
     });
-    }
 }
 
 function request(id){
