@@ -681,7 +681,7 @@ function request(id){
 
 function updateControls(lat,long) {
     if(lat!=null&&long!=null){
-        document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value=lat+", "+long;
+        document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value=zeros(lat)+", "+zeros(long);
     }
     activate();
 }
@@ -742,4 +742,15 @@ function time2412(str){
     }else{
         return zero((parseInt(str.split(":")[0])).toString())+":"+zero((parseInt(str.split(":")[1])).toString())+" AM"
     }
+}
+
+function zeros(int){
+	var rtn=int.toString();
+	if(rtn.indexOf(".")==-1){
+		rtn+=".";
+	}
+	while(rtn.split(".")[1].length<3){
+		rtn+="0";
+	}
+	return rtn;
 }
