@@ -671,6 +671,7 @@ function request(id){
 	var interval=setInterval(function(){if($('div[style*="width: calc(100% - 60px)"]').remove().length!=0){clearInterval(interval);updateControls(lat,long);}},100);
 //	marker.addListener('click', function(){console.log(this.title);});
 	google.maps.event.addListener(marker, 'dragend', function(evt){
+	    map.panTo(marker.getPosition());
 	    updateControls(evt.latLng.lat().toFixed(3),evt.latLng.lng().toFixed(3));
 	});
 //	}
@@ -682,12 +683,9 @@ function request(id){
 
 function updateControls(lati,longi) {
     if(lat!=null&&long!=null){
-	var myLatLng={};
 	lati=parseInt(lati);
 	longi=parseInt(longi);
         document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value=zeros(lati)+", "+zeros(longi);
-	myLatLng={lat:lati,lng:longi};
-	map.setCenter(myLatLng);
     }
     activate();
 }
