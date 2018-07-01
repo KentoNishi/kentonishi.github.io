@@ -608,12 +608,12 @@ function load(id){
 	      stay=false;
 	    }
 	});
-	set("update","groups/"+id+"/stats","popularity",i);
-	set("update","cities/"+city+"/"+id+"/stats","popularity",i);
 	if(i==0){
 		remove("groups/"+id);
 		remove("cities/"+city+"/"+id);
 	}
+	set("update","groups/"+id+"/stats","popularity",i);
+	set("update","cities/"+city+"/"+id+"/stats","popularity",i);
 	firebase.database().ref("groups/"+id).once("value",function(shot){
 	    if(stay){
 		clear("body");
