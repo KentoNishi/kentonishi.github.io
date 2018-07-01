@@ -610,6 +610,9 @@ function load(id){
 	      stay=false;
 	    }
 	});
+	if(i==0){
+		remove("groups/"+id);
+	}
 	firebase.database().ref("groups/"+id).once("value",function(shot){
 	    if(stay){
 		clear("body");
