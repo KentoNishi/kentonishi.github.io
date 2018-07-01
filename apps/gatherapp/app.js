@@ -604,12 +604,12 @@ function load(id){
 	      i++;
 	    }
  //           console.log(i);
-	    set("update","groups/"+id+"/stats","popularity",i);
-	    set("update","cities/"+city+"/"+id+"/stats","popularity",i);
 	    if(child.key==uid&&child.val()==false){
 	      stay=false;
 	    }
 	});
+	set("update","groups/"+id+"/stats","popularity",i);
+	set("update","cities/"+city+"/"+id+"/stats","popularity",i);
 	if(i==0){
 		remove("groups/"+id);
 		remove("cities/"+city+"/"+id);
