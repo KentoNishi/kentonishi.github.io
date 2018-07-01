@@ -605,7 +605,7 @@ function load(id){
 	      i++;
 	    }
  //           console.log(i);
-	    set("update","groups/"+id+"/stats","popularity",i);
+	    set("update","groups/"+id+"/stats","popularity"];
 	    set("update","cities/"+city+"/"+id+"/stats","popularity",i);
 	    if(child.key==uid&&child.val()==false){
 	      stay=false;
@@ -613,6 +613,7 @@ function load(id){
 	});
 	if(i==0){
 		remove("groups/"+id);
+		remove("cities/"+city+"/"+id);
 	}
 	firebase.database().ref("groups/"+id).once("value",function(shot){
 	    if(stay){
