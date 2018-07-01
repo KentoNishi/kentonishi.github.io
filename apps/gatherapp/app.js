@@ -610,8 +610,8 @@ function load(id){
 	    }
 	});
 	if(i==0){
-		remove("groups/"+id);
 		remove("cities/"+city+"/"+id);
+		remove("groups/"+id);
 	}else{
 		set("update","groups/"+id+"/stats","popularity",i);
 		set("update","cities/"+city+"/"+id+"/stats","popularity",i);
