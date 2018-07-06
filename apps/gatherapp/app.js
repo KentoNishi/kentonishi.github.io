@@ -224,7 +224,7 @@ function pos(coord){
 
 	new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
 	    if (status == google.maps.GeocoderStatus.OK) {
-		if (results[1]) {
+		if (results[0]) {
 		    var country = null, countryCode = null, loc = null, locAlt = null;
 		    var c, lc, component;
 		    for (var r = 0, rl = results.length; r < rl; r += 1) {
@@ -674,7 +674,16 @@ function load(id){
 			    firebase.database().ref("groups/"+id+"/gatherups").once("value",function(events){
 			       events.forEach(function(kid){
 				 if(new Date(kid.val().time)>Date.now()){
-				    write(kid.val().address,toDateTime(kid.val().time));
+				var address=kid.val().location;
+				latlng = new google.maps.LatLng(address);
+				new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
+				    if (status == google.maps.GeocoderStatus.OK) {
+					if (results[0]) {
+					    address=results[0].formatted_address;
+					}
+					write(address,toDateTime(kid.val().time));
+				    }
+				});
 				 }
 			       });
 			       write("New Gather-up","Schedule a gather-up.","request('"+id+"');");
@@ -752,14 +761,12 @@ function newGather(id){
 	latlng = new google.maps.LatLng(parseFloat(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value.split(",")[0]),parseFloat(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value.split(",")[1]));
 	new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
 	    if (status == google.maps.GeocoderStatus.OK) {
-		if (results[1]) {
-		    address=results[1].formatted_address;
+		if (results[0]) {
+		    address=results[0].formatted_address;
 		}
-	    }
 		firebase.database().ref("groups/"+id+"/gatherups").push().update({
 		    location:loc,
-		    time:date,
-		    place:address
+		    time:date
 		}).then(function(){
 		   firebase.database().ref("groups/"+id+"/info").once("value",function(shot){
 		     firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
@@ -770,6 +777,7 @@ function newGather(id){
 		   });
 		   load(id);
 		});
+	    }
 	});
     }
 }
@@ -794,8 +802,8 @@ function activate(){
 	latlng = new google.maps.LatLng(parseFloat(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value.split(",")[0]),parseFloat(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value.split(",")[1]));
 	new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
 	    if (status == google.maps.GeocoderStatus.OK) {
-		if (results[1]) {
-		    document.querySelectorAll(".now")[0].innerHTML+=",<br />"+results[1].formatted_address;
+		if (results[0]) {
+		    document.querySelectorAll(".now")[0].innerHTML+=",<br />"+results[0].formatted_address;
 		}
 	    }
 	});
