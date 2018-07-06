@@ -676,12 +676,20 @@ function load(id) {
 				set("update", "groups/" + id + "/stats", "popularity", i);
 				set("update", "cities/" + shoot.val().city + "/" + id + "/stats", "popularity", i);
 			}
+			var o=0;
 			firebase.database().ref("groups/" + id).once("value", function(shot) {
 				if (stay) {
 					clear("body");
 					try {
 						firebase.database().ref("groups/" + id + "/gatherups").once("value", function(events) {
-							events.forEach(function(kid) {
+							var saved;
+							(events).forEach(function(kid) {
+								if(o==0){
+									saved=kid;
+								}
+							});
+							o=0;
+							reverseSnapshotOrder(events).forEach(function(kid) {
 								if (new Date(kid.val().time) > Date.now()) {
 									var address = kid.val().location;
 									var latlng = new google.maps.LatLng(parseFloat(address.split(",")[0]),parseFloat(address.split(",")[1]));
@@ -692,13 +700,15 @@ function load(id) {
 											if (results[0]) {
 												address = results[0].formatted_address;
 											}
-											write(address, toDateTime(kid.val().time));
+										}
+										write(address, toDateTime(kid.val().time));
+										if(kid===kid){
+											write("New Gather-up", "Schedule a gather-up.", "request('" + id + "');");
+											write(shot.val().info.group, shot.val().info.desc, "javascript:if(confirmLeave('" + encodeURIComponent(shot.val().info.group) + "')){group('" + id + "','leave');remove('users/" + uid + "/groups/" + id + "','action', 'add');}", "Leave Group", null, i.toString() + " members");
 										}
 									});
 								}
 							});
-							write("New Gather-up", "Schedule a gather-up.", "request('" + id + "');");
-							write(shot.val().info.group, shot.val().info.desc, "javascript:if(confirmLeave('" + encodeURIComponent(shot.val().info.group) + "')){group('" + id + "','leave');remove('users/" + uid + "/groups/" + id + "','action', 'add');}", "Leave Group", null, i.toString() + " members");
 						});
 					} catch (TypeError) {}
 				} else {
