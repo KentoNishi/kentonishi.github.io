@@ -685,7 +685,7 @@ function load(id) {
 							var saved;
 							(events).forEach(function(kid) {
 								if(o==0){
-									saved=kid;
+									saved=kid.key;
 								}
 							});
 							o=0;
@@ -702,7 +702,7 @@ function load(id) {
 											}
 										}
 										write(address, toDateTime(kid.val().time));
-										if(kid===kid){
+										if(saved===kid.key){
 											write("New Gather-up", "Schedule a gather-up.", "request('" + id + "');");
 											write(shot.val().info.group, shot.val().info.desc, "javascript:if(confirmLeave('" + encodeURIComponent(shot.val().info.group) + "')){group('" + id + "','leave');remove('users/" + uid + "/groups/" + id + "','action', 'add');}", "Leave Group", null, i.toString() + " members");
 										}
