@@ -213,6 +213,7 @@ var pic = "";
 var city="";
 var lat;
 var long;
+var accurate=false;
 
 function pos(coord){
     lat=coord.coords.latitude;
@@ -262,6 +263,7 @@ function pos(coord){
 		}
 	    }
 	});
+accurate=true;
 }
 
 firebase.auth().onAuthStateChanged(function(me) {
@@ -284,6 +286,13 @@ firebase.auth().onAuthStateChanged(function(me) {
             $.get("https://ipinfo.io", function(response) {
                 city=response.city+", "+response.country;
                 set("update","users/"+uid+"/info","city",response.city+", "+response.country);
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode( { 'address': city}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+		    lat = results[0].geometry.location.lat();
+		    long = results[0].geometry.location.lng();
+		    } 
+		}); 
             }, "jsonp");
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(pos);
@@ -696,7 +705,9 @@ function request(id){
     body+='<button disabled="true" onclick="newGather('+"'"+id+"'"+');">Schedule</button>';
     body+='</span></div>';
     document.querySelectorAll(".body")[0].innerHTML=body;
-    if(lat!=null&&long!=null){
+    if(!accurate){
+        alert("You have turned off location tracking. This may affect the accuracy of your location information. You can turn it back on in your browser settings at any time.");
+    }
 //	var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         var myLatLng = {lat: lat, lng: long};
 
@@ -723,10 +734,6 @@ function request(id){
 	});
 	updateControls(lat,long);
 //	}
-    }else{
-        alert("GatherApp needs your location. Please enable it in your browser settings.");
-        load(id);
-    }
 }
 
 function updateControls(lati,longi) {
