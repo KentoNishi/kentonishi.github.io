@@ -683,31 +683,31 @@ function load(id) {
 					try {
 						firebase.database().ref("groups/" + id + "/gatherups").once("value", function(events) {
 							var saved;
-							(events).forEach(function(kid) {
+							(events).forEach(function(son) {
 								if(o==0){
-									saved=kid.key;
-								}
-								o++;
-							});
-							reverseSnapshotOrder(events).forEach(function(kid) {
-								if (new Date(kid.val().time) > Date.now()) {
-									var address = kid.val().location;
-									var latlng = new google.maps.LatLng(parseFloat(address.split(",")[0]),parseFloat(address.split(",")[1]));
-									new google.maps.Geocoder().geocode({
-										'latLng': latlng
-									}, function(results, status) {
-										if (status == google.maps.GeocoderStatus.OK) {
-											if (results[0]) {
-												address = results[0].formatted_address;
-											}
-										}
-										write(address, toDateTime(kid.val().time));
-										if(saved===kid.key){
-											write("New Gather-up", "Schedule a gather-up.", "request('" + id + "');");
-											write(shot.val().info.group, shot.val().info.desc, "javascript:if(confirmLeave('" + encodeURIComponent(shot.val().info.group) + "')){group('" + id + "','leave');remove('users/" + uid + "/groups/" + id + "','action', 'add');}", "Leave Group", null, i.toString() + " members");
+									saved=son.key;
+									reverseSnapshotOrder(events).forEach(function(kid) {
+										if (new Date(kid.val().time) > Date.now()) {
+											var address = kid.val().location;
+											var latlng = new google.maps.LatLng(parseFloat(address.split(",")[0]),parseFloat(address.split(",")[1]));
+											new google.maps.Geocoder().geocode({
+												'latLng': latlng
+											}, function(results, status) {
+												if (status == google.maps.GeocoderStatus.OK) {
+													if (results[0]) {
+														address = results[0].formatted_address;
+													}
+												}
+												write(address, toDateTime(kid.val().time));
+												if(saved==kid.key){
+													write("New Gather-up", "Schedule a gather-up.", "request('" + id + "');");
+													write(shot.val().info.group, shot.val().info.desc, "javascript:if(confirmLeave('" + encodeURIComponent(shot.val().info.group) + "')){group('" + id + "','leave');remove('users/" + uid + "/groups/" + id + "','action', 'add');}", "Leave Group", null, i.toString() + " members");
+												}
+											});
 										}
 									});
 								}
+								o++;
 							});
 						});
 					} catch (TypeError) {}
