@@ -687,8 +687,8 @@ function load(id) {
 								if(o==0){
 									saved=kid.key;
 								}
+								o++;
 							});
-							o=0;
 							reverseSnapshotOrder(events).forEach(function(kid) {
 								if (new Date(kid.val().time) > Date.now()) {
 									var address = kid.val().location;
