@@ -674,7 +674,7 @@ function load(id){
 			    firebase.database().ref("groups/"+id+"/gatherups").once("value",function(events){
 			       events.forEach(function(kid){
 				 if(new Date(kid.val().time)>Date.now()){
-				    write(kid.val().location,toDateTime(kid.val().time));
+				    write(kid.val().address,toDateTime(kid.val().time));
 				 }
 			       });
 			       write("New Gather-up","Schedule a gather-up.","request('"+id+"');");
@@ -747,19 +747,30 @@ function newGather(id){
     var loc=document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value;
     var date=new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value);
     if(loc!=null&&date!=null){
-        firebase.database().ref("groups/"+id+"/gatherups").push().update({
-            location:loc,
-            time:date
-        }).then(function(){
-           firebase.database().ref("groups/"+id+"/info").once("value",function(shot){
-             firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
-               snap.forEach(function(input){
-                 send(input.key,shot.val().group,"Gather-up at "+loc+" on "+toDateTime(new Date(date)).split(",")[0]+", at"+toDateTime(new Date(date)).split(",")[1]+".");
-               });
-             });
-           });
-           load(id);
-        });
+	var latlng;
+	var address=document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value;
+	latlng = new google.maps.LatLng(parseFloat(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value.split(",")[0]),parseFloat(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value.split(",")[1]));
+	new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
+	    if (status == google.maps.GeocoderStatus.OK) {
+		if (results[1]) {
+		    address=results[1].formatted_address;
+		}
+	    }
+		firebase.database().ref("groups/"+id+"/gatherups").push().update({
+		    location:loc,
+		    time:date,
+		    place:address
+		}).then(function(){
+		   firebase.database().ref("groups/"+id+"/info").once("value",function(shot){
+		     firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
+		       snap.forEach(function(input){
+			 send(input.key,shot.val().group,"Gather-up at "+loc+" on "+toDateTime(new Date(date)).split(",")[0]+", at"+toDateTime(new Date(date)).split(",")[1]+".");
+		       });
+		     });
+		   });
+		   load(id);
+		});
+	});
     }
 }
 
