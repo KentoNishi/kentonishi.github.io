@@ -684,7 +684,7 @@ function load(id) {
 							events.forEach(function(kid) {
 								if (new Date(kid.val().time) > Date.now()) {
 									var address = kid.val().location;
-									var latlng = new google.maps.LatLng(address);
+									var latlng = new google.maps.LatLng(parseFloat(address.split(",")[0]),parseFloat(address.split(",")[1]));
 									new google.maps.Geocoder().geocode({
 										'latLng': latlng
 									}, function(results, status) {
