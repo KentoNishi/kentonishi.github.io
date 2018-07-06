@@ -647,45 +647,47 @@ function confirmLeave(title){
 
 function load(id){
 //    console.log(id);
-    var i=0;
-    var stay=true;
-    firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
-	snap.forEach(function(child){
-	    if(child.val()==true){
-	      i++;
-	    }
- //           console.log(i);
-	    if(child.key==uid&&child.val()==false){
-	      stay=false;
-	    }
-	});
-	if(i==0){
-		remove("cities/"+city+"/"+id);
-		remove("groups/"+id);
-	}else{
-		set("update","groups/"+id+"/stats","popularity",i);
-		set("update","cities/"+city+"/"+id+"/stats","popularity",i);
-	}
-	firebase.database().ref("groups/"+id).once("value",function(shot){
-	    if(stay){
-		clear("body");
-		try{
-		    firebase.database().ref("groups/"+id+"/gatherups").once("value",function(events){
-		       events.forEach(function(kid){
-			 if(new Date(kid.val().time)>Date.now()){
-			    write(kid.val().location,toDateTime(kid.val().time));
-			 }
-		       });
-		       write("New Gather-up","Schedule a gather-up.","request('"+id+"');");
-		       write(shot.val().info.group,shot.val().info.desc,"javascript:if(confirmLeave('"+encodeURIComponent(shot.val().info.group)+"')){group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');}","Leave Group",null,i.toString()+" members");
-		   });
-		}catch(TypeError){
-		}
+	firebase.database().ref("groups/"+id+"/info").once("value",function(shoot){
+   	    var i=0;
+	    var stay=true;
+	    firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
+		snap.forEach(function(child){
+		    if(child.val()==true){
+		      i++;
+		    }
+	 //           console.log(i);
+		    if(child.key==uid&&child.val()==false){
+		      stay=false;
+		    }
+		});
+		if(i==0){
+			remove("cities/"+shoot.val().city+"/"+id);
+			remove("groups/"+id);
 		}else{
-		    groups(uid);
-	    }
+			set("update","groups/"+id+"/stats","popularity",i);
+			set("update","cities/"+shoot.val().city+"/"+id+"/stats","popularity",i);
+		}
+		firebase.database().ref("groups/"+id).once("value",function(shot){
+		    if(stay){
+			clear("body");
+			try{
+			    firebase.database().ref("groups/"+id+"/gatherups").once("value",function(events){
+			       events.forEach(function(kid){
+				 if(new Date(kid.val().time)>Date.now()){
+				    write(kid.val().location,toDateTime(kid.val().time));
+				 }
+			       });
+			       write("New Gather-up","Schedule a gather-up.","request('"+id+"');");
+			       write(shot.val().info.group,shot.val().info.desc,"javascript:if(confirmLeave('"+encodeURIComponent(shot.val().info.group)+"')){group('"+id+"','leave');remove('users/"+uid+"/groups/"+id+"','action', 'add');}","Leave Group",null,i.toString()+" members");
+			   });
+			}catch(TypeError){
+			}
+			}else{
+			    groups(uid);
+		    }
+		});
+	    });
 	});
-    });
 }
 
 var map;
