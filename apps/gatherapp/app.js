@@ -217,6 +217,51 @@ var long;
 function pos(coord){
     lat=coord.coords.latitude;
     long=coord.coords.longitude;
+
+	var latlng;
+	latlng = new google.maps.LatLng(lat,long);
+
+	new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
+	    if (status == google.maps.GeocoderStatus.OK) {
+		if (results[1]) {
+		    var country = null, countryCode = null, loc = null, locAlt = null;
+		    var c, lc, component;
+		    for (var r = 0, rl = results.length; r < rl; r += 1) {
+			var result = results[r];
+
+			if (!loc && result.types[0] === 'locality') {
+			    for (c = 0, lc = result.address_components.length; c < lc; c += 1) {
+				component = result.address_components[c];
+
+				if (component.types[0] === 'locality') {
+				    loc = component.long_name;
+				    break;
+				}
+			    }
+			}
+			else if (!loc && !locAlt && result.types[0] === 'administrative_area_level_1') {
+			    for (c = 0, lc = result.address_components.length; c < lc; c += 1) {
+				component = result.address_components[c];
+
+				if (component.types[0] === 'administrative_area_level_1') {
+				    locAlt = component.long_name;
+				    break;
+				}
+			    }
+			} else if (!country && result.types[0] === 'country') {
+			    country = result.address_components[0].long_name;
+			    countryCode = result.address_components[0].short_name;
+			}
+
+			if (loc && country) {
+			    break;
+			}
+		    }
+
+		    city=(loc + ", " + countryCode);
+		}
+	    }
+	});
 }
 
 firebase.auth().onAuthStateChanged(function(me) {
@@ -235,55 +280,11 @@ firebase.auth().onAuthStateChanged(function(me) {
             name = me.displayName;
             set("update","users/"+uid+"/info","name",name);
             pic = me.photoURL;
-            set("update","users/"+uid+"/info","pic",pic);/*
+            set("update","users/"+uid+"/info","pic",pic);
             $.get("https://ipinfo.io", function(response) {
                 city=response.city+", "+response.country;
                 set("update","users/"+uid+"/info","city",response.city+", "+response.country);
-            }, "jsonp");*/
-		var latlng;
-		latlng = new google.maps.LatLng(lat,long);
-
-		new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
-		    if (status == google.maps.GeocoderStatus.OK) {
-			if (results[1]) {
-			    var country = null, countryCode = null, loc = null, locAlt = null;
-			    var c, lc, component;
-			    for (var r = 0, rl = results.length; r < rl; r += 1) {
-				var result = results[r];
-
-				if (!loc && result.types[0] === 'locality') {
-				    for (c = 0, lc = result.address_components.length; c < lc; c += 1) {
-					component = result.address_components[c];
-
-					if (component.types[0] === 'locality') {
-					    loc = component.long_name;
-					    break;
-					}
-				    }
-				}
-				else if (!loc && !locAlt && result.types[0] === 'administrative_area_level_1') {
-				    for (c = 0, lc = result.address_components.length; c < lc; c += 1) {
-					component = result.address_components[c];
-
-					if (component.types[0] === 'administrative_area_level_1') {
-					    locAlt = component.long_name;
-					    break;
-					}
-				    }
-				} else if (!country && result.types[0] === 'country') {
-				    country = result.address_components[0].long_name;
-				    countryCode = result.address_components[0].short_name;
-				}
-
-				if (loc && country) {
-				    break;
-				}
-			    }
-
-			    city=(loc + ", " + countryCode);
-			}
-		    }
-		});
+            }, "jsonp");
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(pos);
             } else {
