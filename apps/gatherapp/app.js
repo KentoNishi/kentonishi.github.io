@@ -285,14 +285,10 @@ firebase.auth().onAuthStateChanged(function(me) {
             set("update","users/"+uid+"/info","pic",pic);
             $.get("https://ipinfo.io", function(response) {
                 city=response.city+", "+response.country;
+                lat=parseFloat(response.loc.split(",")[0]);
+                long=parseFloat(response.loc.split(",")[1]);
+                city=response.city+", "+response.country;
                 set("update","users/"+uid+"/info","city",response.city+", "+response.country);
-		var geocoder = new google.maps.Geocoder();
-		geocoder.geocode( { 'address': city}, function(results, status) {
-		if (status == google.maps.GeocoderStatus.OK) {
-		    lat = results[0].geometry.location.lat();
-		    long = results[0].geometry.location.lng();
-		    } 
-		}); 
             }, "jsonp");
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(pos);
