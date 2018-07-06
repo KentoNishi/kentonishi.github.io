@@ -779,7 +779,15 @@ function activate(){
     }
     if(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value)>Date.now()&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=""){
         document.querySelectorAll(".now")[0].innerHTML=toDateTime(new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value));
-            document.querySelectorAll(".now")[0].innerHTML+=",<br />"+document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value;
+	var latlng;
+	latlng = new google.maps.LatLng(lat,long);
+	new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
+	    if (status == google.maps.GeocoderStatus.OK) {
+		if (results[1]) {
+		    document.querySelectorAll(".now")[0].innerHTML+=",<br />"+results[1].formatted_address;
+		}
+	    }
+	});
     }else{
         document.querySelectorAll(".now")[0].innerHTML="Pick a place and time.";
     }
