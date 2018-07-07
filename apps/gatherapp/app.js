@@ -692,6 +692,7 @@ function load(id){
 }
 
 var map;
+var marker;
 function request(id){
     var body="";
     body+='<div class="card">';
@@ -717,7 +718,7 @@ function request(id){
 	for(var i=0;i<10;i++){
 		myLatLng.lat+=1;
 		myLatLng.lng+=1;*/
-		var marker = new google.maps.Marker({
+		marker = new google.maps.Marker({
 		  position: myLatLng,
 		  map: map,
 		  draggable:true,
@@ -735,12 +736,86 @@ function request(id){
 //	}
 }
 
+var currentCities="";
 function updateControls(lati,longi) {
     if(lati!=null&&longi!=null){
 	lati=parseFloat(lati);
 	longi=parseFloat(longi);
         document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value=zeros(lati)+", "+zeros(longi);
     }
+
+	var latlng;
+	latlng = new google.maps.LatLng(lati,longi);
+
+	new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
+	    if (status == google.maps.GeocoderStatus.OK) {
+		if (results[0]) {
+		    var country = null, countryCode = null, loc = null, locAlt = null;
+		    var c, lc, component;
+		    for (var r = 0, rl = results.length; r < rl; r += 1) {
+			var result = results[r];
+
+			if (!loc && result.types[0] === 'locality') {
+			    for (c = 0, lc = result.address_components.length; c < lc; c += 1) {
+				component = result.address_components[c];
+
+				if (component.types[0] === 'locality') {
+				    loc = component.long_name;
+				    break;
+				}
+			    }
+			}
+			else if (!loc && !locAlt && result.types[0] === 'administrative_area_level_1') {
+			    for (c = 0, lc = result.address_components.length; c < lc; c += 1) {
+				component = result.address_components[c];
+
+				if (component.types[0] === 'administrative_area_level_1') {
+				    locAlt = component.long_name;
+				    break;
+				}
+			    }
+			} else if (!country && result.types[0] === 'country') {
+			    country = result.address_components[0].long_name;
+			    countryCode = result.address_components[0].short_name;
+			}
+
+			if (loc && country) {
+			    break;
+			}
+		    }
+			var caught=false;
+			var cachedCity=(loc + ", " + countryCode);
+			for(var u=0;u<currentCities.length;u++){
+				if(currentCities[u]==cachedCity){
+					caught=true;
+				}
+			}
+			if(!caught){
+				firebase.database().ref("sponsors/"+cachedCity).once("value",function(places){
+					places.forEach(function(place){
+						  var now=new google.maps.LatLng(place.val().lat,place.val().lng);
+						  var marker = new google.maps.Marker({
+						    position: now,
+						    map: map,
+						    label:place.val().name
+						  });
+						  google.maps.event.addListener(marker, 'click', function(event) {
+						    console.log(event);
+						  });
+					});
+				});
+			}
+		    currentCities.push(cachedCity);
+		}
+	    }
+	});
+	/*//!!!!!
+		google.maps.event.addListener(map, 'click', function(event) {
+			var marker = new google.maps.Marker({
+				position: event.latLng,
+				map: map
+		    	});
+		});*/
     activate();
 }
 
