@@ -589,7 +589,7 @@ function write(title,content,link,nav,href,extra){
        body+='<br />';
        body+='<img src="'+pic+'" class="pic"></img>';
        body+='<br />';
-       body+="<span>@"+accountType()+"</span>";
+       body+="<span>"+accountType()+"</span>";
        body+='<br />';/*
        firebase.database().ref('users/'+uid+"/info").once('value', function(snapshot){
            document.querySelectorAll(".desc")[0].innerHTML=encode(snapshot.val().desc||"Description Here").replace(/&amp;quot;/g,'"');
