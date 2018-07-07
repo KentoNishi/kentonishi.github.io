@@ -801,7 +801,7 @@ function updateControls(lati,longi) {
 						    title:place.val().name
 						  });
 						  google.maps.event.addListener(mark, 'click', function(event) {
-						    activate(mark);
+						    activate(mark.title);
 						  });
 					});
 				});
