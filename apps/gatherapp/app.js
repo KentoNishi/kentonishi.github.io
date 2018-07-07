@@ -224,7 +224,7 @@ function pos(coord){
 
 	new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
 	    if (status == google.maps.GeocoderStatus.OK) {
-		if (results[1]) {
+		if (results[0]) {
 		    var country = null, countryCode = null, loc = null, locAlt = null;
 		    var c, lc, component;
 		    for (var r = 0, rl = results.length; r < rl; r += 1) {
@@ -449,7 +449,7 @@ function group(id,leave){
     firebase.database().ref("groups/"+id+"/info").once("value",function(shot){
       firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
         if(!snap.val()[uid]){
-          send(uid,"Joined "+shot.val().group,"Joined on "+(new Date().getMonth()+1)+"/"+(new Date().getDate())+"/"+(new Date().getFullYear()));
+ //         send(uid,"Joined "+shot.val().group,"Joined on "+(new Date().getMonth()+1)+"/"+(new Date().getDate())+"/"+(new Date().getFullYear()));
         }
       });
     });
@@ -752,8 +752,8 @@ function newGather(id){
 	latlng = new google.maps.LatLng(parseFloat(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value.split(",")[0]),parseFloat(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value.split(",")[1]));
 	new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
 	    if (status == google.maps.GeocoderStatus.OK) {
-		if (results[1]) {
-		    address=results[1].formatted_address;
+		if (results[0]) {
+		    address=results[0].formatted_address;
 		}
 	    }
 		firebase.database().ref("groups/"+id+"/gatherups").push().update({
@@ -764,7 +764,7 @@ function newGather(id){
 		   firebase.database().ref("groups/"+id+"/info").once("value",function(shot){
 		     firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
 		       snap.forEach(function(input){
-			 send(input.key,shot.val().group,"Gather-up at "+loc+" on "+toDateTime(new Date(date)).split(",")[0]+", at"+toDateTime(new Date(date)).split(",")[1]+".");
+//			 send(input.key,shot.val().group,"Gather-up at "+loc+" on "+toDateTime(new Date(date)).split(",")[0]+", at"+toDateTime(new Date(date)).split(",")[1]+".");
 		       });
 		     });
 		   });
@@ -794,8 +794,8 @@ function activate(){
 	latlng = new google.maps.LatLng(parseFloat(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value.split(",")[0]),parseFloat(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value.split(",")[1]));
 	new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
 	    if (status == google.maps.GeocoderStatus.OK) {
-		if (results[1]) {
-		    document.querySelectorAll(".now")[0].innerHTML+=",<br />"+results[1].formatted_address;
+		if (results[0]) {
+		    document.querySelectorAll(".now")[0].innerHTML+=",<br />"+results[0].formatted_address;
 		}
 	    }
 	});
