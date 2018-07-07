@@ -801,10 +801,12 @@ function updateControls(lati,longi) {
 						    label:place.val().name
 						  });
 						  google.maps.event.addListener(mark, 'click', function(event) {
-						    console.log(mark);
+						    activate(mark);
 						  });
 					});
 				});
+			}else{
+   				 activate();
 			}
 		    currentCities.push(cachedCity);
 		}
@@ -817,7 +819,6 @@ function updateControls(lati,longi) {
 				map: map
 		    	});
 		});*/
-    activate();
 }
 
 function newGather(id){
@@ -859,7 +860,10 @@ function zero(str){
     }
 }
 
-function activate(){
+function activate(val){
+    if(val!=null){
+	//document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value=x+", "+y;
+    }
     if(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=""&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value)>Date.now()){
         document.querySelectorAll(".inputs")[0].querySelectorAll("button")[0].disabled=false;
     }else{
