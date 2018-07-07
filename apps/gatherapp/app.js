@@ -794,12 +794,12 @@ function updateControls(lati,longi) {
 				firebase.database().ref("sponsors/"+cachedCity).once("value",function(places){
 					places.forEach(function(place){
 						  var now=new google.maps.LatLng(place.val().lat,place.val().lng);
-						  var marker = new google.maps.Marker({
+						  var mark = new google.maps.Marker({
 						    position: now,
 						    map: map,
 						    label:place.val().name
 						  });
-						  google.maps.event.addListener(marker, 'click', function(event) {
+						  google.maps.event.addListener(mark, 'click', function(event) {
 						    console.log(event);
 						  });
 					});
