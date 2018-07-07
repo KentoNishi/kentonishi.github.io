@@ -355,6 +355,7 @@ function find(title){
 
 function action(act) {
     if(uid!=""){
+	currentCities=[];
         if (act == "menu") {
 //            console.log("menu");
             user(uid);
