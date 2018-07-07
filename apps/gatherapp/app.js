@@ -798,7 +798,7 @@ function updateControls(lati,longi) {
 						  var mark = new google.maps.Marker({
 						    position: now,
 						    map: map,
-						    label:place.val().name
+						    title:place.val().name
 						  });
 						  google.maps.event.addListener(mark, 'click', function(event) {
 						    activate(mark);
