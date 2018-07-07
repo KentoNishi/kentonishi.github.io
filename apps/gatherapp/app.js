@@ -208,7 +208,6 @@ var decode = (function() {
 //THE REAL CODE
 var uid = "";
 var name = "";
-var email = "";
 var pic = "";
 var city="";
 var lat;
@@ -269,7 +268,7 @@ accurate=true;
 firebase.auth().onAuthStateChanged(function(me) {
     if (me) {
       firebase.database().ref("users/"+me.uid+"/info").once("value",function(shot){
-        if(me.email.split("@")[1]=="gmail.com"){
+        if(true){//me.email.split("@")[1]=="gmail.com"){
             try{
               stall(shot.val().email);
             }catch(TypeError){
@@ -277,8 +276,6 @@ firebase.auth().onAuthStateChanged(function(me) {
             }
             uid = me.uid;
             get("once","users/"+uid+"/info","desc","assign");
-            email = me.email;
-            set("update","users/"+uid+"/info","email",email);
             name = me.displayName;
             set("update","users/"+uid+"/info","name",name);
             pic = me.photoURL;
@@ -304,7 +301,7 @@ firebase.auth().onAuthStateChanged(function(me) {
                 feed();
             }
         }else{
-            write("Invalid Account","Your email address cannot be from a custom domain. Please use a normal Google account.");
+//            write("Invalid Account","Your email address cannot be from a custom domain. Please use a normal Google account.");
         }
       });
     }
@@ -592,7 +589,7 @@ function write(title,content,link,nav,href,extra){
        body+='<br />';
        body+='<img src="'+pic+'" class="pic"></img>';
        body+='<br />';
-       body+="<span>@"+encode(email.split("@")[0])+"</span>";
+       body+="<span>@"+accountType()+"</span>";
        body+='<br />';/*
        firebase.database().ref('users/'+uid+"/info").once('value', function(snapshot){
            document.querySelectorAll(".desc")[0].innerHTML=encode(snapshot.val().desc||"Description Here").replace(/&amp;quot;/g,'"');
@@ -616,6 +613,10 @@ function write(title,content,link,nav,href,extra){
     body+='</span>';
     body+='</div>';
     document.body.querySelectorAll(".body")[0].innerHTML=body+document.body.querySelectorAll(".body")[0].innerHTML;
+}
+
+function accountType(){
+	return "Freemium";
 }
 
 function key13(event){
