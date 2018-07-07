@@ -736,7 +736,7 @@ function request(id){
 //	}
 }
 
-var currentCities="";
+var currentCities=[];
 function updateControls(lati,longi) {
     if(lati!=null&&longi!=null){
 	lati=parseFloat(lati);
