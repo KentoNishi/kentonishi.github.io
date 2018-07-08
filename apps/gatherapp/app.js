@@ -355,7 +355,6 @@ function find(title){
 
 function action(act) {
     if(uid!=""){
-	currentCities=[];
         if (act == "menu") {
 //            console.log("menu");
             user(uid);
@@ -590,7 +589,7 @@ function write(title,content,link,nav,href,extra){
        body+='<br />';
        body+='<img src="'+pic+'" class="pic"></img>';
        body+='<br />';
-       body+="<span>"+accountType()+"</span>";
+       body+="<span>."+accountType()+"</span>";
        body+='<br />';/*
        firebase.database().ref('users/'+uid+"/info").once('value', function(snapshot){
            document.querySelectorAll(".desc")[0].innerHTML=encode(snapshot.val().desc||"Description Here").replace(/&amp;quot;/g,'"');
@@ -693,7 +692,6 @@ function load(id){
 }
 
 var map;
-var marker;
 function request(id){
     var body="";
     body+='<div class="card">';
@@ -719,12 +717,12 @@ function request(id){
 	for(var i=0;i<10;i++){
 		myLatLng.lat+=1;
 		myLatLng.lng+=1;*/
-		marker = new google.maps.Marker({
+		var marker = new google.maps.Marker({
 		  position: myLatLng,
 		  map: map,
 		  draggable:true,
 		  label: "",//alphabet[i]/*HAHA, that's a pretty good joke. Get it, Alphabet?*/,
-		  id: "Current Location"//,
+		  title: "Current Location"//,
 		      //icon:"https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
 		});
 	var interval=setInterval(function(){if($('div[style*="width: calc(100% - 60px)"]').remove().length!=0){clearInterval(interval);}},100);
@@ -737,92 +735,16 @@ function request(id){
 //	}
 }
 
-var currentCities=[];
 function updateControls(lati,longi) {
-    custom="";
     if(lati!=null&&longi!=null){
 	lati=parseFloat(lati);
 	longi=parseFloat(longi);
         document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value=zeros(lati)+", "+zeros(longi);
     }
-	var latlng;
-	latlng = new google.maps.LatLng(lati,longi);
-
-	new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
-	    if (status == google.maps.GeocoderStatus.OK) {
-		if (results[0]) {
-		    var country = null, countryCode = null, loc = null, locAlt = null;
-		    var c, lc, component;
-		    for (var r = 0, rl = results.length; r < rl; r += 1) {
-			var result = results[r];
-
-			if (!loc && result.types[0] === 'locality') {
-			    for (c = 0, lc = result.address_components.length; c < lc; c += 1) {
-				component = result.address_components[c];
-
-				if (component.types[0] === 'locality') {
-				    loc = component.long_name;
-				    break;
-				}
-			    }
-			}
-			else if (!loc && !locAlt && result.types[0] === 'administrative_area_level_1') {
-			    for (c = 0, lc = result.address_components.length; c < lc; c += 1) {
-				component = result.address_components[c];
-
-				if (component.types[0] === 'administrative_area_level_1') {
-				    locAlt = component.long_name;
-				    break;
-				}
-			    }
-			} else if (!country && result.types[0] === 'country') {
-			    country = result.address_components[0].long_name;
-			    countryCode = result.address_components[0].short_name;
-			}
-
-			if (loc && country) {
-			    break;
-			}
-		    }
-			var caught=false;
-			var cachedCity=(loc + ", " + countryCode);
-			for(var u=0;u<currentCities.length;u++){
-				if(currentCities[u]==cachedCity){
-					caught=true;
-				}
-			}
-			if(!caught){
-				firebase.database().ref("sponsors/"+cachedCity).once("value",function(places){
-					places.forEach(function(place){
-						  var now=new google.maps.LatLng(place.val().lat,place.val().lng);
-						  var mark = new google.maps.Marker({
-						    position: now,
-						    map: map,
-						    id:place.val().name
-						  });
-						  google.maps.event.addListener(mark, 'click', function(event) {
-						    activate(mark.id);
-						  });
-					});
-				});
-			}else{
-   				 activate();
-			}
-		    currentCities.push(cachedCity);
-		}
-	    }
-	});
-	/*//!!!!!
-		google.maps.event.addListener(map, 'click', function(event) {
-			var marker = new google.maps.Marker({
-				position: event.latLng,
-				map: map
-		    	});
-		});*/
+    activate();
 }
 
 function newGather(id){
-	currentCities=[];
     var loc=document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value;
     var date=new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value);
     if(loc!=null&&date!=null){
@@ -834,14 +756,11 @@ function newGather(id){
 		if (results[0]) {
 		    address=results[0].formatted_address;
 		}
-		if(custom!=""){
-		    address=custom;
-		}
 	    }
 		firebase.database().ref("groups/"+id+"/gatherups").push().update({
 		    location:loc,
 		    time:date,
-		    address:address
+		    place:address
 		}).then(function(){
 		   firebase.database().ref("groups/"+id+"/info").once("value",function(shot){
 		     firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
@@ -864,43 +783,25 @@ function zero(str){
     }
 }
 
-var custom="";
-function activate(val){
-    if(val!=null){
-	    custom=val;
-	    if(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value)>Date.now()){
-		document.querySelectorAll(".inputs")[0].querySelectorAll("button")[0].disabled=false;
-	    }else{
-		document.querySelectorAll(".inputs")[0].querySelectorAll("button")[0].disabled=true;
-	    }
-	    if(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value)>Date.now()){
-		document.querySelectorAll(".now")[0].innerHTML=toDateTime(new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value));
-		document.querySelectorAll(".now")[0].innerHTML+=",<br />"+encode(val).replace(/&amp;quot;/g,'"');
-	    }else{
-		document.querySelectorAll(".now")[0].innerHTML="Pick a place and time.";
-	    }
-	//document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value=x+", "+y;
+function activate(){
+    if(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=""&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value)>Date.now()){
+        document.querySelectorAll(".inputs")[0].querySelectorAll("button")[0].disabled=false;
     }else{
-	    custom="";
-	    if(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=""&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value)>Date.now()){
-		document.querySelectorAll(".inputs")[0].querySelectorAll("button")[0].disabled=false;
-	    }else{
-		document.querySelectorAll(".inputs")[0].querySelectorAll("button")[0].disabled=true;
+        document.querySelectorAll(".inputs")[0].querySelectorAll("button")[0].disabled=true;
+    }
+    if(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value)>Date.now()&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=""){
+        document.querySelectorAll(".now")[0].innerHTML=toDateTime(new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value));
+	var latlng;
+	latlng = new google.maps.LatLng(parseFloat(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value.split(",")[0]),parseFloat(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value.split(",")[1]));
+	new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
+	    if (status == google.maps.GeocoderStatus.OK) {
+		if (results[0]) {
+		    document.querySelectorAll(".now")[0].innerHTML+=",<br />"+results[0].formatted_address;
+		}
 	    }
-	    if(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value!=""&&new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value)>Date.now()&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=null&&document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value!=""){
-		document.querySelectorAll(".now")[0].innerHTML=toDateTime(new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value));
-		var latlng;
-		latlng = new google.maps.LatLng(parseFloat(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value.split(",")[0]),parseFloat(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value.split(",")[1]));
-		new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
-		    if (status == google.maps.GeocoderStatus.OK) {
-			if (results[0]) {
-			    document.querySelectorAll(".now")[0].innerHTML+=",<br />"+results[0].formatted_address;
-			}
-		    }
-		});
-	    }else{
-		document.querySelectorAll(".now")[0].innerHTML="Pick a place and time.";
-	    }
+	});
+    }else{
+        document.querySelectorAll(".now")[0].innerHTML="Pick a place and time.";
     }
 }
 
