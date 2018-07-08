@@ -724,7 +724,7 @@ function request(id){
 		  map: map,
 		  draggable:true,
 		  label: "",//alphabet[i]/*HAHA, that's a pretty good joke. Get it, Alphabet?*/,
-		  title: "Current Location"//,
+		  id: "Current Location"//,
 		      //icon:"https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
 		});
 	var interval=setInterval(function(){if($('div[style*="width: calc(100% - 60px)"]').remove().length!=0){clearInterval(interval);}},100);
@@ -798,10 +798,10 @@ function updateControls(lati,longi) {
 						  var mark = new google.maps.Marker({
 						    position: now,
 						    map: map,
-						    title:place.val().name
+						    id:place.val().name
 						  });
 						  google.maps.event.addListener(mark, 'click', function(event) {
-						    activate(mark.title);
+						    activate(mark.id);
 						  });
 					});
 				});
