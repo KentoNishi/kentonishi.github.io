@@ -840,7 +840,7 @@ function newGather(id){
 		firebase.database().ref("groups/"+id+"/gatherups").push().update({
 		    location:loc,
 		    time:date,
-		    place:address
+		    address:address
 		}).then(function(){
 		   firebase.database().ref("groups/"+id+"/info").once("value",function(shot){
 		     firebase.database().ref("groups/"+id+"/users").once("value",function(snap){
