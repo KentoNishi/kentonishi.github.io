@@ -822,6 +822,7 @@ function updateControls(lati,longi) {
 }
 
 function newGather(id){
+	currentCities=[];
     var loc=document.querySelectorAll(".inputs")[0].querySelectorAll("input")[0].value;
     var date=new Date(document.querySelectorAll(".inputs")[0].querySelectorAll("input")[1].value);
     if(loc!=null&&date!=null){
