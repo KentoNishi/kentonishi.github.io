@@ -1,6 +1,6 @@
 /*
 //my groups
-firebase.database().ref("groups").orderByChild("members/"+uid).once("value",function(e){
+firebase.database().ref("groups").orderByChild("members/"+uid).equalTo("uid").once("value",function(e){
 console.log(Object.keys(e.val()));
 });
 
@@ -15,12 +15,6 @@ console.log(e.val().members[uid]!=null);
 });
 */
 
-
-if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
-	});
-}
-
 var config = {
 	apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
 	authDomain: "gatherapp-1906b.firebaseapp.com",
@@ -30,6 +24,75 @@ var config = {
 	messagingSenderId: "1038044491990"
 };
 firebase.initializeApp(config);
+
+var uid = "";
+var name = "";
+var pic = "";
+var city="";
+var lat;
+var long;
+
+function menu(){
+	clear();
+	write(name,[{html:"<img src='"+pic+"' class='pic'></img>"}],[{href:"signOut();",text:"Sign Out"}]);
+}
+
+function feed(){
+    clear();
+    write("Welcome!",[{text:"Welcome to GatherApp, "+name+"!"}]);
+}
+
+function start(){
+	clear();
+	write("New Group",null,null,"newGroup();");
+	write("Find Groups",null,null,"findGroups();");
+	write("My Groups",null,null,"myGroups();");
+}
+
+function myGroups(){
+	write("Your Groups","Your groups appear here.");
+	firebase.database().ref("groups").orderByChild("members/"+uid).equalTo("uid").once("value",function(groups){
+		if(groups.val()!=null){
+			clear();
+		}
+		groups.forEach(function(group){
+			write(group.val().info.title,[{text:Object.keys(group.val().members).length.toString()+" members"}],null,"loadGroup('"+group.key+"');");
+		});
+	});
+}
+
+function loadGroup(id){
+	clear();
+	firebase.database().ref("groups").orderByChild("groups/"+id).once("value",function(group){
+		var memberCount=Object.keys(group.val().members).length;
+		var status=[{text:"Join Group",href:"joinGroup('"+group.key+"');"}];
+		if(group.val().members[uid]=="uid"){
+			status=[{text:"Leave Group",href:"leaveGroup('"+group.key+"');"}];
+		}
+		write(group.val().info.title,[{text:memberCount+" members"}],status);
+	});
+}
+
+function newGroup(){
+	var title=prompt("Group Name:");
+	firebase.database().ref("groups").push().update({
+		info:{
+			search:title.toLowerCase(),
+			title:title,
+			type:"Standard"
+		},
+		members:{
+			[uid]:'uid'
+		}
+	});
+}
+
+/*Processing functions*/
+
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
+	});
+}
 
 function login(provider) {
 	var provider;
@@ -47,13 +110,6 @@ function signOut() {
 	}).catch(function(error) {
 	});
 }
-
-var uid = "";
-var name = "";
-var pic = "";
-var city="";
-var lat;
-var long;
 
 function pos(coord){
 	lat=coord.coords.latitude;
@@ -131,26 +187,16 @@ function action(act) {
         if (act == "menu") {
 		menu();
         } else if (act == "add") {
+		start();
         } else if (act == "home") {
-            feed();
+		feed();
         }
     }
 }
 
-function menu(){
-	clear();
-	write(name,[{html:"<img src='"+pic+"' class='pic'></img>"}],[{href:"signOut();",text:"Sign Out"}]);
-}
-
 function clear(e){
-    document.querySelectorAll(".body")[0].innerHTML="";
+    document.querySelectorAll("."+e||"body")[0].innerHTML="";
 } 
-
-function feed(){
-    clear();
-    write("Welcome!",[{text:"Welcome to GatherApp, "+name+"!"}]);
-}
-
 
 function reverse(snapshot) {
   let reversed = [];
@@ -199,7 +245,7 @@ function write(title,contents,links,href){
 		body+="</div>";
 		document.querySelectorAll(".body")[0].innerHTML=body+document.querySelectorAll(".body")[0].innerHTML;
 	}catch(TypeError){
-		write("Corrupted Card",{text:"The data on this card is corrupted."});
+		write("Corrupted Card",[{text:"The data on this card is corrupted."}]);
 	}
 }
 
