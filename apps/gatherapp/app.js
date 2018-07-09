@@ -144,7 +144,9 @@ function write(title,contents,links,href){
 			body+="<div class='card'>";
 		}
 		body+="<span style='font-size:5.5vh;'>";
+		body+="<strong>";
 		body+=encode(title);
+		body+="</strong>";
 		body+="</span>";
 		body+="<br />";
 		if(contents!=null){
