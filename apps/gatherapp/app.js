@@ -130,7 +130,7 @@ function clear(e){
 
 function feed(){
     clear();
-    write("Notifications",[{text:"Your notifications appear here."}]);
+    write("Welcome!",[{text:"Welcome to GatherApp, "+name+"!"}]);
 }
 
 
