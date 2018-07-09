@@ -34,7 +34,7 @@ var long;
 
 function menu(){
 	clear();
-	write(name,[{html:"<img src='"+pic+"' class='pic'></img>"}],[{href:"signOut();",text:"Sign Out"}]);
+	write(name,[{html:"<img src='"+pic+"' class='pic'></img>"},{text:"Standard User"}],[{href:"signOut();",text:"Sign Out"}]);
 }
 
 function feed(){
