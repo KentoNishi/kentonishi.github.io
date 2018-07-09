@@ -148,7 +148,7 @@ function write(title,contents,links,href){
 		contents=contents||[];
 		links=links||[];
 		if(href!=null){
-			body+="<div class='card' href='javascript:"+href+"'>";
+			body+="<div class='card' onclick='"+href+"'>";
 		}else{
 			body+="<div class='card'>";
 		}
