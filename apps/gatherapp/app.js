@@ -60,7 +60,7 @@ function searchGroups(){
 	var query=prompt("Search Query:");
 	if(query!=null&&query.replace(/ /g,"")!=""){
 		clear();
-		write("Loading...",[{html:"<img src='/apps/gatherapp/loading.gif' class='pic'></img>"}]);
+		write("Loading...");//,[{html:"<img src='/apps/gatherapp/loading.gif' class='pic'></img>"}]);
 		firebase.database().ref("groups").orderByChild("info/search").startAt(query.replace(/ /g,"").toLowerCase()).once("value",function(results){
 			clear();
 			if(results.val()==null){
@@ -76,7 +76,7 @@ function searchGroups(){
 
 function myGroups(){
 	clear();
-	write("Loading...",[{html:"<img src='/apps/gatherapp/loading.gif' class='pic'></img>"}]);
+	write("Loading...");//,[{html:"<img src='/apps/gatherapp/loading.gif' class='pic'></img>"}]);
 	firebase.database().ref("users/"+uid+"/groups").once("value",function(groups){
 		clear();
 		if(groups.val()==null){
