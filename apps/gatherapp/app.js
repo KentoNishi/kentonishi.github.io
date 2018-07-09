@@ -99,8 +99,7 @@ function newGroup(){
 	firebase.database().ref("groups/"+id).update({
 		info:{
 			search:title.toLowerCase(),
-			title:title,
-			type:"Standard"
+			title:title
 		},
 		members:{
 			[uid]:'uid'
