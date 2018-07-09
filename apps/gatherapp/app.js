@@ -248,7 +248,7 @@ function write(title,contents,links,href){
 		body+='</div>';
 		document.querySelectorAll('.body')[0].innerHTML=body+document.querySelectorAll('.body')[0].innerHTML;
 	}catch(TypeError){
-		write('Corrupted Card',[{text:'The data on this card is corrupted.'}]);
+		write('Error',[{text:'GatherApp encountered an error.'}]);
 	}
 }
 
@@ -265,5 +265,4 @@ function decode(html) {
 window.onerror = function (message, file, line, col, error) {
 	clear();
 	write();
-	return true;
 };
