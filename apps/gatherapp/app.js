@@ -61,7 +61,7 @@ function searchGroups(){
 	if(query!=null&&query.replace(/ /g,"")!=""){
 		clear();
 		write("Loading...");//,[{html:"<img src='/apps/gatherapp/loading.gif' class='pic'></img>"}]);
-		firebase.database().ref("groups").orderByChild("info/search").startAt(query.replace(/ /g,"").toLowerCase()).once("value",function(results){
+		firebase.database().ref("groups").orderByChild("info/search").startAt(query.replace(/ /g,"").toLowerCase()).endAt(query.replace(/ /g,"").toLowerCase()+"\uf8ff").once("value",function(results){
 			clear();
 			if(results.val()==null){
 				write("No Results",[{text:"There were no relevant results."}]);
