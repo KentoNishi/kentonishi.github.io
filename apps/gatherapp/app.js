@@ -261,3 +261,8 @@ function decode(html) {
     txt.innerHTML = html;
     return txt.value;
 }
+
+window.onerror = function (message, file, line, col, error) {
+   write();
+   return true;
+};
