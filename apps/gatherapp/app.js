@@ -171,7 +171,7 @@ function write(title,contents,links,href){
 		for(var i=0;i<links.length;i++){
 			if(links[i].href!=null&&links[i].text!=null){
 				body+="<span style='font-size:4vh'>";
-				body+="<a href='javascript:"+links[i].href+"'>";
+				body+="<a href="#" onclick='"+links[i].href+";return false;'>";
 				body+=encode(links[i].text);
 				body+="</a>";
 				body+="</span>";
