@@ -50,6 +50,7 @@ function start(){
 }
 
 function findGroups(){
+	clear();
 	write("Search Groups",null,null,"searchGroups();");
 	write("Join Group",[{text:"Join a group by code."}],null,"byCode();");
 	write("Near Me",[{text:"Current Location:"},{text:city}],null,"byCity();");
@@ -58,6 +59,7 @@ function findGroups(){
 function searchGroups(){
 	var query=prompt("Search Query:");
 	if(query!=null&&query.replace(/ /g,"")!=""){
+		write("Results","Your results appear here.");
 		firebase.database().ref("groups").orderByChild("info/search").startAt(query.replace(/ /g,"").toLowerCase()).once("value",function(results){
 			if(results.val()!=null){
 				clear();
