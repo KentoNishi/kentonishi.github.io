@@ -50,6 +50,7 @@ function start(){
 }
 
 function myGroups(){
+	clear();
 	write("Your Groups",[{text:"Your groups appear here."}]);
 	firebase.database().ref("groups").orderByChild("members/"+uid).equalTo("uid").once("value",function(groups){
 		if(groups.val()!=null){
@@ -70,6 +71,26 @@ function loadGroup(id){
 			status=[{text:"Leave Group",href:"leaveGroup('"+group.key+"');"}];
 		}
 		write(group.val().info.title,[{text:memberCount+" members"}],status);
+	});
+}
+
+function joinGroup(id){
+	firebase.database().ref("groups/"+id+"/members").update({
+		[uid]:"uid"
+	}).then(function(){
+		loadGroup(id);
+	});
+}
+
+function leaveGroup(id){
+	firebase.database().ref("groups/"+id+"/members").update({
+		[uid]:null
+	}).then(function(members){
+		if(members==null){
+			firebase.database().ref("groups/"+id).update({	
+			});
+		}
+		start();
 	});
 }
 
