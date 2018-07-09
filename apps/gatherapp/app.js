@@ -50,7 +50,7 @@ function start(){
 }
 
 function myGroups(){
-	write("Your Groups","Your groups appear here.");
+	write("Your Groups",[{text:"Your groups appear here."}]);
 	firebase.database().ref("groups").orderByChild("members/"+uid).equalTo("uid").once("value",function(groups){
 		if(groups.val()!=null){
 			clear();
