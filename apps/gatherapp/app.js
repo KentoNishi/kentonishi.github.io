@@ -123,12 +123,12 @@ function menu(){
 	write(name,[{html:"<img src='"+pic+"' class='pic'></img>"}],[{href:"signOut();",text:"Sign Out"}]);
 }
 
-function clear(element){
-    document.querySelectorAll("."+element)[0].innerHTML="";
+function clear(e){
+    document.querySelectorAll(".body")[0].innerHTML="";
 } 
 
 function feed(){
-    clear("body");
+    clear();
     write("Notifications",[{text:"Your notifications appear here."}]);
 }
 
