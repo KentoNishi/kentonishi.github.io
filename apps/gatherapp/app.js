@@ -134,7 +134,7 @@ function reverse(snapshot) {
 }
 
 function write(title,contents,links,href){
-//	try{
+	try{
 		var body="";
 		contents=contents||[];
 		links=links||[];
@@ -172,9 +172,10 @@ function write(title,contents,links,href){
 			}
 		}
 		body+="</div>";
-/*	}catch(TypeError){
+		document.querySelectorAll(".body")[0].innerHTML+=body;
+	}catch(TypeError){
 		write("Corrupted Card",{text:"The data on this card is corrupted."});
-	}*/
+	}
 }
 
 function encode(e){
