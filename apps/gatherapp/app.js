@@ -49,6 +49,27 @@ function start(){
 	write("My Groups",null,null,"myGroups();");
 }
 
+function findGroups(){
+	write("Search Groups",null,null,"searchGroups();");
+	write("Join Group",[{text:"Join a group by code."}],null,"byCode();");
+	write("Near Me",[{text:"Current Location:"},{text:city}],null,"byCity();");
+}
+
+function searchGroups(){
+	var query=prompt("Search Query:");
+	if(query!=null&&query.replace(/ /g,"")!=""){
+		firebase.database().ref("groups").orderByChild("info/search").startAt(query.replace(/ /g,"").toLowerCase()).once("value",function(results){
+			if(results.val()!=null){
+				clear();
+			}
+			results.forEach(function(group){
+				var memberCount=Object.keys(group.val().members).length;
+				write(group.val().info.title,[{text:memberCount+" members"}],null,"loadGroup('"+group.key+"');");
+			});
+		});
+	}
+}
+
 function myGroups(){
 	clear();
 	write("Your Groups",[{text:"Your groups appear here."}]);
@@ -103,15 +124,17 @@ function leaveGroup(id){
 
 function newGroup(){
 	var title=prompt("Group Name:");
-	var id=firebase.database().ref("groups").push().key;
-	firebase.database().ref("groups/"+id).update({
-		info:{
-			search:title.toLowerCase().replace(/ /g,""),
-			title:title
-		}
-	}).then(function(){
-		joinGroup(id);
-	});
+	if(title!=null&&title.replace(/ /g,"")!=""){
+		var id=firebase.database().ref("groups").push().key;
+		firebase.database().ref("groups/"+id).update({
+			info:{
+				search:title.toLowerCase().replace(/ /g,""),
+				title:title
+			}
+		}).then(function(){
+			joinGroup(id);
+		});
+	}
 }
 
 /*Processing functions*/
