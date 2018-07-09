@@ -75,7 +75,8 @@ function loadGroup(id){
 
 function newGroup(){
 	var title=prompt("Group Name:");
-	firebase.database().ref("groups").push().update({
+	var id=firebase.database().ref("groups").push().key;
+	firebase.database().ref("groups/"+id).update({
 		info:{
 			search:title.toLowerCase(),
 			title:title,
@@ -84,6 +85,8 @@ function newGroup(){
 		members:{
 			[uid]:'uid'
 		}
+	}).then(function(){
+		loadGroup(id);
 	});
 }
 
