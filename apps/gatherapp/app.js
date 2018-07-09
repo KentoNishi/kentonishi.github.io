@@ -59,10 +59,12 @@ function findGroups(){
 function searchGroups(){
 	var query=prompt("Search Query:");
 	if(query!=null&&query.replace(/ /g,"")!=""){
-		write("Results","Your results appear here.");
+		clear();
+		write("Loading...",[{html:"<img src='/apps/gatherapp/loading.gif' class='pic'></img>"}]);
 		firebase.database().ref("groups").orderByChild("info/search").startAt(query.replace(/ /g,"").toLowerCase()).once("value",function(results){
-			if(results.val()!=null){
-				clear();
+			clear();
+			if(results.val()==null){
+				write("No Results",[{text:"There were no relevant results."}]);
 			}
 			results.forEach(function(group){
 				var memberCount=Object.keys(group.val().members).length;
@@ -74,10 +76,11 @@ function searchGroups(){
 
 function myGroups(){
 	clear();
-	write("Your Groups",[{text:"Your groups appear here."}]);
+	write("Loading...",[{html:"<img src='/apps/gatherapp/loading.gif' class='pic'></img>"}]);
 	firebase.database().ref("users/"+uid+"/groups").once("value",function(groups){
-		if(groups.val()!=null){
-			clear();
+		clear();
+		if(groups.val()==null){
+			write("No Groups",[{text:"You have not joined any groups."}]);
 		}
 		groups.forEach(function(item){
 			firebase.database().ref("groups/"+item.key).once("value",function(group){
