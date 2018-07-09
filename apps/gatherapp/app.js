@@ -3,41 +3,15 @@ if ('serviceWorker' in navigator) {
 	});
 }
 
-window.onload=function(){
-	var config = {
-		apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
-		authDomain: "gatherapp-1906b.firebaseapp.com",
-		databaseURL: "https://gatherapp-1906b.firebaseio.com",
-		projectId: "gatherapp-1906b",
-		storageBucket: "gatherapp-1906b.appspot.com",
-		messagingSenderId: "1038044491990"
-	};
-	firebase.initializeApp(config);
-	firebase.auth().onAuthStateChanged(function(me) {
-		if (me) {
-			firebase.database().ref("users/"+me.uid+"/info").once("value",function(shot){
-				uid = me.uid;
-				name = me.displayName;
-				pic = me.photoURL;
-				$.get("https://ipinfo.io", function(response) {
-					city=response.city+", "+response.country;
-					lat=parseFloat(response.loc.split(",")[0]);
-					long=parseFloat(response.loc.split(",")[1]);
-					city=response.city+", "+response.country;
-					firebase.database().ref("users/"+uid+"/info").update({
-						name:name,
-						pic:pic,
-						city:city
-					});
-				}, "jsonp");
-				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(pos);
-				}
-				action("home");
-			});
-		}
-	});
-}
+var config = {
+	apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
+	authDomain: "gatherapp-1906b.firebaseapp.com",
+	databaseURL: "https://gatherapp-1906b.firebaseio.com",
+	projectId: "gatherapp-1906b",
+	storageBucket: "gatherapp-1906b.appspot.com",
+	messagingSenderId: "1038044491990"
+};
+firebase.initializeApp(config);
 
 function login(provider) {
 	var provider;
@@ -109,6 +83,31 @@ function pos(coord){
 	});
 }
 
+firebase.auth().onAuthStateChanged(function(me) {
+	if (me) {
+		firebase.database().ref("users/"+me.uid+"/info").once("value",function(shot){
+			uid = me.uid;
+			name = me.displayName;
+			pic = me.photoURL;
+			$.get("https://ipinfo.io", function(response) {
+				city=response.city+", "+response.country;
+				lat=parseFloat(response.loc.split(",")[0]);
+				long=parseFloat(response.loc.split(",")[1]);
+				city=response.city+", "+response.country;
+				firebase.database().ref("users/"+uid+"/info").update({
+					name:name,
+					pic:pic,
+					city:city
+				});
+			}, "jsonp");
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(pos);
+			}
+			action("home");
+		});
+	}
+});
+
 function action(act) {
     if(uid!=""){
         if (act == "menu") {
@@ -175,7 +174,7 @@ function write(title,contents,links,href){
 			for(var i=0;i<links.length;i++){
 				if(links[i].href!=null&&links[i].text!=null){
 					body+="<span style='font-size:4vh'>";
-					body+="<a href='"+links[i].href+"'>";
+					body+="<a href='javascript:"+links[i].href+"'>";
 					body+=encode(links[i].text);
 					body+="</a>";
 					body+="</span>";
