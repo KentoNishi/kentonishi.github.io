@@ -120,6 +120,7 @@ function action(act) {
 }
 
 function menu(){
+	clear();
 	write(name,[{html:"<img src='"+pic+"' class='pic'></img>"}],[{href:"signOut();",text:"Sign Out"}]);
 }
 
