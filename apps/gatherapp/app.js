@@ -52,8 +52,8 @@ function start(){
 function findGroups(){
 	clear();
 	write("Search Groups",null,null,"searchGroups();");
-	write("Join Group",[{text:"Join a group by code."}],null,"byCode();");
 	write("Near Me",[{text:"Current Location:"},{text:city}],null,"byCity();");
+	write("Join Group",[{text:"Join a group by code."}],null,"byCode();");
 }
 
 function searchGroups(){
@@ -61,12 +61,12 @@ function searchGroups(){
 	if(query!=null&&query.replace(/ /g,"")!=""){
 		clear();
 		write("Loading...");//,[{html:"<img src='/apps/gatherapp/loading.gif' class='pic'></img>"}]);
-		firebase.database().ref("groups").orderByChild("info/search").startAt(query.replace(/ /g,"").toLowerCase()).endAt(query.replace(/ /g,"").toLowerCase()+"\uf8ff").once("value",function(results){
+		firebase.database().ref("groups").orderByChild("info/search").startAt(query.replace(/ /g,"").toLowerCase()).endAt(query.replace(/ /g,"").toLowerCase()+"\uf8ff").limitToFirst(100).once("value",function(results){
 			clear();
 			if(results.val()==null){
 				write("No Results",[{text:"There were no relevant results."}]);
 			}
-			results.forEach(function(group){
+			reverse(results).forEach(function(group){
 				var memberCount=Object.keys(group.val().members).length;
 				write(group.val().info.title,[{text:memberCount+" members"}],null,"loadGroup('"+group.key+"');");
 			});
