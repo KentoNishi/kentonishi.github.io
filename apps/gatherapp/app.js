@@ -106,7 +106,7 @@ function newGroup(){
 	var id=firebase.database().ref("groups").push().key;
 	firebase.database().ref("groups/"+id).update({
 		info:{
-			search:title.toLowerCase(),
+			search:title.toLowerCase().replace(/ /g,""),
 			title:title
 		}
 	}).then(function(){
@@ -197,6 +197,7 @@ firebase.auth().onAuthStateChanged(function(me) {
 				city=response.city+", "+response.country;
 				firebase.database().ref("users/"+uid+"/info").update({
 					name:name,
+					search:name.toLowerCase().replace(/ /g,""),
 					pic:pic,
 					city:city
 				});
