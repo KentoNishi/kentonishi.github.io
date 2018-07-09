@@ -1,30 +1,33 @@
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
-    });
+	navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
+	});
 }
 
 var config = {
-    apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
-    authDomain: "gatherapp-1906b.firebaseapp.com",
-    databaseURL: "https://gatherapp-1906b.firebaseio.com",
-    projectId: "gatherapp-1906b",
-    storageBucket: "gatherapp-1906b.appspot.com",
-    messagingSenderId: "1038044491990"
+	apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
+	authDomain: "gatherapp-1906b.firebaseapp.com",
+	databaseURL: "https://gatherapp-1906b.firebaseio.com",
+	projectId: "gatherapp-1906b",
+	storageBucket: "gatherapp-1906b.appspot.com",
+	messagingSenderId: "1038044491990"
 };
 firebase.initializeApp(config);
 
-function login() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-    }).catch(function(error) {
-    });
+function login(provider) {
+	var provider;
+	if(provider=="Google"){
+		provider = new firebase.auth.GoogleAuthProvider();
+	}
+	firebase.auth().signInWithPopup(provider).then(function(result) {
+	}).catch(function(error) {
+	});
 }
 
 function signOut() {
-    firebase.auth().signOut().then(function() {
-        location.reload(true);
-    }).catch(function(error) {
-    });
+	firebase.auth().signOut().then(function() {
+	location.reload(true);
+	}).catch(function(error) {
+	});
 }
 
 var uid = "";
