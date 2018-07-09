@@ -81,7 +81,7 @@ function joinGroup(id){
 		[uid]:Date.now()
 	}).then(function(){
 		firebase.database().ref("users/"+uid+"/groups/").update({
-			[id]:true
+			[id]:0
 		}).then(function(){
 			loadGroup(id);
 		});
