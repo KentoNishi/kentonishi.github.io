@@ -1,3 +1,21 @@
+/*
+//my groups
+firebase.database().ref("groups").orderByChild("members/"+uid).once("value",function(e){
+console.log(Object.keys(e.val()));
+});
+
+//group size
+firebase.database().ref("groups/-LH-1TK-rPdMAr8KwZU0").once("value",function(e){
+console.log(Object.keys(e.val().members).length);
+});
+
+//in group?
+firebase.database().ref("test/-LH-1TK-rPdMAr8KwZU0").once("value",function(e){
+console.log(e.val().members[uid]!=null);
+});
+*/
+
+
 if ('serviceWorker' in navigator) {
 	navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
 	});
