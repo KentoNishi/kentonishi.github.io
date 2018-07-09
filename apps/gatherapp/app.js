@@ -63,7 +63,7 @@ function myGroups(){
 
 function loadGroup(id){
 	clear();
-	firebase.database().ref("groups").orderByChild("groups/"+id).once("value",function(group){
+	firebase.database().ref("groups/"+id).once("value",function(group){
 		var memberCount=Object.keys(group.val().members).length;
 		var status=[{text:"Join Group",href:"joinGroup('"+group.key+"');"}];
 		if(group.val().members[uid]=="uid"){
