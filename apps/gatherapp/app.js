@@ -158,29 +158,25 @@ function write(title,contents,links,href){
 		body+="</strong>";
 		body+="</span>";
 		body+="<br />";
-		if(contents!=null){
-			for(var i=0;i<contents.length;i++){
-				if(contents[i].html!=null){
-					body+=contents[i].html;
-				}else if(contents[i].text!=null){
-					body+="<span style='font-size:4vh'>";
-					body+=encode(contents[i].text);
-					body+="</span>";
-				}
-				body+="<br />";
+		for(var i=0;i<contents.length;i++){
+			if(contents[i].html!=null){
+				body+=contents[i].html;
+			}else if(contents[i].text!=null){
+				body+="<span style='font-size:4vh'>";
+				body+=encode(contents[i].text);
+				body+="</span>";
 			}
+			body+="<br />";
 		}
-		if(links!=null){
-			for(var i=0;i<links.length;i++){
-				if(links[i].href!=null&&links[i].text!=null){
-					body+="<span style='font-size:4vh'>";
-					body+="<a href='javascript:"+links[i].href+"'>";
-					body+=encode(links[i].text);
-					body+="</a>";
-					body+="</span>";
-				}
-				body+="<br />";
+		for(var i=0;i<links.length;i++){
+			if(links[i].href!=null&&links[i].text!=null){
+				body+="<span style='font-size:4vh'>";
+				body+="<a href='javascript:"+links[i].href+"'>";
+				body+=encode(links[i].text);
+				body+="</a>";
+				body+="</span>";
 			}
+			body+="<br />";
 		}
 		body+="</div>";
 		document.querySelectorAll(".body")[0].innerHTML+=body;
