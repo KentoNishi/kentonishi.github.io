@@ -25,7 +25,7 @@ function login(provider) {
 
 function signOut() {
 	firebase.auth().signOut().then(function() {
-	location.reload(true);
+		location.reload(true);
 	}).catch(function(error) {
 	});
 }
@@ -111,11 +111,16 @@ firebase.auth().onAuthStateChanged(function(me) {
 function action(act) {
     if(uid!=""){
         if (act == "menu") {
+		menu();
         } else if (act == "add") {
         } else if (act == "home") {
             feed();
         }
     }
+}
+
+function menu(){
+	write(name,[{html:"<img src='"+pic+"' class='pic'></img>"}],[{href:"signOut();",text:"Sign Out"}]);
 }
 
 function clear(element){
