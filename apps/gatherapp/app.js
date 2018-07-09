@@ -52,12 +52,14 @@ function start(){
 function myGroups(){
 	clear();
 	write("Your Groups",[{text:"Your groups appear here."}]);
-	firebase.database().ref("groups").orderByChild("members/"+uid).equalTo("uid").once("value",function(groups){
+	firebase.database().ref("users/"+uid+"/groups").once("value",function(groups){
 		if(groups.val()!=null){
 			clear();
 		}
-		groups.forEach(function(group){
-			write(group.val().info.title,[{text:Object.keys(group.val().members).length.toString()+" members"}],null,"loadGroup('"+group.key+"');");
+		groups.forEach(function(item){
+			firebase.database().ref("groups/"+item.key).once("value",function(group){
+				write(group.val().info.title,[{text:Object.keys(group.val().members).length.toString()+" members"}],null,"loadGroup('"+group.key+"');");
+			});
 		});
 	});
 }
@@ -67,7 +69,7 @@ function loadGroup(id){
 	firebase.database().ref("groups/"+id).once("value",function(group){
 		var memberCount=Object.keys(group.val().members).length;
 		var status=[{text:"Join Group",href:"joinGroup('"+group.key+"');"}];
-		if(group.val().members[uid]=="uid"){
+		if(group.val().members[uid]!=null){
 			status=[{text:"Leave Group",href:"leaveGroup('"+group.key+"');"}];
 		}
 		write(group.val().info.title,[{text:memberCount+" members"}],status);
@@ -76,9 +78,13 @@ function loadGroup(id){
 
 function joinGroup(id){
 	firebase.database().ref("groups/"+id+"/members").update({
-		[uid]:"uid"
+		[uid]:Date.now()
 	}).then(function(){
-		loadGroup(id);
+		firebase.database().ref("users/"+uid+"/groups").update({
+			id:true
+		}).then(function(){
+			loadGroup(id);
+		});
 	});
 }
 
@@ -89,7 +95,9 @@ function leaveGroup(id){
 		if(members==null){
 			firebase.database().ref("groups/"+id).remove();
 		}
-		start();
+		firebase.database().ref("users/"+uid+"/groups/"+id).remove().then(function(){
+			start();
+		});
 	});
 }
 
@@ -100,12 +108,9 @@ function newGroup(){
 		info:{
 			search:title.toLowerCase(),
 			title:title
-		},
-		members:{
-			[uid]:'uid'
 		}
 	}).then(function(){
-		loadGroup(id);
+		joinGroup(id);
 	});
 }
 
