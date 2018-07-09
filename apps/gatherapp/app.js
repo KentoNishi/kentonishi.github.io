@@ -87,8 +87,7 @@ function leaveGroup(id){
 		[uid]:null
 	}).then(function(members){
 		if(members==null){
-			firebase.database().ref("groups/"+id).update({	
-			});
+			firebase.database().ref("groups/"+id).remove();
 		}
 		start();
 	});
