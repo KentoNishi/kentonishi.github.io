@@ -195,7 +195,7 @@ function action(act) {
 }
 
 function clear(e){
-    document.querySelectorAll("."+e||"body")[0].innerHTML="";
+    document.querySelectorAll(".body")[0].innerHTML="";
 } 
 
 function reverse(snapshot) {
