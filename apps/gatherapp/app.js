@@ -51,7 +51,7 @@ function start(){
 
 function findGroups(){
 	clear();
-	write("Search Groups",null,null,"searchGroups();");
+	write("Search Groups",[{text:"Search groups by query."}],null,"searchGroups();");
 	write("Near Me",[{text:"Current Location:"},{text:city}],null,"byCity();");
 	write("Join Group",[{text:"Join a group by code."}],null,"byCode();");
 }
