@@ -100,6 +100,7 @@ firebase.auth().onAuthStateChanged(function(me) {
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(pos);
 			}
+			action("home");
 		});
 	}
 });
