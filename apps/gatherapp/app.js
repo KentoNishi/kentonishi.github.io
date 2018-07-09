@@ -257,12 +257,13 @@ function encode(e){
 }
 
 function decode(html) {
-    var txt = document.createElement("textarea");
-    txt.innerHTML = html;
-    return txt.value;
+	var txt = document.createElement("textarea");
+	txt.innerHTML = html;
+	return txt.value;
 }
 
 window.onerror = function (message, file, line, col, error) {
-   write();
-   return true;
+	clear();
+	write();
+	return true;
 };
