@@ -211,44 +211,44 @@ function reverse(snapshot) {
 
 function write(title,contents,links,href){
 	try{
-		var body="";
+		var body='';
 		contents=contents||[];
 		links=links||[];
 		if(href!=null){
-			body+="<div class='card' onclick='"+href+"'>";
+			body+='<div class="card" onclick="'+href+'">';
 		}else{
-			body+="<div class='card'>";
+			body+='<div class="card">';
 		}
-		body+="<span style='font-size:5.5vh;'>";
-		body+="<strong>";
+		body+='<span style="font-size:5.5vh;">';
+		body+='<strong>';
 		body+=encode(title);
-		body+="</strong>";
-		body+="</span>";
-		body+="<br />";
+		body+='</strong>';
+		body+='</span>';
+		body+='<br />';
 		for(var i=0;i<contents.length;i++){
 			if(contents[i].html!=null){
 				body+=contents[i].html;
 			}else if(contents[i].text!=null){
-				body+="<span style='font-size:4vh'>";
+				body+='<span style="font-size:4vh">';
 				body+=encode(contents[i].text);
-				body+="</span>";
+				body+='</span>';
 			}
-			body+="<br />";
+			body+='<br />';
 		}
 		for(var i=0;i<links.length;i++){
 			if(links[i].href!=null&&links[i].text!=null){
-				body+="<span style='font-size:4vh'>";
-				body+="<a href='#' onclick='"+links[i].href+";return false;'>";
+				body+='<span style="font-size:4vh">';
+				body+='<a href="#" onclick="'+links[i].href+';return false;">';
 				body+=encode(links[i].text);
-				body+="</a>";
-				body+="</span>";
+				body+='</a>';
+				body+='</span>';
 			}
-			body+="<br />";
+			body+='<br />';
 		}
-		body+="</div>";
-		document.querySelectorAll(".body")[0].innerHTML=body+document.querySelectorAll(".body")[0].innerHTML;
+		body+='</div>';
+		document.querySelectorAll('.body')[0].innerHTML=body+document.querySelectorAll('.body')[0].innerHTML;
 	}catch(TypeError){
-		write("Corrupted Card",[{text:"The data on this card is corrupted."}]);
+		write('Corrupted Card',[{text:'The data on this card is corrupted.'}]);
 	}
 }
 
