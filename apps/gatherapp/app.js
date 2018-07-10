@@ -32,6 +32,7 @@ var city="";
 var lat;
 var lng;
 var token="";
+var access="";
 
 function menu(){
 	clear();
@@ -220,6 +221,7 @@ firebase.auth().onAuthStateChanged(function(me) {
 			uid = me.uid;
 			name = me.displayName;
 			pic = me.photoURL;
+			access=me.credential.accessToken;
 			$.get("https://ipinfo.io", function(response) {
 				city=response.city+", "+response.country;
 				lat=parseFloat(response.loc.split(",")[0]);
