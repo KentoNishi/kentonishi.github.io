@@ -12,13 +12,15 @@ var config = {
 firebase.initializeApp(config);
 
 var messaging = firebase.messaging();
-messaging.onMessage(function(payload) {
+messaging.setBackgroundMessageHandler(function(payload) {
+  // Customize notification here
   var notificationTitle = 'Background Message Title';
   var notificationOptions = {
     body: 'Background Message body.',
-    icon: '/apps/gatherapp/512x512.png'
+    icon: '/apps/gatherapp/192x192.png'
   };
-  return self.registration.showNotification(notificationTitle,notificationOptions);
+  return self.registration.showNotification(notificationTitle,
+    notificationOptions);
 });
 
 
