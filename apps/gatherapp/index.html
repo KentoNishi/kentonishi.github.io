@@ -1,161 +1,159 @@
 <!--
-Copyright 2018 Kento Nishi (GatherApp)
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
-
+	Copyright 2018 Kento Nishi (GatherApp)
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	    http://www.apache.org/licenses/LICENSE-2.0
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+	-->
 <html lang="en">
-  <head>
-    <title>GatherApp</title>
-    <meta http-equiv='cache-control' content='max-age=604800'>
-    <meta http-equiv='expires' content='604800'>
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="description" content="The app that lets you gather up with new people with similar interests." />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=1' /> 
-    <meta name="mobile-web-app-capable" content="yes" />
-    <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase-app.js" defer></script>
-    <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase-auth.js" defer></script>
-    <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase-database.js" defer></script>
-    <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase-storage.js" defer></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" defer></script>
-    <script type="text/javascript" src='https://maps.google.com/maps/api/js?key=AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY&libraries=places' defer></script>
-    <script src="/apps/gatherapp/app.js" defer></script>
-    <link rel="shortcut icon" type="image/x-icon" href="/apps/gatherapp/192x192.png" />
-    <link rel="manifest" href="/apps/gatherapp/manifest.json" />
-  </head>
-  <div style="display:none;position:fixed;top:200vh;left:200vh;z-index:-100;">
-      <h1>GatherApp</h1>
-      <h2>The app that lets you gather up with new people with similar interests.</h2>
-      <h1>gather app up meetup meet up hobby hobbies interest interests friend friends</h1>
-      <h2>people community organization convention groups class classes group club clubs</h2>
-  </div>
-  <body bgColor="white">
-    <div class="top left wide height fixed accent bar">
-      <a onclick="action(this.id);" id="menu" class="icon left" href="#">
-        <img alt="menu" src="/apps/gatherapp/menu.svg" />
-      </a>
-      <a onclick="action(this.id);" id="home" style="position:fixed;z-index:2;top:0;left:25%;height:8vh;width:50%;" href="#">
-        <img alt="home"style="height:8vh;width:100%;" src="/apps/gatherapp/logo.png" />
-      </a>
-      <a onclick="action(this.id);" id="add" class="icon right" href="#">
-        <img alt="add" src="/apps/gatherapp/add.svg" />
-      </a>
+	<head>
+		<title>GatherApp</title>
+		<meta http-equiv='cache-control' content='max-age=604800'>
+		<meta http-equiv='expires' content='604800'>
+		<meta name="theme-color" content="#ffffff" />
+		<meta name="description" content="The app that lets you gather up with new people with similar interests." />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=1' />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<script src="https://www.gstatic.com/firebasejs/5.0.2/firebase-app.js" defer></script>
+		<script src="https://www.gstatic.com/firebasejs/5.0.2/firebase-auth.js" defer></script>
+		<script src="https://www.gstatic.com/firebasejs/5.0.2/firebase-database.js" defer></script>
+		<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-functions.js" defer></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" defer></script>
+		<script type="text/javascript" src='https://maps.google.com/maps/api/js?key=AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY&libraries=places' defer></script>
+		<script src="/apps/gatherapp/app.js" defer></script>
+		<link rel="shortcut icon" type="image/x-icon" href="/apps/gatherapp/192x192.png" />
+		<link rel="manifest" href="/apps/gatherapp/manifest.json" />
+	</head>
+	<div style="display:none;position:fixed;top:200vh;left:200vh;z-index:-100;">
+		<h1>GatherApp</h1>
+		<h2>The app that lets you gather up with new people with similar interests.</h2>
+		<h1>gather app up meetup meet up hobby hobbies interest interests friend friends</h1>
+		<h2>people community organization convention groups class classes group club clubs</h2>
+	</div>
+	<body bgColor="white">
+		<div class="top left wide height fixed accent bar">
+			<a onclick="action(this.id);" id="menu" class="icon left" href="#">
+			<img alt="menu" src="/apps/gatherapp/menu.svg" />
+			</a>
+			<a onclick="action(this.id);" id="home" style="position:fixed;z-index:2;top:0;left:25%;height:8vh;width:50%;" href="#">
+			<img alt="home"style="height:8vh;width:100%;" src="/apps/gatherapp/logo.png" />
+			</a>
+			<a onclick="action(this.id);" id="add" class="icon right" href="#">
+			<img alt="add" src="/apps/gatherapp/add.svg" />
+			</a>
+		</div>
+		<div class="body">
+			<div class="card" onclick="login('Google')">
+				<img alt="image" src="/apps/gatherapp/google.png" style="width:50vw;height:auto;">
+				</img>
+			</div>
+		</div>
+	</body>
+	<style>
+		*{
+            font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            -ms-word-break: break-all;
+            word-break: break-all;
+            word-break: break-word;
+		}
+		.card{
+            width:75vw;
+            margin:auto;
+            margin-top:2.5vh;
+            margin-bottom:2.5vh;
+            background-color:rgba(0,0,0,0.1);
+            padding:5vh;
+            text-align:center;
+            font-size:3vh;
+            border-radius:5px;
+            box-shadow: inset 0 0 0 5px black;
+            transition:0.5s;
+		}
+		.card:hover{
+            background-color:rgba(0,0,0,0.2);
+		}
+		.body{
+            overflow:auto;
+            width:100%;
+            height:92%;
+            background-color:white;
+            position:fixed;
+            top:8vh;
+            left:0;
+            color:black;
+		}
+		.top{
+            top:0;
+		}
+		.left{
+            left:0;
+            float:left;
+		}
+		.right{
+            right:0;
+            float:right;
+		}
+		.fixed{
+            position:fixed;
+		}
+		.wide{
+            width:100%;
+		}
+		.height{
+            height:8vh;
+		}
+		.accent{
+            background-color:orange;
+		}
+		.icon{
+            padding:1vh;
+            width:6vh;
+            height:6vh;
+		}
+		.bar a img {
+            width:6vh;
+            height:6vh;
+            border-radius:8vh;
+		}
+		.pic{
+            width:50vw;
+            height:50vw;
+		}
+		textarea {
+            overflow:auto;
+            resize: none;
+            overflow: hidden;
+            background-color:transparent;
+            min-height:5vh;
+            height:5vh;
+            border: none;
+		}
+		input{
+            height:5.5vh;
+            font-size:5vh;
+            width:65vw;
+            text-align:center;
+		}
+		button{
+            font-size:4vh;
+            background-color:white;
+            border-radius:1vh;
+            border:0px;
+            margin-top:1vh;
+		}
+	</style>
+	<noscript>
+	<div style="z-index:1000;background-color:white;top:0;left:0;position:fixed;width:100%;height:100%;">
+		<h1 style="text-align:center;">Enable JavaScript</h1>
+		<h2 style="text-align:center;">This page uses JavaScript. Please enable it in your browser settings.</h2>
+		<h3 style="text-align:center;"><a href="">Try Again</a></h3>
     </div>
-    <div class="body">
-      <div class="card" onclick="login('Google')">
-        <img alt="image" src="/apps/gatherapp/google.png" style="width:50vw;height:auto;">
-        </img>
-      </div>
-    </div>
-  </body>
-  <style>
-    *{
-      font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      -ms-word-break: break-all;
-      word-break: break-all;
-      word-break: break-word;
-
-    }
-    .card{
-      width:75vw;
-      margin:auto;
-      margin-top:2.5vh;
-      margin-bottom:2.5vh;
-      background-color:rgba(0,0,0,0.1);
-      padding:5vh;
-      text-align:center;
-      font-size:3vh;
-      border-radius:5px;
-      box-shadow: inset 0 0 0 5px black;
-      transition:0.5s;
-    }
-    .card:hover{
-      background-color:rgba(0,0,0,0.2);
-    }
-    .body{
-      overflow:auto;
-      width:100%;
-      height:92%;
-      background-color:white;
-      position:fixed;
-      top:8vh;
-      left:0;
-      color:black;
-    }
-    .top{
-      top:0;
-    }
-    .left{
-      left:0;
-      float:left;
-    }
-    .right{
-      right:0;
-      float:right;
-    }
-    .fixed{
-      position:fixed;
-    }
-    .wide{
-      width:100%;
-    }
-    .height{
-      height:8vh;
-    }
-    .accent{
-      background-color:orange;
-    }
-    .icon{
-      padding:1vh;
-      width:6vh;
-      height:6vh;
-    }
-    .bar a img {
-      width:6vh;
-      height:6vh;
-      border-radius:8vh;
-    }
-    .pic{
-      width:50vw;
-      height:50vw;
-    }
-    textarea {
-      overflow:auto;
-      resize: none;
-      overflow: hidden;
-      background-color:transparent;
-      min-height:5vh;
-      height:5vh;
-      border: none;
-    }
-    input{
-      height:5.5vh;
-      font-size:5vh;
-      width:65vw;
-      text-align:center;
-    }
-    button{
-      font-size:4vh;
-      background-color:white;
-      border-radius:1vh;
-      border:0px;
-      margin-top:1vh;
-    }
-  </style>
-  <noscript>
-    <div style="z-index:1000;background-color:white;top:0;left:0;position:fixed;width:100%;height:100%;">
-      <h1 style="text-align:center;">Enable JavaScript</h1>
-      <h2 style="text-align:center;">This page uses JavaScript. Please enable it in your browser settings.</h2>
-      <h3 style="text-align:center;"><a href="">Try Again</a></h3>
-    </div>
-  <noscript>
+	<noscript>
 </html>
