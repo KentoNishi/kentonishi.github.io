@@ -1,13 +1,5 @@
-if(navigator.onLine){
-  caches.keys().then(function(names) {
-      for (let name of names)
-          caches.delete(name);
-  });
-}
-
-var CACHE_NAME = "CACHE";
-
-self.importScripts('https://www.gstatic.com/firebasejs/5.0.2/firebase-app.js','https://www.gstatic.com/firebasejs/5.0.2/firebase-auth.js','https://www.gstatic.com/firebasejs/5.0.2/firebase-database.js');
+self.importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js');
+self.importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.js');
 
 var config = {
     apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
@@ -19,71 +11,29 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var uid="";
-
-//REPLACE WITH GCM OR FCM
-/*
-var loaded=true;
-var currentNotification="";
-firebase.auth().onAuthStateChanged(function(me) {
-    if (me) {
-        uid=me.uid;
-        firebase.database().ref("users/"+uid+"/feed").on("value",function(snapshot){
-      var u=0;
-      reverseSnapshotOrder(snapshot).forEach(function(child){
-          if(u==0&&currentNotification!=child.key&&child.val().content!=null&&loaded==false){
-             displayNotification(child.val().title,child.val().content);
-             currentNotification=child.key;
-          }
-        u++;
-      });
-      loaded=false;
-      u=0;
-        });
-    }
-});
-*/
-
-function remove(path,callback,param){
-    firebase.database().ref(path).remove();
-    if(callback!=null){
-        window[callback](param);
-    }
-}
-
-function displayNotification(title,body,time) {
-  if (Notification.permission == 'granted') {
-      var options = {
-        body: body,
-        icon: "/apps/gatherapp/512x512.png",
-        vibrate: [100, 50, 100],
-        data: {
-          dateOfArrival: Date.now(),
-          primaryKey: 1
-        }
-      };
-      self.registration.showNotification(title, options);
-    }
-}
-
-self.addEventListener('notificationclick', function(event) {
-
-  event.notification.close();
-
-  event.waitUntil(
-    clients.openWindow('https://kentonishi.github.io/apps/gatherapp/')
-  );
+var messaging = firebase.messaging();
+messaging.onMessage(function(payload) {
+  var notificationTitle = 'Background Message Title';
+  var notificationOptions = {
+    body: 'Background Message body.',
+    icon: '/apps/gatherapp/512x512.png'
+  };
+  return self.registration.showNotification(notificationTitle,notificationOptions);
 });
 
-function reverseSnapshotOrder (snapshot) {
-  let reversed = [];
 
-  snapshot.forEach(child => {
-    reversed.unshift(child);
+if(navigator.onLine){
+  caches.keys().then(function(names) {
+      for (let name of names)
+          caches.delete(name);
   });
-
-  return reversed;
 }
+
+var CACHE_NAME = "CACHE";
+
+firebase.initializeApp({
+  'messagingSenderId': 'YOUR-SENDER-ID'
+});
 
 var urlsToCache = [
   '/apps/gatherapp/app.js',
