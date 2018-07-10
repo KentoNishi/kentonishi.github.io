@@ -30,7 +30,8 @@ var name = "";
 var pic = "";
 var city="";
 var lat;
-var long;
+var lng;
+var token="";
 
 function menu(){
 	clear();
@@ -168,8 +169,8 @@ function signOut() {
 
 function pos(coord){
 	lat=coord.coords.latitude;
-	long=coord.coords.longitude;
-	var latlng=new google.maps.LatLng(lat,long);
+	lng=coord.coords.longitude;
+	var latlng=new google.maps.LatLng(lat,lng);
 
 	new google.maps.Geocoder().geocode({'latLng' : latlng}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
@@ -221,7 +222,7 @@ firebase.auth().onAuthStateChanged(function(me) {
 			$.get("https://ipinfo.io", function(response) {
 				city=response.city+", "+response.country;
 				lat=parseFloat(response.loc.split(",")[0]);
-				long=parseFloat(response.loc.split(",")[1]);
+				lng=parseFloat(response.loc.split(",")[1]);
 				city=response.city+", "+response.country;
 				firebase.database().ref("users/"+uid+"/info").update({
 					name:name,
@@ -233,6 +234,28 @@ firebase.auth().onAuthStateChanged(function(me) {
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(pos);
 			}
+			var messaging = firebase.messaging();
+			messaging.usePublicVapidKey("BAGNHa6lCTJQBrMjFT_lxI37lnvYkGDTwx5nhLMxzp96ROq18LeiarKjUnh2_966QA_YCZMhI8ahn3_pim37psg");
+			messaging.requestPermission().then(function() {
+				messaging.getToken().then(function(currentToken) {
+					if (currentToken) {
+						token=currentToken;
+					} else {
+						token="";
+					}
+				}).catch(function(err) {
+					token="";
+				});
+
+				messaging.onTokenRefresh(function() {
+					messaging.getToken().then(function(refreshedToken) {
+						token=refreshedToken;
+					}).catch(function(err) {
+						token="";
+					});
+				});
+			}).catch(function(err) {
+			});
 			action("home");
 		});
 	}
