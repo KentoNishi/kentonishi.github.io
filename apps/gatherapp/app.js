@@ -146,7 +146,8 @@ function newGroup(){
 /*Processing functions*/
 
 if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function() {
+	navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function(registration) {
+		firebase.messaging().useServiceWorker(registration);
 	});
 }
 
