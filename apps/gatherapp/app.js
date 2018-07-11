@@ -31,6 +31,7 @@ var pic = "";
 var city="";
 var lat;
 var lng;
+var worker;
 //var token="";
 //var access="";
 
@@ -147,9 +148,9 @@ function newGroup(){
 /*Processing functions*/
 
 if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('/apps/gatherapp/worker.js').then(function(worker){
-		firebase.messaging().useServiceWorker(worker);
-		worker.active.postMessage(uid);
+	navigator.serviceWorker.register('/apps/gatherapp/worker.js').then(function(reg){
+		firebase.messaging().useServiceWorker(reg);
+		worker=reg;
 	});
 }
 
@@ -220,6 +221,9 @@ firebase.auth().onAuthStateChanged(function(me) {
 	if (me) {
 		firebase.database().ref("users/"+me.uid+"/info").once("value",function(shot){
 			uid = me.uid;
+			if(worker!=null){
+				worker.active.postMessage(uid);
+			}
 			name = me.displayName;
 			pic = me.photoURL;
 			me.getIdToken().then(function(userToken) {
