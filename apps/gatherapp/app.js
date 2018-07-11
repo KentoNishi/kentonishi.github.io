@@ -148,9 +148,8 @@ function newGroup(){
 /*Processing functions*/
 
 if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function(registration) {
-		sw=registration;
-		firebase.messaging().useServiceWorker(registration);
+	navigator.serviceWorker.register('/service-worker.js').then(function(worker){
+		firebase.messaging().useServiceWorker(sw);
 	});
 }
 
@@ -221,7 +220,7 @@ firebase.auth().onAuthStateChanged(function(me) {
 	if (me) {
 		firebase.database().ref("users/"+me.uid+"/info").once("value",function(shot){
 			uid = me.uid;
-			sw.postMessage(uid);
+			navigator.serviceWorker.controller.postMessage(uid);
 			name = me.displayName;
 			pic = me.photoURL;
 			me.getIdToken().then(function(userToken) {
