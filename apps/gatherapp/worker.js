@@ -74,7 +74,6 @@ self.onMessage=function(me){
 	    });
 	}).catch(function(err) {
 	});
-	}
 }
 
 var urlsToCache = [
