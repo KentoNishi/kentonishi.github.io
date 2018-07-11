@@ -41,8 +41,22 @@ function menu(){
 }
 
 function feed(){
-    clear();
-    write("Welcome!",[{text:"Welcome to GatherApp, "+name+"!"}]);
+	clear();
+	firebase.database().ref("users/"+uid+"/feed").once("value",function(notifications){
+		write("Clear Feed",null,null,"clearFeed();");
+		if(notifications.val()==null){
+			write("Welcome!",[{text:"Welcome to GatherApp, "+name+"!"}]);
+		}
+		notifications.forEach(function(notification){
+			write(notification.val().title,[{text:notification.val().content}],null,notification.val().href||null);
+		});
+	});
+}
+
+function clearFeed(){
+	firebase.database().ref("users/"+uid+"/feed").remove().then(function(){
+		feed();
+	});
 }
 
 function start(){
