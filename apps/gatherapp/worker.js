@@ -11,7 +11,7 @@ var config = {
 	messagingSenderId: "1038044491990"
 };
 firebase.initializeApp(config);
-
+/*
 var messaging = firebase.messaging();
 messaging.setBackgroundMessageHandler(function(payload) {
   // Customize notification here
@@ -21,7 +21,7 @@ messaging.setBackgroundMessageHandler(function(payload) {
     icon: '/apps/gatherapp/192x192.png'
   };
   return self.registration.showNotification(notificationTitle,notificationOptions);
-});
+});*/
 
 
 if(navigator.onLine){
