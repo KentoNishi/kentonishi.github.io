@@ -239,43 +239,6 @@ firebase.auth().onAuthStateChanged(function(me) {
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(pos);
 			}
-			var messaging = firebase.messaging();
-			messaging.usePublicVapidKey("BAGNHa6lCTJQBrMjFT_lxI37lnvYkGDTwx5nhLMxzp96ROq18LeiarKjUnh2_966QA_YCZMhI8ahn3_pim37psg");
-			messaging.requestPermission().then(function() {
-				messaging.getToken().then(function(currentToken) {
-					if (currentToken) {
-						firebase.database().ref("users/"+uid+"/info").update({
-							token:currentToken
-						});
-//						token=currentToken;
-					} else {
-						firebase.database().ref("users/"+uid+"/info").update({
-							token:""
-						});
-//						token="";
-					}
-				}).catch(function(err) {
-					firebase.database().ref("users/"+uid+"/info").update({
-						token:""
-					});
-//					token="";
-				});
-
-				messaging.onTokenRefresh(function() {
-					messaging.getToken().then(function(refreshedToken) {
-						firebase.database().ref("users/"+uid+"/info").update({
-							token:refreshedToken
-						});
-//						token=refreshedToken;
-					}).catch(function(err) {
-						firebase.database().ref("users/"+uid+"/info").update({
-							token:""
-						});
-//						token="";
-					});
-				});
-			}).catch(function(err) {
-			});
 			action("home");
 		});
 	}
