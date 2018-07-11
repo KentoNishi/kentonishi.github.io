@@ -92,6 +92,7 @@ var urlsToCache = [
 self.addEventListener('install', function(event) {
   // Perform install steps
   event.waitUntil(
+    self.skipWaiting();
     caches.open(CACHE_NAME)
       .then(function(cache) {
         //'Opened cache
@@ -112,4 +113,8 @@ self.addEventListener('fetch', function(event) {
       }
     )
   );
+});
+
+self.addEventListener('activate', function(event) {
+    event.waitUntil(self.clients.claim()); // Become available to all pages
 });
