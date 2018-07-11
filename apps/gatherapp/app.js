@@ -31,8 +31,8 @@ var pic = "";
 var city="";
 var lat;
 var lng;
-var token="";
-var access="";
+//var token="";
+//var access="";
 
 function menu(){
 	clear();
@@ -222,7 +222,7 @@ firebase.auth().onAuthStateChanged(function(me) {
 			name = me.displayName;
 			pic = me.photoURL;
 			me.getIdToken().then(function(userToken) {
-				access=userToken;
+//				access=userToken;
 			});
 			$.get("https://ipinfo.io", function(response) {
 				city=response.city+", "+response.country;
@@ -244,19 +244,34 @@ firebase.auth().onAuthStateChanged(function(me) {
 			messaging.requestPermission().then(function() {
 				messaging.getToken().then(function(currentToken) {
 					if (currentToken) {
-						token=currentToken;
+						firebase.database().ref("users/"+uid+"/info").update({
+							token:token
+						});
+//						token=currentToken;
 					} else {
-						token="";
+						firebase.database().ref("users/"+uid+"/info").update({
+							token:""
+						});
+//						token="";
 					}
 				}).catch(function(err) {
-					token="";
+					firebase.database().ref("users/"+uid+"/info").update({
+						token:""
+					});
+//					token="";
 				});
 
 				messaging.onTokenRefresh(function() {
 					messaging.getToken().then(function(refreshedToken) {
-						token=refreshedToken;
+						firebase.database().ref("users/"+uid+"/info").update({
+							token:token
+						});
+//						token=refreshedToken;
 					}).catch(function(err) {
-						token="";
+						firebase.database().ref("users/"+uid+"/info").update({
+							token:""
+						});
+//						token="";
 					});
 				});
 			}).catch(function(err) {
