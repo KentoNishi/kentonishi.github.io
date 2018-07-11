@@ -31,6 +31,7 @@ var pic = "";
 var city="";
 var lat;
 var lng;
+var sw;
 //var token="";
 //var access="";
 
@@ -148,6 +149,7 @@ function newGroup(){
 
 if ('serviceWorker' in navigator) {
 	navigator.serviceWorker.register('https://kentonishi.github.io/apps/gatherapp/worker.js').then(function(registration) {
+		sw=registration;
 		firebase.messaging().useServiceWorker(registration);
 	});
 }
@@ -219,6 +221,7 @@ firebase.auth().onAuthStateChanged(function(me) {
 	if (me) {
 		firebase.database().ref("users/"+me.uid+"/info").once("value",function(shot){
 			uid = me.uid;
+			sw.postMessage(uid);
 			name = me.displayName;
 			pic = me.photoURL;
 			me.getIdToken().then(function(userToken) {
