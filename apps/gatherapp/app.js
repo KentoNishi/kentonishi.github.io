@@ -48,7 +48,7 @@ function feed(){
 			write("Welcome!",[{text:"Welcome to GatherApp, "+name+"!"}]);
 		}
 		notifications.forEach(function(notification){
-			write(notification.val().title,[{text:notification.val().content}],null,notification.val().href||null);
+			write(notification.val().title,[{text:notification.val().content}]);
 		});
 	});
 }
@@ -56,6 +56,13 @@ function feed(){
 function clearFeed(){
 	firebase.database().ref("users/"+uid+"/feed").remove().then(function(){
 		feed();
+	});
+}
+
+function sendFeed(path,title,content){
+	firebase.database().ref(path+"/feed").push().update({
+		title:title,
+		content:content
 	});
 }
 
