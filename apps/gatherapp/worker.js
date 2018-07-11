@@ -1,5 +1,6 @@
 self.importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js');
 self.importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.js');
+self.importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js');
 
 var config = {
     apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
@@ -23,15 +24,29 @@ messaging.setBackgroundMessageHandler(function(payload) {
     notificationOptions);
 });
 
-self.onmessage=function(e){
-    console.log(e.data);
-}
+messaging.onMessage(function(payload) {
+  // Customize notification here
+  var notificationTitle = 'Background Message Title';
+  var notificationOptions = {
+    body: 'Background Message body.',
+    icon: '/apps/gatherapp/192x192.png'
+  };
+  return self.registration.showNotification(notificationTitle,
+    notificationOptions);
+});
 
+var uid;
 if(navigator.onLine){
   caches.keys().then(function(names) {
       for (let name of names)
           caches.delete(name);
   });
+}
+
+self.onmessage=function(e){
+    if(uid==null){
+        uid=e.data;
+    }
 }
 
 var CACHE_NAME = "CACHE";
