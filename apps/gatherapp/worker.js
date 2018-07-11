@@ -3,6 +3,16 @@ self.importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.
 self.importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js');
 self.importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js');
 
+var config = {
+	apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
+	authDomain: "gatherapp-1906b.firebaseapp.com",
+	databaseURL: "https://gatherapp-1906b.firebaseio.com",
+	projectId: "gatherapp-1906b",
+	storageBucket: "gatherapp-1906b.appspot.com",
+	messagingSenderId: "1038044491990"
+};
+firebase.initializeApp(config);
+
 var messaging = firebase.messaging();
 messaging.setBackgroundMessageHandler(function(payload) {
   // Customize notification here
@@ -24,16 +34,6 @@ if(navigator.onLine){
 }
 
 var CACHE_NAME = "CACHE";
-
-var config = {
-	apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
-	authDomain: "gatherapp-1906b.firebaseapp.com",
-	databaseURL: "https://gatherapp-1906b.firebaseio.com",
-	projectId: "gatherapp-1906b",
-	storageBucket: "gatherapp-1906b.appspot.com",
-	messagingSenderId: "1038044491990"
-};
-firebase.initializeApp(config);
 
 var uid="";
 var messaging = firebase.messaging();
