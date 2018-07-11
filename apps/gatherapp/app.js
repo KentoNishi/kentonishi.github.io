@@ -148,7 +148,7 @@ function newGroup(){
 /*Processing functions*/
 
 if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('/service-worker.js').then(function(worker){
+	navigator.serviceWorker.register('/apps/gatherapp/worker.js').then(function(worker){
 		firebase.messaging().useServiceWorker(sw);
 	});
 }
