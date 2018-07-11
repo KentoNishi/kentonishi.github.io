@@ -1,5 +1,5 @@
 self.importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js');
-self.importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.js');
+self.importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.js');/*
 self.importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js');
 
 var config = {
@@ -36,17 +36,19 @@ messaging.onMessage(function(payload) {
 });
 
 var uid;
-if(navigator.onLine){
-  caches.keys().then(function(names) {
-      for (let name of names)
-          caches.delete(name);
-  });
-}
 
 self.onmessage=function(e){
     if(uid==null){
         uid=e.data;
     }
+}
+*/
+
+if(navigator.onLine){
+  caches.keys().then(function(names) {
+      for (let name of names)
+          caches.delete(name);
+  });
 }
 
 var CACHE_NAME = "CACHE";
