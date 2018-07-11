@@ -20,8 +20,7 @@ messaging.setBackgroundMessageHandler(function(payload) {
     body: 'Background Message body.',
     icon: '/apps/gatherapp/192x192.png'
   };
-  return self.registration.showNotification(notificationTitle,
-    notificationOptions);
+  return self.registration.showNotification(notificationTitle,notificationOptions);
 });
 
 
@@ -36,7 +35,7 @@ var CACHE_NAME = "CACHE";
 
 var uid="";
 var messaging = firebase.messaging();
-self.onMessage=function(me){
+self.addEventListener('message', function(event){
 	uid=me.data;
 	messaging.usePublicVapidKey("BAGNHa6lCTJQBrMjFT_lxI37lnvYkGDTwx5nhLMxzp96ROq18LeiarKjUnh2_966QA_YCZMhI8ahn3_pim37psg");
 	messaging.requestPermission().then(function() {
@@ -74,7 +73,7 @@ self.onMessage=function(me){
 	    });
 	}).catch(function(err) {
 	});
-}
+});
 
 var urlsToCache = [
   '/apps/gatherapp/app.js',
