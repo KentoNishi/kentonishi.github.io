@@ -221,7 +221,9 @@ firebase.auth().onAuthStateChanged(function(me) {
 			uid = me.uid;
 			name = me.displayName;
 			pic = me.photoURL;
-			access=me.credential.accessToken;
+			me.getIdToken().then(function(userToken) {
+				access=userToken;
+			});
 			$.get("https://ipinfo.io", function(response) {
 				city=response.city+", "+response.country;
 				lat=parseFloat(response.loc.split(",")[0]);
