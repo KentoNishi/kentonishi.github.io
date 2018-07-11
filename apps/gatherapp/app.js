@@ -31,7 +31,6 @@ var pic = "";
 var city="";
 var lat;
 var lng;
-var sw;
 //var token="";
 //var access="";
 
@@ -149,7 +148,7 @@ function newGroup(){
 
 if ('serviceWorker' in navigator) {
 	navigator.serviceWorker.register('/apps/gatherapp/worker.js').then(function(worker){
-		firebase.messaging().useServiceWorker(sw);
+		firebase.messaging().useServiceWorker(worker);
 	});
 }
 
