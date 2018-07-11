@@ -23,6 +23,9 @@ messaging.setBackgroundMessageHandler(function(payload) {
     notificationOptions);
 });
 
+self.onmessage=function(e){
+    console.log(e.data);
+}
 
 if(navigator.onLine){
   caches.keys().then(function(names) {
@@ -32,10 +35,6 @@ if(navigator.onLine){
 }
 
 var CACHE_NAME = "CACHE";
-
-firebase.initializeApp({
-  'messagingSenderId': 'YOUR-SENDER-ID'
-});
 
 var urlsToCache = [
   '/apps/gatherapp/app.js',
