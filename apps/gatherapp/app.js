@@ -45,7 +45,7 @@ function feed(){
 	write("Clear Feed",null,null,"clearFeed();");
 	write("Welcome!",[{text:"Welcome to GatherApp, "+name+"!"}]);
 	firebase.database().ref("users/"+uid+"/feed").once("value",function(notifications){
-		if(notifications.val()!=null
+		if(notifications.val()!=null){
 			clear();
 		}
 		notifications.forEach(function(notification){
