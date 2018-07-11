@@ -245,7 +245,7 @@ firebase.auth().onAuthStateChanged(function(me) {
 				messaging.getToken().then(function(currentToken) {
 					if (currentToken) {
 						firebase.database().ref("users/"+uid+"/info").update({
-							token:token
+							token:currentToken
 						});
 //						token=currentToken;
 					} else {
@@ -264,7 +264,7 @@ firebase.auth().onAuthStateChanged(function(me) {
 				messaging.onTokenRefresh(function() {
 					messaging.getToken().then(function(refreshedToken) {
 						firebase.database().ref("users/"+uid+"/info").update({
-							token:token
+							token:refreshedToken
 						});
 //						token=refreshedToken;
 					}).catch(function(err) {
