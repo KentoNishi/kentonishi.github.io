@@ -42,10 +42,11 @@ function menu(){
 
 function feed(){
 	clear();
+	write("Clear Feed",null,null,"clearFeed();");
+	write("Welcome!",[{text:"Welcome to GatherApp, "+name+"!"}]);
 	firebase.database().ref("users/"+uid+"/feed").once("value",function(notifications){
-		write("Clear Feed",null,null,"clearFeed();");
-		if(notifications.val()==null){
-			write("Welcome!",[{text:"Welcome to GatherApp, "+name+"!"}]);
+		if(notifications.val()!=null
+			clear();
 		}
 		notifications.forEach(function(notification){
 			write(notification.val().title,[{text:notification.val().content}]);
