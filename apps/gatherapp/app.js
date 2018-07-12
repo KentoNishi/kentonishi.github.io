@@ -1,18 +1,47 @@
 /*
-//my groups
-firebase.database().ref("groups").orderByChild("members/"+uid).equalTo("uid").once("value",function(e){
-console.log(Object.keys(e.val()));
-});
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      "$uid": {
+        "info": {
+          ".read": "auth.uid===$uid",
+          ".write": "auth.uid===$uid"
+        },
+        "groups": {
+          ".read": "auth.uid===$uid",
+          ".write": "auth.uid===$uid"
+        },
+        "feed": {
+          ".read": "auth.uid===$uid",
+          ".write": "auth.uid===$uid||(newData.val()!==null&&!data.exists()"
+        }
+      }
+    },
+    "groups": {
+      ".read": true,
+      ".write": false,
+      ".indexOn": [
+        "info/search"
+      ],
+      "$id": {
+        ".write": "(!root.child('groups/'+$id+'/members').exists()&&newData.val()===null)||newData.val()!=null",
+        "info": {
+          ".read": true,
+          ".write": "root.child('groups/$id/members/uid').val()==='uid'"
+        },
+        "members": {
+          "$uid": {
+            ".read": true,
+            ".write": "$uid===auth.uid"
+          }
+        }
+      }
+    }
+  }
+}
 
-//group size
-firebase.database().ref("groups/-LH-1TK-rPdMAr8KwZU0").once("value",function(e){
-console.log(Object.keys(e.val().members).length);
-});
-
-//in group?
-firebase.database().ref("test/-LH-1TK-rPdMAr8KwZU0").once("value",function(e){
-console.log(e.val().members[uid]!=null);
-});
 */
 
 var config = {
