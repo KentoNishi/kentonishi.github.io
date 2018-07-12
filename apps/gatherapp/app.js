@@ -27,9 +27,13 @@
       ],
       "$id": {
         ".write": "(!root.child('groups/'+$id+'/members').exists()&&newData.val()===null)||newData.val()!=null",
-        "info": {
+        "feed": {
           ".read": true,
-          ".write": "root.child('groups/$id/members/uid').val()==='uid'"
+          ".write": "root.child('groups/$id/members/uid').val()!==null"
+        },
+      	"info": {
+          ".read": true,
+          ".write": "root.child('groups/$id/members/uid').val()!==null"
         },
         "members": {
           "$uid": {
@@ -41,7 +45,6 @@
     }
   }
 }
-
 */
 
 var config = {
