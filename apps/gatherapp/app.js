@@ -15,7 +15,7 @@
         },
         "feed": {
           ".read": "auth.uid===$uid",
-          ".write": "auth.uid===$uid||(newData.val()!==null&&!data.exists()"
+          ".write": "auth.uid===$uid||(newData.val()!==null&&!data.exists())"
         }
       }
     },
