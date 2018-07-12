@@ -1,52 +1,3 @@
-/*
-{
-  "rules": {
-    ".read": false,
-    ".write": false,
-    "users": {
-      "$uid": {
-        "info": {
-          ".read": "auth.uid===$uid",
-          ".write": "auth.uid===$uid"
-        },
-        "groups": {
-          ".read": "auth.uid===$uid",
-          ".write": "auth.uid===$uid"
-        },
-        "feed": {
-          ".read": "auth.uid===$uid",
-          ".write": "auth.uid===$uid||(newData.val()!==null&&!data.exists())"
-        }
-      }
-    },
-    "groups": {
-      ".read": true,
-      ".write": false,
-      ".indexOn": [
-        "info/search"
-      ],
-      "$id": {
-        ".write": "(!root.child('groups/'+$id+'/members').exists()&&newData.val()===null)||newData.val()!=null",
-        "feed": {
-          ".read": true,
-          ".write": "root.child('groups/$id/members/uid').val()!==null"
-        },
-      	"info": {
-          ".read": true,
-          ".write": "root.child('groups/$id/members/uid').val()!==null"
-        },
-        "members": {
-          "$uid": {
-            ".read": true,
-            ".write": "$uid===auth.uid"
-          }
-        }
-      }
-    }
-  }
-}
-*/
-
 var config = {
 	apiKey: "AIzaSyDpWZcmNnF0rmmYJOLgI0-cZJMIvvHngsY",
 	authDomain: "gatherapp-1906b.firebaseapp.com",
@@ -64,8 +15,6 @@ var city="";
 var lat;
 var lng;
 var worker;
-//var token="";
-//var access="";
 
 function menu(){
 	clear();
@@ -204,8 +153,6 @@ function newGroup(){
 	}
 }
 
-/*Processing functions*/
-
 if ('serviceWorker' in navigator) {
 	navigator.serviceWorker.register('/apps/gatherapp/worker.js').then(function(reg){
 		firebase.messaging().useServiceWorker(reg);
@@ -286,7 +233,6 @@ firebase.auth().onAuthStateChanged(function(me) {
 			name = me.displayName;
 			pic = me.photoURL;
 			me.getIdToken().then(function(userToken) {
-//				access=userToken;
 			});
 			$.get("https://ipinfo.io", function(response) {
 				city=response.city+", "+response.country;
