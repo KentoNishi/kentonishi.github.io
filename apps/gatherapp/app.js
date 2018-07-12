@@ -103,10 +103,8 @@ function loadGroup(id){
 		if(group.val().members[uid]!=null){
 			status=[{text:"Leave Group",href:"leaveGroup('"+group.key+"');"}];
 		}
-		firebase.database().ref("groups/"+"-LHAEWe5nvJMpKjJUR_b").once("value",function(group){
-			Object.keys(group.val().feed).forEach(function(notification){
-				write(group.val().feed[notification].title,[{text:group.val().feed[notification].content}]);
-			});
+		Object.keys(group.val().feed).forEach(function(notification){
+			write(group.val().feed[notification].title,[{text:group.val().feed[notification].content}]);
 		});
 		write("New Gather-up",[{text:"Schedule a new gather-up."}]);
 		write(group.val().info.title,[{text:memberCount+" members"}],status);
