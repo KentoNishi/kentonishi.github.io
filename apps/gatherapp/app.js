@@ -103,11 +103,23 @@ function loadGroup(id){
 		if(group.val().members[uid]!=null){
 			status=[{text:"Leave Group",href:"leaveGroup('"+group.key+"');"}];
 		}
-		Object.keys(group.val().feed).forEach(function(notification){
-			write(group.val().feed[notification].title,[{text:group.val().feed[notification].content}]);
-		});
 		write("New Gather-up",[{text:"Schedule a new gather-up."}]);
+		write("Group Feed",[{text:"View recent activity."}],null,"loadGroupFeed('"+id+"');");
 		write(group.val().info.title,[{text:memberCount+" members"}],status);
+	});
+}
+
+function loadGroupFeed(id){
+	clear();
+	firebase.database().ref("groups/"+id+"/feed").once("value",function(notifications){
+		if(notifications.val()==null){
+			write("No Activity",[{text:"There are no recent events."}]);
+		}else{
+			write("Return To Group",null,null,"loadGroup('"+id+"');");
+		}
+		notifications.forEach(function(notification){
+			write(notification.val(),title,[{title:notification.val().content}]);
+		});
 	});
 }
 
