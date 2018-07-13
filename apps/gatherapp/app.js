@@ -118,7 +118,7 @@ function loadGroupFeed(id){
 			write("Return To Group",null,null,"loadGroup('"+id+"');");
 		}
 		notifications.forEach(function(notification){
-			write(notification.val(),title,[{title:notification.val().content}]);
+			write(notification.val().title,[{title:notification.val().content}]);
 		});
 	});
 }
