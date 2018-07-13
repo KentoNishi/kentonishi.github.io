@@ -30,15 +30,17 @@ function feed(id){
 		notifications.forEach(function(notification){
 			write(notification.val().title,[{text:notification.val().content}]);
 		});
-		write("Clear Feed",null,null,"clearFeed();");
+//		write("Clear Feed",null,null,"clearFeed();");
 	});
 }
 
+/*
 function clearFeed(){
 	firebase.database().ref("users/"+uid+"/feed").remove().then(function(){
 		feed();
 	});
 }
+*/
 
 function sendFeed(path,title,content){
 	firebase.database().ref(path+"/feed").push().update({
