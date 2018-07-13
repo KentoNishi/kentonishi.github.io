@@ -112,14 +112,14 @@ function loadGroup(id){
 function loadGroupFeed(id){
 	clear();
 	firebase.database().ref("groups/"+id+"/feed").once("value",function(notifications){
+		notifications.forEach(function(notification){
+			write(notification.val().title,[{text:notification.val().content}]);
+		});
 		if(notifications.val()==null){
 			write("No Activity",[{text:"There are no recent events."}]);
 		}else{
 			write("Return To Group",null,null,"loadGroup('"+id+"');");
 		}
-		notifications.forEach(function(notification){
-			write(notification.val().title,[{text:notification.val().content}]);
-		});
 	});
 }
 
