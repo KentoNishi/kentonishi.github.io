@@ -283,11 +283,11 @@ function clear(e){
 } 
 
 function reverse(snapshot) {
-  let reversed = [];
-  snapshot.forEach(child => {
-    reversed.unshift(child);
-  });
-  return reversed;
+	let reversed = [];
+	snapshot.forEach(child => {
+		reversed.unshift(child);
+	});
+	return reversed;
 }
 
 function write(title,contents,links,href){
