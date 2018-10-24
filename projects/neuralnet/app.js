@@ -25,8 +25,9 @@ input.forEach(data=>{
         for(var j=0;j<layers[i].length;j++){
 	        for(var k=0;k<layers[i+1].length;k++){
 				layers[i+1][k].v+=layers[i][j].w*layers[i][j].v;
-            }			
+            }
         }
+		
     }
 });
 console.log(layers);
