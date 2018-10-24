@@ -5,20 +5,22 @@ for(var i=0;i<100;i++){
     var out=Math.round(Math.random());
     input.push({in:[out,Math.round(Math.random()),Math.round(Math.random())],out:out});
 }
-for(var i=0;i<2;i++){
+for(var i=0;i<3;i++){
 	layers.push([]);
 }
 for(var i=0;i<layers.length;i++){
 	for(var j=0;j<3;j++){
-		layers[i].push({w:Math.random(),b:Math.random()});
+		layers[i].push({w:Math.random(),b:Math.random(),v:0});
     }
 }
 input.forEach(data=>{
 	for(var i=0;i<layers.length;i++){
-		for(var j=0;j<layers[i].length;j++){
-			if(i==0){
-				layers[i][j].v=data.in[j];
-            }
+		if(i==0){
+			input.forEach(data=>{
+				for(var j=0;j<layers[i].length;j++){
+					layers[i][j].v=data.in[j];
+                }
+            });
         }
     }
 });
