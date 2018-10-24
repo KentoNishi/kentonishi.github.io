@@ -10,11 +10,7 @@ for(var i=0;i<4;i++){
 }
 for(var i=0;i<layers.length;i++){
 	for(var j=0;j<3;j++){
-		if(i!=layers.length-1){
-			layers[i].push({w:Math.random(),b:Math.random(),v:0});
-        }else{
-			layers[i].push({v:0});
-        }
+		layers[i].push({w:Math.random(),b:Math.random(),v:0});
     }
 }
 input.forEach(data=>{
@@ -27,7 +23,9 @@ input.forEach(data=>{
             });
         }
         for(var j=0;j<layers[i].length;j++){
- //           layers[i][j].v=data.in[j];
+	        for(var k=0;k<layers[i+1].length;k++){
+				layers[i+1][k].v+=layers[i][j].w*layers[i][j].v;
+            }			
         }
     }
 });
