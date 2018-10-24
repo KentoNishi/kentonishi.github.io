@@ -18,14 +18,16 @@ for(var i=0;i<layers.length;i++){
     }
 }
 input.forEach(data=>{
-	for(var i=0;i<layers.length;i++){
+	for(var i=0;i<layers.length-1;i++){
 		if(i==0){
 			input.forEach(data=>{
 				for(var j=0;j<layers[i].length;j++){
 					layers[i][j].v=data.in[j];
                 }
             });
-        }else{
+        }
+        for(var j=0;j<layers[i].length;j++){
+ //           layers[i][j].v=data.in[j];
         }
     }
 });
