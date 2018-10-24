@@ -9,7 +9,7 @@ for(var i=0;i<4;i++){
 }
 for(var i=0;i<layers.length;i++){
 	for(var j=0;j<3;j++){
-		layers[i].push({w:Math.random(),b:Math.random()});
+		layers[i].push(i!=layers.length-1?({w:Math.random(),b:Math.random()}):({}));
     }
 }
 function sigmoid(t) {
