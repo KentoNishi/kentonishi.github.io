@@ -27,9 +27,14 @@
                 }
             }
         }
+		console.log(layers);
     });
 })({layers:3,neurons:3});
 
 function sigmoid(t) {
     return 1/(1+Math.pow(Math.E, -t));
+}
+
+function cost(e){
+
 }
