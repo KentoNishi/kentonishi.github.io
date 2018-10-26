@@ -38,5 +38,9 @@ function sigmoid(t) {
 }
 
 function cost(r,e){
-	console.log(JSON.parse(JSON.stringify(r)),e);
+	var value=0;
+	for(var i=0;i<r.length;i++){
+		value+=Math.pow(r[i].v-(r==e?1:0),2);
+    }
+	console.log(JSON.parse(JSON.stringify(r)),e,value);
 }
