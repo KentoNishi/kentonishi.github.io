@@ -27,7 +27,9 @@ input.forEach(data=>{
 				layers[i+1][k].v+=layers[i][j].w*layers[i][j].v;
             }
         }
-		
+        for(var k=0;k<layers[i+1].length;k++){
+            layers[i+1][k].v=sigmoid(layers[i+1][k].v);
+        }	
     }
 });
 console.log(layers);
