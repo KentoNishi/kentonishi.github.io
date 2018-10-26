@@ -1,10 +1,11 @@
 (function neuralNet(input){
+	input.layers++;
     var layers=[];
 	var samples=[];
 	for(var i=0;i<100;i++){
 		samples.push({in:[]});
 		for(var j=0;j<input.neurons;j++){
-			samples[i].in.push(Math.round(Math.random()));
+			samples[i].in.push(Math.round(Math.random()*(input.neurons-1)));
         }
 		samples[i].out=samples[i].in[0];
     }
@@ -13,7 +14,7 @@
     }
 	samples.forEach(sample=>{
         for(var i=0;i<input.layers;i++){
-            for(var j=0;j<input.layers;j++){
+            for(var j=0;j<input.neurons;j++){
                 layers[i][j]=({w:Math.random(),b:Math.random(),v:i==0?sample.in[j]:0});
             }
         }
@@ -27,7 +28,8 @@
                 }
             }
         }
-		console.log(layers);
+		cost(layers[layers.length-1],sample.out)
+//		console.log(cost(layers[layers.length-1],sample.out),layers[layers.length-1]);
     });
 })({layers:3,neurons:3});
 
@@ -35,6 +37,6 @@ function sigmoid(t) {
     return 1/(1+Math.pow(Math.E, -t));
 }
 
-function cost(e){
-
+function cost(r,e){
+	console.log(JSON.parse(JSON.stringify(r)),e);
 }
