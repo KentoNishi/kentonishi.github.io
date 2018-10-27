@@ -28,8 +28,15 @@
                 } 
             }
         }
-		cost(layers[layers.length-1],sample.out)
-		console.log(cost(layers[layers.length-1],sample.out),layers);
+//		cost(layers[layers.length-1],sample.out);
+//		console.log(cost(layers[layers.length-1],sample.out),layers);
+    	for(var i=layers.length-1;i>0;i--){
+			if(i!=1){
+				for(var j=0;j<layers[i].length;j++){
+					console.log(layers[i][j]);
+                } 
+            }
+        }
     });
 })({layers:3,neurons:3});
 
