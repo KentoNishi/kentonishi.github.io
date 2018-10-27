@@ -25,11 +25,11 @@
 						layers[i][j].v+=layers[i-1][k].w*layers[i-1][k].v;
                     }
 					layers[i][j].v=sigmoid(layers[i][j].v+layers[i][j].b);
-                }
+                } 
             }
         }
 		cost(layers[layers.length-1],sample.out)
-//		console.log(cost(layers[layers.length-1],sample.out),layers[layers.length-1]);
+		console.log(cost(layers[layers.length-1],sample.out),layers);
     });
 })({layers:3,neurons:3});
 
@@ -42,5 +42,6 @@ function cost(r,e){
 	for(var i=0;i<r.length;i++){
 		value+=Math.pow(r[i].v-(r==e?1:0),2);
     }
-	console.log(JSON.parse(JSON.stringify(r)),e,value);
+// 	console.log(JSON.parse(JSON.stringify(r)),e,value);
+	return value;
 }
