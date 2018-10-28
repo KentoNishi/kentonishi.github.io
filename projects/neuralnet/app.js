@@ -42,7 +42,7 @@
                     } 
                 }
             }*/
-			console.log(layers,cost(layers[layers.length-1],sample.out),loss(layers[layers.length-1],sample.out));
+			console.log(" Layers: ",layers,"\n","Cost: ",cost(layers[layers.length-1],sample.out),"\n","Negative Gradient: ",loss(layers[layers.length-1],sample.out),"\n","Expected: ","",sample.out);
         });
 
     });
