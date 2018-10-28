@@ -2,9 +2,9 @@
 	input.layers++;
     var layers=[];
 	var samples=[];
-	for(var i=0;i<100;i++){
+	for(var i=0;i<10;i++){
         samples.push([]);
-		for(var k=0;k<100;k++){
+		for(var k=0;k<10;k++){
             samples[i].push({in:[]});
             for(var j=0;j<input.neurons;j++){
                 samples[i][k].in.push(Math.round(Math.random()*(input.neurons-1)));
@@ -42,6 +42,7 @@
                     } 
                 }
             }*/
+			console.log(layers);
         });
     });
 })({layers:3,neurons:3});
