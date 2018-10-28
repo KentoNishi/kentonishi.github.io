@@ -15,7 +15,7 @@
 	samples.forEach(sample=>{
         for(var i=0;i<input.layers;i++){
             for(var j=0;j<input.neurons;j++){
-                layers[i][j]=({w:Math.random(),b:Math.random(),v:i==0?sample.in[j]:0});
+                layers[i][j]=({w:Math.random(),/*b:Math.random(),*/v:i==0?sample.in[j]:0});
             }
         }
     	for(var i=0;i<layers.length;i++){
@@ -24,7 +24,7 @@
 					for(var k=0;k<layers[i-1].length;k++){
 						layers[i][j].v+=layers[i-1][k].w*layers[i-1][k].v;
                     }
-					layers[i][j].v=sigmoid(layers[i][j].v+layers[i][j].b);
+					layers[i][j].v=sigmoid(layers[i][j].v/*+layers[i][j].b*/);
                 } 
             }
         }
