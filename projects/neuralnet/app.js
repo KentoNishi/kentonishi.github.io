@@ -42,8 +42,9 @@
                     } 
                 }
             }*/
-			console.log(layers);
+			console.log(layers,cost(layers[layers.length-1],sample.out),loss(layers[layers.length-1],sample.out));
         });
+
     });
 })({layers:3,neurons:3});
 
@@ -54,7 +55,16 @@ function sigmoid(t) {
 function cost(r,e){
 	var value=0;
 	for(var i=0;i<r.length;i++){
-		value+=Math.pow(r[i].v-(r==e?1:0),2);
+		value+=Math.pow(r[i].v-(e==i?1:0),2);
+    }
+// 	console.log(JSON.parse(JSON.stringify(r)),e,value);
+	return value;
+}
+
+function loss(r,e){
+	var value=[];
+	for(var i=0;i<r.length;i++){
+		value.push(r[i].v-(e==i?1:0));
     }
 // 	console.log(JSON.parse(JSON.stringify(r)),e,value);
 	return value;
