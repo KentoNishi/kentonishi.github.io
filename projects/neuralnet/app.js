@@ -64,7 +64,7 @@ function cost(r,e){
 function loss(r,e){
 	var value=[];
 	for(var i=0;i<r.length;i++){
-		value.push(r[i].v-(e==i?1:0));
+		value.push(-(r[i].v-(e==i?1:0)));
     }
 // 	console.log(JSON.parse(JSON.stringify(r)),e,value);
 	return value;
