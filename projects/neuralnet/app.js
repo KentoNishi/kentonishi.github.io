@@ -19,7 +19,7 @@
         batch.forEach(sample=>{
             for(var i=0;i<input.layers;i++){
                 for(var j=0;j<input.neurons;j++){
-                    layers[i][j]=({w:Math.random(),/*b:Math.random(),*/v:i==0?sample.in[j]:0});
+                    layers[i][j]=({w:(Math.random()*2)-1,/*b:Math.random(),*/v:i==0?sample.in[j]:0});
                 }
             }
             for(var i=0;i<layers.length;i++){
