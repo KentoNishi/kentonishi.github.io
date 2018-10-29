@@ -21,9 +21,13 @@
     }
 	samples.forEach(batch=>{
 		batch.forEach(sample=>{
-			sample.in.forEach(trigger=>{
-				
-            });
+            for(var i=0;i<layers.length;i++){
+                for(var k=0;k<layers[i].length;k++){
+                    if(i==0){
+                        layers[i][k].a=sample.in[k];
+                    }
+                }
+            }
         });
     });
     function sigmoid(t) {
