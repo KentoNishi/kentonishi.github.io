@@ -24,7 +24,7 @@
 		for(var j=0;j<layers[i].length;j++){
 			connections[i].push([]);
 			for(var k=0;k<layers.length;k++){
-				if(k!=i){
+				if(k==i+1){
                     connections[i][j].push([]);
                     for(var l=0;l<layers[i+1].length;l++){
                         connections[i][j][k].push({w:Math.random()*2-1});
@@ -53,4 +53,5 @@
 	console.log("Samples: ",samples,"\n",
 				"Layers: ",layers,"\n",
 				"Connections: ",connections,"\n");
+	return connections;
 })({batches:10,samples:10,layers:[3,3,3,1]});
