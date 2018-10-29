@@ -24,9 +24,13 @@
 		for(var j=0;j<layers[i].length;j++){
 			connections[i].push([]);
 			for(var k=0;k<layers.length;k++){
-				connections[i][j].push([]);
-                for(var l=0;l<layers[i+1].length;l++){
-                    connections[i][j][k].push({w:Math.random()*2-1});
+				if(k!=i){
+                    connections[i][j].push([]);
+                    for(var l=0;l<layers[i+1].length;l++){
+                        connections[i][j][k].push({w:Math.random()*2-1});
+                    }
+                }else{
+                    connections[i][j].push([]);
                 }
             }
         }
