@@ -32,40 +32,27 @@
                     } 
                 }
             }
-    //		cost(layers[layers.length-1],sample.out);
-    //		console.log(cost(layers[layers.length-1],sample.out),layers);
-/*
-            for(var i=layers.length-1;i>0;i--){
-                if(i!=1){
-                    for(var j=0;j<layers[i].length;j++){
-                        console.log(layers[i][j]);
-                    } 
-                }
-            }*/
 			console.log(" Layers: ",layers,"\n","Cost: ",cost(layers[layers.length-1],sample.out),"\n","Negative Gradient: ",loss(layers[layers.length-1],sample.out),"\n","Expected: ","",sample.out);
         });
 
     });
+    function sigmoid(t) {
+        return 1/(1+Math.pow(Math.E, -t));
+    }
+
+    function cost(r,e){
+        var value=0;
+        for(var i=0;i<r.length;i++){
+            value+=Math.pow(r[i].v-(e==i?1:0),2);
+        }
+        return value;
+    }
+
+    function loss(r,e){
+        var value=[];
+        for(var i=0;i<r.length;i++){
+            value.push({a:-(r[i].v-(e==i?1:0))});
+        }
+        return value;
+    }
 })({layers:3,neurons:3});
-
-function sigmoid(t) {
-    return 1/(1+Math.pow(Math.E, -t));
-}
-
-function cost(r,e){
-	var value=0;
-	for(var i=0;i<r.length;i++){
-		value+=Math.pow(r[i].v-(e==i?1:0),2);
-    }
-// 	console.log(JSON.parse(JSON.stringify(r)),e,value);
-	return value;
-}
-
-function loss(r,e){
-	var value=[];
-	for(var i=0;i<r.length;i++){
-		value.push(-(r[i].v-(e==i?1:0)));
-    }
-// 	console.log(JSON.parse(JSON.stringify(r)),e,value);
-	return value;
-}
