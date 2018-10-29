@@ -12,13 +12,26 @@
         }
     }
 	var layers=[];
-	var connections=[[]];
+	var connections=[];
 	for(var i=0;i<input.layers.length;i++){
 		layers.push([]);
 		for(var j=0;j<input.layers[i];j++){
 			layers[i].push({a:0,b:Math.random()*2-1});
         }
     }
+	for(var i=0;i<layers.length-1;i++){
+		connections.push([]);
+		for(var j=0;j<layers[i].length;j++){
+			connections[i].push([]);
+			for(var k=0;k<layers.length;k++){
+				connections[i][j].push([]);
+                for(var l=0;l<layers[i+1].length;l++){
+                    connections[i][j][k].push({w:Math.random()*2-1});
+                }
+            }
+        }
+    }
+//[ [ [ [], [] ], [ [], [] ] ] ]
 	samples.forEach(batch=>{
 		batch.forEach(sample=>{
             for(var i=0;i<layers.length;i++){
