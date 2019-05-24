@@ -1,3 +1,5 @@
+<title>Kento Nishi</title>
+
 <head>
     <link rel="shortcut icon" type="image/x-icon">
 </head>
