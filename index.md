@@ -50,7 +50,7 @@
         elem.style.margin="0";
         var a=document.createElement("a");
         var url=org.repos_url;
-        url.replace("api.","");
+        url=url.replace("api.","");
         a.href=url;
         a.innerText=org.login;
         elem.appendChild(a);
