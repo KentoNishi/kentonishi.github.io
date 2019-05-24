@@ -19,6 +19,9 @@
     }
     var jsonStr=httpGet("https://api.github.com/users/KentoNishi/repos");
     var jsonParsed=JSON.parse(jsonStr);
+    jsonParsed.sort((a,b)=>{
+		return new Date(b.updated_at) - new Date(a.updated_at);
+    });
     jsonParsed.forEach(repo=>{
         var elem=document.createElement("h3");
         elem.color="black";
