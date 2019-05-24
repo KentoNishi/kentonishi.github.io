@@ -17,7 +17,7 @@
         xmlHttp.send( null );
         return xmlHttp.responseText;
     }
-    var jsonStr=httpGet("https://api.github.com/users/Team-Sudo-Code/repos");
+    var jsonStr=httpGet("https://api.github.com/users/KentoNishi/repos");
     var jsonParsed=JSON.parse(jsonStr);
     jsonParsed.forEach(repo=>{
         var elem=document.createElement("h3");
