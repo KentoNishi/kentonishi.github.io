@@ -49,8 +49,7 @@
         elem.color="black";
         elem.style.margin="0";
         var a=document.createElement("a");
-        var url=org.repos_url;
-        url=url.replace("api.","");
+        var url="https://github.com/"+org.login+"/";
         a.href=url;
         a.innerText=org.login;
         elem.appendChild(a);
