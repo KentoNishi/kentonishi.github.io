@@ -6,9 +6,14 @@
 <div class="description"></div>
 
 
-# Projects
+# Repositories
 
 <div class="repos"></div>
+
+
+# Organizations
+
+<div class="orgs"></div>
 
 <script>
     function httpGet(theUrl){
@@ -17,6 +22,10 @@
         xmlHttp.send( null );
         return xmlHttp.responseText;
     }
+    jsonStr=httpGet("https://api.github.com/users/KentoNishi");
+    document.querySelectorAll(".description")[0].innerText=jsonParsed.bio;
+    document.querySelectorAll("link")[0].href=jsonParsed.avatar_url;
+    document.title="Kento Nishi";
     var jsonStr=httpGet("https://api.github.com/users/KentoNishi/repos");
     var jsonParsed=JSON.parse(jsonStr);
     jsonParsed.sort((a,b)=>{
@@ -32,9 +41,16 @@
         elem.appendChild(a);
         document.querySelectorAll(".repos")[0].appendChild(elem);
     });
-    jsonStr=httpGet("https://api.github.com/users/KentoNishi");
+    jsonStr=httpGet("https://api.github.com/users/KentoNishi/orgs");
     jsonParsed=JSON.parse(jsonStr);
-    document.querySelectorAll(".description")[0].innerText=jsonParsed.bio;
-    document.querySelectorAll("link")[0].href=jsonParsed.avatar_url;
-    document.title="Kento Nishi";
+    jsonParsed.forEach(org=>{
+        var elem=document.createElement("h3");
+        elem.color="black";
+        elem.style.margin="0";
+        var a=document.createElement("a");
+        a.href=org.html_url;
+        a.innerText=org.name;
+        elem.appendChild(a);
+        document.querySelectorAll(".orgs")[0].appendChild(elem);
+    });
 </script>
