@@ -23,6 +23,7 @@
         return xmlHttp.responseText;
     }
     jsonStr=httpGet("https://api.github.com/users/KentoNishi");
+    jsonParsed=JSON.parse(jsonStr);
     document.querySelectorAll(".description")[0].innerText=jsonParsed.bio;
     document.querySelectorAll("link")[0].href=jsonParsed.avatar_url;
     document.title="Kento Nishi";
