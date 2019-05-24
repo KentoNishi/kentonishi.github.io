@@ -49,7 +49,9 @@
         elem.color="black";
         elem.style.margin="0";
         var a=document.createElement("a");
-        a.href=org.repos_url;
+        var url=org.repos_url;
+        url.replace("api.","");
+        a.href=url;
         a.innerText=org.login;
         elem.appendChild(a);
         document.querySelectorAll(".orgs")[0].appendChild(elem);
