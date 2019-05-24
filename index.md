@@ -49,8 +49,8 @@
         elem.color="black";
         elem.style.margin="0";
         var a=document.createElement("a");
-        a.href=org.html_url;
-        a.innerText=org.name;
+        a.href=org.repos_url;
+        a.innerText=org.login;
         elem.appendChild(a);
         document.querySelectorAll(".orgs")[0].appendChild(elem);
     });
