@@ -56,3 +56,17 @@
         document.querySelectorAll(".orgs")[0].appendChild(elem);
     });
 </script>
+
+<style>
+    body{
+        background-color: #181a1b;
+        color: rgb(193, 188, 179);
+    }
+    content h4, .main-content h5, .main-content h6 {
+        color: rgb(126, 237, 182);
+    }
+    a {
+        color: rgb(111, 178, 232);
+        text-decoration-color: initial;
+    }
+</style>
