@@ -2,18 +2,20 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 
+
 # About
 <div class="description"></div>
+
+
+# Organizations
+
+<div class="orgs"></div>
 
 
 # Repositories
 
 <div class="repos"></div>
 
-
-# Organizations
-
-<div class="orgs"></div>
 
 <script>
     function httpGet(theUrl){
@@ -44,7 +46,7 @@
     });
     jsonStr=httpGet("https://api.github.com/users/KentoNishi/orgs");
     jsonParsed=JSON.parse(jsonStr);
-    jsonParsed.forEach(org=>{
+    jsonParsed.reverse().forEach(org=>{
         var elem=document.createElement("h3");
         elem.color="black";
         elem.style.margin="0";
