@@ -62,7 +62,7 @@
         background-color: #181a1b;
         color: rgb(193, 188, 179);
     }
-    content h4, .main-content h5, .main-content h6 {
+    .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
         color: rgb(126, 237, 182);
     }
     a {
