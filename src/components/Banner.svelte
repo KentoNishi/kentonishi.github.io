@@ -4,6 +4,7 @@
   import github from '../img/github.svg';
   import linkedin from '../img/linkedin.svg';
   import gscholar from '../img/gscholar.svg';
+  import wallpaper from '../img/wallpaper.jpg';
   import { STAGGER } from '../ts/constants';
   const links: {
     title: string;
@@ -31,6 +32,7 @@
 </script>
 
 <div class="banner">
+  <img src={wallpaper} alt="Wallpaper" class="wallpaper" />
   <div class="parent" style="width: calc(100% - 2 * var(--grid-padding));">
     <div class="profile entrance-animation" style="--tile-translate: 0%;">
       <img src={pfp} alt="Kento Nishi" class="pfp" />
@@ -76,10 +78,12 @@
     --banner-height: 150px;
     width: 100%;
     height: var(--banner-height);
-    background-color: var(--gray-fill);
+    /* background-color: var(--gray-fill); */
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden !important;
+    position: relative;
   }
   .profile {
     display: flex;
@@ -108,8 +112,8 @@
     font-weight: bold;
   }
   a {
-    color: var(--blue-accent) !important;
-    text-decoration: none;
+    /* color: var(--blue-accent) !important; */
+    text-decoration: underline;
   }
 
   .black-icon {
@@ -133,9 +137,6 @@
   .banner * {
     overflow: visible;
   }
-  .banner {
-    overflow: hidden;
-  }
   @media (max-width: 750px) {
     .icon {
       width: 1.25rem;
@@ -154,5 +155,11 @@
       padding-top: 1rem;
       height: auto;
     }
+  }
+  .wallpaper {
+    position: absolute;
+    width: 150%;
+    object-fit: cover;
+    filter: blur(10px) brightness(0.5);
   }
 </style>
