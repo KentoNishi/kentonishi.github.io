@@ -52,7 +52,7 @@
     </div>
     <div class="links">
       {#each links as link, index}
-        <a href={link.url} target="_blank">
+        <a href={link.url} target="_blank" style="text-decoration: none;">
           <div
             class="entrance-animation"
             style="
