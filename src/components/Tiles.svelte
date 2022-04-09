@@ -35,7 +35,7 @@
     },
     {
       title: 'Blog Posts',
-      description: 'View my blog posts and write-ups.',
+      description: 'View my blog posts, tutorials, and write-ups.',
       icon: 'edit_note',
       link: '/posts',
     },
@@ -57,7 +57,7 @@
     grid-gap: 20px;
     padding: 2rem;
     justify-items: center;
-    max-width: 1000px;
+    max-width: min(100%, 1000px);
   }
   .wrap {
     width: 100%;
