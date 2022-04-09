@@ -35,6 +35,7 @@
     "vite": "^2.5.4"
   },
   "dependencies": {
-    "exio": "^0.0.1"
+    "exio": "^0.0.2",
+    "no-darkreader": "^1.0.2"
   }
 }

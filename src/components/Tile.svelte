@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { exioButton, exioIcon } from 'exio';
+  import { exioButton, exioIcon, exioFlyInAnimation } from 'exio';
   import type { TileEntry } from '../ts/types';
   export let data: TileEntry;
   export let delay = 0;
 </script>
 
-<div class="parent entrance-animation" style="animation-delay: {delay}s;">
+<div class="parent" use:exioFlyInAnimation style="animation-delay: {delay}s;">
   <button use:exioButton class="tile">
     <div class="split">
       <div class="left">

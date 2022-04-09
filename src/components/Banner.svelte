@@ -1,6 +1,6 @@
 <script lang="ts">
   import pfp from '../img/pfp.png';
-  import { exioButton } from 'exio';
+  import { exioButton, exioFadeInAnimation } from 'exio';
   import github from '../img/github.svg';
   import linkedin from '../img/linkedin.svg';
   import gscholar from '../img/gscholar.svg';
@@ -33,14 +33,10 @@
 
 <div class="banner">
   <div class="wallpaper-wrapper">
-    <img
-      src={wallpaper}
-      alt="Wallpaper"
-      class="wallpaper wallpaper-entrance-animation"
-    />
+    <img src={wallpaper} alt="Wallpaper" class="wallpaper" />
   </div>
   <div class="parent" style="width: calc(100% - 2 * var(--grid-padding));">
-    <div class="profile entrance-animation" style="--tile-translate: 0%;">
+    <div class="profile" use:exioFadeInAnimation>
       <img src={pfp} alt="Kento Nishi" class="pfp" />
       <div class="info">
         <div class="name">Kento Nishi</div>
@@ -54,10 +50,9 @@
       {#each links as link, index}
         <a href={link.url} target="_blank" style="text-decoration: none;">
           <div
-            class="entrance-animation"
+            use:exioFadeInAnimation
             style="
               animation-delay: {(index + 1) * STAGGER}s;
-              --tile-translate: 0%;
             "
           >
             <button use:exioButton class="tile">
@@ -81,7 +76,7 @@
     display: flex;
   }
   .banner {
-    --banner-height: 150px;
+    --banner-height: 300px;
     width: 100%;
     height: var(--banner-height);
     /* background-color: var(--gray-fill); */
@@ -180,7 +175,8 @@
   }
   .wallpaper {
     width: 100%;
-    object-fit: cover;
+    height: var(--banner-height);
+    object-fit: fill;
     filter: blur(10px);
   }
 </style>
