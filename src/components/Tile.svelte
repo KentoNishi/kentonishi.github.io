@@ -32,6 +32,7 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    width: 100%;
   }
   .icon {
     font-size: 3rem;
@@ -53,7 +54,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    width: 200%;
+    width: 100%;
   }
 
   .parent {

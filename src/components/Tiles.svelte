@@ -60,7 +60,7 @@
     padding: 2rem;
     gap: 20px;
     max-width: min(calc(100% - 4rem), 1000px);
-    overflow: visible;
+    overflow: hidden;
   }
   .wrap {
     width: 100%;
