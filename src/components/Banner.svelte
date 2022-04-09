@@ -32,7 +32,13 @@
 </script>
 
 <div class="banner">
-  <img src={wallpaper} alt="Wallpaper" class="wallpaper" />
+  <div class="wallpaper-wrapper">
+    <img
+      src={wallpaper}
+      alt="Wallpaper"
+      class="wallpaper wallpaper-entrance-animation"
+    />
+  </div>
   <div class="parent" style="width: calc(100% - 2 * var(--grid-padding));">
     <div class="profile entrance-animation" style="--tile-translate: 0%;">
       <img src={pfp} alt="Kento Nishi" class="pfp" />
@@ -156,10 +162,25 @@
       height: auto;
     }
   }
-  .wallpaper {
+  @keyframes zoom {
+    from {
+      transform: scale(1.1);
+      filter: brightness(0%);
+    }
+    to {
+      transform: scale(1.2);
+      filter: brightness(75%);
+    }
+  }
+  .wallpaper-wrapper {
     position: absolute;
-    width: 150%;
+    animation: zoom 0.6s;
+    animation-fill-mode: forwards;
+    width: 100%;
+  }
+  .wallpaper {
+    width: 100%;
     object-fit: cover;
-    filter: blur(10px) brightness(0.5);
+    filter: blur(10px);
   }
 </style>
