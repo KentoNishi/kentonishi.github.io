@@ -27,7 +27,7 @@
 
   @keyframes tile-entrance {
     from {
-      transform: translateY(50%);
+      transform: translateY(var(--tile-translate));
       opacity: 0;
     }
 
@@ -38,6 +38,7 @@
   }
 
   .entrance-animation {
+    --tile-translate: 50%;
     opacity: 0;
     animation: tile-entrance 0.6s;
     animation-fill-mode: forwards;

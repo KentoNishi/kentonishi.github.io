@@ -32,7 +32,7 @@
 
 <div class="banner">
   <div class="parent" style="width: calc(100% - 2 * var(--grid-padding));">
-    <div class="profile entrance-animation">
+    <div class="profile entrance-animation" style="--tile-translate: 0%;">
       <img src={pfp} alt="Kento Nishi" class="pfp" />
       <div class="info">
         <div class="name">Kento Nishi</div>
@@ -47,7 +47,10 @@
         <a href={link.url} target="_blank">
           <div
             class="entrance-animation"
-            style="animation-delay: {(index + 1) * STAGGER}s;"
+            style="
+              animation-delay: {(index + 1) * STAGGER}s;
+              --tile-translate: 0%;
+            "
           >
             <button use:exioButton class="tile">
               <img
@@ -129,5 +132,27 @@
   }
   .banner * {
     overflow: visible;
+  }
+  .banner {
+    overflow: hidden;
+  }
+  @media (max-width: 750px) {
+    .icon {
+      width: 1.25rem;
+    }
+    .tile {
+      flex-direction: row;
+      height: auto;
+    }
+    .parent {
+      flex-direction: column;
+    }
+    .links {
+      padding: 1rem;
+    }
+    .banner {
+      padding-top: 1rem;
+      height: auto;
+    }
   }
 </style>
