@@ -16,5 +16,6 @@
   :root {
     --gray-fill: #171717;
     --blue-accent: #1b98ff;
+    --grid-padding: 2rem;
   }
 </style>

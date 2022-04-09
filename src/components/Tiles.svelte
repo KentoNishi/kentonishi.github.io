@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { STAGGER } from '../ts/constants';
+
   import type { TileEntry } from '../ts/types';
   import Tile from './Tile.svelte';
 
@@ -45,7 +47,7 @@
 <div class="wrap">
   <div class="grid">
     {#each tiles as tile, index}
-      <Tile data={tile} delay={index * 0.05} />
+      <Tile data={tile} delay={index * STAGGER} />
     {/each}
   </div>
 </div>

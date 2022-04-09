@@ -24,6 +24,24 @@
   body {
     background-color: black;
   }
+
+  @keyframes tile-entrance {
+    from {
+      transform: translateY(50%);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .entrance-animation {
+    opacity: 0;
+    animation: tile-entrance 0.6s;
+    animation-fill-mode: forwards;
+  }
 </style>
 
 </html>

@@ -5,17 +5,19 @@
   export let delay = 0;
 </script>
 
-<button use:exioButton class="tile" style="--entrance-delay: {delay}s;">
-  <div class="split">
-    <div class="left">
-      <span class="icon" use:exioIcon>{data.icon}</span>
+<div class="parent entrance-animation" style="animation-delay: {delay}s;">
+  <button use:exioButton class="tile">
+    <div class="split">
+      <div class="left">
+        <span class="icon" use:exioIcon>{data.icon}</span>
+      </div>
+      <div class="right">
+        <div class="title">{data.title}</div>
+        <div class="description">{data.description}</div>
+      </div>
     </div>
-    <div class="right">
-      <div class="title">{data.title}</div>
-      <div class="description">{data.description}</div>
-    </div>
-  </div>
-</button>
+  </button>
+</div>
 
 <style>
   button {
@@ -52,21 +54,9 @@
     align-items: flex-start;
     justify-content: center;
   }
-  @keyframes tile-entrance {
-    from {
-      transform: translateY(50%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  .tile {
-    opacity: 0;
+
+  .parent {
     justify-content: flex-start !important;
-    animation: tile-entrance 0.6s;
-    animation-delay: var(--entrance-delay);
-    animation-fill-mode: forwards;
+    overflow: visible;
   }
 </style>
