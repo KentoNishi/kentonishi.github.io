@@ -1,8 +1,11 @@
 <script lang="ts">
   import { isLoading } from 'svelte-i18n';
-  import Welcome from '../components/Welcome.svelte';
+  import Banner from '../components/Banner.svelte';
+  import { exioApp } from 'exio';
 </script>
 
-{#if !$isLoading}
-  <Welcome />
-{/if}
+<div use:exioApp>
+  {#if !$isLoading}
+    <Banner />
+  {/if}
+</div>
