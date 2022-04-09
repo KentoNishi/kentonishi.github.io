@@ -44,8 +44,8 @@
 
 <div class="wrap">
   <div class="grid">
-    {#each tiles as tile}
-      <Tile data={tile} />
+    {#each tiles as tile, index}
+      <Tile data={tile} delay={index * 0.05} />
     {/each}
   </div>
 </div>
@@ -54,14 +54,16 @@
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 20px;
-    padding: 2rem;
     justify-items: center;
-    max-width: min(100%, 1000px);
+    padding: 2rem;
+    gap: 20px;
+    max-width: min(calc(100% - 4rem), 1000px);
+    overflow: visible;
   }
   .wrap {
     width: 100%;
     display: flex;
     justify-content: center;
+    overflow: visible;
   }
 </style>

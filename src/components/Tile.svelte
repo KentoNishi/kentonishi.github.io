@@ -2,9 +2,10 @@
   import { exioButton, exioIcon } from 'exio';
   import type { TileEntry } from '../ts/types';
   export let data: TileEntry;
+  export let delay = 0;
 </script>
 
-<button use:exioButton>
+<button use:exioButton class="tile" style="--entrance-delay: {delay}s;">
   <div class="split">
     <div class="left">
       <span class="icon" use:exioIcon>{data.icon}</span>
@@ -50,5 +51,22 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+  }
+  @keyframes tile-entrance {
+    from {
+      transform: translateY(50%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  .tile {
+    opacity: 0;
+    justify-content: flex-start !important;
+    animation: tile-entrance 0.6s;
+    animation-delay: var(--entrance-delay);
+    animation-fill-mode: forwards;
   }
 </style>
