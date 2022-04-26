@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { exioButton, exioIcon, exioFlyInAnimation } from 'exio';
+  import { exioButton, exioFlyInAnimation } from 'exio';
   import type { TileEntry } from '../ts/types';
   export let data: TileEntry;
   export let delay = 0;
@@ -9,7 +9,7 @@
   <button use:exioButton class="tile">
     <div class="split">
       <div class="left">
-        <span class="icon" use:exioIcon>{data.icon}</span>
+        <span class="icon">{data.icon}</span>
       </div>
       <div class="right">
         <div class="title">{data.title}</div>
@@ -20,6 +20,9 @@
 </div>
 
 <style>
+  .tile {
+    background-color: transparent;
+  }
   button {
     width: 300px;
     height: 100px;

@@ -134,6 +134,8 @@
     width: 100px;
     height: 100px;
     cursor: pointer;
+    background-color: transparent;
+    color: white;
   }
   .banner * {
     overflow: visible;
@@ -172,6 +174,7 @@
     animation: zoom 0.6s;
     animation-fill-mode: forwards;
     width: 100%;
+    pointer-events: none;
   }
   .wallpaper {
     width: 100%;
