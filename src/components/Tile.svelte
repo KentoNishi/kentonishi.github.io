@@ -66,5 +66,10 @@
   .parent {
     justify-content: flex-start !important;
     overflow: visible;
+    width: 100%;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 </style>
