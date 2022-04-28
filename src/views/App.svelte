@@ -1,21 +1,30 @@
 <script lang="ts">
   import { isLoading } from 'svelte-i18n';
-  import Banner from '../components/Banner.svelte';
   import { exioApp } from 'exio';
-  import Tiles from '../components/Tiles.svelte';
+  import Router from 'svelte-spa-router';
+  import { wrap } from 'svelte-spa-router/wrap';
+  const routes = {
+    '/': wrap({
+      asyncComponent: () => import('./Home.svelte'),
+    }),
+    // '*': NotFound,
+  };
 </script>
 
-<div use:exioApp>
-  {#if !$isLoading}
-    <Banner />
-    <Tiles />
-  {/if}
-</div>
+{#if !$isLoading}
+  <div use:exioApp>
+    <Router {routes} />
+  </div>
+{/if}
 
 <style>
   :root {
     --gray-fill: #171717;
     --blue-accent: #1b98ff;
     --grid-padding: 2rem;
+  }
+  :global(a) {
+    text-decoration: none;
+    color: inherit;
   }
 </style>

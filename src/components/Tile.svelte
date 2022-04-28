@@ -5,23 +5,26 @@
   export let delay = 0;
 </script>
 
-<div class="parent" use:exioFlyInAnimation style="animation-delay: {delay}s;">
-  <button use:exioButton class="tile">
-    <div class="split">
-      <div class="left">
-        <span class="icon" use:exioIcon>{data.icon}</span>
+<a href="#{data.link}">
+  <div class="parent" use:exioFlyInAnimation style="animation-delay: {delay}s;">
+    <button use:exioButton class="tile">
+      <div class="split">
+        <div class="left">
+          <span class="icon" use:exioIcon>{data.icon}</span>
+        </div>
+        <div class="right">
+          <div class="title">{data.title}</div>
+          <div class="description">{data.description}</div>
+        </div>
       </div>
-      <div class="right">
-        <div class="title">{data.title}</div>
-        <div class="description">{data.description}</div>
-      </div>
-    </div>
-  </button>
-</div>
+    </button>
+  </div>
+</a>
 
 <style>
   .tile {
     background-color: transparent;
+    cursor: pointer;
   }
   button {
     width: 300px;
