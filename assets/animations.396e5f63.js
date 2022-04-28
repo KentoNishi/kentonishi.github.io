@@ -1,4 +1,4 @@
-import{d as i,s as t,A as h}from"./index.ae719768.js";function p(e,o={borderStyle:"reactive",disableClicking:!1}){const r=t(e),m=(a=0,n=0,s=0,d=0)=>{const c=`calc(
+import{d as i,s as t,A as h}from"./index.869ea2cb.js";function p(e,o={borderStyle:"reactive",disableClicking:!1}){const r=t(e),m=(a=0,n=0,s=0,d=0)=>{const c=`calc(
       ${Math.max(s,d)}px * var(--exio-hover-border-scale)
     )`,f=o.borderStyle==="static",u=o.borderStyle==="hover",b=f||u?"border: var(--exio-border-width) solid var(--exio-hover-border-color)":`border-image: radial-gradient(
             ${c} ${c} at var(--exio-mouse-x) var(--exio-mouse-y),
