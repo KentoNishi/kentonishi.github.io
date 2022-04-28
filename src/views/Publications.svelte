@@ -15,19 +15,13 @@
             href="https://scholar.google.com/citations?user=iQoZSr4AAAAJ"
             target="_blank"
           >
-            <button use:exioButton>Google Scholar</button>
+            <button use:exioButton class="popup">Google Scholar</button>
           </a>
           <a
             href="https://www.semanticscholar.org/author/Kento-Nishi/1721045940"
             target="_blank"
           >
-            <button use:exioButton>Semantic Scholar</button>
-          </a>
-          <a
-            href="https://paperswithcode.com/search?q=author%3AKento+Nishi"
-            target="_blank"
-          >
-            <button use:exioButton>Papers with Code</button>
+            <button use:exioButton class="popup">Semantic Scholar</button>
           </a>
         </div>
       </svelte:fragment>
@@ -74,29 +68,35 @@
           the real-world dataset Clothing1M.
         </p>
         <div class="buttons">
+          <a
+            href="https://openaccess.thecvf.com//content/CVPR2021/html/Nishi_Augmentation_Strategies_for_Learning_With_Noisy_Labels_CVPR_2021_paper.html"
+            target="_blank"
+          >
+            <button use:exioButton class="popup">Abstract</button>
+          </a>
           <a href="https://arxiv.org/abs/2103.02130" target="_blank">
-            <button use:exioButton>View on arXiv</button>
+            <button use:exioButton class="popup">arXiv</button>
           </a>
           <a href="https://arxiv.org/pdf/2103.02130.pdf" target="_blank">
-            <button use:exioButton>View PDF</button>
+            <button use:exioButton class="popup">PDF</button>
           </a>
           <a
             href="https://github.com/KentoNishi/Augmentation-for-LNL"
             target="_blank"
           >
-            <button use:exioButton>View code on GitHub</button>
+            <button use:exioButton class="popup">GitHub</button>
           </a>
           <a
             href="https://paperswithcode.com/paper/augmentation-strategies-for-learning-with"
             target="_blank"
           >
-            <button use:exioButton>View on Papers with Code</button>
+            <button use:exioButton class="popup">Papers with Code</button>
           </a>
           <a
             href="https://kentonishi.github.io/Augmentation-for-LNL/CVPR_Video.mp4"
             target="_blank"
           >
-            <button use:exioButton>Watch CVPR Video</button>
+            <button use:exioButton class="popup">CVPR Video</button>
           </a>
         </div>
       </svelte:fragment>
@@ -134,6 +134,20 @@
           show that our augmentative SSL approach improves upon the
           state-of-the-art.
         </p>
+        <div class="buttons">
+          <a
+            href="https://ojs.aaai.org/index.php/AAAI/article/view/17924"
+            target="_blank"
+          >
+            <button use:exioButton class="popup">Abstract</button>
+          </a>
+          <a
+            href="https://www.aaai.org/AAAI21Papers/SA-207.NishiK.pdf"
+            target="_blank"
+          >
+            <button use:exioButton class="popup">PDF</button>
+          </a>
+        </div>
       </svelte:fragment>
     </Card>
   </Cards>
@@ -156,5 +170,10 @@
     display: flex;
     gap: 0.75rem;
     flex-wrap: wrap;
+  }
+  .popup::after {
+    font-family: 'Exio Icons';
+    content: 'open_in_new';
+    margin-left: 0.5rem;
   }
 </style>

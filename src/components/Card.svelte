@@ -45,4 +45,7 @@
   p {
     margin: 0;
   }
+  h1 {
+    text-align: center;
+  }
 </style>
