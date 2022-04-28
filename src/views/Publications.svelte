@@ -10,7 +10,7 @@
     <Card titleCard>
       <svelte:fragment slot="title">Research and Publications</svelte:fragment>
       <svelte:fragment slot="content">
-        <div class="buttons" style="margin-top: 0.5rem;">
+        <div class="buttons center">
           <a
             href="https://scholar.google.com/citations?user=iQoZSr4AAAAJ"
             target="_blank"
@@ -171,11 +171,14 @@
     gap: 0.75rem;
     flex-wrap: wrap;
   }
+  .center {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+  }
   .popup::after {
     font-family: 'Exio Icons';
     content: 'open_in_new';
     margin-left: 0.5rem;
-    align-items: center;
-    justify-content: center;
   }
 </style>
