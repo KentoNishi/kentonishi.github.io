@@ -7,6 +7,31 @@
 
 <div use:exioZoomInAnimation>
   <Cards>
+    <Card titleCard>
+      <svelte:fragment slot="title">Research and Publications</svelte:fragment>
+      <svelte:fragment slot="content">
+        <div class="buttons" style="margin-top: 0.5rem;">
+          <a
+            href="https://scholar.google.com/citations?user=iQoZSr4AAAAJ"
+            target="_blank"
+          >
+            <button use:exioButton>Google Scholar</button>
+          </a>
+          <a
+            href="https://www.semanticscholar.org/author/Kento-Nishi/1721045940"
+            target="_blank"
+          >
+            <button use:exioButton>Semantic Scholar</button>
+          </a>
+          <a
+            href="https://paperswithcode.com/search?q=author%3AKento+Nishi"
+            target="_blank"
+          >
+            <button use:exioButton>Papers with Code</button>
+          </a>
+        </div>
+      </svelte:fragment>
+    </Card>
     <Card>
       <svelte:fragment slot="title">
         Augmentation Strategies for Learning with Noisy Labels
@@ -60,6 +85,12 @@
             target="_blank"
           >
             <button use:exioButton>View code on GitHub</button>
+          </a>
+          <a
+            href="https://paperswithcode.com/paper/augmentation-strategies-for-learning-with"
+            target="_blank"
+          >
+            <button use:exioButton>View on Papers with Code</button>
           </a>
           <a
             href="https://kentonishi.github.io/Augmentation-for-LNL/CVPR_Video.mp4"

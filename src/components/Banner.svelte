@@ -4,8 +4,8 @@
   import github from '../img/github.svg';
   import linkedin from '../img/linkedin.svg';
   import gscholar from '../img/gscholar.svg';
-  import wallpaper from '../img/wallpaper.jpg';
   import { STAGGER } from '../ts/constants';
+  import Wallpaper from './Wallpaper.svelte';
   const links: {
     title: string;
     url: string;
@@ -32,9 +32,7 @@
 </script>
 
 <div class="banner">
-  <div class="wallpaper-wrapper">
-    <img src={wallpaper} alt="Wallpaper" class="wallpaper" />
-  </div>
+  <Wallpaper />
   <div class="parent" style="width: calc(100% - 2 * var(--grid-padding));">
     <div class="profile" use:exioFadeInAnimation>
       <img src={pfp} alt="Kento Nishi" class="pfp" />
@@ -158,28 +156,5 @@
       padding-top: 1rem;
       height: auto;
     }
-  }
-  @keyframes zoom {
-    from {
-      transform: scale(1.1);
-      filter: brightness(0%);
-    }
-    to {
-      transform: scale(1.2);
-      filter: brightness(75%);
-    }
-  }
-  .wallpaper-wrapper {
-    position: absolute;
-    animation: zoom 0.6s;
-    animation-fill-mode: forwards;
-    width: 100%;
-    pointer-events: none;
-  }
-  .wallpaper {
-    width: 100%;
-    height: var(--banner-height);
-    object-fit: fill;
-    filter: blur(10px);
   }
 </style>

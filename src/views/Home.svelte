@@ -7,8 +7,8 @@
 <Tiles
   tiles={[
     {
-      title: 'Publications',
-      description: 'View my published research.',
+      title: 'Research',
+      description: 'View my ongoing and published research.',
       icon: 'school',
       link: '/publications',
     },
