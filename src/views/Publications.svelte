@@ -175,5 +175,7 @@
     font-family: 'Exio Icons';
     content: 'open_in_new';
     margin-left: 0.5rem;
+    align-items: center;
+    justify-content: center;
   }
 </style>
