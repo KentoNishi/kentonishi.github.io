@@ -74,7 +74,7 @@
     display: flex;
   }
   .banner {
-    --banner-height: 300px;
+    --banner-height: 280px;
     width: 100%;
     height: var(--banner-height);
     /* background-color: var(--gray-fill); */

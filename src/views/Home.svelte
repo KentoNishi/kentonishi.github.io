@@ -92,7 +92,7 @@
     margin-top: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    align-items: center;
+    align-items: flex-start;
     justify-items: center;
     position: relative;
   }
