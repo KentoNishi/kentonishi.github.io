@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { onDestroy, onMount, tick } from 'svelte';
-  import { exioZoomInAnimation, exioLoadingBar } from 'exio';
-  import type { ExioNode } from 'exio';
+  import { exioZoomInAnimation } from 'exio';
 
   import Banner from '../components/Banner.svelte';
   import Card from '../components/Card.svelte';
@@ -9,69 +7,21 @@
   import Tiles from '../components/Tiles.svelte';
   const stats = [
     {
-      src: 'https://github-readme-stats.vercel.app/api?username=KentoNishi&show_icons=true&theme=dark&hide_border=true',
-      alt: 'GitHub README Stats',
-      loaded: false,
-    },
-    {
       src: 'https://github-readme-streak-stats.herokuapp.com/?theme=dark&user=KentoNishi&hide_border=true',
       alt: 'GitHub README Streak Stats',
-      loaded: false,
+    },
+    {
+      src: 'https://github-readme-stats.vercel.app/api?username=KentoNishi&show_icons=true&theme=dark&hide_border=true',
+      alt: 'GitHub README Stats',
     },
   ];
-  let aboutMe: ExioNode;
-  let aboutMeWrapper: HTMLElement;
-  let showTiles = true;
-  // let tiles: ExioNode;
-  // let tilesWrapper: HTMLElement;
-
-  const checkLoaded = () => {
-    if (stats.every(({ loaded }) => loaded)) {
-      setTimeout(async () => {
-        showTiles = false;
-        await tick();
-        showTiles = true;
-        aboutMe = exioZoomInAnimation(aboutMeWrapper);
-        // tiles = exioZoomInAnimation(tilesWrapper);
-      }, 0);
-    }
+  const loaded = (e) => {
+    (e.target as HTMLImageElement).classList.add('loaded');
   };
-  const loaded = (item: typeof stats[number]) => {
-    return () => {
-      item.loaded = true;
-      checkLoaded();
-    };
-  };
-
-  onDestroy(() => {
-    aboutMe.destroy();
-    // tiles.destroy();
-  });
-
-  let showLoader = false;
-  onMount(() => {
-    setTimeout(() => {
-      if (!aboutMe) showLoader = true;
-    }, 250);
-  });
 </script>
 
 <Banner />
-{#if showLoader}
-  <div
-    use:exioLoadingBar
-    style="
-      position: absolute;
-      height: {aboutMe ? '0px' : '5px'};
-      opacity: {aboutMe ? '0' : '1'};
-      width: 100%;
-      animation-duration: 1s;
-      --exio-loading-bar-thumb-color: var(--blue-accent);
-      transition-duration: 1s;
-    "
-  />
-{/if}
-<div bind:this={aboutMeWrapper} style={aboutMe ? '' : 'visibility: hidden;'}>
+<div use:exioZoomInAnimation>
   <Cards>
     <Card>
       <svelte:fragment slot="title">About Me</svelte:fragment>
@@ -83,67 +33,85 @@
         </div>
         <div class="stats">
           {#each stats as s}
-            <img src={s.src} alt={s.alt} on:load={loaded(s)} />
+            <img
+              src={`${s.src}&seed=${Math.random()}`}
+              alt={s.alt}
+              on:load={loaded}
+            />
           {/each}
         </div>
       </svelte:fragment>
     </Card>
   </Cards>
 </div>
-{#if showTiles}
-  <div
-    style={aboutMe ? '' : 'visibility: hidden; height: 0px; overflow: hidden;'}
-  >
-    <Tiles
-      tiles={[
-        {
-          title: 'Research',
-          description: 'View my ongoing and published research.',
-          icon: 'school',
-          link: '/publications',
-        },
-        {
-          title: 'Apps',
-          description: 'View my open-source apps, websites, and extensions.',
-          icon: 'mobile_friendly',
-          link: '/apps',
-        },
-        {
-          title: 'Packages',
-          description: 'View my open-source packages and developer tools.',
-          icon: 'code',
-          link: '/packages',
-        },
-        {
-          title: 'Music',
-          description: 'Listen to my original compositions and productions.',
-          icon: 'music_note',
-          link: '/music',
-        },
-        {
-          title: 'Resume',
-          description: 'View my resume and contact information.',
-          icon: 'description',
-          link: '/resume',
-        },
-        {
-          title: 'Blog Posts',
-          description: 'View my blog posts, tutorials, and write-ups.',
-          icon: 'edit_note',
-          link: '/posts',
-        },
-      ]}
-    />
-  </div>
-{/if}
+<div>
+  <Tiles
+    tiles={[
+      {
+        title: 'Research',
+        description: 'View my ongoing and published research.',
+        icon: 'school',
+        link: '/publications',
+      },
+      {
+        title: 'Apps',
+        description: 'View my open-source apps, websites, and extensions.',
+        icon: 'mobile_friendly',
+        link: '/apps',
+      },
+      {
+        title: 'Packages',
+        description: 'View my open-source packages and developer tools.',
+        icon: 'code',
+        link: '/packages',
+      },
+      {
+        title: 'Music',
+        description: 'Listen to my original compositions and productions.',
+        icon: 'music_note',
+        link: '/music',
+      },
+      {
+        title: 'Resume',
+        description: 'View my resume and contact information.',
+        icon: 'description',
+        link: '/resume',
+      },
+      {
+        title: 'Blog Posts',
+        description: 'View my blog posts, tutorials, and write-ups.',
+        icon: 'edit_note',
+        link: '/posts',
+      },
+    ]}
+  />
+</div>
 
 <style>
   .stats {
     margin-top: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: center;
+    justify-items: center;
+    position: relative;
   }
-  .stats > img {
-    width: 100%;
+  /* @keyframes pulse {
+    0% {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    50% {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    100% {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  } */
+  .stats > img:not(.loaded) {
+    width: min(100%, 495px);
+    aspect-ratio: calc(495 / 195);
+    /* animation: pulse 1s infinite; */
+    background-position: 0% 0%;
+    filter: brightness(0.5);
   }
 </style>
