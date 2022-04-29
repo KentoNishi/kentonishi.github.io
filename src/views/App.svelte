@@ -49,7 +49,7 @@
 
 <style>
   :root {
-    --gray-fill: #171717;
+    --gray-fill: #151515;
     --gray-fill-lighter: #2f2f2f;
     --gray-accent: #4f4f4f;
     --blue-accent: #1b98ff;
