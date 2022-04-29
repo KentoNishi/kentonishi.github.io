@@ -104,7 +104,7 @@
     border-radius: 50%;
   }
   .info * {
-    color: rgb(224, 224, 224);
+    color: white;
   }
   .name {
     font-size: 2rem;
