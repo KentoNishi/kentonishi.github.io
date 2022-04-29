@@ -96,12 +96,8 @@
     justify-items: center;
     position: relative;
   }
-  .stats > img:not(.loaded) {
-    width: 0px;
-  }
   .stats > img {
     width: min(100%, 495px);
     aspect-ratio: calc(495 / 195);
-    transition: 0.6s;
   }
 </style>
