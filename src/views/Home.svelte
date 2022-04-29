@@ -96,22 +96,12 @@
     justify-items: center;
     position: relative;
   }
-  /* @keyframes pulse {
-    0% {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    50% {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-    100% {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-  } */
   .stats > img:not(.loaded) {
+    width: 0px;
+  }
+  .stats > img {
     width: min(100%, 495px);
     aspect-ratio: calc(495 / 195);
-    /* animation: pulse 1s infinite; */
-    background-position: 0% 0%;
-    filter: brightness(0.5);
+    transition: 0.6s;
   }
 </style>

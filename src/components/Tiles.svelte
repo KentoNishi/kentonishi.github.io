@@ -10,7 +10,7 @@
 <div class="wrap">
   <div class="grid">
     {#each tiles as tile, index}
-      <Tile data={tile} delay={index * STAGGER} />
+      <Tile data={tile} delay={(index + 1) * STAGGER} />
     {/each}
   </div>
 </div>
