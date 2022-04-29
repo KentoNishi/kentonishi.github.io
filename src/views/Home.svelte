@@ -2,18 +2,12 @@
   import { onDestroy, onMount, tick } from 'svelte';
   import { exioZoomInAnimation, exioLoadingBar } from 'exio';
   import type { ExioNode } from 'exio';
+  import { fade } from 'svelte/transition';
 
   import Banner from '../components/Banner.svelte';
   import Card from '../components/Card.svelte';
   import Cards from '../components/Cards.svelte';
   import Tiles from '../components/Tiles.svelte';
-  let bio = '';
-  onMount(async () => {
-    bio = (
-      await (await fetch('https://api.github.com/users/KentoNishi')).json()
-    ).bio;
-    checkLoaded();
-  });
   const stats = [
     {
       src: 'https://github-readme-stats.vercel.app/api?username=KentoNishi&show_icons=true&theme=dark&hide_border=true',
@@ -33,7 +27,7 @@
   // let tilesWrapper: HTMLElement;
 
   const checkLoaded = async () => {
-    if (bio && stats.every(({ loaded }) => loaded)) {
+    if (stats.every(({ loaded }) => loaded)) {
       showTiles = false;
       await tick();
       showTiles = true;
@@ -64,14 +58,32 @@
 
 <Banner />
 {#if showLoader}
-  <div use:exioLoadingBar style="height: 5px; width: 100%;" />
+  <span
+    out:fade={{
+      duration: 100,
+    }}
+  >
+    <div
+      use:exioLoadingBar
+      style="
+        position: absolute;
+        height: 5px;
+        width: 100%;
+        --exio-loading-bar-thumb-color: var(--blue-accent);
+      "
+    />
+  </span>
 {/if}
 <div bind:this={aboutMeWrapper} style={aboutMe ? '' : 'visibility: hidden;'}>
   <Cards>
     <Card>
       <svelte:fragment slot="title">About Me</svelte:fragment>
       <svelte:fragment slot="content">
-        <div>{bio}</div>
+        <div>
+          18-year-old programmer at Lynbrook High School with strong interests
+          in AI/Machine Learning. Open source developer and researcher at the
+          Four Eyes Lab.
+        </div>
         <div class="stats">
           {#each stats as s}
             <img src={s.src} alt={s.alt} on:load={loaded(s)} />
