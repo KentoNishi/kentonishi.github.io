@@ -2,7 +2,6 @@
   import { onDestroy, onMount, tick } from 'svelte';
   import { exioZoomInAnimation, exioLoadingBar } from 'exio';
   import type { ExioNode } from 'exio';
-  import { fade } from 'svelte/transition';
 
   import Banner from '../components/Banner.svelte';
   import Card from '../components/Card.svelte';
@@ -26,14 +25,15 @@
   // let tiles: ExioNode;
   // let tilesWrapper: HTMLElement;
 
-  const checkLoaded = async () => {
+  const checkLoaded = () => {
     if (stats.every(({ loaded }) => loaded)) {
-      showTiles = false;
-      await tick();
-      showTiles = true;
-      aboutMe = exioZoomInAnimation(aboutMeWrapper);
-      showLoader = false;
-      // tiles = exioZoomInAnimation(tilesWrapper);
+      setTimeout(async () => {
+        showTiles = false;
+        await tick();
+        showTiles = true;
+        aboutMe = exioZoomInAnimation(aboutMeWrapper);
+        // tiles = exioZoomInAnimation(tilesWrapper);
+      }, 0);
     }
   };
   const loaded = (item: typeof stats[number]) => {
@@ -58,21 +58,18 @@
 
 <Banner />
 {#if showLoader}
-  <span
-    out:fade={{
-      duration: 100,
-    }}
-  >
-    <div
-      use:exioLoadingBar
-      style="
-        position: absolute;
-        height: 5px;
-        width: 100%;
-        --exio-loading-bar-thumb-color: var(--blue-accent);
-      "
-    />
-  </span>
+  <div
+    use:exioLoadingBar
+    style="
+      position: absolute;
+      height: {aboutMe ? '0px' : '5px'};
+      opacity: {aboutMe ? '0' : '1'};
+      width: 100%;
+      animation-duration: 1s;
+      --exio-loading-bar-thumb-color: var(--blue-accent);
+      transition-duration: 1s;
+    "
+  />
 {/if}
 <div bind:this={aboutMeWrapper} style={aboutMe ? '' : 'visibility: hidden;'}>
   <Cards>
