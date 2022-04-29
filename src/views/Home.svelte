@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onDestroy, onMount, tick } from 'svelte';
-  import { exioZoomInAnimation } from 'exio';
+  import { exioZoomInAnimation, exioLoadingBar } from 'exio';
+  import type { ExioNode } from 'exio';
 
   import Banner from '../components/Banner.svelte';
   import Card from '../components/Card.svelte';
@@ -25,10 +26,10 @@
       loaded: false,
     },
   ];
-  let aboutMe: ReturnType<typeof exioZoomInAnimation>;
+  let aboutMe: ExioNode;
   let aboutMeWrapper: HTMLElement;
   let showTiles = true;
-  // let tiles: ReturnType<typeof exioZoomInAnimation>;
+  // let tiles: ExioNode;
   // let tilesWrapper: HTMLElement;
 
   const checkLoaded = async () => {
@@ -37,6 +38,7 @@
       await tick();
       showTiles = true;
       aboutMe = exioZoomInAnimation(aboutMeWrapper);
+      showLoader = false;
       // tiles = exioZoomInAnimation(tilesWrapper);
     }
   };
@@ -51,9 +53,19 @@
     aboutMe.destroy();
     // tiles.destroy();
   });
+
+  let showLoader = false;
+  onMount(() => {
+    setTimeout(() => {
+      if (!aboutMe) showLoader = true;
+    }, 250);
+  });
 </script>
 
 <Banner />
+{#if showLoader}
+  <div use:exioLoadingBar style="height: 5px; width: 100%;" />
+{/if}
 <div bind:this={aboutMeWrapper} style={aboutMe ? '' : 'visibility: hidden;'}>
   <Cards>
     <Card>

@@ -1,9 +1,10 @@
 <script lang="ts">
   import { exioCard } from 'exio';
+  import type { ExioNode } from 'exio';
   import { onDestroy, onMount } from 'svelte';
   export let titleCard = false;
   let el: HTMLDivElement;
-  let card: ReturnType<typeof exioCard>;
+  let card: ExioNode;
   onMount(() => {
     if (!titleCard) card = exioCard(el);
   });
