@@ -18,6 +18,10 @@
     },
     "blog": {
       "title": "Blog Posts"
+    },
+    "notfound": {
+      "title": "404 Not Found",
+      "message": "This page doesn't have any content yet!"
     }
   },
   "info": {

@@ -32,7 +32,12 @@
       //     title: $_('entries.packages.title'),
       //   },
       // }),
-      // '*': NotFound,
+      '*': wrap({
+        asyncComponent: () => import('./NotFound.svelte'),
+        userData: {
+          title: $_('entries.notfound.title'),
+        },
+      }),
     };
   let loaded = false;
   const toggle = async () => {
@@ -58,7 +63,7 @@
       <Navbar {height} {title} />
     {/if}
     <div style="margin-top: {isHome ? 0 : height}px;">
-      <Router on:routeLoaded={routeLoaded} {routes} />
+      <Router on:routeLoading={routeLoaded} {routes} />
     </div>
   </div>
 {/if}
