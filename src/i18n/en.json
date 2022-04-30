@@ -1,3 +1,26 @@
 {
-  "hello_world": "Hello World!"
+  "hello_world": "Hello World!",
+  "entries": {
+    "research": {
+      "title": "Research & Publications"
+    },
+    "apps": {
+      "title": "Apps & Projects"
+    },
+    "packages": {
+      "title": "Packages & Libraries"
+    },
+    "music": {
+      "title": "Music"
+    },
+    "resume": {
+      "title": "Resume"
+    },
+    "blog": {
+      "title": "Blog Posts"
+    }
+  },
+  "info": {
+    "bio": "18-year-old programmer at Lynbrook High School with strong interests in AI/Machine Learning. Open source developer and researcher at the Four Eyes Lab."
+  }
 }

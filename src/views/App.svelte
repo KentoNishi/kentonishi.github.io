@@ -1,23 +1,39 @@
 <script lang="ts">
-  import { isLoading } from 'svelte-i18n';
+  import { isLoading, _ } from 'svelte-i18n';
   import { exioApp } from 'exio';
   import Router from 'svelte-spa-router';
   import { wrap } from 'svelte-spa-router/wrap';
   import { location } from 'svelte-spa-router';
   import { tick } from 'svelte';
   import Navbar from '../components/Navbar.svelte';
-  const routes = {
-    '/': wrap({
-      asyncComponent: () => import('./Home.svelte'),
-    }),
-    '/publications': wrap({
-      asyncComponent: () => import('./Publications.svelte'),
-      userData: {
-        title: 'Publications',
-      },
-    }),
-    // '*': NotFound,
+  let routes: {
+    [key: string]: any;
   };
+  $: if (!$isLoading)
+    routes = {
+      '/': wrap({
+        asyncComponent: () => import('./Home.svelte'),
+      }),
+      '/publications': wrap({
+        asyncComponent: () => import('./Publications.svelte'),
+        userData: {
+          title: $_('entries.research.title'),
+        },
+      }),
+      '/apps': wrap({
+        asyncComponent: () => import('./Projects.svelte'),
+        userData: {
+          title: $_('entries.apps.title'),
+        },
+      }),
+      // '/libs': wrap({
+      //   asyncComponent: () => import('./Packages.svelte'),
+      //   userData: {
+      //     title: $_('entries.packages.title'),
+      //   },
+      // }),
+      // '*': NotFound,
+    };
   let loaded = false;
   const toggle = async () => {
     loaded = false;

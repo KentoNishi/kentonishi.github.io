@@ -9,9 +9,7 @@
 <div use:exioZoomInAnimation style="transform-origin: top center;">
   <Cards>
     <Card titleCard>
-      <svelte:fragment slot="title">
-        {$_('entries.research.title')}
-      </svelte:fragment>
+      <svelte:fragment slot="title">{$_('entries.apps.title')}</svelte:fragment>
       <svelte:fragment slot="content">
         <div class="buttons center">
           <a

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { exioZoomInAnimation } from 'exio';
+  import { _ } from 'svelte-i18n';
 
   import Banner from '../components/Banner.svelte';
   import Card from '../components/Card.svelte';
@@ -27,9 +28,7 @@
       <svelte:fragment slot="title">About Me</svelte:fragment>
       <svelte:fragment slot="content">
         <div>
-          18-year-old programmer at Lynbrook High School with strong interests
-          in AI/Machine Learning. Open source developer and researcher at the
-          Four Eyes Lab.
+          {$_('info.bio')}
         </div>
         <div class="stats">
           {#each stats as s}
@@ -48,37 +47,37 @@
   <Tiles
     tiles={[
       {
-        title: 'Research',
+        title: $_('entries.research.title'),
         description: 'View my ongoing and published research.',
         icon: 'school',
         link: '/publications',
       },
       {
-        title: 'Apps',
+        title: $_('entries.apps.title'),
         description: 'View my open-source apps, websites, and extensions.',
         icon: 'mobile_friendly',
         link: '/apps',
       },
       {
-        title: 'Packages',
+        title: $_('entries.packages.title'),
         description: 'View my open-source packages and developer tools.',
         icon: 'code',
         link: '/packages',
       },
       {
-        title: 'Music',
+        title: $_('entries.music.title'),
         description: 'Listen to my original compositions and productions.',
         icon: 'music_note',
         link: '/music',
       },
       {
-        title: 'Resume',
+        title: $_('entries.resume.title'),
         description: 'View my resume and contact information.',
         icon: 'description',
         link: '/resume',
       },
       {
-        title: 'Blog Posts',
+        title: $_('entries.blog.title'),
         description: 'View my blog posts, tutorials, and write-ups.',
         icon: 'edit_note',
         link: '/posts',

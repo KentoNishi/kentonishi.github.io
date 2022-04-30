@@ -40,6 +40,5 @@
   }
   .title {
     margin-left: 0.5rem;
-    display: none;
   }
 </style>
