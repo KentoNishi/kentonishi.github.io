@@ -32,11 +32,7 @@
         </div>
         <div class="stats">
           {#each stats as s}
-            <img
-              src={`${s.src}&seed=${Math.random()}`}
-              alt={s.alt}
-              on:load={loaded}
-            />
+            <img src={`${s.src}&seed=${''}`} alt={s.alt} on:load={loaded} />
           {/each}
         </div>
       </svelte:fragment>

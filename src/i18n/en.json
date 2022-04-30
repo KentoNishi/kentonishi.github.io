@@ -2,13 +2,13 @@
   "hello_world": "Hello World!",
   "entries": {
     "research": {
-      "title": "Research & Publications"
+      "title": "Research"
     },
     "apps": {
-      "title": "Apps & Projects"
+      "title": "Apps"
     },
     "packages": {
-      "title": "Packages & Libraries"
+      "title": "Libraries"
     },
     "music": {
       "title": "Music"

@@ -4,6 +4,8 @@
   import Card from '../components/Card.svelte';
   import { exioButton } from 'exio';
   import { _ } from 'svelte-i18n';
+  import ltl from '../img/ltl.png';
+  import hc from '../img/hc.png';
 </script>
 
 <div use:exioZoomInAnimation style="transform-origin: top center;">
@@ -12,100 +14,126 @@
       <svelte:fragment slot="title">{$_('entries.apps.title')}</svelte:fragment>
       <svelte:fragment slot="content">
         <div class="buttons center">
-          <a
-            href="https://scholar.google.com/citations?user=iQoZSr4AAAAJ"
-            target="_blank"
-          >
-            <button use:exioButton class="popup">Google Scholar</button>
-          </a>
-          <a
-            href="https://www.semanticscholar.org/author/Kento-Nishi/1721045940"
-            target="_blank"
-          >
-            <button use:exioButton class="popup">Semantic Scholar</button>
+          <a href="https://github.com/KentoNishi" target="_blank">
+            <button use:exioButton class="popup">GitHub Profile</button>
           </a>
         </div>
       </svelte:fragment>
     </Card>
     <Card>
-      <svelte:fragment slot="title">
-        Augmentation Strategies for Learning with Noisy Labels
-      </svelte:fragment>
-      <svelte:fragment slot="content">
-        <i>Conference on Computer Vision and Pattern Recognition (2021)</i>
-        <p>
-          <a href="mailto:kento24gs@outlook.com">Kento Nishi</a>*,
-          <a href="mailto:yding@cs.ucsb.edu">Yi Ding</a>*,
-          <a href="mailto:anrich@cs.ucsb.edu">Alex Rich</a>,
-          <a href="mailto:holl@cs.ucsb.edu">Tobias Höllerer</a>
-          [<code>*</code>:
-          <a href="mailto:kento24gs@outlook.com,yding@cs.ucsb.edu"
-            >equal contribution</a
-          >]
-        </p>
-
-        <div class="buttons">
-          <a
-            href="https://openaccess.thecvf.com//content/CVPR2021/html/Nishi_Augmentation_Strategies_for_Learning_With_Noisy_Labels_CVPR_2021_paper.html"
-            target="_blank"
-          >
-            <button use:exioButton class="popup">Abstract</button>
-          </a>
-          <a href="https://arxiv.org/abs/2103.02130" target="_blank">
-            <button use:exioButton class="popup">arXiv</button>
-          </a>
-          <a href="https://arxiv.org/pdf/2103.02130.pdf" target="_blank">
-            <button use:exioButton class="popup">PDF</button>
-          </a>
-          <a
-            href="https://github.com/KentoNishi/Augmentation-for-LNL"
-            target="_blank"
-          >
-            <button use:exioButton class="popup">GitHub</button>
-          </a>
-          <a
-            href="https://paperswithcode.com/paper/augmentation-strategies-for-learning-with"
-            target="_blank"
-          >
-            <button use:exioButton class="popup">Papers with Code</button>
-          </a>
-          <a
-            href="https://kentonishi.github.io/Augmentation-for-LNL/CVPR_Video.mp4"
-            target="_blank"
-          >
-            <button use:exioButton class="popup">CVPR Video</button>
-          </a>
-        </div>
-      </svelte:fragment>
-    </Card>
-    <Card>
-      <svelte:fragment slot="title">
-        Improving Label Noise Robustness with Data Augmentation and
-        Semi-Supervised Learning (Student Abstract)
-      </svelte:fragment>
+      <svelte:fragment slot="title">LiveTL</svelte:fragment>
       <svelte:fragment slot="content">
         <i>
-          Proceedings of the AAAI Conference on Artificial Intelligence (2021)
+          Get live translations for YouTube streams, crowdsourced from
+          multilingual viewers!
         </i>
         <p>
-          <a href="mailto:kento24gs@outlook.com">Kento Nishi</a>,
-          <a href="mailto:yding@cs.ucsb.edu">Yi Ding</a>,
-          <a href="mailto:anrich@cs.ucsb.edu">Alex Rich</a>,
-          <a href="mailto:holl@cs.ucsb.edu">Tobias Höllerer</a>
+          <a href="https://github.com/LiveTL/LiveTL/contributors"
+            ><img
+              src="https://img.shields.io/github/contributors/LiveTL/LiveTL?color=blue&label=Contributors"
+              alt="Contributors"
+            /></a
+          >
+          <a
+            href="https://chrome.google.com/webstore/detail/livetl-translation-filter/moicohcfhhbmmngneghfjfjpdobmmnlg"
+            ><img
+              src="https://img.shields.io/chrome-web-store/rating/moicohcfhhbmmngneghfjfjpdobmmnlg?style=flat&color=blue&label=Rating"
+              alt="Rating"
+            /></a
+          >
+          <a href="https://github.com/LiveTL/LiveTL"
+            ><img
+              src="https://img.shields.io/github/stars/LiveTL/LiveTL?style=flat&logo=github&label=GitHub Stars"
+              alt="GitHub Stars"
+            /></a
+          >
+          <a href="https://www.gnu.org/licenses/agpl-3.0"
+            ><img
+              src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg"
+              alt="License: AGPL v3"
+            /></a
+          >
+          <a href="'https://opencollective.com/livetl"
+            ><img
+              src="https://img.shields.io/opencollective/all/livetl?label=Donators%20and%20Supporters&logo=dollar&style=flat&color=blue"
+              alt="Donators and Supporters"
+            /></a
+          >
+          <a href="https://discord.gg/uJrV3tmthg"
+            ><img
+              src="https://img.shields.io/discord/780938154437640232.svg?label=&amp;logo=discord&amp;logoColor=ffffff&amp;color=7389D8&amp;labelColor=6A7EC2"
+              alt="Discord"
+            /></a
+          >
         </p>
-
+        <p class="center">
+          <img src={ltl} class="demo" alt="LiveTL Demo" />
+        </p>
         <div class="buttons">
-          <a
-            href="https://ojs.aaai.org/index.php/AAAI/article/view/17924"
-            target="_blank"
-          >
-            <button use:exioButton class="popup">Abstract</button>
+          <a href="https://github.com/LiveTL/LiveTL" target="_blank">
+            <button use:exioButton class="popup">GitHub Repo</button>
           </a>
-          <a
-            href="https://www.aaai.org/AAAI21Papers/SA-207.NishiK.pdf"
-            target="_blank"
+          <a href="https://livetl.app/en/home/" target="_blank">
+            <button use:exioButton class="popup">Website</button>
+          </a>
+        </div>
+      </svelte:fragment>
+    </Card>
+    <Card>
+      <svelte:fragment slot="title">HyperChat</svelte:fragment>
+      <svelte:fragment slot="content">
+        <i>
+          HyperChat enhances your YouTube chat with a smoother, more
+          feature-packed experience!
+        </i>
+        <p>
+          <a href="https://github.com/LiveTL/HyperChat/contributors"
+            ><img
+              src="https://img.shields.io/github/contributors/LiveTL/HyperChat?color=blue&label=Contributors"
+              alt="Contributors"
+            /></a
           >
-            <button use:exioButton class="popup">PDF</button>
+          <a
+            href="https://chrome.google.com/webstore/detail/hyperchat-by-livetl/naipgebhooiiccifflecbffmnjbabdbh"
+            ><img
+              src="https://img.shields.io/chrome-web-store/rating/naipgebhooiiccifflecbffmnjbabdbh?style=flat&color=blue&label=Rating"
+              alt="Rating"
+            /></a
+          >
+          <a href="https://github.com/LiveTL/HyperChat"
+            ><img
+              src="https://img.shields.io/github/stars/LiveTL/HyperChat?style=flat&logo=github&label=GitHub Stars"
+              alt="GitHub Stars"
+            /></a
+          >
+          <a href="https://www.gnu.org/licenses/agpl-3.0"
+            ><img
+              src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg"
+              alt="License: AGPL v3"
+            /></a
+          >
+          <a href="'https://opencollective.com/livetl"
+            ><img
+              src="https://img.shields.io/opencollective/all/livetl?label=Donators%20and%20Supporters&logo=dollar&style=flat&color=blue"
+              alt="Donators and Supporters"
+            /></a
+          >
+          <a href="https://discord.gg/uJrV3tmthg"
+            ><img
+              src="https://img.shields.io/discord/780938154437640232.svg?label=&amp;logo=discord&amp;logoColor=ffffff&amp;color=7389D8&amp;labelColor=6A7EC2"
+              alt="Discord"
+            /></a
+          >
+        </p>
+        <p class="center">
+          <img src={hc} class="demo" alt="HyperChat Demo" />
+        </p>
+        <div class="buttons">
+          <a href="https://github.com/LiveTL/HyperChat" target="_blank">
+            <button use:exioButton class="popup">GitHub Repo</button>
+          </a>
+          <a href="https://livetl.app/en/hyperchat/" target="_blank">
+            <button use:exioButton class="popup">Website</button>
           </a>
         </div>
       </svelte:fragment>
@@ -140,5 +168,8 @@
     font-family: 'Exio Icons';
     content: 'open_in_new';
     margin-left: 0.5rem;
+  }
+  .demo {
+    width: 100%;
   }
 </style>
