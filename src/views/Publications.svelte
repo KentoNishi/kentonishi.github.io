@@ -12,7 +12,7 @@
       <svelte:fragment slot="title">
         {$_('entries.research.title')}
       </svelte:fragment>
-      <svelte:fragment slot="content">
+      <!-- <svelte:fragment slot="content">
         <div class="buttons center">
           <a
             href="https://scholar.google.com/citations?user=iQoZSr4AAAAJ"
@@ -27,7 +27,7 @@
             <button use:exioButton class="popup">Semantic Scholar</button>
           </a>
         </div>
-      </svelte:fragment>
+      </svelte:fragment> -->
     </Card>
     <Card>
       <svelte:fragment slot="title">
@@ -133,11 +133,11 @@
     gap: 0.75rem;
     flex-wrap: wrap;
   }
-  .center {
+  /* .center {
     margin-top: 0.5rem;
     display: flex;
     justify-content: center;
-  }
+  } */
   .popup::after {
     font-family: 'Exio Icons';
     content: 'open_in_new';

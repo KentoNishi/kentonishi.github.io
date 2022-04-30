@@ -12,13 +12,13 @@
   <Cards>
     <Card titleCard>
       <svelte:fragment slot="title">{$_('entries.apps.title')}</svelte:fragment>
-      <svelte:fragment slot="content">
+      <!-- <svelte:fragment slot="content">
         <div class="buttons center">
           <a href="https://github.com/KentoNishi" target="_blank">
             <button use:exioButton class="popup">GitHub Profile</button>
           </a>
         </div>
-      </svelte:fragment>
+      </svelte:fragment> -->
     </Card>
     <Card>
       <svelte:fragment slot="title">LiveTL</svelte:fragment>
