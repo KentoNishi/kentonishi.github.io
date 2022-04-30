@@ -17,9 +17,7 @@
   <div
     bind:this={el}
     class="card"
-    style={titleCard
-      ? 'align-items: center; background-color: transparent;'
-      : ''}
+    style={titleCard ? 'align-items: center;' : ''}
   >
     {#if titleCard}
       <h1><slot name="title" /></h1>
