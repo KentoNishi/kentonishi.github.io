@@ -26,6 +26,12 @@
           title: $_('entries.apps.title'),
         },
       }),
+      '/packages': wrap({
+        asyncComponent: () => import('./Packages.svelte'),
+        userData: {
+          title: $_('entries.apps.title'),
+        },
+      }),
       // '/libs': wrap({
       //   asyncComponent: () => import('./Packages.svelte'),
       //   userData: {
