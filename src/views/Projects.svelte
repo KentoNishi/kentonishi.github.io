@@ -28,7 +28,7 @@
           multilingual viewers!
         </i>
         <p>
-          <a href="https://github.com/LiveTL/LiveTL/contributors"
+          <a href="https://github.com/LiveTL/LiveTL/contributors" tabindex="-1"
             ><img
               src="https://img.shields.io/github/contributors/LiveTL/LiveTL?color=blue&label=Contributors"
               alt="Contributors"
@@ -36,30 +36,31 @@
           >
           <a
             href="https://chrome.google.com/webstore/detail/livetl-translation-filter/moicohcfhhbmmngneghfjfjpdobmmnlg"
+            tabindex="-1"
             ><img
               src="https://img.shields.io/chrome-web-store/rating/moicohcfhhbmmngneghfjfjpdobmmnlg?style=flat&color=blue&label=Rating"
               alt="Rating"
             /></a
           >
-          <a href="https://github.com/LiveTL/LiveTL"
+          <a href="https://github.com/LiveTL/LiveTL" tabindex="-1"
             ><img
               src="https://img.shields.io/github/stars/LiveTL/LiveTL?style=flat&logo=github&label=GitHub Stars"
               alt="GitHub Stars"
             /></a
           >
-          <a href="https://www.gnu.org/licenses/agpl-3.0"
+          <a href="https://www.gnu.org/licenses/agpl-3.0" tabindex="-1"
             ><img
               src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg"
               alt="License: AGPL v3"
             /></a
           >
-          <a href="'https://opencollective.com/livetl"
+          <a href="'https://opencollective.com/livetl" tabindex="-1"
             ><img
               src="https://img.shields.io/opencollective/all/livetl?label=Donators%20and%20Supporters&logo=dollar&style=flat&color=blue"
               alt="Donators and Supporters"
             /></a
           >
-          <a href="https://discord.gg/uJrV3tmthg"
+          <a href="https://discord.gg/uJrV3tmthg" tabindex="-1"
             ><img
               src="https://img.shields.io/discord/780938154437640232.svg?label=&amp;logo=discord&amp;logoColor=ffffff&amp;color=7389D8&amp;labelColor=6A7EC2"
               alt="Discord"
@@ -87,7 +88,9 @@
           feature-packed experience!
         </i>
         <p>
-          <a href="https://github.com/LiveTL/HyperChat/contributors"
+          <a
+            href="https://github.com/LiveTL/HyperChat/contributors"
+            tabindex="-1"
             ><img
               src="https://img.shields.io/github/contributors/LiveTL/HyperChat?color=blue&label=Contributors"
               alt="Contributors"
@@ -95,30 +98,31 @@
           >
           <a
             href="https://chrome.google.com/webstore/detail/hyperchat-by-livetl/naipgebhooiiccifflecbffmnjbabdbh"
+            tabindex="-1"
             ><img
               src="https://img.shields.io/chrome-web-store/rating/naipgebhooiiccifflecbffmnjbabdbh?style=flat&color=blue&label=Rating"
               alt="Rating"
             /></a
           >
-          <a href="https://github.com/LiveTL/HyperChat"
+          <a href="https://github.com/LiveTL/HyperChat" tabindex="-1"
             ><img
               src="https://img.shields.io/github/stars/LiveTL/HyperChat?style=flat&logo=github&label=GitHub Stars"
               alt="GitHub Stars"
             /></a
           >
-          <a href="https://www.gnu.org/licenses/agpl-3.0"
+          <a href="https://www.gnu.org/licenses/agpl-3.0" tabindex="-1"
             ><img
               src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg"
               alt="License: AGPL v3"
             /></a
           >
-          <a href="'https://opencollective.com/livetl"
+          <a href="'https://opencollective.com/livetl" tabindex="-1"
             ><img
               src="https://img.shields.io/opencollective/all/livetl?label=Donators%20and%20Supporters&logo=dollar&style=flat&color=blue"
               alt="Donators and Supporters"
             /></a
           >
-          <a href="https://discord.gg/uJrV3tmthg"
+          <a href="https://discord.gg/uJrV3tmthg" tabindex="-1"
             ><img
               src="https://img.shields.io/discord/780938154437640232.svg?label=&amp;logo=discord&amp;logoColor=ffffff&amp;color=7389D8&amp;labelColor=6A7EC2"
               alt="Discord"

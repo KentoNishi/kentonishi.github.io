@@ -177,7 +177,9 @@
           </p>
           <p>
             {#each p.badges as b}
-              <a href={b.url}><img src={b.src} alt={b.alt} class="badge" /></a>
+              <a href={b.url} tabindex="-1"
+                ><img src={b.src} alt={b.alt} class="badge" /></a
+              >
             {/each}
           </p>
 
