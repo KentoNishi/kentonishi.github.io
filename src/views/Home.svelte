@@ -70,7 +70,8 @@
         title: $_('entries.resume.title'),
         description: 'View my resume and contact information.',
         icon: 'description',
-        link: '/resume',
+        link: '/resume.pdf',
+        realURL: true,
       },
       {
         title: $_('entries.blog.title'),

@@ -3,4 +3,5 @@ export type TileEntry = {
   description: string;
   icon: string;
   link: string;
+  realURL?: boolean;
 };

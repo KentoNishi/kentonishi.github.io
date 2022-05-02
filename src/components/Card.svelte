@@ -24,7 +24,7 @@
     {:else}
       <h2><slot name="title" /></h2>
     {/if}
-    <p><slot name="content" /></p>
+    <p style="width: 100%;"><slot name="content" /></p>
   </div>
 </div>
 
