@@ -32,12 +32,6 @@
           title: $_('entries.apps.title'),
         },
       }),
-      // '/libs': wrap({
-      //   asyncComponent: () => import('./Packages.svelte'),
-      //   userData: {
-      //     title: $_('entries.packages.title'),
-      //   },
-      // }),
       '*': wrap({
         asyncComponent: () => import('./NotFound.svelte'),
         userData: {
