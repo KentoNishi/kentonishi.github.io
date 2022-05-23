@@ -68,6 +68,7 @@ module.exports = {
     ],
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@ota-meshi/svelte/no-at-html-tags': 'off',
   },
   settings: {
     'import/extensions': [
