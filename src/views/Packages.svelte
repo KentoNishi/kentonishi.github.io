@@ -4,6 +4,7 @@
   import Card from '../components/Card.svelte';
   import { exioButton } from 'exio';
   import { _ } from 'svelte-i18n';
+  import '../css/page.css';
   const packages = [
     {
       title: 'torch-pitch-shift',
@@ -197,33 +198,6 @@
 </div>
 
 <style>
-  a {
-    color: var(--blue-accent);
-    font-weight: bold;
-  }
-  .buttons a {
-    text-decoration: none;
-    color: inherit;
-  }
-  button {
-    background-color: var(--gray-accent);
-    cursor: pointer;
-  }
-  .buttons {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
-  .center {
-    margin-top: 0.5rem;
-    display: flex;
-    justify-content: center;
-  }
-  .popup::after {
-    font-family: 'Exio Icons';
-    content: 'open_in_new';
-    margin-left: 0.5rem;
-  }
   .badge {
     margin: 0rem 0.125rem;
   }

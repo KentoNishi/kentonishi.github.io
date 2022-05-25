@@ -38,6 +38,12 @@
           title: $_('entries.blog.title'),
         },
       }),
+      '/music': wrap({
+        asyncComponent: () => import('./Music.svelte'),
+        userData: {
+          title: $_('entries.music.title'),
+        },
+      }),
       '*': wrap({
         asyncComponent: () => import('./NotFound.svelte'),
         userData: {
