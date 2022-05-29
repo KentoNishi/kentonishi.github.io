@@ -5,6 +5,13 @@
   import { exioButton } from 'exio';
   import { _ } from 'svelte-i18n';
   import '../css/page.css';
+  const songs = [
+    {
+      src: '/music/hyperchat.mp3',
+      title: 'HyperChat Trailer Theme',
+      wip: true,
+    },
+  ];
 </script>
 
 <div use:exioZoomInAnimation style="transform-origin: top center;">
@@ -14,22 +21,26 @@
         {$_('entries.music.title')}
       </svelte:fragment>
     </Card>
-    <Card>
-      <svelte:fragment slot="title">HyperChat Trailer Theme</svelte:fragment>
-      <svelte:fragment slot="content">
-        <i>Work-in-Progress Preview</i>
+    {#each songs as item}
+      <Card>
+        <svelte:fragment slot="title">{item.title}</svelte:fragment>
+        <svelte:fragment slot="content">
+          {#if item.wip}
+            <i>Work-in-Progress Preview</i>
+          {/if}
 
-        <audio controls>
-          <source src="/music/hyperchat.wav" type="audio/wav" />
-        </audio>
+          <audio controls>
+            <source src={item.src} type="audio/mp3" />
+          </audio>
 
-        <div class="buttons">
-          <a href="/music/hyperchat.wav" target="_blank">
-            <button use:exioButton class="popup">Listen in New Tab</button>
-          </a>
-        </div>
-      </svelte:fragment>
-    </Card>
+          <div class="buttons">
+            <a href={item.src} target="_blank">
+              <button use:exioButton class="popup">Listen in New Tab</button>
+            </a>
+          </div>
+        </svelte:fragment>
+      </Card>
+    {/each}
   </Cards>
 </div>
 
