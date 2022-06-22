@@ -2,12 +2,21 @@
   import { exioZoomInAnimation } from 'exio';
   import Cards from '../components/Cards.svelte';
   import Card from '../components/Card.svelte';
-  import { exioButton } from 'exio';
   import { _ } from 'svelte-i18n';
   import '../css/page.css';
+  import Visualizer from '../components/Visualizer.svelte';
   const songs = [
     {
-      src: '/music/hyperchat.mp3',
+      items: [
+        {
+          title: 'Full Track',
+          src: '/music/hyperchat.mp3',
+        },
+        {
+          title: 'Main Drop',
+          src: '/music/hyperchat-ad.mp3',
+        },
+      ],
       title: 'HyperChat Trailer Theme',
       wip: true,
     },
@@ -21,22 +30,19 @@
         {$_('entries.music.title')}
       </svelte:fragment>
     </Card>
-    {#each songs as item}
+    {#each songs as track}
       <Card>
-        <svelte:fragment slot="title">{item.title}</svelte:fragment>
+        <svelte:fragment slot="title">{track.title}</svelte:fragment>
         <svelte:fragment slot="content">
-          {#if item.wip}
+          {#if track.wip}
             <i>Work-in-Progress Preview</i>
           {/if}
 
-          <audio controls>
-            <source src={item.src} type="audio/mp3" />
-          </audio>
-
-          <div class="buttons">
-            <a href={item.src} target="_blank">
-              <button use:exioButton class="popup">Listen in New Tab</button>
-            </a>
+          <div class="item-wrapper">
+            {#each track.items as item}
+              <h2>{item.title}</h2>
+              <Visualizer src={item.src} />
+            {/each}
           </div>
         </svelte:fragment>
       </Card>
@@ -45,9 +51,13 @@
 </div>
 
 <style>
-  audio {
-    width: calc(100% - 4rem);
-    display: block;
-    padding: 2rem;
+  .item-wrapper {
+    display: grid;
+    align-items: center;
+    grid-template-columns: fit-content(500px) 1fr;
+    grid-auto-rows: min-content;
+    grid-gap: 2rem;
+    grid-row-gap: 0.5rem;
+    padding-top: 1rem;
   }
 </style>

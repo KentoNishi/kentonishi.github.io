@@ -1,0 +1,101 @@
+<script lang="ts">
+  export let src: string;
+  let canvas: HTMLCanvasElement;
+  let audio: HTMLAudioElement | undefined;
+  let first = true;
+  let render = false;
+  const played = () => {
+    render = true;
+    document.querySelectorAll('audio').forEach((item) => {
+      if (item !== audio) item.pause();
+    });
+    if (!first) return;
+    first = false;
+    let context = new AudioContext();
+    const src = context.createMediaElementSource(audio);
+    let analyser = context.createAnalyser();
+    src.connect(analyser);
+    analyser.connect(context.destination);
+    analyser.fftSize = 128;
+    let bufferLength = analyser.frequencyBinCount - 8;
+    let dataArrays = [
+      new Uint8Array(bufferLength),
+      new Uint8Array(bufferLength),
+    ];
+    let index = 0;
+    const ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = false;
+    const gap = 0.2;
+    const width = canvas.width / bufferLength;
+    const fill = width * gap;
+    const pad = (width * gap) / 2;
+    const grd = ctx.createLinearGradient(0, 0, canvas.width, 0);
+    grd.addColorStop(0, '#0069ff');
+    grd.addColorStop(1, '#00ffff');
+    const renderFrame = () => {
+      if (canvas) {
+        requestAnimationFrame(renderFrame);
+      } else {
+        location.reload();
+      }
+      const thisArr = dataArrays[index];
+      const otherArr = dataArrays[(index + 1) % 2];
+      analyser.getByteFrequencyData(thisArr);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < bufferLength; i++) {
+        const value = thisArr[i];
+        const lastValue = otherArr[i];
+        ctx.fillStyle = grd;
+        ctx.fillRect(
+          i * width + pad,
+          canvas.height,
+          width - fill,
+          -(value / 256) * canvas.height
+        );
+      }
+      index = (index + 1) % 2;
+    };
+    renderFrame();
+  };
+  $: console.log(render);
+</script>
+
+<div>
+  <audio
+    controls
+    style="justify-self: flex-end; width: 100%;"
+    bind:this={audio}
+    on:play={played}
+    on:pause={() => {
+      render = false;
+    }}
+  >
+    <source {src} type="audio/mp3" />
+  </audio>
+
+  <div
+    style="height: {render
+      ? 10
+      : 0}px; transition: 0.2s; transition-delay: 0.1s; overflow: hidden;"
+  >
+    <canvas
+      bind:this={canvas}
+      width={window.innerWidth}
+      height={window.innerHeight}
+    />
+  </div>
+</div>
+
+<style>
+  audio {
+    display: block;
+    max-height: 3rem;
+  }
+  canvas {
+    width: 100%;
+    height: 10px;
+    pointer-events: none;
+    touch-action: none;
+    transform: translateY(-50%);
+  }
+</style>
