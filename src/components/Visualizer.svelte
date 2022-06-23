@@ -17,7 +17,7 @@
     src.connect(analyser);
     analyser.connect(context.destination);
     analyser.fftSize = 128;
-    let bufferLength = analyser.frequencyBinCount - 8;
+    let bufferLength = analyser.frequencyBinCount - 10;
     let dataArrays = [
       new Uint8Array(bufferLength),
       new Uint8Array(bufferLength),
@@ -30,8 +30,8 @@
     const fill = width * gap;
     const pad = (width * gap) / 2;
     const grd = ctx.createLinearGradient(0, 0, canvas.width, 0);
-    grd.addColorStop(0, '#0069ff');
-    grd.addColorStop(1, '#00ffff');
+    grd.addColorStop(0, '#00afff');
+    grd.addColorStop(1, '#0fffff');
     const renderFrame = () => {
       if (canvas) {
         requestAnimationFrame(renderFrame);
@@ -50,14 +50,14 @@
           i * width + pad,
           canvas.height,
           width - fill,
-          -(value / 256) * canvas.height
+          -((value / 256) ** 3) * canvas.height
         );
       }
       index = (index + 1) % 2;
     };
     renderFrame();
   };
-  $: console.log(render);
+  const height = 15;
 </script>
 
 <div>
@@ -75,14 +75,10 @@
 
   <div
     style="height: {render
-      ? 10
-      : 0}px; transition: 0.2s; transition-delay: 0.1s; overflow: hidden;"
+      ? height
+      : 0}px; transition: 0.2s; overflow: visible;"
   >
-    <canvas
-      bind:this={canvas}
-      width={window.innerWidth}
-      height={window.innerHeight}
-    />
+    <canvas bind:this={canvas} width={window.innerWidth} {height} />
   </div>
 </div>
 
@@ -93,9 +89,9 @@
   }
   canvas {
     width: 100%;
-    height: 10px;
     pointer-events: none;
     touch-action: none;
     transform: translateY(-50%);
+    filter: drop-shadow(0px 0px 10px var(--blue-accent));
   }
 </style>
