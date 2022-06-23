@@ -58,6 +58,10 @@
     renderFrame();
   };
   const height = 15;
+  let renderDelayed = false;
+  $: setTimeout(() => {
+    renderDelayed = render;
+  }, 200);
 </script>
 
 <div>
@@ -74,9 +78,10 @@
   </audio>
 
   <div
-    style="height: {render
-      ? height
-      : 0}px; transition: 0.2s; overflow: visible;"
+    class="wrapper"
+    style="height: {render ? height : 0}px; overflow: {render && renderDelayed
+      ? 'visible'
+      : 'hidden'};"
   >
     <canvas bind:this={canvas} width={window.innerWidth} {height} />
   </div>
@@ -93,5 +98,10 @@
     touch-action: none;
     transform: translateY(-50%);
     filter: drop-shadow(0px 0px 10px var(--blue-accent));
+  }
+  .wrapper {
+    transition: 0.2s;
+    overflow: visible;
+    transition-delay: 0.2s;
   }
 </style>
