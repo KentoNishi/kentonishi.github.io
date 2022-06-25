@@ -19,11 +19,12 @@ button {
   flex-wrap: wrap;
 }
 
-/* .center {
+.center {
   margin-top: 0.5rem;
   display: flex;
   justify-content: center;
-} */
+}
+
 .popup::after {
   font-family: 'Exio Icons';
   content: 'open_in_new';
