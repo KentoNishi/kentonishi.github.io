@@ -7,7 +7,7 @@
   import ltl from '../img/ltl.png';
   import hc from '../img/hc.png';
   import '../css/page.css';
-  import Badge from './Badge.svelte';
+  import Badge from '../components/Badge.svelte';
 </script>
 
 <div use:exioZoomInAnimation style="transform-origin: top center;">

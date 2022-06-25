@@ -4,7 +4,7 @@
   export let alt: string;
   const loaded = (event: Event) => {
     const target = event.target as HTMLImageElement;
-    target.style.transform = 'scale(1)';
+    target.style.transform = 'translateY(0%)';
     target.style.opacity = '1';
   };
 </script>

@@ -5,6 +5,7 @@
   import { exioButton } from 'exio';
   import { _ } from 'svelte-i18n';
   import '../css/page.css';
+  import Badge from '../components/Badge.svelte';
   const packages = [
     {
       title: 'torch-pitch-shift',
@@ -13,22 +14,22 @@
       language: 'Python (PyTorch)',
       links: [
         {
-          url: 'https://pypi.org/project/torch-pitch-shift/',
+          href: 'https://pypi.org/project/torch-pitch-shift/',
           text: 'View on PyPI',
         },
         {
-          url: 'https://github.com/KentoNishi/torch-pitch-shift',
+          href: 'https://github.com/KentoNishi/torch-pitch-shift',
           text: 'View on GitHub',
         },
       ],
       badges: [
         {
-          url: 'https://pypi.org/project/torch-pitch-shift/',
+          href: 'https://pypi.org/project/torch-pitch-shift/',
           src: 'https://img.shields.io/pypi/dm/torch-pitch-shift?color=blue&label=Downloads',
           alt: 'downloads',
         },
         {
-          url: 'https://pypi.org/project/torch-pitch-shift/',
+          href: 'https://pypi.org/project/torch-pitch-shift/',
           src: 'https://img.shields.io/pypi/l/torch-pitch-shift?color=blue&label=License',
           alt: 'license',
         },
@@ -41,22 +42,22 @@
       language: 'Python (PyTorch)',
       links: [
         {
-          url: 'https://pypi.org/project/torch-time-stretch/',
+          href: 'https://pypi.org/project/torch-time-stretch/',
           text: 'View on PyPI',
         },
         {
-          url: 'https://github.com/KentoNishi/torch-time-stretch',
+          href: 'https://github.com/KentoNishi/torch-time-stretch',
           text: 'View on GitHub',
         },
       ],
       badges: [
         {
-          url: 'https://pypi.org/project/torch-time-stretch/',
+          href: 'https://pypi.org/project/torch-time-stretch/',
           src: 'https://img.shields.io/pypi/dm/torch-time-stretch?color=blue&label=Downloads',
           alt: 'downloads',
         },
         {
-          url: 'https://pypi.org/project/torch-time-stretch/',
+          href: 'https://pypi.org/project/torch-time-stretch/',
           src: 'https://img.shields.io/pypi/l/torch-time-stretch?color=blue&label=License',
           alt: 'license',
         },
@@ -69,22 +70,22 @@
       language: 'TypeScript',
       links: [
         {
-          url: 'https://www.npmjs.com/package/iframe-translator',
+          href: 'https://www.npmjs.com/package/iframe-translator',
           text: 'View on npm',
         },
         {
-          url: 'https://github.com/KentoNishi/iframe-translator',
+          href: 'https://github.com/KentoNishi/iframe-translator',
           text: 'View on GitHub',
         },
       ],
       badges: [
         {
-          url: 'https://npmjs.com/package/iframe-translator',
+          href: 'https://npmjs.com/package/iframe-translator',
           src: 'https://img.shields.io/npm/dm/iframe-translator?color=blue&label=Downloads',
           alt: 'downloads',
         },
         {
-          url: 'https://www.npmjs.com/package/iframe-translator',
+          href: 'https://www.npmjs.com/package/iframe-translator',
           src: 'https://img.shields.io/npm/l/iframe-translator?color=blue&label=License',
           alt: 'license',
         },
@@ -97,22 +98,22 @@
       language: 'Python (PyTorch)',
       links: [
         {
-          url: 'https://pypi.org/project/torch-mutable-modules/',
+          href: 'https://pypi.org/project/torch-mutable-modules/',
           text: 'View on PyPI',
         },
         {
-          url: 'https://github.com/KentoNishi/torch-mutable-modules',
+          href: 'https://github.com/KentoNishi/torch-mutable-modules',
           text: 'View on GitHub',
         },
       ],
       badges: [
         {
-          url: 'https://pypi.org/project/torch-mutable-modules/',
+          href: 'https://pypi.org/project/torch-mutable-modules/',
           src: 'https://img.shields.io/pypi/dm/torch-mutable-modules?color=blue&label=Downloads',
           alt: 'downloads',
         },
         {
-          url: 'https://pypi.org/project/torch-mutable-modules/',
+          href: 'https://pypi.org/project/torch-mutable-modules/',
           src: 'https://img.shields.io/pypi/l/torch-mutable-modules?color=blue&label=License',
           alt: 'license',
         },
@@ -125,22 +126,22 @@
       language: 'Python',
       links: [
         {
-          url: 'https://pypi.org/project/pythonpp/',
+          href: 'https://pypi.org/project/pythonpp/',
           text: 'View on PyPI',
         },
         {
-          url: 'https://github.com/KentoNishi/pythonpp',
+          href: 'https://github.com/KentoNishi/pythonpp',
           text: 'View on GitHub',
         },
       ],
       badges: [
         {
-          url: 'https://pypi.org/project/pythonpp/',
+          href: 'https://pypi.org/project/pythonpp/',
           src: 'https://img.shields.io/pypi/dm/pythonpp?color=blue&label=Downloads',
           alt: 'downloads',
         },
         {
-          url: 'https://pypi.org/project/pythonpp/',
+          href: 'https://pypi.org/project/pythonpp/',
           src: 'https://img.shields.io/pypi/l/pythonpp?color=blue&label=License',
           alt: 'license',
         },
@@ -176,17 +177,16 @@
           <p>
             {p.description}
           </p>
-          <p>
+          <p class="badges">
             {#each p.badges as b}
-              <a href={b.url} tabindex="-1"
-                ><img src={b.src} alt={b.alt} class="badge" /></a
-              >
+              <span>
+                <Badge {...b} />
+              </span>
             {/each}
           </p>
-
           <div class="buttons">
             {#each p.links as l}
-              <a href={l.url} target="_blank">
+              <a href={l.href} target="_blank">
                 <button use:exioButton class="popup">{l.text}</button>
               </a>
             {/each}
@@ -196,9 +196,3 @@
     {/each}
   </Cards>
 </div>
-
-<style>
-  .badge {
-    margin: 0rem 0.125rem;
-  }
-</style>
