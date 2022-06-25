@@ -40,7 +40,7 @@
 
           <div class="item-wrapper">
             {#each track.items as item}
-              <h2>{item.title}</h2>
+              <h3>{item.title}</h3>
               <Visualizer src={item.src} />
             {/each}
           </div>
