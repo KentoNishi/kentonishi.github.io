@@ -7,6 +7,11 @@
   import ltl from '../img/ltl.png';
   import hc from '../img/hc.png';
   import '../css/page.css';
+  const loaded = (event: Event) => {
+    const target = event.target as HTMLImageElement;
+    target.style.transform = 'scale(1)';
+    target.style.opacity = '1';
+  };
 </script>
 
 <div use:exioZoomInAnimation style="transform-origin: top center;">
@@ -28,9 +33,10 @@
           Get live translations for YouTube streams, crowdsourced from
           multilingual viewers!
         </i>
-        <p>
+        <p class="badges">
           <a href="https://github.com/LiveTL/LiveTL/contributors" tabindex="-1"
             ><img
+              on:load={loaded}
               src="https://img.shields.io/github/contributors/LiveTL/LiveTL?color=blue&label=Contributors"
               alt="Contributors"
             /></a
@@ -39,37 +45,47 @@
             href="https://chrome.google.com/webstore/detail/livetl-translation-filter/moicohcfhhbmmngneghfjfjpdobmmnlg"
             tabindex="-1"
             ><img
+              on:load={loaded}
               src="https://img.shields.io/chrome-web-store/rating/moicohcfhhbmmngneghfjfjpdobmmnlg?style=flat&color=blue&label=Rating"
               alt="Rating"
             /></a
           >
           <a href="https://github.com/LiveTL/LiveTL" tabindex="-1"
             ><img
+              on:load={loaded}
               src="https://img.shields.io/github/stars/LiveTL/LiveTL?style=flat&logo=github&label=GitHub Stars"
               alt="GitHub Stars"
             /></a
           >
           <a href="https://www.gnu.org/licenses/agpl-3.0" tabindex="-1"
             ><img
+              on:load={loaded}
               src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg"
               alt="License: AGPL v3"
             /></a
           >
           <a href="'https://opencollective.com/livetl" tabindex="-1"
             ><img
+              on:load={loaded}
               src="https://img.shields.io/opencollective/all/livetl?label=Donators%20and%20Supporters&logo=dollar&style=flat&color=blue"
               alt="Donators and Supporters"
             /></a
           >
           <a href="https://discord.gg/uJrV3tmthg" tabindex="-1"
             ><img
+              on:load={loaded}
               src="https://img.shields.io/discord/780938154437640232.svg?label=&amp;logo=discord&amp;logoColor=ffffff&amp;color=7389D8&amp;labelColor=6A7EC2"
               alt="Discord"
             /></a
           >
         </p>
         <p class="center">
-          <img src={ltl} class="demo" alt="LiveTL Demo" />
+          <img
+            src={ltl}
+            class="demo"
+            style="aspect-ratio: calc(321 / 199);"
+            alt="LiveTL Demo"
+          />
         </p>
         <div class="buttons">
           <a href="https://github.com/LiveTL/LiveTL" target="_blank">
@@ -88,11 +104,12 @@
           HyperChat enhances your YouTube chat with a smoother, more
           feature-packed experience!
         </i>
-        <p>
+        <p class="badges">
           <a
             href="https://github.com/LiveTL/HyperChat/contributors"
             tabindex="-1"
             ><img
+              on:load={loaded}
               src="https://img.shields.io/github/contributors/LiveTL/HyperChat?color=blue&label=Contributors"
               alt="Contributors"
             /></a
@@ -101,37 +118,47 @@
             href="https://chrome.google.com/webstore/detail/hyperchat-by-livetl/naipgebhooiiccifflecbffmnjbabdbh"
             tabindex="-1"
             ><img
+              on:load={loaded}
               src="https://img.shields.io/chrome-web-store/rating/naipgebhooiiccifflecbffmnjbabdbh?style=flat&color=blue&label=Rating"
               alt="Rating"
             /></a
           >
           <a href="https://github.com/LiveTL/HyperChat" tabindex="-1"
             ><img
+              on:load={loaded}
               src="https://img.shields.io/github/stars/LiveTL/HyperChat?style=flat&logo=github&label=GitHub Stars"
               alt="GitHub Stars"
             /></a
           >
           <a href="https://www.gnu.org/licenses/agpl-3.0" tabindex="-1"
             ><img
+              on:load={loaded}
               src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg"
               alt="License: AGPL v3"
             /></a
           >
           <a href="'https://opencollective.com/livetl" tabindex="-1"
             ><img
+              on:load={loaded}
               src="https://img.shields.io/opencollective/all/livetl?label=Donators%20and%20Supporters&logo=dollar&style=flat&color=blue"
               alt="Donators and Supporters"
             /></a
           >
           <a href="https://discord.gg/uJrV3tmthg" tabindex="-1"
             ><img
+              on:load={loaded}
               src="https://img.shields.io/discord/780938154437640232.svg?label=&amp;logo=discord&amp;logoColor=ffffff&amp;color=7389D8&amp;labelColor=6A7EC2"
               alt="Discord"
             /></a
           >
         </p>
         <p class="center">
-          <img src={hc} class="demo" alt="HyperChat Demo" />
+          <img
+            src={hc}
+            class="demo"
+            style="aspect-ratio: calc(963 / 412);"
+            alt="HyperChat Demo"
+          />
         </p>
         <div class="buttons">
           <a href="https://github.com/LiveTL/HyperChat" target="_blank">
@@ -149,5 +176,18 @@
 <style>
   .demo {
     width: 100%;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(128, 128, 128, 0.25),
+      rgba(128, 128, 128, 0.25)
+    );
+  }
+  img {
+    display: inline-block;
+  }
+  .badges img {
+    transform: translateY(50%);
+    opacity: 0;
+    transition: 0.4s;
   }
 </style>
