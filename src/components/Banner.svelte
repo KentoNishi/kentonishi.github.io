@@ -38,10 +38,14 @@
       <img src={pfp} alt="Kento Nishi" class="pfp" />
       <div class="info">
         <div class="name">Kento Nishi</div>
+        <div class="affiliation">Harvard University</div>
         <div class="email">
           <a href="mailto:kento24gs@outlook.com">kento24gs@outlook.com</a>
+          <br />
+          <a href="mailto:kentonishi@college.harvard.edu">
+            kentonishi@college.harvard.edu
+          </a>
         </div>
-        <div class="affiliation">Lynbrook High School</div>
       </div>
     </div>
     <div class="links">
