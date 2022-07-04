@@ -38,18 +38,18 @@
   use:exioDialog
   open={!$loaded}
   style="
-      padding: 10px;
-      width: min(500px, 100%);
-      --exio-backdrop-color: black;
-    "
+    padding: 10px;
+    width: min(500px, 100%);
+    --exio-backdrop-color: black;
+  "
 >
   <div
     style="
-        height: 5px;
-        width: 100%;
-        --exio-loader-fill-color: var(--blue-accent);
-        background-color: rgb(18, 18, 18);
-      "
+      height: 5px;
+      width: 100%;
+      --exio-loader-fill-color: var(--blue-accent);
+      background-color: rgb(18, 18, 18);
+    "
     use:exioLoadingBarAnimation
   />
 </dialog>
