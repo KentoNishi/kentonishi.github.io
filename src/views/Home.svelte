@@ -1,11 +1,17 @@
 <script lang="ts">
-  import { exioZoomInAnimation } from 'exio';
+  import {
+    exioDialog,
+    exioZoomInAnimation,
+    exioLoadingBarAnimation,
+  } from 'exio';
+  import { loaded } from '../ts/stores';
   import { _ } from 'svelte-i18n';
 
   import Banner from '../components/Banner.svelte';
   import Card from '../components/Card.svelte';
   import Cards from '../components/Cards.svelte';
   import Tiles from '../components/Tiles.svelte';
+  import { tick } from 'svelte';
   const stats = [
     {
       src: 'https://github-readme-streak-stats.herokuapp.com/?theme=dark&user=KentoNishi&hide_border=true',
@@ -16,72 +22,107 @@
       alt: 'GitHub README Stats',
     },
   ];
-  const loaded = (e) => {
+  const imageLoaded = (e) => {
     (e.target as HTMLImageElement).classList.add('loaded');
   };
+  let render = true;
+  const toggleRender = async () => {
+    render = false;
+    await tick();
+    render = true;
+  };
+  $: if ($loaded) toggleRender();
 </script>
 
-<Banner />
-<div use:exioZoomInAnimation>
-  <Cards>
-    <Card>
-      <svelte:fragment slot="title">About Me</svelte:fragment>
-      <svelte:fragment slot="content">
-        <div>
-          {$_('info.bio')}
-        </div>
-        <div class="stats">
-          {#each stats as s}
-            <img src={`${s.src}&seed=${''}`} alt={s.alt} on:load={loaded} />
-          {/each}
-        </div>
-      </svelte:fragment>
-    </Card>
-  </Cards>
-</div>
-<div>
-  <Tiles
-    tiles={[
-      {
-        title: $_('entries.research.title'),
-        description: 'View my ongoing and published research.',
-        icon: 'school',
-        link: '/publications',
-      },
-      {
-        title: $_('entries.apps.title'),
-        description: 'View my open-source apps, websites, and extensions.',
-        icon: 'mobile_friendly',
-        link: '/apps',
-      },
-      {
-        title: $_('entries.packages.title'),
-        description: 'View my open-source packages and developer tools.',
-        icon: 'code',
-        link: '/packages',
-      },
-      {
-        title: $_('entries.music.title'),
-        description: 'Listen to my original compositions and productions.',
-        icon: 'music_note',
-        link: '/music',
-      },
-      {
-        title: $_('entries.resume.title'),
-        description: 'View my resume and contact information.',
-        icon: 'description',
-        link: '/resume.pdf',
-        realURL: true,
-      },
-      {
-        title: $_('entries.blog.title'),
-        description: 'View my blog posts, tutorials, and write-ups.',
-        icon: 'edit_note',
-        link: '/posts',
-      },
-    ]}
+<dialog
+  use:exioDialog
+  open={!$loaded}
+  style="
+      padding: 10px;
+      width: min(500px, 100%);
+      --exio-backdrop-color: black;
+    "
+>
+  <div
+    style="
+        height: 5px;
+        width: 100%;
+        --exio-loader-fill-color: var(--blue-accent);
+        background-color: rgb(18, 18, 18);
+      "
+    use:exioLoadingBarAnimation
   />
-</div>
+</dialog>
+
+{#if render}
+  <div>
+    <Banner />
+    <div use:exioZoomInAnimation>
+      <Cards>
+        <Card>
+          <svelte:fragment slot="title">About Me</svelte:fragment>
+          <svelte:fragment slot="content">
+            <div>
+              {$_('info.bio')}
+            </div>
+            <div class="stats">
+              {#each stats as s}
+                <img
+                  src={`${s.src}&seed=${''}`}
+                  alt={s.alt}
+                  on:load={imageLoaded}
+                />
+              {/each}
+            </div>
+          </svelte:fragment>
+        </Card>
+      </Cards>
+    </div>
+    <div>
+      <Tiles
+        tiles={[
+          {
+            title: $_('entries.research.title'),
+            description: 'View my ongoing and published research.',
+            icon: 'school',
+            link: '/publications',
+          },
+          {
+            title: $_('entries.apps.title'),
+            description: 'View my open-source apps, websites, and extensions.',
+            icon: 'mobile_friendly',
+            link: '/apps',
+          },
+          {
+            title: $_('entries.packages.title'),
+            description: 'View my open-source packages and developer tools.',
+            icon: 'code',
+            link: '/packages',
+          },
+          {
+            title: $_('entries.music.title'),
+            description: 'Listen to my original compositions and productions.',
+            icon: 'music_note',
+            link: '/music',
+          },
+          {
+            title: $_('entries.resume.title'),
+            description: 'View my resume and contact information.',
+            icon: 'description',
+            link: '/resume.pdf',
+            realURL: true,
+          },
+          {
+            title: $_('entries.blog.title'),
+            description: 'View my blog posts, tutorials, and write-ups.',
+            icon: 'edit_note',
+            link: '/posts',
+          },
+        ]}
+      />
+    </div>
+  </div>
+{/if}
 
 <style>
   .stats {
