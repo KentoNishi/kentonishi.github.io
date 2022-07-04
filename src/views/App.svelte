@@ -1,6 +1,6 @@
 <script lang="ts">
   import { isLoading, _ } from 'svelte-i18n';
-  import { exioApp } from 'exio';
+  import { exioApp, exioDialog, exioLoadingBarAnimation } from 'exio';
   import Router from 'svelte-spa-router';
   import { wrap } from 'svelte-spa-router/wrap';
   import { location } from 'svelte-spa-router';
@@ -51,13 +51,19 @@
         },
       }),
     };
+
   let loaded = false;
+  let showLoader = true;
   const toggle = async () => {
     loaded = false;
     await tick();
     loaded = true;
   };
   $: if ($location && !$isLoading) toggle();
+  setTimeout(() => {
+    showLoader = false;
+    toggle();
+  }, 1500);
 
   const height = 30;
   let title = '';
@@ -68,6 +74,26 @@
     if (e.detail.userData) title = e.detail.userData.title;
   };
 </script>
+
+<dialog
+  use:exioDialog
+  open={showLoader}
+  style="
+    padding: 10px;
+    width: min(500px, 100%);
+    --exio-backdrop-color: black;
+  "
+>
+  <div
+    style="
+      height: 5px;
+      width: 100%;
+      --exio-loader-fill-color: var(--blue-accent);
+      background-color: rgb(18, 18, 18);
+    "
+    use:exioLoadingBarAnimation
+  />
+</dialog>
 
 {#if loaded}
   <div use:exioApp>
