@@ -75,34 +75,39 @@
   };
 </script>
 
-<dialog
-  use:exioDialog
-  open={showLoader}
-  style="
-    padding: 10px;
-    width: min(500px, 100%);
-    --exio-backdrop-color: black;
-  "
->
-  <div
-    style="
-      height: 5px;
-      width: 100%;
-      --exio-loader-fill-color: var(--blue-accent);
-      background-color: rgb(18, 18, 18);
-    "
-    use:exioLoadingBarAnimation
-  />
-</dialog>
-
 {#if loaded}
   <div use:exioApp>
-    {#if !isHome}
-      <Navbar {height} {title} />
-    {/if}
-    <div style="margin-top: {isHome ? 0 : height}px;">
-      <Router on:routeLoading={routeLoaded} {routes} />
+    <div
+      style={showLoader
+        ? 'visibility: hidden; height: 0px; overflow: hidden;'
+        : ''}
+    >
+      {#if !isHome}
+        <Navbar {height} {title} />
+      {/if}
+      <div style="margin-top: {isHome ? 0 : height}px;">
+        <Router on:routeLoading={routeLoaded} {routes} />
+      </div>
     </div>
+    <dialog
+      use:exioDialog
+      open={showLoader}
+      style="
+        padding: 10px;
+        width: min(500px, 100%);
+        --exio-backdrop-color: black;
+      "
+    >
+      <div
+        style="
+          height: 5px;
+          width: 100%;
+          --exio-loader-fill-color: var(--blue-accent);
+          background-color: rgb(18, 18, 18);
+        "
+        use:exioLoadingBarAnimation
+      />
+    </dialog>
   </div>
 {/if}
 
