@@ -1,11 +1,12 @@
 <script lang="ts">
   import { isLoading, _ } from 'svelte-i18n';
-  import { exioApp, exioDialog, exioLoadingBarAnimation } from 'exio';
+  import { exioApp, exioLoadingBarAnimation } from 'exio';
   import Router from 'svelte-spa-router';
   import { wrap } from 'svelte-spa-router/wrap';
   import { location } from 'svelte-spa-router';
   import { tick } from 'svelte';
   import Navbar from '../components/Navbar.svelte';
+
   let routes: {
     [key: string]: any;
   };
@@ -89,25 +90,31 @@
         <Router on:routeLoading={routeLoaded} {routes} />
       </div>
     </div>
-    <dialog
-      use:exioDialog
-      open={showLoader}
-      style="
-        padding: 10px;
-        width: min(500px, 100%);
-        --exio-backdrop-color: black;
-      "
-    >
+    {#if showLoader}
       <div
         style="
-          height: 5px;
+          position: fixed;
           width: 100%;
-          --exio-loader-fill-color: var(--blue-accent);
-          background-color: rgb(18, 18, 18);
+          height: 100%;
+          top: 0;
+          left: 0;
+          background-color: black;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         "
-        use:exioLoadingBarAnimation
-      />
-    </dialog>
+      >
+        <div
+          style="
+            height: 5px;
+            width: min(80%, 250px);
+            --exio-loader-fill-color: var(--blue-accent);
+            background-color: rgb(18, 18, 18);
+          "
+          use:exioLoadingBarAnimation
+        />
+      </div>
+    {/if}
   </div>
 {/if}
 
