@@ -26,13 +26,13 @@
     const ctx = canvas.getContext('2d');
     ctx.imageSmoothingEnabled = false;
     const gap = 0.2;
-    const width = canvas.width / bufferLength;
-    const fill = width * gap;
-    const pad = (width * gap) / 2;
-    const grd = ctx.createLinearGradient(0, 0, canvas.width, 0);
-    grd.addColorStop(0, '#00afff');
-    grd.addColorStop(1, '#0fffff');
     const renderFrame = () => {
+      const width = canvas.width / bufferLength;
+      const fill = width * gap;
+      const pad = (width * gap) / 2;
+      const grd = ctx.createLinearGradient(0, 0, canvas.width, 0);
+      grd.addColorStop(0, '#00afff');
+      grd.addColorStop(1, '#0fffff');
       if (canvas) {
         requestAnimationFrame(renderFrame);
       } else {
