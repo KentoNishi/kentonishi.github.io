@@ -18,7 +18,7 @@
         },
       ],
       title: 'HyperChat Trailer Theme',
-      wip: true,
+      wip: false,
     },
   ];
 </script>
