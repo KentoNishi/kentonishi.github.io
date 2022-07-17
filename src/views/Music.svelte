@@ -9,11 +9,7 @@
     {
       items: [
         {
-          title: 'Full Track',
-          src: '/music/hyperchat.mp3',
-        },
-        {
-          title: 'Main Drop',
+          title: false,
           src: '/music/hyperchat-ad.mp3',
         },
       ],
@@ -40,7 +36,9 @@
 
           <div class="item-wrapper">
             {#each track.items as item}
-              <h3>{item.title}</h3>
+              {#if item.title}
+                <h3>{item.title}</h3>
+              {/if}
               <Visualizer src={item.src} />
             {/each}
           </div>
