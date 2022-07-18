@@ -18,12 +18,12 @@
 <style>
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     justify-items: center;
-    padding: 0rem 2rem 2rem 2rem;
     gap: 20px;
-    width: min(calc(100% - 4rem), 1000px);
+    width: min(calc(100%), 1000px);
     overflow: hidden;
+    padding: 0rem 1rem 1rem 1rem;
   }
   .wrap {
     width: 100%;

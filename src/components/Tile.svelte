@@ -5,7 +5,7 @@
   export let delay = 0;
 </script>
 
-<a href="{data.realURL ? '' : '#'}{data.link}">
+<a href="{data.realURL ? '' : '#'}{data.link}" style="width: 100%;">
   <div class="parent" use:exioFlyInAnimation style="animation-delay: {delay}s;">
     <button use:exioButton class="tile">
       <div class="split">
@@ -25,9 +25,9 @@
   .tile {
     background-color: transparent;
     cursor: pointer;
+    width: 100%;
   }
   button {
-    width: 300px;
     height: 100px;
   }
   .title {

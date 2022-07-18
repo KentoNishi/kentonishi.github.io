@@ -4,7 +4,6 @@
 
   import Banner from '../components/Banner.svelte';
   import Card from '../components/Card.svelte';
-  import Cards from '../components/Cards.svelte';
   import Tiles from '../components/Tiles.svelte';
   const stats = [
     {
@@ -20,22 +19,20 @@
 
 <div>
   <Banner />
-  <div use:exioZoomInAnimation>
-    <Cards>
-      <Card>
-        <svelte:fragment slot="title">About Me</svelte:fragment>
-        <svelte:fragment slot="content">
-          <div>
-            {$_('info.bio')}
-          </div>
-          <div class="stats">
-            {#each stats as s}
-              <img src={`${s.src}&seed=${''}`} alt={s.alt} />
-            {/each}
-          </div>
-        </svelte:fragment>
-      </Card>
-    </Cards>
+  <div use:exioZoomInAnimation class="about">
+    <Card>
+      <svelte:fragment slot="title">About Me</svelte:fragment>
+      <svelte:fragment slot="content">
+        <div>
+          {$_('info.bio')}
+        </div>
+        <div class="stats">
+          {#each stats as s}
+            <img src={`${s.src}&seed=${''}`} alt={s.alt} />
+          {/each}
+        </div>
+      </svelte:fragment>
+    </Card>
   </div>
   <div>
     <Tiles
@@ -86,13 +83,20 @@
   .stats {
     margin-top: 1rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
     align-items: flex-start;
     justify-items: center;
     position: relative;
   }
   .stats > img {
-    width: min(100%, 495px);
+    width: 100%;
     aspect-ratio: calc(495 / 195);
+  }
+  .about {
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: calc(100% - 2rem);
   }
 </style>
