@@ -11,10 +11,11 @@
   .grid {
     display: grid;
     justify-items: center;
-    gap: 20px;
+    gap: 1rem;
     width: min(calc(100% - 2rem), 1000px);
     overflow: visible;
     margin: auto;
+    margin-bottom: 1rem;
   }
   .wrap {
     width: 100%;

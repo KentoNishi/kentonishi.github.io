@@ -20,7 +20,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     justify-items: center;
-    gap: 20px;
+    gap: 1rem;
     width: min(calc(100%), 1000px);
     overflow: hidden;
     padding: 0rem 1rem 1rem 1rem;
