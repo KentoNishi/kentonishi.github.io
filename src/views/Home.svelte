@@ -20,7 +20,7 @@
 <div>
   <Banner />
   <div use:exioZoomInAnimation class="about">
-    <Card>
+    <Card staticCard>
       <svelte:fragment slot="title">About Me</svelte:fragment>
       <svelte:fragment slot="content">
         <div>
@@ -91,6 +91,8 @@
   .stats > img {
     width: 100%;
     aspect-ratio: calc(495 / 195);
+    pointer-events: none;
+    touch-action: none;
   }
   .about {
     max-width: 1000px;

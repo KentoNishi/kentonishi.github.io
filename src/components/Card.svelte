@@ -3,10 +3,11 @@
   import type { ExioNode } from 'exio';
   import { onDestroy, onMount } from 'svelte';
   export let titleCard = false;
+  export let staticCard = false;
   let el: HTMLDivElement;
   let card: ExioNode;
   onMount(() => {
-    if (!titleCard) card = exioCard(el);
+    if (!titleCard && !staticCard) card = exioCard(el);
   });
   onDestroy(() => {
     if (card) card.destroy();

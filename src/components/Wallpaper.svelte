@@ -13,6 +13,7 @@
     animation-fill-mode: forwards;
     width: 100%;
     pointer-events: none;
+    touch-action: none;
   }
   .wallpaper {
     width: 100%;
