@@ -7,7 +7,7 @@
   let el: HTMLDivElement;
   let card: ExioNode;
   onMount(() => {
-    if (!titleCard && !staticCard) card = exioCard(el);
+    if (!staticCard) card = exioCard(el);
   });
   onDestroy(() => {
     if (card) card.destroy();

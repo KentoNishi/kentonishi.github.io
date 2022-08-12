@@ -77,7 +77,7 @@
 </script>
 
 {#if loaded}
-  <div use:exioApp>
+  <div use:exioApp data-theme="dark">
     <div
       style={showLoader
         ? 'visibility: hidden; height: 0px; overflow: hidden;'

@@ -20,7 +20,7 @@
 <div>
   <Banner />
   <div use:exioZoomInAnimation class="about">
-    <Card staticCard>
+    <Card>
       <svelte:fragment slot="title">About Me</svelte:fragment>
       <svelte:fragment slot="content">
         <div>
