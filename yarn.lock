@@ -1066,10 +1066,10 @@ esutils@^2.0.2:
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.3.tgz#74d2eb4de0b8da1293711910d50775b9b710ef64"
   integrity sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
 
-exio@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/exio/-/exio-0.2.4.tgz#3760d6d2cf60a5e29ad7d819c45565550dc512ab"
-  integrity sha512-xGqtbupLCJ+ZQakJv5HzbRSJ/3AOfU7Wl9LX39RUYIQ3KadoixsCUXB1QSE7mEdO0/9sF1lTdJHx5C1t7l+Jew==
+exio@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/exio/-/exio-0.2.7.tgz#5389116bf49dc002691721f6f69f95a5ab290438"
+  integrity sha512-nldUJX0z5rnJ8XKg2aHhsNKjl+ZDnorrWPRLz6VCNEbVC17U5Jp9eeGdYTYEUhOiaybQSDAT5Awn/5WX5h0Org==
   dependencies:
     dialog-polyfill "^0.5.6"
 
