@@ -16,6 +16,16 @@
       title: 'HyperChat Trailer Theme',
       wip: false,
     },
+    {
+      items: [
+        {
+          title: 'Full track',
+          src: '/music/new-beginning.mp3',
+        },
+      ],
+      title: 'New Beginning',
+      wip: false,
+    },
   ];
 </script>
 
