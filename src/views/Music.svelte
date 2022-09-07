@@ -46,7 +46,7 @@
       <svelte:fragment slot="title">
         {$_('entries.music.title')}
       </svelte:fragment>
-      <div slot="content" style="color: black; margin-top: 1em;">
+      <div slot="content" style="color: black;">
         <APlayer {songs} />
       </div>
     </Card>

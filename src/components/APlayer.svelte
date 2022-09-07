@@ -67,6 +67,7 @@
     background-color: transparent;
     color: white;
     box-shadow: none !important;
+    margin: 0px 0px 0.5em 0px;
   }
   :global(.aplayer-list ol li.aplayer-list-light) {
     background: #333333 !important;
