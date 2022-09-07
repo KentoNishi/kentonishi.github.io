@@ -3,6 +3,7 @@
   import APlayer from 'aplayer';
   import { onDestroy, onMount } from 'svelte';
   import { exioButton, exioIcon } from 'exio';
+  import { _ } from 'svelte-i18n';
 
   export let songs: Array<{
     name: string;
@@ -43,7 +44,7 @@
         document.body.removeChild(a);
       }}
     >
-      <span>Download Track</span>
+      <span>{$_('entries.music.download')}</span>
       <span use:exioIcon style="font-size: 1.25em; vertical-align: bottom;"
         >download</span
       >
@@ -57,7 +58,7 @@
       }}
       class="popup"
     >
-      <span>Open Track in New Tab</span>
+      <span>{$_('entries.music.open')}</span>
     </button>
   </div>
 </div>

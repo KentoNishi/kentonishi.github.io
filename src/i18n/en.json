@@ -12,7 +12,8 @@
     },
     "music": {
       "title": "Music",
-      "download": "Download Track"
+      "download": "Download",
+      "open": "Open"
     },
     "resume": {
       "title": "Resume"
