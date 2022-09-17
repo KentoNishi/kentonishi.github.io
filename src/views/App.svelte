@@ -1,6 +1,6 @@
 <script lang="ts">
   import { isLoading, _ } from 'svelte-i18n';
-  import { exioApp, exioLoadingBarAnimation } from 'exio';
+  import { exioLoadingBarAnimation, exioGlobalStyler } from 'exio';
   import Router from 'svelte-spa-router';
   import { wrap } from 'svelte-spa-router/wrap';
   import { location } from 'svelte-spa-router';
@@ -77,7 +77,7 @@
 </script>
 
 {#if loaded}
-  <div use:exioApp data-theme="dark">
+  <div data-theme="dark" use:exioGlobalStyler>
     <div
       style={showLoader
         ? 'visibility: hidden; height: 0px; overflow: hidden;'
