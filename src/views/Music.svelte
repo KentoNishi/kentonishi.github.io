@@ -28,6 +28,17 @@
       title: 'New Beginning',
       wip: false,
     },
+    {
+      items: [
+        {
+          title: 'Full track',
+          src: '/music/edm.mp3',
+          date: 'September 2022',
+        },
+      ],
+      title: 'edm',
+      wip: true,
+    },
   ]
     .map((item) => {
       return {
