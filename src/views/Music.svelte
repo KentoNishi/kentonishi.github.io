@@ -42,7 +42,7 @@
   ]
     .map((item) => {
       return {
-        name: item.title,
+        name: `${item.title}${item.wip ? ' (work in progress)' : ''}`,
         artist: 'Kento Nishi',
         cover: '',
         url: item.items[0].src,
