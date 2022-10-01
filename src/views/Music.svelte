@@ -32,12 +32,12 @@
       items: [
         {
           title: 'Full track',
-          src: '/music/edm.mp3',
+          src: '/music/voyage.mp3',
           date: 'September 2022',
         },
       ],
-      title: 'edm',
-      wip: true,
+      title: 'Voyage',
+      wip: false,
     },
   ]
     .map((item) => {
