@@ -19,7 +19,8 @@
       "title": "Resume"
     },
     "blog": {
-      "title": "Blog Posts"
+      "title": "Blog Posts",
+      "pdf": "Read Full PDF"
     },
     "notfound": {
       "title": "404 Not Found",
