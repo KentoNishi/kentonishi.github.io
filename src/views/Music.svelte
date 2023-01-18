@@ -39,6 +39,17 @@
       title: 'Voyage',
       wip: false,
     },
+    {
+      items: [
+        {
+          title: 'Work in Progress',
+          src: '/music/forfeit.mp3',
+          date: 'January 2022',
+        },
+      ],
+      title: 'Forfeit',
+      wip: true,
+    },
   ]
     .map((item) => {
       return {
