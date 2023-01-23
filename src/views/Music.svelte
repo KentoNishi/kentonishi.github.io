@@ -48,7 +48,7 @@
         },
       ],
       title: 'Forfeit',
-      wip: true,
+      wip: false,
     },
   ]
     .map((item) => {
