@@ -9,6 +9,17 @@
     {
       items: [
         {
+          title: 'demo',
+          src: '/music/dubstep-demo.mp3',
+          date: 'March 2020',
+        },
+      ],
+      title: 'Dubstep Demo',
+      wip: false,
+    },
+    {
+      items: [
+        {
           title: '2min ver.',
           src: '/music/hyperchat-ad.mp3',
           date: 'July 2022',
