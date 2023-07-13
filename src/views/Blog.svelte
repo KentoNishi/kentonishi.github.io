@@ -2,7 +2,7 @@
   import Cards from '../components/Cards.svelte';
   import Card from '../components/Card.svelte';
   import '../css/page.css';
-  import { exioButton, exioZoomInAnimation } from 'exio';
+  import { exioButton, exioZoomInAnimation } from 'exio/svelte';
   import { _ } from 'svelte-i18n';
   // import { attributes as placeholderAttrs } from '../posts/placeholder.md';
 </script>

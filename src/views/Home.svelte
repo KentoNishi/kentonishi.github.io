@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { exioZoomInAnimation } from 'exio';
+  import { exioZoomInAnimation } from 'exio/svelte';
   import { _ } from 'svelte-i18n';
 
   import Banner from '../components/Banner.svelte';

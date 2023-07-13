@@ -1,5 +1,5 @@
 <script lagn="ts">
-  import { exioButton, exioIcon, exioFadeInAnimation } from 'exio';
+  import { exioButton, exioIcon, exioFadeInAnimation } from 'exio/svelte';
 
   export let height = 0;
   export let title = '';
