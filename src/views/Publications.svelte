@@ -73,7 +73,7 @@
             <button use:exioButton class="popup">Papers with Code</button>
           </a>
           <a
-            href="https://kentonishi.github.io/Augmentation-for-LNL/CVPR_Video.mp4"
+            href="https://kentonishi.com/Augmentation-for-LNL/CVPR_Video.mp4"
             target="_blank"
           >
             <button use:exioButton class="popup">CVPR Video</button>
