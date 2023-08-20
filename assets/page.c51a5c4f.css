@@ -1,0 +1,1 @@
+a{color:var(--blue-accent);font-weight:700}.buttons a{text-decoration:none;color:inherit}button{background-color:var(--gray-accent);cursor:pointer}.buttons{display:flex;gap:.75rem;flex-wrap:wrap}.center{margin-top:.5rem;display:flex;justify-content:center}.popup:after{font-family:Material Icons;content:"open_in_new";margin-left:.5rem}
