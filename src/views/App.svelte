@@ -13,40 +13,40 @@
   $: if (!$isLoading)
     routes = {
       '/': wrap({
-        asyncComponent: () => import('./Home.svelte'),
+        asyncComponent: () => import('./Home.svelte') as any,
       }),
       '/publications': wrap({
-        asyncComponent: () => import('./Publications.svelte'),
+        asyncComponent: () => import('./Publications.svelte') as any,
         userData: {
           title: $_('entries.research.title'),
         },
       }),
       '/apps': wrap({
-        asyncComponent: () => import('./Projects.svelte'),
+        asyncComponent: () => import('./Projects.svelte') as any,
         userData: {
           title: $_('entries.apps.title'),
         },
       }),
       '/packages': wrap({
-        asyncComponent: () => import('./Packages.svelte'),
+        asyncComponent: () => import('./Packages.svelte') as any,
         userData: {
           title: $_('entries.apps.title'),
         },
       }),
       '/posts': wrap({
-        asyncComponent: () => import('./Blog.svelte'),
+        asyncComponent: () => import('./Blog.svelte') as any,
         userData: {
           title: $_('entries.blog.title'),
         },
       }),
       '/music': wrap({
-        asyncComponent: () => import('./Music.svelte'),
+        asyncComponent: () => import('./Music.svelte') as any,
         userData: {
           title: $_('entries.music.title'),
         },
       }),
       '*': wrap({
-        asyncComponent: () => import('./NotFound.svelte'),
+        asyncComponent: () => import('./NotFound.svelte') as any,
         userData: {
           title: $_('entries.notfound.title'),
         },
