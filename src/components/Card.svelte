@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { exioCard } from 'exio';
-  import type { ExioNode } from 'exio';
+  import { exioCard } from 'exio/svelte';
+  import type { ExioNode } from 'exio/svelte';
   import { onDestroy, onMount } from 'svelte';
   export let titleCard = false;
   export let staticCard = false;

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { exioButton, exioFlyInAnimation, exioIcon } from 'exio';
+  import { exioButton, exioFlyInAnimation, exioIcon } from 'exio/svelte';
   import type { TileEntry } from '../ts/types';
   export let data: TileEntry;
   export let delay = 0;

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { isLoading, _ } from 'svelte-i18n';
-  import { exioLoadingBarAnimation, exioGlobalStyler } from 'exio';
+  import { exioLoadingBarAnimation, exioGlobalStyler } from 'exio/svelte';
   import Router from 'svelte-spa-router';
   import { wrap } from 'svelte-spa-router/wrap';
   import { location } from 'svelte-spa-router';

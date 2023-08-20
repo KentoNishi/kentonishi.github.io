@@ -2,7 +2,7 @@
   import 'aplayer/dist/APlayer.min.css';
   import APlayer from 'aplayer';
   import { onDestroy, onMount } from 'svelte';
-  import { exioButton, exioIcon } from 'exio';
+  import { exioButton, exioIcon } from 'exio/svelte';
   import { _ } from 'svelte-i18n';
 
   export let songs: Array<{

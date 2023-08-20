@@ -1,6 +1,6 @@
 <script lang="ts">
   import pfp from '../img/pfp.png';
-  import { exioButton, exioFadeInAnimation } from 'exio';
+  import { exioButton, exioFadeInAnimation } from 'exio/svelte';
   import github from '../img/github.svg';
   import linkedin from '../img/linkedin.svg';
   import gscholar from '../img/gscholar.svg';
