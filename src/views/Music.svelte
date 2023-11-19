@@ -53,13 +53,24 @@
     {
       items: [
         {
-          title: 'Work in Progress',
+          title: 'Full track',
           src: '/music/forfeit.mp3',
-          date: 'January 2022',
+          date: 'January 2023',
         },
       ],
       title: 'Forfeit',
       wip: false,
+    },
+    {
+      items: [
+        {
+          title: 'Work in Progress',
+          src: '/music/october-wip.wav',
+          date: 'October 2023',
+        },
+      ],
+      title: 'October Draft',
+      wip: true,
     },
   ]
     .map((item) => {
