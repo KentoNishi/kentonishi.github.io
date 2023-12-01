@@ -75,7 +75,7 @@
   ]
     .map((item) => {
       return {
-        name: `${item.title}${item.wip ? ' (work in progress)' : ''}`,
+        name: `${item.title}${item.wip ? ' (draft)' : ''}`,
         artist: 'Kento Nishi',
         cover: '',
         url: item.items[0].src,
