@@ -97,6 +97,7 @@
     align-items: center;
     justify-content: space-evenly;
     max-width: 1000px;
+    z-index: 1000;
   }
   .pfp {
     width: 100px;
