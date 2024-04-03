@@ -32,19 +32,74 @@
     </Card>
     <Card>
       <svelte:fragment slot="title">
+        Joint-Task Regularization for Multi-Task Learning with Partially Labeled
+        Data
+      </svelte:fragment>
+      <svelte:fragment slot="content">
+        <i>Conference on Computer Vision and Pattern Recognition (CVPR 2024)</i>
+        <p>
+          <span><strong>Kento Nishi</strong></span>,
+          <span>Junsik Kim</span>,
+          <span>Wanhua Li</span>,
+          <span>Hanspeter Pfister</span>
+        </p>
+
+        <div class="buttons">
+          <a href="https://arxiv.org/abs/2404.01976" target="_blank">
+            <button use:exioButton class="popup">arXiv</button>
+          </a>
+          <a href="https://arxiv.org/pdf/2404.01976.pdf" target="_blank">
+            <button use:exioButton class="popup">PDF</button>
+          </a>
+          <a href="https://github.com/KentoNishi/JTR-CVPR-2024" target="_blank">
+            <button use:exioButton class="popup">GitHub</button>
+          </a>
+        </div>
+      </svelte:fragment>
+    </Card>
+    <Card>
+      <svelte:fragment slot="title">
+        Stepwise Inference in Transformers: Exploring a Synthetic Graph
+        Navigation Task
+      </svelte:fragment>
+      <svelte:fragment slot="content">
+        <i
+          >NeurIPS R0-FoMo Workshop: Robustness of Few-shot and Zero-shot
+          Learning in Large Foundation Models (NeurIPS 2023)</i
+        >
+        <p>
+          Mikail Khona, Maya Okawa, Rahul Ramesh,
+          <span><strong>Kento Nishi</strong></span>, Robert P Dick, Ekdeep Singh
+          Lubana, Hidenori Tanaka
+        </p>
+
+        <div class="buttons">
+          <a href="https://arxiv.org/abs/2402.07757" target="_blank">
+            <button use:exioButton class="popup">arXiv</button>
+          </a>
+          <a
+            href="https://openreview.net/forum?id=VJEcAnFPqC&referrer=%5Bthe%20profile%20of%20Mikail%20Khona%5D(%2Fprofile%3Fid%3D~Mikail_Khona2)"
+            target="_blank"
+          >
+            <button use:exioButton class="popup">OpenReview</button>
+          </a>
+          <a href="https://arxiv.org/pdf/2402.07757.pdf" target="_blank">
+            <button use:exioButton class="popup">PDF</button>
+          </a>
+        </div>
+      </svelte:fragment>
+    </Card>
+    <Card>
+      <svelte:fragment slot="title">
         Augmentation Strategies for Learning with Noisy Labels
       </svelte:fragment>
       <svelte:fragment slot="content">
-        <i>Conference on Computer Vision and Pattern Recognition (2021)</i>
+        <i>Conference on Computer Vision and Pattern Recognition (CVPR 2021)</i>
         <p>
-          <a href="mailto:kento24gs@outlook.com">Kento Nishi</a>*,
-          <a href="mailto:yding@cs.ucsb.edu">Yi Ding</a>*,
-          <a href="mailto:anrich@cs.ucsb.edu">Alex Rich</a>,
-          <a href="mailto:holl@cs.ucsb.edu">Tobias Höllerer</a>
-          [<code>*</code>:
-          <a href="mailto:kento24gs@outlook.com,yding@cs.ucsb.edu"
-            >equal contribution</a
-          >]
+          <span><strong>Kento Nishi</strong></span>,
+          <span>Yi Ding</span>,
+          <span>Alex Rich</span>,
+          <span>Tobias Höllerer</span>
         </p>
 
         <div class="buttons">
@@ -88,13 +143,14 @@
       </svelte:fragment>
       <svelte:fragment slot="content">
         <i>
-          Proceedings of the AAAI Conference on Artificial Intelligence (2021)
+          Proceedings of the AAAI Conference on Artificial Intelligence (AAAI
+          2021)
         </i>
         <p>
-          <a href="mailto:kento24gs@outlook.com">Kento Nishi</a>,
-          <a href="mailto:yding@cs.ucsb.edu">Yi Ding</a>,
-          <a href="mailto:anrich@cs.ucsb.edu">Alex Rich</a>,
-          <a href="mailto:holl@cs.ucsb.edu">Tobias Höllerer</a>
+          <span><strong>Kento Nishi</strong></span>,
+          <span>Yi Ding</span>,
+          <span>Alex Rich</span>,
+          <span>Tobias Höllerer</span>
         </p>
 
         <div class="buttons">
