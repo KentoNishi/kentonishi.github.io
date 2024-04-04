@@ -32,8 +32,7 @@
     </Card>
     <Card>
       <svelte:fragment slot="title">
-        Joint-Task Regularization for Multi-Task Learning with Partially Labeled
-        Data
+        Joint-Task Regularization for Partially Labeled Multi-Task Learning
       </svelte:fragment>
       <svelte:fragment slot="content">
         <i>Conference on Computer Vision and Pattern Recognition (CVPR 2024)</i>
