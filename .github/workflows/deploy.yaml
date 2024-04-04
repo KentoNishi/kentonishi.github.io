@@ -23,6 +23,7 @@ jobs:
       - name: Build
         run: |
           yarn build
+          cp CNAME dist/
 
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
