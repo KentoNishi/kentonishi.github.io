@@ -50,6 +50,9 @@
           <a href="https://arxiv.org/pdf/2404.01976.pdf" target="_blank">
             <button use:exioButton class="popup">PDF</button>
           </a>
+          <a href="https://kentonishi.com/JTR-CVPR-2024/" target="_blank">
+            <button use:exioButton class="popup">Website</button>
+          </a>
           <a href="https://github.com/KentoNishi/JTR-CVPR-2024" target="_blank">
             <button use:exioButton class="popup">GitHub</button>
           </a>
