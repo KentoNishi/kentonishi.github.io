@@ -61,6 +61,29 @@
     </Card>
     <Card>
       <svelte:fragment slot="title">
+        Towards an Understanding of Stepwise Inference in Transformers: A
+        Synthetic Graph Navigation Model
+      </svelte:fragment>
+      <svelte:fragment slot="content">
+        <i>International Conference on Machine Learning (ICML 2024)</i>
+        <p>
+          Mikail Khona, Maya Okawa, Jan Hula, Rahul Ramesh,
+          <span><strong>Kento Nishi</strong></span>, Robert P Dick, Ekdeep Singh
+          Lubana, Hidenori Tanaka
+        </p>
+
+        <div class="buttons">
+          <a href="https://arxiv.org/abs/2402.07757" target="_blank">
+            <button use:exioButton class="popup">arXiv</button>
+          </a>
+          <a href="https://arxiv.org/pdf/2402.07757.pdf" target="_blank">
+            <button use:exioButton class="popup">PDF</button>
+          </a>
+        </div>
+      </svelte:fragment>
+    </Card>
+    <Card>
+      <svelte:fragment slot="title">
         Stepwise Inference in Transformers: Exploring a Synthetic Graph
         Navigation Task
       </svelte:fragment>
@@ -76,16 +99,10 @@
         </p>
 
         <div class="buttons">
-          <a href="https://arxiv.org/abs/2402.07757" target="_blank">
-            <button use:exioButton class="popup">arXiv</button>
-          </a>
-          <a
-            href="https://openreview.net/forum?id=VJEcAnFPqC&referrer=%5Bthe%20profile%20of%20Mikail%20Khona%5D(%2Fprofile%3Fid%3D~Mikail_Khona2)"
-            target="_blank"
-          >
+          <a href="https://openreview.net/forum?id=RSGmZ7HZaA" target="_blank">
             <button use:exioButton class="popup">OpenReview</button>
           </a>
-          <a href="https://arxiv.org/pdf/2402.07757.pdf" target="_blank">
+          <a href="https://openreview.net/pdf?id=RSGmZ7HZaA" target="_blank">
             <button use:exioButton class="popup">PDF</button>
           </a>
         </div>
