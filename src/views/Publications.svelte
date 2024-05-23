@@ -44,6 +44,12 @@
         </p>
 
         <div class="buttons">
+          <a
+            href="https://cvpr.thecvf.com/virtual/2024/poster/29723"
+            target="_blank"
+          >
+            <button use:exioButton class="popup">CVPR Poster / Video</button>
+          </a>
           <a href="https://arxiv.org/abs/2404.01976" target="_blank">
             <button use:exioButton class="popup">arXiv</button>
           </a>
