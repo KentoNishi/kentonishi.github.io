@@ -72,6 +72,17 @@
       title: 'October Draft',
       wip: true,
     },
+    {
+      items: [
+        {
+          title: 'Work in Progress',
+          src: '/music/instrumental-layers.wav',
+          date: 'March 2024',
+        },
+      ],
+      title: 'Instrumental Draft',
+      wip: false,
+    },
   ]
     .map((item) => {
       return {
