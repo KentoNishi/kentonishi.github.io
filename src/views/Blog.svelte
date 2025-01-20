@@ -30,7 +30,7 @@
     </Card>
     <Card>
       <svelte:fragment slot="title">
-        Portals
+        Implementing Portals in Unity
       </svelte:fragment>
       <svelte:fragment slot="content">
         <p>CompSci 175 Spring 2023 Term Project</p>
