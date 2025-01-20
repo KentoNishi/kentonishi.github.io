@@ -20,7 +20,8 @@
     },
     "blog": {
       "title": "Blog Posts",
-      "pdf": "Read Full PDF"
+      "pdf": "Read Full PDF",
+      "code": "View Repo"
     },
     "notfound": {
       "title": "404 Not Found",
