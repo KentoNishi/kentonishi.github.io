@@ -18,7 +18,7 @@
         A User Study with Maps of Transit Travel Times
       </svelte:fragment>
       <svelte:fragment slot="content">
-        <p>CompSci 271 Spring 2024 Term Paper</p>
+        <p>Harvard CompSci 271 Spring 2024 Term Paper</p>
         <div class="buttons">
           <a href="/cs271-variance/Can_Temporal_Distance_Maps_Communicate_Variability__A_User_Study_with_Maps_of_Transit_Travel_Times.pdf" target="_blank">
             <button use:exioButton class="popup">
@@ -33,7 +33,7 @@
         Implementing Portals in Unity
       </svelte:fragment>
       <svelte:fragment slot="content">
-        <p>CompSci 175 Spring 2023 Term Project</p>
+        <p>Harvard CompSci 175 Spring 2023 Term Project</p>
         <div class="buttons">
           <a href="/cs175-final-project/CS%20175%20writeup.pdf" target="_blank">
             <button use:exioButton class="popup">
