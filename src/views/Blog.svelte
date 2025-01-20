@@ -25,6 +25,11 @@
               {$_('entries.blog.pdf')}
             </button>
           </a>
+          <a href="https://github.com/KentoNishi/cs271-variance" target="_blank">
+            <button use:exioButton class="popup">
+              {$_('entries.blog.code')}
+            </button>
+          </a>
         </div>
       </svelte:fragment>
     </Card>
