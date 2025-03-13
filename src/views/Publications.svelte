@@ -32,6 +32,58 @@
     </Card>
     <Card>
       <svelte:fragment slot="title">
+        Representation Shattering in Transformers: A Synthetic Study with
+        Knowledge Editing
+      </svelte:fragment>
+      <svelte:fragment slot="content">
+        <i>Preprint</i>
+        <p>
+          <span><strong>Kento Nishi</strong></span>,
+          <span>Maya Okawa</span>,
+          <span>Rahul Ramesh</span>,
+          <span>Mikail Khona</span>,
+          <span>Hidenori Tanaka</span>,
+          <span>Ekdeep Singh Lubana</span>
+        </p>
+
+        <div class="buttons">
+          <a href="https://arxiv.org/abs/2410.17194" target="_blank">
+            <button use:exioButton class="popup">arXiv</button>
+          </a>
+          <a href="https://arxiv.org/abs/2410.17194.pdf" target="_blank">
+            <button use:exioButton class="popup">PDF</button>
+          </a>
+        </div>
+      </svelte:fragment>
+    </Card>
+    <Card>
+      <svelte:fragment slot="title">
+        Representation Shattering in Transformers: A Synthetic Study with
+        Knowledge Editing
+      </svelte:fragment>
+      <svelte:fragment slot="content">
+        <i>Preprint</i>
+        <p>
+          <span><strong>Kento Nishi</strong></span>,
+          <span>Maya Okawa</span>,
+          <span>Rahul Ramesh</span>,
+          <span>Mikail Khona</span>,
+          <span>Hidenori Tanaka</span>,
+          <span>Ekdeep Singh Lubana</span>
+        </p>
+
+        <div class="buttons">
+          <a href="https://arxiv.org/abs/2410.17194" target="_blank">
+            <button use:exioButton class="popup">arXiv</button>
+          </a>
+          <a href="https://arxiv.org/abs/2410.17194.pdf" target="_blank">
+            <button use:exioButton class="popup">PDF</button>
+          </a>
+        </div>
+      </svelte:fragment>
+    </Card>
+    <Card>
+      <svelte:fragment slot="title">
         Joint-Task Regularization for Partially Labeled Multi-Task Learning
       </svelte:fragment>
       <svelte:fragment slot="content">
