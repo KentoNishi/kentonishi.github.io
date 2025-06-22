@@ -58,6 +58,12 @@
           <a href="https://arxiv.org/abs/2410.17194.pdf" target="_blank">
             <button use:exioButton class="popup">PDF</button>
           </a>
+          <a
+            href="https://x.com/kento_nishi/status/1932072335726539063"
+            target="_blank"
+          >
+            <button use:exioButton class="popup">Twitter/X Thread</button>
+          </a>
         </div>
       </svelte:fragment>
     </Card>
