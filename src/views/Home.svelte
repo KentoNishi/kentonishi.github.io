@@ -7,7 +7,7 @@
   import Tiles from '../components/Tiles.svelte';
   const stats = [
     {
-      src: 'https://github-readme-streak-stats.herokuapp.com/?theme=dark&user=KentoNishi&hide_border=true',
+      src: 'https://streak-stats.demolab.com/?theme=dark&user=KentoNishi&hide_border=true',
       alt: 'GitHub README Streak Stats',
     },
     {
