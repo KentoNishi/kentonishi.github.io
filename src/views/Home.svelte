@@ -20,7 +20,7 @@
 <div>
   <Banner />
   <div use:exioZoomInAnimation class="about">
-    <Card>
+    <!-- <Card>
       <svelte:fragment slot="title">About Me</svelte:fragment>
       <svelte:fragment slot="content">
         <div>
@@ -32,7 +32,7 @@
           {/each}
         </div>
       </svelte:fragment>
-    </Card>
+    </Card> -->
   </div>
   <div>
     <Tiles
