@@ -14,6 +14,27 @@
     </Card>
     <Card>
       <svelte:fragment slot="title">
+        Does CS1050’s Chatham House Policy Protect Against LLM-Powered Stylometric
+        Linkage De-Identification?
+      </svelte:fragment>
+      <svelte:fragment slot="content">
+        <p>Harvard CS1050 Project Report</p>
+        <div class="buttons">
+          <a href="/stylometry.pdf" target="_blank">
+            <button use:exioButton class="popup">
+              {$_('entries.blog.pdf')}
+            </button>
+          </a>
+          <a href="https://github.com/KentoNishi/CS1050-Stylometry" target="_blank">
+            <button use:exioButton class="popup">
+              {$_('entries.blog.code')}
+            </button>
+          </a>
+        </div>
+      </svelte:fragment>
+    </Card>
+    <Card>
+      <svelte:fragment slot="title">
         Can Temporal Distance Maps Communicate Variability?
         A User Study with Maps of Transit Travel Times
       </svelte:fragment>
