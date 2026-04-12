@@ -83,6 +83,17 @@
       title: 'Instrumental Draft',
       wip: false,
     },
+    {
+      items: [
+        {
+          title: 'Work in Progress',
+          src: '/music/bliss.mp3',
+          date: 'March 2026',
+        },
+      ],
+      title: 'Bliss',
+      wip: true,
+    },
   ]
     .map((item) => {
       return {
