@@ -61,26 +61,37 @@
       title: 'Forfeit',
       wip: false,
     },
+    // {
+    //   items: [
+    //     {
+    //       title: 'Work in Progress',
+    //       src: '/music/october-wip.wav',
+    //       date: 'October 2023',
+    //     },
+    //   ],
+    //   title: 'October Draft',
+    //   wip: true,
+    // },
+    // {
+    //   items: [
+    //     {
+    //       title: 'Work in Progress',
+    //       src: '/music/instrumental-layers.wav',
+    //       date: 'March 2024',
+    //     },
+    //   ],
+    //   title: 'Instrumental Draft',
+    //   wip: false,
+    // },
     {
       items: [
         {
           title: 'Work in Progress',
-          src: '/music/october-wip.wav',
-          date: 'October 2023',
+          src: '/music/full-131.wav',
+          date: 'August 2023',
         },
       ],
-      title: 'October Draft',
-      wip: true,
-    },
-    {
-      items: [
-        {
-          title: 'Work in Progress',
-          src: '/music/instrumental-layers.wav',
-          date: 'March 2024',
-        },
-      ],
-      title: 'Instrumental Draft',
+      title: 'Celesta',
       wip: false,
     },
     {
