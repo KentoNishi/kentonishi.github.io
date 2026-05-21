@@ -92,7 +92,7 @@
         },
       ],
       title: 'Celesta',
-      wip: false,
+      wip: true,
     },
     {
       items: [
