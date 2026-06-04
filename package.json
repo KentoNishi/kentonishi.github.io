@@ -11,8 +11,8 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"check": "svelte-kit sync && svelte-check --no-tsconfig --ignore \"node_modules,.svelte-kit,build\"",
+		"check:watch": "svelte-kit sync && svelte-check --no-tsconfig --ignore \"node_modules,.svelte-kit,build\" --watch"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^3.0.10",
@@ -23,5 +23,8 @@
 		"svelte-check": "^4.4.6",
 		"typescript": "^6.0.2",
 		"vite": "^8.0.7"
+	},
+	"dependencies": {
+		"exio": "^0.6.54"
 	}
 }

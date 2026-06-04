@@ -1,32 +1,59 @@
 <script lang="ts">
-	import InlineLinks from './InlineLinks.svelte';
+	import { exioFadeInAnimation } from '$lib/exio';
+	import ActionLinks from './ActionLinks.svelte';
 	import type { Profile } from '$lib/site';
 
 	let { profile }: { profile: Profile } = $props();
 </script>
 
+<section class="hero">
+	<img class="hero-wallpaper" src={profile.wallpaper.src} alt={profile.wallpaper.alt} />
+	<div class="hero-shade"></div>
+	<div class="hero-inner" use:exioFadeInAnimation>
+		<div class="profile-photo-frame">
+			<img class="profile-photo" src={profile.image.src} alt={profile.image.alt} />
+		</div>
+
+		<div class="profile-copy">
+			<h1>{profile.name}</h1>
+			<p class="profile-meta">{profile.affiliation} / {profile.location}</p>
+
+			{#each profile.bio as paragraph}
+				<p>{paragraph}</p>
+			{/each}
+
+			<ActionLinks links={profile.links} />
+		</div>
+	</div>
+</section>
+
+<section class="resume-strip">
+	<div>
+		<strong>Research:</strong> transformers, diffusion models, computer vision, mechanistic interpretability
+	</div>
+	<div>
+		<strong>Programming:</strong> Python, TypeScript, C++, Svelte, PyTorch, OpenGL, Docker
+	</div>
+</section>
+
+<!--
 <table class="site-table">
 	<tbody>
 		<tr class="profile-row">
-			<td class="profile-copy" class:profile-copy-full={!profile.image}>
+			<td class="profile-copy">
 				<h1>{profile.name}</h1>
 
 				{#each profile.bio as paragraph}
 					<p>{paragraph}</p>
 				{/each}
 
-				{#if profile.links.length}
-					<p class="profile-links">
-						<InlineLinks links={profile.links} />
-					</p>
-				{/if}
+				<ActionLinks links={profile.links} />
 			</td>
 
-			{#if profile.image}
-				<td class="profile-photo-cell">
-					<img class="profile-photo" src={profile.image.src} alt={profile.image.alt} />
-				</td>
-			{/if}
+			<td class="profile-photo-cell">
+				<img class="profile-photo" src={profile.image.src} alt={profile.image.alt} />
+			</td>
 		</tr>
 	</tbody>
 </table>
+-->

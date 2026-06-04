@@ -1,58 +1,61 @@
 <script lang="ts">
-	import InlineLinks from './InlineLinks.svelte';
-	import type { Project } from '$lib/site';
+	import { exioCard } from '$lib/exio';
+	import ActionLinks from './ActionLinks.svelte';
+	import type { DetailItem } from '$lib/site';
 
-	let { project }: { project: Project } = $props();
-
-	const formattedDate = $derived.by(() => {
-		if (!project.date) return undefined;
-
-		const date = new Date(project.date);
-		if (Number.isNaN(date.valueOf())) return project.date;
-
-		return project.venue ? date.getUTCFullYear().toString() : project.date;
-	});
-
-	const categoryLabel = $derived(
-		[...(project.categories ?? []), project.course].filter(Boolean).join(' ')
-	);
+	let { item }: { item: DetailItem } = $props();
 </script>
 
-<tr class="project-row">
-	<td class="project-image-cell">
-		{#if project.image}
-			<img class="project-image" src={project.image.src} alt={project.image.alt} />
+<article
+	class="detail-row"
+	class:highlight={item.highlight}
+	class:has-image={item.image}
+	use:exioCard={{
+		backgroundColor: 'var(--paper)',
+		hoverBorderColor: 'var(--teal)',
+		borderWidth: '1px'
+	}}
+>
+	{#if item.image}
+		<div class="detail-image-cell">
+			<img class="detail-image" src={item.image.src} alt={item.image.alt} />
+		</div>
+	{/if}
+
+	<div class="detail-copy">
+		<div class="detail-title-line">
+			<h3>{item.title}</h3>
+			{#if item.meta}
+				<span class="detail-meta">{item.meta}</span>
+			{/if}
+		</div>
+
+		{#if item.subtitle}
+			<p class="detail-subtitle">{item.subtitle}</p>
 		{/if}
-	</td>
 
-	<td class="project-copy">
-		<h3>{project.title}</h3>
-
-		{#if project.authors}
-			<br />
-			<span>{project.authors}</span>
+		{#if item.description}
+			<p class="detail-description">{item.description}</p>
 		{/if}
 
-		{#if project.venue || formattedDate || categoryLabel}
-			<div class="project-meta">
-				{#if project.venue}
-					<em>{project.venue}</em>{#if formattedDate}, {formattedDate}{/if}
-				{:else if categoryLabel}
-					<em>{categoryLabel}</em>{#if formattedDate}<br />{formattedDate}{/if}
-				{:else if formattedDate}
-					{formattedDate}
-				{/if}
+		{#if item.bullets?.length}
+			<ul>
+				{#each item.bullets as bullet}
+					<li>{bullet}</li>
+				{/each}
+			</ul>
+		{/if}
+
+		{#if item.tags?.length}
+			<div class="tags">
+				{#each item.tags as tag}
+					<span>{tag}</span>
+				{/each}
 			</div>
 		{/if}
 
-		{#if project.links?.length}
-			<div class="project-links">
-				<InlineLinks links={project.links} />
-			</div>
+		{#if item.links?.length}
+			<ActionLinks links={item.links} compact />
 		{/if}
-
-		{#if project.description}
-			<p class="project-description">{project.description}</p>
-		{/if}
-	</td>
-</tr>
+	</div>
+</article>
