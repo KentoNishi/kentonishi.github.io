@@ -11,12 +11,6 @@
 	--link: #1772d0;
 	--link-hover: #f09228;
 	--shadow: rgba(9, 31, 38, 0.08);
-	--exio-hover-body-color: rgba(0, 140, 140, 0.08);
-	--exio-hover-border-color: rgba(0, 140, 140, 0.7);
-	--exio-focused-border-color: rgba(0, 140, 140, 0.9);
-	--exio-border-width: 1px;
-	--exio-clicking-scale: 0.98;
-	--exio-default-text-color: var(--ink);
 	font-family: 'Lato', Verdana, Helvetica, sans-serif;
 	font-size: 14px;
 	color: var(--ink);
@@ -321,15 +315,26 @@ li {
 	border-radius: 0;
 	cursor: pointer;
 	white-space: nowrap;
-	--exio-border-width: 1px;
-	--exio-hover-border-color: var(--teal);
-	--exio-focused-border-color: var(--teal);
-	--exio-hover-body-color: rgba(0, 140, 140, 0.08);
-	--exio-clicking-scale: 0.98;
+	transition:
+		background-color 0.15s ease,
+		border-color 0.15s ease,
+		color 0.15s ease,
+		transform 0.08s ease;
 }
 
 .action-button:hover {
+	background: rgba(0, 140, 140, 0.08);
+	border-color: var(--teal);
 	color: var(--link-hover);
+}
+
+.action-button:focus-visible {
+	outline: 2px solid rgba(0, 140, 140, 0.35);
+	outline-offset: 2px;
+}
+
+.action-button:active {
+	transform: scale(0.98);
 }
 
 .action-button.compact {

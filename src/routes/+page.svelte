@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { exioZoomInAnimation } from '$lib/exio';
 	import ProfileHeader from '$lib/components/ProfileHeader.svelte';
 	import ProjectSection from '$lib/components/ProjectSection.svelte';
 	import { profile, sections } from '$lib/site';
@@ -14,7 +13,7 @@
 	/>
 </svelte:head>
 
-<main class="site-shell" use:exioZoomInAnimation>
+<main class="site-shell">
 	<ProfileHeader {profile} />
 
 	{#each sections as section}
@@ -22,6 +21,6 @@
 	{/each}
 
 	<footer class="site-footer">
-		<p>Design adapted from Leonid Keselman and Jon Barron. Built with SvelteKit, static rendering, and Exio.</p>
+		<p>Design adapted from Leonid Keselman and Jon Barron. Built with SvelteKit and static rendering.</p>
 	</footer>
 </main>

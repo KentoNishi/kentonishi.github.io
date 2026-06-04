@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { exioFadeInAnimation } from '$lib/exio';
 	import ActionLinks from './ActionLinks.svelte';
 	import type { Profile } from '$lib/site';
 
@@ -9,7 +8,7 @@
 <section class="hero">
 	<img class="hero-wallpaper" src={profile.wallpaper.src} alt={profile.wallpaper.alt} />
 	<div class="hero-shade"></div>
-	<div class="hero-inner" use:exioFadeInAnimation>
+	<div class="hero-inner">
 		<div class="profile-photo-frame">
 			<img class="profile-photo" src={profile.image.src} alt={profile.image.alt} />
 		</div>
