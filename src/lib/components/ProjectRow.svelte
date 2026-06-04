@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { exioCard } from '$lib/exio';
 	import ActionLinks from './ActionLinks.svelte';
 	import type { DetailItem } from '$lib/site';
 
@@ -10,11 +9,6 @@
 	class="detail-row"
 	class:highlight={item.highlight}
 	class:has-image={item.image}
-	use:exioCard={{
-		backgroundColor: 'var(--paper)',
-		hoverBorderColor: 'var(--teal)',
-		borderWidth: '1px'
-	}}
 >
 	{#if item.image}
 		<div class="detail-image-cell">
@@ -23,15 +17,14 @@
 	{/if}
 
 	<div class="detail-copy">
-		<div class="detail-title-line">
-			<h3>{item.title}</h3>
-			{#if item.meta}
-				<span class="detail-meta">{item.meta}</span>
-			{/if}
-		</div>
+		<h3>{item.title}</h3>
 
 		{#if item.subtitle}
 			<p class="detail-subtitle">{item.subtitle}</p>
+		{/if}
+
+		{#if item.meta}
+			<p class="detail-meta">{item.meta}</p>
 		{/if}
 
 		{#if item.description}

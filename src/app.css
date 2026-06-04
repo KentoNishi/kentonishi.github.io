@@ -110,6 +110,7 @@ li {
 	margin: 18px auto 20px;
 	overflow: hidden;
 	border-bottom: 1px solid var(--teal);
+	background: var(--paper);
 }
 
 .hero-wallpaper {
@@ -134,9 +135,9 @@ li {
 .hero-inner {
 	position: relative;
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) 180px;
+	grid-template-columns: minmax(0, 1fr) 170px;
 	grid-template-areas: 'copy photo';
-	gap: 26px;
+	gap: 34px;
 	align-items: center;
 	padding: 30px 0 24px;
 }
@@ -156,7 +157,7 @@ li {
 
 .profile-photo-frame {
 	grid-area: photo;
-	width: 180px;
+	width: 170px;
 	aspect-ratio: 1;
 	border-radius: 50%;
 	padding: 5px;
@@ -206,28 +207,29 @@ li {
 
 .detail-list {
 	display: grid;
-	gap: 12px;
+	gap: 0;
 }
 
 .detail-row {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr);
-	gap: 18px;
+	gap: 20px;
 	width: 100%;
 	box-sizing: border-box;
-	padding: 14px 16px;
+	padding: 16px 0;
 	background: var(--paper);
-	border: 1px solid transparent;
+	border: 0;
+	border-bottom: 1px solid var(--rule);
 	box-shadow: none;
 }
 
 .detail-row.has-image {
-	grid-template-columns: 180px minmax(0, 1fr);
+	grid-template-columns: 150px minmax(0, 1fr);
 }
 
 .detail-row.highlight {
 	background:
-		linear-gradient(90deg, rgba(255, 245, 157, 0.38), rgba(255, 255, 255, 0) 46%),
+		linear-gradient(90deg, rgba(255, 245, 157, 0.42), rgba(255, 255, 255, 0) 54%),
 		var(--paper);
 }
 
@@ -252,23 +254,16 @@ li {
 	min-width: 0;
 }
 
-.detail-title-line {
-	display: grid;
-	grid-template-columns: minmax(0, 1fr) auto;
-	gap: 12px;
-	align-items: start;
-}
-
 .detail-meta {
 	color: var(--muted);
-	white-space: nowrap;
 	font-variant: small-caps;
 	letter-spacing: 0.04em;
+	margin: 0.18rem 0 0;
 }
 
 .detail-subtitle {
 	color: var(--ink);
-	margin: 0.28rem 0;
+	margin: 0.28rem 0 0;
 }
 
 .detail-description {
@@ -312,16 +307,25 @@ li {
 }
 
 .action-button {
+	appearance: none;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	gap: 6px;
 	min-height: 32px;
+	box-sizing: border-box;
+	padding: 0.25em 0.75em;
 	background-color: transparent;
 	color: var(--link);
+	border: 1px solid var(--rule);
 	border-radius: 0;
 	cursor: pointer;
 	white-space: nowrap;
+	--exio-border-width: 1px;
+	--exio-hover-border-color: var(--teal);
+	--exio-focused-border-color: var(--teal);
+	--exio-hover-body-color: rgba(0, 140, 140, 0.08);
+	--exio-clicking-scale: 0.98;
 }
 
 .action-button:hover {
@@ -389,15 +393,6 @@ li {
 
 	.detail-image {
 		max-width: 260px;
-	}
-
-	.detail-title-line {
-		grid-template-columns: 1fr;
-		gap: 4px;
-	}
-
-	.detail-meta {
-		white-space: normal;
 	}
 
 	.action-links {

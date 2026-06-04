@@ -7,7 +7,6 @@ declare module 'exio/svelte' {
 	};
 
 	export const exioButton: Action<HTMLButtonElement, Record<string, unknown> | undefined>;
-	export const exioCard: Action<HTMLElement, Record<string, unknown> | undefined>;
 	export const exioFadeInAnimation: Action<HTMLElement, Record<string, unknown> | undefined>;
 	export const exioIcon: Action<HTMLElement, Record<string, unknown> | undefined>;
 	export const exioZoomInAnimation: Action<HTMLElement, Record<string, unknown> | undefined>;

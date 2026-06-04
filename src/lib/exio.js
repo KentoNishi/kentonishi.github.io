@@ -3,7 +3,6 @@
 // @ts-nocheck
 export {
 	exioButton,
-	exioCard,
 	exioFadeInAnimation,
 	exioIcon,
 	exioZoomInAnimation
