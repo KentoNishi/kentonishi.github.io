@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&display=swap');
+
+:root {
+	font-family: 'Lato', Verdana, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #111;
+	background: #fff;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	background: #fff;
+}
+
+body,
+td,
+th,
+tr,
+p,
+a,
+strong {
+	font-family: 'Lato', Verdana, Helvetica, sans-serif;
+	font-size: 14px;
+	font-display: auto;
+}
+
+a {
+	color: #1772d0;
+	text-decoration: none;
+}
+
+a:focus,
+a:hover {
+	color: #f09228;
+	text-decoration: none;
+}
+
+h1 {
+	font-family: 'Lato', Verdana, Helvetica, sans-serif;
+	font-size: 32px;
+	font-weight: normal;
+	font-display: auto;
+	text-align: center;
+	padding: 0;
+	margin-block-start: 14px;
+	margin-block-end: 14px;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+h2 {
+	font-family: 'Lato', Verdana, Helvetica, sans-serif;
+	font-size: 22px;
+	font-display: auto;
+	font-weight: normal;
+	padding: 0;
+	margin: 0;
+	display: inline;
+}
+
+h3 {
+	font-family: 'Lato', Verdana, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	font-display: auto;
+	padding: 0;
+	margin: 0;
+	display: inline;
+}
+
+p {
+	line-height: 1.35;
+}
+
+.site-shell {
+	width: 100%;
+	max-width: 800px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.site-table {
+	width: 100%;
+	border: 0;
+	border-spacing: 0;
+	border-collapse: separate;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.profile-copy {
+	padding: 2.5%;
+	width: 60%;
+	vertical-align: middle;
+}
+
+.profile-copy-full {
+	width: 100%;
+}
+
+.profile-photo-cell {
+	padding: 2.5%;
+	width: 40%;
+	max-width: 40%;
+	vertical-align: middle;
+}
+
+.profile-photo {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+}
+
+.profile-links {
+	text-align: center;
+}
+
+.section-heading {
+	padding: 2.5%;
+	width: 100%;
+	vertical-align: middle;
+}
+
+.project-image-cell {
+	padding: 2.5%;
+	width: 25%;
+	min-width: 120px;
+	vertical-align: middle;
+}
+
+.project-image {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+}
+
+.project-copy {
+	padding: 2.5%;
+	width: 75%;
+	vertical-align: middle;
+}
+
+.project-meta,
+.project-links {
+	margin-top: 4px;
+	line-height: 1.35;
+}
+
+.project-description {
+	margin-top: 1em;
+}
+
+.section-spacer {
+	height: 42px;
+}
+
+.site-footer {
+	padding: 0;
+}
+
+.site-footer p {
+	text-align: center;
+	font-size: small;
+}
+
+.site-footer a {
+	font-size: small;
+}
+
+.highlight {
+	background-color: #ffffd0;
+}
+
+@media (max-width: 640px) {
+	.profile-row,
+	.project-row {
+		display: block;
+	}
+
+	.profile-copy,
+	.profile-photo-cell,
+	.project-image-cell,
+	.project-copy {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.profile-photo {
+		max-width: 240px;
+		margin: 0 auto;
+	}
+
+	.project-image {
+		display: block;
+		max-width: 180px;
+		margin: 0 auto;
+	}
+}
