@@ -28,10 +28,10 @@
 
 <section class="resume-strip">
 	<div>
-		<strong>Research:</strong> transformers, diffusion models, computer vision, mechanistic interpretability
+		<strong>Research:</strong> PyTorch, CNNs, transformers, diffusion models, mechanistic interpretability, representation learning, explainability, multi-modal learning, data augmentation, LLMs, audio processing, GPU/CUDA.
 	</div>
 	<div>
-		<strong>Programming:</strong> Python, TypeScript, C++, Svelte, PyTorch, OpenGL, Docker
+		<strong>Programming:</strong> Python, TypeScript/JavaScript, C++, Java, Svelte, OpenGL, Bash, Git, Docker, LATEX.
 	</div>
 </section>
 

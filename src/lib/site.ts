@@ -28,8 +28,10 @@ export type DetailItem = {
 	bullets?: string[];
 	links?: ActionLink[];
 	image?: ImageAsset;
-	tags?: string[];
-	highlight?: boolean;
+	audio?: {
+		src: string;
+		type?: string;
+	};
 };
 
 export type DetailSection = {
@@ -53,9 +55,8 @@ export const profile: Profile = {
 		alt: ''
 	},
 	bio: [
-		'I am a computer science AB/SM student at Harvard, working on machine learning research across transformers, diffusion models, computer vision, and model interpretability.',
-		'I am affiliated with the Physics of AI Group at Harvard-NTT and the Harvard Visual Computing Group, and previously worked with the Four Eyes Lab at UC Santa Barbara.',
-		'My work focuses on building controlled synthetic settings that make model behavior easier to understand, then carrying those insights back to practical systems.'
+		'Harvard University — Bachelor’s & Master’s in Computer Science',
+		'Concurrent four-year AB/SM Program, w/ Honors. GPA: 3.971. Graduating May 2026.'
 	],
 	links: [
 		{
@@ -90,106 +91,103 @@ export const sections: DetailSection[] = [
 	{
 		id: 'research-themes',
 		title: 'Research Themes',
-		description:
-			'Current research areas, summarized from my resume and recent publication record.',
 		items: [
 			{
 				title: 'Diffusion Models, Sequential Tasks, Control & Alignment',
-				subtitle: 'Harvard PAI Group / Comcast Applied AI Labs',
-				description:
-					'Developing a theory of train/test-time control parameter gaps in diffusion models, with applications to speech generation systems.',
 				bullets: [
-					'Began in MATS 2025 with support for research and GPUs.',
-					'Extended into mechanistic interpretability work on production Text-to-Speech diffusion models.',
-					'Advised by Hidenori Tanaka, Hanspeter Pfister, Karun Kumar, and Raphael Tang.'
-				],
-				tags: ['diffusion', 'control', 'alignment']
+					'Developing a theory of train/test-time control parameter gaps in diffusion models (paper soon).',
+					'Began in MATS 2025 (ML Alignment & Theory Scholars Program); $12K grant & $10K for GPUs.',
+					'Extended into mech-interp work at Comcast, debugging production Text-to-Speech diffusion models.',
+					'Advised by H. Tanaka (PAI Group), H. Pfister (Harvard VCG), K. Kumar & R. Tang (Comcast).'
+				]
 			},
 			{
 				title: 'Transformers, Representation Learning, Model Mechanisms',
-				subtitle: 'Physics of AI Group @ Harvard-NTT',
-				description:
-					'Explaining pre-training and in-context mechanisms with interpretable, controllable synthetic graph tasks.',
 				bullets: [
-					'Published first-author ICML 2025 work on representation shattering.',
-					'Co-authored ICLR, ICML, and NeurIPS workshop work on graph-navigation and in-context representations.',
-					'Supported by PRISE 2024 and the CBS-NTT Fellowship.'
-				],
-				tags: ['transformers', 'mechanistic interpretability', 'representation learning']
+					'Explaining pre-training & in-context mechanisms w/ interpretable, controllable synthetic graph tasks.',
+					'Published first-author ICML 2025 paper; co-authored 2x ICLR and 2x NeurIPS papers.',
+					'Funded by PRISE 2024 (Harvard Prog. for Research in Science and Eng.); $3K + housing & meals.',
+					'Funded by CBS-NTT Fellowship (Physics of Intelligence Program); $5K summer 2023 stipend.',
+					'Advised by H. Tanaka & E. S. Lubana (PAI Group).'
+				]
 			},
 			{
 				title: 'Computer Vision, Semi-Supervised Learning, Robustness',
-				subtitle: 'Harvard VCG / UCSB Four Eyes Lab',
-				description:
-					'Designing compute-efficient methods for training vision models under partial or noisy supervision.',
 				bullets: [
-					'Published first-author CVPR 2024 work on partially labeled multi-task learning.',
-					'Published first-author CVPR 2021 and AAAI 2021 work on noisy labels as a high-school researcher.',
-					'Won Regeneron STS Top 300 and presented at Forum on Information Technology 2022.'
-				],
-				tags: ['computer vision', 'robustness', 'data augmentation']
+					'Designing compute-efficient ways to train accurate vision models under partial/noisy supervision.',
+					'Published first-author CVPR 2024 paper as a sophomore undergrad.',
+					'At age 16, published first-author CVPR 2021 paper & first-author AAAI 2021 short paper.',
+					'Won Regeneron STS Top 300 Award & gave invited talk at Forum on Information Technology in 2022.',
+					'Advised by H. Pfister (Harvard VCG) since 2022; prev. T. Höllerer (UCSB Four Eyes Lab).'
+				]
 			}
 		]
 	},
 	{
 		id: 'publications',
 		title: 'Publications',
-		description:
-			'Peer-reviewed papers and workshop publications from the resume and old site.',
 		items: [
 			{
 				title: 'Representation Shattering in Transformers: A Synthetic Study with Knowledge Editing',
 				subtitle:
 					'Kento Nishi, Rahul Ramesh, Maya Okawa, Mikail Khona, Hidenori Tanaka, Ekdeep Singh Lubana',
-				meta: 'ICML 2025, first author',
-				description:
-					'I built synthetic knowledge-graph tasks, implemented training and probing, and led experiments revealing how overwriting knowledge can cause collateral damage to unrelated capabilities.',
-				links: [
-					{ label: 'ICML Poster', href: 'https://icml.cc/virtual/2025/poster/46119' },
-					{ label: 'OpenReview', href: 'https://openreview.net/forum?id=BKOeyZal0x' },
-					{ label: 'arXiv', href: 'https://arxiv.org/abs/2410.17194' },
-					{ label: 'Code', href: 'https://github.com/KentoNishi/KE-ICML-2025' }
+				meta: 'ICML 2025, as first author. ∼5 citations as of Nov. 2025.',
+				bullets: [
+					'I built synthetic knowledge-graph tasks, implemented training and probing, and led the experiments.',
+					'I revealed why overwriting knowledge in LLMs causes collateral damage to unrelated capabilities.'
 				],
-				highlight: true
+				links: [
+					{ label: 'ICML Poster / OpenReview', href: 'https://icml.cc/virtual/2025/poster/46119' },
+					{ label: 'arXiv', href: 'https://arxiv.org/abs/2410.17194' },
+					{ label: 'PDF', href: 'https://arxiv.org/pdf/2410.17194.pdf' },
+					{
+						label: 'Twitter/X Thread',
+						href: 'https://x.com/kento_nishi/status/1932072335726539063'
+					}
+				]
 			},
 			{
-				title: 'ICLR: In-Context Learning of Representations',
+				title: 'In-Context Learning of Representations',
 				subtitle:
 					'Core Francisco Park, Andrew Lee, Ekdeep Singh Lubana, Yongyi Yang, Maya Okawa, Kento Nishi, Martin Wattenberg, Hidenori Tanaka',
-				meta: 'ICLR 2025, co-author',
-				description:
-					'I helped pin down experiment protocols and reusable code for training and visualization, helping show how LLMs dynamically restructure representations in-context.',
+				meta: 'ICLR 2025, as co-author. ∼30 citations as of Nov. 2025.',
+				bullets: [
+					'I pinned down core experiment protocols and developed reusable code to training and visualization.',
+					'My task designs helped explain how LLMs dynamically restructure entity representations in-context.'
+				],
 				links: [{ label: 'arXiv', href: 'https://arxiv.org/abs/2501.00070' }]
 			},
 			{
 				title: 'Structured In-Context Task Representations',
 				subtitle:
 					'Core Francisco Park, Andrew Lee, Ekdeep Singh Lubana, Kento Nishi, Maya Okawa, Hidenori Tanaka',
-				meta: 'NeurIPS 2024 NeurReps Workshop, co-author',
-				description:
-					'Workshop precursor to the ICLR 2025 work on in-context representation learning.',
+				meta: 'NeurIPS 2024 NeurReps Workshop, as co-author.',
+				bullets: ['Precursor to ICLR 2025 “In-Context Learning of Representations.”'],
 				links: [{ label: 'OpenReview', href: 'https://openreview.net/forum?id=hlOu6w1a8T' }]
 			},
 			{
 				title:
 					'Towards an Understanding of Stepwise Inference in Transformers: A Synthetic Graph Navigation Model',
 				subtitle:
-					'Mikail Khona, Maya Okawa, Jan Hula, Rahul Ramesh, Kento Nishi, Robert P. Dick, Ekdeep Singh Lubana, Hidenori Tanaka',
-				meta: 'ICML 2024, co-author',
-				description:
-					'I implemented parts of the graph-navigation data generator, toy transformer, and training scripts used to study chain-of-thought-like reasoning.',
+					'Mikail Khona, Maya Okawa, Jan Hula, Rahul Ramesh, Kento Nishi, Robert Dick, Ekdeep Singh Lubana, Hidenori Tanaka',
+				meta: 'ICML 2024, as co-author. ∼10 citations as of Nov. 2025.',
+				bullets: [
+					'I implemented parts of the graph-navigation data generator, toy transformer, and training scripts.',
+					'My code allowed us to identify how autoregressive transformers learn chain-of-thought reasoning.'
+				],
 				links: [
-					{ label: 'PMLR', href: 'https://proceedings.mlr.press/v235/khona24a.html' },
-					{ label: 'arXiv', href: 'https://arxiv.org/abs/2402.07757' }
+					{ label: 'arXiv', href: 'https://arxiv.org/abs/2402.07757' },
+					{ label: 'PDF', href: 'https://arxiv.org/pdf/2402.07757.pdf' }
 				]
 			},
 			{
 				title: 'Stepwise Inference in Transformers: Exploring a Synthetic Graph Navigation Task',
 				subtitle:
 					'Mikail Khona, Maya Okawa, Rahul Ramesh, Kento Nishi, Robert P. Dick, Ekdeep Singh Lubana, Hidenori Tanaka',
-				meta: 'NeurIPS 2023 R0-FoMo Workshop, co-author',
-				description:
-					'Workshop precursor to the ICML 2024 graph-navigation paper.',
+				meta: 'NeurIPS 2023 R0-FoMo Workshop, as co-author.',
+				bullets: [
+					'Precursor to ICML 2024 “Towards an Understanding of Stepwise Inference in Transformers.”'
+				],
 				links: [
 					{ label: 'OpenReview', href: 'https://openreview.net/forum?id=RSGmZ7HZaA' },
 					{ label: 'PDF', href: 'https://openreview.net/pdf?id=RSGmZ7HZaA' }
@@ -198,41 +196,53 @@ export const sections: DetailSection[] = [
 			{
 				title: 'Joint-Task Regularization for Partially Labeled Multi-Task Learning',
 				subtitle: 'Kento Nishi, Junsik Kim, Wanhua Li, Hanspeter Pfister',
-				meta: 'CVPR 2024, first author',
-				description:
-					'I proposed JTR, implemented the code, and led experiments, ablations, writing, and rebuttals for a linear-complexity regularizer for partially labeled data.',
+				meta: 'CVPR 2024, as first author. ∼5 citations as of Nov. 2025.',
+				bullets: [
+					'I proposed JTR, implemented the code, and led experiments, ablations, writing, and rebuttals.',
+					'JTR is a simple, linear-complexity regularizer to train shared backbones with partially labeled data.'
+				],
 				links: [
-					{ label: 'CVPR', href: 'https://cvpr.thecvf.com/virtual/2024/poster/29723' },
+					{ label: 'CVPR Poster / Video', href: 'https://cvpr.thecvf.com/virtual/2024/poster/29723' },
 					{ label: 'arXiv', href: 'https://arxiv.org/abs/2404.01976' },
+					{ label: 'PDF', href: 'https://arxiv.org/pdf/2404.01976.pdf' },
 					{ label: 'Website', href: 'https://kentonishi.com/JTR-CVPR-2024/' },
 					{ label: 'Code', href: 'https://github.com/KentoNishi/JTR-CVPR-2024' }
-				],
-				highlight: true
+				]
 			},
 			{
 				title: 'Augmentation Strategies for Learning with Noisy Labels',
-				subtitle: 'Kento Nishi, Yi Ding, Alex Rich, Tobias Hoellerer',
-				meta: 'CVPR 2021, first author',
-				description:
-					'I designed the decoupled augmentation strategy, wrote code, and led experiments for improving noisy-label learning with separate weak and strong augmentations.',
+				subtitle: 'Kento Nishi, Yi Ding, Alex Rich, Tobias Höllerer',
+				meta: 'CVPR 2021, as first author. ∼175 citations as of Nov. 2025.',
+				bullets: [
+					'I designed the decoupled augmentation strategy, wrote the code, and led the experiments.',
+					'“Augmented Descent” improves learning by separating weak and strong augmentations in training.'
+				],
 				links: [
 					{
-						label: 'CVF',
-						href: 'https://openaccess.thecvf.com/content/CVPR2021/html/Nishi_Augmentation_Strategies_for_Learning_With_Noisy_Labels_CVPR_2021_paper.html'
+						label: 'Abstract',
+						href: 'https://openaccess.thecvf.com//content/CVPR2021/html/Nishi_Augmentation_Strategies_for_Learning_With_Noisy_Labels_CVPR_2021_paper.html'
 					},
 					{ label: 'arXiv', href: 'https://arxiv.org/abs/2103.02130' },
-					{ label: 'Code', href: 'https://github.com/KentoNishi/Augmentation-for-LNL' }
+					{ label: 'PDF', href: 'https://arxiv.org/pdf/2103.02130.pdf' },
+					{ label: 'Code', href: 'https://github.com/KentoNishi/Augmentation-for-LNL' },
+					{
+						label: 'Papers with Code',
+						href: 'https://paperswithcode.com/paper/augmentation-strategies-for-learning-with'
+					},
+					{
+						label: 'CVPR Video',
+						href: 'https://kentonishi.com/Augmentation-for-LNL/CVPR_Video.mp4'
+					}
 				]
 			},
 			{
 				title:
 					'Improving Label Noise Robustness with Data Augmentation and Semi-Supervised Learning',
-				subtitle: 'Kento Nishi, Yi Ding, Alex Rich, Tobias Hoellerer',
-				meta: 'AAAI 2021 Student Abstract Track, first author',
-				description:
-					'Student abstract precursor to the CVPR 2021 noisy-label learning paper.',
+				subtitle: 'Kento Nishi, Yi Ding, Alex Rich, Tobias Höllerer',
+				meta: 'AAAI 2021 Student Abstract Track, as first author. ∼5 citations as of Nov. 2025.',
+				bullets: ['Precursor to CVPR 2021 “Augmentation Strategies for Learning with Noisy Labels.”'],
 				links: [
-					{ label: 'AAAI', href: 'https://ojs.aaai.org/index.php/AAAI/article/view/17924' },
+					{ label: 'Abstract', href: 'https://ojs.aaai.org/index.php/AAAI/article/view/17924' },
 					{ label: 'PDF', href: 'https://www.aaai.org/AAAI21Papers/SA-207.NishiK.pdf' }
 				]
 			}
@@ -240,116 +250,325 @@ export const sections: DetailSection[] = [
 	},
 	{
 		id: 'software',
-		title: 'Selected Software & Projects',
-		description:
-			'Open-source apps, libraries, and community projects carried over from the old site and resume.',
+		title: 'Apps',
 		items: [
 			{
-				title: 'LiveTL Apps',
-				subtitle: 'YouTube and Twitch translation/chat tooling',
+				title: 'LiveTL',
 				description:
-					'Founding developer of modular addons that improve live-stream chat and translation workflows across LiveTL, HyperChat, and YtcFilter.',
-				bullets: ['100K+ total users.', '900+ repository stars.', '20+ code contributors.'],
+					'Get live translations for YouTube streams, crowdsourced from multilingual viewers.',
+				bullets: [
+					'Founding dev of three modular addons that improve YouTube & Twitch (LiveTL, HyperChat, YtcFilter).',
+					'100K+ total users; 900+ repo stars; 20+ code contributors. Free, open-source, and cross-platform.'
+				],
 				image: { src: '/assets/ltl.png', alt: 'LiveTL screenshot' },
 				links: [
-					{ label: 'LiveTL', href: 'https://livetl.app/en/home/' },
-					{ label: 'LiveTL GitHub', href: 'https://github.com/LiveTL/LiveTL' },
-					{ label: 'HyperChat', href: 'https://livetl.app/en/hyperchat/' },
-					{ label: 'HyperChat GitHub', href: 'https://github.com/LiveTL/HyperChat' }
-				],
-				highlight: true
+					{ label: 'GitHub Repo', href: 'https://github.com/LiveTL/LiveTL' },
+					{ label: 'Website', href: 'https://livetl.app/en/home/' }
+				]
 			},
 			{
 				title: 'HyperChat',
-				subtitle: 'Smoother YouTube chat experience',
 				description:
-					'A performance-focused extension that enhances YouTube chat with a smoother, more feature-packed live experience.',
+					'HyperChat enhances your YouTube chat with a smoother, more feature-packed experience!',
 				image: { src: '/assets/hc.png', alt: 'HyperChat screenshot' },
 				links: [
-					{ label: 'Website', href: 'https://livetl.app/en/hyperchat/' },
-					{ label: 'GitHub', href: 'https://github.com/LiveTL/HyperChat' }
+					{ label: 'GitHub Repo', href: 'https://github.com/LiveTL/HyperChat' },
+					{ label: 'Website', href: 'https://livetl.app/en/hyperchat/' }
+				]
+			},
+			{
+				title: 'YtcFilter',
+				subtitle: 'LiveTL Apps'
+			},
+			{
+				title: 'holoEN Christmas Advent Calendar',
+				bullets: [
+					'Full-stack dev of the event platform (holoen-advent.com); officially commissioned by Cover Corp.',
+					'250K+ total users; a beloved yearly tradition in the hololive English community.'
+				]
+			}
+		]
+	},
+	{
+		id: 'packages',
+		title: 'Libraries & Packages',
+		items: [
+			{
+				title: 'Package Profiles',
+				links: [
+					{ label: 'PyPI', href: 'https://pypi.org/user/KentoNishi/' },
+					{ label: 'npm', href: 'https://www.npmjs.com/~kentonishi' }
 				]
 			},
 			{
 				title: 'torch-pitch-shift',
 				subtitle: 'Python / PyTorch',
 				description:
-					'GPU-accelerated pitch-shifting for PyTorch audio pipelines, later upstreamed into PyTorch-adjacent tooling.',
-				bullets: ['750K+ downloads/month.', '135+ GitHub stars.'],
+					'Pitch-shift audio clips quickly with PyTorch (CUDA supported)! Additional utilities for searching efficient transformations are included.',
+				bullets: [
+					'The first Python library for pitch-shifting on GPU at the time; later added to PyTorch upstream.',
+					'750K+ downloads/month; 135+ GitHub stars; used by torch-audiomentations (1.1K+ stars).'
+				],
 				links: [
-					{ label: 'PyPI', href: 'https://pypi.org/project/torch-pitch-shift/' },
-					{ label: 'GitHub', href: 'https://github.com/KentoNishi/torch-pitch-shift' }
+					{ label: 'View on PyPI', href: 'https://pypi.org/project/torch-pitch-shift/' },
+					{ label: 'View on GitHub', href: 'https://github.com/KentoNishi/torch-pitch-shift' }
 				]
 			},
 			{
 				title: 'torch-time-stretch',
 				subtitle: 'Python / PyTorch',
 				description:
-					'CUDA-supported time-stretching utilities for PyTorch audio clips and transformation search.',
+					'Time-stretch audio clips quickly with PyTorch (CUDA supported)! Additional utilities for searching efficient transformations are included.',
 				links: [
-					{ label: 'PyPI', href: 'https://pypi.org/project/torch-time-stretch/' },
-					{ label: 'GitHub', href: 'https://github.com/KentoNishi/torch-time-stretch' }
+					{ label: 'View on PyPI', href: 'https://pypi.org/project/torch-time-stretch/' },
+					{ label: 'View on GitHub', href: 'https://github.com/KentoNishi/torch-time-stretch' }
 				]
-			},
-			{
-				title: 'holoEN Christmas Advent Calendar',
-				subtitle: 'Full-stack event platform',
-				description:
-					'Officially commissioned event platform for holoen-advent.com, serving a large yearly fan community.',
-				bullets: ['250K+ total users.', 'Yearly hololive English community tradition.']
 			},
 			{
 				title: 'iframe-translator',
 				subtitle: 'TypeScript',
 				description:
-					'Browser translation utility using iframe-based integrations.',
+					'Translate text for free in the browser with iframe shenanigans.',
 				links: [
-					{ label: 'npm', href: 'https://www.npmjs.com/package/iframe-translator' },
-					{ label: 'GitHub', href: 'https://github.com/KentoNishi/iframe-translator' }
+					{ label: 'View on npm', href: 'https://www.npmjs.com/package/iframe-translator' },
+					{ label: 'View on GitHub', href: 'https://github.com/KentoNishi/iframe-translator' }
+				]
+			},
+			{
+				title: 'torch-mutable-modules',
+				subtitle: 'Python / PyTorch',
+				description:
+					'Use in-place and assignment operations on PyTorch module parameters with support for autograd.',
+				links: [
+					{ label: 'View on PyPI', href: 'https://pypi.org/project/torch-mutable-modules/' },
+					{ label: 'View on GitHub', href: 'https://github.com/KentoNishi/torch-mutable-modules' }
+				]
+			},
+			{
+				title: 'Python++',
+				subtitle: 'Python',
+				description:
+					'A robust Java-style OOP system for Python, with support for statics, encapsulation, and inheritance.',
+				links: [
+					{ label: 'View on PyPI', href: 'https://pypi.org/project/pythonpp/' },
+					{ label: 'View on GitHub', href: 'https://github.com/KentoNishi/pythonpp' }
 				]
 			}
 		]
 	},
 	{
-		id: 'experience',
-		title: 'Experience & Affiliations',
-		description: 'A compact version of the resume timeline.',
+		id: 'music',
+		title: 'Music',
 		items: [
 			{
-				title: 'Harvard University',
-				subtitle: 'Bachelor’s & Master’s in Computer Science',
-				meta: 'Aug. 2022 - May 2026',
-				description:
-					'Concurrent four-year AB/SM Program, with Honors. GPA: 3.971.'
+				title: 'Bliss',
+				subtitle: 'Kento Nishi',
+				meta: 'March 2026',
+				description: 'Work in progress.',
+				audio: { src: '/music/bliss.mp3', type: 'audio/mpeg' },
+				links: [{ label: 'Open', href: '/music/bliss.mp3' }]
+			},
+			{
+				title: 'Celesta',
+				subtitle: 'Kento Nishi',
+				meta: 'August 2023',
+				description: 'Work in progress.',
+				audio: { src: '/music/full-131.wav', type: 'audio/wav' },
+				links: [{ label: 'Open', href: '/music/full-131.wav' }]
+			},
+			{
+				title: 'Forfeit',
+				subtitle: 'Kento Nishi',
+				meta: 'January 2023',
+				description: 'Full track.',
+				audio: { src: '/music/forfeit.mp3', type: 'audio/mpeg' },
+				links: [{ label: 'Open', href: '/music/forfeit.mp3' }]
+			},
+			{
+				title: 'Voyage',
+				subtitle: 'Kento Nishi',
+				meta: 'September 2022',
+				description: 'Full track.',
+				audio: { src: '/music/voyage.mp3', type: 'audio/mpeg' },
+				links: [{ label: 'Open', href: '/music/voyage.mp3' }]
+			},
+			{
+				title: 'New Beginning',
+				subtitle: 'Kento Nishi',
+				meta: 'September 2022',
+				description: 'Full track.',
+				audio: { src: '/music/new-beginning.mp3', type: 'audio/mpeg' },
+				links: [{ label: 'Open', href: '/music/new-beginning.mp3' }]
+			},
+			{
+				title: 'HyperChat Trailer Theme',
+				subtitle: 'Kento Nishi',
+				meta: 'July 2022',
+				description: '2 minute version.',
+				audio: { src: '/music/hyperchat-ad.mp3', type: 'audio/mpeg' },
+				links: [{ label: 'Open', href: '/music/hyperchat-ad.mp3' }]
+			},
+			{
+				title: 'Dubstep Demo',
+				subtitle: 'Kento Nishi',
+				meta: 'March 2020',
+				description: 'Demo.',
+				audio: { src: '/music/dubstep-demo.mp3', type: 'audio/mpeg' },
+				links: [{ label: 'Open', href: '/music/dubstep-demo.mp3' }]
+			},
+			{
+				title: 'October Draft',
+				subtitle: 'Kento Nishi',
+				meta: 'October 2023',
+				description: 'Work in Progress.',
+				audio: { src: '/music/october-wip.wav', type: 'audio/wav' },
+				links: [{ label: 'Open', href: '/music/october-wip.wav' }]
+			},
+			{
+				title: 'Instrumental Draft',
+				subtitle: 'Kento Nishi',
+				meta: 'March 2024',
+				description: 'Work in Progress.',
+				audio: { src: '/music/instrumental-layers.wav', type: 'audio/wav' },
+				links: [{ label: 'Open', href: '/music/instrumental-layers.wav' }]
+			}
+		]
+	},
+	{
+		id: 'writing',
+		title: 'Blog Posts',
+		items: [
+			{
+				title:
+					"Does CS1050's Chatham House Policy Protect Against LLM-Powered Stylometric Linkage De-Identification?",
+				subtitle: 'Harvard CS1050 Project Report',
+				links: [
+					{ label: 'PDF', href: '/stylometry.pdf' },
+					{ label: 'Code', href: 'https://github.com/KentoNishi/CS1050-Stylometry' }
+				]
+			},
+			{
+				title:
+					'Can Temporal Distance Maps Communicate Variability? A User Study with Maps of Transit Travel Times',
+				subtitle: 'Harvard CompSci 271 Spring 2024 Term Paper',
+				links: [
+					{
+						label: 'PDF',
+						href: '/cs271-variance/Can_Temporal_Distance_Maps_Communicate_Variability__A_User_Study_with_Maps_of_Transit_Travel_Times.pdf'
+					},
+					{ label: 'Code', href: 'https://github.com/KentoNishi/cs271-variance' }
+				]
+			},
+			{
+				title: 'Implementing Portals in Unity',
+				subtitle: 'Harvard CompSci 175 Spring 2023 Term Project',
+				links: [
+					{ label: 'PDF', href: '/cs175-final-project/CS%20175%20writeup.pdf' },
+					{ label: 'Code', href: 'https://github.com/KentoNishi/cs175-final-project' }
+				]
+			},
+			{
+				title:
+					'Browser Extension Standards: How Google Monopolized and Exploited the Web Browser Industry',
+				subtitle: 'Harvard Science @ Work Fall 2022 Term Paper',
+				links: [{ label: 'PDF', href: '/extensions.pdf' }]
+			}
+		]
+	},
+	{
+		id: 'experience',
+		title: 'Employment',
+		items: [
+			{
+				title: 'Comcast Applied AI Labs, Speech AI Team',
+				subtitle: 'Part-Time Contractor (post-internship extension, remote)',
+				meta: 'Sep. 2025 - Present',
+				bullets: [
+					'Continuing research to characterize biases of diffusion models powering Comcast’s Speech AI systems.',
+					'Aiming for a tier-1 conference paper submission and a proprietary patent filing.'
+				]
 			},
 			{
 				title: 'Comcast Applied AI Labs, Speech AI Team',
-				subtitle: 'Part-Time Contractor / Grad-Level Summer Research Intern',
-				meta: 'Jun. 2025 - Present',
-				description:
-					'Worked on production-scale speech models serving Comcast Speech AI systems, continuing research on biases of diffusion models.'
+				subtitle: 'Grad-Level Summer Research Intern (Washington DC, in-person)',
+				meta: 'Jun. - Aug. 2025',
+				bullets: [
+					'Worked on production-scale speech models, serving over 50 million daily users on Xfinity & Sky TV.',
+					'Engaged with engineers/managers/testers/lawyers to confront access/privacy/feasibility tradeoffs.'
+				]
 			},
 			{
 				title: 'Harvard SEAS',
-				subtitle: 'CS79 Teaching Assistant',
+				subtitle: 'CS79 TA, Design of Useful and Usable Interactive Systems by K. Gajos',
 				meta: 'Aug. 2025 - Present',
-				description:
-					'Sole undergraduate course-staff member; studio planning lead and studio leader for Design of Useful and Usable Interactive Systems.'
-			},
+				bullets: [
+					'Sole undergraduate member of course staff; studio planning lead; studio leader.',
+					'Teach tools like Figma; facilitate critical thinking about design goals, assumptions, and consequences.'
+				]
+			}
+		]
+	},
+	{
+		id: 'affiliations',
+		title: 'Affiliations',
+		items: [
 			{
-				title: 'Physics of AI Group @ Harvard-NTT',
-				subtitle: 'Research affiliation with Hidenori Tanaka and Ekdeep Singh Lubana',
+				title: 'Physics of AI (PAI) Group @ Harvard-NTT',
+				subtitle: 'w/ H. Tanaka & E. S. Lubana',
 				meta: 'Mar. 2023 - Present'
 			},
 			{
-				title: 'Harvard Visual Computing Group',
-				subtitle: 'Research affiliation with Hanspeter Pfister',
+				title: 'Visual Computing Group (VCG) @ Harvard',
+				subtitle: 'w/ H. Pfister',
 				meta: 'Aug. 2022 - Present'
 			},
 			{
 				title: 'Four Eyes Lab @ UC Santa Barbara',
-				subtitle: 'Research affiliation with Tobias Hoellerer',
+				subtitle: 'w/ T. Höllerer',
 				meta: 'Jun. 2020 - Aug. 2022'
+			}
+		]
+	},
+	{
+		id: 'grants',
+		title: 'Grants',
+		items: [
+			{
+				title: 'Ezoe Memorial Recruit Foundation Scholarship',
+				meta: 'Apr. 2023 - Present',
+				bullets: [
+					'$95,000/year, covering tuition and living expenses. Support through BA, MS, and PhD.',
+					'Oldest & most selective scholarship program in Japan (approx. 6 recipients/year).'
+				]
+			}
+		]
+	},
+	{
+		id: 'other-activities',
+		title: 'Other Activities',
+		items: [
+			{
+				title: 'Harvard AI Safety Team (AISST), Research Compute Lead',
+				meta: '2023 - Present',
+				bullets: [
+					'Mission: to reduce catastrophic risks from AI through research, education, and capacity-building.',
+					'Managing student researchers’ shared GPU resources via AWS.'
+				]
+			},
+			{
+				title: '2022 Forum on Information Technology (FIT)',
+				bullets: [
+					'Premier annual Japanese conference, convening research scientists and industry professionals.',
+					'Invited speaker in the “Top Conference” track. Presented and answered questions entirely in Japanese.'
+				]
+			},
+			{
+				title: 'San Francisco Japanese School',
+				meta: '2011 - 2019',
+				bullets: [
+					'Attended full-day Saturday school for 9 years. Sponsored by the Japanese government.',
+					'Maintaining bilingual, professional-grade proficiency in Japanese speaking, reading, and writing.'
+				]
 			}
 		]
 	},
@@ -358,15 +577,9 @@ export const sections: DetailSection[] = [
 		title: 'Distinctions',
 		items: [
 			{
-				title: 'Ezoe Memorial Recruit Foundation Scholarship',
-				meta: 'Apr. 2023 - Present',
-				description:
-					'$95,000/year support through BA, MS, and PhD from one of Japan’s oldest and most selective scholarship programs.'
-			},
-			{
 				title: 'Tier-1 Conference Reviewer',
 				meta: '2025',
-				description: 'ICLR 2026 invitation-only reviewer.'
+				description: 'ICLR 2026 (invitation-only).'
 			},
 			{
 				title: 'John Harvard Scholar',
@@ -376,12 +589,12 @@ export const sections: DetailSection[] = [
 			{
 				title: 'Advanced Half-Marathoner',
 				meta: '2025',
-				description: '1h21m29s PR in Cambridge, November 2025; 6x finisher.'
+				description: '1h21m29s PR (Cambridge, Nov. 2025, 162nd/9,358). 6x finisher.'
 			},
 			{
 				title: 'Regeneron STS Top 300 Scholar',
 				meta: '2022',
-				description: 'Recognized by the oldest high-school STEM research competition in the United States.'
+				description: 'The oldest, most prestigious high school STEM award.'
 			}
 		]
 	}

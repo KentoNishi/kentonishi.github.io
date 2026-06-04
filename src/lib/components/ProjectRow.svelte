@@ -7,7 +7,6 @@
 
 <article
 	class="detail-row"
-	class:highlight={item.highlight}
 	class:has-image={item.image}
 >
 	{#if item.image}
@@ -39,12 +38,11 @@
 			</ul>
 		{/if}
 
-		{#if item.tags?.length}
-			<div class="tags">
-				{#each item.tags as tag}
-					<span>{tag}</span>
-				{/each}
-			</div>
+		{#if item.audio}
+			<!-- svelte-ignore a11y_media_has_caption -->
+			<audio class="audio-player" controls preload="none" aria-label={`${item.title} audio`}>
+				<source src={item.audio.src} type={item.audio.type} />
+			</audio>
 		{/if}
 
 		{#if item.links?.length}
