@@ -6,8 +6,6 @@
 </script>
 
 <section class="hero">
-	<img class="hero-wallpaper" src={profile.wallpaper.src} alt={profile.wallpaper.alt} />
-	<div class="hero-shade"></div>
 	<div class="hero-inner">
 		<div class="profile-photo-frame">
 			<img class="profile-photo" src={profile.image.src} alt={profile.image.alt} />
@@ -15,44 +13,18 @@
 
 		<div class="profile-copy">
 			<h1>{profile.name}</h1>
-			<p class="profile-meta">{profile.affiliation} / {profile.location}</p>
+			<p class="profile-meta">
+				{#if profile.affiliation}
+					<span>{profile.affiliation}</span><span class="profile-meta-separator">•</span>
+				{/if}
+				<span>{profile.location}</span>
+			</p>
 
 			{#each profile.bio as paragraph}
-				<p>{paragraph}</p>
+				<p class="profile-bio">{paragraph}</p>
 			{/each}
 
-			<ActionLinks links={profile.links} />
+			<ActionLinks links={profile.links} compact />
 		</div>
 	</div>
 </section>
-
-<section class="resume-strip">
-	<div>
-		<strong>Research:</strong> PyTorch, CNNs, transformers, diffusion models, mechanistic interpretability, representation learning, explainability, multi-modal learning, data augmentation, LLMs, audio processing, GPU/CUDA.
-	</div>
-	<div>
-		<strong>Programming:</strong> Python, TypeScript/JavaScript, C++, Java, Svelte, OpenGL, Bash, Git, Docker, LATEX.
-	</div>
-</section>
-
-<!--
-<table class="site-table">
-	<tbody>
-		<tr class="profile-row">
-			<td class="profile-copy">
-				<h1>{profile.name}</h1>
-
-				{#each profile.bio as paragraph}
-					<p>{paragraph}</p>
-				{/each}
-
-				<ActionLinks links={profile.links} />
-			</td>
-
-			<td class="profile-photo-cell">
-				<img class="profile-photo" src={profile.image.src} alt={profile.image.alt} />
-			</td>
-		</tr>
-	</tbody>
-</table>
--->

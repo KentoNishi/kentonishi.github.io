@@ -11,18 +11,18 @@
 		<a
 			class="action-link"
 			href={link.href}
+			download={link.download ? '' : undefined}
 			target={external(link.href) ? '_blank' : undefined}
 			rel={external(link.href) ? 'noreferrer' : undefined}
 		>
-			<button class="action-button" class:compact type="button">
-				{#if link.icon}
+			<span class="action-button" class:compact>
+				{#if link.iconSrc}
+					<img class="action-icon action-icon-image" src={link.iconSrc} alt="" aria-hidden="true" />
+				{:else if link.icon}
 					<span class="material-symbols-outlined action-icon">{link.icon}</span>
 				{/if}
 				<span>{link.label}</span>
-				{#if external(link.href)}
-					<span class="material-symbols-outlined action-icon small">open_in_new</span>
-				{/if}
-			</button>
+			</span>
 		</a>
 	{/each}
 </div>

@@ -20,7 +20,9 @@
 		<ProjectSection {section} />
 	{/each}
 
+	<!--
 	<footer class="site-footer">
 		<p>Design adapted from Leonid Keselman and Jon Barron. Built with SvelteKit and static rendering.</p>
 	</footer>
+	-->
 </main>

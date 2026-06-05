@@ -15,7 +15,7 @@
 
 	<div class="detail-list">
 		{#each section.items as item}
-			<ProjectRow {item} />
+			<ProjectRow {item} sectionId={section.id} />
 		{/each}
 	</div>
 </section>
