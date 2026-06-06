@@ -47,7 +47,7 @@
 						class="paper-filter-option selected-option"
 						for="paper-filter-selected">selected</label
 					><span>&nbsp;|&nbsp;</span><label class="paper-filter-option all-option" for="paper-filter-all"
-						>all</label
+						>all papers</label
 					><span>)</span>
 				</span>
 			{/if}
