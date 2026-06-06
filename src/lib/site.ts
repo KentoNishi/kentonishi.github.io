@@ -119,12 +119,12 @@ export const profile: Profile = {
 			label: 'LinkedIn',
 			href: 'https://www.linkedin.com/in/kento-nishi-5696ab185/',
 			iconSrc: '/assets/linkedin.svg'
-		},
-		{
-			label: 'Garmin',
-			href: 'https://connect.garmin.com/app/profile/cee87f52-9272-4626-822b-dfc4cdd38407',
-			iconSrc: '/assets/garmin-connect.svg'
 		}
+		// {
+		// 	label: 'Garmin',
+		// 	href: 'https://connect.garmin.com/app/profile/cee87f52-9272-4626-822b-dfc4cdd38407',
+		// 	iconSrc: '/assets/garmin-connect.svg'
+		// }
 	]
 };
 
@@ -182,7 +182,7 @@ const rawSections: DetailSection[] = [
 				meta: 'ICML 2025, as first author.',
 				highlightPaper: true,
 				bullets: [
-					'We show that knowledge editing can distort entity representations beyond the targeted fact, fracturing the geometry that supports related factual recall and reasoning.'
+					'We show that knowledge editing distorts entity representations beyond targeted facts, fracturing geometries that support factual recall and reasoning.'
 				],
 				links: [
 					{ label: 'Poster', href: 'https://icml.cc/virtual/2025/poster/46119' },

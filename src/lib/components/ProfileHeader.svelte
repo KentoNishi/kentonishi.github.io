@@ -94,9 +94,13 @@
 									</span>
 								</p>
 
+								<ActionLinks links={profile.links} compact />
+
 								<div class="profile-bio profile-intro">
-									<RichText text={introBio} links={profile.bioLinks} inline />
-									<span class="profile-more-trigger">More...</span>
+									<span class="profile-intro-text">
+										<RichText text={introBio} links={profile.bioLinks} inline />
+									</span>
+									<span class="profile-more-trigger">Click here to read my full bio.</span>
 								</div>
 							</div>
 						</div>
@@ -170,14 +174,14 @@
 							</span>
 						</p>
 
+						<ActionLinks links={profile.links} compact />
+
 						{#if introBio}
 							<RichText text={introBio} links={profile.bioLinks} class="profile-bio profile-intro" />
 						{/if}
 					</div>
 				</div>
 			{/if}
-
-			<ActionLinks links={profile.links} compact />
 		</div>
 	</div>
 </section>
