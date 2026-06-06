@@ -637,9 +637,7 @@ li {
 .paper-filter-all:checked ~ .section-heading .all-option {
 	color: var(--tech);
 	font-weight: 700;
-	text-decoration: underline;
-	text-decoration-thickness: 1px;
-	text-underline-offset: 0.15em;
+	text-decoration: none;
 }
 
 .section-heading p {
