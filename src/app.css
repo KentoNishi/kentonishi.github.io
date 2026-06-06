@@ -1376,6 +1376,10 @@ li {
 		grid-template-columns: 1fr;
 	}
 
+	.detail-section#software .detail-row.has-image {
+		grid-template-columns: 1fr;
+	}
+
 	.detail-topline {
 		grid-template-columns: 1fr;
 		gap: 4px;
