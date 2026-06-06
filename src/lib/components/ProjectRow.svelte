@@ -4,7 +4,7 @@
 	let { item, sectionId }: { item: DetailItem; sectionId?: string } = $props();
 
 	const isPaper = $derived(sectionId === 'publications');
-	const isFirstAuthorPaper = $derived(isPaper && item.meta?.toLowerCase().includes('first author'));
+	const isHighlightedPaper = $derived(isPaper && item.highlightPaper === true);
 	const metaParts = (meta: string) => meta.split(/(Present|2025)/g).filter(Boolean);
 	const shouldHighlightMeta = (part: string) => item.highlightMetaParts?.includes(part);
 	const authors = (subtitle: string) => subtitle.split(/,\s*/).filter(Boolean);
@@ -20,12 +20,14 @@
 	class="detail-row"
 	class:has-image={item.image}
 	class:paper={isPaper}
-	class:first-author-paper={isFirstAuthorPaper}
+	class:highlighted-paper={isHighlightedPaper}
 >
 	{#if item.image}
 		<div
 			class="detail-image-cell"
-			style={`--image-bg: ${item.image.background ?? '#f6f8f9'}`}
+			style={`--image-bg: ${item.image.background ?? '#f6f8f9'}; --image-fit: ${
+				item.image.fit ?? 'contain'
+			}`}
 		>
 			<img class="detail-image" src={item.image.src} alt={item.image.alt} />
 		</div>
@@ -101,8 +103,8 @@
 						<a
 							href={link.href}
 							download={link.download ? '' : undefined}
-							target={/^https?:\/\//.test(link.href) ? '_blank' : undefined}
-							rel={/^https?:\/\//.test(link.href) ? 'noreferrer' : undefined}>{link.label}</a
+							target="_blank"
+							rel="noreferrer">{link.label}</a
 						>{#if index < item.links.length - 1}<span class="paper-link-separator">/</span>{/if}
 					</span>
 				{/each}
@@ -140,8 +142,8 @@
 						<a
 							href={link.href}
 							download={link.download ? '' : undefined}
-							target={/^https?:\/\//.test(link.href) ? '_blank' : undefined}
-							rel={/^https?:\/\//.test(link.href) ? 'noreferrer' : undefined}>{link.label}</a
+							target="_blank"
+							rel="noreferrer">{link.label}</a
 						>{#if index < item.links.length - 1}<span class="paper-link-separator">/</span>{/if}
 					</span>
 				{/each}

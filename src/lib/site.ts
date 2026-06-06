@@ -10,6 +10,7 @@ export type ImageAsset = {
 	src: string;
 	alt: string;
 	background?: string;
+	fit?: 'contain' | 'cover';
 };
 
 export type BadgeAsset = ImageAsset & {
@@ -18,11 +19,18 @@ export type BadgeAsset = ImageAsset & {
 
 export type Profile = {
 	name: string;
+	nativeName?: string;
+	nativeNameReading?: string;
+	nativeNameParts?: {
+		text: string;
+		reading: string;
+	}[];
 	location: string;
 	affiliation: string;
 	email: string;
 	image: ImageAsset;
 	bio: string[];
+	bioLinks?: Record<string, string>;
 	links: ActionLink[];
 };
 
@@ -41,6 +49,7 @@ export type DetailItem = {
 		src: string;
 		type?: string;
 	};
+	highlightPaper?: boolean;
 	highlightMetaParts?: string[];
 	inlineDescription?: boolean;
 };
@@ -54,7 +63,14 @@ export type DetailSection = {
 
 export const profile: Profile = {
 	name: 'Kento Nishi',
-	location: 'San Jose, CA / Cambridge, MA',
+	nativeName: '西 健斗',
+	nativeNameReading: 'にし けんと',
+	nativeNameParts: [
+		{ text: '西', reading: 'にし' },
+		{ text: '健', reading: 'けん' },
+		{ text: '斗', reading: 'と' }
+	],
+	location: 'San Jose, CA / Cambridge, MA / Japan 🇯🇵',
 	affiliation: 'MIT EECS / CSAIL',
 	email: 'kento24gs@outlook.com',
 	image: {
@@ -62,14 +78,28 @@ export const profile: Profile = {
 		alt: 'Kento Nishi'
 	},
 	bio: [
-		'I am a PhD student at MIT EECS/CSAIL. Previously, I completed Harvard’s AB/SM program in computer science, worked with Hidenori Tanaka, Ekdeep Singh Lubana, and Hanspeter Pfister, and researched speech diffusion models at Comcast Applied AI Labs.',
-		'My work includes first-author ICML and CVPR papers, co-authored ICLR, ICML workshop, and NeurIPS workshop papers, and open-source software used by large online communities. Honors include the Ezoe Memorial Recruit Foundation Scholarship, John Harvard Scholar, and Regeneron STS Top 300 Scholar.'
+		'Hi! My name is Kento, and I\'m a PhD student at MIT EECS/CSAIL advised by [Phillip Isola]. I graduated from Harvard College/SEAS in 2026, with Honors AB/SM degrees in Computer Science. In the past, I had the pleasure of being advised by [Hidenori Tanaka], [Ekdeep Singh Lubana], [Hanspeter Pfister], and [Tobias Höllerer]. I am a recipient of the [Ezoe Memorial Recruit Foundation Scholarship].',
+		'My research interests are in understanding the surprising quirks of deep learning. Why does training give birth to well-organized representations for certain concepts and tasks, but not others? What mechanistic motifs emerge across different models, and why? What properties of the underlying learning algorithm and data distribution lead to these phenomena, and how can we leverage this understanding to build safer and more capable systems? I want to answer these fundamental questions by using science to unpack the physics of artificial intelligence. I\'m also a strong proponent of open source and transparent research.',
+		'Outside of academics, I\'m an avid long-distance runner. I also love Formula 1 \& go-kart racing, transit \& urban planning, anime \& vtubers, and electronic music production. Feel free to reach out to me via email or casually over Discord @kento24!'
 	],
+	bioLinks: {
+		'Phillip Isola': 'https://web.mit.edu/phillipi/',
+		'Hidenori Tanaka': 'https://cbs.fas.harvard.edu/directory/hidenori-tanaka/',
+		'Ekdeep Singh Lubana': 'https://ekdeepslubana.github.io/',
+		'Hanspeter Pfister': 'https://seas.harvard.edu/person/hanspeter-pfister',
+		'Tobias Höllerer': 'https://engineering.ucsb.edu/people/tobias-h-llerer',
+		'Ezoe Memorial Recruit Foundation Scholarship': 'https://www.recruit-foundation.org/en/'
+	},
 	links: [
 		{
 			label: 'Email',
 			href: 'mailto:kento24gs@outlook.com',
 			icon: 'mail'
+		},
+		{
+			label: 'Resume',
+			href: '/resume.pdf',
+			icon: 'description'
 		},
 		{
 			label: 'GitHub',
@@ -89,12 +119,7 @@ export const profile: Profile = {
 		{
 			label: 'Garmin',
 			href: 'https://connect.garmin.com/modern/profile/cee87f52-9272-4626-822b-dfc4cdd38407',
-			icon: 'directions_run'
-		},
-		{
-			label: 'Resume',
-			href: '/resume.pdf',
-			icon: 'description'
+			iconSrc: '/assets/garmin-connect.svg'
 		}
 	]
 };
@@ -104,6 +129,25 @@ const rawSections: DetailSection[] = [
 		id: 'publications',
 		title: 'Papers',
 		items: [
+			{
+				title: 'Mechanisms of Misgeneralization in Physical Sequence Modeling',
+				subtitle:
+					'Kento Nishi, Raphael Tang, Karun Kumar, Core Francisco Park, Hidenori Tanaka',
+				meta: 'Preprint 2026, as first author.',
+				highlightPaper: true,
+				bullets: [
+					'We show that generative sequence models can produce individually plausible physical trajectories while shifting aggregate quantities such as distance or energy, and use a data deviation kernel to predict and reduce this drift.'
+				],
+				links: [
+					{ label: 'arXiv', href: 'https://arxiv.org/abs/2605.20299' },
+					// { label: 'PDF', href: 'https://arxiv.org/pdf/2605.20299' },
+					{ label: 'Website', href: 'https://kentonishi.com/physical-misgeneralization/' },
+					{
+						label: 'Thread',
+						href: 'https://x.com/kento_nishi/status/2057484912026943773'
+					}
+				]
+			},
 			{
 				title: 'Evolutionary Curriculum Learning for Biological Sequence Modeling',
 				subtitle: 'Richard Yuxuan Zhu, Kento Nishi',
@@ -124,7 +168,7 @@ const rawSections: DetailSection[] = [
 				],
 				links: [
 					{ label: 'OpenReview', href: 'https://openreview.net/forum?id=6KoqLz01hc' },
-					{ label: 'PDF', href: 'https://openreview.net/pdf?id=6KoqLz01hc' }
+					// { label: 'PDF', href: 'https://openreview.net/pdf?id=6KoqLz01hc' }
 				]
 			},
 			{
@@ -132,18 +176,19 @@ const rawSections: DetailSection[] = [
 				subtitle:
 					'Kento Nishi, Rahul Ramesh, Maya Okawa, Mikail Khona, Hidenori Tanaka, Ekdeep Singh Lubana',
 				meta: 'ICML 2025, as first author.',
+				highlightPaper: true,
 				bullets: [
 					'We show that knowledge editing can distort entity representations beyond the targeted fact, fracturing the geometry that supports related factual recall and reasoning.'
 				],
 				links: [
-					{ label: 'ICML', href: 'https://icml.cc/virtual/2025/poster/46119' },
-					{ label: 'PMLR', href: 'https://proceedings.mlr.press/v267/nishi25a.html' },
+					{ label: 'Poster', href: 'https://icml.cc/virtual/2025/poster/46119' },
+					// { label: 'PMLR', href: 'https://proceedings.mlr.press/v267/nishi25a.html' },
 					{ label: 'OpenReview', href: 'https://openreview.net/forum?id=BKOeyZal0x' },
 					{ label: 'arXiv', href: 'https://arxiv.org/abs/2410.17194' },
-					{
-						label: 'PDF',
-						href: 'https://raw.githubusercontent.com/mlresearch/v267/main/assets/nishi25a/nishi25a.pdf'
-					},
+					// {
+					// 	label: 'PDF',
+					// 	href: 'https://raw.githubusercontent.com/mlresearch/v267/main/assets/nishi25a/nishi25a.pdf'
+					// },
 					{ label: 'Code', href: 'https://github.com/KentoNishi/KE-ICML-2025' },
 					{
 						label: 'Thread',
@@ -160,17 +205,17 @@ const rawSections: DetailSection[] = [
 					'We show that a concept representation can mediate in-context learning; when a graph is specified by enough examples, model representations shift toward that graph rather than only pretrained semantic associations.'
 				],
 				links: [
-					{ label: 'ICLR', href: 'https://iclr.cc/virtual/2025/poster/28292' },
-					{
-						label: 'Proceedings',
-						href: 'https://proceedings.iclr.cc/paper_files/paper/2025/hash/83fe5a77502e3d4cfab5960aed0ee6c3-Abstract-Conference.html'
-					},
+					{ label: 'Poster', href: 'https://iclr.cc/virtual/2025/poster/28292' },
+					// {
+					// 	label: 'Proceedings',
+					// 	href: 'https://proceedings.iclr.cc/paper_files/paper/2025/hash/83fe5a77502e3d4cfab5960aed0ee6c3-Abstract-Conference.html'
+					// },
 					{ label: 'OpenReview', href: 'https://openreview.net/forum?id=pXlmOmlHJZ' },
-					{ label: 'arXiv', href: 'https://arxiv.org/abs/2501.00070' },
-					{
-						label: 'PDF',
-						href: 'https://proceedings.iclr.cc/paper_files/paper/2025/file/83fe5a77502e3d4cfab5960aed0ee6c3-Paper-Conference.pdf'
-					}
+					{ label: 'arXiv', href: 'https://arxiv.org/abs/2501.00070' }
+					// {
+					// 	label: 'PDF',
+					// 	href: 'https://proceedings.iclr.cc/paper_files/paper/2025/file/83fe5a77502e3d4cfab5960aed0ee6c3-Paper-Conference.pdf'
+					// }
 				]
 			},
 			{
@@ -183,7 +228,7 @@ const rawSections: DetailSection[] = [
 				],
 				links: [
 					{ label: 'OpenReview', href: 'https://openreview.net/forum?id=hlOu6w1a8T' },
-					{ label: 'PDF', href: 'https://openreview.net/pdf?id=hlOu6w1a8T' }
+					// { label: 'PDF', href: 'https://openreview.net/pdf?id=hlOu6w1a8T' }
 				]
 			},
 			{
@@ -196,14 +241,14 @@ const rawSections: DetailSection[] = [
 					'We use a synthetic graph-navigation task to measure stepwise inference, covering the reasoning gap, sampling-temperature tradeoff, simplicity bias, compositional generalization, and in-context primacy.'
 				],
 				links: [
-					{ label: 'ICML', href: 'https://icml.cc/virtual/2024/poster/34846' },
-					{ label: 'PMLR', href: 'https://proceedings.mlr.press/v235/khona24a.html' },
+					{ label: 'Poster', href: 'https://icml.cc/virtual/2024/poster/34846' },
+					// { label: 'PMLR', href: 'https://proceedings.mlr.press/v235/khona24a.html' },
 					{ label: 'OpenReview', href: 'https://openreview.net/forum?id=8VEGkphQaK' },
-					{ label: 'arXiv', href: 'https://arxiv.org/abs/2402.07757' },
-					{
-						label: 'PDF',
-						href: 'https://raw.githubusercontent.com/mlresearch/v235/main/assets/khona24a/khona24a.pdf'
-					}
+					{ label: 'arXiv', href: 'https://arxiv.org/abs/2402.07757' }
+					// {
+					// 	label: 'PDF',
+					// 	href: 'https://raw.githubusercontent.com/mlresearch/v235/main/assets/khona24a/khona24a.pdf'
+					// }
 				]
 			},
 			{
@@ -216,27 +261,28 @@ const rawSections: DetailSection[] = [
 				],
 				links: [
 					{ label: 'OpenReview', href: 'https://openreview.net/forum?id=RSGmZ7HZaA' },
-					{ label: 'PDF', href: 'https://openreview.net/pdf?id=RSGmZ7HZaA' }
+					// { label: 'PDF', href: 'https://openreview.net/pdf?id=RSGmZ7HZaA' }
 				]
 			},
 			{
 				title: 'Joint-Task Regularization for Partially Labeled Multi-Task Learning',
 				subtitle: 'Kento Nishi, Junsik Kim, Wanhua Li, Hanspeter Pfister',
 				meta: 'CVPR 2024, as first author.',
+				highlightPaper: true,
 				bullets: [
 					'We regularize dense prediction outputs in a shared task space, improving partially labeled multi-task learning while scaling linearly with task count.'
 				],
 				links: [
-					{ label: 'CVPR', href: 'https://cvpr.thecvf.com/virtual/2024/poster/29723' },
+					{ label: 'Poster', href: 'https://cvpr.thecvf.com/virtual/2024/poster/29723' },
 					{
 						label: 'OpenAccess',
 						href: 'https://openaccess.thecvf.com/content/CVPR2024/html/Nishi_Joint-Task_Regularization_for_Partially_Labeled_Multi-Task_Learning_CVPR_2024_paper.html'
 					},
 					{ label: 'arXiv', href: 'https://arxiv.org/abs/2404.01976' },
-					{
-						label: 'PDF',
-						href: 'https://openaccess.thecvf.com/content/CVPR2024/papers/Nishi_Joint-Task_Regularization_for_Partially_Labeled_Multi-Task_Learning_CVPR_2024_paper.pdf'
-					},
+					// {
+					// 	label: 'PDF',
+					// 	href: 'https://openaccess.thecvf.com/content/CVPR2024/papers/Nishi_Joint-Task_Regularization_for_Partially_Labeled_Multi-Task_Learning_CVPR_2024_paper.pdf'
+					// },
 					{ label: 'Website', href: 'https://kentonishi.com/JTR-CVPR-2024/' },
 					{ label: 'Code', href: 'https://github.com/KentoNishi/JTR-CVPR-2024' }
 				]
@@ -245,6 +291,7 @@ const rawSections: DetailSection[] = [
 				title: 'Augmentation Strategies for Learning with Noisy Labels',
 				subtitle: 'Kento Nishi, Yi Ding, Alex Rich, Tobias Höllerer',
 				meta: 'CVPR 2021, as first author.',
+				highlightPaper: true,
 				bullets: [
 					'We separate augmentation strategies for loss modeling and model learning, improving robustness to noisy labels, including a large gain on CIFAR-10 with 90% symmetric noise.'
 				],
@@ -254,16 +301,16 @@ const rawSections: DetailSection[] = [
 						href: 'https://openaccess.thecvf.com//content/CVPR2021/html/Nishi_Augmentation_Strategies_for_Learning_With_Noisy_Labels_CVPR_2021_paper.html'
 					},
 					{ label: 'arXiv', href: 'https://arxiv.org/abs/2103.02130' },
-					{
-						label: 'PDF',
-						href: 'https://openaccess.thecvf.com/content/CVPR2021/papers/Nishi_Augmentation_Strategies_for_Learning_With_Noisy_Labels_CVPR_2021_paper.pdf'
-					},
+					// {
+					// 	label: 'PDF',
+					// 	href: 'https://openaccess.thecvf.com/content/CVPR2021/papers/Nishi_Augmentation_Strategies_for_Learning_With_Noisy_Labels_CVPR_2021_paper.pdf'
+					// },
 					{ label: 'Website', href: 'https://kentonishi.com/Augmentation-for-LNL/' },
 					{ label: 'Code', href: 'https://github.com/KentoNishi/Augmentation-for-LNL' },
-					{
-						label: 'Papers with Code',
-						href: 'https://paperswithcode.com/paper/augmentation-strategies-for-learning-with'
-					},
+					// {
+					// 	label: 'Papers with Code',
+					// 	href: 'https://paperswithcode.com/paper/augmentation-strategies-for-learning-with'
+					// },
 					{
 						label: 'Video',
 						href: 'https://kentonishi.com/Augmentation-for-LNL/CVPR_Video.mp4'
@@ -280,8 +327,8 @@ const rawSections: DetailSection[] = [
 				],
 				links: [
 					{ label: 'AAAI', href: 'https://ojs.aaai.org/index.php/AAAI/article/view/17924' },
-					{ label: 'DOI', href: 'https://doi.org/10.1609/aaai.v35i18.17924' },
-					{ label: 'PDF', href: 'https://ojs.aaai.org/index.php/AAAI/article/download/17924/17729' }
+					{ label: 'DOI', href: 'https://doi.org/10.1609/aaai.v35i18.17924' }
+					// { label: 'PDF', href: 'https://ojs.aaai.org/index.php/AAAI/article/download/17924/17729' }
 				]
 			}
 		]
@@ -434,6 +481,38 @@ const rawSections: DetailSection[] = [
 						href: 'https://chromewebstore.google.com/detail/ytcfilter-youtube-chat-fi/mnldnbhgfocmkehnlkeanlhfmopepnko'
 					}
 				]
+			},
+			{
+				title: 'holoEN Christmas Advent Calendar',
+				image: {
+					src: '/assets/holoen-advent.jpg',
+					alt: 'holoEN Christmas Advent Calendar artwork',
+					background: '#aca7c3',
+					fit: 'cover'
+				},
+				description:
+					'Officially commissioned by Cover Corp. and used as a yearly hololive English community event platform.',
+				badges: [
+					{
+						href: 'https://svelte.dev/',
+						src: 'https://img.shields.io/badge/Svelte-FF3E00?style=flat&logo=svelte&logoColor=ffffff',
+						alt: 'Svelte'
+					},
+					{
+						href: 'https://holoen-advent.com/',
+						src: 'https://img.shields.io/badge/Users-250k%2B-blue?style=flat',
+						alt: '250k+ users'
+					},
+					{
+						href: 'https://hololivepro.com/en/',
+						src: 'https://img.shields.io/badge/Commissioned%20by-Cover%20Corp-blue?style=flat',
+						alt: 'commissioned by Cover Corp'
+					}
+				],
+				links: [
+					{ label: 'Website', href: 'https://holoen-advent.com/' },
+					{ label: 'Cover Corp.', href: 'https://hololivepro.com/en/' }
+				]
 			}
 		]
 	},
@@ -442,9 +521,9 @@ const rawSections: DetailSection[] = [
 		title: 'Technical Projects',
 		items: [
 			{
-				title: 'slsh',
+				title: 'slsh: ssh without keyboard lag',
 				description:
-					'slsh: ssh without keyboard lag. A drop-in SSH wrapper with local latency compensation for interactive terminal sessions.',
+					'A drop-in SSH wrapper with local latency compensation for interactive terminal sessions.',
 				badges: [
 					{
 						href: 'https://github.com/KentoNishi/slsh-rs',
@@ -490,8 +569,8 @@ const rawSections: DetailSection[] = [
 				]
 			},
 			{
-				title: 'iframe-translator',
-				description: 'Translate text in the browser through an iframe-backed TypeScript client.',
+				title: 'iframe Translator',
+				description: 'Translate text in the browser by triggering in-browser translations programmatically.',
 				badges: [
 					{
 						href: 'https://github.com/KentoNishi/iframe-translator',
@@ -520,29 +599,36 @@ const rawSections: DetailSection[] = [
 				]
 			},
 			{
-				title: 'holoEN Christmas Advent Calendar',
+				title: 'exio UI Library',
 				description:
-					'Officially commissioned by Cover Corp. and used as a yearly hololive English community event platform.',
+					'Framework-agnostic interactive components that can be mounted via content scripts.',
 				badges: [
 					{
-						href: 'https://svelte.dev/',
-						src: 'https://img.shields.io/badge/Svelte-FF3E00?style=flat&logo=svelte&logoColor=ffffff',
-						alt: 'Svelte'
+						href: 'https://github.com/KentoNishi/exio',
+						src: 'https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=ffffff',
+						alt: 'TypeScript'
 					},
 					{
-						href: 'https://holoen-advent.com/',
-						src: 'https://img.shields.io/badge/Users-250k%2B-blue?style=flat',
-						alt: '250k+ users'
+						href: 'https://www.npmjs.com/package/exio',
+						src: 'https://img.shields.io/badge/npm-CB3837?style=flat&logo=npm&logoColor=ffffff',
+						alt: 'npm'
 					},
 					{
-						href: 'https://hololivepro.com/en/',
-						src: 'https://img.shields.io/badge/Commissioned%20by-Cover%20Corp-blue?style=flat',
-						alt: 'commissioned by Cover Corp'
+						href: 'https://www.npmjs.com/package/exio',
+						src: 'https://img.shields.io/npm/dm/exio?color=blue&label=Downloads',
+						alt: 'downloads'
+					},
+					{
+						href: 'https://www.npmjs.com/package/exio',
+						src: 'https://img.shields.io/npm/l/exio?color=blue&label=License',
+						alt: 'license'
 					}
 				],
 				links: [
-					{ label: 'Website', href: 'https://holoen-advent.com/' },
-					{ label: 'Cover Corp.', href: 'https://hololivepro.com/en/' }
+					{ label: 'Website', href: 'https://kentonishi.github.io/exio/' },
+					{ label: 'Docs', href: 'https://kentonishi.github.io/exio/#/docs' },
+					{ label: 'npm', href: 'https://www.npmjs.com/package/exio' },
+					{ label: 'GitHub', href: 'https://github.com/KentoNishi/exio' }
 				]
 			}
 		]

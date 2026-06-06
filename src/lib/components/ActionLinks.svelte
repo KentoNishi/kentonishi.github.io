@@ -2,8 +2,6 @@
 	import type { ActionLink } from '$lib/site';
 
 	let { links, compact = false }: { links: ActionLink[]; compact?: boolean } = $props();
-
-	const external = (href: string) => /^https?:\/\//.test(href);
 </script>
 
 <div class:compact class="action-links">
@@ -12,12 +10,16 @@
 			class="action-link"
 			href={link.href}
 			download={link.download ? '' : undefined}
-			target={external(link.href) ? '_blank' : undefined}
-			rel={external(link.href) ? 'noreferrer' : undefined}
+			target="_blank"
+			rel="noreferrer"
 		>
 			<span class="action-button" class:compact>
 				{#if link.iconSrc}
-					<img class="action-icon action-icon-image" src={link.iconSrc} alt="" aria-hidden="true" />
+					<span
+						class="action-icon action-icon-image"
+						style={`--action-icon-src: url('${link.iconSrc}')`}
+						aria-hidden="true"
+					></span>
 				{:else if link.icon}
 					<span class="material-symbols-outlined action-icon">{link.icon}</span>
 				{/if}
