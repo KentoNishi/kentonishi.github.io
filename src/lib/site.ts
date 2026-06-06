@@ -606,11 +606,11 @@ const rawSections: DetailSection[] = [
 						src: 'https://img.shields.io/badge/npm-CB3837?style=flat&logo=npm&logoColor=ffffff',
 						alt: 'npm'
 					},
-					{
-						href: 'https://www.npmjs.com/package/iframe-translator',
-						src: 'https://img.shields.io/npm/dm/iframe-translator?color=blue&label=Downloads',
-						alt: 'downloads'
-					},
+					// {
+					// 	href: 'https://www.npmjs.com/package/iframe-translator',
+					// 	src: 'https://img.shields.io/npm/dm/iframe-translator?color=blue&label=Downloads',
+					// 	alt: 'downloads'
+					// },
 					{
 						href: 'https://www.npmjs.com/package/iframe-translator',
 						src: 'https://img.shields.io/npm/l/iframe-translator?color=blue&label=License',
@@ -637,11 +637,11 @@ const rawSections: DetailSection[] = [
 						src: 'https://img.shields.io/badge/npm-CB3837?style=flat&logo=npm&logoColor=ffffff',
 						alt: 'npm'
 					},
-					{
-						href: 'https://www.npmjs.com/package/exio',
-						src: 'https://img.shields.io/npm/dm/exio?color=blue&label=Downloads',
-						alt: 'downloads'
-					},
+					// {
+					// 	href: 'https://www.npmjs.com/package/exio',
+					// 	src: 'https://img.shields.io/npm/dm/exio?color=blue&label=Downloads',
+					// 	alt: 'downloads'
+					// },
 					{
 						href: 'https://www.npmjs.com/package/exio',
 						src: 'https://img.shields.io/npm/l/exio?color=blue&label=License',
