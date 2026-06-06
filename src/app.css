@@ -1140,6 +1140,12 @@ li {
 	justify-content: center;
 }
 
+.hero .action-button > span:last-child {
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 2px;
+}
+
 .action-links.compact {
 	--compact-action-width: 88px;
 	margin-top: 0.8rem;
