@@ -374,8 +374,8 @@ const rawSections: DetailSection[] = [
 					},
 					{
 						href: 'https://opencollective.com/livetl',
-						src: 'https://img.shields.io/opencollective/all/livetl?label=Donators%20and%20Supporters&logo=dollar&style=flat&color=blue',
-						alt: 'Donators and Supporters'
+						src: 'https://img.shields.io/opencollective/all/livetl?label=Patrons&logo=dollar&style=flat&color=blue',
+						alt: 'Patrons'
 					},
 					{
 						href: 'https://discord.gg/uJrV3tmthg',
@@ -434,8 +434,8 @@ const rawSections: DetailSection[] = [
 					},
 					{
 						href: 'https://opencollective.com/livetl',
-						src: 'https://img.shields.io/opencollective/all/livetl?label=Donators%20and%20Supporters&logo=dollar&style=flat&color=blue',
-						alt: 'Donators and Supporters'
+						src: 'https://img.shields.io/opencollective/all/livetl?label=Patrons&logo=dollar&style=flat&color=blue',
+						alt: 'Patrons'
 					},
 					{
 						href: 'https://discord.gg/uJrV3tmthg',
