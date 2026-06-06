@@ -359,8 +359,8 @@ const rawSections: DetailSection[] = [
 					},
 					{
 						href: 'https://github.com/LiveTL/LiveTL/graphs/contributors',
-						src: 'https://img.shields.io/badge/Contributors-20%2B%20total-blue?style=flat',
-						alt: 'Contributors'
+						src: 'https://img.shields.io/github/contributors/LiveTL/LiveTL?style=flat&color=blue&label=Contributors',
+						alt: 'contributors'
 					},
 					{
 						href: 'https://chromewebstore.google.com/detail/livetl-translation-filter/moicohcfhhbmmngneghfjfjpdobmmnlg',
@@ -419,8 +419,8 @@ const rawSections: DetailSection[] = [
 					},
 					{
 						href: 'https://github.com/LiveTL/HyperChat/graphs/contributors',
-						src: 'https://img.shields.io/badge/Contributors-20%2B%20total-blue?style=flat',
-						alt: 'Contributors'
+						src: 'https://img.shields.io/github/contributors/LiveTL/HyperChat?style=flat&color=blue&label=Contributors',
+						alt: 'contributors'
 					},
 					{
 						href: 'https://chromewebstore.google.com/detail/hyperchat-improved-youtub/naipgebhooiiccifflecbffmnjbabdbh',
@@ -479,8 +479,8 @@ const rawSections: DetailSection[] = [
 					},
 					{
 						href: 'https://github.com/LiveTL/ytcfilter/graphs/contributors',
-						src: 'https://img.shields.io/badge/Contributors-20%2B%20total-blue?style=flat',
-						alt: 'Contributors'
+						src: 'https://img.shields.io/github/contributors/LiveTL/ytcfilter?style=flat&color=blue&label=Contributors',
+						alt: 'contributors'
 					},
 					{
 						href: 'https://chromewebstore.google.com/detail/ytcfilter-youtube-chat-fi/mnldnbhgfocmkehnlkeanlhfmopepnko',
