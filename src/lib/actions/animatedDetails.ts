@@ -28,6 +28,15 @@ export const animatedDetails: Action<HTMLDetailsElement, AnimatedDetailsOptions 
 	};
 
 	const toggle = (event: MouseEvent) => {
+		const target = event.target;
+		if (target instanceof Element) {
+			if (target.closest('a')) return;
+			if (!target.closest('.profile-more-trigger')) {
+				event.preventDefault();
+				return;
+			}
+		}
+
 		if (reduceMotion.matches) return;
 
 		event.preventDefault();

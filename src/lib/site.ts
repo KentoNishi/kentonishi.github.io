@@ -131,7 +131,7 @@ export const profile: Profile = {
 const rawSections: DetailSection[] = [
 	{
 		id: 'publications',
-		title: 'Publications',
+		title: 'My Publications',
 		items: [
 			{
 				title: 'Mechanisms of Misgeneralization in Physical Sequence Modeling',
@@ -659,7 +659,7 @@ const rawSections: DetailSection[] = [
 	},
 	{
 		id: 'course-projects',
-		title: 'Course Projects',
+		title: 'My Course Projects',
 		items: [
 			{
 				title: "Do AI Conferences' Ethics Reviews Steer Research Practices?",
@@ -709,7 +709,7 @@ const rawSections: DetailSection[] = [
 	},
 	{
 		id: 'music',
-		title: 'Music',
+		title: 'My Music',
 		items: [
 			{
 				title: 'Bliss',

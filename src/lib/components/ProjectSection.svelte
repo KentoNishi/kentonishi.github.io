@@ -43,12 +43,14 @@
 			<span>{section.title}</span>
 			{#if isPapers}
 				<span class="paper-filter" aria-label="Paper display filter">
-					<span>(show:&nbsp;</span><label
+					<!-- <span class="material-symbols-outlined paper-filter-icon" aria-hidden="true"
+						>filter_alt</span
+					> --><span>filter:&nbsp;</span><label
 						class="paper-filter-option selected-option"
-						for="paper-filter-selected">selected</label
+						for="paper-filter-selected">first author</label
 					><span>&nbsp;|&nbsp;</span><label class="paper-filter-option all-option" for="paper-filter-all"
 						>all papers</label
-					><span>)</span>
+					>
 				</span>
 			{/if}
 		</h2>
