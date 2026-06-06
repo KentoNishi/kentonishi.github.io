@@ -19,12 +19,12 @@ export const animatedDetails: Action<HTMLDetailsElement, AnimatedDetailsOptions 
 		return {};
 	}
 
-	const fullHeight = () => summary.offsetHeight + content.offsetHeight;
 	const clearAnimation = () => {
 		if (timeout) clearTimeout(timeout);
 		timeout = undefined;
 		node.classList.remove('is-opening', 'is-closing');
-		node.style.maxHeight = '';
+		content.style.height = '';
+		content.style.overflow = '';
 	};
 
 	const toggle = (event: MouseEvent) => {
@@ -32,13 +32,13 @@ export const animatedDetails: Action<HTMLDetailsElement, AnimatedDetailsOptions 
 
 		event.preventDefault();
 		clearAnimation();
-		node.style.overflow = 'hidden';
+		content.style.overflow = 'hidden';
 
 		if (node.open) {
-			node.style.maxHeight = `${fullHeight()}px`;
-			node.offsetHeight;
+			content.style.height = `${content.offsetHeight}px`;
+			content.offsetHeight;
 			node.classList.add('is-closing');
-			node.style.maxHeight = `${summary.offsetHeight}px`;
+			content.style.height = '0px';
 
 			timeout = setTimeout(() => {
 				node.open = false;
@@ -46,10 +46,10 @@ export const animatedDetails: Action<HTMLDetailsElement, AnimatedDetailsOptions 
 			}, duration);
 		} else {
 			node.open = true;
-			node.style.maxHeight = `${summary.offsetHeight}px`;
-			node.offsetHeight;
+			content.style.height = '0px';
+			content.offsetHeight;
 			node.classList.add('is-opening');
-			node.style.maxHeight = `${fullHeight()}px`;
+			content.style.height = `${content.scrollHeight}px`;
 
 			timeout = setTimeout(clearAnimation, duration);
 		}

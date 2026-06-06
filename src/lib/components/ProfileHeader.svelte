@@ -79,24 +79,25 @@
 				</div>
 			</div>
 
-			{#if introBio}
+			{#if introBio && moreBio.length}
+				<div class="profile-bio profile-intro">
+					<RichText text={introBio} links={profile.bioLinks} inline />
+					<details
+						class="profile-more"
+						use:animatedDetails={{
+							duration: 220
+						}}
+					>
+						<summary>Tap to expand.</summary>
+						<div class="profile-more-content">
+							{#each moreBio as paragraph}
+								<RichText text={paragraph} links={profile.bioLinks} class="profile-bio" />
+							{/each}
+						</div>
+					</details>
+				</div>
+			{:else if introBio}
 				<RichText text={introBio} links={profile.bioLinks} class="profile-bio" />
-			{/if}
-
-			{#if moreBio.length}
-				<details
-					class="profile-more"
-					use:animatedDetails={{
-						duration: 220
-					}}
-				>
-					<summary>More about me</summary>
-					<div class="profile-more-content">
-						{#each moreBio as paragraph}
-							<RichText text={paragraph} links={profile.bioLinks} class="profile-bio" />
-						{/each}
-					</div>
-				</details>
 			{/if}
 
 			<ActionLinks links={profile.links} compact />

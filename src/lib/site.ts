@@ -78,9 +78,10 @@ export const profile: Profile = {
 		alt: 'Kento Nishi'
 	},
 	bio: [
-		'Hi! My name is Kento, and I\'m a PhD student at MIT EECS/CSAIL advised by [Phillip Isola]. I graduated from Harvard College/SEAS in 2026, with Honors AB/SM degrees in Computer Science. In the past, I had the pleasure of being advised by [Hidenori Tanaka], [Ekdeep Singh Lubana], [Hanspeter Pfister], and [Tobias Höllerer]. I am a recipient of the [Ezoe Memorial Recruit Foundation Scholarship].',
+		'Hi! My name is Kento, and I\'m a PhD student at MIT EECS/CSAIL advised by [Phillip Isola]. I graduated from Harvard College/SEAS in 2026, with Honors AB/SM degrees in Computer Science.',
+		'In the past, I had the pleasure of being advised by [Hidenori Tanaka], [Ekdeep Singh Lubana], [Hanspeter Pfister], and [Tobias Höllerer]. I am a recipient of the [Ezoe Memorial Recruit Foundation Scholarship].',
 		'My research interests are in understanding the surprising quirks of deep learning. Why does training give birth to well-organized representations for certain concepts and tasks, but not others? What mechanistic motifs emerge across different models, and why? What properties of the underlying learning algorithm and data distribution lead to these phenomena, and how can we leverage this understanding to build safer and more capable systems? I want to answer these fundamental questions by using science to unpack the physics of artificial intelligence. I\'m also a strong proponent of open source and transparent research.',
-		'Outside of academics, I\'m an avid long-distance runner. I also love Formula 1 \& go-kart racing, transit \& urban planning, anime \& vtubers, and electronic music production. Feel free to reach out to me via email or casually over Discord @kento24!'
+		'Aside from academics, I\'m an avid long-distance runner (mainly half and full marathons). I also love F1, public transit, anime/vtubers, music production, local eats, and Rocket League. Feel free to reach out via email or Discord @kento24!'
 	],
 	bioLinks: {
 		'Phillip Isola': 'https://web.mit.edu/phillipi/',
