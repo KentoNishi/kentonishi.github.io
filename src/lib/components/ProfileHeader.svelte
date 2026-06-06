@@ -67,12 +67,14 @@
 						{/if}
 						<span class="profile-location">
 							{#each locationSegments as segment, index}
-								<span class="location-segment"
-									>{segment.label}{#if segment.hasFlag}<span class="emoji">🇯🇵</span>{/if}</span
-								>
-								{#if index < locationSegments.length - 1}
-									<span class="location-separator" aria-hidden="true">/</span>
-								{/if}
+								<span class="location-unit">
+									<span class="location-segment"
+										>{segment.label}{#if segment.hasFlag}<span class="emoji">🇯🇵</span>{/if}</span
+									>
+									{#if index < locationSegments.length - 1}
+										<span class="location-separator" aria-hidden="true">/</span>
+									{/if}
+								</span>
 							{/each}
 						</span>
 					</p>
@@ -88,7 +90,7 @@
 							duration: 220
 						}}
 					>
-						<summary>Tap to expand.</summary>
+						<summary>Tap for a longer bio.</summary>
 						<div class="profile-more-content">
 							{#each moreBio as paragraph}
 								<RichText text={paragraph} links={profile.bioLinks} class="profile-bio" />

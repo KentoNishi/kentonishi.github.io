@@ -48,6 +48,9 @@ export type DetailItem = {
 	audio?: {
 		src: string;
 		type?: string;
+		duration?: string;
+		date?: string;
+		status?: 'demo' | 'draft' | 'complete';
 	};
 	highlightPaper?: boolean;
 	highlightMetaParts?: string[];
@@ -70,8 +73,8 @@ export const profile: Profile = {
 		{ text: '健', reading: 'けん' },
 		{ text: '斗', reading: 'と' }
 	],
-	location: 'San Jose, CA / Cambridge, MA / Japan 🇯🇵',
-	affiliation: 'MIT EECS / CSAIL',
+	location: 'San Jose, CA / Cambridge, MA / Chiba, Japan 🇯🇵',
+	affiliation: '',
 	email: 'kento24gs@outlook.com',
 	image: {
 		src: '/assets/pfp.png',
@@ -144,7 +147,7 @@ const rawSections: DetailSection[] = [
 					// { label: 'PDF', href: 'https://arxiv.org/pdf/2605.20299' },
 					{ label: 'Website', href: 'https://kentonishi.com/physical-misgeneralization/' },
 					{
-						label: 'Thread',
+						label: 'Tweet Thread',
 						href: 'https://x.com/kento_nishi/status/2057484912026943773'
 					}
 				]
@@ -192,7 +195,7 @@ const rawSections: DetailSection[] = [
 					// },
 					{ label: 'Code', href: 'https://github.com/KentoNishi/KE-ICML-2025' },
 					{
-						label: 'Thread',
+						label: 'Tweet Thread',
 						href: 'https://x.com/kento_nishi/status/1932072335726539063'
 					}
 				]
@@ -274,7 +277,7 @@ const rawSections: DetailSection[] = [
 					'We regularize dense prediction outputs in a shared task space, improving partially labeled multi-task learning while scaling linearly with task count.'
 				],
 				links: [
-					{ label: 'Poster', href: 'https://cvpr.thecvf.com/virtual/2024/poster/29723' },
+					{ label: 'CVPR Poster', href: 'https://cvpr.thecvf.com/virtual/2024/poster/29723' },
 					{
 						label: 'OpenAccess',
 						href: 'https://openaccess.thecvf.com/content/CVPR2024/html/Nishi_Joint-Task_Regularization_for_Partially_Labeled_Multi-Task_Learning_CVPR_2024_paper.html'
@@ -298,7 +301,7 @@ const rawSections: DetailSection[] = [
 				],
 				links: [
 					{
-						label: 'CVPR',
+						label: 'OpenAccess',
 						href: 'https://openaccess.thecvf.com//content/CVPR2021/html/Nishi_Augmentation_Strategies_for_Learning_With_Noisy_Labels_CVPR_2021_paper.html'
 					},
 					{ label: 'arXiv', href: 'https://arxiv.org/abs/2103.02130' },
@@ -336,7 +339,7 @@ const rawSections: DetailSection[] = [
 	},
 	{
 		id: 'software',
-		title: 'Software',
+		title: 'Apps & Websites',
 		items: [
 			{
 				title: 'LiveTL',
@@ -382,7 +385,15 @@ const rawSections: DetailSection[] = [
 				],
 				links: [
 					{ label: 'GitHub', href: 'https://github.com/LiveTL/LiveTL' },
-					{ label: 'Website', href: 'https://livetl.app/en/home/' }
+					{ label: 'Website', href: 'https://livetl.app/en/home/' },
+					{
+						label: 'Chrome Web Store',
+						href: 'https://chromewebstore.google.com/detail/livetl-translation-filter/moicohcfhhbmmngneghfjfjpdobmmnlg'
+					},
+					{
+						label: 'Mozilla Add-ons',
+						href: 'https://addons.mozilla.org/en-US/firefox/addon/livetl/'
+					}
 				]
 			},
 			{
@@ -390,7 +401,11 @@ const rawSections: DetailSection[] = [
 				titleTag: 'by LiveTL',
 				description:
 					'HyperChat enhances your YouTube chat with a smoother, more feature-packed experience!',
-				image: { src: '/assets/hc.png', alt: 'HyperChat screenshot', background: '#181818' },
+				image: {
+					src: '/assets/hc.png',
+					alt: 'HyperChat customizable look and feel screenshot',
+					background: '#181818'
+				},
 				badges: [
 					{
 						href: 'https://svelte.dev/',
@@ -430,7 +445,15 @@ const rawSections: DetailSection[] = [
 				],
 				links: [
 					{ label: 'GitHub', href: 'https://github.com/LiveTL/HyperChat' },
-					{ label: 'Website', href: 'https://livetl.app/en/hyperchat/' }
+					{ label: 'Website', href: 'https://livetl.app/hyperchat' },
+					{
+						label: 'Chrome Web Store',
+						href: 'https://chromewebstore.google.com/detail/hyperchat-by-livetl/naipgebhooiiccifflecbffmnjbabdbh'
+					},
+					{
+						label: 'Mozilla Add-ons',
+						href: 'https://addons.mozilla.org/en-US/firefox/addon/hyperchat/'
+					}
 				]
 			},
 			{
@@ -477,9 +500,14 @@ const rawSections: DetailSection[] = [
 				],
 				links: [
 					{ label: 'GitHub', href: 'https://github.com/LiveTL/ytcfilter' },
+					{ label: 'Website', href: 'https://livetl.app/ytcfilter' },
 					{
 						label: 'Chrome Web Store',
 						href: 'https://chromewebstore.google.com/detail/ytcfilter-youtube-chat-fi/mnldnbhgfocmkehnlkeanlhfmopepnko'
+					},
+					{
+						label: 'Mozilla Add-ons',
+						href: 'https://addons.mozilla.org/en-US/firefox/addon/ytcfilter/'
 					}
 				]
 			},
@@ -512,14 +540,14 @@ const rawSections: DetailSection[] = [
 				],
 				links: [
 					{ label: 'Website', href: 'https://holoen-advent.com/' },
-					{ label: 'Cover Corp.', href: 'https://hololivepro.com/en/' }
+					{ label: 'Cover Corp. Website', href: 'https://hololivepro.com/en/' }
 				]
 			}
 		]
 	},
 	{
 		id: 'packages',
-		title: 'Technical Projects',
+		title: 'Developer Tools',
 		items: [
 			{
 				title: 'slsh: ssh without keyboard lag',
@@ -683,6 +711,82 @@ const rawSections: DetailSection[] = [
 				links: [{ label: 'PDF', href: '/extensions.pdf' }]
 			}
 		]
+	},
+	{
+		id: 'music',
+		title: 'Music',
+		items: [
+			{
+				title: 'Bliss',
+				audio: {
+					src: '/music/bliss.mp3',
+					type: 'audio/mpeg',
+					duration: '2:11',
+					date: 'Mar. 2026',
+					status: 'draft'
+				}
+			},
+			{
+				title: 'Celesta',
+				audio: {
+					src: '/music/full-131.wav',
+					type: 'audio/wav',
+					duration: '1:59',
+					date: 'Aug. 2023',
+					status: 'draft'
+				}
+			},
+			{
+				title: 'Forfeit',
+				audio: {
+					src: '/music/forfeit.mp3',
+					type: 'audio/mpeg',
+					duration: '3:12',
+					date: 'Jan. 2023',
+					status: 'complete'
+				}
+			},
+			{
+				title: 'Voyage',
+				audio: {
+					src: '/music/voyage.mp3',
+					type: 'audio/mpeg',
+					duration: '3:24',
+					date: 'Sept. 2022',
+					status: 'complete'
+				}
+			},
+			{
+				title: 'New Beginning',
+				audio: {
+					src: '/music/new-beginning.mp3',
+					type: 'audio/mpeg',
+					duration: '3:53',
+					date: 'Sept. 2022',
+					status: 'complete'
+				}
+			},
+			{
+				title: 'HyperChat Trailer Theme',
+				audio: {
+					src: '/music/hyperchat-ad.mp3',
+					type: 'audio/mpeg',
+					duration: '1:58',
+					date: 'Jul. 2022',
+					status: 'complete'
+				}
+			},
+			{
+				title: 'Dubstep Demo',
+				audio: {
+					src: '/music/dubstep-demo.mp3',
+					type: 'audio/mpeg',
+					duration: '1:17',
+					date: 'Mar. 2020',
+					status: 'demo'
+				}
+			}
+		]
 	}
 ];
 
@@ -690,7 +794,8 @@ const sectionOrder = [
 	'publications',
 	'software',
 	'packages',
-	'writing'
+	// 'writing',
+	'music'
 ];
 
 export const sections: DetailSection[] = sectionOrder

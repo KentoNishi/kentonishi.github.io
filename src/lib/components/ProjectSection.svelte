@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { paperFilterAnimation } from '$lib/actions/paperFilterAnimation';
+	import MusicTable from './MusicTable.svelte';
 	import ProjectRow from './ProjectRow.svelte';
 	import type { DetailSection } from '$lib/site';
 
 	let { section }: { section: DetailSection } = $props();
 
 	const isPapers = $derived(section.id === 'publications');
+	const isMusic = $derived(section.id === 'music');
 	const selectedItems = $derived(section.items.filter((item) => item.highlightPaper));
 	const lastSelectedTitle = $derived(selectedItems[selectedItems.length - 1]?.title);
 </script>
@@ -13,6 +15,7 @@
 <section
 	class="detail-section"
 	class:papers-section={isPapers}
+	class:music-section={isMusic}
 	id={section.id}
 	use:paperFilterAnimation
 >
@@ -51,17 +54,21 @@
 		{/if}
 	</div>
 
-	<div class="detail-list">
-		{#each section.items as item}
-			<div
-				class="detail-row-frame"
-				class:selected-paper={item.highlightPaper === true}
-				class:last-selected-paper={isPapers && item.title === lastSelectedTitle}
-			>
-				<div class="detail-row-frame-inner">
-					<ProjectRow {item} sectionId={section.id} />
+	{#if isMusic}
+		<MusicTable items={section.items} />
+	{:else}
+		<div class="detail-list">
+			{#each section.items as item}
+				<div
+					class="detail-row-frame"
+					class:selected-paper={item.highlightPaper === true}
+					class:last-selected-paper={isPapers && item.title === lastSelectedTitle}
+				>
+					<div class="detail-row-frame-inner">
+						<ProjectRow {item} sectionId={section.id} />
+					</div>
 				</div>
-			</div>
-		{/each}
-	</div>
+			{/each}
+		</div>
+	{/if}
 </section>

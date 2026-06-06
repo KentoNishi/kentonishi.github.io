@@ -150,12 +150,5 @@
 			</p>
 		{/if}
 
-		{#if item.audio}
-			<!-- svelte-ignore a11y_media_has_caption -->
-			<audio class="audio-player" controls preload="none" aria-label={`${item.title} audio`}>
-				<source src={item.audio.src} type={item.audio.type} />
-			</audio>
-		{/if}
-
 	</div>
 </article>
