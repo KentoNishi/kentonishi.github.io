@@ -354,8 +354,8 @@ const rawSections: DetailSection[] = [
 					},
 					{
 						href: 'https://livetl.app/livetl',
-						src: 'https://img.shields.io/badge/Users-100k%2B%20total-blue?style=flat',
-						alt: '100k+ total users'
+						src: 'https://img.shields.io/badge/Users-40K-blue?style=flat',
+						alt: '40K users'
 					},
 					{
 						href: 'https://github.com/LiveTL/LiveTL/graphs/contributors',
@@ -414,8 +414,8 @@ const rawSections: DetailSection[] = [
 					},
 					{
 						href: 'https://livetl.app/hyperchat',
-						src: 'https://img.shields.io/badge/Users-100k%2B%20total-blue?style=flat',
-						alt: '100k+ total users'
+						src: 'https://img.shields.io/badge/Users-70K-blue?style=flat',
+						alt: '70K users'
 					},
 					{
 						href: 'https://github.com/LiveTL/HyperChat/graphs/contributors',
@@ -474,8 +474,8 @@ const rawSections: DetailSection[] = [
 					},
 					{
 						href: 'https://chromewebstore.google.com/detail/ytcfilter-youtube-chat-fi/mnldnbhgfocmkehnlkeanlhfmopepnko',
-						src: 'https://img.shields.io/chrome-web-store/users/mnldnbhgfocmkehnlkeanlhfmopepnko?style=flat&color=blue&label=Users',
-						alt: 'Users'
+						src: 'https://img.shields.io/badge/Users-20K-blue?style=flat',
+						alt: '20K users'
 					},
 					{
 						href: 'https://github.com/LiveTL/ytcfilter/graphs/contributors',
@@ -529,13 +529,8 @@ const rawSections: DetailSection[] = [
 					},
 					{
 						href: 'https://holoen-advent.com/',
-						src: 'https://img.shields.io/badge/Users-250k%2B-blue?style=flat',
-						alt: '250k+ users'
-					},
-					{
-						href: 'https://hololivepro.com/en/',
-						src: 'https://img.shields.io/badge/Commissioned%20by-Cover%20Corp-blue?style=flat',
-						alt: 'commissioned by Cover Corp'
+						src: 'https://img.shields.io/badge/Viewers-250K-blue?style=flat',
+						alt: '250K viewers'
 					}
 				],
 				links: [
