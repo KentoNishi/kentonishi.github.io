@@ -122,7 +122,7 @@ export const profile: Profile = {
 		},
 		{
 			label: 'Garmin',
-			href: 'https://connect.garmin.com/modern/profile/cee87f52-9272-4626-822b-dfc4cdd38407',
+			href: 'https://connect.garmin.com/app/profile/cee87f52-9272-4626-822b-dfc4cdd38407',
 			iconSrc: '/assets/garmin-connect.svg'
 		}
 	]
@@ -339,7 +339,7 @@ const rawSections: DetailSection[] = [
 	},
 	{
 		id: 'software',
-		title: 'Apps & Websites',
+		title: 'My Apps & Websites',
 		items: [
 			{
 				title: 'LiveTL',
@@ -353,17 +353,17 @@ const rawSections: DetailSection[] = [
 						alt: 'Svelte'
 					},
 					{
-						href: 'https://livetl.app/en/home/',
+						href: 'https://livetl.app/livetl',
 						src: 'https://img.shields.io/badge/Users-100k%2B%20total-blue?style=flat',
 						alt: '100k+ total users'
 					},
 					{
-						href: 'https://github.com/LiveTL/LiveTL/contributors',
+						href: 'https://github.com/LiveTL/LiveTL/graphs/contributors',
 						src: 'https://img.shields.io/badge/Contributors-20%2B%20total-blue?style=flat',
 						alt: 'Contributors'
 					},
 					{
-						href: 'https://chrome.google.com/webstore/detail/livetl-translation-filter/moicohcfhhbmmngneghfjfjpdobmmnlg',
+						href: 'https://chromewebstore.google.com/detail/livetl-translation-filter/moicohcfhhbmmngneghfjfjpdobmmnlg',
 						src: 'https://img.shields.io/chrome-web-store/rating/moicohcfhhbmmngneghfjfjpdobmmnlg?style=flat&color=blue&label=Rating',
 						alt: 'Rating'
 					},
@@ -385,7 +385,7 @@ const rawSections: DetailSection[] = [
 				],
 				links: [
 					{ label: 'GitHub', href: 'https://github.com/LiveTL/LiveTL' },
-					{ label: 'Website', href: 'https://livetl.app/en/home/' },
+					{ label: 'Website', href: 'https://livetl.app/livetl' },
 					{
 						label: 'Chrome Web Store',
 						href: 'https://chromewebstore.google.com/detail/livetl-translation-filter/moicohcfhhbmmngneghfjfjpdobmmnlg'
@@ -413,17 +413,17 @@ const rawSections: DetailSection[] = [
 						alt: 'Svelte'
 					},
 					{
-						href: 'https://livetl.app/en/hyperchat/',
+						href: 'https://livetl.app/hyperchat',
 						src: 'https://img.shields.io/badge/Users-100k%2B%20total-blue?style=flat',
 						alt: '100k+ total users'
 					},
 					{
-						href: 'https://github.com/LiveTL/HyperChat/contributors',
+						href: 'https://github.com/LiveTL/HyperChat/graphs/contributors',
 						src: 'https://img.shields.io/badge/Contributors-20%2B%20total-blue?style=flat',
 						alt: 'Contributors'
 					},
 					{
-						href: 'https://chrome.google.com/webstore/detail/hyperchat-by-livetl/naipgebhooiiccifflecbffmnjbabdbh',
+						href: 'https://chromewebstore.google.com/detail/hyperchat-improved-youtub/naipgebhooiiccifflecbffmnjbabdbh',
 						src: 'https://img.shields.io/chrome-web-store/rating/naipgebhooiiccifflecbffmnjbabdbh?style=flat&color=blue&label=Rating',
 						alt: 'Rating'
 					},
@@ -448,7 +448,7 @@ const rawSections: DetailSection[] = [
 					{ label: 'Website', href: 'https://livetl.app/hyperchat' },
 					{
 						label: 'Chrome Web Store',
-						href: 'https://chromewebstore.google.com/detail/hyperchat-by-livetl/naipgebhooiiccifflecbffmnjbabdbh'
+						href: 'https://chromewebstore.google.com/detail/hyperchat-improved-youtub/naipgebhooiiccifflecbffmnjbabdbh'
 					},
 					{
 						label: 'Mozilla Add-ons',
@@ -478,7 +478,7 @@ const rawSections: DetailSection[] = [
 						alt: 'Users'
 					},
 					{
-						href: 'https://github.com/LiveTL/ytcfilter/contributors',
+						href: 'https://github.com/LiveTL/ytcfilter/graphs/contributors',
 						src: 'https://img.shields.io/badge/Contributors-20%2B%20total-blue?style=flat',
 						alt: 'Contributors'
 					},
@@ -547,7 +547,7 @@ const rawSections: DetailSection[] = [
 	},
 	{
 		id: 'packages',
-		title: 'Developer Tools',
+		title: 'My Developer Tools',
 		items: [
 			{
 				title: 'slsh: ssh without keyboard lag',
@@ -654,8 +654,8 @@ const rawSections: DetailSection[] = [
 					}
 				],
 				links: [
-					{ label: 'Website', href: 'https://kentonishi.github.io/exio/' },
-					{ label: 'Docs', href: 'https://kentonishi.github.io/exio/#/docs' },
+					{ label: 'Website', href: 'https://kentonishi.com/exio/' },
+					{ label: 'Docs', href: 'https://kentonishi.com/exio/#/docs' },
 					{ label: 'npm', href: 'https://www.npmjs.com/package/exio' },
 					{ label: 'GitHub', href: 'https://github.com/KentoNishi/exio' }
 				]

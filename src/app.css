@@ -947,15 +947,15 @@ li {
 }
 
 .music-col-date {
-	width: 9rem;
+	width: 7rem;
 }
 
 .music-col-status {
-	width: 7.2rem;
+	width: 5.4rem;
 }
 
 .music-col-duration {
-	width: 4.55rem;
+	width: 3.9rem;
 }
 
 .music-table th,
@@ -1013,7 +1013,6 @@ li {
 
 .music-status.is-complete {
 	color: var(--tech);
-	font-weight: 700;
 }
 
 .music-player-row {
