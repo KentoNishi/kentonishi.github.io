@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { musicTableAccordion } from '$lib/actions/musicTableAccordion';
+	import { localAsset } from '$lib/paths';
 	import type { DetailItem } from '$lib/site';
 
 	let { items }: { items: DetailItem[] } = $props();
@@ -42,7 +43,7 @@
 					<td class="music-duration">
 						<a
 							class="music-play-link"
-							href={audio.src}
+							href={localAsset(audio.src)}
 							target="_blank"
 							rel="noreferrer"
 							aria-label={`Play ${item.title} (${audio.duration})`}
@@ -65,7 +66,7 @@
 							<div class="music-player-panel-inner">
 								<!-- svelte-ignore a11y_media_has_caption -->
 								<audio class="audio-player" controls preload="none" aria-label={`${item.title} audio`}>
-									<source src={audio.src} type={audio.type} />
+									<source src={localAsset(audio.src)} type={audio.type} />
 								</audio>
 							</div>
 						</div>

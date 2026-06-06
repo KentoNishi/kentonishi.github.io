@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { cssAssetUrl, localHref } from '$lib/paths';
 	import type { ActionLink } from '$lib/site';
 
 	let { links, compact = false }: { links: ActionLink[]; compact?: boolean } = $props();
@@ -8,7 +9,7 @@
 	{#each links as link}
 		<a
 			class="action-link"
-			href={link.href}
+			href={localHref(link.href)}
 			download={link.download ? '' : undefined}
 			target="_blank"
 			rel="noreferrer"
@@ -17,7 +18,7 @@
 				{#if link.iconSrc}
 					<span
 						class="action-icon action-icon-image"
-						style={`--action-icon-src: url('${link.iconSrc}')`}
+						style={`--action-icon-src: ${cssAssetUrl(link.iconSrc)}`}
 						aria-hidden="true"
 					></span>
 				{:else if link.icon}

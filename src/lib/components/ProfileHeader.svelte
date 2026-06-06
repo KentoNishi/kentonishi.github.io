@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { animatedDetails } from '$lib/actions/animatedDetails';
+	import { localAsset } from '$lib/paths';
 	import ActionLinks from './ActionLinks.svelte';
 	import RichText from './RichText.svelte';
 	import type { Profile } from '$lib/site';
@@ -11,10 +12,10 @@
 
 	const locationSegments = $derived(
 		profile.location.split(' / ').map((segment) => {
-			const hasFlag = segment.includes('🇯🇵');
+			const label = segment.trim();
 			return {
-				label: segment.replace('🇯🇵', '').trim(),
-				hasFlag
+				label,
+				hasFlag: label.endsWith('Japan')
 			};
 		})
 	);
@@ -25,7 +26,7 @@
 		<div class="profile-copy">
 			<div class="profile-identity">
 				<div class="profile-photo-frame">
-					<img class="profile-photo" src={profile.image.src} alt={profile.image.alt} />
+					<img class="profile-photo" src={localAsset(profile.image.src)} alt={profile.image.alt} />
 				</div>
 
 				<div class="profile-title-block">
@@ -69,10 +70,14 @@
 							{#each locationSegments as segment, index}
 								<span class="location-unit">
 									<span class="location-segment"
-										>{segment.label}{#if segment.hasFlag}<span class="emoji">🇯🇵</span>{/if}</span
+										>{segment.label}{#if segment.hasFlag}<img
+												class="flag-icon"
+												src={localAsset('/assets/japan-flag.svg')}
+												alt="Japan"
+											/>{/if}</span
 									>
 									{#if index < locationSegments.length - 1}
-										<span class="location-separator" aria-hidden="true">/</span>
+										<span class="location-separator" aria-hidden="true">//</span>
 									{/if}
 								</span>
 							{/each}
@@ -90,7 +95,7 @@
 							duration: 220
 						}}
 					>
-						<summary>Tap for a longer bio.</summary>
+						<summary>Click for a longer bio.</summary>
 						<div class="profile-more-content">
 							{#each moreBio as paragraph}
 								<RichText text={paragraph} links={profile.bioLinks} class="profile-bio" />

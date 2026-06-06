@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { paperFilterAnimation } from '$lib/actions/paperFilterAnimation';
+	import CourseProjectsTable from './CourseProjectsTable.svelte';
 	import MusicTable from './MusicTable.svelte';
 	import ProjectRow from './ProjectRow.svelte';
 	import type { DetailSection } from '$lib/site';
@@ -8,6 +9,7 @@
 
 	const isPapers = $derived(section.id === 'publications');
 	const isMusic = $derived(section.id === 'music');
+	const isCourseProjects = $derived(section.id === 'course-projects');
 	const selectedItems = $derived(section.items.filter((item) => item.highlightPaper));
 	const lastSelectedTitle = $derived(selectedItems[selectedItems.length - 1]?.title);
 </script>
@@ -16,6 +18,7 @@
 	class="detail-section"
 	class:papers-section={isPapers}
 	class:music-section={isMusic}
+	class:course-projects-section={isCourseProjects}
 	id={section.id}
 	use:paperFilterAnimation
 >
@@ -56,6 +59,8 @@
 
 	{#if isMusic}
 		<MusicTable items={section.items} />
+	{:else if isCourseProjects}
+		<CourseProjectsTable items={section.items} />
 	{:else}
 		<div class="detail-list">
 			{#each section.items as item}

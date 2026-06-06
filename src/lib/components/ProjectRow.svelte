@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { localAsset, localHref } from '$lib/paths';
 	import type { DetailItem } from '$lib/site';
 
 	let { item, sectionId }: { item: DetailItem; sectionId?: string } = $props();
@@ -29,7 +30,7 @@
 				item.image.fit ?? 'contain'
 			}`}
 		>
-			<img class="detail-image" src={item.image.src} alt={item.image.alt} />
+			<img class="detail-image" src={localAsset(item.image.src)} alt={item.image.alt} />
 		</div>
 	{/if}
 
@@ -101,7 +102,7 @@
 				{#each item.links as link, index}
 					<span class="paper-link-item">
 						<a
-							href={link.href}
+							href={localHref(link.href)}
 							download={link.download ? '' : undefined}
 							target="_blank"
 							rel="noreferrer">{link.label}</a
@@ -128,8 +129,8 @@
 		{#if item.badges?.length}
 			<div class="badge-row">
 				{#each item.badges as badge}
-					<a class="badge-link" href={badge.href} target="_blank" rel="noreferrer">
-						<img src={badge.src} alt={badge.alt} />
+					<a class="badge-link" href={localHref(badge.href)} target="_blank" rel="noreferrer">
+						<img src={localAsset(badge.src)} alt={badge.alt} />
 					</a>
 				{/each}
 			</div>
@@ -140,7 +141,7 @@
 				{#each item.links as link, index}
 					<span class="paper-link-item">
 						<a
-							href={link.href}
+							href={localHref(link.href)}
 							download={link.download ? '' : undefined}
 							target="_blank"
 							rel="noreferrer">{link.label}</a

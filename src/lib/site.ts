@@ -73,7 +73,7 @@ export const profile: Profile = {
 		{ text: '健', reading: 'けん' },
 		{ text: '斗', reading: 'と' }
 	],
-	location: 'San Jose, CA / Cambridge, MA / Chiba, Japan 🇯🇵',
+	location: 'San Jose, CA / Cambridge, MA / Chiba, Japan',
 	affiliation: '',
 	email: 'kento24gs@outlook.com',
 	image: {
@@ -82,8 +82,8 @@ export const profile: Profile = {
 	},
 	bio: [
 		'Hi! My name is Kento, and I\'m a PhD student at MIT EECS/CSAIL advised by [Phillip Isola]. I graduated from Harvard College/SEAS in 2026, with Honors AB/SM degrees in Computer Science.',
-		'In the past, I had the pleasure of being advised by [Hidenori Tanaka], [Ekdeep Singh Lubana], [Hanspeter Pfister], and [Tobias Höllerer]. I am a recipient of the [Ezoe Memorial Recruit Foundation Scholarship].',
-		'My research interests are in understanding the surprising quirks of deep learning. Why does training give birth to well-organized representations for certain concepts and tasks, but not others? What mechanistic motifs emerge across different models, and why? What properties of the underlying learning algorithm and data distribution lead to these phenomena, and how can we leverage this understanding to build safer and more capable systems? I want to answer these fundamental questions by using science to unpack the physics of artificial intelligence. I\'m also a strong proponent of open source and transparent research.',
+		'In the past, I had the pleasure of being advised by [Hidenori Tanaka], [Ekdeep Singh Lubana], and [Hanspeter Pfister] at Harvard, as well as [Tobias Höllerer] at UCSB. Through my undergraduate and ongoing graduate studies, the [Ezoe Memorial Recruit Foundation Scholarship] has graciously supported my academic pursuits.',
+		'My research interest is to understand the surprising quirks of deep learning. Why does training give birth to well-organized representations for certain concepts and tasks, but not others? What mechanistic motifs emerge across different models, and why? What properties of the underlying learning algorithm and data distribution lead to these phenomena, and how can we leverage this understanding to build safer and more capable systems? I want to answer these fundamental questions by building a scientific theory of artificial intelligence. Incidentally, I strongly support interdisciplinary collaboration, open access, and open source.',
 		'Aside from academics, I\'m an avid long-distance runner (mainly half and full marathons). I also love F1, public transit, anime/vtubers, music production, local eats, and Rocket League. Feel free to reach out via email or Discord @kento24!'
 	],
 	bioLinks: {
@@ -131,7 +131,7 @@ export const profile: Profile = {
 const rawSections: DetailSection[] = [
 	{
 		id: 'publications',
-		title: 'Papers',
+		title: 'Publications',
 		items: [
 			{
 				title: 'Mechanisms of Misgeneralization in Physical Sequence Modeling',
@@ -277,7 +277,7 @@ const rawSections: DetailSection[] = [
 					'We regularize dense prediction outputs in a shared task space, improving partially labeled multi-task learning while scaling linearly with task count.'
 				],
 				links: [
-					{ label: 'CVPR Poster', href: 'https://cvpr.thecvf.com/virtual/2024/poster/29723' },
+					{ label: 'Poster', href: 'https://cvpr.thecvf.com/virtual/2024/poster/29723' },
 					{
 						label: 'OpenAccess',
 						href: 'https://openaccess.thecvf.com/content/CVPR2024/html/Nishi_Joint-Task_Regularization_for_Partially_Labeled_Multi-Task_Learning_CVPR_2024_paper.html'
@@ -301,6 +301,10 @@ const rawSections: DetailSection[] = [
 				],
 				links: [
 					{
+						label: 'Video',
+						href: 'https://kentonishi.com/Augmentation-for-LNL/CVPR_Video.mp4'
+					},
+					{
 						label: 'OpenAccess',
 						href: 'https://openaccess.thecvf.com//content/CVPR2021/html/Nishi_Augmentation_Strategies_for_Learning_With_Noisy_Labels_CVPR_2021_paper.html'
 					},
@@ -315,10 +319,6 @@ const rawSections: DetailSection[] = [
 					// 	label: 'Papers with Code',
 					// 	href: 'https://paperswithcode.com/paper/augmentation-strategies-for-learning-with'
 					// },
-					{
-						label: 'Video',
-						href: 'https://kentonishi.com/Augmentation-for-LNL/CVPR_Video.mp4'
-					}
 				]
 			},
 			{
@@ -663,8 +663,8 @@ const rawSections: DetailSection[] = [
 		]
 	},
 	{
-		id: 'writing',
-		title: 'Writing',
+		id: 'course-projects',
+		title: 'Course Projects',
 		items: [
 			{
 				title: "Do AI Conferences' Ethics Reviews Steer Research Practices?",
@@ -680,7 +680,7 @@ const rawSections: DetailSection[] = [
 				subtitle: 'Harvard CS1050 (Privacy and Technology) Project Report',
 				links: [
 					{ label: 'PDF', href: '/stylometry.pdf' },
-					{ label: 'Code', href: 'https://github.com/KentoNishi/CS1050-Stylometry' }
+					// { label: 'Code', href: 'https://github.com/KentoNishi/CS1050-Stylometry' }
 				]
 			},
 			{
@@ -693,7 +693,7 @@ const rawSections: DetailSection[] = [
 						label: 'PDF',
 						href: '/cs271-variance/Can_Temporal_Distance_Maps_Communicate_Variability__A_User_Study_with_Maps_of_Transit_Travel_Times.pdf'
 					},
-					{ label: 'Code', href: 'https://github.com/KentoNishi/cs271-variance' }
+					// { label: 'Code', href: 'https://github.com/KentoNishi/cs271-variance' }
 				]
 			},
 			{
@@ -701,13 +701,13 @@ const rawSections: DetailSection[] = [
 				subtitle: 'Harvard CS175 (Computer Graphics) Project Report',
 				links: [
 					{ label: 'PDF', href: '/cs175-final-project/CS%20175%20writeup.pdf' },
-					{ label: 'Code', href: 'https://github.com/KentoNishi/cs175-final-project' }
+					// { label: 'Code', href: 'https://github.com/KentoNishi/cs175-final-project' }
 				]
 			},
 			{
 				title:
 					'Browser Extension Standards: How Google Monopolized and Exploited the Web Browser Industry',
-				subtitle: 'Harvard Science @ Work Fall 2022 Term Paper',
+				subtitle: 'Harvard HISTSCI1990 Fall 2022 Term Paper',
 				links: [{ label: 'PDF', href: '/extensions.pdf' }]
 			}
 		]
@@ -733,7 +733,7 @@ const rawSections: DetailSection[] = [
 					type: 'audio/wav',
 					duration: '1:59',
 					date: 'Aug. 2023',
-					status: 'draft'
+					status: 'demo'
 				}
 			},
 			{
@@ -794,8 +794,8 @@ const sectionOrder = [
 	'publications',
 	'software',
 	'packages',
-	// 'writing',
-	'music'
+	'music',
+	'course-projects'
 ];
 
 export const sections: DetailSection[] = sectionOrder
