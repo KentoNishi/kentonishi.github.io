@@ -4,3 +4,5 @@
 static
 **/*.log
 .eslintcache
+build
+.svelte-kit
