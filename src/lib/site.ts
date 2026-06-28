@@ -716,7 +716,7 @@ const rawSections: DetailSection[] = [
 				audio: {
 					src: '/music/bliss.mp3',
 					type: 'audio/mpeg',
-					duration: '2:11',
+					duration: '3:14',
 					date: 'Mar. 2026',
 					status: 'draft'
 				}
