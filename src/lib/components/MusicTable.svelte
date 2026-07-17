@@ -35,7 +35,7 @@
 			{@const audio = item.audio}
 			{#if audio}
 				{@const playerId = `music-player-${index}`}
-				<tr class="music-track-row">
+				<tr class="music-track-row" class:highlighted-music={item.highlightMusic === true}>
 					<td class="music-date">{audio.date}</td>
 					<td class={audio.status === 'complete' ? 'music-status is-complete' : 'music-status'}
 						>{statusLabel(audio.status)}</td
@@ -60,7 +60,12 @@
 						{item.title}
 					</th>
 				</tr>
-				<tr class="music-player-row" id={playerId} aria-hidden="true">
+				<tr
+					class="music-player-row"
+					class:highlighted-music={item.highlightMusic === true}
+					id={playerId}
+					aria-hidden="true"
+				>
 					<td class="music-player-cell" colspan="4">
 						<div class="music-player-panel">
 							<div class="music-player-panel-inner">

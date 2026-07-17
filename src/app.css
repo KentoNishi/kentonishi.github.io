@@ -995,6 +995,54 @@ li {
 	line-height: 1.2;
 }
 
+.music-track-row.highlighted-music > th,
+.music-track-row.highlighted-music > td {
+	background: linear-gradient(
+		to bottom,
+		var(--paper) 0 7px,
+		var(--highlight-paper) 7px calc(100% - 7px),
+		var(--paper) calc(100% - 7px)
+	);
+}
+
+.music-track-row.highlighted-music > td:first-child {
+	padding-left: 12px;
+	background:
+		linear-gradient(
+				to bottom,
+				transparent 0 7px,
+				var(--highlight-paper-rule) 7px calc(100% - 7px),
+				transparent calc(100% - 7px)
+			)
+			left / 3px 100% no-repeat,
+		linear-gradient(
+			to bottom,
+			var(--paper) 0 7px,
+			var(--highlight-paper) 7px calc(100% - 7px),
+			var(--paper) calc(100% - 7px)
+		);
+}
+
+.music-track-row.highlighted-music > th:last-child {
+	padding-right: 12px;
+}
+
+.music-track-row.highlighted-music.is-open > th,
+.music-track-row.highlighted-music.is-open > td {
+	background: linear-gradient(to bottom, var(--paper) 0 7px, var(--highlight-paper) 7px);
+}
+
+.music-track-row.highlighted-music.is-open > td:first-child {
+	background:
+		linear-gradient(
+				to bottom,
+				transparent 0 7px,
+				var(--highlight-paper-rule) 7px
+			)
+			left / 3px 100% no-repeat,
+		linear-gradient(to bottom, var(--paper) 0 7px, var(--highlight-paper) 7px);
+}
+
 .music-track-cell {
 	font-weight: 700;
 }
@@ -1056,6 +1104,23 @@ li {
 
 .music-player-row.is-open .music-player-cell {
 	border-bottom: 2px solid var(--rule);
+}
+
+.music-player-row.highlighted-music .music-player-cell {
+	padding-right: 12px;
+	padding-left: 12px;
+	background:
+		linear-gradient(
+				to bottom,
+				var(--highlight-paper-rule) 0 calc(100% - 7px),
+				transparent calc(100% - 7px)
+			)
+			left / 3px 100% no-repeat,
+		linear-gradient(
+			to bottom,
+			var(--highlight-paper) 0 calc(100% - 7px),
+			var(--paper) calc(100% - 7px)
+		);
 }
 
 .music-player-panel {
@@ -1588,12 +1653,51 @@ li {
 		border-bottom: 2px solid var(--rule);
 	}
 
+	.music-track-row.highlighted-music {
+		padding-right: 12px;
+		padding-left: 12px;
+		background:
+			linear-gradient(
+					to bottom,
+					transparent 0 7px,
+					var(--highlight-paper-rule) 7px calc(100% - 7px),
+					transparent calc(100% - 7px)
+				)
+				left / 3px 100% no-repeat,
+			linear-gradient(
+				to bottom,
+				var(--paper) 0 7px,
+				var(--highlight-paper) 7px calc(100% - 7px),
+				var(--paper) calc(100% - 7px)
+			);
+	}
+
+	.music-track-row.highlighted-music.is-open {
+		background:
+			linear-gradient(
+					to bottom,
+					transparent 0 7px,
+					var(--highlight-paper-rule) 7px
+				)
+				left / 3px 100% no-repeat,
+			linear-gradient(to bottom, var(--paper) 0 7px, var(--highlight-paper) 7px);
+	}
+
 	.music-track-row > th,
 	.music-track-row > td {
 		display: block;
 		align-self: start;
 		padding: 0;
 		border-bottom: 0;
+	}
+
+	.music-track-row.highlighted-music > td:first-child {
+		background: transparent;
+	}
+
+	.music-track-row.highlighted-music > th,
+	.music-track-row.highlighted-music > td {
+		background: transparent;
 	}
 
 	.music-track-cell {

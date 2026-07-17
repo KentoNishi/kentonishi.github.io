@@ -53,6 +53,7 @@ export type DetailItem = {
 		status?: 'demo' | 'draft' | 'complete';
 	};
 	highlightPaper?: boolean;
+	highlightMusic?: boolean;
 	highlightMetaParts?: string[];
 	inlineDescription?: boolean;
 };
@@ -713,6 +714,7 @@ const rawSections: DetailSection[] = [
 		items: [
 			{
 				title: 'Bliss',
+				highlightMusic: true,
 				audio: {
 					src: '/music/bliss.mp3',
 					type: 'audio/mpeg',
