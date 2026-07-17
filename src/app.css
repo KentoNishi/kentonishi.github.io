@@ -997,6 +997,8 @@ li {
 
 .music-track-row.highlighted-music > th,
 .music-track-row.highlighted-music > td {
+	padding-top: calc(0.62rem + 7px);
+	padding-bottom: calc(0.62rem + 7px);
 	background: linear-gradient(
 		to bottom,
 		var(--paper) 0 7px,
@@ -1121,6 +1123,10 @@ li {
 			var(--highlight-paper) 0 calc(100% - 7px),
 			var(--paper) calc(100% - 7px)
 		);
+}
+
+.music-player-row.is-open.highlighted-music .music-player-cell {
+	padding-bottom: 7px;
 }
 
 .music-player-panel {
@@ -1654,8 +1660,7 @@ li {
 	}
 
 	.music-track-row.highlighted-music {
-		padding-right: 12px;
-		padding-left: 12px;
+		padding: calc(0.68rem + 7px) 12px calc(0.7rem + 7px);
 		background:
 			linear-gradient(
 					to bottom,
@@ -1673,6 +1678,7 @@ li {
 	}
 
 	.music-track-row.highlighted-music.is-open {
+		padding-bottom: 0.7rem;
 		background:
 			linear-gradient(
 					to bottom,
