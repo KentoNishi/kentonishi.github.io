@@ -717,7 +717,7 @@ const rawSections: DetailSection[] = [
 					src: '/music/bliss.mp3',
 					type: 'audio/mpeg',
 					duration: '3:14',
-					date: 'Mar. 2026',
+					date: 'Jul. 2026',
 					status: 'draft'
 				}
 			},
