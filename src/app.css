@@ -1703,6 +1703,13 @@ li {
 
 	.music-track-row.highlighted-music > th,
 	.music-track-row.highlighted-music > td {
+		padding: 0;
+		background: transparent;
+	}
+
+	.music-track-row.highlighted-music.is-open > th,
+	.music-track-row.highlighted-music.is-open > td,
+	.music-track-row.highlighted-music.is-open > td:first-child {
 		background: transparent;
 	}
 
