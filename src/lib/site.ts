@@ -82,7 +82,7 @@ export const profile: Profile = {
 		alt: 'Kento Nishi'
 	},
 	bio: [
-		'Hi! My name is Kento, and I\'m a PhD student at MIT EECS/CSAIL advised by [Phillip Isola]. I graduated from Harvard College/SEAS in 2026, with Honors AB/SM degrees in Computer Science.',
+		'Hi! I\'m Kento, a PhD student at MIT EECS (CSAIL) advised by [Phillip Isola]. I graduated from Harvard College/SEAS in 2026, with Honors AB/SM degrees in Computer Science.',
 		'In the past, I had the pleasure of being advised by [Hidenori Tanaka], [Ekdeep Singh Lubana], and [Hanspeter Pfister] at Harvard, as well as [Tobias Höllerer] at UCSB. Through my undergraduate and ongoing graduate studies, the [Ezoe Memorial Recruit Foundation Scholarship] has graciously supported my academic pursuits.',
 		'My research interest is to understand the surprising quirks of deep learning. Why does training give birth to well-organized representations for certain concepts and tasks, but not others? What mechanistic motifs emerge across different models, and why? What properties of the underlying learning algorithm and data distribution lead to these phenomena, and how can we leverage this understanding to build safer and more capable systems? I want to answer these fundamental questions by building a scientific theory of artificial intelligence. Incidentally, I strongly support interdisciplinary collaboration, open access, and open source.',
 		'Aside from academics, I\'m an avid long-distance runner (mainly half and full marathons). I also love F1, public transit, anime/vtubers, music production, local eats, and Rocket League. Feel free to reach out via email or Discord @kento24!'
