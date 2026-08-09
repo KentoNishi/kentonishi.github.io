@@ -167,7 +167,7 @@ const rawSections: DetailSection[] = [
 					'When does Observational Data Teach Latent Dynamics? Understanding Control Misalignment with Synthetic Tasks',
 				subtitle:
 					'Kento Nishi, Raphael Tang, Karun Kumar, Core Francisco Park, Hidenori Tanaka',
-				meta: 'Sci4DL 2026 Workshop, as first author.',
+				meta: 'ICLR 2026 Sci4DL Workshop, as first author.',
 				bullets: [
 					'We show that generated samples can fit the observed data distribution while violating the distribution of hidden controls such as speed, energy, or speaking rate.'
 				],
