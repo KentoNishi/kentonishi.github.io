@@ -10,6 +10,8 @@ export const animatedDetails: Action<HTMLDetailsElement, AnimatedDetailsOptions 
 ) => {
 	let duration = options.duration ?? 160;
 	let timeout: ReturnType<typeof setTimeout> | undefined;
+	let targetOpen = node.open;
+	let previousTransition = '';
 
 	const summary = node.querySelector(':scope > summary');
 	const content = node.querySelector<HTMLElement>(':scope > :not(summary)');
@@ -23,8 +25,30 @@ export const animatedDetails: Action<HTMLDetailsElement, AnimatedDetailsOptions 
 		if (timeout) clearTimeout(timeout);
 		timeout = undefined;
 		node.classList.remove('is-opening', 'is-closing');
-		content.style.height = '';
-		content.style.overflow = '';
+		node.style.height = '';
+		node.style.overflow = '';
+		node.style.transition = previousTransition;
+	};
+
+	const measureHeight = (open: boolean) => {
+		const previousOpen = node.open;
+		const previousTransition = node.style.transition;
+		const previousHeight = node.style.height;
+		const previousOverflow = node.style.overflow;
+
+		node.style.transition = 'none';
+		node.style.height = 'auto';
+		node.style.overflow = 'hidden';
+		node.open = open;
+
+		const height = node.getBoundingClientRect().height;
+
+		node.open = previousOpen;
+		node.style.height = previousHeight;
+		node.style.transition = previousTransition;
+		node.style.overflow = previousOverflow;
+
+		return height;
 	};
 
 	const toggle = (event: MouseEvent) => {
@@ -40,28 +64,29 @@ export const animatedDetails: Action<HTMLDetailsElement, AnimatedDetailsOptions 
 		if (reduceMotion.matches) return;
 
 		event.preventDefault();
+		const wasAnimating = timeout != null;
 		clearAnimation();
-		content.style.overflow = 'hidden';
 
-		if (node.open) {
-			content.style.height = `${content.offsetHeight}px`;
-			content.offsetHeight;
-			node.classList.add('is-closing');
-			content.style.height = '0px';
+		if (!wasAnimating) targetOpen = node.open;
 
-			timeout = setTimeout(() => {
-				node.open = false;
-				clearAnimation();
-			}, duration);
-		} else {
-			node.open = true;
-			content.style.height = '0px';
-			content.offsetHeight;
-			node.classList.add('is-opening');
-			content.style.height = `${content.scrollHeight}px`;
+		const willOpen = !targetOpen;
+		targetOpen = willOpen;
+		const startHeight = node.getBoundingClientRect().height;
+		const endHeight = measureHeight(willOpen);
 
-			timeout = setTimeout(clearAnimation, duration);
-		}
+		previousTransition = node.style.transition;
+		node.style.height = `${startHeight}px`;
+		node.style.overflow = 'hidden';
+		node.style.transition = `height ${duration}ms cubic-bezier(0.2, 0, 0, 1)`;
+		node.open = true;
+		node.offsetHeight;
+		node.classList.add(willOpen ? 'is-opening' : 'is-closing');
+		node.style.height = `${endHeight}px`;
+
+		timeout = setTimeout(() => {
+			if (!willOpen) node.open = false;
+			clearAnimation();
+		}, duration);
 	};
 
 	summary.addEventListener('click', toggle);
