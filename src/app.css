@@ -1049,6 +1049,19 @@ li {
 	font-weight: 700;
 }
 
+.music-track-title {
+	display: inline-flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.music-track-badges {
+	display: inline-flex;
+	align-items: center;
+	line-height: 0;
+}
+
 .music-play-link {
 	display: inline-flex;
 	align-items: baseline;

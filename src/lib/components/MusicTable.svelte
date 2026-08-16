@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { musicTableAccordion } from '$lib/actions/musicTableAccordion';
-	import { localAsset } from '$lib/paths';
+	import { localAsset, localHref } from '$lib/paths';
 	import type { DetailItem } from '$lib/site';
 
 	let { items }: { items: DetailItem[] } = $props();
@@ -57,7 +57,18 @@
 						</a>
 					</td>
 					<th class="music-track-cell" scope="row">
-						{item.title}
+						<span class="music-track-title">
+							<span>{item.title}</span>
+							{#if item.badges?.length}
+								<span class="music-track-badges">
+									{#each item.badges as badge}
+										<a class="badge-link" href={localHref(badge.href)} target="_blank" rel="noreferrer">
+											<img src={localAsset(badge.src)} alt={badge.alt} />
+										</a>
+									{/each}
+								</span>
+							{/if}
+						</span>
 					</th>
 				</tr>
 				<tr

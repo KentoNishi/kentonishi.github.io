@@ -715,6 +715,13 @@ const rawSections: DetailSection[] = [
 			{
 				title: 'Bliss',
 				highlightMusic: true,
+				badges: [
+					{
+						href: 'https://www.youtube.com/watch?v=MBQTSXorTf4',
+						src: 'https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white',
+						alt: 'YouTube'
+					}
+				],
 				audio: {
 					src: '/music/bliss.mp3',
 					type: 'audio/mpeg',
