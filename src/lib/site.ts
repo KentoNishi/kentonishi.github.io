@@ -714,7 +714,6 @@ const rawSections: DetailSection[] = [
 		items: [
 			{
 				title: 'Bliss',
-				highlightMusic: true,
 				badges: [
 					{
 						href: 'https://www.youtube.com/watch?v=MBQTSXorTf4',
