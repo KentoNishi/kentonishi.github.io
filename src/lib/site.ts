@@ -726,7 +726,7 @@ const rawSections: DetailSection[] = [
 					type: 'audio/mpeg',
 					duration: '3:14',
 					date: 'Jul. 2026',
-					status: 'draft'
+					status: 'complete'
 				}
 			},
 			{
@@ -771,6 +771,13 @@ const rawSections: DetailSection[] = [
 			},
 			{
 				title: 'HyperChat Trailer Theme',
+				badges: [
+					{
+						href: 'https://www.youtube.com/watch?v=FU3YWQy_Rfs',
+						src: 'https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white',
+						alt: 'YouTube'
+					}
+				],
 				audio: {
 					src: '/music/hyperchat-ad.mp3',
 					type: 'audio/mpeg',
