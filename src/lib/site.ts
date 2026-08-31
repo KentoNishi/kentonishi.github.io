@@ -76,7 +76,7 @@ export const profile: Profile = {
 	],
 	location: 'San Jose, CA / Cambridge, MA / Chiba, Japan',
 	affiliation: '',
-	email: 'kento24gs@outlook.com',
+	email: 'knishi@mit.edu',
 	image: {
 		src: '/assets/pfp.png',
 		alt: 'Kento Nishi'
@@ -98,7 +98,7 @@ export const profile: Profile = {
 	links: [
 		{
 			label: 'Email',
-			href: 'mailto:kento24gs@outlook.com',
+			href: 'mailto:knishi@mit.edu',
 			icon: 'mail'
 		},
 		{
@@ -154,13 +154,16 @@ const rawSections: DetailSection[] = [
 				]
 			},
 			{
-				title: 'Evolutionary Curriculum Learning for Biological Sequence Modeling',
+				title: 'Evolutionary Curriculum Learning Improves Biological Sequence Modeling',
 				subtitle: 'Richard Yuxuan Zhu, Kento Nishi',
 				meta: 'ICML 2026 SPIGM Workshop, as co-author.',
 				bullets: [
 					'We train biological sequence models with a curriculum that gradually expands from nearby evolutionary neighbors to more distant homologs, improving protein variant-effect prediction and RNA sequence generation.'
 				],
-				links: [{ label: 'OpenReview', href: 'https://openreview.net/forum?id=8lPvrul1rs' }]
+				links: [
+					{ label: 'OpenReview', href: 'https://openreview.net/forum?id=8lPvrul1rs' },
+					{ label: 'arXiv', href: 'https://arxiv.org/abs/2608.00697' }
+				]
 			},
 			{
 				title:
@@ -591,6 +594,32 @@ const rawSections: DetailSection[] = [
 				links: [
 					{ label: 'PyPI', href: 'https://pypi.org/project/torch-pitch-shift/' },
 					{ label: 'GitHub', href: 'https://github.com/KentoNishi/torch-pitch-shift' }
+				]
+			},
+			{
+				title: 'Torch Time Stretch',
+				description:
+					'GPU-accelerated PyTorch library for fast audio time-stretching and efficient transformation search.',
+				badges: [
+					{
+						href: 'https://github.com/KentoNishi/torch-time-stretch',
+						src: 'https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=ffdd54',
+						alt: 'Python'
+					},
+					{
+						href: 'https://pytorch.org/',
+						src: 'https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=ffffff',
+						alt: 'PyTorch'
+					},
+					{
+						href: 'https://pypi.org/project/torch-time-stretch/',
+						src: 'https://img.shields.io/pypi/dm/torch-time-stretch?color=blue&label=Downloads',
+						alt: 'downloads'
+					}
+				],
+				links: [
+					{ label: 'PyPI', href: 'https://pypi.org/project/torch-time-stretch/' },
+					{ label: 'GitHub', href: 'https://github.com/KentoNishi/torch-time-stretch' }
 				]
 			},
 			{
