@@ -995,6 +995,12 @@ li {
 	line-height: 1.2;
 }
 
+.music-table tbody tr:nth-last-child(2) > th,
+.music-table tbody tr:nth-last-child(2) > td,
+.music-player-row:last-child.is-open .music-player-cell {
+	border-bottom: 0;
+}
+
 .music-track-row.highlighted-music > th,
 .music-track-row.highlighted-music > td {
 	padding-top: calc(0.62rem + 7px);
@@ -1670,6 +1676,11 @@ li {
 		row-gap: 0.18rem;
 		padding: 0.68rem 0 0.7rem;
 		border-bottom: 2px solid var(--rule);
+	}
+
+	.music-table tbody tr:nth-last-child(2),
+	.music-player-row:last-child.is-open {
+		border-bottom: 0;
 	}
 
 	.music-track-row.highlighted-music {

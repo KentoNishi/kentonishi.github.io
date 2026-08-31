@@ -778,26 +778,26 @@ const rawSections: DetailSection[] = [
 					status: 'complete'
 				}
 			},
-			{
-				title: 'Voyage',
-				audio: {
-					src: '/music/voyage.mp3',
-					type: 'audio/mpeg',
-					duration: '3:24',
-					date: 'Sept. 2022',
-					status: 'complete'
-				}
-			},
-			{
-				title: 'New Beginning',
-				audio: {
-					src: '/music/new-beginning.mp3',
-					type: 'audio/mpeg',
-					duration: '3:53',
-					date: 'Sept. 2022',
-					status: 'complete'
-				}
-			},
+			// {
+			// 	title: 'Voyage',
+			// 	audio: {
+			// 		src: '/music/voyage.mp3',
+			// 		type: 'audio/mpeg',
+			// 		duration: '3:24',
+			// 		date: 'Sept. 2022',
+			// 		status: 'complete'
+			// 	}
+			// },
+			// {
+			// 	title: 'New Beginning',
+			// 	audio: {
+			// 		src: '/music/new-beginning.mp3',
+			// 		type: 'audio/mpeg',
+			// 		duration: '3:53',
+			// 		date: 'Sept. 2022',
+			// 		status: 'complete'
+			// 	}
+			// },
 			{
 				title: 'HyperChat Trailer Theme',
 				badges: [
