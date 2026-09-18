@@ -135,6 +135,30 @@ const rawSections: DetailSection[] = [
 		title: 'My Publications',
 		items: [
 			{
+				title: 'Causal Analysis and Mitigation of Spurious Onsets in Full-Duplex Speech LLMs',
+				subtitle: 'Kento Nishi',
+				meta: 'Preprint 2026, as first author.',
+				highlightPaper: true,
+				bullets: [
+					'We trace inappropriate speech during user silence in Moshi and PersonaPlex to abrupt onset-probability spikes, then use counterfactual input muting to suppress spurious onsets while preserving genuine responses in real time, without retraining.'
+				],
+				links: [
+					{ label: 'arXiv', href: 'https://arxiv.org/abs/2609.13445' },
+					{ label: 'Code', href: 'https://github.com/KentoNishi/icassp27-spurious-onsets' }
+				]
+			},
+			{
+				title:
+					'Governing AI Research Through Peer Review: A Mixed-Methods Study of the Longitudinal Effects of Ethics Flags Across Resubmissions',
+				subtitle: 'Kento Nishi, Alec Laprevotte, Isaiah Bullock, Mfoniso Andrew',
+				meta: 'Preprint 2026, as first author.',
+				highlightPaper: true,
+				bullets: [
+					'We follow 446 ethics-flagged ICLR submissions into later resubmissions and find that 83% leave the concern unaddressed or revise the paper without changing the implicated methods. Case studies and author interviews show how rebuttal concessions can disappear after rejection.'
+				],
+				links: [{ label: 'arXiv', href: 'https://arxiv.org/abs/2609.10740' }]
+			},
+			{
 				title: 'Mechanisms of Misgeneralization in Physical Sequence Modeling',
 				subtitle:
 					'Kento Nishi, Raphael Tang, Karun Kumar, Core Francisco Park, Hidenori Tanaka',
