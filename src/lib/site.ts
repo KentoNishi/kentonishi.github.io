@@ -154,7 +154,7 @@ const rawSections: DetailSection[] = [
 				meta: 'Preprint 2026, as first author.',
 				highlightPaper: true,
 				bullets: [
-					'We find that in 83% of 446 resubmissions, authors leave ethics concerns unaddressed or revise the paper without changing the methods in question.'
+					'We follow rejected and withdrawn ICLR submissions with ethics flags into later resubmissions, finding that in 83% of 446 cases, authors leave concerns unaddressed or revise the paper without changing the implicated methods or procedures.'
 				],
 				links: [{ label: 'arXiv', href: 'https://arxiv.org/abs/2609.10740' }]
 			},
