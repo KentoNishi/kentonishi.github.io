@@ -140,7 +140,7 @@ const rawSections: DetailSection[] = [
 				meta: 'Preprint 2026, as first author.',
 				highlightPaper: true,
 				bullets: [
-					'We show that Moshi and PersonaPlex can abruptly start speaking during user silence, and suppress these spurious onsets without retraining or blocking genuine responses.'
+					'We analyze spurious speech during user silence in full-duplex speech LLMs Moshi and PersonaPlex, and use a causal test of whether the model is responding to user speech to suppress these onsets while preserving genuine responses.'
 				],
 				links: [
 					{ label: 'arXiv', href: 'https://arxiv.org/abs/2609.13445' },
