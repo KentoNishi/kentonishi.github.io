@@ -140,7 +140,7 @@ const rawSections: DetailSection[] = [
 				meta: 'Preprint 2026, as first author.',
 				highlightPaper: true,
 				bullets: [
-					'We trace inappropriate speech during user silence in Moshi and PersonaPlex to abrupt onset-probability spikes, then use counterfactual input muting to suppress spurious onsets while preserving genuine responses in real time, without retraining.'
+					'We show that Moshi and PersonaPlex can abruptly start speaking during user silence, and suppress these spurious onsets without retraining or blocking genuine responses.'
 				],
 				links: [
 					{ label: 'arXiv', href: 'https://arxiv.org/abs/2609.13445' },
@@ -154,7 +154,7 @@ const rawSections: DetailSection[] = [
 				meta: 'Preprint 2026, as first author.',
 				highlightPaper: true,
 				bullets: [
-					'We follow 446 ethics-flagged ICLR submissions into later resubmissions and find that 83% leave the concern unaddressed or revise the paper without changing the implicated methods. Case studies and author interviews show how rebuttal concessions can disappear after rejection.'
+					'We find that in 83% of 446 resubmissions, authors leave ethics concerns unaddressed or revise the paper without changing the methods in question.'
 				],
 				links: [{ label: 'arXiv', href: 'https://arxiv.org/abs/2609.10740' }]
 			},
