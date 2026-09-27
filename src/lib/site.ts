@@ -162,7 +162,7 @@ const rawSections: DetailSection[] = [
 				title: 'Mechanisms of Misgeneralization in Physical Sequence Modeling',
 				subtitle:
 					'Kento Nishi, Raphael Tang, Karun Kumar, Core Francisco Park, Hidenori Tanaka',
-				meta: 'Preprint 2026, as first author.',
+				meta: 'NeurIPS 2026, as first author.',
 				highlightPaper: true,
 				bullets: [
 					'We show that generative sequence models can produce individually plausible physical trajectories while shifting aggregate quantities such as distance or energy, and use a data deviation kernel to predict and reduce this drift.'
