@@ -766,6 +766,18 @@ const rawSections: DetailSection[] = [
 		title: 'My Music',
 		items: [
 			{
+				title: 'October 2026 Draft',
+				badges: [
+				],
+				audio: {
+					src: '/music/october-2026.mp3',
+					type: 'audio/mpeg',
+					duration: '1:38',
+					date: 'Oct. 2026',
+					status: 'demo'
+				}
+			},
+			{
 				title: 'Bliss',
 				badges: [
 					{
